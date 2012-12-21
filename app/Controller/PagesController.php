@@ -45,6 +45,7 @@ class PagesController extends AppController {
  */
 	public $uses = array();
 
+
 /**
  * Displays a view
  *
@@ -53,7 +54,6 @@ class PagesController extends AppController {
  */
 	public function display() {
 		$path = func_get_args();
-
 		$count = count($path);
 		if (!$count) {
 			$this->redirect('/');
@@ -69,6 +69,9 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
+
+if ($page == 'html5') 		$this->layout = 'html5';		
+		
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));
 	}

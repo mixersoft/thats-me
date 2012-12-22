@@ -12,6 +12,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
+<!-- 		<link rel="stylesheet" href="/css/cake.generic.css"> -->
         <link rel="stylesheet" href="/css/bootstrap.min.css">
         <style>
             body {
@@ -23,6 +24,10 @@
         <link rel="stylesheet" href="/css/main.css">
 
         <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        
+        <?php $this->Layout->output($this->viewVars['HEAD_for_layout']); ?>
+        
+        
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -32,11 +37,8 @@
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 		<!--  This code taken from Cakephp layouts/default.ctp  -->
 		<div id="container" class="container">
-			<div id="header">
-				<h1><?php
-				$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
-				 echo $this->Html->link($cakeDescription, 'http://cakephp.org'); 
-				 ?></h1>
+			<div id="header"> 
+				<?php $this->Layout->output($this->viewVars['header_for_layout']); ?>
 			</div>
 			<div id="content">
 	
@@ -45,8 +47,9 @@
 				<?php echo $this->fetch('content'); ?>
 			</div>
 			<div id="footer">
+				<p>&copy; Snaphappi 2012</p>
 				<?php echo $this->Html->link(
-						$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
+						$this->Html->image('cake.power.gif', array('border' => '0')),
 						'http://www.cakephp.org/',
 						array('target' => '_blank', 'escape' => false)
 					);

@@ -203,9 +203,13 @@
         <p class="lead">We’re a small company working as fast as we can to develop our ideas, and 
         there's a lot of work to do before this story is ready to share.
         Our touch-friendly Timeline is still just a twinkle in our eye...</p>
-        <p class="lead">Your support will help us build our team quickly and work a lot faster.</p> 
+        <p class="lead">Your support will help us build our team quickly and work a lot faster.</p>
+        <a class="btn btn-large btn-primary" href="#call-to-action">I Still Want It</a> 
       </div>
-	  <a name='call-to-ction'></a>	
+      
+      <hr class="featurette-divider">
+      
+	  <a name='call-to-action'></a>	
       <div class="featurette call-to-action">
         <h2 class="featurette-heading">I Still Want It. <span class="muted">Count Me In.</span></h2>
         <p class="lead">
@@ -234,6 +238,8 @@
         		<li>Email my friends</li>
         		<li>Share on Facebook</li>
         	</ul>
+        	<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+
       </div>
 	
 	  <hr class="featurette-divider">

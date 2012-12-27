@@ -184,6 +184,12 @@
     	margin: 0 auto;
     	width: 853px;
     }
+    .featurette.call-to-action {
+    	padding-top: 80px;
+    }    
+    .featurette.call-to-action .featurette-image {
+    	margin-top: -380px;
+    }
 
     /* RESPONSIVE CSS
     -------------------------------------------------- */

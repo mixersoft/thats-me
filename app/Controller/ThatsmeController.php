@@ -54,6 +54,10 @@ class ThatsmeController extends AppController {
 	
 	public function launchsnappi (){
 	} 
+	
+	public function carousel (){
+	} 
+	
 
 /**
  * Displays a view

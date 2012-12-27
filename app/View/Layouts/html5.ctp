@@ -36,7 +36,7 @@
 
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 		<!--  This code taken from Cakephp layouts/default.ctp  -->
-		<div id="container" class="container">
+		<div id="container" >
 			<div id="header"> 
 				<?php $this->Layout->output($this->viewVars['header_for_layout']); ?>
 			</div>
@@ -72,6 +72,9 @@
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
+        
+        <?php $this->Layout->output($this->viewVars['javascript_for_layout']); ?>
+        
     </body>
 </html>
 	

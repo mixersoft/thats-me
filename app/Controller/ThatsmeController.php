@@ -57,7 +57,7 @@ class ThatsmeController extends AppController {
 	
 	public function carousel (){
 	} 
-	
+	public function overwhelmed() {}
 
 /**
  * Displays a view

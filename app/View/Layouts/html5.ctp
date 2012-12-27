@@ -12,14 +12,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-<!-- 		<link rel="stylesheet" href="/css/cake.generic.css"> -->
+<!-- 	<link rel="stylesheet" href="/css/cake.generic.css"> -->
         <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <style>
+<!--    <style>
             body {
                 padding-top: 60px;
                 padding-bottom: 40px;
             }
-        </style>
+        </style> -->
         <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="/css/main.css">
 

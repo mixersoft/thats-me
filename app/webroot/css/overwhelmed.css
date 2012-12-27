@@ -187,8 +187,25 @@
     .featurette.call-to-action {
     	padding-top: 80px;
     }    
+    .featurette.call-to-action fieldset 
+    {
+    	border: 1px solid #888;
+    	border-radius: 20px;
+    	display: inline-block;
+    	padding: 10px 20px;
+    }
+    .featurette.call-to-action fieldset legend 
+    {
+    	border: none;
+    	line-height: auto;
+    	margin: 0;
+    	padding: 0 20px;
+    	width: 120px;
+    	text-align: center;
+    	
+    }
     .featurette.call-to-action .featurette-image {
-    	margin-top: -380px;
+    	margin-top: 0px;
     }
 
     /* RESPONSIVE CSS

@@ -143,6 +143,9 @@
       margin-right: 10px;
     }
 
+	#footer {
+		margin: 0 20px;	
+	}
 
     /* Featurettes
     ------------------------- */

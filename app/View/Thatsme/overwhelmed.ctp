@@ -213,6 +213,7 @@
       
 	  <a name='call-to-action'></a>	
       <div id="call-to-action" class="featurette call-to-action">
+      	<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
         <h2 class="featurette-heading">I Still Want It. <span class="muted">Count Me In.</span></h2>
         <p class="lead">You've got me. I want this. I need this. What can I do to get this ASAP?</p>
         <p>Your vocal support will make it easier for us to attract talented developers and rich investors. 
@@ -243,7 +244,7 @@
 	        		<li>Share on Facebook</li>
 	        	</ul>
         	</fieldset>
-        	<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+        	
 
       </div>
 
@@ -257,10 +258,12 @@
 	  <hr class="featurette-divider">
 
       <!-- FOOTER -->
+<?php $this->Layout->blockStart('footer'); ?>      
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
+<?php $this->Layout->blockEnd(); ?>
 
     </div><!-- /.container -->
 

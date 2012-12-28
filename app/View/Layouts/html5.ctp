@@ -47,13 +47,14 @@
 				<?php echo $this->fetch('content'); ?>
 			</div>
 			<div id="footer">
-				<p>&copy; 2012 Snaphappi </p>
+				<?php $this->Layout->output($this->viewVars['footer_for_layout']); ?>
+				<p>&copy; 2012 Snaphappi Inc.
 				<?php echo $this->Html->link(
 						$this->Html->image('cake.power.gif', array('border' => '0')),
 						'http://www.cakephp.org/',
 						array('target' => '_blank', 'escape' => false)
 					);
-				?>
+				?></p>
 			</div>
 		</div> <!-- /container -->
 		<?php echo $this->element('sql_dump'); ?>

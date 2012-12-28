@@ -108,14 +108,14 @@
 	      <div class="row carousel-row">
 	        <div class="span4">
 	<!--         	 ??? what is data-src for?  -->
-	          <img class="img-circle" data-src="holder.js/140x140">  
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140">   -->
 	          <h3>Send Us Your Photos</h3>
 	          <p>Upload JPG photos from your photo archive - all of them. 
 	          	Don't bother searching for the good ones, that's why you're here. 
 	          	We'll take them by the thousands, and it takes less time than you think.</p>
 	        </div><!-- /.span4 -->
 	        <div class="span4">
-	          <img class="img-circle" data-src="holder.js/140x140">
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
 	          <h3>We'll Find The Good Stuff</h3>
 	          <p>We'll rate your photos and hide the duplicates. 
 	          	We use <em>people</em> to make the final decisions - trained editors.
@@ -123,7 +123,7 @@
 	          	<h4>It only costs you a penny a photo.</h4>
 	        </div><!-- /.span4 -->
 	        <div class="span4">
-	          <img class="img-circle" data-src="holder.js/140x140">
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
 	          <h3>And Build Your Timeline</h3>
 	          <p>We'll build your Curated Timeline, organized by events and marked by great photos.
 	          	It only takes a few great photos to connect you to your Story. 
@@ -145,7 +145,7 @@
 	      <div class="row carousel-row">
 	        <div class="span4">
 	<!--         	 ??? what is data-src for?  -->
-	          <img class="img-circle" data-src="holder.js/140x140">  
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140">   -->
 	          <h3>Just Point Your Finger</h3>
 	          <p>Re-live and share your special moments with the touch of a finger. 
 	          	Always start with your top-rated photos - the good stuff is upfront. 
@@ -155,7 +155,7 @@
 	          </p>
 	        </div><!-- /.span4 -->
 	        <div class="span4">
-	          <img class="img-circle" data-src="holder.js/140x140">
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
 	          <h3>You're in Control</h3>
 	          <p>Make changes as you see fit. Find that photo of Aunt Bertha you treasure and 
 	          	bump up the rating. 
@@ -163,7 +163,7 @@
 	          	</p>
 	        </div><!-- /.span4 -->
 	        <div class="span4">
-	          <img class="img-circle" data-src="holder.js/140x140">
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
 	          <h3>Nothing is Wasted</h3>
 	          <p>No photo is ever thrown away, everything is there when you need it.
 	          	We just make it easier to start with the good stuff. 
@@ -192,7 +192,7 @@
       <div id="see-the-movie" class="featurette the-movie">
         <h2 class="featurette-heading">See the Movie. <span class="muted">It'll knock your socks off.</span></h2>
         <div class='center'>
-        	<iframe width="853" height="480" src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0" frameborder="0" allowfullscreen></iframe>
+        	<iframe src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -246,13 +246,20 @@
         	<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
 
       </div>
+
+	  <hr class="featurette-divider">
+      
+      <a name='tag-line'></a>
+      <div id='tag-line' class="featurette tag-line">
+        <h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
+      </div>
 	
 	  <hr class="featurette-divider">
 
       <!-- FOOTER -->
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2012 Snaphappi Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
     </div><!-- /.container -->

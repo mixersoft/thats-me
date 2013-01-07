@@ -14,13 +14,13 @@
 
 <!-- 	<link rel="stylesheet" href="/css/cake.generic.css"> -->
         <link rel="stylesheet" href="/css/bootstrap.min.css">
-<!--    <style>
+   		<style>
             body {
                 padding-top: 60px;
                 padding-bottom: 40px;
             }
-        </style> -->
-        <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+        </style>
+        <link rel="stylesheet" href="/css/bootstrap-responsive.css">
         <link rel="stylesheet" href="/css/main.css">
 
         <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>

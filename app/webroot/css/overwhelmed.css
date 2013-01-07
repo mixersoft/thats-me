@@ -1,12 +1,13 @@
 
 
 /* ==========================================================================
-   Author's custom styles
+   Author's custom styles  MOVE TO LAYOUT
    ========================================================================== */
-    body {
+/*    body {
         padding-top: 60px;
         padding-bottom: 40px;
     }
+*/
             
 
     /* GLOBAL STYLES
@@ -18,9 +19,6 @@
       color: #5a5a5a;
     }
 
-	.right {
-		float: right;
-	}
 
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -28,7 +26,7 @@
     /* Special class on .container surrounding .navbar, used for positioning it into place. */
     .navbar-wrapper {
 /*      position: absolute;*/
-	  position: fixed;
+/*	  position: fixed;*/
       top: 0;
       left: 0;
       right: 0;
@@ -39,6 +37,11 @@
     
     .navbar-wrapper .navbar {
 
+    }
+    
+    .navbar {
+    	margin-top: 20px;
+    	padding: 0 10px;
     }
 
     /* Remove border and change up box shadow for more contrast */
@@ -228,14 +231,23 @@
 
     @media (max-width: 979px) {
 
-      .container.navbar-wrapper {
+/*      .container.navbar-wrapper {
         margin-bottom: 0;
         width: auto;
       }
       .navbar-inner {
         border-radius: 0;
         margin: -20px 0;
-      }
+      }*/
+	  .navbar-fixed-top, .navbar-fixed-bottom {
+	  	left: 0;
+	    margin-bottom: 0;
+	    position: fixed;
+	    right: 0;
+	    top: 0
+	    z-index: 1030;
+	  }
+
 
       .carousel .item {
         height: 500px;
@@ -268,7 +280,12 @@
 
 
     @media (max-width: 767px) {
-
+	  .navbar-fixed-top, .navbar-fixed-bottom {
+	  	margin-left: 0;
+	  	margin-right: 0;
+	  	margin-bottom: 20px;
+	  	position: static;
+	  }
       .navbar-inner {
         margin: -20px;
       }

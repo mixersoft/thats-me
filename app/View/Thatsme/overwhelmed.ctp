@@ -15,11 +15,9 @@
 <?php $this->Layout->blockStart('header'); ?>
     <!-- NAVBAR
     ================================================== -->
-    <div class="navbar-wrapper">
       <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-      <div class="container">
 
-        <div class="navbar navbar-inverse">
+        <div class="navbar navbar-inverse navbar-fixed-top">
           <div class="navbar-inner">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -31,20 +29,20 @@
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse right">
               <ul class="nav">
-                <li class="active"><a href="#help-me">Help Me</a></li>
-                <li><a href="#on-our-way">On Our Way</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#still-in-the-darkroom">I Want It</a></li>
+                <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#help-me">Help Me</a></li>
+                <li><a href="#on-our-way" data-toggle="collapse" data-target=".nav-collapse">On Our Way</a></li>
+                <li><a href="#how-it-works" data-toggle="collapse" data-target=".nav-collapse">How It Works</a></li>
+                <li><a href="#still-in-the-darkroom" data-toggle="collapse" data-target=".nav-collapse">I Want It</a></li>
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                  	<li><a href="#call-to-action">I Still Want It</a></li>
+                  	<li><a href="#call-to-action" data-toggle="collapse" data-target=".nav-collapse">I Still Want It</a></li>
                   	<li class="divider"></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li class="divider"></li>
-                    <li><a href="#see-the-movie">See the Movie Again</a></li>
+                    <li><a href="#see-the-movie" data-toggle="collapse" data-target=".nav-collapse">See the Movie Again</a></li>
                     <li><a href="#">Playground</a></li>
                   </ul>
                 </li>
@@ -53,8 +51,6 @@
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
 
-      </div> <!-- /.container -->
-    </div><!-- /.navbar-wrapper -->
 <?php $this->Layout->blockEnd(); ?> 
 
    
@@ -272,6 +268,18 @@
     <!-- Le javascript
     ================================================== -->
     <script>
+    	// scroll to anchor AFTER collapse navbar, adjust for .nav-collapse height
+     	// use: data-toggle="collapse" data-target=".nav-collapse"
+     	$(document).on('click.collapse.data-api', '.nav-collapse ul.nav a:not(".dropdown-toggle")', function (e) {
+			var $this = $(this) 
+			, href
+			, target = (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
+			var offsetH = $(".nav-collapse").height();
+			// console.log("offsetH="+offsetH);
+			$('html,body').animate({scrollTop : $(target).offset().top - offsetH});
+		});
+    
+    
       !function ($) {
         $(function(){
           // carousel demo

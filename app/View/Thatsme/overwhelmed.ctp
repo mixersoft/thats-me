@@ -29,7 +29,7 @@
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse  pull-right">
               <ul class="nav">
-                <li data-toggle="collapse" data-target=".nav-collapse"><a href="#help-me">Help Me</a></li>
+                <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#help-me">Help Me</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#on-our-way" >On Our Way</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#how-it-works" >How It Works</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#still-in-the-darkroom" >I Want It</a></li>
@@ -284,7 +284,6 @@
         $(function(){
           // carousel demo
           $('#how-it-works').carousel();
-          $('.navbar').scrollspy()
         })
       }(window.jQuery)
     </script>

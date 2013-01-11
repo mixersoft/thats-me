@@ -14,127 +14,130 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	 * Youtube API helper functions for tracking events
 	 */
 	var mixpanel_event_properties = {} // page-level properties for mixpanel.track
-/**
- * http://stackoverflow.com/questions/7988476/listening-for-youtube-event-in-javascript-or-jquery
- */
-function getFrameID(id) {
-	var elem = document.getElementById(id);
-	if (elem) {
-		if (/^iframe$/i.test(elem.tagName))
+	/**
+	 * http://stackoverflow.com/questions/7988476/listening-for-youtube-event-in-javascript-or-jquery
+	 */
+	function getFrameID(id) {
+		var elem = document.getElementById(id);
+		if (elem) {
+			if (/^iframe$/i.test(elem.tagName))
+				return id;
+			//Frame, OK
+			// else: Look for frame
+			var elems = elem.getElementsByTagName("iframe");
+			if (!elems.length)
+				return null;
+			//No iframe found, FAILURE
+			for (var i = 0; i < elems.length; i++) {
+				if (/^https?:\/\/(?:www\.)?youtube(?:-nocookie)?\.com(\/|$)/i.test(elems[i].src))
+					break;
+			}
+			elem = elems[i];
+			//The only, or the best iFrame
+			if (elem.id)
+				return elem.id;
+			//Existing ID, return it
+			// else: Create a new ID
+			do {//Keep postfixing `-frame` until the ID is unique
+				id += "-frame";
+			} while (document.getElementById(id));
+			elem.id = id;
 			return id;
-		//Frame, OK
-		// else: Look for frame
-		var elems = elem.getElementsByTagName("iframe");
-		if (!elems.length)
-			return null;
-		//No iframe found, FAILURE
-		for (var i = 0; i < elems.length; i++) {
-			if (/^https?:\/\/(?:www\.)?youtube(?:-nocookie)?\.com(\/|$)/i.test(elems[i].src))
+		}
+		// If no element, return null.
+		return null;
+	}
+	
+	// Define YT_ready function.
+	var YT_ready = (function() {
+		var onReady_funcs = [], api_isReady = false;
+		/* @param func function     Function to execute on ready
+		 * @param func Boolean      If true, all qeued functions are executed
+		 * @param b_before Boolean  If true, the func will added to the first
+		 position in the queue*/
+		return function(func, b_before) {
+			if (func === true) {
+				api_isReady = true;
+				for (var i = 0; i < onReady_funcs.length; i++) {
+					// Removes the first func from the array, and execute func
+					onReady_funcs.shift()();
+				}
+			} else if ( typeof func == "function") {
+				if (api_isReady)
+					func();
+				else
+					onReady_funcs[b_before?"unshift":"push"](func);
+			}
+		}
+	})();
+	
+	// This function will be called when the API is fully loaded (GLOBAL)
+	onYouTubePlayerAPIReady = function() {
+		YT_ready(true);
+	}
+	
+	var YT_player;
+	//Define a YT_player object, to enable later function calls, without
+	// having to create a new class instance again.
+	
+	// Add function to execute when the API is ready
+	YT_ready(function() {
+		var frameID = getFrameID("yt-player");
+		if (frameID) {//If the frame exists
+			YT_player = new YT.Player(frameID, {
+				events : {
+					"onStateChange" : YT_StateChange
+				}
+			});
+		}
+	});
+	
+	// Example: function stopCycle, bound to onStateChange
+	function YT_StateChange(event) {
+		var event_name = 'Video';
+		if (!YT_player.mixpanel)
+			YT_player.mixpanel = {};
+		switch (event.data) {
+			case YT.PlayerState.PLAYING:
+				// play
+				if (!YT_player.mixpanel['play']) {
+					var properties = $.extend({ state : 'play'}, mixpanel_event_properties[event_name]);
+					mixpanel.track(event_name, properties);
+					// mixpanel.track('Video', {
+						// trigger : 'imagine',
+						// state : 'play'
+					// });					YT_player.mixpanel['play'] = 1;
+				}
+				notify("video play");
+				break;
+			case YT.PlayerState.ENDED:
+				// end
+				if (!YT_player.mixpanel['end']) {
+					var properties = $.extend({ state : 'end'}, mixpanel_event_properties[event_name]);
+					mixpanel.track(event_name, properties);
+					// mixpanel.track('Video', {
+						// trigger : 'imagine',
+						// state : 'end'
+					// });					YT_player.mixpanel['end'] = 1;
+				}
+				notify("end of video");
 				break;
 		}
-		elem = elems[i];
-		//The only, or the best iFrame
-		if (elem.id)
-			return elem.id;
-		//Existing ID, return it
-		// else: Create a new ID
-		do {//Keep postfixing `-frame` until the ID is unique
-			id += "-frame";
-		} while (document.getElementById(id));
-		elem.id = id;
-		return id;
-	}
-	// If no element, return null.
-	return null;
-}
-
-// Define YT_ready function.
-var YT_ready = (function() {
-	var onReady_funcs = [], api_isReady = false;
-	/* @param func function     Function to execute on ready
-	 * @param func Boolean      If true, all qeued functions are executed
-	 * @param b_before Boolean  If true, the func will added to the first
-	 position in the queue*/
-	return function(func, b_before) {
-		if (func === true) {
-			api_isReady = true;
-			for (var i = 0; i < onReady_funcs.length; i++) {
-				// Removes the first func from the array, and execute func
-				onReady_funcs.shift()();
-			}
-		} else if ( typeof func == "function") {
-			if (api_isReady)
-				func();
-			else
-				onReady_funcs[b_before?"unshift":"push"](func);
+		console.log("onStateChange has fired! New state:" + event.data);		}
+	$(document).ready(
+		function(){
+			mixpanel_event_properties['Video'] = {
+				video_name : CFG['mixpanel'].VIDEO_NAME,
+			};
+			var check;
 		}
-	}
-})();
+	)
 
-// This function will be called when the API is fully loaded (GLOBAL)
-onYouTubePlayerAPIReady = function() {
-	YT_ready(true);
-}
+})();  // end YouTube API closure
 
-var YT_player;
-//Define a YT_player object, to enable later function calls, without
-// having to create a new class instance again.
 
-// Add function to execute when the API is ready
-YT_ready(function() {
-	var frameID = getFrameID("yt-player");
-	if (frameID) {//If the frame exists
-		YT_player = new YT.Player(frameID, {
-			events : {
-				"onStateChange" : YT_StateChange
-			}
-		});
-	}
-});
 
-// Example: function stopCycle, bound to onStateChange
-function YT_StateChange(event) {
-	var event_name = 'Video';
-	if (!YT_player.mixpanel)
-		YT_player.mixpanel = {};
-	switch (event.data) {
-		case YT.PlayerState.PLAYING:
-			// play
-			if (!YT_player.mixpanel['play']) {
-				var properties = $.extend({ state : 'play'}, mixpanel_event_properties[event_name]);
-				mixpanel.track(event_name, properties);
-				// mixpanel.track('Video', {
-					// trigger : 'imagine',
-					// state : 'play'
-				// });				YT_player.mixpanel['play'] = 1;
-			}
-			notify("video play");
-			break;
-		case YT.PlayerState.ENDED:
-			// end
-			if (!YT_player.mixpanel['end']) {
-				var properties = $.extend({ state : 'end'}, mixpanel_event_properties[event_name]);
-				mixpanel.track(event_name, properties);
-				// mixpanel.track('Video', {
-					// trigger : 'imagine',
-					// state : 'end'
-				// });				YT_player.mixpanel['end'] = 1;
-			}
-			notify("end of video");
-			break;
-	}
-	console.log("onStateChange has fired! New state:" + event.data);}
-$(document).ready(
-	function(){
-		mixpanel_event_properties['Video'] = {
-			video_name : CFG['mixpanel'].VIDEO_NAME,
-		};
-		var check;
-	}
-)
 
-})();  
-// end YouTube API closure
 
 (function() {//Closure, to not leak to the scope
 

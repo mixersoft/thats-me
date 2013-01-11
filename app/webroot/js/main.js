@@ -7,11 +7,13 @@ function notify(msg, type) {
 	} catch (e) {
 	}
 }
-(function() {//Closure, to not leak to the scope
 
-	/**
+var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
+
+(function() {//Closure, to not leak to the scope	/**
 	 * Youtube API helper functions for tracking events
 	 */
+	var mixpanel_event_properties = {} // page-level properties for mixpanel.track
 /**
  * http://stackoverflow.com/questions/7988476/listening-for-youtube-event-in-javascript-or-jquery
  */
@@ -68,9 +70,10 @@ var YT_ready = (function() {
 		}
 	}
 })();
-// This function will be called when the API is fully loaded
-function onYouTubePlayerAPIReady() {
-	YT_ready(true)
+
+// This function will be called when the API is fully loaded (GLOBAL)
+onYouTubePlayerAPIReady = function() {
+	YT_ready(true);
 }
 
 var YT_player;
@@ -79,7 +82,7 @@ var YT_player;
 
 // Add function to execute when the API is ready
 YT_ready(function() {
-	var frameID = getFrameID("yt-YT_player");
+	var frameID = getFrameID("yt-player");
 	if (frameID) {//If the frame exists
 		YT_player = new YT.Player(frameID, {
 			events : {
@@ -91,36 +94,46 @@ YT_ready(function() {
 
 // Example: function stopCycle, bound to onStateChange
 function YT_StateChange(event) {
+	var event_name = 'Video';
 	if (!YT_player.mixpanel)
 		YT_player.mixpanel = {};
 	switch (event.data) {
 		case YT.PlayerState.PLAYING:
 			// play
 			if (!YT_player.mixpanel['play']) {
-				mixpanel.track('Video', {
-					trigger : 'imagine',
-					state : 'play'
-				});
-				YT_player.mixpanel['play'] = 1;
+				var properties = $.extend({ state : 'play'}, mixpanel_event_properties[event_name]);
+				mixpanel.track(event_name, properties);
+				// mixpanel.track('Video', {
+					// trigger : 'imagine',
+					// state : 'play'
+				// });				YT_player.mixpanel['play'] = 1;
 			}
 			notify("video play");
 			break;
 		case YT.PlayerState.ENDED:
 			// end
 			if (!YT_player.mixpanel['end']) {
-				mixpanel.track('Video', {
-					trigger : 'imagine',
-					state : 'end'
-				});
-				YT_player.mixpanel['end'] = 1;
+				var properties = $.extend({ state : 'end'}, mixpanel_event_properties[event_name]);
+				mixpanel.track(event_name, properties);
+				// mixpanel.track('Video', {
+					// trigger : 'imagine',
+					// state : 'end'
+				// });				YT_player.mixpanel['end'] = 1;
 			}
 			notify("end of video");
 			break;
 	}
-	// console.log("onStateChange has fired! New state:" + event.data);}
+	console.log("onStateChange has fired! New state:" + event.data);}
+$(document).ready(
+	function(){
+		mixpanel_event_properties['Video'] = {
+			video_name : CFG['mixpanel'].VIDEO_NAME,
+		};
+		var check;
+	}
+)
 
-
-})();  
+})();  
 // end YouTube API closure
 
 (function() {//Closure, to not leak to the scope
@@ -128,16 +141,17 @@ function YT_StateChange(event) {
 	/**
 	 * mixpanel helper functions for tracking events
 	 */
-	
+	// CONFIG, override in View File
+	CFG['mixpanel'] = {
+		TRIGGER : 'overwhelmed',
+		FIRST_SECTION : '#help-me',
+		VIDEO_NAME : 'imagine',
+	}
 
 	// local scope
 	var isLingeringTimer = {};
-	// track setTimeout timers
-	var event_properties = {}// page-level properties for mixpanel.track
-	event_properties['Page View'] = {
-		url : window.location.pathname,
-		trigger : 'overwhelmed'
-	};
+	// track setTimeout timers, init in document.ready()
+	var mixpanel_event_properties = {} // page-level properties for mixpanel.track
 
 	/*
 	 * http://stackoverflow.com/questions/9097501/show-div-when-scroll-position
@@ -172,9 +186,8 @@ function YT_StateChange(event) {
 			if (isScrolledIntoView(elem)) {
 				try {
 					var event_name = 'Page View';
-					mixpanel.track(event_name, $.extend({
-						section : waypoint
-					}, event_properties[event_name]));
+					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
+					mixpanel.track(event_name, properties);
 					$(elem).removeClass('track-page-view');
 					notify(waypoint);
 					isLingeringTimer[waypoint] = 'tracked';
@@ -199,13 +212,17 @@ function YT_StateChange(event) {
 	// track first section
 	$(document).ready(
 		function(){
-			var hash = window.location.hash || '#help-me'
+			mixpanel_event_properties['Page View'] = {
+				url : window.location.pathname,
+				trigger : CFG['mixpanel'].TRIGGER,
+			};
+			
+			var hash = window.location.hash || CFG['mixpanel'].FIRST_SECTION;
 				waypoint = hash.substr(1), 
 				event_name = 'Page View';
 			if ($(hash).hasClass('track-page-view') && lingersInView($(hash).get())) {
-				mixpanel.track(event_name, $.extend({
-					section : waypoint
-				}, event_properties[event_name]));
+				var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
+				mixpanel.track(event_name, properties);
 				notify(waypoint);
 			}
 		}

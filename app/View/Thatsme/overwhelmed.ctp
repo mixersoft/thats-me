@@ -270,27 +270,35 @@
 <?php $this->Layout->blockStart('javascript'); ?>
     <!-- Le javascript
     ================================================== -->
-    <script>
-    	// scroll to anchor AFTER collapse navbar, adjust for .nav-collapse height
-     	// use: data-toggle="collapse" data-target=".nav-collapse"
-     	$(document).on('click.collapse.data-api', '.nav-collapse ul.nav a:not(".dropdown-toggle")', function (e) {
-			var $this = $(this) 
-			, href
-			, target = (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') //strip for ie7
-			var offsetH = $(".nav-collapse").height();
-			// console.log("offsetH="+offsetH);
-			$('html,body').animate({scrollTop : $(target).offset().top - offsetH});
-			// http://mktgdept.com/ios-position-fixed-bug
-			$('body').append($('<div></div>').addClass('iosfix'));setTimeout(function(){$('.iosfix').remove();}, 1 );
-		});
-    	
-    	
-      !function ($) {
-        $(function(){
-          // carousel demo
-          $('#how-it-works').carousel();
-        })
-      }(window.jQuery)
-      
+    <script type="text/javascript">
+    	var check;
+		! function($) {
+			// update Global CFG
+			CFG['mixpanel'] = {
+				TRIGGER : 'frustrated',
+				FIRST_SECTION : '#help-me',
+				VIDEO_NAME : 'imagine',
+			}
+
+			// scroll to anchor AFTER collapse navbar, adjust for .nav-collapse height
+			// use: data-toggle="collapse" data-target=".nav-collapse"
+			$(document).on('click.collapse.data-api', '.nav-collapse ul.nav a:not(".dropdown-toggle")', function(e) {
+				var $this = $(this), href, target = ( href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')//strip for ie7
+				var offsetH = $(".nav-collapse").height();
+				// console.log("offsetH="+offsetH);
+				$('html,body').animate({
+					scrollTop : $(target).offset().top - offsetH
+				});
+				// http://mktgdept.com/ios-position-fixed-bug
+				$('body').append($('<div></div>').addClass('iosfix'));
+				setTimeout(function() {
+					$('.iosfix').remove();
+				}, 1);
+			});
+			
+			// carousel demo
+			$('#how-it-works').carousel();
+
+		}(window.jQuery)
     </script>
 <?php $this->Layout->blockEnd(); ?>

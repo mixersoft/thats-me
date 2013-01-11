@@ -20,6 +20,7 @@
                 padding-bottom: 40px;
             }
         </style>
+        <script type="text/javascript">CFG = {};</script>
         <link rel="stylesheet" href="/css/bootstrap-responsive.css">
         <link rel="stylesheet" href="/css/main.css">
 

@@ -63,7 +63,7 @@
 		
 		
 	  <a name='help-me'></a>
-      <div id="help-me" class="featurette connect">
+      <div id="help-me" class="featurette connect track-page-view">
         <img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-chrome.png">
         <h2 class="featurette-heading">Help Me. <span class="muted">I have problems with my photos.</span></h2>
         <p class="lead">I am overwhelmed by my photos, too many to count (but I know it's in the tens of thousands.) 
@@ -76,7 +76,7 @@
       <hr class="featurette-divider">
       
       <a name='on-our-way'></a>
-      <div id="on-our-way" class="featurette respond">
+      <div id="on-our-way" class="featurette respond track-page-view">
       	<img class="featurette-image pull-left" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
         <h2 class="featurette-heading">Snaphappi <span class="muted">We can help.</span></h2>
         <p class="lead"> 
@@ -92,7 +92,7 @@
 	<a name='how-it-works'></a>
     <!-- Carousel
     ================================================== -->
-    <div id="how-it-works" class="carousel slide">
+    <div id="how-it-works" class="carousel slide track-page-view">
       <div class="carousel-inner">
         <div class="item active">
           <img src="http://twitter.github.com/bootstrap/assets/img/examples/slide-01.jpg" alt="">
@@ -180,7 +180,6 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-    <div class="container marketing">
 
       <hr class="featurette-divider">
       
@@ -188,7 +187,7 @@
       <div id="see-the-movie" class="featurette the-movie">
         <h2 class="featurette-heading">See the Movie. <span class="muted">It'll knock your socks off.</span></h2>
         <div class='center'>
-        	<iframe src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0" frameborder="0" allowfullscreen></iframe>
+        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -208,7 +207,7 @@
       <hr class="featurette-divider">
       
 	  <a name='call-to-action'></a>	
-      <div id="call-to-action" class="featurette call-to-action">
+      <div id="call-to-action" class="featurette call-to-action track-page-view">
       	<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
         <h2 class="featurette-heading">I Still Want It. <span class="muted">Count Me In.</span></h2>
         <p class="lead">You've got me. I want this. I need this. What can I do to get this ASAP?</p>
@@ -261,7 +260,6 @@
       </footer>
 <?php $this->Layout->blockEnd(); ?>
 
-    </div><!-- /.container -->
 
 
 <?php $this->Layout->blockStart('javascript'); ?>
@@ -277,14 +275,17 @@
 			var offsetH = $(".nav-collapse").height();
 			// console.log("offsetH="+offsetH);
 			$('html,body').animate({scrollTop : $(target).offset().top - offsetH});
+			// http://mktgdept.com/ios-position-fixed-bug
+			$('body').append($('<div></div>').addClass('iosfix'));setTimeout(function(){$('.iosfix').remove();}, 1 );
 		});
-    
-    
+    	
+    	
       !function ($) {
         $(function(){
           // carousel demo
           $('#how-it-works').carousel();
         })
       }(window.jQuery)
+      
     </script>
 <?php $this->Layout->blockEnd(); ?>

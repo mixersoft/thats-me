@@ -195,7 +195,7 @@ function YT_StateChange(event) {
 			var hash = window.location.hash || '#help-me'
 				waypoint = hash.substr(1), 
 				event_name = 'Page View';
-			if (lingersInView($(hash).get())) {
+			if ($(hash).hasClass('track-page-view') && lingersInView($(hash).get())) {
 				mixpanel.track(event_name, $.extend({
 					section : waypoint
 				}, event_properties[event_name]));

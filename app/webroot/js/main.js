@@ -1,3 +1,13 @@
+function notify(msg, type) {
+	try {
+		$('.alert-wrapper').removeClass('hide');
+		$('.alert-wrapper .alert').html(msg);
+		// console.log(msg);
+		$('.alert-wrapper .fade-wrap').fadeIn(500).delay(1000).fadeOut("slow");
+	} catch (e) {
+	}
+}
+
 /**
  * http://stackoverflow.com/questions/7988476/listening-for-youtube-event-in-javascript-or-jquery
  */
@@ -89,6 +99,7 @@ function YT_StateChange(event) {
 				});
 				player.mixpanel['play'] = 1;
 			}
+			notify("video play");
 			break;
 		case YT.PlayerState.ENDED:
 			// end
@@ -99,16 +110,18 @@ function YT_StateChange(event) {
 				});
 				player.mixpanel['end'] = 1;
 			}
+			notify("end of video");
+			break;
 	}
-	console.log("onStateChange has fired! New state:" + event.data);
+	// console.log("onStateChange has fired! New state:" + event.data);}
 
-}
 
 (function() {//Closure, to not leak to the scope
 
 	/**
-	 * mixpanel
+	 * mixpanel helper functions for tracking events
 	 */
+	
 
 	// local scope
 	var isLingeringTimer = {};
@@ -136,9 +149,14 @@ function YT_StateChange(event) {
 		)
 		return completelyInView || nearTop;
 	}
-
+	
+	/*
+	 * waits DELAY ms before checking ScrolledIntoView, 
+	 * once timer is set, ignores calls on successive scroll() until timer expires 
+	 */
 	function lingersInView(elem) {
-		var waypoint = $(elem).attr('id');
+		var DELAY = 1000,
+			waypoint = $(elem).attr('id');
 
 		if (isLingeringTimer[waypoint])
 			return;
@@ -151,13 +169,13 @@ function YT_StateChange(event) {
 						section : waypoint
 					}, event_properties[event_name]));
 					$(elem).removeClass('track-page-view');
-					console.log(waypoint);
+					notify(waypoint);
 					isLingeringTimer[waypoint] = 'tracked';
 				} catch (e) {
 					throw new Exception("ERROR: mixpanel not loaded?");
 				}
 			}
-		}, 1000);
+		}, DELAY);
 	}
 
 	/* Every time the window is scrolled ... */
@@ -172,10 +190,18 @@ function YT_StateChange(event) {
 	});
 
 	// track first section
-	var waypoint = 'help-me', event_name = 'Page View';
-	mixpanel.track(event_name, $.extend({
-		section : waypoint
-	}, event_properties[event_name]));
-	console.log(waypoint);
-
+	$(document).ready(
+		function(){
+			var hash = window.location.hash || '#help-me'
+				waypoint = hash.substr(1), 
+				event_name = 'Page View';
+			if (lingersInView($(hash).get())) {
+				mixpanel.track(event_name, $.extend({
+					section : waypoint
+				}, event_properties[event_name]));
+				notify(waypoint);
+			}
+		}
+	)
+	
 })();

@@ -50,6 +50,11 @@
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
+        <div class="alert-wrapper hide" >
+        	<div class='fade-wrap' style='diplay:none;'>
+        		<div class='alert alert-info'></div>
+        	</div>
+        </div>
 
 <?php $this->Layout->blockEnd(); ?> 
 

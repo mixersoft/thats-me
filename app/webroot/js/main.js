@@ -7,7 +7,11 @@ function notify(msg, type) {
 	} catch (e) {
 	}
 }
+(function() {//Closure, to not leak to the scope
 
+	/**
+	 * Youtube API helper functions for tracking events
+	 */
 /**
  * http://stackoverflow.com/questions/7988476/listening-for-youtube-event-in-javascript-or-jquery
  */
@@ -69,15 +73,15 @@ function onYouTubePlayerAPIReady() {
 	YT_ready(true)
 }
 
-var player;
-//Define a player object, to enable later function calls, without
+var YT_player;
+//Define a YT_player object, to enable later function calls, without
 // having to create a new class instance again.
 
 // Add function to execute when the API is ready
 YT_ready(function() {
-	var frameID = getFrameID("yt-player");
+	var frameID = getFrameID("yt-YT_player");
 	if (frameID) {//If the frame exists
-		player = new YT.Player(frameID, {
+		YT_player = new YT.Player(frameID, {
 			events : {
 				"onStateChange" : YT_StateChange
 			}
@@ -87,34 +91,37 @@ YT_ready(function() {
 
 // Example: function stopCycle, bound to onStateChange
 function YT_StateChange(event) {
-	if (!player.mixpanel)
-		player.mixpanel = {};
+	if (!YT_player.mixpanel)
+		YT_player.mixpanel = {};
 	switch (event.data) {
 		case YT.PlayerState.PLAYING:
 			// play
-			if (!player.mixpanel['play']) {
+			if (!YT_player.mixpanel['play']) {
 				mixpanel.track('Video', {
 					trigger : 'imagine',
 					state : 'play'
 				});
-				player.mixpanel['play'] = 1;
+				YT_player.mixpanel['play'] = 1;
 			}
 			notify("video play");
 			break;
 		case YT.PlayerState.ENDED:
 			// end
-			if (!player.mixpanel['end']) {
+			if (!YT_player.mixpanel['end']) {
 				mixpanel.track('Video', {
 					trigger : 'imagine',
 					state : 'end'
 				});
-				player.mixpanel['end'] = 1;
+				YT_player.mixpanel['end'] = 1;
 			}
 			notify("end of video");
 			break;
 	}
 	// console.log("onStateChange has fired! New state:" + event.data);}
 
+
+})();  
+// end YouTube API closure
 
 (function() {//Closure, to not leak to the scope
 
@@ -204,4 +211,6 @@ function YT_StateChange(event) {
 		}
 	)
 	
+	
 })();
+// end mixpanel helper closure

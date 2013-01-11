@@ -91,7 +91,7 @@
     }
 
 	.alert-wrapper {
-		margin: 20px 40px;
+		margin: 20px 0;
 	    opacity: 0.85;
 	    position: fixed;
 	    text-align: center;
@@ -380,6 +380,13 @@
 	   	width: 90%;
 	   	height: 300px;
 	}
+	.alert-wrapper {
+		margin: 10px 0;
+	}
+	
+	.alert-wrapper .alert {
+		min-width : 160px;
+	}	
 }    
 
 

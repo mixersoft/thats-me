@@ -46,7 +46,7 @@ class ThatsmeController extends AppController {
 	public $uses = array();
 
 
-	public $layout = 'html5';
+	public $layout = 'bootstrap';
 	
 	public function launchrock (){
 		

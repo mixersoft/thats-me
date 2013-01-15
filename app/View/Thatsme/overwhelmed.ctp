@@ -275,7 +275,7 @@
 		! function($) {
 			// update Global CFG
 			CFG['mixpanel'] = {
-				TRIGGER : 'frustrated',
+				TRIGGER : 'overwhelmed',
 				FIRST_SECTION : '#help-me',
 				VIDEO_NAME : 'imagine',
 			}

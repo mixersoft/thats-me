@@ -71,6 +71,7 @@ class PagesController extends AppController {
 		}
 
 if ($page == 'html5') 		$this->layout = 'html5';		
+if ($page == 'folder-chooser') 		$this->layout = 'html5';	
 		
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));

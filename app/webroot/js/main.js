@@ -1,3 +1,8 @@
+/*
+ * GLOBAL SCOPE
+ */
+
+
 function notify(msg, type) {
 	try {
 		$('.alert-wrapper').removeClass('hide');
@@ -9,6 +14,29 @@ function notify(msg, type) {
 }
 
 var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
+
+	/*
+	 * http://stackoverflow.com/questions/9097501/show-div-when-scroll-position
+	 * see also: http://imakewebthings.com/jquery-waypoints/
+	 */
+
+var _isScrolledIntoView = function (elem) {
+		var docViewTop = $(window).scrollTop();
+		var docViewBottom = docViewTop + $(window).height();
+
+		var elemTop = $(elem).offset().top;
+		var elemBottom = elemTop + $(elem).height();
+
+		var completelyInView = ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop) );
+		var nearTop = ((elemBottom >= docViewTop) && (elemTop >= docViewTop) && (elemTop <= docViewTop + $(window).height() / 3) // top 1/3 of window
+		)
+		return completelyInView || nearTop;
+	};
+	
+	
+	
+	
+	
 
 (function() {//Closure, to not leak to the scope	/**
 	 * Youtube API helper functions for tracking events
@@ -156,23 +184,6 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	// track setTimeout timers, init in document.ready()
 	var mixpanel_event_properties = {} // page-level properties for mixpanel.track
 
-	/*
-	 * http://stackoverflow.com/questions/9097501/show-div-when-scroll-position
-	 * see also: http://imakewebthings.com/jquery-waypoints/
-	 */
-
-	function isScrolledIntoView(elem) {
-		var docViewTop = $(window).scrollTop();
-		var docViewBottom = docViewTop + $(window).height();
-
-		var elemTop = $(elem).offset().top;
-		var elemBottom = elemTop + $(elem).height();
-
-		var completelyInView = ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop) );
-		var nearTop = ((elemBottom >= docViewTop) && (elemTop >= docViewTop) && (elemTop <= docViewTop + $(window).height() / 3) // top 1/3 of window
-		)
-		return completelyInView || nearTop;
-	}
 	
 	/*
 	 * waits DELAY ms before checking ScrolledIntoView, 
@@ -186,7 +197,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			return;
 		isLingeringTimer[waypoint] = setTimeout(function() {
 			isLingeringTimer[waypoint] = 0;
-			if (isScrolledIntoView(elem)) {
+			if (_isScrolledIntoView(elem)) {
 				try {
 					var event_name = 'Page View';
 					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);

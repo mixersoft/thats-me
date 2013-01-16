@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="/css/bootstrap.min.css">
    		<style>
             body {
-                padding-top: 60px;
+                padding-top: 0px;
                 padding-bottom: 40px;
             }
         </style>

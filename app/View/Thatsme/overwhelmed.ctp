@@ -16,8 +16,8 @@
     <!-- NAVBAR
     ================================================== -->
       <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-
-        <div class="navbar navbar-inverse navbar-fixed-top">
+	    <div class='bounding-box'   data-spy="affix" data-offset-top="10">
+        <div class="navbar navbar-inverse">
           <div class="navbar-inner">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -50,6 +50,7 @@
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
+       </div>
         <div class="alert-wrapper hide" >
         	<div class='fade-wrap' style='diplay:none;'>
         		<div class='alert alert-info'></div>
@@ -65,8 +66,6 @@
     <![endif]-->
     
 	<div class="container">
-		
-		
 	  <a name='help-me'></a>
       <div id="help-me" class="featurette connect track-page-view">
         <img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-chrome.png">
@@ -185,14 +184,14 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-
+	<div class="container">
       <hr class="featurette-divider">
       
 	  <a name='see-the-movie'></a>	
       <div id="see-the-movie" class="featurette the-movie">
         <h2 class="featurette-heading">See the Movie. <span class="muted">It'll knock your socks off.</span></h2>
         <div class='center'>
-        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0" frameborder="0" allowfullscreen></iframe>
+        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
         </div>
       </div>
 
@@ -256,6 +255,7 @@
       </div>
 	
 	  <hr class="featurette-divider">
+	  </div>
 
       <!-- FOOTER -->
 <?php $this->Layout->blockStart('footer'); ?>      
@@ -282,22 +282,39 @@
 
 			// scroll to anchor AFTER collapse navbar, adjust for .nav-collapse height
 			// use: data-toggle="collapse" data-target=".nav-collapse"
-			$(document).on('click.collapse.data-api', '.nav-collapse ul.nav a:not(".dropdown-toggle")', function(e) {
-				var $this = $(this), href, target = ( href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')//strip for ie7
-				var offsetH = $(".nav-collapse").height();
-				// console.log("offsetH="+offsetH);
-				$('html,body').animate({
-					scrollTop : $(target).offset().top - offsetH
-				});
+			// $(document).on('click.collapse.data-api', '.nav-collapse ul.nav a:not(".dropdown-toggle")', function(e) {
+				// var $this = $(this), href, target = ( href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')//strip for ie7
+				// var offsetH = $(".nav-collapse").height();
+				// console.log("offsetH="+offsetH);				// $('html,body').animate({
+					// scrollTop : $(target).offset().top - offsetH
+				// });
 				// http://mktgdept.com/ios-position-fixed-bug
-				$('body').append($('<div></div>').addClass('iosfix'));
-				setTimeout(function() {
-					$('.iosfix').remove();
-				}, 1);
-			});
+				// $('body').append($('<div></div>').addClass('iosfix'));
+				// setTimeout(function() {
+					// $('.iosfix').remove();
+				// }, 1);
+			// });
 			
-			// carousel demo
-			$('#how-it-works').carousel();
+			var isLingeringTimer = {};
+			$(window).scroll(function(e) {
+				/* Check the location of each desired element */
+				$('.carousel').each(function(i, elem) {
+					var DELAY = 1000;
+					var	waypoint = elem.id;
+			
+					if (isLingeringTimer[waypoint])
+						return;
+					isLingeringTimer[waypoint] = setTimeout(function() {
+						isLingeringTimer[waypoint] = 0;
+						if (_isScrolledIntoView(elem)) {
+							/* If the object is completely visible in the window, fade it in */
+							if ($(elem).hasClass('activated')) return
+							else $(elem).addClass('activated').carousel();
+						}
+					}, DELAY);
+				});
+			});
+	
 
 		}(window.jQuery)
     </script>

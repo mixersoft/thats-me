@@ -35,28 +35,22 @@
 	
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
-
-    /* Special class on .container surrounding .navbar, used for positioning it into place. */
-    .navbar-wrapper {
-/*      position: absolute;*/
-/*	  position: fixed;*/
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      margin-top: 20px;
-      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+   #header {
+   }
+    .bounding-box {
+    	position:relative;
+    	top:20px;
+    	width: 100%;
+    	z-index: 100;
     }
-    
-    .navbar-wrapper .navbar {
-
+    .bounding-box.affix {
+    	position:fixed;
+    	top:0;
     }
-    
+
     .navbar {
-    	margin-top: 20px;
     	padding: 0 10px;
     }
-    
 
     /* Remove border and change up box shadow for more contrast */
     .navbar .navbar-inner {
@@ -64,6 +58,7 @@
       -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
          -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
               box-shadow: 0 2px 10px rgba(0,0,0,.25);
+ 		height: 40px;              
     }
 
     .navbar .navbar-inner {
@@ -74,7 +69,6 @@
 
     /* Downsize the brand/project name a bit */
     .navbar .brand {
-      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
       font-size: 16px;
       font-weight: bold;
       text-shadow: 0 -1px 0 rgba(0,0,0,.5);
@@ -82,12 +76,13 @@
 
     /* Navbar links: increase padding for taller navbar */
     .navbar .nav > li > a {
-      padding: 15px 20px;
     }
-
+	
+	.nav > li.active {
+		background-color:#000;
+	}
     /* Offset the responsive button for proper vertical alignment */
     .navbar .btn-navbar {
-      margin-top: 10px;
     }
 
 	.alert-wrapper {
@@ -110,6 +105,7 @@
     /* Carousel base class */
     .carousel {
       margin-bottom: 60px;
+      z-index: 1;
     }
 
     .carousel .container {
@@ -217,7 +213,7 @@
 	}
 
     .featurette.the-movie {
-      padding-top: 64px; /* Vertically center images part 1: add padding above and below text. */
+      padding-top: 40px; /* Vertically center images part 1: add padding above and below text. */
     }
     .featurette.the-movie .center {
     	text-align:center;
@@ -230,7 +226,6 @@
     
     
     .featurette.call-to-action {
-    	padding-top: 80px;
     }    
     .featurette.call-to-action fieldset 
     {
@@ -263,24 +258,6 @@
 
     @media (max-width: 979px) {
 
-/*      .container.navbar-wrapper {
-        margin-bottom: 0;
-        width: auto;
-      }
-      .navbar-inner {
-        border-radius: 0;
-        margin: -20px 0;
-      }*/
-	  .navbar-fixed-top, .navbar-fixed-bottom {
-	  	left: 0;
-	    margin-bottom: 0;
-	    position: fixed;
-	    right: 0;
-	    top: 0
-	    z-index: 1030;
-	  }
-
-
       .carousel .item {
         height: 500px;
       }
@@ -312,14 +289,22 @@
 
 
     @media (max-width: 767px) {
-	  .navbar-fixed-top, .navbar-fixed-bottom {
-	  	margin-left: 0;
-	  	margin-right: 0;
-	  	margin-bottom: 20px;
-	  	position: static;
+      .bounding-box {
+      	position: fixed;
+      	top: 0;
+      }	
+      .bounding-box.affix {
+    	position: fixed;
+      }
+	  .navbar {
+	  	padding: 0;
 	  }
-      .navbar-inner {
-        margin: -20px;
+      .navbar  .navbar-inner {
+        margin: 0 0 0 -20px;	/* pull left to compensate for .body margin-left:20px */
+        border-radius: 0;
+      }
+      .nav-collapse.collapse {
+      	background-color: #eee;
       }
 
       .carousel {

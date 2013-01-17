@@ -177,6 +177,7 @@ var _isScrolledIntoView = function (elem) {
 		TRIGGER : 'overwhelmed',
 		FIRST_SECTION : '#help-me',
 		VIDEO_NAME : 'imagine',
+		DISABLED : false, 
 	}
 
 	// local scope
@@ -236,8 +237,7 @@ var _isScrolledIntoView = function (elem) {
 				event_name = 'Page View';
 			if ($(hash).hasClass('track-page-view') && lingersInView($(hash).get())) {
 				var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-				mixpanel.track(event_name, properties);
-				notify(waypoint);
+				if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);				notify(waypoint);
 			}
 		}
 	)

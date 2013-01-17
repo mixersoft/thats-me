@@ -65,18 +65,20 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
-	<div class="container">
+	
 	  <a name='help-me'></a>
       <div id="help-me" class="featurette connect track-page-view">
-        <img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-chrome.png">
-        <h2 class="featurette-heading">Help Me. <span class="muted">I have problems with my photos.</span></h2>
-        <p class="lead">I am overwhelmed by my photos, too many to count (but I know it's in the tens of thousands.) 
-        	I am frustrated by my inability to find, enjoy, and share my photos. 
-        	I can't deal with this problem because my eyes instantly gloss over at the sight of pages and pages of thumbnails.  
-        	It's tedious work, and I'd rather play Angry Birds for the millionth time than deal with it.</p>
-        <p class="lead">Help. Me.</p>	
+      	<div class='bg-wrap'></div>
+      	<div class="container alpha50b">
+	        <h2 class="featurette-heading">Help Me. <span class="muted">I have problems with my photos.</span></h2>
+	        <p class="lead">I am overwhelmed by my photos, too many to count (but I know it's in the tens of thousands.) 
+	        	I am frustrated by my inability to find, enjoy, and share my photos. 
+	        	I can't deal with this problem because my eyes instantly gloss over at the sight of pages and pages of thumbnails.  
+	        	It's tedious work, and I'd rather play Angry Birds for the millionth time than deal with it.</p>
+	        <p class="lead">Help. Me.</p>	
+        </div>
       </div>
-      
+<div class="container">      
       <hr class="featurette-divider">
       
       <a name='on-our-way'></a>
@@ -271,14 +273,16 @@
     <!-- Le javascript
     ================================================== -->
     <script type="text/javascript">
-    	var check;
+    	// update Global CFG
+		CFG['mixpanel'] = {
+			TRIGGER : 'overwhelmed',
+			FIRST_SECTION : '#help-me',
+			VIDEO_NAME : 'imagine',
+		}
+		CFG['carousel'] = { DISABLED: true};
+		
 		! function($) {
-			// update Global CFG
-			CFG['mixpanel'] = {
-				TRIGGER : 'overwhelmed',
-				FIRST_SECTION : '#help-me',
-				VIDEO_NAME : 'imagine',
-			}
+			
 
 			// scroll to anchor AFTER collapse navbar, adjust for .nav-collapse height
 			// use: data-toggle="collapse" data-target=".nav-collapse"
@@ -299,9 +303,11 @@
 			$(window).scroll(function(e) {
 				/* Check the location of each desired element */
 				$('.carousel').each(function(i, elem) {
+					if (CFG['carousel'].DISABLED) return;
+					
 					var DELAY = 1000;
 					var	waypoint = elem.id;
-			
+				
 					if (isLingeringTimer[waypoint])
 						return;
 					isLingeringTimer[waypoint] = setTimeout(function() {

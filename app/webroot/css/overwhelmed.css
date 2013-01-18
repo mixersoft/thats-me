@@ -110,7 +110,7 @@
 	   	height: 550px;		/* section height */
 	   	overflow: visible;
    }
-   #help-me .bg-wrap{
+   #help-me .bg-wrap {
    		background-image:url(http://a0.twimg.com/a/1358279006/t1/img/front_page/city-balcony@2x.jpg);
    		background-repeat: no-repeat;
 		background-color: #000000;
@@ -121,8 +121,6 @@
 		width: 100%;
 		height: 100%;
 		top: -120px;    /* featurette .padding-top   REMOVE THIS */
-		
-		
    }
    
 /*   http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/

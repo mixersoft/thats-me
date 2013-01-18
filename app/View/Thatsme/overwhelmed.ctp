@@ -234,7 +234,31 @@
 	        	</ul>
 	        	<p>I'll give you money:</p>
 	        	<ul>
-	        		<li>I’ll chip in $1 just so you know I’m serious</li>
+	        		<li>I’ll chip in $1 just so you know I’m serious
+<!--  Payal 	        			 -->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate through Paypal">
+	<input type="hidden" name="cmd" value="_s-xclick">
+	<input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
+	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+<!--  Amazon Simple Pay  -->
+<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post"  title="Donate through Amazon">
+  <input type="hidden" name="amount" value="USD 1" >
+  <input type="hidden" name="processImmediate" value="1" >
+  <input type="hidden" name="signatureMethod" value="HmacSHA256" >
+  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
+  <input type="hidden" name="collectShippingAddress" value="0" >
+  <input type="hidden" name="isDonationWidget" value="0" >
+  <input type="hidden" name="description" value="Go Snaphappi! Make my photos play again" >
+  <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
+  <input type="hidden" name="cobrandingStyle" value="logo" >
+  <input type="hidden" name="signatureVersion" value="2" >
+  <input type="hidden" name="immediateReturn" value="1" >
+  <input type="hidden" name="signature" value="BcNk43X2xxb1MutaMVASG5HtGP/7g5FSrxJ4IfXlAjc=" >
+  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_whitebg.gif" border="0">
+</form>
+</li>
 	        		<li>I want it so bad, I’ll prepay now</li>
 	        	</ul>
 	        	<p>I'll give you friends:</p>
@@ -279,7 +303,7 @@
 			FIRST_SECTION : '#help-me',
 			VIDEO_NAME : 'imagine',
 		}
-		CFG['carousel'] = { DISABLED: true};
+		CFG['carousel'] = { DISABLED: false};
 		
 		! function($) {
 			

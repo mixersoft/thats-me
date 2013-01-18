@@ -14,6 +14,7 @@
 
 <!-- 	<link rel="stylesheet" href="/css/cake.generic.css"> -->
         <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/fonts.css">
    		<style>
             body {
                 padding-top: 0px;

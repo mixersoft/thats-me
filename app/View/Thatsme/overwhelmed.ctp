@@ -16,9 +16,9 @@
     <!-- NAVBAR
     ================================================== -->
       <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-	    <div class='bounding-box'   data-spy="affix" data-offset-top="10">
+	    <div class='bounding-box '   data-spy="affix" data-offset-top="10">
         <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
+          <div class="navbar-inner alpha65b">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
@@ -68,32 +68,38 @@
 	
 	  <a name='help-me'></a>
       <div id="help-me" class="featurette connect track-page-view">
-      	<div class='bg-wrap'></div>
-      	<div class="container alpha50b">
-	        <h2 class="featurette-heading">Help Me. <span class="muted">I have problems with my photos.</span></h2>
-	        <p class="lead">I am overwhelmed by my photos, too many to count (but I know it's in the tens of thousands.) 
-	        	I am frustrated by my inability to find, enjoy, and share my photos. 
-	        	I can't deal with this problem because my eyes instantly gloss over at the sight of pages and pages of thumbnails.  
-	        	It's tedious work, and I'd rather play Angry Birds for the millionth time than deal with it.</p>
-	        <p class="lead">Help. Me.</p>	
+      	<div class='bg pix'></div>
+      	<div class="container ">
+      		<div class="wrap alpha50b">
+		        <h2 class="featurette-heading">Help Me. <span class="muted">I have problems with my photos.</span></h2>
+		        <p class="lead">I am overwhelmed by my photos, too many to count (but I know it's in the tens of thousands.) 
+		        	I am frustrated by my inability to find, enjoy, and share my photos. 
+		        	I can't deal with this problem because my eyes instantly gloss over at the sight of pages and pages of thumbnails.  
+		        	It's tedious work, and I'd rather play Angry Birds for the millionth time than deal with it.</p>
+		        <p class="lead">Help. Me.</p>	
+		   </div>     
         </div>
       </div>
-<div class="container">      
-      <hr class="featurette-divider">
-      
+<!--       <hr class="featurette-divider"> -->
       <a name='on-our-way'></a>
       <div id="on-our-way" class="featurette respond track-page-view">
-      	<img class="featurette-image pull-left" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
-        <h2 class="featurette-heading">Snaphappi <span class="muted">We can help.</span></h2>
-        <p class="lead"> 
-        	Relax, it's not work, it's Play. And your photos are not a ToDo list. 
-        	A few good photos are all it takes to connect you to the special moments of your life, we'll help you find them. 
-        	And we've got Curated Timelines to make it fun again. 
-        	Start with a <span class="muted">BAM!!!</span> your best photos upfront and skip the thumbnails, they just get in the way.
-        </p>
-         <p class="lead">Snaphappi <span class="muted">Your Photos, Ready to Play.</span></p>
+      	<div class='bg'></div>
+		<div class="container">
+			<img class="featurette-image pull-left" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+			<div class="wrap alpha75w">
+				<h2 class="featurette-heading">Snaphappi <span class="muted">We can help.</span></h2>
+				<p class="lead">
+					Relax, it's not work, it's Play. And your photos are not a ToDo list.
+					A few good photos are all it takes to connect you to the special moments of your life, we'll help you find them.
+					And we've got Curated Timelines to make it fun again.
+					Start with a <span class="muted">BAM!!!</span> your best photos upfront and skip the thumbnails, they just get in the way.
+				</p>
+				<p class="lead">
+					Snaphappi <span class="muted">Your Photos, Ready to Play.</span>
+				</p>
+			</div>
+		</div>
       </div>
-   </div>
 
 	<a name='how-it-works'></a>
     <!-- Carousel
@@ -186,102 +192,114 @@
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
 
-	<div class="container">
-      <hr class="featurette-divider">
+<!--       <hr class="featurette-divider"> -->
       
 	  <a name='see-the-movie'></a>	
       <div id="see-the-movie" class="featurette the-movie">
-        <h2 class="featurette-heading">See the Movie. <span class="muted">It'll knock your socks off.</span></h2>
-        <div class='center'>
-        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
-        </div>
+      	<div class='bg'></div>
+      	<div class="container">
+	        <h2 class="featurette-heading">See the Movie. <span class="muted">It'll knock your socks off.</span></h2>
+	        <div class='center'>
+	        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+	        </div>
+	    </div>
       </div>
 
-	  <hr class="featurette-divider">
+<!-- 	  <hr class="featurette-divider"> -->
       
       <a name='still-in-the-darkroom'></a>
       <div id='still-in-the-darkroom' class="featurette still-in-the-darkroom">
-      	<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-safari.png">
-        <h2 class="featurette-heading">We're in the Darkroom <span class="muted">Still Developing...</span></h2>
-        <p class="lead">We’re a small company working as fast as we can to develop our ideas, and 
-        there's a lot of work to do before this story is ready to share.
-        Our touch-friendly Timeline is still just a twinkle in our eye...</p>
-        <p class="lead">Your support will help us build our team quickly and work a lot faster.</p>
-        <a class="btn btn-large btn-primary" href="#call-to-action">I Still Want It</a> 
+      	<div class='bg'></div>
+      	<div class="container">
+      		<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-safari.png">
+	      	<div class="wrap alpha75w">
+	        <h2 class="featurette-heading">We're in the Darkroom <span class="muted">Still Developing...</span></h2>
+	        <p class="lead">We’re a small company working as fast as we can to develop our ideas, and 
+	        there's a lot of work to do before this story is ready to share.
+	        Our touch-friendly Timeline is still just a twinkle in our eye...</p>
+	        <p class="lead">Your support will help us build our team quickly and work a lot faster.</p>
+	        <a class="btn btn-large btn-primary" href="#call-to-action">I Still Want It</a> 
+        </div></div>
       </div>
       
-      <hr class="featurette-divider">
+<!--       <hr class="featurette-divider"> -->
       
 	  <a name='call-to-action'></a>	
       <div id="call-to-action" class="featurette call-to-action track-page-view">
-      	<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
-        <h2 class="featurette-heading">I Still Want It. <span class="muted">Count Me In.</span></h2>
-        <p class="lead">You've got me. I want this. I need this. What can I do to get this ASAP?</p>
-        <p>Your vocal support will make it easier for us to attract talented developers and rich investors. 
-        	We appreciate your willingness to stand up and be counted.</p>
-        <fieldset >	
-        	<legend>Count Me In</legend>
-	        <p>Here’s my email, keep me posted</p>
-	        	<form class="navbar-form">
-	                <input class="span2" type="text" placeholder="Email">
-	                <button type="submit" class="btn btn-primary">Submit</button>
-	            </form>
-	            <br />
-	            <p>I'll give you my time:</p>
-	        	<ul>
-	        		<li>I want an invite to join the private beta</li>
-	        		<li>contact me, I will join your “focus group”</li>
-	        	</ul>
-	        	<p>I'll give you money:</p>
-	        	<ul>
-	        		<li>I’ll chip in $1 just so you know I’m serious
-<!--  Payal 	        			 -->
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate through Paypal">
-	<input type="hidden" name="cmd" value="_s-xclick">
-	<input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
-	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-	<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-<!--  Amazon Simple Pay  -->
-<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post"  title="Donate through Amazon">
-  <input type="hidden" name="amount" value="USD 1" >
-  <input type="hidden" name="processImmediate" value="1" >
-  <input type="hidden" name="signatureMethod" value="HmacSHA256" >
-  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
-  <input type="hidden" name="collectShippingAddress" value="0" >
-  <input type="hidden" name="isDonationWidget" value="0" >
-  <input type="hidden" name="description" value="Go Snaphappi! Make my photos play again" >
-  <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
-  <input type="hidden" name="cobrandingStyle" value="logo" >
-  <input type="hidden" name="signatureVersion" value="2" >
-  <input type="hidden" name="immediateReturn" value="1" >
-  <input type="hidden" name="signature" value="BcNk43X2xxb1MutaMVASG5HtGP/7g5FSrxJ4IfXlAjc=" >
-  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_whitebg.gif" border="0">
-</form>
-</li>
-	        		<li>I want it so bad, I’ll prepay now</li>
-	        	</ul>
-	        	<p>I'll give you friends:</p>
-	        	<ul>
-	        		<li>Like this page</li>
-	        		<li>Tweet</li>
-	        		<li>Email my friends</li>
-	        		<li>Share on Facebook</li>
-	        	</ul>
-        	</fieldset>
+      	<div class='bg'></div>
+      	<div class="container">
+      		<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+	      	<div class="wrap alpha75w">
+		        <h2 class="featurette-heading">I Still Want It. <span class="muted">Count Me In.</span></h2>
+		        <p class="lead">You've got me. I want this. I need this. What can I do to get this ASAP?</p>
+		        <p>Your vocal support will make it easier for us to attract talented developers and rich investors. 
+		        	We appreciate your willingness to stand up and be counted.</p>
+		        <fieldset >	
+		        	<legend>Count Me In</legend>
+			        <p>Here’s my email, keep me posted</p>
+			        	<form class="navbar-form">
+			                <input class="span2" type="text" placeholder="Email">
+			                <button type="submit" class="btn btn-primary">Submit</button>
+			            </form>
+			            <br />
+			            <p>I'll give you my time:</p>
+			        	<ul>
+			        		<li>I want an invite to join the private beta</li>
+			        		<li>contact me, I will join your “focus group”</li>
+			        	</ul>
+			        	<p>I'll give you money:</p>
+			        	<ul>
+			        		<li>I’ll chip in $1 just so you know I’m serious
+		<!--  Payal 	        			 -->
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate through Paypal">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
+		<!--  Amazon Simple Pay  -->
+		<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post"  title="Donate through Amazon">
+		  <input type="hidden" name="amount" value="USD 1" >
+		  <input type="hidden" name="processImmediate" value="1" >
+		  <input type="hidden" name="signatureMethod" value="HmacSHA256" >
+		  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
+		  <input type="hidden" name="collectShippingAddress" value="0" >
+		  <input type="hidden" name="isDonationWidget" value="0" >
+		  <input type="hidden" name="description" value="Go Snaphappi! Make my photos play again" >
+		  <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
+		  <input type="hidden" name="cobrandingStyle" value="logo" >
+		  <input type="hidden" name="signatureVersion" value="2" >
+		  <input type="hidden" name="immediateReturn" value="1" >
+		  <input type="hidden" name="signature" value="BcNk43X2xxb1MutaMVASG5HtGP/7g5FSrxJ4IfXlAjc=" >
+		  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_whitebg.gif" border="0">
+		</form>
+		</li>
+			        		<li>I want it so bad, I’ll prepay now</li>
+			        	</ul>
+			        	<p>I'll give you friends:</p>
+			        	<ul>
+			        		<li>Like this page</li>
+			        		<li>Tweet</li>
+			        		<li>Email my friends</li>
+			        		<li>Share on Facebook</li>
+			        	</ul>
+		        	</fieldset>
         	
-
+			</div></div>
       </div>
 
-	  <hr class="featurette-divider">
+<!-- 	  <hr class="featurette-divider"> -->
       
       <a name='tag-line'></a>
       <div id='tag-line' class="featurette tag-line">
-        <h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
+      	<div class='bg pix'></div>
+      	<div class="container">
+      		<div class="wrap alpha50b">
+        	<h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
+        </div></div>
       </div>
 	
-	  <hr class="featurette-divider">
-	  </div>
+<!-- 	  <hr class="featurette-divider"> -->
 
       <!-- FOOTER -->
 <?php $this->Layout->blockStart('footer'); ?>      

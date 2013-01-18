@@ -34,16 +34,50 @@
 	.hidden {
 		visibility: hidden !important;
 	}
-	
+   
+/*   http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
+   .alpha50b ,  .navbar-inner.alpha50b {
+		/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(0, 0, 0);
+		/* RGBa with 0.6 opacity */
+		background: rgba(0, 0, 0, 0.5);
+		/* For IE 5.5 - 7*/
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+		/* For IE 8*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000)";
+	}
+	.alpha65b ,  .navbar-inner.alpha65b {
+		/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(0, 0, 0);
+		/* RGBa with 0.6 opacity */
+		background: rgba(0, 0, 0, 0.65);
+		/* For IE 5.5 - 7*/
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000);
+		/* For IE 8*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000)";
+	}
+	.alpha75w {
+		/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(255, 255, 255);
+		/* RGBa with 0.6 opacity */
+		background: rgba(255, 255, 255, 0.75);
+		/* For IE 5.5 - 7*/
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BFFFFFFF, endColorstr=#BFFFFFFF);
+		/* For IE 8*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#BFFFFFFF, endColorstr=#BFFFFFFF)";
+		
+	}
+		
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
    #header {
+/*   		height: 0;	*/
    }
     .bounding-box {
-    	position:relative;
+    	position:absolute;
     	top:20px;
     	width: 100%;
-    	z-index: 100;
+    	z-index: 1000;
     }
     .bounding-box.affix {
     	position:fixed;
@@ -64,7 +98,7 @@
     }
 
     .navbar .navbar-inner {
-    	opacity: 0.85;
+    	xopacity: 0.85;
     	border-radius: 7px;
     	padding-left: 10px;
     }
@@ -103,15 +137,15 @@
 
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
+   
+   #content {
+   		position: relative;
+   	 	top: -60px;				/* don't know why I need this */
+   }
    .featurette {
    		position:relative;
    }
-   #help-me {
-	   	height: 550px;		/* section height */
-	   	overflow: visible;
-   }
-   #help-me .bg-wrap {
-   		background-image:url(http://a0.twimg.com/a/1358279006/t1/img/front_page/city-balcony@2x.jpg);
+   .featurette .bg {
    		background-repeat: no-repeat;
 		background-color: #000000;
 		background-size: cover;
@@ -120,49 +154,62 @@
 		z-index: -1;
 		width: 100%;
 		height: 100%;
-		top: -120px;    /* featurette .padding-top   REMOVE THIS */
+		top: 0px;    /* featurette .padding-top   REMOVE THIS */
    }
-   
-/*   http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
-   .alpha50b {
-		/* Fallback for web browsers that doesn't support RGBa */
-		background: rgb(0, 0, 0);
-		/* RGBa with 0.6 opacity */
-		background: rgba(0, 0, 0, 0.5);
-		/* For IE 5.5 - 7*/
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
-		/* For IE 8*/
-		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000)";
-	}
-	.alpha75w {
-		/* Fallback for web browsers that doesn't support RGBa */
-		background: rgb(255, 255, 255);
-		/* RGBa with 0.6 opacity */
-		background: rgba(255, 255, 255, 0.75);
-		/* For IE 5.5 - 7*/
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#BFFFFFFF, endColorstr=#BFFFFFFF);
-		/* For IE 8*/
-		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#BFFFFFFF, endColorstr=#BFFFFFFF)";
-		
-	}
+   .featurette .wrap {
+   		border-radius: 20px;
+	     -webkit-border-radius: 20px;
+	     -moz-border-radius: 20px;
+	    margin: 40px 20px 20px 60px;
+	    padding: 20px;
+	    width: 80%;
+   }
+   #help-me {
+	   	height: 550px;		/* section height */
+	   	overflow: visible;
+	   	color: #FFFFFF;
+   }
+   #help-me .bg.pix {
+   		background-image:url(http://a0.twimg.com/a/1358279006/t1/img/front_page/city-balcony@2x.jpg);
+   }
+   #on-our-way .bg , #see-the-movie .bg, #call-to-action .bg {
+   		background-color: #ffaa00;
+   }
+	
 	html.ie .alpha50b , html.ie .alpha75w {
 		background:transparent;			/* makes border-radius invisible, wrap?  */
 	}
 	
 	
-   #help-me.featurette .container {
+   #help-me.featurette .wrap {
 	    border-radius: 20px;
 	     -webkit-border-radius: 20px;
 	     -moz-border-radius: 20px;
-
-	    margin: 60px 20px 20px 60px;
+	    margin: 40px 20px 20px 60px;
 	    padding: 20px;
 	    width: 80%;
    }
-
+   #see-the-movie .container {
+   		padding: 60px 0;
+   }
+   
+   #tag-line {
+   		color: #d47000
+   }
+   #tag-line .bg.pix {
+   		background-image:url(http://a0.twimg.com/a/1358386289/t1/img/front_page/jp-mountain@2x.jpg);
+   		height: 550px;
+   }
+ 	
+ 	#tag-line span.muted {
+   		color: #ffaa00
+   }
+ 	#call-to-action {
+ 		padding: 60px 0;
+ 	}
     /* Carousel base class */
     .carousel {
-      margin-bottom: 60px;
+      margin-bottom: 0;
       z-index: 1;
     }
 
@@ -242,11 +289,11 @@
     .featurette-divider {
       margin: 80px 0; /* Space out the Bootstrap <hr> more */
     }
-    .featurette {
+    .featurette .container{
       padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
       overflow: hidden; /* Vertically center images part 2: clear their floats. */
     }
-    .featurette-image {
+    .featurette .container .featurette-image {
       margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
     }
 
@@ -302,14 +349,7 @@
     	text-align: center;
     	
     }
-    .featurette.call-to-action .featurette-image {
-    	margin-top: 0px;
-    }
     
-    .featurette.tag-line {
-    	background-color: #CCC;
-    	padding: 120px 80px;
-    }
 
     /* RESPONSIVE CSS
     -------------------------------------------------- */

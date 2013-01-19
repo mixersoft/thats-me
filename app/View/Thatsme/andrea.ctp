@@ -25,7 +25,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/overwhelmed">Snaphappi</a>
+            <a class="brand" href="/overwhelmed">snap<span>happi</span></a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse  pull-right">
               <ul class="nav">
@@ -71,12 +71,11 @@
       	<div class='bg pix'></div>
       	<div class="container ">
       		<div class="wrap alpha50b">
-		        <h2 class="featurette-heading">Help Me. <span class="muted">I have problems with my photos.</span></h2>
-		        <p class="lead">I am overwhelmed by my photos, too many to count (but I know it's in the tens of thousands.) 
-		        	I am frustrated by my inability to find, enjoy, and share my photos. 
-		        	I can't deal with this problem because my eyes instantly gloss over at the sight of pages and pages of thumbnails.  
-		        	It's tedious work, and I'd rather play Angry Birds for the millionth time than deal with it.</p>
-		        <p class="lead">Help. Me.</p>	
+		        <h2 class="featurette-heading">Your Personal Photo Conceirge <br /><span class="muted">We sort, rate, & organize your digital photos for you.</span></h2>
+		       </div>
+		    <div class="wrap alpha50b">
+		        <h2 class="featurette-heading">Photo Curation <span class="muted">Fun & Easy. </span><br /> 
+		        	<span  class="muted">Because it’s not work... it’s play.</span></h2>
 		   </div>     
         </div>
       </div>
@@ -85,23 +84,81 @@
       <div id="on-our-way" class="featurette respond track-page-view">
       	<div class='bg'></div>
 		<div class="container">
-			<img class="featurette-image pull-left" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
-			<div class="wrap alpha75w">
-				<h2 class="featurette-heading">Snaphappi <span class="muted">We can help.</span></h2>
-				<p class="lead">
-					Relax, it's not work, it's Play. And your photos are not a ToDo list.
-					A few good photos are all it takes to connect you to the special moments of your life, we'll help you find them.
-					And we've got Curated Timelines to make it fun again.
-					Start with a <span class="muted">BAM!!!</span> your best photos upfront and skip the thumbnails, they just get in the way.
-				</p>
-				<p class="lead">
-					Snaphappi <span class="muted">Your Photos, Ready to Play.</span>
-				</p>
+			<h2 class="featurette-heading">Snaphappi is still in the darkroom <span class="">so we want to hear from you.</span></h2>
+			<div class='fill'></div>
+			<div class="wrap ">
+				<div><p>"Sort through all my photos - at just a penny a photo? <span class="muted">Thats a Great idea!</span></p></div>
+				<div class="center">
+					<a class="btn btn-large btn-warning" href="#">Send us $1 to cheer us on!</a>
+				</div>
 			</div>
+			
 		</div>
       </div>
 
-	<a name='how-it-works'></a>
+	<a name='features'></a>
+    <!-- Carousel
+    ================================================== -->
+    <div id="features" class="carousel slide track-page-view">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://lorempixel.com/1500/550/nature" alt="">
+          <div class="container">
+          	<div class="carousel-caption">
+          	</div>
+	<!-- Three columns of text below the carousel -->
+	      <div class="row carousel-row">
+	        <div class="span6">
+	          <h3>Screened By Real Editors</h3>
+	          <p>Our trained editors find the beautiful photos that are featured on your Timeline. They'll rate all your photos and hide the duplicates just for you. We promise 100% privacy.</p>
+	        </div><!-- /.span4 -->
+	        <div class="span6">
+	          <h3>Beautiful Memory Timeline</h3>
+	          <p>Your most precious moments are highlighted in a stunning timeline, marked by top-rated photos. 
+Have fun zooming from moment to moment or diving deep to find other photos from a point in your life.
+	          	</p>
+	        </div><!-- /.span4 -->
+	      </div><!-- /.row -->          	
+          <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://lorempixel.com/1500/550/nature/2" alt="">
+          <div class="container">
+          	<div class="carousel-caption">
+          	</div>
+	<!-- Three columns of text below the carousel -->
+	      <div class="row carousel-row">
+	        <div class="span4">
+	<!--         	 ??? what is data-src for?  -->
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140">   -->
+	          <h3>You're in Control</h3>
+	          <p>You have complete control. You can adjust the photos highlighted on your timeline
+by rating the ones you love.
+	          </p>
+	        </div><!-- /.span4 -->
+	        <div class="span4">
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
+	          <h3>Fast Digital Uploads</h3>
+	          <p>Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>
+	        </div><!-- /.span4 -->
+	        <div class="span4">
+<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
+	          <h3>Quick &amp; Easy Sharing </h3>
+	          <p>The hardest part about sharing is finding something worth sharing. 
+	          	But thanks to our curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
+	          	The rest is a piece of cake.
+	          </p>
+	        </div><!-- /.span4 -->
+	      </div><!-- /.row -->          	
+          <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#features" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#features" data-slide="next">&rsaquo;</a>
+ 
+    </div><!-- /.carousel -->
     <!-- Carousel
     ================================================== -->
     <div id="how-it-works" class="carousel slide track-page-view">
@@ -185,7 +242,6 @@
       <a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a>
     </div><!-- /.carousel -->
-
 
 
     <!-- Marketing messaging and featurettes
@@ -325,22 +381,7 @@
 		
 		! function($) {
 			
-
-			// scroll to anchor AFTER collapse navbar, adjust for .nav-collapse height
-			// use: data-toggle="collapse" data-target=".nav-collapse"
-			// $(document).on('click.collapse.data-api', '.nav-collapse ul.nav a:not(".dropdown-toggle")', function(e) {
-				// var $this = $(this), href, target = ( href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')//strip for ie7
-				// var offsetH = $(".nav-collapse").height();
-				// console.log("offsetH="+offsetH);				// $('html,body').animate({
-					// scrollTop : $(target).offset().top - offsetH
-				// });
-				// http://mktgdept.com/ios-position-fixed-bug
-				// $('body').append($('<div></div>').addClass('iosfix'));
-				// setTimeout(function() {
-					// $('.iosfix').remove();
-				// }, 1);
-			// });
-			
+		
 			var isLingeringTimer = {};
 			$(window).scroll(function(e) {
 				/* Check the location of each desired element */

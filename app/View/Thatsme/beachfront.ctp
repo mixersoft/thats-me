@@ -72,15 +72,19 @@
       <div id="help-me" class="featurette connect track-page-view">
       	<div class='bg pix'></div>
       	<div class="container ">
-      		<div class="wrap alpha50b">
+      		<div class="wrap alpha70b">
 		        <h2 class="featurette-heading">Your Personal Photo Conceirge <br /><span class="muted">We sort, rate, & organize your digital photos for you.</span></h2>
 		       </div>
-		    <div class="wrap alpha50b">
-		        <h2 class="featurette-heading">Photo Curation <span class="muted">Fun & Easy. </span><br /> 
-		        	<span  class="muted">Because it’s not work... it’s play.</span></h2>
-		   </div>     
         </div>
-        <div class='footer'>
+        <div class="fw-band alpha70b">
+			<div class="container">
+				<div class="center-w">
+			        <h2 class="featurette-heading">Photo Curation <span class="muted">Fun & Easy. </span><br /> 
+			        <span  class="muted">Because it’s not work... it’s play.</span></h2>
+		        </div>
+		   </div>     
+        </div>        
+        <div class='fw-band footer'>
         	<div class="container ">
         		<div class="pull-left">Sign up for early access</div>	
         		<div class="pull-right">Learn More</div>

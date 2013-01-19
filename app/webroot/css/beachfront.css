@@ -83,6 +83,18 @@
 		/* For IE 8*/
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000)";
 	}
+	
+	.alpha70b ,  .navbar-inner.alpha70b {
+		/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(0, 0, 0);
+		/* RGBa with 0.6 opacity */
+		background: rgba(0, 0, 0, 0.70);
+		/* For IE 5.5 - 7*/
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000);
+		/* For IE 8*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000)";
+	}
+	
 	.alpha75w {
 		/* Fallback for web browsers that doesn't support RGBa */
 		background: rgb(255, 255, 255);
@@ -196,13 +208,23 @@
 	    padding: 20px;
 	    width: 80%;
    }
+   
+   .featurette .fw-band {
+   		position: absolute;
+    	width: 100%;
+   }
+   .featurette .fw-band .container > .center-w {
+   		margin: 0 auto;
+   		width: 500px;
+   }
+      
    .featurette .footer {
-   		background-color: #ffffce;
-   		color: black;
-   		font-size: 30px;
-/*   		height: 50px;*/
-   		line-height:1;
-   		padding: 10px 0;
+   		background-color: #FFFFCE;
+	    bottom: 0;
+	    color: black;
+	    font-size: 30px;
+	    line-height: 1;
+	    padding: 10px 0;
    }
    #help-me {
 	   	min-height: 700px;		/* section height */
@@ -213,6 +235,7 @@
    		/*background-image:url(http://a0.twimg.com/a/1358279006/t1/img/front_page/city-balcony@2x.jpg);*/
    		background-image:url(/img/beachfront/bg-img-01.jpg);
    }
+
    
    #on-our-way .bg {
    		background-color: #d47000;

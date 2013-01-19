@@ -157,7 +157,10 @@ by rating the ones you love.
       </div>
       <a class="left carousel-control" href="#features" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#features" data-slide="next">&rsaquo;</a>
- 
+	  	<div class="pager center">
+			<div class="active">0</div>
+			<div>1</div>
+        </div>
     </div><!-- /.carousel -->
     <!-- Carousel
     ================================================== -->
@@ -241,6 +244,10 @@ by rating the ones you love.
       </div>
       <a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a>
+      <div class="pager center">
+			<div class="active">0</div>
+			<div>1</div>
+        </div>
     </div><!-- /.carousel -->
 
 
@@ -379,32 +386,65 @@ by rating the ones you love.
 		}
 		CFG['carousel'] = { DISABLED: false};
 		
-		! function($) {
-			
+		/*
+		 * dot paging for carousels
+		 */
+		var init_CarouselDotPaging = function(o) {
+			  // .carousel({ interval: 5000 }) 			o.bind('slid', function() { 
+			      var index = o.find(".active").index(); 
+			      o.find(".pager div").removeClass('active').eq(index).addClass('active'); 
+			  }); 
+				
+		    o.find(".pager div").click(function(e){ 
+		      var index = $(this).index(); 
+		      o.carousel(index);
+		      e.preventDefault();
+		    }); 
+		}
 		
+		/*
+		 * dot paging for carousels, 
+		 * 	- initialize AFTER first scroll into view
+		 */
+		var init_CarouselAutoPaging = function(o, timers) {
+			
+			var id = o.attr('id');
+			if (timers[id]) return;	// already checking
+			
+			var DELAY = {
+				lingering:1000,
+				carousel:4000,
+			};
+			timers[id] = setTimeout(function() {
+				timers[id] = 0;
+				if (_isScrolledIntoView(o)) {
+					/* If the object is completely visible in the window, fade it in */
+					if (o.hasClass('activated')) return
+					else {
+						o.addClass('activated').carousel({ interval: DELAY['carousel'] });
+					}
+				}
+			}, DELAY['lingering']);
+		}
+		
+		! function($) {
+			$('.carousel').each(function(i, elem) {
+				init_CarouselDotPaging($(elem));
+			});
+			
 			var isLingeringTimer = {};
 			$(window).scroll(function(e) {
 				/* Check the location of each desired element */
 				$('.carousel').each(function(i, elem) {
 					if (CFG['carousel'].DISABLED) return;
-					
-					var DELAY = 1000;
-					var	waypoint = elem.id;
-				
-					if (isLingeringTimer[waypoint])
-						return;
-					isLingeringTimer[waypoint] = setTimeout(function() {
-						isLingeringTimer[waypoint] = 0;
-						if (_isScrolledIntoView(elem)) {
-							/* If the object is completely visible in the window, fade it in */
-							if ($(elem).hasClass('activated')) return
-							else $(elem).addClass('activated').carousel();
-						}
-					}, DELAY);
+					init_CarouselAutoPaging($(elem), isLingeringTimer);
 				});
 			});
+			
 	
-
+			
+			
+			
 		}(window.jQuery)
     </script>
 <?php $this->Layout->blockEnd(); ?>

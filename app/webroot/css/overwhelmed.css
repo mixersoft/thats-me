@@ -311,7 +311,27 @@
       text-shadow: 0 1px 1px rgba(0,0,0,.4);
     }
 
-
+	
+	.carousel .pager {
+		position: absolute;
+		bottom: 10px;
+		width: 100%;
+	}
+	.carousel .pager div {
+		display: inline-block;
+		height: 10px;
+		width: 10px;
+		margin-right: 10px;
+		border-radius: 50%;
+		background: #ffaa00;
+		font-size: 1px;
+		color: #fff;
+		text-indent: -9999px;
+		cursor: pointer;
+	}
+	.carousel .pager  div.active {
+		background: #d47000;
+	}
 
     /* MARKETING CONTENT
     -------------------------------------------------- */

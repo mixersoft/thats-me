@@ -20,12 +20,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	 * see also: http://imakewebthings.com/jquery-waypoints/
 	 */
 
-var _isScrolledIntoView = function (elem) {
+var _isScrolledIntoView = function (o) {
 		var docViewTop = $(window).scrollTop();
 		var docViewBottom = docViewTop + $(window).height();
 
-		var elemTop = $(elem).offset().top;
-		var elemBottom = elemTop + $(elem).height();
+		var elemTop = o.offset().top;
+		var elemBottom = elemTop + o.height();
 
 		var completelyInView = ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop) );
 		var nearTop = ((elemBottom >= docViewTop) && (elemTop >= docViewTop) && (elemTop <= docViewTop + $(window).height() / 3) // top 1/3 of window
@@ -190,20 +190,20 @@ var _isScrolledIntoView = function (elem) {
 	 * waits DELAY ms before checking ScrolledIntoView, 
 	 * once timer is set, ignores calls on successive scroll() until timer expires 
 	 */
-	function lingersInView(elem) {
+	function lingersInView(o) {
 		var DELAY = 1000,
-			waypoint = $(elem).attr('id');
+			waypoint = o.attr('id');
 
 		if (isLingeringTimer[waypoint])
 			return;
 		isLingeringTimer[waypoint] = setTimeout(function() {
 			isLingeringTimer[waypoint] = 0;
-			if (_isScrolledIntoView(elem)) {
+			if (_isScrolledIntoView(o)) {
 				try {
 					var event_name = 'Page View';
 					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
 					mixpanel.track(event_name, properties);
-					$(elem).removeClass('track-page-view');
+					o.removeClass('track-page-view');
 					notify(waypoint);
 					isLingeringTimer[waypoint] = 'tracked';
 				} catch (e) {
@@ -214,12 +214,12 @@ var _isScrolledIntoView = function (elem) {
 	}
 
 	/* Every time the window is scrolled ... */
-	$(window).scroll(function(e) {
+	$(window).scroll(function(e, elem) {
 
 		/* Check the location of each desired element */
-		$('.track-page-view').each(function(i) {
+		$('.track-page-view').each(function(i, elem) {
 			/* If the object is completely visible in the window, fade it in */
-			lingersInView(this);
+			lingersInView($(elem));
 		});
 
 	});
@@ -235,7 +235,7 @@ var _isScrolledIntoView = function (elem) {
 			var hash = window.location.hash || CFG['mixpanel'].FIRST_SECTION;
 				waypoint = hash.substr(1), 
 				event_name = 'Page View';
-			if ($(hash).hasClass('track-page-view') && lingersInView($(hash).get())) {
+			if ($(hash).hasClass('track-page-view') && lingersInView($(hash))) {
 				var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
 				if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);				notify(waypoint);
 			}

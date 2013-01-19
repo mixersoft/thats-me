@@ -59,6 +59,7 @@ class ThatsmeController extends AppController {
 	} 
 	public function overwhelmed() {}
 	public function orange() {}
+	public function beachfront() {}
 
 /**
  * Displays a view

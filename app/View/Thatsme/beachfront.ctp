@@ -9,7 +9,7 @@
 	<meta property="og:url" content="thats-me.snaphappi.com/" />
 	<meta property="og:image" content="https://launchrock-assets.s3.amazonaws.com/facebook-files/FXZVYWTV_1356050477938.jpg?_=1" />
 	
-	<link rel="stylesheet" href="/css/overwhelmed.css">
+	<link rel="stylesheet" href="/css/beachfront.css">
 <?php $this->Layout->blockEnd(); ?>
 
 <?php $this->Layout->blockStart('header'); ?>
@@ -25,9 +25,9 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/overwhelmed">snap<span>happi</span></a>
+            <a class="brand" href="/beachfront"><img src='/img/beachfront/snaphappi-logo-v2.png'></a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse  pull-right">
+            <div class="nav-collapse collapse  xxalpha65b pull-right">
               <ul class="nav">
                 <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#help-me">Help Me</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#on-our-way" >On Our Way</a></li>
@@ -64,7 +64,9 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <div id="fold"></div>
+    
+	<div id="fold"></div>
+	
 	
 	  <a name='help-me'></a>
       <div id="help-me" class="featurette connect track-page-view">
@@ -77,6 +79,12 @@
 		        <h2 class="featurette-heading">Photo Curation <span class="muted">Fun & Easy. </span><br /> 
 		        	<span  class="muted">Because it’s not work... it’s play.</span></h2>
 		   </div>     
+        </div>
+        <div class='footer'>
+        	<div class="container ">
+        		<div class="pull-left">Sign up for early access</div>	
+        		<div class="pull-right">Learn More</div>
+        	</div>
         </div>
       </div>
 <!--       <hr class="featurette-divider"> -->
@@ -390,7 +398,8 @@ by rating the ones you love.
 		 * dot paging for carousels
 		 */
 		var init_CarouselDotPaging = function(o) {
-			  // .carousel({ interval: 5000 }) 			o.bind('slid', function() { 
+			  // .carousel({ interval: 5000 }) 
+			o.bind('slid', function() { 
 			      var index = o.find(".active").index(); 
 			      o.find(".pager div").removeClass('active').eq(index).addClass('active'); 
 			  }); 

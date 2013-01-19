@@ -15,7 +15,7 @@
     /* Padding below the footer and lighter body text */
 
     body {
-      font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;
+      font-family: "GeoSansLightRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;
       padding-left: 0;
       padding-right: 0;
       padding-bottom: 40px;
@@ -23,8 +23,17 @@
     }
     
     h1, h2 {
-   		font-family: "LeagueGothicRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;
+/*   		font-family: "LeagueGothicRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;*/
     }
+    
+	#fold {
+		border-bottom: 1px solid red;
+	    height: 0;
+	    position: fixed;
+	    top: 768px;
+	    width: 1024px;
+	    z-index: 999;
+	}
 	
 	a.brand {
 		font-family: Helvetica,Arial,sans-serif;
@@ -40,15 +49,6 @@
 	  height: 101%;
 	  overflow: hidden;
 	}
-
-	#fold {
-		border-bottom: 1px solid red;
-	    height: 0;
-	    position: fixed;
-	    top: 768px;
-	    width: 1024px;
-	    z-index: 999;
-	}
 	
 	.hide {
 		display: none !important; 
@@ -60,6 +60,7 @@
 	.center {
 		text-align: center;
 	}
+
    
 /*   http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
    .alpha50b ,  .navbar-inner.alpha50b {
@@ -124,9 +125,9 @@
     }
 
     .navbar .navbar-inner {
-    	xopacity: 0.85;
     	border-radius: 7px;
     	padding-left: 10px;
+/*    	background: none repeat scroll 0 0 transparent !important;*/
     }
 
     /* Downsize the brand/project name a bit */
@@ -134,6 +135,11 @@
       font-size: 16px;
       font-weight: bold;
       text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+      margin: 0;
+      padding: 0;
+    }
+    .navbar .brand img {
+    	height: 40px;
     }
 
     /* Navbar links: increase padding for taller navbar */
@@ -190,15 +196,24 @@
 	    padding: 20px;
 	    width: 80%;
    }
+   .featurette .footer {
+   		background-color: #ffffce;
+   		color: black;
+   		font-size: 30px;
+/*   		height: 50px;*/
+   		line-height:1;
+   		padding: 10px 0;
+   }
    #help-me {
-	   	height: 550px;		/* section height */
+	   	min-height: 700px;		/* section height */
 	   	overflow: visible;
 	   	color: #FFFFFF;
    }
    #help-me .bg.pix {
    		/*background-image:url(http://a0.twimg.com/a/1358279006/t1/img/front_page/city-balcony@2x.jpg);*/
-   		background-image:url(http://lorempixel.com/1040/660/nature);
+   		background-image:url(/img/beachfront/bg-img-01.jpg);
    }
+   
    #on-our-way .bg {
    		background-color: #d47000;
    }
@@ -208,7 +223,7 @@
 		color: black;
 	} 
 	#on-our-way .container .fill{
-		background-color: #F8F8DA;
+		background-color: #ffffce;
 	    bottom: 0;
 	    height: 150px;
 	    left: 0;
@@ -367,11 +382,11 @@
     .featurette-divider {
       margin: 80px 0; /* Space out the Bootstrap <hr> more */
     }
-    .featurette .container{
+    .featurette > .container{
       padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
       overflow: hidden; /* Vertically center images part 2: clear their floats. */
     }
-    .featurette .container .featurette-image {
+    .featurette > .container .featurette-image {
       margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
     }
 

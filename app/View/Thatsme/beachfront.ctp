@@ -70,7 +70,7 @@
 	
 	  <a name='help-me'></a>
       <div id="help-me" class="featurette connect track-page-view">
-      	<div class='bg pix'></div>
+      	<div class='bg pix p1'></div>
       	<div class="container ">
       		<div class="wrap alpha70b">
 		        <h2 class="featurette-heading">Your Personal Photo Conceirge <br /><span class="muted">We sort, rate, & organize your digital photos for you.</span></h2>
@@ -97,14 +97,13 @@
       	<div class='bg'></div>
 		<div class="container">
 			<h2 class="featurette-heading">Snaphappi is still in the darkroom <span class="">so we want to hear from you.</span></h2>
-			<div class='fill'></div>
 			<div class="wrap ">
 				<div><p>"Sort through all my photos - at just a penny a photo? <span class="muted">Thats a Great idea!</span></p></div>
 				<div class="center">
 					<a class="btn btn-large btn-warning" href="#">Send us $1 to cheer us on!</a>
 				</div>
 			</div>
-			
+			<div class='fw-band footer'></div>
 		</div>
       </div>
 
@@ -114,7 +113,7 @@
     <div id="features" class="carousel slide track-page-view">
       <div class="carousel-inner">
         <div class="item active">
-          <img src="http://lorempixel.com/1500/550/nature" alt="">
+        	<div class='bg pix p2'></div>
           <div class="container">
           	<div class="carousel-caption">
           	</div>
@@ -135,7 +134,7 @@ Have fun zooming from moment to moment or diving deep to find other photos from 
           </div>
         </div>
         <div class="item">
-          <img src="http://lorempixel.com/1500/550/nature/2" alt="">
+        	<div class='bg pix p3'></div>
           <div class="container">
           	<div class="carousel-caption">
           	</div>
@@ -179,7 +178,7 @@ by rating the ones you love.
     <div id="how-it-works" class="carousel slide track-page-view">
       <div class="carousel-inner">
         <div class="item active">
-          <img src="http://twitter.github.com/bootstrap/assets/img/examples/slide-01.jpg" alt="">
+        	<div class='bg pix p4'></div>
           <div class="container">
           	<div class="carousel-caption">
           		<h1>How It Works.</h1>
@@ -216,7 +215,7 @@ by rating the ones you love.
           </div>
         </div>
         <div class="item">
-          <img src="http://twitter.github.com/bootstrap/assets/img/examples/slide-02.jpg" alt="">
+        	<div class='bg pix p5'></div>
           <div class="container">
           	<div class="carousel-caption">
           		<h1>How It Works (continued)</h1>
@@ -284,9 +283,8 @@ by rating the ones you love.
       
       <a name='still-in-the-darkroom'></a>
       <div id='still-in-the-darkroom' class="featurette still-in-the-darkroom">
-      	<div class='bg'></div>
+      	<div class='bg pix p2'></div>
       	<div class="container">
-      		<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-safari.png">
 	      	<div class="wrap alpha75w">
 	        <h2 class="featurette-heading">We're in the Darkroom <span class="muted">Still Developing...</span></h2>
 	        <p class="lead">We’re a small company working as fast as we can to develop our ideas, and 
@@ -301,9 +299,8 @@ by rating the ones you love.
       
 	  <a name='call-to-action'></a>	
       <div id="call-to-action" class="featurette call-to-action track-page-view">
-      	<div class='bg'></div>
+      	<div class='bg pix p1'></div>
       	<div class="container">
-      		<img class="featurette-image pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
 	      	<div class="wrap alpha75w">
 		        <h2 class="featurette-heading">I Still Want It. <span class="muted">Count Me In.</span></h2>
 		        <p class="lead">You've got me. I want this. I need this. What can I do to get this ASAP?</p>
@@ -367,7 +364,7 @@ by rating the ones you love.
       
       <a name='tag-line'></a>
       <div id='tag-line' class="featurette tag-line">
-      	<div class='bg pix'></div>
+      	<div class='bg pix p5'></div>
       	<div class="container">
       		<div class="wrap alpha50b">
         	<h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
@@ -396,7 +393,7 @@ by rating the ones you love.
 			FIRST_SECTION : '#help-me',
 			VIDEO_NAME : 'imagine',
 		}
-		CFG['carousel'] = { DISABLED: false};
+		CFG['carousel'] = { DISABLED: true};
 		
 		/*
 		 * dot paging for carousels

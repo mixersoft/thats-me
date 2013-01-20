@@ -189,7 +189,7 @@
    .featurette {
    		position:relative;
    }
-   .featurette .bg {
+   .featurette .bg , .carousel .bg {
    		background-repeat: no-repeat;
 		background-color: #000000;
 		background-size: cover;
@@ -212,6 +212,7 @@
    .featurette .fw-band {
    		position: absolute;
     	width: 100%;
+    	left: 0;
    }
    .featurette .fw-band .container > .center-w {
    		margin: 0 auto;
@@ -231,9 +232,20 @@
 	   	overflow: visible;
 	   	color: #FFFFFF;
    }
-   #help-me .bg.pix {
-   		/*background-image:url(http://a0.twimg.com/a/1358279006/t1/img/front_page/city-balcony@2x.jpg);*/
+   .bg.pix.p1 {
    		background-image:url(/img/beachfront/bg-img-01.jpg);
+   }
+   .bg.pix.p2 {
+   		background-image:url(/img/beachfront/bg-img-02.jpg);
+   }
+   .bg.pix.p3 {
+   		background-image:url(/img/beachfront/bg-img-03.jpg);
+   }
+   .bg.pix.p4 {
+   		background-image:url(/img/beachfront/bg-img-04.jpg);
+   }
+   .bg.pix.p5 {
+   		background-image:url(/img/beachfront/bg-img-05.jpg);
    }
 
    
@@ -245,13 +257,9 @@
 		height: 350px;
 		color: black;
 	} 
-	#on-our-way .container .fill{
-		background-color: #ffffce;
-	    bottom: 0;
+	#on-our-way .fw-band.footer {
 	    height: 150px;
-	    left: 0;
-	    position: absolute;
-	    width: 100%;
+	    z-index: -1;
 	  }	
 	#on-our-way .container .wrap {
 		position: relative;		
@@ -293,7 +301,6 @@
    		color: #d47000
    }
    #tag-line .bg.pix {
-   		background-image:url(http://a0.twimg.com/a/1358386289/t1/img/front_page/jp-mountain@2x.jpg);
    		height: 550px;
    }
  	

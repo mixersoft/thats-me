@@ -71,14 +71,9 @@
 	  <a name='help-me'></a>
       <div id="help-me" class="featurette connect track-page-view">
       	<div class='bg pix p1'></div>
-      	<div class="container ">
-      		<div class="wrap alpha70b">
-		        <h2 class="featurette-heading">Your Personal Photo Conceirge <br /><span class="muted">We sort, rate, & organize your digital photos for you.</span></h2>
-		       </div>
-        </div>
         <div class="fw-band alpha70b">
 			<div class="container">
-				<div class="center-w">
+				<div class="center-div">
 			        <h2 class="featurette-heading">Photo Curation <span class="muted">Fun & Easy. </span><br /> 
 			        <span  class="muted">Because it’s not work... it’s play.</span></h2>
 		        </div>
@@ -110,72 +105,115 @@
 	<a name='features'></a>
     <!-- Carousel
     ================================================== -->
-    <div id="features" class="carousel slide track-page-view">
+    <div id="features" class="featurette carousel slide track-page-view">
       <div class="carousel-inner">
+      	
         <div class="item active">
         	<div class='bg pix p2'></div>
-          <div class="container">
-          	<div class="carousel-caption">
-          	</div>
-	<!-- Three columns of text below the carousel -->
-	      <div class="row carousel-row">
-	        <div class="span6">
-	          <h3>Screened By Real Editors</h3>
-	          <p>Our trained editors find the beautiful photos that are featured on your Timeline. They'll rate all your photos and hide the duplicates just for you. We promise 100% privacy.</p>
-	        </div><!-- /.span4 -->
-	        <div class="span6">
-	          <h3>Beautiful Memory Timeline</h3>
-	          <p>Your most precious moments are highlighted in a stunning timeline, marked by top-rated photos. 
-Have fun zooming from moment to moment or diving deep to find other photos from a point in your life.
-	          	</p>
-	        </div><!-- /.span4 -->
-	      </div><!-- /.row -->          	
-          <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-          </div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+  <div class="row carousel-row">
+    <div class="offset5 span7">
+	    <div class="carousel-caption"><h1>Screened By Real Editors</h1></div>
+	    <p>Our trained editors find the beautiful photos that are featured on your Timeline. They'll rate all your photos and hide the duplicates just for you. We promise 100% privacy.</p>
+	    <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
+  
+		          </div>
+				</div>          
         </div>
         <div class="item">
         	<div class='bg pix p3'></div>
-          <div class="container">
-          	<div class="carousel-caption">
-          	</div>
-	<!-- Three columns of text below the carousel -->
-	      <div class="row carousel-row">
-	        <div class="span4">
-	<!--         	 ??? what is data-src for?  -->
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140">   -->
-	          <h3>You're in Control</h3>
-	          <p>You have complete control. You can adjust the photos highlighted on your timeline
-by rating the ones you love.
-	          </p>
-	        </div><!-- /.span4 -->
-	        <div class="span4">
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
-	          <h3>Fast Digital Uploads</h3>
-	          <p>Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>
-	        </div><!-- /.span4 -->
-	        <div class="span4">
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
-	          <h3>Quick &amp; Easy Sharing </h3>
-	          <p>The hardest part about sharing is finding something worth sharing. 
-	          	But thanks to our curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
-	          	The rest is a piece of cake.
-	          </p>
-	        </div><!-- /.span4 -->
-	      </div><!-- /.row -->          	
-          <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-          </div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+		      <div class="row carousel-row">
+		        <div class="offset2 span7">
+		        	<div class="carousel-caption"><h1>Beautiful Memory Timeline</h1></div>
+		        	<p>Your most precious moments are highlighted in a stunning timeline, marked by top-rated photos. 
+	Have fun zooming from moment to moment or diving deep to find other photos from a point in your life.
+		          	</p>
+		          	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+		        </div><!-- /.span -->
+		      </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
         </div>
+        <div class="item">
+        	<div class='bg pix p4'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+		      <div class="row carousel-row">
+		        <div class="span7">
+		        	<div class="carousel-caption"><h1>Faster Uploads</h1></div>
+		        	<p>Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>
+		          	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+		        </div><!-- /.span -->
+		      </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
+        </div> 
+        <div class="item">
+        	<div class='bg pix p5'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+		      <div class="row carousel-row">
+		        <div class="offset7 span5">
+		        	<div class="carousel-caption"><h1>You're in Control</h1></div>
+		        	<p>You have complete control. You can adjust the photos highlighted on your timeline
+by rating the ones you love.
+	          		</p>
+		          	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+		        </div><!-- /.span -->
+		      </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
+        </div> 
+        <div class="item">
+        	<div class='bg pix p3'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+		      <div class="row carousel-row">
+		        <div class="offset2 span8">
+		        	<h3>Quick &amp; Easy Sharing </h3>
+			        <p>The hardest part about sharing is finding something worth sharing. 
+			        But thanks to our curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
+			        The rest is a piece of cake.
+			          </p>
+		          	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+		        </div><!-- /.span -->
+		      </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
+        </div> 
       </div>
+      
       <a class="left carousel-control" href="#features" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#features" data-slide="next">&rsaquo;</a>
-	  	<div class="pager center">
+	  	
+      <div class='fw-band footer'>
+      	<div class="carousel-pager center">
 			<div class="active">0</div>
-			<div>1</div>
+			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>
+        	<div class="container ">
+        		<div class="pull-left">Sign up for early access</div>	
+        		<div class="pull-right">Learn More</div>
+        	</div>
+        </div>  
     </div><!-- /.carousel -->
     <!-- Carousel
     ================================================== -->
-    <div id="how-it-works" class="carousel slide track-page-view">
+    <div id="how-it-works" class="featurette carousel slide track-page-view">
       <div class="carousel-inner">
         <div class="item active">
         	<div class='bg pix p4'></div>
@@ -393,21 +431,26 @@ by rating the ones you love.
 			FIRST_SECTION : '#help-me',
 			VIDEO_NAME : 'imagine',
 		}
-		CFG['carousel'] = { DISABLED: true};
+		CFG['carousel'] = { DISABLED: false};
 		
 		/*
 		 * dot paging for carousels
 		 */
 		var init_CarouselDotPaging = function(o) {
 			  // .carousel({ interval: 5000 }) 
-			o.bind('slid', function() { 
-			      var index = o.find(".active").index(); 
-			      o.find(".pager div").removeClass('active').eq(index).addClass('active'); 
+			o.bind('slid', function(e) { 
+				var pager = o.find(".carousel-pager"),
+					dots = pager.find("div");
+				var next = pager.attr('next') || 1;
+				dots.removeClass('active').eq(next).addClass('active'); 
+				if (++next >= dots.length) next = 0; 
+				pager.attr('next', next);
 			  }); 
 				
-		    o.find(".pager div").click(function(e){ 
+		    o.find(".carousel-pager div").click(function(e){ 
 		      var index = $(this).index(); 
 		      o.carousel(index);
+		      var pager = o.find(".carousel-pager").attr('next', index);
 		      e.preventDefault();
 		    }); 
 		}

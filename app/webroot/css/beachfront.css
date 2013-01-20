@@ -189,7 +189,7 @@
    .featurette {
    		position:relative;
    }
-   .featurette .bg , .carousel .bg {
+   .featurette .bg {
    		background-repeat: no-repeat;
 		background-color: #000000;
 		background-size: cover;
@@ -209,12 +209,12 @@
 	    width: 80%;
    }
    
-   .featurette .fw-band {
+   .fw-band {
    		position: absolute;
     	width: 100%;
     	left: 0;
    }
-   .featurette .fw-band .container > .center-w {
+   .fw-band .container > .center-div {
    		margin: 0 auto;
    		width: 500px;
    }
@@ -226,6 +226,9 @@
 	    font-size: 30px;
 	    line-height: 1;
 	    padding: 10px 0;
+   }
+   .footer > .container {
+   		padding: 0;
    }
    #help-me {
 	   	min-height: 700px;		/* section height */
@@ -315,10 +318,13 @@
       margin-bottom: 0;
       z-index: 1;
     }
+    
+    .carousel-inner .fw-band {
+    	top: 20%;
+    }
 
-    .carousel .container {
-      position: relative;
-      z-index: 9;
+    .carousel .carousel-inner .container {
+      padding: 20px 60px;		/* fit inside paging arrows */
     }
 
     .carousel-control {
@@ -331,7 +337,7 @@
     }
 
     .carousel .item {
-      height: 500px;
+      height: 650px;
     }
     .carousel .item > img {
       position: absolute;
@@ -344,9 +350,8 @@
     .carousel-caption {
       background-color: transparent;
       position: static;
+      padding: 0;
 /*      max-width: 550px;*/
-      padding: 0 20px;
-      margin-top: 200px;
     }
 
     .carousel-caption h1,
@@ -366,25 +371,28 @@
     }
 
 	
-	.carousel .pager {
-		position: absolute;
-		bottom: 10px;
-		width: 100%;
+	.carousel .carousel-pager {
+		bottom: 40px;			/* should be height of .fw-band.footer */
+	    font-size: 10px;
+	    line-height: 10px;
+	    margin-bottom: 20px;	/* margin above .fw-band.footer */
+	    position: absolute;
+	    width: 100%;
 	}
-	.carousel .pager div {
+	.carousel .carousel-pager div {
+		border: 3px solid #FFFFCE;
 		display: inline-block;
 		height: 10px;
 		width: 10px;
 		margin-right: 10px;
 		border-radius: 50%;
-		background: #ffaa00;
-		font-size: 1px;
-		color: #fff;
+		background: #FFFFCE;
+		color: #FFFFCE;
 		text-indent: -9999px;
 		cursor: pointer;
 	}
-	.carousel .pager  div.active {
-		background: #d47000;
+	.carousel .carousel-pager  div.active {
+		background-color: #d47000;
 	}
 
     /* MARKETING CONTENT
@@ -487,8 +495,7 @@
         height: 500px;
       }
       .carousel-caption {
-		margin-top: 100px;
-		}
+	  }
 
       .featurette {
         height: auto;

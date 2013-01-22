@@ -103,7 +103,6 @@
         <div class="item active">
         	<div class='bg pix p2'></div>
 				<div class="fw-band alpha70b">        	
-				
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -226,93 +225,157 @@ by rating the ones you love.
 		</div>
       </div>    
     
+    
+	
+	
+    <!-- Carousel: How It Works
+    ================================================== -->
     <div id="how-it-works" class="featurette carousel slide track-page-view">
+
       <div class="carousel-inner">
+      	
         <div class="item active">
-        	<div class='bg pix p4'></div>
-          <div class="container">
-          	<div class="carousel-caption">
-          		<h1>How It Works.</h1>
-          	</div>
-	<!-- Three columns of text below the carousel -->
-	      <div class="row carousel-row">
-	        <div class="span4">
-	<!--         	 ??? what is data-src for?  -->
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140">   -->
-	          <h3>Send Us Your Photos</h3>
-	          <p>Upload JPG photos from your photo archive - all of them. 
-	          	Don't bother searching for the good ones, that's why you're here. 
-	          	We'll take them by the thousands, and it takes less time than you think.</p>
-	        </div><!-- /.span4 -->
-	        <div class="span4">
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
-	          <h3>We'll Find The Good Stuff</h3>
-	          <p>We'll rate your photos and hide the duplicates. 
-	          	We use <em>people</em> to make the final decisions - trained editors.
-	          	</p>
-	          	<h4>It only costs you a penny a photo.</h4>
-	        </div><!-- /.span4 -->
-	        <div class="span4">
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
-	          <h3>And Build Your Timeline</h3>
-	          <p>We'll build your Curated Timeline, organized by events and marked by great photos.
-	          	It only takes a few great photos to connect you to your Story. 
-	          	We'll build your Stories, as well.
-	          	No more thumbnails - unless you ask for them.
-	          </p>
-	        </div><!-- /.span4 -->
-	      </div><!-- /.row -->          	
-          <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-          </div>
+        	<div class='bg pix p2'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+  <div class="row carousel-row">
+    <div class="offset5 span6">
+	    <div class="carousel-caption"><h1>Send Us Your Photos</h1></div>
+	    <p>
+With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10,000, 20,000, or over 100,000 shots! 
+Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>	    	
+	    </p>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
+  
+		          </div>
+				</div>          
         </div>
         <div class="item">
-        	<div class='bg pix p5'></div>
-          <div class="container">
-          	<div class="carousel-caption">
-          		<h1>How It Works (continued)</h1>
-          	</div>
-	<!-- Three columns of text below the carousel -->
-	      <div class="row carousel-row">
-	        <div class="span4">
-	<!--         	 ??? what is data-src for?  -->
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140">   -->
-	          <h3>Just Point Your Finger</h3>
-	          <p>Re-live and share your special moments with the touch of a finger. 
-	          	Always start with your top-rated photos - the good stuff is upfront. 
-	          	See the Big Picture before you see the thumbnails.
-	          	Move quickly across the years and re-connect with your photos.
-	          	Now that you see your Story, it's easy to share it.
-	          </p>
-	        </div><!-- /.span4 -->
-	        <div class="span4">
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
-	          <h3>You're in Control</h3>
-	          <p>Make changes as you see fit. Find that photo of Aunt Bertha you treasure and 
-	          	bump up the rating. 
-	          	Pick your own <em>Bestshot</em> from a stack of duplicates - you know, the one with your good side.
+        	<div class='bg pix p3'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+  <div class="row carousel-row">
+    <div class="offset2 span7">
+    	<div class="carousel-caption"><h1>We'll Find your Beautiful Photos</h1></div>
+    	<p>
+Our trained editors find the beautiful photos that are featured on your Timeline. 
+It may take awhile, but they'll actually rate all your photos and hide the duplicates just for you.
 	          	</p>
-	        </div><!-- /.span4 -->
-	        <div class="span4">
-<!-- 	          <img class="img-circle" data-src="holder.js/140x140"> -->
-	          <h3>Nothing is Wasted</h3>
-	          <p>No photo is ever thrown away, everything is there when you need it.
-	          	We just make it easier to start with the good stuff. 
-	          </p>
-	        </div><!-- /.span4 -->
-	      </div><!-- /.row -->          	
-          <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-          </div>
+	    <p>And yes, they are <u>real</u> people - who else can say that?</p>	
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
         </div>
-      </div>
-      <a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a>
-      <div class="pager center">
+        <div class="item">
+        	<div class='bg pix p4'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+  <div class="row carousel-row">
+    <div class="span7">
+    	<div class="carousel-caption"><h1>And Build Your Curated Timeline</h1></div>
+    	<p>
+You'll find all your photos organized on a stunning Curated Timeline marked by beautiful photos to make your precious moments easy to find. 
+</p>
+<p></p>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
+        </div> 
+        <div class="item">
+        	<div class='bg pix p5'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+  <div class="row carousel-row">
+    <div class="offset2 span8">
+    	<div class="carousel-caption"><h1>Just Push Your Finger to Play</h1></div>
+    	<p>Re-live and share your special moments on the iPad with the push of a finger.</p>
+    	<p>Quickly zoom across your Curated Timeline, jumping from moment to moment; 
+    		re-live those moments through beautiful Curated Stories; 
+    		and dive deep into your photo archives when you want to see everything.</p>
+ 		<p>We promise you'll see the Big Picture before you see the thumbnails.</p>
+ 		<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
+        </div> 
+        <div class="item">
+        	<div class='bg pix p3'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+  <div class="row carousel-row">
+    <div class="offset2 span8">
+    	<div class="carousel-caption"><h1>All this for just a penny a photo!</h1></div>
+        <p>There are many places to go to share your beautiful photos, but <u>someone</u> has to do the work to find them.
+        	If it's not going to be you, then let it be Snaphappi.</p>
+         <p>Only Snaphappi uses real people - trained photos editors - to sort through your photos. 	
+       	We think it's a small price to pay for all the time you'll save.
+          </p>
+      	
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
+        </div> 
+      </div> <!-- /.carousel-inner  -->
+<div><a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a></div>
+<div><a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a></div>	      
+	  	
+      <div class='fw-band footer'>
+      	<div class="carousel-pager center">
 			<div class="active">0</div>
-			<div>1</div>
+			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>
+        	<div class="container ">
+        		<div class="pull-left">Sign up for early access</div>	
+        		<div class="pull-right">Learn More</div>
+        	</div>
+        </div>  
     </div><!-- /.carousel -->
-
-
+    
+    
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->

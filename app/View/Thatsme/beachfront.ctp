@@ -24,8 +24,8 @@
             <a class="brand" href="/beachfront"><img src='/img/beachfront/snaphappi-logo-v2.png'></a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse pull-right">              <ul class="nav">
-                <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#help-me">Help Me</a></li>
-                <li data-toggle="collapse" data-target=".nav-collapse"><a href="#on-our-way" >On Our Way</a></li>
+                <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#home">Home</a></li>
+                <li data-toggle="collapse" data-target=".nav-collapse"><a href="#features" >Features</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#how-it-works" >How It Works</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#still-in-the-darkroom" >I Want It</a></li>
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
@@ -34,7 +34,7 @@
                   <ul class="dropdown-menu">
                   	<li data-toggle="collapse" data-target=".nav-collapse"><a href="#call-to-action">I Still Want It</a></li>
                   	<li class="divider"></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li class="divider"></li>
                     <li data-toggle="collapse" data-target=".nav-collapse"><a href="#see-the-movie">See the Movie Again</a></li>
@@ -62,8 +62,8 @@
     
 	<div id="fold"></div>
 	
-	  <a name='help-me'></a>
-      <div id="help-me" class="featurette connect track-page-view">
+	  <a name='home'></a>
+      <div id="home" class="featurette connect track-page-view">
       	<div class='bg pix p1'></div>
         <div class="fw-band body alpha70b">
 			<div class="container">
@@ -84,18 +84,19 @@
         </div>        
         <div class='fw-band footer'>
         	<div class="container ">
-        		<div class="pull-left">Sign up for early access</div>	
-        		<div class="pull-right">Learn More</div>
+        		<div class="pull-left"><a href='#still-in-the-darkroom'>Sign up for early access</a></div>	
+        		<div class="pull-right"><a href='#features'>Learn More</a></div>
         	</div>
         </div>
       </div>
 
-	<a name='features'></a>
+	
 	
 	
 	
     <!-- Carousel: Features
     ================================================== -->
+    <a name='features'></a>
     <div id="features" class="featurette carousel slide track-page-view">
 
       <div class="carousel-inner">
@@ -109,7 +110,6 @@
     <div class="offset5 span7">
 	    <div class="carousel-caption"><h1>Screened By Real Editors</h1></div>
 	    <p>Our trained editors find the beautiful photos that are featured on your Timeline. They'll rate all your photos and hide the duplicates just for you. We promise 100% privacy.</p>
-	    <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
     </div><!-- /.span -->
   </div><!-- /.row -->          	
   
@@ -143,7 +143,6 @@ Have fun zooming from moment to moment or diving deep to find other photos from 
     <div class="span7">
     	<div class="carousel-caption"><h1>Faster Uploads</h1></div>
     	<p>Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>
-      	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
     </div><!-- /.span -->
   </div><!-- /.row -->          	
 		          
@@ -158,7 +157,7 @@ Have fun zooming from moment to moment or diving deep to find other photos from 
   <div class="row carousel-row">
     <div class="offset7 span5">
     	<div class="carousel-caption"><h1>You're in Control</h1></div>
-    	<p>You have complete control. You can adjust the photos highlighted on your timeline
+    	<p>You have complete control. You can adjust the photos highlighted on your Timeline
 by rating the ones you love.
 	          		</p>
       	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
@@ -180,7 +179,6 @@ by rating the ones you love.
         But thanks to our curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
         The rest is a piece of cake.
           </p>
-      	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
     </div><!-- /.span -->
   </div><!-- /.row -->          	
 		          
@@ -197,8 +195,8 @@ by rating the ones you love.
 			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>
         	<div class="container ">
-        		<div class="pull-left">Sign up for early access</div>	
-        		<div class="pull-right">Learn More</div>
+        		<div class="pull-left"><a href='#still-in-the-darkroom'>Sign up for early access</a></div>	
+        		<div class="pull-right"><a href='#on-our-way'>Learn More</a></div>
         	</div>
         </div>  
     </div><!-- /.carousel -->
@@ -221,7 +219,12 @@ by rating the ones you love.
 					<a class="btn btn-large btn-warning" href="#">Send us $1 to cheer us on!</a>
 				</div>
 			</div>
-			<div class='fw-band footer'></div>
+			<div class='fw-band footer'>
+        	<div class="container ">
+        		<div class="pull-left"><a href='#still-in-the-darkroom'>Sign up for early access</a></div>	
+        		<div class="pull-right"><a href='#how-it-works'>Learn More</a></div>
+        	</div>
+        </div>
 		</div>
       </div>    
     
@@ -230,6 +233,7 @@ by rating the ones you love.
 	
     <!-- Carousel: How It Works
     ================================================== -->
+    <a name='how-it-works'></a>
     <div id="how-it-works" class="featurette carousel slide track-page-view">
 
       <div class="carousel-inner">
@@ -339,37 +343,14 @@ You'll find all your photos organized on a stunning Curated Timeline marked by b
 			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>
         	<div class="container ">
-        		<div class="pull-left">Sign up for early access</div>	
-        		<div class="pull-right">Learn More</div>
+        		<div class="pull-left"><a href='#still-in-the-darkroom'>Sign up for early access</a></div>	
+        		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>
         	</div>
         </div>  
     </div><!-- /.carousel -->
     
     
         
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -385,12 +366,17 @@ You'll find all your photos organized on a stunning Curated Timeline marked by b
 	  <a name='see-the-movie'></a>	
       <div id="see-the-movie" class="featurette the-movie">
       	<div class='bg'></div>
-      	<div class="container">
+      	<div class="container body">
 	        <h2 class="featurette-heading">See the Movie. <span class="muted">It'll knock your socks off.</span></h2>
 	        <div class='center'>
 	        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
 	        </div>
 	    </div>
+	    <div class='fw-band footer'>
+        	<div class="container ">
+        		<div class="pull-right"><a href='#still-in-the-darkroom'>I Want It</a></div>
+        	</div>
+        </div>
       </div>
 
 <!-- 	  <hr class="featurette-divider"> -->
@@ -474,19 +460,38 @@ You'll find all your photos organized on a stunning Curated Timeline marked by b
 			</div></div>
       </div>
 
-<!-- 	  <hr class="featurette-divider"> -->
-      
       <a name='tag-line'></a>
       <div id='tag-line' class="featurette tag-line">
       	<div class='bg pix p5'></div>
       	<div class="container">
       		<div class="wrap alpha50b">
         	<h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
+        	
         </div></div>
+        <div class='fw-band footer'>
+        	<div class="container ">
+        		<div class="pull-right">Next</div>
+        	</div>
+        </div>
       </div>
 	
-<!-- 	  <hr class="featurette-divider"> -->
 
+      <a name='about'></a>
+      <div id='about' class="featurette about track-page-view">
+      	<div class='bg pix p2'></div>
+      	<div class="container">
+      		<div class="wrap alpha50b">
+        	<h2 class="featurette-heading">About</h2>
+        	<p>
+At Snaphappi, we know that a single photo can launch a thousand happy memories. 
+But with a growing family and a hectic job, who has time to scroll through 30,000 thumbnails to find those best shots? 
+Your photos are not a to-do list.        		
+        	</p>
+        	<p>
+With Snaphappi’s personal photo concierge service, your digital photos are sorted, rated, and organized for you, saving you hours of time.
+        	</p>
+        </div></div>
+      </div>
       <!-- FOOTER -->
 <?php $this->Layout->blockStart('footer'); ?>      
       <footer>

@@ -35,7 +35,9 @@
 	    width: 1024px;
 	    z-index: 999;
 	}
-	
+	a, a:hover {
+		color: #000;
+	}
 	a.brand {
 		font-family: Helvetica,Arial,sans-serif;
 		color: #ffffff !important;
@@ -107,6 +109,13 @@
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#BFFFFFFF, endColorstr=#BFFFFFFF)";
 		
 	}
+	/*
+	 * ie only for alpha
+	 */
+	html.ie .alpha50b , html.ie .alpha75w {
+		background:transparent;			/* makes border-radius invisible, wrap?  */
+	}
+	
 		
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -195,6 +204,7 @@
    
    .featurette {
    		position:relative;
+   		min-height: 550px;
    }
    .featurette .bg {
    		background-repeat: no-repeat;
@@ -258,12 +268,12 @@
    }
    
    
-   #help-me {
+   #home {
 	   	min-height: 700px;		/* section height */
 	   	overflow: visible;
 	   	color: #FFFFFF;
    }
-   #help-me .fw-band.body .graphic {
+   #home .fw-band.body .graphic {
 		border: 1px solid white;
 	    border-radius: 10px 10px 10px 10px;
 	    display: inline-block;
@@ -274,7 +284,7 @@
 	    vertical-align: middle;
 	    width: 24%;
    }
-   #help-me .fw-band.body .muted {
+   #home .fw-band.body .muted {
    		color: #BBBBBB;
    		display: inline-block;
 	    line-height: 1;
@@ -284,7 +294,10 @@
    }
 
    
-
+   #on-our-way {
+   		height: 330px;
+   		min-height: auto;
+   }
    
    #on-our-way .bg {
    		background-color: #d47000;
@@ -294,12 +307,10 @@
 		height: 350px;
 		color: black;
 	} 
-	#on-our-way .fw-band.footer {
-	    height: 150px;
-	    z-index: -1;
-	  }	
+	
 	#on-our-way .container .wrap {
 		position: relative;		
+		z-index: 1;
 		background-color: #FFF;
 		margin: 0 20%;
 		width: auto;
@@ -314,16 +325,24 @@
 	#on-our-way a.btn {
 		color: #000;
 	}
+	#on-our-way .fw-band.footer {
+	    height: 150px;
+	    z-index: 0;
+	  }	
+	#on-our-way .fw-band.footer > .container {
+		bottom: 10px;
+	    height: auto;
+	    position: absolute;
+	    width: 100%;
+	  }	  
 	#see-the-movie .bg, #call-to-action .bg {
    		background-color: #ffaa00;
    }
-	html.ie .alpha50b , html.ie .alpha75w {
-		background:transparent;			/* makes border-radius invisible, wrap?  */
-	}
-	
-	
+   #about {
+   		color: #fff;
+   }
    
-   #see-the-movie .container {
+   #see-the-movie .body.container {
    		padding: 60px 0;
    }
    
@@ -351,8 +370,9 @@
     }
 
     .carousel .carousel-inner .container {
-      padding: 20px 60px;		/* fit inside paging arrows */
-      	min-height: 200px;
+      padding: 20px 0px;		
+      min-height: 200px;
+	  width: 80%;				/* fit inside paging arrows 10% */
     }
 
     .carousel-control {
@@ -571,18 +591,17 @@
 	.featurette .container {
       	width: 95%;
       }
-      .carousel .container {
-      	width: auto;
-      }
+      
       .carousel {
         margin-left: -20px;
         margin-right: -20px;
       }
-      .carousel .container {
-
-      }
       .carousel .item {
         height: 700px;
+      }
+      .carousel .carousel-inner .container {
+      	padding: 20px 50px;
+      	width: auto;
       }
       .carousel img {
         height: 300px;
@@ -599,7 +618,6 @@
         font-size: 18px;
       }
       .carousel .item {
-      	width: 80%;
       	padding: 0 10%;
       }
 
@@ -626,7 +644,10 @@
 		#fold {
 		    top: 320px;
 		    width: 480px;
-		}	
+		}
+		.featurette {
+			min-height: 350px;
+		}
 	}
 
 @media (max-width: 467px) {
@@ -636,6 +657,9 @@
 		}	
 	.carousel-caption {
 		margin-top: 60px;
+	}
+	.featurette {
+		min-height: 350px;
 	}
 	.featurette.the-movie iframe {
 	   	width: 90%;

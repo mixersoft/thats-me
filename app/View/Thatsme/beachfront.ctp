@@ -1,14 +1,10 @@
 <?php $this->Layout->blockStart('HEAD'); ?>
-	<meta property="og:title" content="Snaphappi - Your Photos, Ready to Play" />
+	<meta property="og:title" content="Snaphappi - Curated Family Photos" />
 	<meta property="og:type" content="company" />
-	<meta property="og:site_name" content="Snaphappi - Your Photos, Ready to Play" />
-	<meta property="og:description" content="Imagine your photos knew how good they were and 
-	<br>where they fit in the Big Picture.&nbsp;Imagine 
-	<br> <i>'Working'</i> with your photos was <i>'Play' again</i>.&nbsp;
-	<div>It's a snap with Snaphappi.</div>" />
+	<meta property="og:site_name" content="Snaphappi" />
+	<meta property="og:description" content="What will you do when you have 10K photos, how will you find those precious moments? <br> Put your phones on <i>our</i> To-do list and Play with your photos once again." />
 	<meta property="og:url" content="thats-me.snaphappi.com/" />
 	<meta property="og:image" content="https://launchrock-assets.s3.amazonaws.com/facebook-files/FXZVYWTV_1356050477938.jpg?_=1" />
-	
 	<link rel="stylesheet" href="/css/beachfront.css">
 <?php $this->Layout->blockEnd(); ?>
 
@@ -27,8 +23,7 @@
             </a>
             <a class="brand" href="/beachfront"><img src='/img/beachfront/snaphappi-logo-v2.png'></a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse  xxalpha65b pull-right">
-              <ul class="nav">
+            <div class="nav-collapse collapse pull-right">              <ul class="nav">
                 <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#help-me">Help Me</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#on-our-way" >On Our Way</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#how-it-works" >How It Works</a></li>
@@ -67,15 +62,23 @@
     
 	<div id="fold"></div>
 	
-	
 	  <a name='help-me'></a>
       <div id="help-me" class="featurette connect track-page-view">
       	<div class='bg pix p1'></div>
-        <div class="fw-band alpha70b">
+        <div class="fw-band body alpha70b">
 			<div class="container">
-				<div class="center-div">
-			        <h2 class="featurette-heading">Photo Curation <span class="muted">Fun & Easy. </span><br /> 
-			        <span  class="muted">Because it’s not work... it’s play.</span></h2>
+				<div class="offset1 span10">
+			        <h2 class="featurette-heading">Curated Family Photos</h2>
+			        <p>What will you do when you have 100,000 photos &middot; how will you find those precious moments?</p>
+			        <div style="position:relative">
+			        	<div class="graphic">Curated Timelines</div>
+			        	<div class="muted">with</div>
+			        	<div class="graphic">Beautiful Photos</div>
+			        	<div class="muted">picked by</div>
+			        	<div class="graphic">Trained Editors</div>
+			        </div>
+			        	
+			        <p>Put your photos on <u>our</u> To-do list and Play with your photos once again.</p>
 		        </div>
 		   </div>     
         </div>        
@@ -86,31 +89,21 @@
         	</div>
         </div>
       </div>
-<!--       <hr class="featurette-divider"> -->
-      <a name='on-our-way'></a>
-      <div id="on-our-way" class="featurette respond track-page-view">
-      	<div class='bg'></div>
-		<div class="container">
-			<h2 class="featurette-heading">Snaphappi is still in the darkroom <span class="">so we want to hear from you.</span></h2>
-			<div class="wrap ">
-				<div><p>"Sort through all my photos - at just a penny a photo? <span class="muted">Thats a Great idea!</span></p></div>
-				<div class="center">
-					<a class="btn btn-large btn-warning" href="#">Send us $1 to cheer us on!</a>
-				</div>
-			</div>
-			<div class='fw-band footer'></div>
-		</div>
-      </div>
 
 	<a name='features'></a>
-    <!-- Carousel
+	
+	
+	
+    <!-- Carousel: Features
     ================================================== -->
     <div id="features" class="featurette carousel slide track-page-view">
+
       <div class="carousel-inner">
       	
         <div class="item active">
         	<div class='bg pix p2'></div>
 				<div class="fw-band alpha70b">        	
+				
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -129,15 +122,15 @@
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
-		      <div class="row carousel-row">
-		        <div class="offset2 span7">
-		        	<div class="carousel-caption"><h1>Beautiful Memory Timeline</h1></div>
-		        	<p>Your most precious moments are highlighted in a stunning timeline, marked by top-rated photos. 
-	Have fun zooming from moment to moment or diving deep to find other photos from a point in your life.
-		          	</p>
-		          	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-		        </div><!-- /.span -->
-		      </div><!-- /.row -->          	
+  <div class="row carousel-row">
+    <div class="offset2 span7">
+    	<div class="carousel-caption"><h1>Beautiful Memory Timeline</h1></div>
+    	<p>Your most precious moments are highlighted in a stunning timeline, marked by top-rated photos. 
+Have fun zooming from moment to moment or diving deep to find other photos from a point in your life.
+	          	</p>
+      	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
 		          
 		          </div>
 				</div>          
@@ -147,13 +140,13 @@
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
-		      <div class="row carousel-row">
-		        <div class="span7">
-		        	<div class="carousel-caption"><h1>Faster Uploads</h1></div>
-		        	<p>Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>
-		          	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-		        </div><!-- /.span -->
-		      </div><!-- /.row -->          	
+  <div class="row carousel-row">
+    <div class="span7">
+    	<div class="carousel-caption"><h1>Faster Uploads</h1></div>
+    	<p>Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>
+      	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
 		          
 		          </div>
 				</div>          
@@ -163,15 +156,15 @@
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
-		      <div class="row carousel-row">
-		        <div class="offset7 span5">
-		        	<div class="carousel-caption"><h1>You're in Control</h1></div>
-		        	<p>You have complete control. You can adjust the photos highlighted on your timeline
+  <div class="row carousel-row">
+    <div class="offset7 span5">
+    	<div class="carousel-caption"><h1>You're in Control</h1></div>
+    	<p>You have complete control. You can adjust the photos highlighted on your timeline
 by rating the ones you love.
 	          		</p>
-		          	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-		        </div><!-- /.span -->
-		      </div><!-- /.row -->          	
+      	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
 		          
 		          </div>
 				</div>          
@@ -181,24 +174,23 @@ by rating the ones you love.
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
-		      <div class="row carousel-row">
-		        <div class="offset2 span8">
-		        	<h3>Quick &amp; Easy Sharing </h3>
-			        <p>The hardest part about sharing is finding something worth sharing. 
-			        But thanks to our curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
-			        The rest is a piece of cake.
-			          </p>
-		          	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-		        </div><!-- /.span -->
-		      </div><!-- /.row -->          	
+  <div class="row carousel-row">
+    <div class="offset2 span8">
+    	<div class="carousel-caption"><h1>Quick &amp; Easy Sharing</h1></div>
+        <p>The hardest part about sharing is finding something worth sharing. 
+        But thanks to our curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
+        The rest is a piece of cake.
+          </p>
+      	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
 		          
 		          </div>
 				</div>          
         </div> 
-      </div>
-      
-      <a class="left carousel-control" href="#features" data-slide="prev">&lsaquo;</a>
-      <a class="right carousel-control" href="#features" data-slide="next">&rsaquo;</a>
+      </div> <!-- /.carousel-inner  -->
+<div><a class="right carousel-control" href="#features" data-slide="next">&rsaquo;</a></div>
+<div><a class="left carousel-control" href="#features" data-slide="prev">&lsaquo;</a></div>	      
 	  	
       <div class='fw-band footer'>
       	<div class="carousel-pager center">
@@ -211,8 +203,29 @@ by rating the ones you love.
         	</div>
         </div>  
     </div><!-- /.carousel -->
+    
+    
+    
+    
+    
     <!-- Carousel
     ================================================== -->
+    
+      <a name='on-our-way'></a>
+      <div id="on-our-way" class="featurette respond track-page-view">
+      	<div class='bg'></div>
+		<div class="container">
+			<h2 class="featurette-heading">Snaphappi is still in the darkroom <span class="">and we need to hear from you.</span></h2>
+			<div class="wrap ">
+				<div><p>"Sort through all my photos - at just a penny a photo? <span class="muted">Thats a Great idea!</span></p></div>
+				<div class="center">
+					<a class="btn btn-large btn-warning" href="#">Send us $1 to cheer us on!</a>
+				</div>
+			</div>
+			<div class='fw-band footer'></div>
+		</div>
+      </div>    
+    
     <div id="how-it-works" class="featurette carousel slide track-page-view">
       <div class="carousel-inner">
         <div class="item active">
@@ -427,7 +440,7 @@ by rating the ones you love.
     <script type="text/javascript">
     	// update Global CFG
 		CFG['mixpanel'] = {
-			TRIGGER : 'overwhelmed',
+			TRIGGER : 'beachfront',
 			FIRST_SECTION : '#help-me',
 			VIDEO_NAME : 'imagine',
 		}
@@ -449,7 +462,7 @@ by rating the ones you love.
 				
 		    o.find(".carousel-pager div").click(function(e){ 
 		      var index = $(this).index(); 
-		      o.carousel(index);
+		      o.carousel({interval:false}).carousel(index);
 		      var pager = o.find(".carousel-pager").attr('next', index);
 		      e.preventDefault();
 		    }); 
@@ -465,8 +478,8 @@ by rating the ones you love.
 			if (timers[id]) return;	// already checking
 			
 			var DELAY = {
-				lingering:1000,
-				carousel:4000,
+				lingering : 1000,
+				carousel : 5000,
 			};
 			timers[id] = setTimeout(function() {
 				timers[id] = 0;
@@ -474,7 +487,7 @@ by rating the ones you love.
 					/* If the object is completely visible in the window, fade it in */
 					if (o.hasClass('activated')) return
 					else {
-						o.addClass('activated').carousel({ interval: DELAY['carousel'] });
+						o.addClass('activated').carousel({ interval: DELAY['carousel'], pause: 'hover'});
 					}
 				}
 			}, DELAY['lingering']);

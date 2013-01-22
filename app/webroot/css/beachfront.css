@@ -19,7 +19,8 @@
       padding-left: 0;
       padding-right: 0;
       padding-bottom: 40px;
-      color: #5a5a5a;
+      color: #5a5a5a; 
+      background-color: #FFFFCE;
     }
     
     h1, h2 {
@@ -28,7 +29,7 @@
     
 	#fold {
 		border-bottom: 1px solid red;
-	    height: 0;
+	    height: 5;
 	    position: fixed;
 	    top: 768px;
 	    width: 1024px;
@@ -186,6 +187,12 @@
    		position: relative;
    	 	top: -60px;				/* don't know why I need this */
    }
+    .fw-band {
+   		position: absolute;
+    	width: 100%;
+    	left: 0;
+   }
+   
    .featurette {
    		position:relative;
    }
@@ -194,12 +201,21 @@
 		background-color: #000000;
 		background-size: cover;
 		background-position: center center;
-		position:absolute;
-		z-index: -1;
-		width: 100%;
 		height: 100%;
-		top: 0px;    /* featurette .padding-top   REMOVE THIS */
+		left: 0;
+		position:absolute;
+		top: 0px;   
+		width: 100%;
+		z-index: -1;
    }
+   .featurette .fw-band.body {
+   		top: 33%;
+   }
+   
+   .featurette .fw-band.body p {
+   		font-size: 16px;
+   }
+   
    .featurette .wrap {
    		border-radius: 20px;
 	     -webkit-border-radius: 20px;
@@ -209,16 +225,6 @@
 	    width: 80%;
    }
    
-   .fw-band {
-   		position: absolute;
-    	width: 100%;
-    	left: 0;
-   }
-   .fw-band .container > .center-div {
-   		margin: 0 auto;
-   		width: 500px;
-   }
-      
    .featurette .footer {
    		background-color: #FFFFCE;
 	    bottom: 0;
@@ -230,11 +236,11 @@
    .footer > .container {
    		padding: 0;
    }
-   #help-me {
-	   	min-height: 700px;		/* section height */
-	   	overflow: visible;
-	   	color: #FFFFFF;
-   }
+   
+   
+   /*
+    * .bg.pix content
+    */
    .bg.pix.p1 {
    		background-image:url(/img/beachfront/bg-img-01.jpg);
    }
@@ -250,6 +256,34 @@
    .bg.pix.p5 {
    		background-image:url(/img/beachfront/bg-img-05.jpg);
    }
+   
+   
+   #help-me {
+	   	min-height: 700px;		/* section height */
+	   	overflow: visible;
+	   	color: #FFFFFF;
+   }
+   #help-me .fw-band.body .graphic {
+		border: 1px solid white;
+	    border-radius: 10px 10px 10px 10px;
+	    display: inline-block;
+	    font-size: 20px;
+	    margin: 20px 0;
+	    padding: 10px;
+	    text-align: center;
+	    vertical-align: middle;
+	    width: 24%;
+   }
+   #help-me .fw-band.body .muted {
+   		color: #BBBBBB;
+   		display: inline-block;
+	    line-height: 1;
+	    text-align: center;
+	    vertical-align: middle;
+	    width: 7%;
+   }
+
+   
 
    
    #on-our-way .bg {
@@ -288,14 +322,7 @@
 	}
 	
 	
-   #help-me.featurette .wrap {
-	    border-radius: 20px;
-	     -webkit-border-radius: 20px;
-	     -moz-border-radius: 20px;
-	    margin: 40px 20px 20px 60px;
-	    padding: 20px;
-	    width: 80%;
-   }
+   
    #see-the-movie .container {
    		padding: 60px 0;
    }
@@ -517,6 +544,12 @@
 
 
     @media (max-width: 767px) {
+    
+		#fold {
+		    top: 1024px;
+		    width: 768px;
+		}
+	    	
       .bounding-box {
       	position: fixed;
       	top: 0;
@@ -524,17 +557,22 @@
       .bounding-box.affix {
     	position: fixed;
       }
+      
 	  .navbar {
 	  	padding: 0;
 	  }
       .navbar  .navbar-inner {
-        margin: 0 0 0 -20px;	/* pull left to compensate for .body margin-left:20px */
         border-radius: 0;
       }
       .nav-collapse.collapse {
       	background-color: #eee;
       }
-
+	.featurette .container {
+      	width: 95%;
+      }
+      .carousel .container {
+      	width: auto;
+      }
       .carousel {
         margin-left: -20px;
         margin-right: -20px;
@@ -550,7 +588,6 @@
       }
       .carousel-caption {
         width: 100%;
-        padding: 0 40px;
         margin-top: 60px;
       }
       .carousel-caption h1 {
@@ -584,8 +621,18 @@
     
     }
 
+@media (max-width: 500px) {
+		#fold {
+		    top: 320px;
+		    width: 480px;
+		}	
+	}
 
 @media (max-width: 467px) {
+		#fold {
+		    top: 480px;
+		    width: 320px;
+		}	
 	.carousel-caption {
 		margin-top: 60px;
 	}

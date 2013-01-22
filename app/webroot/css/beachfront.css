@@ -295,7 +295,7 @@
 
    
    #on-our-way {
-   		height: 330px;
+   		height: 400px;
    		min-height: auto;
    }
    
@@ -345,7 +345,9 @@
    #see-the-movie .body.container {
    		padding: 60px 0;
    }
-   
+   #still-in-the-darkroom .container .btn-large {
+   		margin-bottom: 10px;
+   }
    #tag-line {
    		color: #d47000
    }

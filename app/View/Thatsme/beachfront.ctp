@@ -222,9 +222,9 @@ by rating the ones you love.
 		<div class="container">
 			<h2 class="featurette-heading">Snaphappi is still in the darkroom <span class="">and we need to hear from you.</span></h2>
 			<div class="wrap ">
-				<div><p>"Sort through all my photos - at just a penny a photo? <span class="muted">Thats a Great idea!</span></p></div>
+				<div><p>"A Penny a Photo for Trained Photo Editors and Curated Timelines? <span class="muted">Thats a Terrific idea!</span></p></div>
 				<div class="center">
-					<a class="btn btn-large btn-warning" href="#">Send us $1 to cheer us on!</a>
+					<a class="btn btn-large btn-warning" href="#">Donate $1 to cheer us on!</a>
 				</div>
 			</div>
 			<div class='fw-band footer'>

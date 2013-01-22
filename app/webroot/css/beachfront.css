@@ -20,7 +20,7 @@
       padding-right: 0;
       padding-bottom: 40px;
       color: #5a5a5a; 
-      background-color: #FFFFCE;
+      background-color: #E9C1C1;
     }
     
     h1, h2 {
@@ -208,7 +208,7 @@
    }
    .featurette .bg {
    		background-repeat: no-repeat;
-		background-color: #000000;
+		background-color: #E9C1C1;
 		background-size: cover;
 		background-position: center center;
 		height: 100%;
@@ -300,7 +300,7 @@
    }
    
    #on-our-way .bg {
-   		background-color: #d47000;
+   		background-color: #E9C1C1;
    }
 	#on-our-way .container {
 		padding-top: 40px;
@@ -336,7 +336,7 @@
 	    width: 100%;
 	  }	  
 	#see-the-movie .bg, #call-to-action .bg {
-   		background-color: #ffaa00;
+   		background-color: #E9C1C1;
    }
    #about {
    		color: #fff;

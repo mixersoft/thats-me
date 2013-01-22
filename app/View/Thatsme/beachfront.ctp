@@ -107,9 +107,13 @@
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset5 span7">
+    <div class="offset4">
 	    <div class="carousel-caption"><h1>Screened By Real Editors</h1></div>
-	    <p>Our trained editors find the beautiful photos that are featured on your Timeline. They'll rate all your photos and hide the duplicates just for you. We promise 100% privacy.</p>
+	    <p>
+No other photo service out there uses real people like we do. 
+Our trained photo editors hand-select the beautiful photos that are featured on your Timeline and hide duplicates just for you. 
+We promise 100% privacy.
+		</p>
     </div><!-- /.span -->
   </div><!-- /.row -->          	
   
@@ -123,10 +127,11 @@
 		          	
   <div class="row carousel-row">
     <div class="offset2 span7">
-    	<div class="carousel-caption"><h1>Beautiful Memory Timeline</h1></div>
-    	<p>Your most precious moments are highlighted in a stunning timeline, marked by top-rated photos. 
-Have fun zooming from moment to moment or diving deep to find other photos from a point in your life.
-	          	</p>
+    	<div class="carousel-caption"><h1>Beautiful Curated Timeline</h1></div>
+    	<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos.</p>
+<p>Quickly zoom across your Timeline, jumping from moment to moment; 
+    		re-live those moments through beautiful Curated Stories; 
+    		and dive deep into your photo archives when you want to see everything.</p>	          	
       	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
     </div><!-- /.span -->
   </div><!-- /.row -->          	
@@ -134,28 +139,49 @@ Have fun zooming from moment to moment or diving deep to find other photos from 
 		          </div>
 				</div>          
         </div>
+        
         <div class="item">
         	<div class='bg pix p4'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="span7">
+    <div class="span4">
     	<div class="carousel-caption"><h1>Faster Uploads</h1></div>
-    	<p>Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>
+    	<p>Our Uploader lets you upload up to 100x faster than other photo sites - we've seen speeds up to 3000 photos/hour.</p>
     </div><!-- /.span -->
   </div><!-- /.row -->          	
 		          
 		          </div>
 				</div>          
         </div> 
+        
+        <div class="item">
+        	<div class='bg pix p3'></div>
+				<div class="fw-band alpha70b">        	
+		          <div class="container">
+		          	
+  <div class="row carousel-row">
+    <div class="offset2 span8">
+    	<div class="carousel-caption"><h1>Share Loved Memories</h1></div>
+        <p>The hardest part about sharing is finding something worth sharing. 
+        But thanks to our Curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
+        The rest is a snap.
+          </p>
+    </div><!-- /.span -->
+  </div><!-- /.row -->          	
+		          
+		          </div>
+				</div>          
+        </div> 
+        
         <div class="item">
         	<div class='bg pix p5'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset7 span5">
+    <div class="span4">
     	<div class="carousel-caption"><h1>You're in Control</h1></div>
     	<p>You have complete control. You can adjust the photos highlighted on your Timeline
 by rating the ones you love.
@@ -166,25 +192,7 @@ by rating the ones you love.
 		          
 		          </div>
 				</div>          
-        </div> 
-        <div class="item">
-        	<div class='bg pix p3'></div>
-				<div class="fw-band alpha70b">        	
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="offset2 span8">
-    	<div class="carousel-caption"><h1>Quick &amp; Easy Sharing</h1></div>
-        <p>The hardest part about sharing is finding something worth sharing. 
-        But thanks to our curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
-        The rest is a piece of cake.
-          </p>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
-				</div>          
-        </div> 
+        </div>         
       </div> <!-- /.carousel-inner  -->
 <div><a class="right carousel-control" href="#features" data-slide="next">&rsaquo;</a></div>
 <div><a class="left carousel-control" href="#features" data-slide="prev">&lsaquo;</a></div>	      
@@ -265,8 +273,8 @@ Our Uploader lets you upload up to 100x faster than normal photo sites - we've s
     <div class="offset2 span7">
     	<div class="carousel-caption"><h1>We'll Find your Beautiful Photos</h1></div>
     	<p>
-Our trained editors find the beautiful photos that are featured on your Timeline. 
-It may take awhile, but they'll actually rate all your photos and hide the duplicates just for you.
+Our trained editors will find the beautiful photos that are featured on your Timeline. 
+It may take awhile, but they will rate all your photos and hide the duplicates just for you.
 	          	</p>
 	    <p>And yes, they are <u>real</u> people - who else can say that?</p>	
     </div><!-- /.span -->
@@ -386,12 +394,22 @@ You'll find all your photos organized on a stunning Curated Timeline marked by b
       	<div class='bg pix p2'></div>
       	<div class="container">
 	      	<div class="wrap alpha75w">
-	        <h2 class="featurette-heading">We're in the Darkroom <span class="muted">Still Developing...</span></h2>
-	        <p class="lead">We’re a small company working as fast as we can to develop our ideas, and 
-	        there's a lot of work to do before this story is ready to share.
-	        Our touch-friendly Timeline is still just a twinkle in our eye...</p>
-	        <p class="lead">Your support will help us build our team quickly and work a lot faster.</p>
-	        <a class="btn btn-large btn-primary" href="#call-to-action">I Still Want It</a> 
+	        <h2 class="featurette-heading">Still in the Darkroom</h2>
+	        <div class="row">
+	        	<div class="span4">
+	        <p class="lead">
+The Snaphappi team is working hard to develop this service for you. 
+Since we are still in the darkroom, you can help shape this service with your invaluable feedback.</p>
+			<a class="btn btn-large btn-success" href="#call-to-action">Sign Me Up</a> 
+	        	</div>
+	        	<div class="offset1 span4">
+			<p class="lead">
+Or, if you need this service ASAP, let us know! 
+Cheer us on by donating $1 to our favorite charity. You'll be telling us that a penny a photo for Trained Photo Editors and Curated Timelines is a terrific idea!
+	        </p>
+	        <a class="btn btn-large btn-primary" href="#call-to-action">I Want It ASAP</a> 
+	        </div>
+	        </div>
         </div></div>
       </div>
       
@@ -484,11 +502,13 @@ You'll find all your photos organized on a stunning Curated Timeline marked by b
         	<h2 class="featurette-heading">About</h2>
         	<p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
-But with a growing family and a hectic job, who has time to scroll through 30,000 thumbnails to find those best shots? 
-Your photos are not a to-do list.        		
+But with a growing family and a hectic job, who has time to scroll through 30,000 thumbnails to find your beautiful photos? 
+It's not going to to be an impersonal computer algorithm and it's not going to be you.        		
         	</p>
         	<p>
-With Snaphappi’s personal photo concierge service, your digital photos are sorted, rated, and organized for you, saving you hours of time.
+Only Snaphappi uses real photo editors to screen your family photos. 
+We'll rate your digital photos and hide duplicates, saving you hours of time. 
+Let us roll up our sleeves so you can just play.
         	</p>
         </div></div>
       </div>

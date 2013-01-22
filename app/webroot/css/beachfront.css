@@ -370,7 +370,7 @@
     }
 
     .carousel .carousel-inner .container {
-      padding: 20px 0px;		
+      padding: 60px 0px 20px;		
       min-height: 200px;
 	  width: 80%;				/* fit inside paging arrows 10% */
     }

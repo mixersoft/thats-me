@@ -5,7 +5,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="http://thats-me.snaphappi.com/beachfront" />
 	<meta property="og:image" content="http://thats-me.snaphappi.com/img/beachfront/snaphappi-logo-v2.png" />
-	<meta property="og:description" content="What will you do when you have 100,000 photos &middot; how will you find those precious moments? Curated Timelines with Beautiful Photos picked by Trained Editors. Put your photos on our To-do list and Play with your photos once again." />
+	<meta property="og:description" content="What do you do with your 10,000 photos &middot; how do you find those precious moments? Curated Timelines with Beautiful Photos picked by Trained Editors. Put your photos on our To-do list and Play with your photos once again." />
 	<meta property="og:site_name" content="Snaphappi" />
 	<meta property="fb:admins" content="214157" />	
 	<link rel="stylesheet" href="/css/beachfront.css">
@@ -72,7 +72,7 @@
 			<div class="container">
 				<div class="offset1 span10">
 			        <h2 class="featurette-heading">Curated Family Photos</h2>
-			        <p>What will you do when you have 100,000 photos &middot; how will you find those precious moments?</p>
+			        <p>What do you do with your 10,000 photos? How do you find those precious moments?</p>
 			        <div style="position:relative">
 			        	<div class="graphic">Curated Timelines</div>
 			        	<div class="muted">with</div>
@@ -475,31 +475,25 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 		</li>
 			        		<li>I want it so bad, I’ll prepay now</li>
 			        	</ul>
-			        	<p>I'll give you friends:</p>
-			        	<ul>
-			        		<li>Like this page</li>
-			        		<li>Tweet</li>
-			        		<li>Email my friends</li>
-			        		<li>Share on Facebook</li>
-			        	</ul>
 		        	</fieldset>
         	
 			</div></div>
       </div>
 
+      <a name='thank-you'></a>
       <a name='sharing'></a>
       <div id='sharing' class="featurette sharing">
       	<div class='bg pix p1'></div>
       	<div class="container">
       		<div class="wrap alpha70b">
-	        	<h2 class="featurette-heading .thank-you"><span class="thank-you hide">Thank You for Your Support and<br></span><span class="muted">Spread the Word!</span></h2>
-	        	<div class="row">
-	        		<div class="social-sharing span4">
+	        	<h2 class="featurette-heading .thank-you"><span class="thank-you hide">Thank You for Your Support<br></span><span class="muted">Spread the Word!</span></h2>
+	        	<div class="social-sharing">
 		        		<div class="fb-like" data-href="http://thats.me.snaphappi.com/beachfront" data-send="true" data-layout="button_count" data-width="225" data-show-faces="true" data-font="arial"></div>
 		        		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/beachfront" 
 		        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos.">Tweet</a>
 		        	</div>
-	        		<div class="span5"><p class="lead">You can also show your support by sharing Snaphappi will all your friends. We'd be very grateful.</p></div>
+	        	<div class="row">
+	        		<div class="offset4 span5"><p class="lead">You can also show your support by sharing Snaphappi will all your friends. We'd be very grateful.</p></div>
 	        	</div>
 	        	
 	        	
@@ -770,6 +764,11 @@ Let us roll up our sleeves so you can just play.
 		}
 		
 		! function($) {
+			if (window.location.hash == '#thank-you') {
+				// donation return 
+				$('#sharing .thank-you').removeClass('hide');
+			}
+			
 			$('.carousel').each(function(i, elem) {
 				init_CarouselDotPaging($(elem));
 			});
@@ -795,14 +794,13 @@ Let us roll up our sleeves so you can just play.
 			
 		}(window.jQuery);
 
-		// facebook javascript jdk 				(function() {  //Closure, to not leak to the scope
-			
+				(function() {  //Closure, to not leak to the scope
+			// facebook javascript jdk 		
 			!function(d, s, id) {
 				  var js, fjs = d.getElementsByTagName(s)[0];
 				  if (d.getElementById(id)) return;
 				  js = d.createElement(s); js.id = id;
-				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";
-				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 				  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk');
 			

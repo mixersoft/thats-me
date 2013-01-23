@@ -276,7 +276,7 @@
 	    width: 24%;
    }
    #home .fw-band.body .muted {
-   		color: #BBBBBB;
+   		color: #CCC;
    		display: inline-block;
 	    line-height: 1;
 	    text-align: center;
@@ -354,6 +354,9 @@
    #sharing .lead {
    		color: #fff;
    } 
+   #sharing .social-sharing {
+   		position:absolute;
+   }
    #sharing .twitter-share-button {
    		vertical-align: top;
    }

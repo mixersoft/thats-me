@@ -38,15 +38,6 @@
 	a, a:hover {
 		color: #000;
 	}
-	a.brand {
-		font-family: Helvetica,Arial,sans-serif;
-		color: #ffffff !important;
-		font-weight: normal !important;
-	}
-	a.brand span {
-		color: #D47000;
-		font-weight: bold !important;
-	}
 /*	 http://mktgdept.com/ios-position-fixed-bug */
 	.iosfix {
 	  height: 101%;
@@ -429,6 +420,7 @@
       margin: 0;
       line-height: 1.25;
       color: #fff;
+      font-weight: 300;
       text-shadow: 0 1px 1px rgba(0,0,0,.4);
     }
     .carousel-caption .btn {

@@ -89,6 +89,7 @@
 			mixpanel.init("22ee941178e2f8bb1702c92f84cf91b2");
 		</script>
 		<!-- end Mixpanel -->       	
+		<script src="/js/vendor/jquery.scrollTo-1.4.3.1-min.js"></script>
 		<script src="/js/main.js"></script>
         <?php $this->Layout->output($this->viewVars['javascript_for_layout']); ?>
         

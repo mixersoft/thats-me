@@ -222,7 +222,7 @@ by rating the ones you love.
 		<div class="container">
 			<h2 class="featurette-heading">Snaphappi is still in the darkroom <span class="">and we need to hear from you.</span></h2>
 			<div class="wrap ">
-				<div><p>"A Penny a Photo for Trained Photo Editors and Curated Timelines? <span class="muted">Thats a Terrific idea!</span></p></div>
+				<div><p>"Curated Timelines featuring Beautiful Photos picked by Trained Photo Editors &mdash; for only a Penny a Photo? <span class="muted">Thats a Terrific idea!</span></p></div>
 				<div class="center">
 					<a class="btn btn-large btn-warning" href="#">Donate $1 to cheer us on!</a>
 				</div>
@@ -398,19 +398,22 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
       	<div class="container">
 	      	<div class="wrap alpha75w">
 	        <h2 class="featurette-heading">Still in the Darkroom</h2>
+	        <p class="lead">
+We're working hard to build Snaphappi into a service you never knew you needed but can't live without. 
+</p>	        	
+
 	        <div class="row">
 	        	<div class="span4">
-	        		<p class="lead">
-The Snaphappi team is working hard to develop this service for you. 
-Since we are still in the darkroom, you can help shape this service with your invaluable feedback.</p>
+<p class="lead">
+While we are still in the darkroom, you have a great opportunity to help shape this service with your early participation and invaluable feedback.</p>
 					<a class="btn btn-large btn-success" href="#call-to-action">Sign Me Up</a> 
 	        	</div>
-	        	<div class="offset1 span4">
+	        	<div class="span5">
 					<p class="lead">
-Or, if you need this service ASAP, let us know! 
-Cheer us on by donating $1 to our favorite charity. You'll be telling us that a penny a photo for Trained Photo Editors and Curated Timelines is a terrific idea!
+But if you need this service ASAP, <b>let us know!</b> 
+We need your vocal support and by donating $1 to our favorite charity you'll be cheering us on through those long sleepless nights. 
 	        		</p>
-	        		<a class="btn btn-large btn-primary" href="#call-to-action">I Want It ASAP</a> 
+	        		<a class="btn btn-large btn-primary" href="#call-to-action">I Want It ASAP!</a> 
 	        	</div>
 	        </div>
         </div></div>
@@ -603,6 +606,12 @@ Let us roll up our sleeves so you can just play.
 	        </div>
 	       <div class="faq-section">	
 	        	<h2>Platforms &amp Systems</h2>
+				<p class="question">
+	Why is the Curated Timeline only available as an iPad App?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>	        	
 	        	<p class="question">
 	How do I upload my 10,000+ photos to Snaphappi?	        		
 	        	</p>
@@ -745,7 +754,14 @@ Let us roll up our sleeves so you can just play.
 				});
 			});
 			
-	
+			$('a').bind('click', function(e) {
+				var target = this.hash;
+				if (target) {
+			        e.preventDefault();
+			        console.log(target);
+			        $.scrollTo(target, 500);
+			    }
+		   });
 			
 			
 			

@@ -296,7 +296,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 </p>
 		<p>Your timeline is organized using automatic event detection to make your moments easy to find and 
 			we'll highlight your events with beautiful photos to make it a joy to use. 
-		<p>Your Story is ready to play.</p>
+		<p>Your photos are ready to play.</p>
 <p></p>
     </div><!-- /.span -->
   </div><!-- /.row -->          	

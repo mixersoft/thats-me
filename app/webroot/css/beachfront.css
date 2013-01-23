@@ -340,14 +340,25 @@
    #still-in-the-darkroom .container .btn-large {
    		margin-bottom: 10px;
    }
-   #tag-line {
+   #tag-line, #sharing {
    		color: #d47000
    }
-   #tag-line .bg.pix {
+   #tag-line .bg.pix , #sharing  .bg.pix{
    		height: 550px;
    }
+   
+   #sharing > .container {
+/*   		for fb widget overflow */
+   		height: 400px;				
+   }
+   #sharing .lead {
+   		color: #fff;
+   } 
+   #sharing .twitter-share-button {
+   		vertical-align: top;
+   }
  	
- 	#tag-line span.muted {
+ 	#tag-line span.muted, #sharing span.muted{
    		color: #ffaa00
    }
  	#call-to-action {

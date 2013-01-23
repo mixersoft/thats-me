@@ -1,10 +1,13 @@
-<?php $this->Layout->blockStart('HEAD'); ?>
-	<meta property="og:title" content="Snaphappi - Curated Family Photos" />
-	<meta property="og:type" content="company" />
+<?php 
+	$this->set("title_for_layout","Snaphappi &middot; Curated Family Photos");
+	$this->Layout->blockStart('HEAD'); ?>
+	<meta property="og:title" content="Snaphappi &middot; Curated Family Photos" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://thats-me.snaphappi.com/beachfront" />
+	<meta property="og:image" content="http://thats-me.snaphappi.com/img/beachfront/snaphappi-logo-v2.png" />
+	<meta property="og:description" content="What will you do when you have 100,000 photos &middot; how will you find those precious moments? Curated Timelines with Beautiful Photos picked by Trained Editors. Put your photos on our To-do list and Play with your photos once again." />
 	<meta property="og:site_name" content="Snaphappi" />
-	<meta property="og:description" content="What will you do when you have 10K photos, how will you find those precious moments? <br> Put your phones on <i>our</i> To-do list and Play with your photos once again." />
-	<meta property="og:url" content="thats-me.snaphappi.com/" />
-	<meta property="og:image" content="https://launchrock-assets.s3.amazonaws.com/facebook-files/FXZVYWTV_1356050477938.jpg?_=1" />
+	<meta property="fb:admins" content="214157" />	
 	<link rel="stylesheet" href="/css/beachfront.css">
 <?php $this->Layout->blockEnd(); ?>
 
@@ -484,6 +487,30 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 			</div></div>
       </div>
 
+      <a name='sharing'></a>
+      <div id='sharing' class="featurette sharing">
+      	<div class='bg pix p1'></div>
+      	<div class="container">
+      		<div class="wrap alpha70b">
+	        	<h2 class="featurette-heading .thank-you"><span class="thank-you hide">Thank You for Your Support and<br></span><span class="muted">Spread the Word!</span></h2>
+	        	<div class="row">
+	        		<div class="social-sharing span4">
+		        		<div class="fb-like" data-href="http://thats.me.snaphappi.com/beachfront" data-send="true" data-layout="button_count" data-width="225" data-show-faces="true" data-font="arial"></div>
+		        		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/beachfront" 
+		        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos.">Tweet</a>
+		        	</div>
+	        		<div class="span5"><p class="lead">You can also show your support by sharing Snaphappi will all your friends. We'd be very grateful.</p></div>
+	        	</div>
+	        	
+	        	
+        	</div>
+        </div>
+        <div class='fw-band footer'>
+        	<div class="container ">
+        	</div>
+        </div>
+      </div>
+
       <a name='tag-line'></a>
       <div id='tag-line' class="featurette tag-line">
       	<div class='bg pix p5'></div>
@@ -513,7 +540,8 @@ It's not going to to be an impersonal computer algorithm and it's not going to b
         	</p>
         	<p>
 Only Snaphappi uses real photo editors to screen your family photos. 
-We'll rate your digital photos and hide duplicates, saving you hours of time. 
+We'll find your beautiful photos and hide duplicates, 
+saving you hours of time and making fun and easy to re-live your precious moments. 
 Let us roll up our sleeves so you can just play.
         	</p>
         </div></div>
@@ -675,6 +703,7 @@ Let us roll up our sleeves so you can just play.
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
+      <div id="fb-root"></div>
 <?php $this->Layout->blockEnd(); ?>
 
 
@@ -764,7 +793,24 @@ Let us roll up our sleeves so you can just play.
 		   });
 			
 			
+		}(window.jQuery);
+
+		// facebook javascript jdk 				(function() {  //Closure, to not leak to the scope
 			
-		}(window.jQuery)
+			!function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";
+				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk');
+			
+			// twitter
+			!function(d,s,id){
+				var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
+			}(document,"script","twitter-wjs");
+			
+		})();  
     </script>
 <?php $this->Layout->blockEnd(); ?>

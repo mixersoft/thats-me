@@ -323,9 +323,10 @@
 	#on-our-way .fw-band.footer > .container {
 		bottom: 10px;
 	    height: auto;
-	    position: absolute;
-	    width: 100%;
-	  }	  
+	    margin-top: 80px;
+/*	    position: absolute;
+	    width: 100%;*/	  
+	}	  
 	#see-the-movie .bg, #call-to-action .bg {
    		background-color: #E9C1C1;
    }

@@ -35,7 +35,7 @@
                   	<li data-toggle="collapse" data-target=".nav-collapse"><a href="#call-to-action">I Still Want It</a></li>
                   	<li class="divider"></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#FAQ">FAQ</a></li>
                     <li class="divider"></li>
                     <li data-toggle="collapse" data-target=".nav-collapse"><a href="#see-the-movie">See the Movie Again</a></li>
                     <li><a href="#">Playground</a></li>
@@ -292,8 +292,11 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
     <div class="span7">
     	<div class="carousel-caption"><h1>And Build Your Curated Timeline</h1></div>
     	<p>
-You'll find all your photos organized on a stunning Curated Timeline marked by beautiful photos to make your precious moments easy to find. 
+You'll find all your photos on a stunning Curated Timeline to make your precious moments easy to find and a joy to use. 
 </p>
+		<p>Your timeline is organized using automatic event detection to make your moments easy to find and 
+			we'll highlight your events with beautiful photos to make it a joy to use. 
+		<p>Your Story is ready to play.</p>
 <p></p>
     </div><!-- /.span -->
   </div><!-- /.row -->          	
@@ -397,18 +400,18 @@ You'll find all your photos organized on a stunning Curated Timeline marked by b
 	        <h2 class="featurette-heading">Still in the Darkroom</h2>
 	        <div class="row">
 	        	<div class="span4">
-	        <p class="lead">
+	        		<p class="lead">
 The Snaphappi team is working hard to develop this service for you. 
 Since we are still in the darkroom, you can help shape this service with your invaluable feedback.</p>
-			<a class="btn btn-large btn-success" href="#call-to-action">Sign Me Up</a> 
+					<a class="btn btn-large btn-success" href="#call-to-action">Sign Me Up</a> 
 	        	</div>
 	        	<div class="offset1 span4">
-			<p class="lead">
+					<p class="lead">
 Or, if you need this service ASAP, let us know! 
 Cheer us on by donating $1 to our favorite charity. You'll be telling us that a penny a photo for Trained Photo Editors and Curated Timelines is a terrific idea!
-	        </p>
-	        <a class="btn btn-large btn-primary" href="#call-to-action">I Want It ASAP</a> 
-	        </div>
+	        		</p>
+	        		<a class="btn btn-large btn-primary" href="#call-to-action">I Want It ASAP</a> 
+	        	</div>
 	        </div>
         </div></div>
       </div>
@@ -512,6 +515,151 @@ Let us roll up our sleeves so you can just play.
         	</p>
         </div></div>
       </div>
+      
+      
+	
+
+      <a name='FAQ'></a>
+      <div id='FAQ' class="featurette FAQ track-page-view">
+      	<div class='bg'></div>
+      	<div class="container">
+      		<div class="wrap alpha70b center">
+	        	<h1 class="featurette-heading">Frequently Asked Questions</h1>
+	       </div>
+	       <div class="faq-section">
+	        	<h2>Photo Editing</h2>
+	        	<p class="question">
+	How do you know which photos are beautiful?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	How do you build the Curated Timeline?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	How do you find events?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>	        	
+	        	<p class="question">
+	How do you find duplicates?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+				<p class="question">
+	What about face detection?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>        	
+	        	<p class="question">
+	How long does it take for your Editors to screen my photos?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	How much does it cost?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	       </div>
+	       <div class="faq-section"> 	
+	        	<h2>Privacy &amp; Sharing</h2>
+	        	<p class="question">
+	What about the safety and privacy of my photos?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	What about sharing photos?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+			</div>
+	       <div class="faq-section">	
+				<h2>Darkroom &amp; Launch</h2>
+				<p class="question">
+	Why do you want $1 from me?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+				<p class="question">
+	When will your service be ready?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        </div>
+	       <div class="faq-section">	
+	        	<h2>Platforms &amp Systems</h2>
+	        	<p class="question">
+	How do I upload my 10,000+ photos to Snaphappi?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+				<p class="question">
+	How long does it take to upload 10,000 photos?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	How and where are my photos stored?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	What about the originals?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	
+	        	<p class="question">
+	What platforms do you support?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	What file types do you support?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	What about the photos on my smartphone?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>
+	        	<p class="question">
+	What about my photos on Facebook/Flickr/Instagram/Picasaweb/iCloud/etc?	        		
+	        	</p>
+	        	<p class="answer">
+	Answer.        		
+	        	</p>	        		        	
+	        </div>
+	        <div class='fw-band footer'>
+	        	<div class="container ">
+	        		<div class="pull-right"><a href='#still-in-the-darkroom'>I Want It</a></div>
+	        	</div>
+	        </div>
+        </div>
+      </div>      
       <!-- FOOTER -->
 <?php $this->Layout->blockStart('footer'); ?>      
       <footer>
@@ -537,7 +685,9 @@ Let us roll up our sleeves so you can just play.
 		/*
 		 * dot paging for carousels
 		 */
+		var FIND = {c:{}};
 		var init_CarouselDotPaging = function(o) {
+			FIND['c'][o.attr("id")] = o;
 			  // .carousel({ interval: 5000 }) 
 			o.bind('slid', function(e) { 
 				var pager = o.find(".carousel-pager"),

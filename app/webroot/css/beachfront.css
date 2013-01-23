@@ -361,6 +361,26 @@
  	#call-to-action {
  		padding: 60px 0;
  	}
+ 	#FAQ .container {
+ 		padding-top: 20px;
+ 	}
+ 	#FAQ .featurette-heading {
+ 		color: #FFF;
+ 	}
+ 	#FAQ .question {
+ 		color: #000000;
+	    font-size: 16px;
+	    font-weight: bold;
+	    line-height: 1;
+	    margin: 8px 0 4px
+ 	}
+ 	
+ 	#FAQ .answer {
+ 		color: #5A5A5A;
+ 		font-weight: normal;
+ 	}
+
+ 	
     /* Carousel base class */
     .carousel {
       margin-bottom: 0;

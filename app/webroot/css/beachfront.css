@@ -243,19 +243,19 @@
     * .bg.pix content
     */
    .bg.pix.p1 {
-   		background-image:url(/img/beachfront/bg-img-01.jpg);
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-01.jpg);
    }
    .bg.pix.p2 {
-   		background-image:url(/img/beachfront/bg-img-02.jpg);
+   		background-image:url(http://snappi1.snaphappi.com/static/css/bootstrap/img/bg-img-02.jpg);
    }
    .bg.pix.p3 {
    		background-image:url(/img/beachfront/bg-img-03.jpg);
    }
    .bg.pix.p4 {
-   		background-image:url(/img/beachfront/bg-img-04.jpg);
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-04.jpg);
    }
    .bg.pix.p5 {
-   		background-image:url(/img/beachfront/bg-img-05.jpg);
+   		background-image:url(http://snappi1.snaphappi.com/static/css/bootstrap/img/bg-img-05.jpg);
    }
    
    
@@ -498,6 +498,15 @@
 
 	#footer {
 		margin: 0 20px;	
+	}
+	
+	#footer .cakephp {
+		background: url("/img/cake.power.gif") repeat scroll 0 0 transparent;
+	    display: inline-block;
+	    height: 13px;
+	    margin-left: 10px;
+	    vertical-align: middle;
+	    width: 98px;
 	}
 
     /* Featurettes

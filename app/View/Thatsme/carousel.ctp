@@ -120,6 +120,10 @@
     .carousel {
       margin-bottom: 60px;
     }
+    
+    .carousel:hover {
+    	opacity: 0.5;
+    }
 
     .carousel .container {
       position: relative;
@@ -421,7 +425,8 @@
       !function ($) {
         $(function(){
           // carousel demo
-          // $('#myCarousel').carousel()
+          $('#myCarousel').carousel({interval:1000})
+
         })
       }(window.jQuery)
     </script>

@@ -11,10 +11,10 @@
         <title><?php echo $title_for_layout; ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- 	<link rel="stylesheet" href="/css/cake.generic.css"> -->
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/fonts.css">
+        
+		<link rel="stylesheet" href="/css/fonts.css">
+<!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
+        <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/static/css/bootstrap/bootstrap.min.css" />
    		<style>
             body {
                 padding-top: 0px;
@@ -22,10 +22,11 @@
             }
         </style>
         <script type="text/javascript">CFG = {};</script>
-        <link rel="stylesheet" href="/css/bootstrap-responsive.css">
+<!-- <link rel="stylesheet" href="/css/bootstrap-responsive.css"> -->
+        <link type="text/css" rel="stylesheet" href="http://snappi1.snaphappi.com/min/f=static/css/bootstrap/bootstrap-responsive.css" />
         <link rel="stylesheet" href="/css/main.css">
-
-        <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<!-- <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script> -->
+        <script src="http://snappi.snaphappi.com/static/js/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         
         <?php $this->Layout->output($this->viewVars['HEAD_for_layout']); ?>
         
@@ -51,24 +52,21 @@
 			<div id="footer">
 				<?php $this->Layout->output($this->viewVars['footer_for_layout']); ?>
 				<p>&copy; 2013 Snaphappi Inc.
-				<?php echo $this->Html->link(
-						$this->Html->image('cake.power.gif', array('border' => '0')),
-						'http://www.cakephp.org/',
-						array('target' => '_blank', 'escape' => false)
-					);
-				?></p>
+					<a class="cakephp" target="_blank" href="http://www.cakephp.org/">
+						
+					</a>
+				</p>
 			</div>
 		</div> <!-- /container -->
 		<?php echo $this->element('sql_dump'); ?>
         
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.3.min.js"><\/script>')</script>
+<!-- <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.3.min.js"><\/script>')</script>  -->       
+        <script>window.jQuery || document.write('<script src="http://snappi.snaphappi.com/static/js/bootstrap/jquery-1.8.3.min.js"><\/script>')</script>
 
-        <script src="/js/vendor/bootstrap.js"></script>
-		<script src="http://www.youtube.com/iframe_api"></script>
-        
-
+<!-- <script src="/js/vendor/bootstrap.js"></script> -->
+		<script type="text/javascript" src="http://snappi.snaphappi.com/min/f=static/js/bootstrap/bootstrap.js"></script>
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-4086550-2']);
@@ -88,8 +86,10 @@
 			[]);
 			mixpanel.init("22ee941178e2f8bb1702c92f84cf91b2");
 		</script>
-		<!-- end Mixpanel -->       	
-		<script src="/js/vendor/jquery.scrollTo-1.4.3.1-min.js"></script>
+		<!-- end Mixpanel --> 
+		<script src="http://www.youtube.com/iframe_api"></script>
+<!-- <script src="/js/vendor/jquery.scrollTo-1.4.3.1-min.js"></script>      	 -->
+		<script src="http://snappi.snaphappi.com/static/js/bootstrap/jquery.scrollTo-1.4.3.1-min.js"></script>
 		<script src="/js/main.js"></script>
         <?php $this->Layout->output($this->viewVars['javascript_for_layout']); ?>
         

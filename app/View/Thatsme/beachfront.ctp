@@ -30,18 +30,15 @@
                 <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#home">Home</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#features" >Features</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#how-it-works" >How It Works</a></li>
-                <li data-toggle="collapse" data-target=".nav-collapse"><a href="#still-in-the-darkroom" >I Want It</a></li>
+                <li data-toggle="collapse" data-target=".nav-collapse"><a href="#call-to-action" >I Want It</a></li>
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                  	<li data-toggle="collapse" data-target=".nav-collapse"><a href="#call-to-action">I Still Want It</a></li>
-                  	<li class="divider"></li>
+                  	<li><a href="#see-the-movie">See the Movie Again</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#FAQ">FAQ</a></li>
-                    <li class="divider"></li>
-                    <li data-toggle="collapse" data-target=".nav-collapse"><a href="#see-the-movie">See the Movie Again</a></li>
-                    <li><a href="#">Playground</a></li>
+                    <li class='hide'><a href="#">Playground</a></li>
                   </ul>
                 </li>
               </ul>
@@ -87,7 +84,7 @@
         </div>        
         <div class='fw-band footer'>
         	<div class="container ">
-        		<div class="pull-left"><a href='#still-in-the-darkroom'>Sign up for early access</a></div>	
+        		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#features'>Learn More</a></div>
         	</div>
         </div>
@@ -206,7 +203,7 @@ by rating the ones you love.
 			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>
         	<div class="container ">
-        		<div class="pull-left"><a href='#still-in-the-darkroom'>Sign up for early access</a></div>	
+        		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#on-our-way'>Learn More</a></div>
         	</div>
         </div>  
@@ -232,7 +229,7 @@ by rating the ones you love.
 			</div>
 			<div class='fw-band footer'>
         	<div class="container ">
-        		<div class="pull-left"><a href='#still-in-the-darkroom'>Sign up for early access</a></div>	
+        		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#how-it-works'>Learn More</a></div>
         	</div>
         </div>
@@ -357,7 +354,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>
         	<div class="container ">
-        		<div class="pull-left"><a href='#still-in-the-darkroom'>Sign up for early access</a></div>	
+        		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>
         	</div>
         </div>  
@@ -388,15 +385,15 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 	    </div>
 	    <div class='fw-band footer'>
         	<div class="container ">
-        		<div class="pull-right"><a href='#still-in-the-darkroom'>I Want It</a></div>
+        		<div class="pull-right"><a href='#call-to-action'>I Want It</a></div>
         	</div>
         </div>
       </div>
 
 <!-- 	  <hr class="featurette-divider"> -->
       
-      <a name='still-in-the-darkroom'></a>
-      <div id='still-in-the-darkroom' class="featurette still-in-the-darkroom">
+      <a name='call-to-action'></a>
+      <div id='call-to-action' class="featurette call-to-action">
       	<div class='bg pix p2'></div>
       	<div class="container">
 	      	<div class="wrap alpha75w">
@@ -415,7 +412,7 @@ While we are still in the darkroom, you have a great opportunity to help shape t
 	        	</div>
 	        	<div class="span5 donate">
 					<p class="lead">
-But if you need this service ASAP, <b>let us know!</b> 
+But if you want this service ASAP, <b>let us know!</b> 
 We need your vocal support and by donating $1 to our favorite charity you'll be cheering us on through those long sleepless nights. 
 	        		</p>
 	        		<a class="btn btn-large btn-success" href="#" onclick='return SHOW_DONATE();'>I Want It ASAP!</a>
@@ -457,68 +454,6 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
         </div></div>
       </div>
       
-<!--       <hr class="featurette-divider"> -->
-      
-	  <a name='call-to-action'></a>	
-      <div id="call-to-action" class="featurette call-to-action track-page-view">
-      	<div class='bg pix p1'></div>
-      	<div class="container">
-	      	<div class="wrap alpha75w">
-		        <h2 class="featurette-heading">I Still Want It. <span class="muted">Count Me In.</span></h2>
-		        <p class="lead">You've got me. I want this. I need this. What can I do to get this ASAP?</p>
-		        <p>Your vocal support will make it easier for us to attract talented developers and rich investors. 
-		        	We appreciate your willingness to stand up and be counted.</p>
-		        <fieldset >	
-		        	<legend>Count Me In</legend>
-			        <p>Here’s my email, keep me posted</p>
-			        	<form class="navbar-form">
-			                <input class="span2" type="text" placeholder="Email">
-			                <button type="submit" class="btn btn-primary">Submit</button>
-			            </form>
-			            <br />
-			            <p>I'll give you my time:</p>
-			        	<ul>
-			        		<li>I want an invite to join the private beta</li>
-			        		<li>contact me, I will join your “focus group”</li>
-			        	</ul>
-			        	<p>I'll give you money:</p>
-			        	<ul>
-			        		<li>I’ll chip in $1 just so you know I’m serious
-		<!--  Payal 	        			 -->
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate $1 with PayPal - The safer, easier way to pay online!">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate $1 with PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-
-		<!--  Amazon Simple Pay  https://payments.amazon.com/sdui/sdui/standardbuttoncreate -->
-<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post" title="Donate $1 with Amazon Payments">
-  <input type="hidden" name="returnUrl" value="http://thats-me.snaphappi.com/i-need-this#thank-you" >
-  <input type="hidden" name="ipnUrl" value="http://thats-me.snaphappi.com/donate/Amazon_IPN" >
-  <input type="hidden" name="processImmediate" value="1" >
-  <input type="hidden" name="signatureMethod" value="HmacSHA256" >
-  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
-  <input type="hidden" name="collectShippingAddress" value="0" >
-  <input type="hidden" name="isDonationWidget" value="0" >
-  <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
-  <input type="hidden" name="cobrandingStyle" value="logo" >
-  <input type="hidden" name="immediateReturn" value="1" >
-  <input type="hidden" name="amount" value="USD 1" >
-  <input type="hidden" name="description" value="Go Snaphappi! I want Curated Family Photos." >
-  <input type="hidden" name="abandonUrl" value="http://thats-me.snaphappi.com/i-need-this#not-yet" >
-  <input type="hidden" name="signatureVersion" value="2" >
-  <input type="hidden" name="signature" value="707KWak1F2qHXC3DGVso74QmLVsECFAGkwx5fd6orOg=" >
-  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif" border="0" alt="Donate $1 with Amazon Payments">
-</form>
-		</li>
-			        	</ul>
-		        	</fieldset>
-        	
-			</div></div>
-      </div>
-
       <a name='thank-you'></a>
       <a name='sharing'></a>
       <div id='sharing' class="featurette sharing">
@@ -727,7 +662,7 @@ Let us roll up our sleeves so you can just play.
 	        <div class='padding'></div>
 	        <div class='fw-band footer'>
 	        	<div class="container ">
-	        		<div class="pull-right"><a href='#still-in-the-darkroom'>I Want It</a></div>
+	        		<div class="pull-right"><a href='#call-to-action'>I Want It</a></div>
 	        	</div>
 	        </div>
         </div>
@@ -825,10 +760,10 @@ Let us roll up our sleeves so you can just play.
 			}
 			// make global
 			SHOW_DONATE = function() { 
-				$('#still-in-the-darkroom .donate-form-wrap').fadeIn({
+				$('#call-to-action .donate-form-wrap').fadeIn({
 						duration:400, 
 						complete: function(){
-								$('#still-in-the-darkroom .donate a.btn').animate({opacity:0});
+								$('#call-to-action .donate a.btn').animate({opacity:0});
 							}
 						});
 				return false;		// onclick return value

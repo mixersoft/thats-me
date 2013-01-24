@@ -327,12 +327,8 @@
 /*	    position: absolute;
 	    width: 100%;*/	  
 	}	  
-	#see-the-movie .bg, #call-to-action .bg {
+	#see-the-movie .bg {
    		background-color: #E9C1C1;
-   }
-   
-   #call-to-action form input {
-   		vertical-align: bottom;
    }
    
    #about {
@@ -342,40 +338,40 @@
    #see-the-movie .body.container {
    		padding: 60px 0;
    }
-   #still-in-the-darkroom .container .btn-large {
+   #call-to-action .container .btn-large {
    		margin-bottom: 10px;
    }
-   #still-in-the-darkroom form.sign-me-up {
+   #call-to-action form.sign-me-up {
    		text-align: center;
    }
-   #still-in-the-darkroom form.sign-me-up .email {
+   #call-to-action form.sign-me-up .email {
 		border-radius: 4px 0 0 4px;
 		padding-right: 0;
 		width: 144px;
 		   	
    }
-   #still-in-the-darkroom form.sign-me-up button[type=submit] {
+   #call-to-action form.sign-me-up button[type=submit] {
 		border-radius: 0 4px 4px 0;
    }
    
-   #still-in-the-darkroom .donate {
+   #call-to-action .donate {
    		text-align: center;
    }
-   #still-in-the-darkroom .donate > .lead {
+   #call-to-action .donate > .lead {
    		text-align: left;
    }
-   #still-in-the-darkroom .donate .donate-form-wrap {
+   #call-to-action .donate .donate-form-wrap {
 	   	border-radius: 10px 10px 10px 10px;
 	    color: white;
 	    padding: 10px;
 	    position: relative;
     	top: -54px;
    }
-   #still-in-the-darkroom .donate .donate-form-wrap p.lead{
+   #call-to-action .donate .donate-form-wrap p.lead{
    		font-size: 28px;
    		margin-bottom: 10px;
    }
-   #still-in-the-darkroom .donate  form {
+   #call-to-action .donate  form {
    		display: inline-block;
    }
    #tag-line, #sharing {
@@ -402,9 +398,6 @@
  	#tag-line span.muted, #sharing span.muted{
    		color: #ffaa00
    }
- 	#call-to-action {
- 		padding: 60px 0;
- 	}
  	#FAQ .container {
  		padding: 20px;
  	}
@@ -588,26 +581,6 @@
     	height: 480px;
     }
     
-    
-    .featurette.call-to-action {
-    }    
-    .featurette.call-to-action fieldset 
-    {
-    	border: 1px solid #888;
-    	border-radius: 20px;
-    	display: inline-block;
-    	padding: 10px 20px;
-    }
-    .featurette.call-to-action fieldset legend 
-    {
-    	border: none;
-    	line-height: auto;
-    	margin: 0;
-    	padding: 0 20px;
-    	width: 120px;
-    	text-align: center;
-    	
-    }
     
 
     /* RESPONSIVE CSS

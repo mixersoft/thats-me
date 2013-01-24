@@ -345,10 +345,43 @@
    #still-in-the-darkroom .container .btn-large {
    		margin-bottom: 10px;
    }
+   #still-in-the-darkroom form.sign-me-up {
+   		text-align: center;
+   }
+   #still-in-the-darkroom form.sign-me-up .email {
+		border-radius: 4px 0 0 4px;
+		padding-right: 0;
+		width: 144px;
+		   	
+   }
+   #still-in-the-darkroom form.sign-me-up button[type=submit] {
+		border-radius: 0 4px 4px 0;
+   }
+   
+   #still-in-the-darkroom .donate {
+   		text-align: center;
+   }
+   #still-in-the-darkroom .donate > .lead {
+   		text-align: left;
+   }
+   #still-in-the-darkroom .donate .donate-form-wrap {
+	   	border-radius: 10px 10px 10px 10px;
+	    color: white;
+	    padding: 10px;
+	    position: relative;
+    	top: -54px;
+   }
+   #still-in-the-darkroom .donate .donate-form-wrap p.lead{
+   		font-size: 28px;
+   		margin-bottom: 10px;
+   }
+   #still-in-the-darkroom .donate  form {
+   		display: inline-block;
+   }
    #tag-line, #sharing {
    		color: #d47000
    }
-   #tag-line .bg.pix , #sharing  .bg.pix{
+   #tag-line .bg.pix , #sharing  .bg.pix {
    		height: 550px;
    }
    

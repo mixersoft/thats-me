@@ -409,16 +409,51 @@ We're working hard to build Snaphappi into a service you never knew you needed b
 	        	<div class="span4">
 <p class="lead">
 While we are still in the darkroom, you have a great opportunity to help shape this service with your early participation and invaluable feedback.</p>
-					<a class="btn btn-large btn-success" href="#call-to-action">Sign Me Up</a> 
+					<form class="form-inline sign-up" action="/action/sign-me-up" method="post">
+			                <input type="text" placeholder="Email" class='email'><button type="submit" class="btn btn-primary">I Want It</button>
+					</form>
 	        	</div>
-	        	<div class="span5">
+	        	<div class="span5 donate">
 					<p class="lead">
 But if you need this service ASAP, <b>let us know!</b> 
 We need your vocal support and by donating $1 to our favorite charity you'll be cheering us on through those long sleepless nights. 
 	        		</p>
-	        		<a class="btn btn-large btn-primary" href="#call-to-action">I Want It ASAP!</a> 
+	        		<a class="btn btn-large btn-success" href="#" onclick='return SHOW_DONATE();'>I Want It ASAP!</a>
+	        			<div class='donate-form-wrap alpha70b' style='display:none;'>
+	        				<p class="lead">We like your enthusiasm!</p>
+	        				<p>Use one of the buttons below to donate $1 to Snaphappi</p>
+	        				<!--  Payal 	        			 -->
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate $1 with PayPal - The safer, easier way to pay online!">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate $1 with PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+		<!--  Amazon Simple Pay  https://payments.amazon.com/sdui/sdui/standardbuttoncreate -->
+<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post" title="Donate $1 with Amazon Payments">
+  <input type="hidden" name="returnUrl" value="http://thats-me.snaphappi.com/i-need-this#thank-you" >
+  <input type="hidden" name="ipnUrl" value="http://thats-me.snaphappi.com/donate/Amazon_IPN" >
+  <input type="hidden" name="processImmediate" value="1" >
+  <input type="hidden" name="signatureMethod" value="HmacSHA256" >
+  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
+  <input type="hidden" name="collectShippingAddress" value="0" >
+  <input type="hidden" name="isDonationWidget" value="0" >
+  <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
+  <input type="hidden" name="cobrandingStyle" value="logo" >
+  <input type="hidden" name="immediateReturn" value="1" >
+  <input type="hidden" name="amount" value="USD 1" >
+  <input type="hidden" name="description" value="Go Snaphappi! I want Curated Family Photos." >
+  <input type="hidden" name="abandonUrl" value="http://thats-me.snaphappi.com/i-need-this#not-yet" >
+  <input type="hidden" name="signatureVersion" value="2" >
+  <input type="hidden" name="signature" value="707KWak1F2qHXC3DGVso74QmLVsECFAGkwx5fd6orOg=" >
+<!--   <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif" border="0" alt="Donate $1 with Amazon Payments"> -->
+  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_darkbg.gif" border="0" alt="Donate $1 with Amazon Payments">
+</form> 
+					</div>
 	        	</div>
-	        </div>
+	        </div>  <!-- / .row -->
         </div></div>
       </div>
       
@@ -719,11 +754,12 @@ Let us roll up our sleeves so you can just play.
 			VIDEO_NAME : 'imagine',
 		}
 		CFG['carousel'] = { DISABLED: false};
-		
+		var FIND = {c:{}};
+		var SHOW_DONATE;
 		/*
 		 * dot paging for carousels
 		 */
-		var FIND = {c:{}};
+		
 		var init_CarouselDotPaging = function(o) {
 			FIND['c'][o.attr("id")] = o;
 			  // .carousel({ interval: 5000 }) 
@@ -776,12 +812,26 @@ Let us roll up our sleeves so you can just play.
 		}
 		
 		! function($) {
+			
+			/*
+			 * animations
+			 */
 			switch (window.location.hash) {
 				case '#thank-you': 	// donate success return 
 					$('#sharing .thank-you').removeClass('hide');
 					break;
 				case '#not-yet': 	// donate cancel return 
 					break;
+			}
+			// make global
+			SHOW_DONATE = function() { 
+				$('#still-in-the-darkroom .donate-form-wrap').fadeIn({
+						duration:400, 
+						complete: function(){
+								$('#still-in-the-darkroom .donate a.btn').animate({opacity:0});
+							}
+						});
+				return false;		// onclick return value
 			}
 			
 			$('.carousel').each(function(i, elem) {

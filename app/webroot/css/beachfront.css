@@ -330,6 +330,11 @@
 	#see-the-movie .bg, #call-to-action .bg {
    		background-color: #E9C1C1;
    }
+   
+   #call-to-action form input {
+   		vertical-align: bottom;
+   }
+   
    #about {
    		color: #fff;
    }
@@ -368,7 +373,7 @@
  		padding: 60px 0;
  	}
  	#FAQ .container {
- 		padding-top: 20px;
+ 		padding: 20px;
  	}
  	#FAQ .featurette-heading {
  		color: #FFF;
@@ -384,6 +389,9 @@
  	#FAQ .answer {
  		color: #5A5A5A;
  		font-weight: normal;
+ 	}
+ 	#FAQ .padding {
+ 		height: 80px;
  	}
 
  	

@@ -3,7 +3,7 @@
 	$this->Layout->blockStart('HEAD'); ?>
 	<meta property="og:title" content="Snaphappi &middot; Curated Family Photos" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://thats-me.snaphappi.com/beachfront" />
+	<meta property="og:url" content="http://thats-me.snaphappi.com/i-need-this" />
 	<meta property="og:image" content="http://thats-me.snaphappi.com/img/beachfront/snaphappi-logo-v2.png" />
 	<meta property="og:description" content="What do you do with your 10,000 photos &middot; how do you find those precious moments? Curated Timelines with Beautiful Photos picked by Trained Editors. Put your photos on our To-do list and Play with your photos once again." />
 	<meta property="og:site_name" content="Snaphappi" />
@@ -24,7 +24,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="/beachfront"><img src='/img/beachfront/snaphappi-logo-v2.png'></a>
+            <a class="brand" href="/i-need-this"><img src='/img/beachfront/snaphappi-logo-v2.png'></a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse pull-right">              <ul class="nav">
                 <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#home">Home</a></li>

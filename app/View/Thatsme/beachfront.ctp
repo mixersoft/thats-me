@@ -730,7 +730,7 @@ Let us roll up our sleeves so you can just play.
 			o.bind('slid', function(e) { 
 				var pager = o.find(".carousel-pager"),
 					dots = pager.find("div");
-				var next = pager.attr('next') || 1;
+				var next = o.find('.item.active').index();
 				dots.removeClass('active').eq(next).addClass('active'); 
 				if (++next >= dots.length) next = 0; 
 				pager.attr('next', next);
@@ -763,7 +763,13 @@ Let us roll up our sleeves so you can just play.
 					/* If the object is completely visible in the window, fade it in */
 					if (o.hasClass('activated')) return
 					else {
-						o.addClass('activated').carousel({ interval: DELAY['carousel'], pause: 'hover'});
+						// bug: carousel does not pause:'hover' if it was started while hovering
+						if (o.is(":hover")) {
+							o.one("mouseleave", function(){
+								o.addClass('activated').carousel({ interval: DELAY['carousel'], pause: 'hover'});
+							})
+						} else 
+							o.addClass('activated').carousel({ interval: DELAY['carousel'], pause: 'hover'});
 					}
 				}
 			}, DELAY['lingering']);

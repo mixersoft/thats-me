@@ -187,7 +187,7 @@
    		position: relative;
    	 	top: -60px;				/* don't know why I need this */
    }
-    .fw-band {
+   .fw-band {
    		position: absolute;
     	width: 100%;
     	left: 0;
@@ -400,6 +400,7 @@
       margin-bottom: 0;
       z-index: 1;
     }
+    
     
     .carousel-inner .fw-band {
     	top: 20%;

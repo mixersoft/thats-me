@@ -25,7 +25,8 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
- Router::connect('/', array('controller' => 'thatsme', 'action' => 'launchsnappi'));
+ Router::connect('/', array('controller' => 'thatsme', 'action' => 'index'));
+ Router::connect('/i-need-this', array('controller' => 'thatsme', 'action'=>'beachfront'));
  Router::connect('/:action', array('controller' => 'thatsme'));
 	// Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'launchrock'));
 /**

@@ -450,30 +450,34 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 			        	<ul>
 			        		<li>I’ll chip in $1 just so you know I’m serious
 		<!--  Payal 	        			 -->
-		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate through Paypal">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-		</form>
-		<!--  Amazon Simple Pay  -->
-		<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post"  title="Donate through Amazon">
-		  <input type="hidden" name="amount" value="USD 1" >
-		  <input type="hidden" name="processImmediate" value="1" >
-		  <input type="hidden" name="signatureMethod" value="HmacSHA256" >
-		  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
-		  <input type="hidden" name="collectShippingAddress" value="0" >
-		  <input type="hidden" name="isDonationWidget" value="0" >
-		  <input type="hidden" name="description" value="Go Snaphappi! Make my photos play again" >
-		  <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
-		  <input type="hidden" name="cobrandingStyle" value="logo" >
-		  <input type="hidden" name="signatureVersion" value="2" >
-		  <input type="hidden" name="immediateReturn" value="1" >
-		  <input type="hidden" name="signature" value="BcNk43X2xxb1MutaMVASG5HtGP/7g5FSrxJ4IfXlAjc=" >
-		  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_whitebg.gif" border="0">
-		</form>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate $1 with PayPal - The safer, easier way to pay online!">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate $1 with PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+		<!--  Amazon Simple Pay  https://payments.amazon.com/sdui/sdui/standardbuttoncreate -->
+<form action="https://authorize.payments.amazon.com/pba/paypipeline" method="post" title="Donate $1 with Amazon Payments">
+  <input type="hidden" name="returnUrl" value="http://thats-me.snaphappi.com/i-need-this#thank-you" >
+  <input type="hidden" name="ipnUrl" value="http://thats-me.snaphappi.com/donate/Amazon_IPN" >
+  <input type="hidden" name="processImmediate" value="1" >
+  <input type="hidden" name="signatureMethod" value="HmacSHA256" >
+  <input type="hidden" name="accessKey" value="11SEM03K88SD016FS1G2" >
+  <input type="hidden" name="collectShippingAddress" value="0" >
+  <input type="hidden" name="isDonationWidget" value="0" >
+  <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
+  <input type="hidden" name="cobrandingStyle" value="logo" >
+  <input type="hidden" name="immediateReturn" value="1" >
+  <input type="hidden" name="amount" value="USD 1" >
+  <input type="hidden" name="description" value="Go Snaphappi! I want Curated Family Photos." >
+  <input type="hidden" name="abandonUrl" value="http://thats-me.snaphappi.com/i-need-this#not-yet" >
+  <input type="hidden" name="signatureVersion" value="2" >
+  <input type="hidden" name="signature" value="707KWak1F2qHXC3DGVso74QmLVsECFAGkwx5fd6orOg=" >
+  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif" border="0" alt="Donate $1 with Amazon Payments">
+</form>
 		</li>
-			        		<li>I want it so bad, I’ll prepay now</li>
 			        	</ul>
 		        	</fieldset>
         	
@@ -488,8 +492,8 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
       		<div class="wrap alpha70b">
 	        	<h2 class="featurette-heading .thank-you"><span class="thank-you hide">Thank You for Your Support<br></span><span class="muted">Spread the Word!</span></h2>
 	        	<div class="social-sharing">
-		        		<div class="fb-like" data-href="http://thats.me.snaphappi.com/beachfront" data-send="true" data-layout="button_count" data-width="225" data-show-faces="true" data-font="arial"></div>
-		        		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/beachfront" 
+		        		<div class="fb-like" data-href="http://thats-me.snaphappi.com/i-need-this" data-send="true" data-layout="button_count" data-width="225" data-show-faces="true" data-font="arial"></div>
+		        		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/i-need-this" 
 		        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos.">Tweet</a>
 		        	</div>
 	        	<div class="row">
@@ -529,8 +533,9 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
         	<h2 class="featurette-heading">About</h2>
         	<p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
-But with a growing family and a hectic job, who has time to scroll through 30,000 thumbnails to find your beautiful photos? 
-It's not going to to be an impersonal computer algorithm and it's not going to be you.        		
+But with a growing family and a hectic job, 
+who has time to scroll through 10,000 thumbnails to find your Beautiful Photos? 
+Most likely, it's not going to be you, and it's certainly not going to be fancy computer algorithm.        		
         	</p>
         	<p>
 Only Snaphappi uses real photo editors to screen your family photos. 
@@ -684,6 +689,7 @@ Let us roll up our sleeves so you can just play.
 	Answer.        		
 	        	</p>	        		        	
 	        </div>
+	        <div class='padding'></div>
 	        <div class='fw-band footer'>
 	        	<div class="container ">
 	        		<div class="pull-right"><a href='#still-in-the-darkroom'>I Want It</a></div>
@@ -708,8 +714,8 @@ Let us roll up our sleeves so you can just play.
     <script type="text/javascript">
     	// update Global CFG
 		CFG['mixpanel'] = {
-			TRIGGER : 'beachfront',
-			FIRST_SECTION : '#help-me',
+			TRIGGER : 'i-need-this',
+			FIRST_SECTION : '#home',
 			VIDEO_NAME : 'imagine',
 		}
 		CFG['carousel'] = { DISABLED: false};
@@ -764,9 +770,12 @@ Let us roll up our sleeves so you can just play.
 		}
 		
 		! function($) {
-			if (window.location.hash == '#thank-you') {
-				// donation return 
-				$('#sharing .thank-you').removeClass('hide');
+			switch (window.location.hash) {
+				case '#thank-you': 	// donate success return 
+					$('#sharing .thank-you').removeClass('hide');
+					break;
+				case '#not-yet': 	// donate cancel return 
+					break;
 			}
 			
 			$('.carousel').each(function(i, elem) {

@@ -29,14 +29,14 @@ App::uses('AppController', 'Controller');
  * @package       app.Controller
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
-class ThatsmeController extends AppController {
+class DonateController extends AppController {
 
 /**
  * Controller name
  *
  * @var string
  */
-	public $name = 'Thatsme';
+	public $name = 'Donate';
 
 /**
  * This controller does not use a model
@@ -45,45 +45,14 @@ class ThatsmeController extends AppController {
  */
 	public $uses = array();
 
-
-	public $layout = 'bootstrap';
-	public function index() {
-		$this->redirect(array('action'=>'beachfront'), null, true);
+	public $layout = 'default';
+	public $autoRender = false;
+	
+	public function Amazon_IPN() {
+		$this->log(">>> Amazon_IPN:".print_r($this->data, true), LOG_DEBUG);
 	}
-	public function beachfront() {}		// http://thats-me/i-need-this in routes.php
+	public function PayPal_IPN() {
+		$this->log(">>> PayPal_IPN:".print_r($this->data, true), LOG_DEBUG);
+	}		
 	
-	public function orange() {}
-	
-	public function overwhelmed() {}
-	public function launchrock (){ } 
-	public function carousel (){ } 
-	
-
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @return void
- */
-	public function display() {
-		$path = func_get_args();
-		$count = count($path);
-		if (!$count) {
-			$this->redirect('/');
-		}
-		$page = $subpage = $title_for_layout = null;
-
-		if (!empty($path[0])) {
-			$page = $path[0];
-		}
-		if (!empty($path[1])) {
-			$subpage = $path[1];
-		}
-		if (!empty($path[$count - 1])) {
-			$title_for_layout = Inflector::humanize($path[$count - 1]);
-		}
-
-		$this->set(compact('page', 'subpage', 'title_for_layout'));
-		$this->render(implode('/', $path));
-	}
 }

@@ -34,7 +34,7 @@
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu pull-right">
                   	<li><a href="#see-the-movie">See the Movie Again</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#FAQ">FAQ</a></li>
@@ -62,8 +62,8 @@
     
 	<div id="fold"></div>
 	
-	  <a name='home'></a>
       <div id="home" class="featurette connect track-page-view">
+      	<a name='home'></a>
       	<div class='bg pix p1'></div>
         <div class="fw-band body alpha70b">
 			<div class="container">
@@ -96,9 +96,9 @@
 	
     <!-- Carousel: Features
     ================================================== -->
-    <a name='features'></a>
+    <a class='anchor' name='features'></a>
     <div id="features" class="featurette carousel slide track-page-view">
-
+		
       <div class="carousel-inner">
       	
         <div class="item active">
@@ -390,7 +390,6 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
         </div>
       </div>
 
-<!-- 	  <hr class="featurette-divider"> -->
       
       <a name='call-to-action'></a>
       <div id='call-to-action' class="featurette call-to-action">
@@ -779,6 +778,15 @@ Let us roll up our sleeves so you can just play.
 				$('.carousel').each(function(i, elem) {
 					if (CFG['carousel'].DISABLED) return;
 					init_CarouselAutoPaging($(elem), isLingeringTimer);
+				});
+				// manually implemented ScrollSpy
+				$('.featurette').each(function(i, elem) {
+					if (_isScrolledIntoView($(elem))) {
+						var id = $(elem).attr('id');
+						$('.navbar .nav li').removeClass('active');
+						var a = $('.navbar .nav li a[href$="#'+id+'"]').parent().addClass('active');
+						return false;					
+					}
 				});
 			});
 			

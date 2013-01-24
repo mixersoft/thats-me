@@ -25,6 +25,7 @@ var _isScrolledIntoView = function (o) {
 		var docViewBottom = docViewTop + $(window).height();
 
 		var elemTop = o.offset().top;
+		if (elemTop < 0) elemTop = 0;		// adjust for #home;
 		var elemBottom = elemTop + o.height();
 
 		var completelyInView = ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop) );

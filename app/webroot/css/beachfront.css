@@ -21,6 +21,8 @@
       padding-bottom: 40px;
       color: #5a5a5a; 
       background-color: #E9C1C1;
+/*      for iOS CSS transitions */
+      	-webkit-backface-visibility: hidden;		
     }
     
     h1, h2 {
@@ -107,6 +109,14 @@
 		background:transparent;			/* makes border-radius invisible, wrap?  */
 	}
 	
+	
+	.fade-slow {
+		  opacity: 0;
+		  -webkit-transition: opacity 0.5s linear;
+		     -moz-transition: opacity 0.5s linear;
+		       -o-transition: opacity 0.5s linear;
+		          transition: opacity 0.5s linear;
+	}
 		
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -193,21 +203,22 @@
     	left: 0;
    }
    
-   .featurette {
-   		position:relative;
-   		min-height: 550px;
-   }
-   .featurette .bg {
+   .bg.fixed {
    		background-repeat: no-repeat;
 		background-color: #E9C1C1;
 		background-size: cover;
 		background-position: center center;
 		height: 100%;
 		left: 0;
-		position:absolute;
+		position: fixed;
 		top: 0px;   
 		width: 100%;
 		z-index: -1;
+   }
+   
+   .featurette {
+   		position:relative;
+   		min-height: 550px;
    }
    .featurette .fw-band.body {
    		top: 33%;
@@ -242,23 +253,25 @@
    /*
     * .bg.pix content
     */
-   .bg.pix.p1 {
+   .bg.pix[name='1'] {
    		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-01.jpg);
    }
-   .bg.pix.p2 {
+   .bg.pix[name='2'] {
    		background-image:url(http://snappi1.snaphappi.com/static/css/bootstrap/img/bg-img-02.jpg);
    }
-   .bg.pix.p3 {
+   .bg.pix[name='3'] {
    		background-image:url(/img/beachfront/bg-img-03.jpg);
    }
-   .bg.pix.p4 {
+   .bg.pix[name='4'] {
    		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-04.jpg);
    }
-   .bg.pix.p5 {
+   .bg.pix[name='5'] {
    		background-image:url(http://snappi1.snaphappi.com/static/css/bootstrap/img/bg-img-05.jpg);
    }
    
-   
+   #bg-slideshow {
+	/*	-webkit-backface-visibility: hidden;*/
+   }   
    #home {
 	   	min-height: 700px;		/* section height */
 	   	overflow: visible;

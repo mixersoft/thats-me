@@ -61,10 +61,13 @@
     <![endif]-->
     
 	<div id="fold"></div>
+	<div id="bg-slideshow">
+		<div class='fixed bg pix' name='1'></div>
+	</div>
+	
 	
       <div id="home" class="featurette connect track-page-view">
       	<a name='home'></a>
-      	<div class='bg pix p1'></div>
         <div class="fw-band body alpha70b">
 			<div class="container">
 				<div class="offset1 span10">
@@ -102,7 +105,6 @@
       <div class="carousel-inner">
       	
         <div class="item active">
-        	<div class='bg pix p2'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -121,7 +123,6 @@ We promise 100% privacy.
 				</div>          
         </div>
         <div class="item">
-        	<div class='bg pix p3'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -141,7 +142,6 @@ We promise 100% privacy.
         </div>
         
         <div class="item">
-        	<div class='bg pix p4'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -157,7 +157,6 @@ We promise 100% privacy.
         </div> 
         
         <div class="item">
-        	<div class='bg pix p3'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -176,7 +175,6 @@ We promise 100% privacy.
         </div> 
         
         <div class="item">
-        	<div class='bg pix p5'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -247,7 +245,6 @@ by rating the ones you love.
       <div class="carousel-inner">
       	
         <div class="item active">
-        	<div class='bg pix p2'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -265,7 +262,6 @@ Our Uploader lets you upload up to 100x faster than normal photo sites - we've s
 				</div>          
         </div>
         <div class="item">
-        	<div class='bg pix p3'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -284,7 +280,6 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
 				</div>          
         </div>
         <div class="item">
-        	<div class='bg pix p4'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -305,7 +300,6 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 				</div>          
         </div> 
         <div class="item">
-        	<div class='bg pix p5'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -325,7 +319,6 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 				</div>          
         </div> 
         <div class="item">
-        	<div class='bg pix p3'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -393,7 +386,6 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
       
       <a name='call-to-action'></a>
       <div id='call-to-action' class="featurette call-to-action">
-      	<div class='bg pix p2'></div>
       	<div class="container">
 	      	<div class="wrap alpha75w">
 	        <h2 class="featurette-heading">Still in the Darkroom</h2>
@@ -456,7 +448,6 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
       <a name='thank-you'></a>
       <a name='sharing'></a>
       <div id='sharing' class="featurette sharing">
-      	<div class='bg pix p1'></div>
       	<div class="container">
       		<div class="wrap alpha70b">
 	        	<h2 class="featurette-heading .thank-you"><span class="thank-you hide">Thank You for Your Support<br></span><span class="muted">Spread the Word!</span></h2>
@@ -480,7 +471,6 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 
       <a name='tag-line'></a>
       <div id='tag-line' class="featurette tag-line">
-      	<div class='bg pix p5'></div>
       	<div class="container">
       		<div class="wrap alpha50b">
         	<h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
@@ -496,7 +486,6 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 
       <a name='about'></a>
       <div id='about' class="featurette about track-page-view">
-      	<div class='bg pix p2'></div>
       	<div class="container">
       		<div class="wrap alpha50b">
         	<h2 class="featurette-heading">About</h2>
@@ -688,8 +677,14 @@ Let us roll up our sleeves so you can just play.
 			VIDEO_NAME : 'imagine',
 		}
 		CFG['carousel'] = { DISABLED: false};
+		CFG['timing'] = {
+			linger: 1000,
+			carousel: 5000,
+			slideshow: 7000,
+		}
 		var FIND = {c:{}};
-		var SHOW_DONATE;
+		var BG_SLIDESHOW, SHOW_DONATE;
+		var PRELOAD;		// detached IMG for PRELOADing bg.pix
 		/*
 		 * dot paging for carousels
 		 */
@@ -723,10 +718,6 @@ Let us roll up our sleeves so you can just play.
 			var id = o.attr('id');
 			if (timers[id]) return;	// already checking
 			
-			var DELAY = {
-				lingering : 1000,
-				carousel : 5000,
-			};
 			timers[id] = setTimeout(function() {
 				timers[id] = 0;
 				if (_isScrolledIntoView(o)) {
@@ -736,13 +727,13 @@ Let us roll up our sleeves so you can just play.
 						// bug: carousel does not pause:'hover' if it was started while hovering
 						if (o.is(":hover")) {
 							o.one("mouseleave", function(){
-								o.addClass('activated').carousel({ interval: DELAY['carousel'], pause: 'hover'});
+								o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
 							})
 						} else 
-							o.addClass('activated').carousel({ interval: DELAY['carousel'], pause: 'hover'});
+							o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
 					}
 				}
-			}, DELAY['lingering']);
+			}, CFG['timing']['lingering']);
 		}
 		
 		! function($) {
@@ -757,6 +748,44 @@ Let us roll up our sleeves so you can just play.
 				case '#not-yet': 	// donate cancel return 
 					break;
 			}
+			
+			// bg-slideshow
+			PRELOAD = $('<img />');	
+			BG_SLIDESHOW = setInterval(
+				function(){
+					var SLIDE_COUNT = 5,	// number of bg slideshow images, see CSS
+						bg = $('#bg-slideshow .bg.fixed');
+					if (bg.size()>1) return;
+					
+					var fade = bg.clone();
+					$('#bg-slideshow').append(fade);
+					
+					// next slide
+					var i = parseInt(bg.attr('name'))+1;
+					if (i > SLIDE_COUNT) i=1;
+					bg.attr('name', i );	
+					
+					
+					// PRELOAD image
+					var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
+					PRELOAD.bind('load', function() {
+					    // Background image has loaded.
+					    fade.addClass('fade-slow');
+					    setTimeout(function(){
+					    	fade.remove();
+					    	delete fade;
+						}, 600);
+					});
+					PRELOAD.attr('src', bkgSrc);
+					
+				},
+				CFG['timing']['slideshow']
+			);
+			
+			
+			
+			
+						
 			// make global
 			SHOW_DONATE = function() { 
 				$('#call-to-action .donate-form-wrap').fadeIn({

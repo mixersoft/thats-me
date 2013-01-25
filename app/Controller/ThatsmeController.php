@@ -51,6 +51,7 @@ class ThatsmeController extends AppController {
 		$this->redirect(array('action'=>'beachfront'), null, true);
 	}
 	public function beachfront() {}		// http://thats-me/i-need-this in routes.php
+	public function iscroll() {}		// http://thats-me/i-need-this in routes.php
 	
 	public function orange() {}
 	

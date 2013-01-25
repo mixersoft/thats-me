@@ -107,7 +107,7 @@
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset4">
+    <div class="offset5 span5">
 	    <div class="carousel-caption"><h1>Screened By Real Editors</h1></div>
 	    <p>
 No other photo service out there uses real people like we do. 

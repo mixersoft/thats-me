@@ -244,7 +244,7 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette xxxcarousel slide track-page-view">
+    <div id="how-it-works" class="featurette  track-page-view">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">

@@ -519,6 +519,7 @@
     }
 
     .carousel .item {
+    	height: 650px;
     }
     
     .carousel-caption {

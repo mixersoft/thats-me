@@ -8,6 +8,7 @@
 	<meta property="og:description" content="What do you do with your 10,000 photos &middot; how do you find those precious moments? Curated Timelines with Beautiful Photos picked by Trained Editors. Put your photos on our To-do list and Play with your photos once again." />
 	<meta property="og:site_name" content="Snaphappi" />
 	<meta property="fb:admins" content="214157" />	
+	<link rel="stylesheet" href="/css/beachfront.css">
 	<link rel="stylesheet" href="/css/iscroll.css">
 <!-- 	iscroll 	 -->
 		<script type="text/javascript" src="http://snappi.snaphappi.com/svc/lib/cubiq-iscroll-d31d6e6/src/iscroll.js"></script>
@@ -250,8 +251,8 @@ by rating the ones you love.
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body">
 			
-      <div id="how-it-works-iscroll" class="carousel-inner iscroll wrapper">
-      <ul class="iscroller">	
+      <div id="how-it-works-iscroll" class="carousel-inner iscroll-wrapper">
+      <ul class="iscroll-scroller">	
         <li class="item">
 		          <div class="container">
 		          	
@@ -337,7 +338,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
       <div class='fw-band footer'>
-      	<div class="carousel-pager center iscroll-pager">
+      	<div class="center iscroll-pager">
 			<div class="active">0</div>
 			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>

@@ -62,7 +62,7 @@
     
 	<div id="fold"></div>
 	<div id="bg-slideshow">
-		<div class='fixed bg pix' name='1'></div>
+		<div class='fixed bg pix' name='0'></div>
 	</div>
 	
 	
@@ -686,8 +686,13 @@ Let us roll up our sleeves so you can just play.
 			carousel: 5000,
 			slideshow: 7000,
 		}
+		CFG['slideshow'] = {
+			timer: null,
+			next: null,			// next slide, function
+			count: 5,
+		}
 		var FIND = {c:{}};
-		var BG_SLIDESHOW, SHOW_DONATE;
+		var BG_SLIDESHOW_TIMER, SHOW_DONATE;
 		var PRELOAD;		// detached IMG for PRELOADing bg.pix
 		/*
 		 * dot paging for carousels
@@ -754,38 +759,38 @@ Let us roll up our sleeves so you can just play.
 			}
 			
 			// bg-slideshow
-			PRELOAD = $('<img />');	
-			BG_SLIDESHOW = setInterval(
-				function(){
-					var SLIDE_COUNT = 5,	// number of bg slideshow images, see CSS
-						bg = $('#bg-slideshow .bg.fixed');
-					if (bg.size()>1) return;
-					
-					var fade = bg.clone();
-					$('#bg-slideshow').append(fade);
-					
-					// next slide
-					var i = parseInt(bg.attr('name'))+1;
-					if (i > SLIDE_COUNT) i=1;
-					bg.attr('name', i );	
-					
-					
-					// PRELOAD image
-					var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
-					PRELOAD.bind('load', function() {
-					    // Background image has loaded.
-					    fade.addClass('fade-slow');
-					    setTimeout(function(){
-					    	fade.remove();
-					    	delete fade;
-						}, 600);
-					});
-					PRELOAD.attr('src', bkgSrc);
-					
-				},
-				CFG['timing']['slideshow']
-			);
-			
+			CFG['slideshow'].preloader = $('<img />')	
+				.bind('load', function() {
+				    // Background image has loaded.
+				    var fade = $('#bg-slideshow .fading').addClass('fade-slow');
+				    setTimeout(function(){
+				    	fade.remove();
+				    	delete fade;
+					}, 600);
+				});
+			CFG['slideshow'].next = function(){
+				if (CFG['slideshow'].timer == null) {
+					CFG['slideshow'].timer = setInterval(
+						CFG['slideshow'].next,
+						CFG['timing']['slideshow']
+					);
+				} 
+				var bg = $('#bg-slideshow .bg.fixed');
+				if (bg.size()>1) return;
+				
+				var fade = bg.clone().addClass('fading');
+				$('#bg-slideshow').append(fade);
+				
+				// next slide
+				var i = parseInt(bg.attr('name'))+1;
+				if (i > CFG['slideshow'].count) i=1;
+				bg.attr('name', i );	
+				
+				// PRELOAD image
+				var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
+				CFG['slideshow'].preloader.attr('src', bkgSrc);
+			}
+			CFG['slideshow'].next();
 			
 			
 			

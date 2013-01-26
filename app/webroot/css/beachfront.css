@@ -513,6 +513,9 @@
 		text-indent: -9999px;
 		cursor: pointer;
 	}
+	.carousel .carousel-pager div:last-child , .iscroll-pager div:last-child {
+		margin-right: 0;
+	} 
 	.carousel .carousel-pager  div.active {
 		background-color: #d47000;
 	}

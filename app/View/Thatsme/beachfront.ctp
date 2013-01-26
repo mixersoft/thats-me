@@ -693,7 +693,6 @@ Let us roll up our sleeves so you can just play.
 		}
 		var FIND = {c:{}};
 		var BG_SLIDESHOW_TIMER, SHOW_DONATE;
-		var PRELOAD;		// detached IMG for PRELOADing bg.pix
 		/*
 		 * dot paging for carousels
 		 */
@@ -705,8 +704,7 @@ Let us roll up our sleeves so you can just play.
 				var pager = o.find(".carousel-pager"),
 					dots = pager.find("div");
 				var next = o.find('.item.active').index();
-				dots.removeClass('active').eq(next).addClass('active'); 
-				if (++next >= dots.length) next = 0; 
+				dots.removeClass('active').eq(next).addClass('active'); 				if (++next >= dots.length) next = 0; 
 				pager.attr('next', next);
 			  }); 
 				

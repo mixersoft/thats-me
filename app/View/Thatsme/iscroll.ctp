@@ -245,7 +245,7 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette  track-page-view">
+    <div id="how-it-works" class="featurette iscroll track-page-view">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
@@ -678,7 +678,29 @@ Let us roll up our sleeves so you can just play.
 		}
 		CFG['carousel'] = { DISABLED: true};
 		CFG['iscroll'] = {
-			'how-it-works-iscroll': null,
+			init : function(){
+				$('.featurette.iscroll').each(function(i, elem){
+					var id = $(elem).attr('id');
+					CFG['iscroll'][id].setWidths($(elem));
+					// init dot paging
+					$(elem).find(".iscroll-pager div").click(function(e){ 
+				      var index = $(this).index(); 
+				      CFG['iscroll'][id].iscroll.scrollToPage(index);
+				      e.preventDefault();
+				    }); 
+				});
+			},
+			fullWidth: function(o) {
+				var count = o.find('.iscroll-scroller li').size();
+				var fw = $(window).width();
+				o.find(".iscroll-scroller").css('width', (count*fw) +'px');
+				o.find(".iscroll-wrapper, .iscroll-scroller li").css('width', fw +'px');
+			},
+			// add one for each iscroll
+			'how-it-works': {
+				iscroll : null, 
+				setWidths : null,
+			},
 		}
 		CFG['timing'] = {
 			linger: 1000,
@@ -792,7 +814,8 @@ Let us roll up our sleeves so you can just play.
 			
 			
 			// #how-it-works-iscroll
-			CFG['iscroll']['how-it-works-iscroll'] = new iScroll('how-it-works-iscroll',{
+			CFG['iscroll']['how-it-works'].setWidths = CFG['iscroll'].fullWidth;
+			CFG['iscroll']['how-it-works'].iscroll = new iScroll('how-it-works-iscroll',{
 				snap: true,
 				momentum: false,
 				hScroll: true,
@@ -804,14 +827,17 @@ Let us roll up our sleeves so you can just play.
 					document.querySelector('#how-it-works .iscroll-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
 				}
 			 });
-			var init_iScrollDotPaging = function(o) {
-			    o.find(".iscroll-pager div").click(function(e){ 
-			      var index = $(this).index(); 
-			      CFG['iscroll']['how-it-works-iscroll'].scrollToPage(index);
-			      e.preventDefault();
-			    }); 
-			} 
-			init_iScrollDotPaging($('#how-it-works'));
+			$(window).resize(function() {
+				$('.featurette.iscroll').each(function(i, elem){
+					var id = $(elem).attr('id');
+			  		CFG['iscroll'][id].setWidths($(elem));
+			  		CFG['iscroll'][id].iscroll.refresh();
+			 	});
+			});
+			/*
+			 * init all iscrolls
+			 */
+			CFG['iscroll'].init();
 			
 						
 			// make global

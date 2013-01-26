@@ -66,7 +66,7 @@
     
 	<div id="fold"></div>
 	<div id="bg-slideshow">
-		<div class='fixed bg pix' name='1'></div>
+		<div class='fixed bg pix' name='0'></div>
 	</div>
 	
 	
@@ -244,15 +244,15 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette carousel slide track-page-view">
+    <div id="how-it-works" class="featurette xxxcarousel slide track-page-view">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body">
 			
-      <div class="carousel-inner">
-      	
-        <div class="item active">
+      <div id="how-it-works-iscroll" class="carousel-inner iscroll wrapper">
+      <ul class="iscroller">	
+        <li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -266,7 +266,7 @@ Our Uploader lets you upload up to 100x faster than normal photo sites - we've s
   </div><!-- /.row -->          	
   
 		          </div>
-        </div><div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -281,7 +281,7 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div><div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -298,7 +298,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div><div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -314,7 +314,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div><div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -330,12 +330,17 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div> 
+        </li> 
+        </ul>
       </div> <!-- /.carousel-inner  -->
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
       <div class='fw-band footer'>
+      	<div class="carousel-pager center iscroll-pager">
+			<div class="active">0</div>
+			<div>1</div><div>2</div><div>3</div><div>4</div>
+        </div>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>
@@ -670,15 +675,22 @@ Let us roll up our sleeves so you can just play.
 			FIRST_SECTION : '#home',
 			VIDEO_NAME : 'imagine',
 		}
-		CFG['carousel'] = { DISABLED: false};
+		CFG['carousel'] = { DISABLED: true};
+		CFG['iscroll'] = {
+			'how-it-works-iscroll': null,
+		}
 		CFG['timing'] = {
 			linger: 1000,
 			carousel: 5000,
 			slideshow: 7000,
 		}
+		CFG['slideshow'] = {
+			timer: null,
+			next: null,			// next slide, function
+			count: 5,
+		}
 		var FIND = {c:{}};
 		var BG_SLIDESHOW, SHOW_DONATE;
-		var PRELOAD;		// detached IMG for PRELOADing bg.pix
 		/*
 		 * dot paging for carousels
 		 */
@@ -744,42 +756,61 @@ Let us roll up our sleeves so you can just play.
 			}
 			
 			// bg-slideshow
-			PRELOAD = $('<img />');	
-			BG_SLIDESHOW = setInterval(
-				function(){
-					var SLIDE_COUNT = 5,	// number of bg slideshow images, see CSS
-						bg = $('#bg-slideshow .bg.fixed');
-					if (bg.size()>1) return;
-					
-					var fade = bg.clone();
-					$('#bg-slideshow').append(fade);
-					
-					// next slide
-					var i = parseInt(bg.attr('name'))+1;
-					if (i > SLIDE_COUNT) i=1;
-					bg.attr('name', i );	
-					
-					
-					// PRELOAD image
-					var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
-					PRELOAD.bind('load', function() {
-					    // Background image has loaded.
-					    fade.addClass('fade-slow');
-					    setTimeout(function(){
-					    	fade.remove();
-					    	delete fade;
-						}, 600);
-
-
-					});
-					PRELOAD.attr('src', bkgSrc);
-					
-				},
-				CFG['timing']['slideshow']
-			);
+			CFG['slideshow'].preloader = $('<img />')	
+				.bind('load', function() {
+				    // Background image has loaded.
+				    var fade = $('#bg-slideshow .fading').addClass('fade-slow');
+				    setTimeout(function(){
+				    	fade.remove();
+				    	delete fade;
+					}, 600);
+				});
+			CFG['slideshow'].next = function(){
+				if (CFG['slideshow'].timer == null) {
+					CFG['slideshow'].timer = setInterval(
+						CFG['slideshow'].next,
+						CFG['timing']['slideshow']
+					);
+				} 
+				var bg = $('#bg-slideshow .bg.fixed');
+				if (bg.size()>1) return;
+				
+				var fade = bg.clone().addClass('fading');
+				$('#bg-slideshow').append(fade);
+				
+				// next slide
+				var i = parseInt(bg.attr('name'))+1;
+				if (i > CFG['slideshow'].count) i=1;
+				bg.attr('name', i );	
+				
+				// PRELOAD image
+				var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
+				CFG['slideshow'].preloader.attr('src', bkgSrc);
+			}
+			CFG['slideshow'].next();
 			
 			
-			
+			// #how-it-works-iscroll
+			CFG['iscroll']['how-it-works-iscroll'] = new iScroll('how-it-works-iscroll',{
+				snap: true,
+				momentum: false,
+				hScroll: true,
+				vScroll: false,
+				hScrollbar: false,
+				vScrollbar: false,
+				onScrollEnd: function () {
+					document.querySelector('#how-it-works .iscroll-pager > div.active').className = '';
+					document.querySelector('#how-it-works .iscroll-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+				}
+			 });
+			var init_iScrollDotPaging = function(o) {
+			    o.find(".iscroll-pager div").click(function(e){ 
+			      var index = $(this).index(); 
+			      CFG['iscroll']['how-it-works-iscroll'].scrollToPage(index);
+			      e.preventDefault();
+			    }); 
+			} 
+			init_iScrollDotPaging($('#how-it-works'));
 			
 						
 			// make global

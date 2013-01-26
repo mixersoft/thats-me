@@ -120,7 +120,7 @@
 	/*
 	 * ie only for alpha
 	 */
-	html.ie .alpha50b , html.ie .alpha75w {
+	html.ie .alpha50b , html.ie .alpha75w , html.ie .alpha70b {
 		background:transparent;			/* makes border-radius invisible, wrap?  */
 	}
 	
@@ -359,6 +359,41 @@
    		background-color: #E9C1C1;
    }
    
+#scroller {
+		width: 5400px;		/*pages * li width*/
+	} 
+	#wrapper, #scroller li {
+		width: 900px;
+	}	   
+
+   .iscroller ul {
+		list-style:none;
+		display:block;
+		float:left;
+		width:5000px;
+		height:100%;
+		padding:0;
+		margin:0;
+		text-align:left;
+	}
+	
+	.iscroller li {
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		-o-box-sizing:border-box;
+		box-sizing:border-box;
+		display:block; 
+		float:left;
+		width:940px; 
+		height: 100%;
+	}
+   .iscroller {
+   		width: 4700px;
+   }
+   .iscroll.wrapper, .iscroller li {
+   		width: 940px;
+   }
+     
    #about {
    		color: #fff;
    }
@@ -468,7 +503,7 @@
     	top: 20%;
     }
 
-    .carousel .carousel-inner .container {
+    .carousel .carousel-inner .container , .iscroll.wrapper  .container {
       padding: 60px 0px 20px;		
       min-height: 200px;
 	  width: 80%;				/* fit inside paging arrows 10% */
@@ -511,7 +546,7 @@
     }
 
 	
-	.carousel .carousel-pager {
+	.carousel .carousel-pager, .iscroll-pager {
 		bottom: 40px;			/* should be height of .fw-band.footer */
 	    font-size: 10px;
 	    line-height: 10px;
@@ -519,7 +554,7 @@
 	    position: absolute;
 	    width: 100%;
 	}
-	.carousel .carousel-pager div {
+	.carousel .carousel-pager div , .iscroll-pager div {
 		border: 3px solid #FFFFCE;
 		display: inline-block;
 		height: 10px;
@@ -531,7 +566,11 @@
 		text-indent: -9999px;
 		cursor: pointer;
 	}
-	.carousel .carousel-pager  div.active {
+	.carousel .carousel-pager div:last-child , .iscroll-pager div:last-child {
+		margin-right: 0;
+	} 
+
+	.carousel .carousel-pager  div.active , .iscroll-pager div.active {
 		background-color: #d47000;
 	}
 

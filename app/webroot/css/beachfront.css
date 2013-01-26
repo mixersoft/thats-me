@@ -9,6 +9,7 @@
       padding-bottom: 40px;
       color: #5a5a5a; 
       background-color: #E9C1C1;
+      min-width: 468px;
 /*      for iOS CSS transitions */
       	-webkit-backface-visibility: hidden;		
     }
@@ -93,7 +94,7 @@
 	/*
 	 * ie only for alpha
 	 */
-	html.ie .alpha50b , html.ie .alpha75w {
+	html.ie .alpha50b , html.ie .alpha75w, html.ie .alpha70b {
 		background:transparent;			/* makes border-radius invisible, wrap?  */
 	}
 	

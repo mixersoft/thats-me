@@ -8,8 +8,7 @@
 	<meta property="og:description" content="What do you do with your 10,000 photos &middot; how do you find those precious moments? Curated Timelines with Beautiful Photos picked by Trained Editors. Put your photos on our To-do list and Play with your photos once again." />
 	<meta property="og:site_name" content="Snaphappi" />
 	<meta property="fb:admins" content="214157" />	
-	<link rel="stylesheet" href="/css/beachfront.css">
-
+	<link rel="stylesheet" href="/css/iscroll.css">
 <!-- 	iscroll 	 -->
 		<script type="text/javascript" src="http://snappi.snaphappi.com/svc/lib/cubiq-iscroll-d31d6e6/src/iscroll.js"></script>
 <!-- 		<script type="text/javascript" src="/min/f=static/js/iscroll/iscroll.js"></script> -->	
@@ -30,7 +29,8 @@
             </a>
             <a class="brand" href="/i-need-this"><img src='/img/beachfront/snaphappi-logo-v2.png'></a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse pull-right">              <ul class="nav">
+            <div class="nav-collapse collapse pull-right">
+              <ul class="nav">
                 <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#home">Home</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#features" >Features</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#how-it-works" >How It Works</a></li>
@@ -65,10 +65,13 @@
     <![endif]-->
     
 	<div id="fold"></div>
+	<div id="bg-slideshow">
+		<div class='fixed bg pix' name='1'></div>
+	</div>
+	
 	
       <div id="home" class="featurette connect track-page-view">
       	<a name='home'></a>
-      	<div class='bg pix p1'></div>
         <div class="fw-band body alpha70b">
 			<div class="container">
 				<div class="offset1 span10">
@@ -106,7 +109,6 @@
       <div class="carousel-inner">
       	
         <div class="item active">
-        	<div class='bg pix p2'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -125,7 +127,6 @@ We promise 100% privacy.
 				</div>          
         </div>
         <div class="item">
-        	<div class='bg pix p3'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -145,7 +146,6 @@ We promise 100% privacy.
         </div>
         
         <div class="item">
-        	<div class='bg pix p4'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -161,7 +161,6 @@ We promise 100% privacy.
         </div> 
         
         <div class="item">
-        	<div class='bg pix p3'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -180,7 +179,6 @@ We promise 100% privacy.
         </div> 
         
         <div class="item">
-        	<div class='bg pix p5'></div>
 				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
@@ -246,13 +244,15 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette iscroll xxxcarousel slide track-page-view activated">
-
-      <ul class="carousel-inner scroller">
+    <div id="how-it-works" class="featurette carousel slide track-page-view">
+    	
+<div class="vcenter-wrap">
+	<div class="vcenter-padding">
+		<div class="fw-band alpha70b vcenter-body">
+			
+      <div class="carousel-inner">
       	
-        <li class="item active">
-        	<div class='bg pix p2'></div>
-				<div class="fw-band alpha70b">        	
+        <div class="item active">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -266,11 +266,7 @@ Our Uploader lets you upload up to 100x faster than normal photo sites - we've s
   </div><!-- /.row -->          	
   
 		          </div>
-				</div>          
-        </li>
-        <li class="item">
-        	<div class='bg pix p3'></div>
-				<div class="fw-band alpha70b">        	
+        </div><div class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -285,11 +281,7 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
-        </li>
-        <li class="item">
-        	<div class='bg pix p4'></div>
-				<div class="fw-band alpha70b">        	
+        </div><div class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -306,11 +298,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
-        </li> 
-        <li class="item">
-        	<div class='bg pix p5'></div>
-				<div class="fw-band alpha70b">        	
+        </div><div class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -326,11 +314,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
-        </li> 
-        <li class="item">
-        	<div class='bg pix p3'></div>
-				<div class="fw-band alpha70b">        	
+        </div><div class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -346,17 +330,12 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
         </div> 
-      </ul> <!-- /.carousel-inner  -->
-<div><a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a></div>
-<div><a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a></div>	      
-	  	
+      </div> <!-- /.carousel-inner  -->
+		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
+	</div>	<!-- / .vcenter-padding --> 
+</div>	<!-- / .vcenter-wrap --> 
       <div class='fw-band footer'>
-      	<div class="carousel-pager center">
-			<div class="active">0</div>
-			<div>1</div><div>2</div><div>3</div><div>4</div>
-        </div>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>
@@ -397,7 +376,6 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
       
       <a name='call-to-action'></a>
       <div id='call-to-action' class="featurette call-to-action">
-      	<div class='bg pix p2'></div>
       	<div class="container">
 	      	<div class="wrap alpha75w">
 	        <h2 class="featurette-heading">Still in the Darkroom</h2>
@@ -460,7 +438,6 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
       <a name='thank-you'></a>
       <a name='sharing'></a>
       <div id='sharing' class="featurette sharing">
-      	<div class='bg pix p1'></div>
       	<div class="container">
       		<div class="wrap alpha70b">
 	        	<h2 class="featurette-heading .thank-you"><span class="thank-you hide">Thank You for Your Support<br></span><span class="muted">Spread the Word!</span></h2>
@@ -484,7 +461,6 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 
       <a name='tag-line'></a>
       <div id='tag-line' class="featurette tag-line">
-      	<div class='bg pix p5'></div>
       	<div class="container">
       		<div class="wrap alpha50b">
         	<h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
@@ -500,9 +476,8 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 
       <a name='about'></a>
       <div id='about' class="featurette about track-page-view">
-      	<div class='bg pix p2'></div>
       	<div class="container">
-      		<div class="wrap alpha50b">
+      		<div class="wrap alpha70b">
         	<h2 class="featurette-heading">About</h2>
         	<p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
@@ -517,6 +492,10 @@ saving you hours of time and making fun and easy to re-live your precious moment
 Let us roll up our sleeves so you can just play.
         	</p>
         </div></div>
+        <div class='fw-band footer'>
+        	<div class="container ">
+        	</div>
+        </div>
       </div>
       
       
@@ -529,7 +508,7 @@ Let us roll up our sleeves so you can just play.
       		<div class="wrap alpha70b center">
 	        	<h1 class="featurette-heading">Frequently Asked Questions</h1>
 	       </div>
-	       <div class="faq-section">
+	       <div class="faq-section alpha70b">
 	        	<h2>Photo Editing</h2>
 	        	<p class="question">
 	How do you know which photos are beautiful?	        		
@@ -574,7 +553,7 @@ Let us roll up our sleeves so you can just play.
 	Answer.        		
 	        	</p>
 	       </div>
-	       <div class="faq-section"> 	
+	       <div class="faq-section alpha70b"> 	
 	        	<h2>Privacy &amp; Sharing</h2>
 	        	<p class="question">
 	What about the safety and privacy of my photos?	        		
@@ -589,7 +568,7 @@ Let us roll up our sleeves so you can just play.
 	Answer.        		
 	        	</p>
 			</div>
-	       <div class="faq-section">	
+	       <div class="faq-section alpha70b">	
 				<h2>Darkroom &amp; Launch</h2>
 				<p class="question">
 	Why do you want $1 from me?	        		
@@ -604,7 +583,7 @@ Let us roll up our sleeves so you can just play.
 	Answer.        		
 	        	</p>
 	        </div>
-	       <div class="faq-section">	
+	       <div class="faq-section alpha70b">	
 	        	<h2>Platforms &amp Systems</h2>
 				<p class="question">
 	Why is the Curated Timeline only available as an iPad App?	        		
@@ -691,9 +670,15 @@ Let us roll up our sleeves so you can just play.
 			FIRST_SECTION : '#home',
 			VIDEO_NAME : 'imagine',
 		}
-		CFG['carousel'] = { DISABLED: true};
+		CFG['carousel'] = { DISABLED: false};
+		CFG['timing'] = {
+			linger: 1000,
+			carousel: 5000,
+			slideshow: 7000,
+		}
 		var FIND = {c:{}};
-		var SHOW_DONATE;
+		var BG_SLIDESHOW, SHOW_DONATE;
+		var PRELOAD;		// detached IMG for PRELOADing bg.pix
 		/*
 		 * dot paging for carousels
 		 */
@@ -727,10 +712,6 @@ Let us roll up our sleeves so you can just play.
 			var id = o.attr('id');
 			if (timers[id]) return;	// already checking
 			
-			var DELAY = {
-				lingering : 1000,
-				carousel : 5000,
-			};
 			timers[id] = setTimeout(function() {
 				timers[id] = 0;
 				if (_isScrolledIntoView(o)) {
@@ -740,13 +721,13 @@ Let us roll up our sleeves so you can just play.
 						// bug: carousel does not pause:'hover' if it was started while hovering
 						if (o.is(":hover")) {
 							o.one("mouseleave", function(){
-								o.addClass('activated').carousel({ interval: DELAY['carousel'], pause: 'hover'});
+								o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
 							})
 						} else 
-							o.addClass('activated').carousel({ interval: DELAY['carousel'], pause: 'hover'});
+							o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
 					}
 				}
-			}, DELAY['lingering']);
+			}, CFG['timing']['lingering']);
 		}
 		
 		! function($) {
@@ -761,6 +742,46 @@ Let us roll up our sleeves so you can just play.
 				case '#not-yet': 	// donate cancel return 
 					break;
 			}
+			
+			// bg-slideshow
+			PRELOAD = $('<img />');	
+			BG_SLIDESHOW = setInterval(
+				function(){
+					var SLIDE_COUNT = 5,	// number of bg slideshow images, see CSS
+						bg = $('#bg-slideshow .bg.fixed');
+					if (bg.size()>1) return;
+					
+					var fade = bg.clone();
+					$('#bg-slideshow').append(fade);
+					
+					// next slide
+					var i = parseInt(bg.attr('name'))+1;
+					if (i > SLIDE_COUNT) i=1;
+					bg.attr('name', i );	
+					
+					
+					// PRELOAD image
+					var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
+					PRELOAD.bind('load', function() {
+					    // Background image has loaded.
+					    fade.addClass('fade-slow');
+					    setTimeout(function(){
+					    	fade.remove();
+					    	delete fade;
+						}, 600);
+
+
+					});
+					PRELOAD.attr('src', bkgSrc);
+					
+				},
+				CFG['timing']['slideshow']
+			);
+			
+			
+			
+			
+						
 			// make global
 			SHOW_DONATE = function() { 
 				$('#call-to-action .donate-form-wrap').fadeIn({
@@ -804,25 +825,17 @@ Let us roll up our sleeves so you can just play.
 		   });
 			
 			
-			
-			/**
-			 * iscroll init 
-			 */
-			var howItWorks;
-			$(document).ready(function () {
-				howItWorks = new iScroll('how-it-works');
-				var check;
-			});
-				
 		}(window.jQuery);
 
-				(function() {  //Closure, to not leak to the scope
+		
+		(function() {  //Closure, to not leak to the scope
 			// facebook javascript jdk 		
 			!function(d, s, id) {
 				  var js, fjs = d.getElementsByTagName(s)[0];
 				  if (d.getElementById(id)) return;
 				  js = d.createElement(s); js.id = id;
-				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";
+				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 				  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk');
 			
@@ -831,6 +844,8 @@ Let us roll up our sleeves so you can just play.
 				var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
 			}(document,"script","twitter-wjs");
 			
-		})();  
+		})();  
+
+
     </script>
 <?php $this->Layout->blockEnd(); ?>

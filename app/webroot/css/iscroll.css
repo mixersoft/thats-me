@@ -1,15 +1,3 @@
-
-
-/* ==========================================================================
-   Author's custom styles  MOVE TO LAYOUT
-   ========================================================================== */
-/*    body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-    }
-*/
-
-
     /* GLOBAL STYLES
     -------------------------------------------------- */
     /* Padding below the footer and lighter body text */
@@ -22,6 +10,8 @@
       color: #5a5a5a; 
       background-color: #E9C1C1;
       min-width: 468px;
+/*      for iOS CSS transitions */
+      	-webkit-backface-visibility: hidden;		
     }
     
     h1, h2 {
@@ -30,7 +20,7 @@
     
 	#fold {
 		border-bottom: 1px solid red;
-	    height: 5;
+	    height: 5px;
 	    position: fixed;
 	    top: 768px;
 	    width: 1024px;
@@ -55,8 +45,34 @@
 	.center {
 		text-align: center;
 	}
-
-   
+	
+/*	http://www.jakpsatweb.cz/css/css-vertical-center-solution.html*/
+   	.vcenter-wrap {
+   		display: table; 
+   		overflow: hidden;
+   		width:100%;
+   		
+   		height: 400px;
+   		min-height: 550px; 
+   	}
+   	html.lt-ie8 .vcenter-wrap {
+   		position: relative; 
+   	}
+	.vcenter-wrap > .vcenter-padding {
+		display: table-cell; 
+		vertical-align: middle;
+	}
+	html.lt-ie8 .vcenter-padding {
+		position: absolute; 
+		top: 50%;
+	}
+	.vcenter-wrap > .vcenter-padding > .vcenter-body {
+		position: relative; 
+	}
+	html.lt-ie8 .vcenter-body {
+		top: -50%;
+	}
+	
 /*   http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
    .alpha50b ,  .navbar-inner.alpha50b {
 		/* Fallback for web browsers that doesn't support RGBa */
@@ -85,9 +101,9 @@
 		/* RGBa with 0.6 opacity */
 		background: rgba(0, 0, 0, 0.70);
 		/* For IE 5.5 - 7*/
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000);
 		/* For IE 8*/
-		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000)";
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000)";
 	}
 	
 	.alpha75w {
@@ -108,6 +124,14 @@
 		background:transparent;			/* makes border-radius invisible, wrap?  */
 	}
 	
+	
+	.fade-slow {
+		  opacity: 0;
+		  -webkit-transition: opacity 0.5s linear;
+		     -moz-transition: opacity 0.5s linear;
+		       -o-transition: opacity 0.5s linear;
+		          transition: opacity 0.5s linear;
+	}
 		
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -194,21 +218,22 @@
     	left: 0;
    }
    
-   .featurette {
-   		position:relative;
-   		min-height: 550px;
-   }
-   .featurette .bg {
+   .bg.fixed {
    		background-repeat: no-repeat;
 		background-color: #E9C1C1;
 		background-size: cover;
 		background-position: center center;
 		height: 100%;
 		left: 0;
-		position:absolute;
+		position: fixed;
 		top: 0px;   
 		width: 100%;
 		z-index: -1;
+   }
+   
+   .featurette {
+   		position:relative;
+   		min-height: 550px;
    }
    .featurette .fw-band.body {
    		top: 33%;
@@ -243,23 +268,25 @@
    /*
     * .bg.pix content
     */
-   .bg.pix.p1 {
+   .bg.pix[name='1'] {
    		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-01.jpg);
    }
-   .bg.pix.p2 {
-   		background-image:url(http://snappi1.snaphappi.com/static/css/bootstrap/img/bg-img-02.jpg);
+   .bg.pix[name='2'] {
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-02.jpg);
    }
-   .bg.pix.p3 {
-   		background-image:url(/img/beachfront/bg-img-03.jpg);
+   .bg.pix[name='3'] {
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-03.jpg);
    }
-   .bg.pix.p4 {
+   .bg.pix[name='4'] {
    		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-04.jpg);
    }
-   .bg.pix.p5 {
-   		background-image:url(http://snappi1.snaphappi.com/static/css/bootstrap/img/bg-img-05.jpg);
+   .bg.pix[name='5'] {
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.jpg);
    }
    
-   
+   #bg-slideshow {
+	/*	-webkit-backface-visibility: hidden;*/
+   }   
    #home {
 	   	min-height: 700px;		/* section height */
 	   	overflow: visible;
@@ -288,7 +315,7 @@
    
    #on-our-way {
    		height: 400px;
-   		min-height: auto;
+   		min-height: 400px;
    }
    
    #on-our-way .bg {
@@ -405,17 +432,25 @@
  	#FAQ .featurette-heading {
  		color: #FFF;
  	}
+ 	#FAQ .faq-section {
+ 		margin-bottom: 20px;
+ 		padding: 20px;
+ 		border-radius: 20px;
+ 	}
+ 	#FAQ .faq-section h2{
+ 		color: #BBB;
+ 	}
  	#FAQ .question {
- 		color: #000000;
+ 		color: #FFF;
 	    font-size: 16px;
-	    font-weight: bold;
+	    font-weight: 300;
 	    line-height: 1;
 	    margin: 8px 0 4px
  	}
  	
  	#FAQ .answer {
- 		color: #5A5A5A;
- 		font-weight: normal;
+ 		color: #BBB;
+ 		font-weight: 300;
  	}
  	#FAQ .padding {
  		height: 80px;
@@ -423,7 +458,7 @@
 
  	
     /* Carousel base class */
-    .carousel , .iscroll {
+    .carousel {
       margin-bottom: 0;
       z-index: 1;
     }
@@ -433,7 +468,7 @@
     	top: 20%;
     }
 
-    .carousel .carousel-inner .container, .iscroll .scroller .container {
+    .carousel .carousel-inner .container {
       padding: 60px 0px 20px;		
       min-height: 200px;
 	  width: 80%;				/* fit inside paging arrows 10% */
@@ -448,20 +483,9 @@
       border: 0;
     }
 
-    .carousel .item, .iscroll .item {
-      height: 650px;
-      position: relative;
-      line-height: 1;
-      display: inline-block;
+    .carousel .item {
     }
-    .carousel .item > img, .iscroll .item > img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      min-width: 100%;
-      height: 500px;
-    }
-
+    
     .carousel-caption {
       background-color: transparent;
       position: static;
@@ -487,7 +511,7 @@
     }
 
 	
-	.carousel .carousel-pager , .iscroll .carousel-pager {
+	.carousel .carousel-pager {
 		bottom: 40px;			/* should be height of .fw-band.footer */
 	    font-size: 10px;
 	    line-height: 10px;
@@ -495,7 +519,7 @@
 	    position: absolute;
 	    width: 100%;
 	}
-	.carousel .carousel-pager div, .iscroll .carousel-pager div {
+	.carousel .carousel-pager div {
 		border: 3px solid #FFFFCE;
 		display: inline-block;
 		height: 10px;
@@ -507,7 +531,7 @@
 		text-indent: -9999px;
 		cursor: pointer;
 	}
-	.carousel .carousel-pager  div.active , .iscroll .carousel-pager  div.active{
+	.carousel .carousel-pager  div.active {
 		background-color: #d47000;
 	}
 
@@ -592,13 +616,6 @@
 
     @media (max-width: 979px) {
 
-      .carousel .item {
-        height: 500px;
-      }
-      .carousel img {
-        width: auto;
-        height: 500px;
-      }
       .carousel-caption {
 	  }
 

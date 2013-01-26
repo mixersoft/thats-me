@@ -487,7 +487,7 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
       <a name='about'></a>
       <div id='about' class="featurette about track-page-view">
       	<div class="container">
-      		<div class="wrap alpha50b">
+      		<div class="wrap alpha70b">
         	<h2 class="featurette-heading">About</h2>
         	<p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
@@ -502,6 +502,10 @@ saving you hours of time and making fun and easy to re-live your precious moment
 Let us roll up our sleeves so you can just play.
         	</p>
         </div></div>
+        <div class='fw-band footer'>
+        	<div class="container ">
+        	</div>
+        </div>
       </div>
       
       
@@ -514,7 +518,7 @@ Let us roll up our sleeves so you can just play.
       		<div class="wrap alpha70b center">
 	        	<h1 class="featurette-heading">Frequently Asked Questions</h1>
 	       </div>
-	       <div class="faq-section">
+	       <div class="faq-section alpha70b">
 	        	<h2>Photo Editing</h2>
 	        	<p class="question">
 	How do you know which photos are beautiful?	        		
@@ -559,7 +563,7 @@ Let us roll up our sleeves so you can just play.
 	Answer.        		
 	        	</p>
 	       </div>
-	       <div class="faq-section"> 	
+	       <div class="faq-section alpha70b"> 	
 	        	<h2>Privacy &amp; Sharing</h2>
 	        	<p class="question">
 	What about the safety and privacy of my photos?	        		
@@ -574,7 +578,7 @@ Let us roll up our sleeves so you can just play.
 	Answer.        		
 	        	</p>
 			</div>
-	       <div class="faq-section">	
+	       <div class="faq-section alpha70b">	
 				<h2>Darkroom &amp; Launch</h2>
 				<p class="question">
 	Why do you want $1 from me?	        		
@@ -589,7 +593,7 @@ Let us roll up our sleeves so you can just play.
 	Answer.        		
 	        	</p>
 	        </div>
-	       <div class="faq-section">	
+	       <div class="faq-section alpha70b">	
 	        	<h2>Platforms &amp Systems</h2>
 				<p class="question">
 	Why is the Curated Timeline only available as an iPad App?	        		

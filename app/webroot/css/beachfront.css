@@ -1,15 +1,3 @@
-
-
-/* ==========================================================================
-   Author's custom styles  MOVE TO LAYOUT
-   ========================================================================== */
-/*    body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-    }
-*/
-
-
     /* GLOBAL STYLES
     -------------------------------------------------- */
     /* Padding below the footer and lighter body text */
@@ -31,7 +19,7 @@
     
 	#fold {
 		border-bottom: 1px solid red;
-	    height: 5;
+	    height: 5px;
 	    position: fixed;
 	    top: 768px;
 	    width: 1024px;
@@ -86,9 +74,9 @@
 		/* RGBa with 0.6 opacity */
 		background: rgba(0, 0, 0, 0.70);
 		/* For IE 5.5 - 7*/
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000);
 		/* For IE 8*/
-		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000)";
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000)";
 	}
 	
 	.alpha75w {
@@ -257,16 +245,16 @@
    		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-01.jpg);
    }
    .bg.pix[name='2'] {
-   		background-image:url(http://snappi1.snaphappi.com/static/css/bootstrap/img/bg-img-02.jpg);
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-02.jpg);
    }
    .bg.pix[name='3'] {
-   		background-image:url(/img/beachfront/bg-img-03.jpg);
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-03.jpg);
    }
    .bg.pix[name='4'] {
    		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-04.jpg);
    }
    .bg.pix[name='5'] {
-   		background-image:url(http://snappi1.snaphappi.com/static/css/bootstrap/img/bg-img-05.jpg);
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.jpg);
    }
    
    #bg-slideshow {
@@ -300,7 +288,7 @@
    
    #on-our-way {
    		height: 400px;
-   		min-height: auto;
+   		min-height: 400px;
    }
    
    #on-our-way .bg {
@@ -417,17 +405,25 @@
  	#FAQ .featurette-heading {
  		color: #FFF;
  	}
+ 	#FAQ .faq-section {
+ 		margin-bottom: 20px;
+ 		padding: 20px;
+ 		border-radius: 20px;
+ 	}
+ 	#FAQ .faq-section h2{
+ 		color: #BBB;
+ 	}
  	#FAQ .question {
- 		color: #000000;
+ 		color: #FFF;
 	    font-size: 16px;
-	    font-weight: bold;
+	    font-weight: 300;
 	    line-height: 1;
 	    margin: 8px 0 4px
  	}
  	
  	#FAQ .answer {
- 		color: #5A5A5A;
- 		font-weight: normal;
+ 		color: #BBB;
+ 		font-weight: 300;
  	}
  	#FAQ .padding {
  		height: 80px;

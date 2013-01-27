@@ -101,11 +101,14 @@
     ================================================== -->
     <a class='anchor' name='features'></a>
     <div id="features" class="featurette carousel slide track-page-view">
-		
+    	
+<div class="vcenter-wrap">
+	<div class="vcenter-padding">
+		<div class="fw-band alpha70b vcenter-body">
+					
       <div class="carousel-inner">
       	
         <div class="item active">
-				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -120,10 +123,8 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
   
 		          </div>
-				</div>          
         </div>
         <div class="item">
-				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -138,11 +139,9 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
         </div>
         
         <div class="item">
-				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -153,11 +152,9 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
         </div> 
         
         <div class="item">
-				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -171,11 +168,9 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
         </div> 
         
         <div class="item">
-				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -189,9 +184,12 @@ by rating the ones you love.
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
         </div>         
       </div> <!-- /.carousel-inner  -->
+		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
+	</div>	<!-- / .vcenter-padding --> 
+</div>	<!-- / .vcenter-wrap --> 
+
 <div><a class="right carousel-control" href="#features" data-slide="next">&rsaquo;</a></div>
 <div><a class="left carousel-control" href="#features" data-slide="prev">&lsaquo;</a></div>	      
 	  	

@@ -50,7 +50,15 @@ class ThatsmeController extends AppController {
 	public function index() {
 		$this->redirect(array('action'=>'beachfront'), null, true);
 	}
-	public function beachfront() {}		// http://thats-me/i-need-this in routes.php
+	public function beachfront() {
+		$options = array('Android', 'iPod', 'iPhone', 'iPad','Opera Mobi','webOS', 'Windows Phone OS');			
+		$pattern = '/(' . implode('|', $options) . ')/i';
+		preg_match($pattern, env('HTTP_USER_AGENT'), $match);
+		$isTouch = !empty($match);
+		if ($isTouch) $this->view = 'iscroll';
+	}		// http://thats-me/i-need-this in routes.php
+	
+	
 	public function iscroll() {}		// http://thats-me/i-need-this in routes.php
 	
 	public function orange() {}

@@ -484,7 +484,7 @@
     }
 
     .carousel .item {
-      height: 650px;
+    	min-height: 350px;
     }
     .carousel .item > img {
       position: absolute;
@@ -516,6 +516,7 @@
       line-height: 1.25;
       color: #fff;
       text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      margin: 0;
     }
 
 	
@@ -628,11 +629,6 @@
     @media (max-width: 979px) {
 
       .carousel .item {
-        height: 500px;
-      }
-      .carousel img {
-        width: auto;
-        height: 500px;
       }
       .carousel-caption {
 	  }
@@ -689,11 +685,11 @@
         margin-right: -20px;
       }
       .carousel .item {
-        height: 700px;
+/*        height: 700px;*/
       }
-      .carousel .carousel-inner .container {
-      	padding: 20px 50px;
-      	width: auto;
+      .carousel .carousel-inner .container ,  .iscroll-wrapper .container{
+      	padding: 20px 0;
+/*      	width: auto;*/
       }
       .carousel img {
         height: 300px;

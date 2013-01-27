@@ -241,15 +241,18 @@ by rating the ones you love.
     ================================================== -->
     <a name='how-it-works'></a>
     <div id="how-it-works" class="featurette carousel slide track-page-view">
-
+    	
+<div class="vcenter-wrap">
+	<div class="vcenter-padding">
+		<div class="fw-band alpha70b vcenter-body">
+			
       <div class="carousel-inner">
       	
         <div class="item active">
-				<div class="fw-band alpha70b">        	
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset5 span6">
+    <div class="offset4 span6">
 	    <div class="carousel-caption"><h1>Send Us Your Photos</h1></div>
 	    <p>
 With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10,000, 20,000, or over 100,000 shots! 
@@ -259,10 +262,7 @@ Our Uploader lets you upload up to 100x faster than normal photo sites - we've s
   </div><!-- /.row -->          	
   
 		          </div>
-				</div>          
-        </div>
-        <div class="item">
-				<div class="fw-band alpha70b">        	
+        </div><div class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -277,10 +277,7 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
-        </div>
-        <div class="item">
-				<div class="fw-band alpha70b">        	
+        </div><div class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -297,10 +294,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
-        </div> 
-        <div class="item">
-				<div class="fw-band alpha70b">        	
+        </div><div class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -316,10 +310,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
-        </div> 
-        <div class="item">
-				<div class="fw-band alpha70b">        	
+        </div><div class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -335,9 +326,11 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-				</div>          
         </div> 
       </div> <!-- /.carousel-inner  -->
+		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
+	</div>	<!-- / .vcenter-padding --> 
+</div>	<!-- / .vcenter-wrap --> 
 <div><a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a></div>
 <div><a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a></div>	      
 	  	

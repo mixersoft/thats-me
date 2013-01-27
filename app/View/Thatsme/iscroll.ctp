@@ -682,6 +682,7 @@ Let us roll up our sleeves so you can just play.
 				$('.featurette.iscroll').each(function(i, elem){
 					var id = $(elem).attr('id');
 					CFG['iscroll'][id].setWidths($(elem));
+					CFG['iscroll'][id].iscroll.refresh();
 					// init dot paging
 					$(elem).find(".iscroll-pager div").click(function(e){ 
 				      var index = $(this).index(); 

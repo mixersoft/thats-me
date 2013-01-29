@@ -245,8 +245,8 @@ by rating the ones you love.
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body">
 			
-      <div id="how-it-works-iscroll" class="carousel-inner">
-      <ul class="">	
+      <div id="how-it-works-iscroll" class="carousel-inner XXXiscroll-wrapper">
+      <ul class="xxx-iscroll-scroller">	
         <li class="item active">
 		          <div class="container">
 		          	
@@ -390,7 +390,7 @@ We're working hard to build Snaphappi into a service you never knew you needed b
 <p class="lead">
 While we are still in the darkroom, you have a great opportunity to help shape this service with your early participation and invaluable feedback.</p>
 					<form class="form-inline sign-up" action="/action/sign-me-up" method="post">
-			                <input type="text" placeholder="Email" class='email'><button type="submit" class="btn btn-primary">I Want It</button>
+			                <input type="text" placeholder="Email" class='email'><button id='join-email-list' type="submit" class="btn btn-primary track-click" track='join-list'>I Want It</button>
 					</form>
 	        	</div>
 	        	<div class="span5 donate">
@@ -398,7 +398,7 @@ While we are still in the darkroom, you have a great opportunity to help shape t
 But if you want this service ASAP, <b>let us know!</b> 
 We need your vocal support and by donating $1 to our favorite charity you'll be cheering us on through those long sleepless nights. 
 	        		</p>
-	        		<a class="btn btn-large btn-success" href="#" onclick='return SHOW_DONATE();'>I Want It ASAP!</a>
+	        		<a id='donate' class="btn btn-large btn-success track-click" href="#" onclick='return false;' track='donate'>I Want It ASAP!</a>
 	        			<div class='donate-form-wrap alpha70b' style='display:none;'>
 	        				<p class="lead">We like your enthusiasm!</p>
 	        				<p>Use one of the buttons below to donate $1 to Snaphappi</p>
@@ -406,7 +406,7 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate $1 with PayPal - The safer, easier way to pay online!">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate $1 with PayPal - The safer, easier way to pay online!">
+<input class='track-click' track='donate-PayPal'  type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate $1 with PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 
@@ -423,14 +423,13 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
   <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
   <input type="hidden" name="cobrandingStyle" value="logo" >
   <input type="hidden" name="immediateReturn" value="1" >
-  <input type="hidden" name="amount" value="USD 1" >
+  <input type="hidden" name="amount" value="USD 1.00" >
   <input type="hidden" name="description" value="Go Snaphappi! I want Curated Family Photos." >
   <input type="hidden" name="abandonUrl" value="http://thats-me.snaphappi.com/i-need-this#not-yet" >
   <input type="hidden" name="signatureVersion" value="2" >
-  <input type="hidden" name="signature" value="707KWak1F2qHXC3DGVso74QmLVsECFAGkwx5fd6orOg=" >
-<!--   <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif" border="0" alt="Donate $1 with Amazon Payments"> -->
-  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_darkbg.gif" border="0" alt="Donate $1 with Amazon Payments">
-</form> 
+  <input type="hidden" name="signature" value="WPGLkoL/P0tPocJb8pCB76MCcSAcLg2MhUgPnHStVbs=" >
+  <input  class='track-click' track='donate-Amazon' alt="Donate $1 with Amazon Payments" type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_darkbg.gif" border="0">
+</form>		
 					</div>
 	        	</div>
 	        </div>  <!-- / .row -->
@@ -660,273 +659,11 @@ Let us roll up our sleeves so you can just play.
       <div id="fb-root"></div>
 <?php $this->Layout->blockEnd(); ?>
 
-
+<?php $this->Layout->blockStart('javascript_base'); ?>
+    <script type="text/javascript" src="/js/base.js"></script>
+<?php $this->Layout->blockEnd(); ?>
 
 <?php $this->Layout->blockStart('javascript'); ?>
-    <!-- Le javascript
-    ================================================== -->
     <script type="text/javascript">
-    	// update Global CFG
-		CFG['mixpanel'] = {
-			TRIGGER : 'i-need-this',
-			FIRST_SECTION : '#home',
-			VIDEO_NAME : 'imagine',
-		}
-		CFG['carousel'] = { DISABLED: false};
-		CFG['iscroll'] = {
-			init : function(){
-				$('html.touch .featurette.carousel').each(function(i, elem){
-					var id = $(elem).attr('id');
-					CFG['iscroll'][id].setWidths($(elem));
-					CFG['iscroll'][id].iscroll.refresh();
-					// init dot paging
-					$(elem).find(".carousel-pager div").click(function(e){ 
-				      var index = $(this).index(); 
-				      CFG['iscroll'][id].iscroll.scrollToPage(index);
-				      e.preventDefault();
-				    }); 
-				});
-			},
-			fullWidth: function(o) {
-				var count = o.find('.iscroll-scroller li').size();
-				var fw = $(window).width();
-				o.find("html.touch .carousel-inner > ul").css('width', (count*fw) +'px');
-				o.find("html.touch .carousel-inner, html.touch .carousel-inner > ul li").css('width', fw +'px');
-			},
-			// add one for each iscroll
-			'features': {
-				iscroll : null, 
-				setWidths : null,
-			},
-			'how-it-works': {
-				iscroll : null, 
-				setWidths : null,
-			},
-		}
-		CFG['timing'] = {
-			linger: 1000,
-			carousel: 5000,
-			slideshow: 7000,
-		}
-		CFG['slideshow'] = {
-			timer: null,
-			next: null,			// next slide, function
-			count: 5,
-		}
-		var FIND = {c:{}};
-		var BG_SLIDESHOW, SHOW_DONATE;
-		/*
-		 * dot paging for carousels
-		 */
-		
-		var init_CarouselDotPaging = function(o) {
-			if ($('html').hasClass('touch')) return;			// uses iscroll, instead
-			
-			FIND['c'][o.attr("id")] = o;
-			  // .carousel({ interval: 5000 }) 
-			o.bind('slid', function(e) { 
-				var pager = o.find(".carousel-pager"),
-					dots = pager.find("div");
-				var next = o.find('.item.active').index();
-				dots.removeClass('active').eq(next).addClass('active'); 
-				if (++next >= dots.length) next = 0; 
-				pager.attr('next', next);
-			  }); 
-				
-		    o.find(".carousel-pager div").click(function(e){ 
-		      var index = $(this).index(); 
-		      o.carousel({interval:false}).carousel(index);
-		      var pager = o.find(".carousel-pager").attr('next', index);
-		      e.preventDefault();
-		    }); 
-		}
-		
-		/*
-		 * dot paging for carousels, 
-		 * 	- initialize AFTER first scroll into view
-		 */
-		var init_CarouselAutoPaging = function(o, timers) {
-			if ($('html').hasClass('touch')) return;			// uses iscroll, instead
-			
-			var id = o.attr('id');
-			if (timers[id]) return;	// already checking
-			
-			timers[id] = setTimeout(function() {
-				timers[id] = 0;
-				if (_isScrolledIntoView(o)) {
-					/* If the object is completely visible in the window, fade it in */
-					if (o.hasClass('activated')) return
-					else {
-						// bug: carousel does not pause:'hover' if it was started while hovering
-						if (o.is(":hover")) {
-							o.one("mouseleave", function(){
-								o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
-							})
-						} else 
-							o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
-					}
-				}
-			}, CFG['timing']['lingering']);
-		}
-		
-		! function($) {
-			
-			/*
-			 * debug touch/no-touch
-			 */
-			if (0) $('html').removeClass('no-touch').addClass('touch');
-			
-			/*
-			 * animations
-			 */
-			switch (window.location.hash) {
-				case '#thank-you': 	// donate success return 
-					$('#sharing .thank-you').removeClass('hide');
-					break;
-				case '#not-yet': 	// donate cancel return 
-					break;
-			}
-			
-			// bg-slideshow
-			CFG['slideshow'].preloader = $('<img />')	
-				.bind('load', function() {
-				    // Background image has loaded.
-				    var fade = $('#bg-slideshow .fading').addClass('fade-slow');
-				    setTimeout(function(){
-				    	fade.remove();
-				    	delete fade;
-					}, 600);
-				});
-			CFG['slideshow'].next = function(){
-				if (CFG['slideshow'].timer == null) {
-					CFG['slideshow'].timer = setInterval(
-						CFG['slideshow'].next,
-						CFG['timing']['slideshow']
-					);
-				} 
-				var bg = $('#bg-slideshow .bg.fixed');
-				if (bg.size()>1) return;
-				
-				var fade = bg.clone().addClass('fading');
-				$('#bg-slideshow').append(fade);
-				
-				// next slide
-				var i = parseInt(bg.attr('name'))+1;
-				if (i > CFG['slideshow'].count) i=1;
-				bg.attr('name', i );	
-				
-				// PRELOAD image
-				var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
-				CFG['slideshow'].preloader.attr('src', bkgSrc);
-			}
-			CFG['slideshow'].next();
-			
-			// #features iscroll
-			// NOTE: call constructor with id of .carousel-inner, i.e. #features-iscroll.carousel-inner
-			CFG['iscroll']['features'].setWidths = CFG['iscroll'].fullWidth;
-			CFG['iscroll']['features'].iscroll = new iScroll('features-iscroll',{
-				snap: true,
-				momentum: false,
-				hScroll: true,
-				vScroll: false,
-				hScrollbar: false,
-				vScrollbar: false,
-				onScrollEnd: function () {
-					document.querySelector('#features .carousel-pager > div.active').className = '';
-					document.querySelector('#features .carousel-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-				}
-			});
-			// #how-it-works-iscroll
-			CFG['iscroll']['how-it-works'].setWidths = CFG['iscroll'].fullWidth;
-			CFG['iscroll']['how-it-works'].iscroll = new iScroll('how-it-works-iscroll',{
-				snap: true,
-				momentum: false,
-				hScroll: true,
-				vScroll: false,
-				hScrollbar: false,
-				vScrollbar: false,
-				onScrollEnd: function () {
-					document.querySelector('#how-it-works .carousel-pager > div.active').className = '';
-					document.querySelector('#how-it-works .carousel-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-				}
-			});
-			$(window).resize(function() {
-				$('html.touch .featurette.carousel').each(function(i, elem){
-					var id = $(elem).attr('id');
-			  		CFG['iscroll'][id].setWidths($(elem));
-			  		CFG['iscroll'][id].iscroll.refresh();
-			 	});
-			});
-			/*
-			 * init all iscrolls
-			 */
-			CFG['iscroll'].init();
-			
-						
-			// make global
-			SHOW_DONATE = function() { 
-				$('#call-to-action .donate-form-wrap').fadeIn({
-						duration:400, 
-						complete: function(){
-								$('#call-to-action .donate a.btn').animate({opacity:0});
-							}
-						});
-				return false;		// onclick return value
-			}
-			
-			$('html.no-touch .carousel').each(function(i, elem) {
-				init_CarouselDotPaging($(elem));
-			});
-			
-			var isLingeringTimer = {};
-			$(window).scroll(function(e) {
-				/* Check the location of each desired element */
-				$('html.no-touch .carousel').each(function(i, elem) {
-					if (CFG['carousel'].DISABLED) return;
-					init_CarouselAutoPaging($(elem), isLingeringTimer);
-				});
-				// manually implemented ScrollSpy
-				$('.featurette').each(function(i, elem) {
-					if (_isScrolledIntoView($(elem))) {
-						var id = $(elem).attr('id');
-						$('.navbar .nav li').removeClass('active');
-						var a = $('.navbar .nav li a[href$="#'+id+'"]').parent().addClass('active');
-						return false;					
-					}
-				});
-			});
-			
-			$('a').bind('click', function(e) {
-				var target = this.hash;
-				if (target) {
-			        e.preventDefault();
-			        console.log(target);
-			        $.scrollTo(target, 500);
-			    }
-		   });
-			
-			
-		}(window.jQuery);
-
-		
-		(function() {  //Closure, to not leak to the scope
-			// facebook javascript jdk 		
-			!function(d, s, id) {
-				  var js, fjs = d.getElementsByTagName(s)[0];
-				  if (d.getElementById(id)) return;
-				  js = d.createElement(s); js.id = id;
-				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";
-				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-				  fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk');
-			
-			// twitter
-			!function(d,s,id){
-				var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
-			}(document,"script","twitter-wjs");
-			
-		})();  
-
-
     </script>
 <?php $this->Layout->blockEnd(); ?>

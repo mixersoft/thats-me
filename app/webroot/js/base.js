@@ -325,47 +325,49 @@ var load_social_sharing = function() {
  * jQuery ready
  */
 ! function($) {
-	
-	/*
-	 * debug touch/no-touch
-	 */
-	if (0) $('html').removeClass('no-touch').addClass('touch');
-	
-	/*
-	 * animations
-	 */
-	switch (window.location.hash) {
-		case '#thank-you': 	// donate success return 
-			$('#sharing .thank-you').removeClass('hide');
-			break;
-		case '#not-yet': 	// donate cancel return 
-			break;
-	}
-	
-	
-	if ($('html').hasClass('touch')) {
-		load_iscroll($);
-	} else {	// html.no-touch
-		load_bootstrap_carousel($);
-	}
-	load_bg_slideshow();
-	
-	$(window).scroll(function(e) {
-		CFG['util'].scrollSpy();
-	});
-				
-	// make global
-	$('a').bind('click', function(e) {
-		if (CFG['util'].animateScrollToHash(this)) {
-			e.preventDefault();
-		};
-	});
-	$('a#donate').one('click', function(e){
-		CFG.util.showDonateButtons();
-	})   
-	load_social_sharing();
-	
-	
+	// console.info("jQuery loaded");	return;
 }(window.jQuery);
 
-
+$(document).ready(
+	function(){
+		// console.info("document ready");		
+		/*
+		 * debug touch/no-touch
+		 */
+		if (0) $('html').removeClass('no-touch').addClass('touch');
+		
+		/*
+		 * animations
+		 */
+		switch (window.location.hash) {
+			case '#thank-you': 	// donate success return 
+				$('#sharing .thank-you').removeClass('hide');
+				break;
+			case '#not-yet': 	// donate cancel return 
+				break;
+		}
+		
+		
+		if ($('html').hasClass('touch')) {
+			load_iscroll($);
+		} else {	// html.no-touch
+			load_bootstrap_carousel($);
+		}
+		load_bg_slideshow();
+		
+		$(window).scroll(function(e) {
+			CFG['util'].scrollSpy();
+		});
+					
+		// make global
+		$('a').bind('click', function(e) {
+			if (CFG['util'].animateScrollToHash(this)) {
+				e.preventDefault();
+			};
+		});
+		$('a#donate').one('click', function(e){
+			CFG.util.showDonateButtons();
+		})   
+		load_social_sharing();
+	}
+)

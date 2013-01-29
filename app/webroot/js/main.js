@@ -149,8 +149,6 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		timers: {},
 	}
 
-	// local scope
-	var isLingeringTimer = {};
 	// track setTimeout timers, init in document.ready()
 	var mixpanel_event_properties = {} // page-level properties for mixpanel.track
 

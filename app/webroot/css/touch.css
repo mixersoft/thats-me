@@ -1,14 +1,23 @@
 /*
  * iscroll swipe-based carousels for touch devices
+ * 
+ * 
+ * 	.iscroll-wrapper == html.touch .carousel-inner
+ * 	.iscroll-scroller == html.touch .carousel-inner > ul
+ * 
  */
+.iscroll-wrapper, html.touch .carousel-inner {
+}
+.iscroll-scroller, html.touch .carousel-inner > ul{
+}
 
-.carousel .carousel-inner .container, .iscroll-wrapper  .container {
+html.touch .carousel-inner  .container {
 	padding: 60px 0px 20px;
 	min-height: 200px;
 	width: 80%;	/* fit inside paging arrows 10% */
 }
 
-.iscroll-scroller {
+html.touch .carousel-inner > ul {
 	list-style: none;
 	display: block;
 	float: left;
@@ -18,7 +27,7 @@
 	text-align: left;
 }
 
-.iscroll-scroller li {
+html.touch .carousel-inner > ul li {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-o-box-sizing: border-box;
@@ -28,11 +37,18 @@
 	height: 100%;
 }
 
-.iscroll-scroller {
+/*  Required: set width in JS before calling iscroll.refresh() */
+html.touch .carousel-inner > ul {
 	width: 4700px;
 }
-.iscroll-wrapper, .iscroll-scroller li {
+html.touch .carousel-inner, html.touch .carousel-inner > ul li {
 	width: 940px;
+}
+
+
+/*carousel next, prev controls */
+html.touch .carousel a.carousel-control {
+	display: none;
 }
 
 .carousel .carousel-pager, .iscroll-pager {
@@ -43,7 +59,7 @@
 	position: absolute;
 	width: 100%;
 }
-.carousel .carousel-pager div, .iscroll-pager div {
+.carousel .carousel-pager div {
 	border: 3px solid #FFFFCE;
 	display: inline-block;
 	height: 10px;
@@ -65,7 +81,7 @@
 
 
 @media (max-width: 767px) {
-	.iscroll-wrapper .container{
+	html.touch .carousel-inner .container{
 	      	padding-top: 20px;
 	}
 }

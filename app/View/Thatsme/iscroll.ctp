@@ -109,13 +109,13 @@
     <a class='anchor' name='features'></a>
     <div id="features" class="featurette carousel slide track-page-view">
 		
-     <div class="vcenter-wrap">
-	<div class="vcenter-padding">
-		<div class="fw-band alpha70b vcenter-body">
+    <div class="vcenter-wrap">
+		<div class="vcenter-padding">
+			<div class="fw-band alpha70b vcenter-body">
 					
-      <div class="carousel-inner">
-      	
-        <div class="item active">
+      <div id="features-iscroll" class="carousel-inner">
+      	<ul class="">
+      		<li class="item active">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -130,8 +130,7 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
   
 		          </div>
-        </div>
-        <div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -146,9 +145,7 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div>
-        
-        <div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -159,9 +156,7 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div> 
-        
-        <div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -175,9 +170,7 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div> 
-        
-        <div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -191,7 +184,8 @@ by rating the ones you love.
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div>         
+        </li>
+        </ul>         
       </div> <!-- /.carousel-inner  -->
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
@@ -245,15 +239,15 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette iscroll track-page-view">
+    <div id="how-it-works" class="featurette carousel slide track-page-view">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body">
 			
-      <div id="how-it-works-iscroll" class="carousel-inner iscroll-wrapper">
-      <ul class="iscroll-scroller">	
-        <li class="item">
+      <div id="how-it-works-iscroll" class="carousel-inner XXXiscroll-wrapper">
+      <ul class="xxx-iscroll-scroller">	
+        <li class="item active">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -337,8 +331,10 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
+<div><a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a></div>
+<div><a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a></div>	  
       <div class='fw-band footer'>
-      	<div class="center iscroll-pager">
+      	<div class="center carousel-pager">
 			<div class="active">0</div>
 			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>
@@ -676,15 +672,15 @@ Let us roll up our sleeves so you can just play.
 			FIRST_SECTION : '#home',
 			VIDEO_NAME : 'imagine',
 		}
-		CFG['carousel'] = { DISABLED: true};
+		CFG['carousel'] = { DISABLED: false};
 		CFG['iscroll'] = {
 			init : function(){
-				$('.featurette.iscroll').each(function(i, elem){
+				$('html.touch .featurette.carousel').each(function(i, elem){
 					var id = $(elem).attr('id');
 					CFG['iscroll'][id].setWidths($(elem));
 					CFG['iscroll'][id].iscroll.refresh();
 					// init dot paging
-					$(elem).find(".iscroll-pager div").click(function(e){ 
+					$(elem).find(".carousel-pager div").click(function(e){ 
 				      var index = $(this).index(); 
 				      CFG['iscroll'][id].iscroll.scrollToPage(index);
 				      e.preventDefault();
@@ -694,10 +690,14 @@ Let us roll up our sleeves so you can just play.
 			fullWidth: function(o) {
 				var count = o.find('.iscroll-scroller li').size();
 				var fw = $(window).width();
-				o.find(".iscroll-scroller").css('width', (count*fw) +'px');
-				o.find(".iscroll-wrapper, .iscroll-scroller li").css('width', fw +'px');
+				o.find("html.touch .carousel-inner > ul").css('width', (count*fw) +'px');
+				o.find("html.touch .carousel-inner, html.touch .carousel-inner > ul li").css('width', fw +'px');
 			},
 			// add one for each iscroll
+			'features': {
+				iscroll : null, 
+				setWidths : null,
+			},
 			'how-it-works': {
 				iscroll : null, 
 				setWidths : null,
@@ -720,6 +720,8 @@ Let us roll up our sleeves so you can just play.
 		 */
 		
 		var init_CarouselDotPaging = function(o) {
+			if ($('html').hasClass('touch')) return;			// uses iscroll, instead
+			
 			FIND['c'][o.attr("id")] = o;
 			  // .carousel({ interval: 5000 }) 
 			o.bind('slid', function(e) { 
@@ -744,6 +746,7 @@ Let us roll up our sleeves so you can just play.
 		 * 	- initialize AFTER first scroll into view
 		 */
 		var init_CarouselAutoPaging = function(o, timers) {
+			if ($('html').hasClass('touch')) return;			// uses iscroll, instead
 			
 			var id = o.attr('id');
 			if (timers[id]) return;	// already checking
@@ -767,6 +770,11 @@ Let us roll up our sleeves so you can just play.
 		}
 		
 		! function($) {
+			
+			/*
+			 * debug touch/no-touch
+			 */
+			if (0) $('html').removeClass('no-touch').addClass('touch');
 			
 			/*
 			 * animations
@@ -813,7 +821,21 @@ Let us roll up our sleeves so you can just play.
 			}
 			CFG['slideshow'].next();
 			
-			
+			// #features iscroll
+			// NOTE: call constructor with id of .carousel-inner, i.e. #features-iscroll.carousel-inner
+			CFG['iscroll']['features'].setWidths = CFG['iscroll'].fullWidth;
+			CFG['iscroll']['features'].iscroll = new iScroll('features-iscroll',{
+				snap: true,
+				momentum: false,
+				hScroll: true,
+				vScroll: false,
+				hScrollbar: false,
+				vScrollbar: false,
+				onScrollEnd: function () {
+					document.querySelector('#features .carousel-pager > div.active').className = '';
+					document.querySelector('#features .carousel-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+				}
+			});
 			// #how-it-works-iscroll
 			CFG['iscroll']['how-it-works'].setWidths = CFG['iscroll'].fullWidth;
 			CFG['iscroll']['how-it-works'].iscroll = new iScroll('how-it-works-iscroll',{
@@ -824,12 +846,12 @@ Let us roll up our sleeves so you can just play.
 				hScrollbar: false,
 				vScrollbar: false,
 				onScrollEnd: function () {
-					document.querySelector('#how-it-works .iscroll-pager > div.active').className = '';
-					document.querySelector('#how-it-works .iscroll-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+					document.querySelector('#how-it-works .carousel-pager > div.active').className = '';
+					document.querySelector('#how-it-works .carousel-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
 				}
-			 });
+			});
 			$(window).resize(function() {
-				$('.featurette.iscroll').each(function(i, elem){
+				$('html.touch .featurette.carousel').each(function(i, elem){
 					var id = $(elem).attr('id');
 			  		CFG['iscroll'][id].setWidths($(elem));
 			  		CFG['iscroll'][id].iscroll.refresh();
@@ -852,14 +874,14 @@ Let us roll up our sleeves so you can just play.
 				return false;		// onclick return value
 			}
 			
-			$('.carousel').each(function(i, elem) {
+			$('html.no-touch .carousel').each(function(i, elem) {
 				init_CarouselDotPaging($(elem));
 			});
 			
 			var isLingeringTimer = {};
 			$(window).scroll(function(e) {
 				/* Check the location of each desired element */
-				$('.carousel').each(function(i, elem) {
+				$('html.no-touch .carousel').each(function(i, elem) {
 					if (CFG['carousel'].DISABLED) return;
 					init_CarouselAutoPaging($(elem), isLingeringTimer);
 				});

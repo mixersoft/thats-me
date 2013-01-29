@@ -1,0 +1,71 @@
+/**
+ * 	for iPhone, android layouts
+ * 	Notes: Media Query results, see: 
+ * 		http://responsejs.com/labs/dimensions/
+ * 		http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+ * 		- iphone 3+: 320x480
+ * 		- iphone 4+/retina: 640x960px
+ * 		- iphone 5: 640x1136px
+ * 		- android, Galaxy Nexus: 360x592
+ * 
+ * 		use 640 >= W >= 468 for iphone 4/5
+ * 		use 467 > W, and initial-scale for mobile/Galaxy Nexus
+ * 		 
+ */
+
+
+@media
+    only screen and (max-device-width: 1136px) and (min-device-width: 960px) and (device-height: 640px),
+    only screen and (max-device-height: 1136px) and (min-device-height: 960px) and (device-width: 640px) {
+    /* iPhone only */
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) and (max-device-width: 580px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+}
+
+/* iPhone 4/5 retina display , portrait max-width: 640   767 >= W >= 640 */
+@media (max-width: 500px) {
+		#fold {
+		    top: 320px;
+		    width: 480px;
+		}
+		.featurette {
+			min-height: 350px;
+		}
+	}
+
+@media (max-width: 467px) {
+		#fold {
+		    top: 480px;
+		    width: 320px;
+		}	
+	.carousel-caption {
+		margin-top: 60px;
+	}
+	.featurette {
+		min-height: 350px;
+	}
+	.featurette.the-movie iframe {
+	   	width: 90%;
+	   	height: 300px;
+	}
+	.alert-wrapper {
+		margin: 10px 0;
+	}
+	
+	.alert-wrapper .alert {
+		min-width : 160px;
+	}	
+}    

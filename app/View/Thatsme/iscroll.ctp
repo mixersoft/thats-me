@@ -9,7 +9,9 @@
 	<meta property="og:site_name" content="Snaphappi" />
 	<meta property="fb:admins" content="214157" />	
 	<link rel="stylesheet" href="/css/beachfront.css">
-	<link rel="stylesheet" href="/css/iscroll.css">
+	<link rel="stylesheet" href="/css/responsive-tablet.css">
+	<link rel="stylesheet" href="/css/responsive-mobile.css">
+	<link rel="stylesheet" href="/css/touch.css">
 <!-- 	iscroll 	 -->
 		<script type="text/javascript" src="http://snappi.snaphappi.com/svc/lib/cubiq-iscroll-d31d6e6/src/iscroll.js"></script>
 <!-- 		<script type="text/javascript" src="/min/f=static/js/iscroll/iscroll.js"></script> -->	

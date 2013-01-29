@@ -1,0 +1,132 @@
+/**
+ * 	for tablets
+ * 		Media Query results, see: http://responsejs.com/labs/dimensions/
+ * 		http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+ * 		- ipad Retina display reports the same values as std display
+ */ 
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* iPads (landscape) -----------                same as desktop, responsive 1199 >= W >= 980  */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : landscape) {
+/* Styles */
+}
+
+/* iPads (portrait) -----------                  falls under: 979px > W >= 768px */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait) {
+/* Styles */
+}
+   /* RESPONSIVE CSS
+    -------------------------------------------------- */
+/* max container width=1170px */
+@media (max-width: 979px) {
+
+      .carousel .item {
+      }
+      .carousel-caption {
+	  }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+      .featurette.the-movie iframe {
+    	width: 90%;
+    	height: 480px;
+      }
+      
+    }
+
+
+    @media (max-width: 767px) {
+    
+		#fold {
+		    top: 1024px;
+		    width: 768px;
+		}
+	    	
+      .bounding-box {
+      	position: fixed;
+      	top: 0;
+      }	
+      .bounding-box.affix {
+    	position: fixed;
+      }
+      
+	  .navbar {
+	  	padding: 0;
+	  }
+      .navbar  .navbar-inner {
+        border-radius: 0;
+      }
+      .nav-collapse.collapse {
+      	background-color: #eee;
+      }
+	.featurette .container {
+      	width: 95%;
+      }
+      
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .item {
+/*        height: 700px;*/
+      }
+      .carousel .carousel-inner .container ,  .iscroll-wrapper .container{
+      	padding: 20px 0;
+/*      	width: auto;*/
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 100%;
+        margin-top: 60px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+      .carousel .item {
+      	padding: 0 10%;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    
+	  .featurette.the-movie iframe {
+	    	width: 90%;
+	    	height: 360px;
+	  }
+    
+    }

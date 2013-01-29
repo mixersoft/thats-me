@@ -184,9 +184,24 @@
     .navbar .nav > li > a {
     }
 	
-	.nav > li.active {
+	.navbar-inverse .nav > li.active ,  .navbar-inverse .nav > li.active a {
 		background-color:#000;
+		color: #FFFFCE !important;
 	}
+	
+	 .navbar-inverse .nav > li:hover {
+	 	/* same as alpha50b */
+	 	/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(0, 0, 0);
+		/* RGBa with 0.6 opacity */
+		background: rgba(0, 0, 0, 0.5);
+		/* For IE 5.5 - 7*/
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+		/* For IE 8*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000)";
+	 }
+	 
+	
     /* Offset the responsive button for proper vertical alignment */
     .navbar .btn-navbar {
     }
@@ -624,145 +639,7 @@
     
     
 
-    /* RESPONSIVE CSS
-    -------------------------------------------------- */
-
-    @media (max-width: 979px) {
-
-      .carousel .item {
-      }
-      .carousel-caption {
-	  }
-
-      .featurette {
-        height: auto;
-        padding: 0;
-      }
-      .featurette-image.pull-left,
-      .featurette-image.pull-right {
-        display: block;
-        float: none;
-        max-width: 40%;
-        margin: 0 auto 20px;
-      }
-      .featurette.the-movie iframe {
-    	width: 90%;
-    	height: 480px;
-      }
-      
-    }
-
-
-    @media (max-width: 767px) {
-    
-		#fold {
-		    top: 1024px;
-		    width: 768px;
-		}
-	    	
-      .bounding-box {
-      	position: fixed;
-      	top: 0;
-      }	
-      .bounding-box.affix {
-    	position: fixed;
-      }
-      
-	  .navbar {
-	  	padding: 0;
-	  }
-      .navbar  .navbar-inner {
-        border-radius: 0;
-      }
-      .nav-collapse.collapse {
-      	background-color: #eee;
-      }
-	.featurette .container {
-      	width: 95%;
-      }
-      
-      .carousel {
-        margin-left: -20px;
-        margin-right: -20px;
-      }
-      .carousel .item {
-/*        height: 700px;*/
-      }
-      .carousel .carousel-inner .container ,  .iscroll-wrapper .container{
-      	padding: 20px 0;
-/*      	width: auto;*/
-      }
-      .carousel img {
-        height: 300px;
-      }
-      .carousel-caption {
-        width: 100%;
-        margin-top: 60px;
-      }
-      .carousel-caption h1 {
-        font-size: 30px;
-      }
-      .carousel-caption .lead,
-      .carousel-caption .btn {
-        font-size: 18px;
-      }
-      .carousel .item {
-      	padding: 0 10%;
-      }
-
-      .marketing .span4 + .span4 {
-        margin-top: 40px;
-      }
-
-      .featurette-heading {
-        font-size: 30px;
-      }
-      .featurette .lead {
-        font-size: 18px;
-        line-height: 1.5;
-      }
-    
-	  .featurette.the-movie iframe {
-	    	width: 90%;
-	    	height: 360px;
-	  }
-    
-    }
-
-@media (max-width: 500px) {
-		#fold {
-		    top: 320px;
-		    width: 480px;
-		}
-		.featurette {
-			min-height: 350px;
-		}
-	}
-
-@media (max-width: 467px) {
-		#fold {
-		    top: 480px;
-		    width: 320px;
-		}	
-	.carousel-caption {
-		margin-top: 60px;
-	}
-	.featurette {
-		min-height: 350px;
-	}
-	.featurette.the-movie iframe {
-	   	width: 90%;
-	   	height: 300px;
-	}
-	.alert-wrapper {
-		margin: 10px 0;
-	}
-	
-	.alert-wrapper .alert {
-		min-width : 160px;
-	}	
-}    
-
+ 
 
 	
 

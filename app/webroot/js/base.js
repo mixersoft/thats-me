@@ -95,11 +95,13 @@ var load_bg_slideshow = function() {
 		next: null,			// next slide, function
 		count: 5,			// count of bg images, bg.pix[name='N'] defined in CSS
 		preloader: null,	// IMG object for binding onload
+		loaded: {},
 		init: function(){
 			CFG['slideshow'].preloader = $('<img />')	
 				.bind('load', function() {
 				    // Background image has loaded.
 				    var fade = $('#bg-slideshow .fading').addClass('fade-slow');
+				    CFG['slideshow'].loaded[fade.attr('name')]=1;
 				    setTimeout(function(){
 				    	fade.remove();
 				    	delete fade;
@@ -129,7 +131,14 @@ var load_bg_slideshow = function() {
 			
 			// PRELOAD image
 			var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
-			CFG['slideshow'].preloader.attr('src', bkgSrc);
+			if (!CFG['slideshow'].loaded[i]) CFG['slideshow'].preloader.attr('src', bkgSrc);
+			else {
+				fade.addClass('fade-slow');
+				setTimeout(function(){
+				    	fade.remove();
+				    	delete fade;
+				}, 600);
+			}
 		}
 	}
 	// init

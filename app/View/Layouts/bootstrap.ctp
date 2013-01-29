@@ -67,6 +67,7 @@
 
 <!-- <script src="/js/vendor/bootstrap.js"></script> -->
 		<script type="text/javascript" src="http://snappi.snaphappi.com/min/f=static/js/bootstrap/bootstrap.js"></script>
+		<?php $this->Layout->output($this->viewVars['javascript_base_for_layout']); ?>
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-4086550-2']);

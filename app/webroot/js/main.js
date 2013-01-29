@@ -2,41 +2,8 @@
  * GLOBAL SCOPE
  */
 
-
-function notify(msg, type) {
-	try {
-		$('.alert-wrapper').removeClass('hide');
-		$('.alert-wrapper .alert').html(msg);
-		// console.log(msg);
-		$('.alert-wrapper .fade-wrap').fadeIn(500).delay(1000).fadeOut("slow");
-	} catch (e) {
-	}
-}
-
 var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 
-	/*
-	 * http://stackoverflow.com/questions/9097501/show-div-when-scroll-position
-	 * see also: http://imakewebthings.com/jquery-waypoints/
-	 */
-
-var _isScrolledIntoView = function (o) {
-		var docViewTop = $(window).scrollTop();
-		var docViewBottom = docViewTop + $(window).height();
-
-		var elemTop = o.offset().top;
-		if (elemTop < 0) elemTop = 0;		// adjust for #home;
-		var elemBottom = elemTop + o.height();
-
-		var completelyInView = ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop) );
-		var nearTop = ((elemBottom >= docViewTop) && (elemTop >= docViewTop) && (elemTop <= docViewTop + $(window).height() / 3) // top 1/3 of window
-		)
-		return completelyInView || nearTop;
-	};
-	
-	
-	
-	
 	
 
 (function() {//Closure, to not leak to the scope	/**
@@ -137,7 +104,7 @@ var _isScrolledIntoView = function (o) {
 						// state : 'play'
 					// });					YT_player.mixpanel['play'] = 1;
 				}
-				notify("video play");
+				CFG['util'].notify("video play");
 				break;
 			case YT.PlayerState.ENDED:
 				// end
@@ -149,10 +116,10 @@ var _isScrolledIntoView = function (o) {
 						// state : 'end'
 					// });					YT_player.mixpanel['end'] = 1;
 				}
-				notify("end of video");
+				CFG['util'].notify("end of video");
 				break;
 		}
-		console.log("onStateChange has fired! New state:" + event.data);		}
+		// console.log("onStateChange has fired! New state:" + event.data);		}
 	$(document).ready(
 		function(){
 			mixpanel_event_properties['Video'] = {
@@ -175,10 +142,11 @@ var _isScrolledIntoView = function (o) {
 	 */
 	// CONFIG, override in View File
 	CFG['mixpanel'] = {
-		TRIGGER : 'overwhelmed',
-		FIRST_SECTION : '#help-me',
+		TRIGGER : 'i-need-this',
+		FIRST_SECTION : '#home',
 		VIDEO_NAME : 'imagine',
-		DISABLED : false, 
+		DISABLED : true, 
+		timers: {},
 	}
 
 	// local scope
@@ -199,13 +167,13 @@ var _isScrolledIntoView = function (o) {
 			return;
 		isLingeringTimer[waypoint] = setTimeout(function() {
 			isLingeringTimer[waypoint] = 0;
-			if (_isScrolledIntoView(o)) {
+			if (CFG['util'].isScrolledIntoView(o)) {
 				try {
 					var event_name = 'Page View';
 					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
 					mixpanel.track(event_name, properties);
 					o.removeClass('track-page-view');
-					notify(waypoint);
+					CFG['util'].notify(waypoint);
 					isLingeringTimer[waypoint] = 'tracked';
 				} catch (e) {
 					throw new Exception("ERROR: mixpanel not loaded?");
@@ -218,9 +186,25 @@ var _isScrolledIntoView = function (o) {
 	$(window).scroll(function(e, elem) {
 
 		/* Check the location of each desired element */
-		$('.track-page-view').each(function(i, elem) {
+		$('.track-page-view:not(.tracked)').each(function(i, elem) {
 			/* If the object is completely visible in the window, fade it in */
-			lingersInView($(elem));
+			// isLingeringInView: function(o, timers, delay, success)
+			var timers = CFG['mixpanel'].timers;			CFG['util'].isLingeringInView($(elem), timers, CFG['timing'].linger,
+				function(o) {
+					try {
+						var event_name = 'Page View',
+							waypoint = o.attr('id');
+						var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
+						if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);
+						o.addClass('tracked');
+						CFG['util'].notify(waypoint);
+						return "tracked";
+					} catch (e) {
+						throw new Exception("ERROR: mixpanel not loaded?");
+					}
+					return "error";
+				}
+			);
 		});
 
 	});
@@ -233,12 +217,18 @@ var _isScrolledIntoView = function (o) {
 				trigger : CFG['mixpanel'].TRIGGER,
 			};
 			
-			var hash = window.location.hash || CFG['mixpanel'].FIRST_SECTION;
+			var hash = window.location.hash || CFG['mixpanel'].FIRST_SECTION,
 				waypoint = hash.substr(1), 
-				event_name = 'Page View';
-			if ($(hash).hasClass('track-page-view') && lingersInView($(hash))) {
-				var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-				if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);				notify(waypoint);
+				event_name = 'Page View',
+				timers = CFG['mixpanel'].timers;
+			if ($(hash).hasClass('track-page-view')){
+				CFG['util'].isLingeringInView($(hash), timers, 0,
+					function(){
+						var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
+						if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);
+						CFG['util'].notify(waypoint);
+						return "tracked";
+				});
 			}
 		}
 	)

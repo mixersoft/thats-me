@@ -360,7 +360,9 @@ var load_social_sharing = function() {
 			e.preventDefault();
 		};
 	});
-	   
+	$('a#donate').one('click', function(e){
+		CFG.util.showDonateButtons();
+	})   
 	load_social_sharing();
 	
 	

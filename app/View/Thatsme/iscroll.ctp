@@ -390,7 +390,7 @@ We're working hard to build Snaphappi into a service you never knew you needed b
 <p class="lead">
 While we are still in the darkroom, you have a great opportunity to help shape this service with your early participation and invaluable feedback.</p>
 					<form class="form-inline sign-up" action="/action/sign-me-up" method="post">
-			                <input type="text" placeholder="Email" class='email'><button type="submit" class="btn btn-primary">I Want It</button>
+			                <input type="text" placeholder="Email" class='email'><button id='join-email-list' type="submit" class="btn btn-primary track-click" track='join-list'>I Want It</button>
 					</form>
 	        	</div>
 	        	<div class="span5 donate">
@@ -398,7 +398,7 @@ While we are still in the darkroom, you have a great opportunity to help shape t
 But if you want this service ASAP, <b>let us know!</b> 
 We need your vocal support and by donating $1 to our favorite charity you'll be cheering us on through those long sleepless nights. 
 	        		</p>
-	        		<a class="btn btn-large btn-success" href="#" onclick='return CFG.util.showDonateButtons();'>I Want It ASAP!</a>
+	        		<a id='donate' class="btn btn-large btn-success track-click" href="#" onclick='return false;' track='donate'>I Want It ASAP!</a>
 	        			<div class='donate-form-wrap alpha70b' style='display:none;'>
 	        				<p class="lead">We like your enthusiasm!</p>
 	        				<p>Use one of the buttons below to donate $1 to Snaphappi</p>
@@ -406,7 +406,7 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate $1 with PayPal - The safer, easier way to pay online!">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="H8VZABJRNDHX4">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate $1 with PayPal - The safer, easier way to pay online!">
+<input class='track-click' track='donate-PayPal'  type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Donate $1 with PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 
@@ -423,14 +423,13 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
   <input type="hidden" name="amazonPaymentsAccountId" value="NGWBMIUTOSUY31UM3CKJQBJQKRNJE6LDCALFR9" >
   <input type="hidden" name="cobrandingStyle" value="logo" >
   <input type="hidden" name="immediateReturn" value="1" >
-  <input type="hidden" name="amount" value="USD 1" >
+  <input type="hidden" name="amount" value="USD 1.00" >
   <input type="hidden" name="description" value="Go Snaphappi! I want Curated Family Photos." >
   <input type="hidden" name="abandonUrl" value="http://thats-me.snaphappi.com/i-need-this#not-yet" >
   <input type="hidden" name="signatureVersion" value="2" >
-  <input type="hidden" name="signature" value="707KWak1F2qHXC3DGVso74QmLVsECFAGkwx5fd6orOg=" >
-<!--   <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/beige_small_paynow_withmsg_whitebg.gif" border="0" alt="Donate $1 with Amazon Payments"> -->
-  <input type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_darkbg.gif" border="0" alt="Donate $1 with Amazon Payments">
-</form> 
+  <input type="hidden" name="signature" value="WPGLkoL/P0tPocJb8pCB76MCcSAcLg2MhUgPnHStVbs=" >
+  <input  class='track-click' track='donate-Amazon' alt="Donate $1 with Amazon Payments" type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_darkbg.gif" border="0">
+</form>		
 					</div>
 	        	</div>
 	        </div>  <!-- / .row -->

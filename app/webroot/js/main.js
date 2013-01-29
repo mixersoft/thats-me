@@ -154,33 +154,6 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	// track setTimeout timers, init in document.ready()
 	var mixpanel_event_properties = {} // page-level properties for mixpanel.track
 
-	
-	/*
-	 * waits DELAY ms before checking ScrolledIntoView, 
-	 * once timer is set, ignores calls on successive scroll() until timer expires 
-	 */
-	function lingersInView(o) {
-		var DELAY = 1000,
-			waypoint = o.attr('id');
-
-		if (isLingeringTimer[waypoint])
-			return;
-		isLingeringTimer[waypoint] = setTimeout(function() {
-			isLingeringTimer[waypoint] = 0;
-			if (CFG['util'].isScrolledIntoView(o)) {
-				try {
-					var event_name = 'Page View';
-					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-					mixpanel.track(event_name, properties);
-					o.removeClass('track-page-view');
-					CFG['util'].notify(waypoint);
-					isLingeringTimer[waypoint] = 'tracked';
-				} catch (e) {
-					throw new Exception("ERROR: mixpanel not loaded?");
-				}
-			}
-		}, DELAY);
-	}
 
 	/* Every time the window is scrolled ... */
 	$(window).scroll(function(e, elem) {
@@ -208,6 +181,15 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		});
 
 	});
+	
+	$('.track-click').one('click', function(e, elem){
+		var properties = {
+			url : window.location.pathname,
+			trigger : CFG['mixpanel'].TRIGGER,
+			'click-action' : $(e.currentTarget).attr('track'),	
+		}		
+		if (!CFG['mixpanel'].DISABLED) mixpanel.track('click', properties);
+	})
 
 	// track first section
 	$(document).ready(

@@ -9,6 +9,12 @@
 	<meta property="og:site_name" content="Snaphappi" />
 	<meta property="fb:admins" content="214157" />	
 	<link rel="stylesheet" href="/css/beachfront.css">
+	<link rel="stylesheet" href="/css/responsive-tablet.css">
+	<link rel="stylesheet" href="/css/responsive-mobile.css">
+	<link rel="stylesheet" href="/css/touch.css">
+<!-- 	iscroll 	 -->
+		<script type="text/javascript" src="http://snappi.snaphappi.com/svc/lib/cubiq-iscroll-d31d6e6/src/iscroll.js"></script>
+<!-- 		<script type="text/javascript" src="/min/f=static/js/iscroll/iscroll.js"></script> -->	
 <?php $this->Layout->blockEnd(); ?>
 
 <?php $this->Layout->blockStart('header'); ?>
@@ -26,7 +32,8 @@
             </a>
             <a class="brand" href="/i-need-this"><img src='/img/beachfront/snaphappi-logo-v2.png'></a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse pull-right">              <ul class="nav">
+            <div class="nav-collapse collapse pull-right">
+              <ul class="nav">
                 <li class="active" data-toggle="collapse" data-target=".nav-collapse"><a href="#home">Home</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#features" >Features</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="#how-it-works" >How It Works</a></li>
@@ -101,14 +108,14 @@
     ================================================== -->
     <a class='anchor' name='features'></a>
     <div id="features" class="featurette carousel slide track-page-view">
-    	
-<div class="vcenter-wrap">
-	<div class="vcenter-padding">
-		<div class="fw-band alpha70b vcenter-body">
+		
+    <div class="vcenter-wrap">
+		<div class="vcenter-padding">
+			<div class="fw-band alpha70b vcenter-body">
 					
-      <div class="carousel-inner">
-      	
-        <div class="item active">
+      <div id="features-iscroll" class="carousel-inner">
+      	<ul class="">
+      		<li class="item active">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -123,8 +130,7 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
   
 		          </div>
-        </div>
-        <div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -139,9 +145,7 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div>
-        
-        <div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -152,9 +156,7 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div> 
-        
-        <div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -168,9 +170,7 @@ We promise 100% privacy.
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div> 
-        
-        <div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -184,7 +184,8 @@ by rating the ones you love.
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div>         
+        </li>
+        </ul>         
       </div> <!-- /.carousel-inner  -->
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
@@ -244,13 +245,13 @@ by rating the ones you love.
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body">
 			
-      <div class="carousel-inner">
-      	
-        <div class="item active">
+      <div id="how-it-works-iscroll" class="carousel-inner">
+      <ul class="">	
+        <li class="item active">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset4 span6">
+    <div class="offset5 span6">
 	    <div class="carousel-caption"><h1>Send Us Your Photos</h1></div>
 	    <p>
 With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10,000, 20,000, or over 100,000 shots! 
@@ -260,7 +261,7 @@ Our Uploader lets you upload up to 100x faster than normal photo sites - we've s
   </div><!-- /.row -->          	
   
 		          </div>
-        </div><div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -275,7 +276,7 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div><div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -292,7 +293,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div><div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -308,7 +309,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div><div class="item">
+        </li><li class="item">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
@@ -324,16 +325,16 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
   </div><!-- /.row -->          	
 		          
 		          </div>
-        </div> 
+        </li> 
+        </ul>
       </div> <!-- /.carousel-inner  -->
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
 <div><a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a></div>
-<div><a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a></div>	      
-	  	
+<div><a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a></div>	  
       <div class='fw-band footer'>
-      	<div class="carousel-pager center">
+      	<div class="center carousel-pager">
 			<div class="active">0</div>
 			<div>1</div><div>2</div><div>3</div><div>4</div>
         </div>
@@ -672,6 +673,36 @@ Let us roll up our sleeves so you can just play.
 			VIDEO_NAME : 'imagine',
 		}
 		CFG['carousel'] = { DISABLED: false};
+		CFG['iscroll'] = {
+			init : function(){
+				$('html.touch .featurette.carousel').each(function(i, elem){
+					var id = $(elem).attr('id');
+					CFG['iscroll'][id].setWidths($(elem));
+					CFG['iscroll'][id].iscroll.refresh();
+					// init dot paging
+					$(elem).find(".carousel-pager div").click(function(e){ 
+				      var index = $(this).index(); 
+				      CFG['iscroll'][id].iscroll.scrollToPage(index);
+				      e.preventDefault();
+				    }); 
+				});
+			},
+			fullWidth: function(o) {
+				var count = o.find('.iscroll-scroller li').size();
+				var fw = $(window).width();
+				o.find("html.touch .carousel-inner > ul").css('width', (count*fw) +'px');
+				o.find("html.touch .carousel-inner, html.touch .carousel-inner > ul li").css('width', fw +'px');
+			},
+			// add one for each iscroll
+			'features': {
+				iscroll : null, 
+				setWidths : null,
+			},
+			'how-it-works': {
+				iscroll : null, 
+				setWidths : null,
+			},
+		}
 		CFG['timing'] = {
 			linger: 1000,
 			carousel: 5000,
@@ -683,19 +714,22 @@ Let us roll up our sleeves so you can just play.
 			count: 5,
 		}
 		var FIND = {c:{}};
-		var BG_SLIDESHOW_TIMER, SHOW_DONATE;
+		var BG_SLIDESHOW, SHOW_DONATE;
 		/*
 		 * dot paging for carousels
 		 */
 		
 		var init_CarouselDotPaging = function(o) {
+			if ($('html').hasClass('touch')) return;			// uses iscroll, instead
+			
 			FIND['c'][o.attr("id")] = o;
 			  // .carousel({ interval: 5000 }) 
 			o.bind('slid', function(e) { 
 				var pager = o.find(".carousel-pager"),
 					dots = pager.find("div");
 				var next = o.find('.item.active').index();
-				dots.removeClass('active').eq(next).addClass('active'); 				if (++next >= dots.length) next = 0; 
+				dots.removeClass('active').eq(next).addClass('active'); 
+				if (++next >= dots.length) next = 0; 
 				pager.attr('next', next);
 			  }); 
 				
@@ -712,6 +746,7 @@ Let us roll up our sleeves so you can just play.
 		 * 	- initialize AFTER first scroll into view
 		 */
 		var init_CarouselAutoPaging = function(o, timers) {
+			if ($('html').hasClass('touch')) return;			// uses iscroll, instead
 			
 			var id = o.attr('id');
 			if (timers[id]) return;	// already checking
@@ -735,6 +770,11 @@ Let us roll up our sleeves so you can just play.
 		}
 		
 		! function($) {
+			
+			/*
+			 * debug touch/no-touch
+			 */
+			if (0) $('html').removeClass('no-touch').addClass('touch');
 			
 			/*
 			 * animations
@@ -781,7 +821,46 @@ Let us roll up our sleeves so you can just play.
 			}
 			CFG['slideshow'].next();
 			
-			
+			// #features iscroll
+			// NOTE: call constructor with id of .carousel-inner, i.e. #features-iscroll.carousel-inner
+			CFG['iscroll']['features'].setWidths = CFG['iscroll'].fullWidth;
+			CFG['iscroll']['features'].iscroll = new iScroll('features-iscroll',{
+				snap: true,
+				momentum: false,
+				hScroll: true,
+				vScroll: false,
+				hScrollbar: false,
+				vScrollbar: false,
+				onScrollEnd: function () {
+					document.querySelector('#features .carousel-pager > div.active').className = '';
+					document.querySelector('#features .carousel-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+				}
+			});
+			// #how-it-works-iscroll
+			CFG['iscroll']['how-it-works'].setWidths = CFG['iscroll'].fullWidth;
+			CFG['iscroll']['how-it-works'].iscroll = new iScroll('how-it-works-iscroll',{
+				snap: true,
+				momentum: false,
+				hScroll: true,
+				vScroll: false,
+				hScrollbar: false,
+				vScrollbar: false,
+				onScrollEnd: function () {
+					document.querySelector('#how-it-works .carousel-pager > div.active').className = '';
+					document.querySelector('#how-it-works .carousel-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+				}
+			});
+			$(window).resize(function() {
+				$('html.touch .featurette.carousel').each(function(i, elem){
+					var id = $(elem).attr('id');
+			  		CFG['iscroll'][id].setWidths($(elem));
+			  		CFG['iscroll'][id].iscroll.refresh();
+			 	});
+			});
+			/*
+			 * init all iscrolls
+			 */
+			CFG['iscroll'].init();
 			
 						
 			// make global
@@ -795,14 +874,14 @@ Let us roll up our sleeves so you can just play.
 				return false;		// onclick return value
 			}
 			
-			$('.carousel').each(function(i, elem) {
+			$('html.no-touch .carousel').each(function(i, elem) {
 				init_CarouselDotPaging($(elem));
 			});
 			
 			var isLingeringTimer = {};
 			$(window).scroll(function(e) {
 				/* Check the location of each desired element */
-				$('.carousel').each(function(i, elem) {
+				$('html.no-touch .carousel').each(function(i, elem) {
 					if (CFG['carousel'].DISABLED) return;
 					init_CarouselAutoPaging($(elem), isLingeringTimer);
 				});
@@ -829,13 +908,15 @@ Let us roll up our sleeves so you can just play.
 			
 		}(window.jQuery);
 
-				(function() {  //Closure, to not leak to the scope
+		
+		(function() {  //Closure, to not leak to the scope
 			// facebook javascript jdk 		
 			!function(d, s, id) {
 				  var js, fjs = d.getElementsByTagName(s)[0];
 				  if (d.getElementById(id)) return;
 				  js = d.createElement(s); js.id = id;
-				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";
+				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
 				  fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk');
 			
@@ -844,6 +925,8 @@ Let us roll up our sleeves so you can just play.
 				var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
 			}(document,"script","twitter-wjs");
 			
-		})();  
+		})();  
+
+
     </script>
 <?php $this->Layout->blockEnd(); ?>

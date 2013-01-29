@@ -398,7 +398,7 @@ While we are still in the darkroom, you have a great opportunity to help shape t
 But if you want this service ASAP, <b>let us know!</b> 
 We need your vocal support and by donating $1 to our favorite charity you'll be cheering us on through those long sleepless nights. 
 	        		</p>
-	        		<a class="btn btn-large btn-success" href="#" onclick='return SHOW_DONATE();'>I Want It ASAP!</a>
+	        		<a class="btn btn-large btn-success" href="#" onclick='return CFG.util.showDonateButtons();'>I Want It ASAP!</a>
 	        			<div class='donate-form-wrap alpha70b' style='display:none;'>
 	        				<p class="lead">We like your enthusiasm!</p>
 	        				<p>Use one of the buttons below to donate $1 to Snaphappi</p>
@@ -667,159 +667,247 @@ Let us roll up our sleeves so you can just play.
     ================================================== -->
     <script type="text/javascript">
     	// update Global CFG
+    	CFG['util'] = {
+    		/*
+			 * http://stackoverflow.com/questions/9097501/show-div-when-scroll-position
+			 * see also: http://imakewebthings.com/jquery-waypoints/
+			 */
+			isScrolledIntoView: function (o) {
+				var docViewTop = $(window).scrollTop();
+				var docViewBottom = docViewTop + $(window).height();
+		
+				var elemTop = o.offset().top;
+				if (elemTop < 0) elemTop = 0;		// adjust for #home;
+				var elemBottom = elemTop + o.height();
+		
+				var completelyInView = ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop) );
+				var nearTop = ((elemBottom >= docViewTop) && (elemTop >= docViewTop) && (elemTop <= docViewTop + $(window).height() / 3) // top 1/3 of window
+				)
+				return completelyInView || nearTop;
+			},
+			isLingeringInView: function(o, timers, delay, success){
+				var id = o.attr('id');
+				if (timers[id]) return;
+				timers[id] = setTimeout(function(){
+					timers[id] = 0;
+					if (CFG['util'].isScrolledIntoView(o)) {
+						timers[id] = success(o);
+					}
+				}, delay);
+			},
+			scrollSpy: function(){
+				// manually implemented ScrollSpy
+				$('.featurette').each(function(i, elem) {
+					if (CFG['util'].isScrolledIntoView($(elem))) {
+						var id = $(elem).attr('id');
+						$('.navbar .nav li').removeClass('active');
+						var a = $('.navbar .nav li a[href$="#'+id+'"]').parent().addClass('active');
+						return false;					
+					}
+				});
+			},
+			showDonateButtons: function() { 
+				$('#call-to-action .donate-form-wrap').fadeIn({
+						duration:400, 
+						complete: function(){
+								$('#call-to-action .donate a.btn').animate({opacity:0});
+							}
+						});
+				return false;		// onclick return value
+			},
+			// o.hasAttr('hash'), $(<A>)
+			animateScrollToHash: function(o) {
+				var target = o.hash;
+				if (target) {
+			        console.log(target);
+			        $.scrollTo(target, 500);
+			    }
+			    return target;
+			}
+		};
+			
 		CFG['mixpanel'] = {
 			TRIGGER : 'i-need-this',
 			FIRST_SECTION : '#home',
 			VIDEO_NAME : 'imagine',
-		}
-		CFG['carousel'] = { DISABLED: false};
-		CFG['iscroll'] = {
-			init : function(){
-				$('html.touch .featurette.carousel').each(function(i, elem){
-					var id = $(elem).attr('id');
-					CFG['iscroll'][id].setWidths($(elem));
-					CFG['iscroll'][id].iscroll.refresh();
-					// init dot paging
-					$(elem).find(".carousel-pager div").click(function(e){ 
-				      var index = $(this).index(); 
-				      CFG['iscroll'][id].iscroll.scrollToPage(index);
-				      e.preventDefault();
-				    }); 
-				});
-			},
-			fullWidth: function(o) {
-				var count = o.find('.iscroll-scroller li').size();
-				var fw = $(window).width();
-				o.find("html.touch .carousel-inner > ul").css('width', (count*fw) +'px');
-				o.find("html.touch .carousel-inner, html.touch .carousel-inner > ul li").css('width', fw +'px');
-			},
-			// add one for each iscroll
-			'features': {
-				iscroll : null, 
-				setWidths : null,
-			},
-			'how-it-works': {
-				iscroll : null, 
-				setWidths : null,
-			},
 		}
 		CFG['timing'] = {
 			linger: 1000,
 			carousel: 5000,
 			slideshow: 7000,
 		}
-		CFG['slideshow'] = {
-			timer: null,
-			next: null,			// next slide, function
-			count: 5,
-		}
-		var FIND = {c:{}};
-		var BG_SLIDESHOW, SHOW_DONATE;
-		/*
-		 * dot paging for carousels
-		 */
 		
-		var init_CarouselDotPaging = function(o) {
-			if ($('html').hasClass('touch')) return;			// uses iscroll, instead
-			
-			FIND['c'][o.attr("id")] = o;
-			  // .carousel({ interval: 5000 }) 
-			o.bind('slid', function(e) { 
-				var pager = o.find(".carousel-pager"),
-					dots = pager.find("div");
-				var next = o.find('.item.active').index();
-				dots.removeClass('active').eq(next).addClass('active'); 
-				if (++next >= dots.length) next = 0; 
-				pager.attr('next', next);
-			  }); 
-				
-		    o.find(".carousel-pager div").click(function(e){ 
-		      var index = $(this).index(); 
-		      o.carousel({interval:false}).carousel(index);
-		      var pager = o.find(".carousel-pager").attr('next', index);
-		      e.preventDefault();
-		    }); 
-		}
 		
-		/*
-		 * dot paging for carousels, 
-		 * 	- initialize AFTER first scroll into view
+		/**
+		 * 
 		 */
-		var init_CarouselAutoPaging = function(o, timers) {
-			if ($('html').hasClass('touch')) return;			// uses iscroll, instead
-			
-			var id = o.attr('id');
-			if (timers[id]) return;	// already checking
-			
-			timers[id] = setTimeout(function() {
-				timers[id] = 0;
-				if (_isScrolledIntoView(o)) {
-					/* If the object is completely visible in the window, fade it in */
-					if (o.hasClass('activated')) return
-					else {
-						// bug: carousel does not pause:'hover' if it was started while hovering
-						if (o.is(":hover")) {
-							o.one("mouseleave", function(){
-								o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
-							})
-						} else 
-							o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
-					}
+		var load_bg_slideshow = function() {
+			CFG['slideshow'] = {
+				timer: null,
+				next: null,			// next slide, function
+				count: 5,			// count of bg images, bg.pix[name='N'] defined in CSS
+				preloader: null,	// IMG object for binding onload
+				init: function(){
+					CFG['slideshow'].preloader = $('<img />')	
+						.bind('load', function() {
+						    // Background image has loaded.
+						    var fade = $('#bg-slideshow .fading').addClass('fade-slow');
+						    setTimeout(function(){
+						    	fade.remove();
+						    	delete fade;
+							}, 600);
+						});
+					// start the slideshow timer	
+					CFG['slideshow'].next();	
+				},
+				// slideshow timer
+				next: function(){
+					if (CFG['slideshow'].timer == null) {
+						CFG['slideshow'].timer = setInterval(
+							CFG['slideshow'].next,
+							CFG['timing']['slideshow']
+						);
+					} 
+					var bg = $('#bg-slideshow .bg.fixed');
+					if (bg.size()>1) return;
+					
+					var fade = bg.clone().addClass('fading');
+					$('#bg-slideshow').append(fade);
+					
+					// next slide
+					var i = parseInt(bg.attr('name'))+1;
+					if (i > CFG['slideshow'].count) i=1;
+					bg.attr('name', i );	
+					
+					// PRELOAD image
+					var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
+					CFG['slideshow'].preloader.attr('src', bkgSrc);
 				}
-			}, CFG['timing']['lingering']);
+			}
+			// init
+			CFG['slideshow'].init();
 		}
 		
-		! function($) {
+		/*
+		 * bootstrap carousel load/init for html.no-touch
+		 */
+		var load_bootstrap_carousel = function($) {
+			CFG['carousel'] = { 
+				autoPaging: true,
+				isLingeringTimer: {},
+				find: {},
+				init: function() {
+					$('html.no-touch .carousel').each(function(i, elem) {
+						CFG['carousel'].paging.dotPaging($(elem));
+					});
+				},
+				paging : {
+					/*
+					 * dot paging for carousels
+					 * @param o.hasClass(.carousel)
+					 */
+					dotPaging: function(o) {			
+						if ($('html').hasClass('touch')) return;			// uses iscroll, instead
+						
+						CFG['carousel'].find[o.attr("id")] = o;				// back reference
+						
+						  // .carousel({ interval: 5000 }) 
+						o.bind('slid', function(e) { 
+							var pager = o.find(".carousel-pager"),
+								dots = pager.find("div");
+							var next = o.find('.item.active').index();
+							dots.removeClass('active').eq(next).addClass('active'); 
+							if (++next >= dots.length) next = 0; 
+							pager.attr('next', next);
+						  }); 
+							
+					    o.find(".carousel-pager div").click(function(e){ 
+					      var index = $(this).index(); 
+					      o.carousel({interval:false}).carousel(index);
+					      var pager = o.find(".carousel-pager").attr('next', index);
+					      e.preventDefault();
+					    }); 
+					}, 
+					/*
+					 * autoPaging for bootstrap carousels, 
+					 * 	- initialize AFTER first scroll into view
+					 */
+					autoPaging: function(o, timers) {
+						if ($('html').hasClass('touch')) return;			// uses iscroll, instead
+						if (o.hasClass('activated')) return;
+						if (CFG['carousel'].autoPaging == false) return;
+						
+						// isLingeringInView(o, timers, delay, success){
+						CFG['util'].isLingeringInView(o, timers, CFG['timing']['lingering'], 
+							function(o){
+								// console.info("lingering for "+o.attr('id'));
+								/**
+								 * start carousel when .carousel lingers in view 
+								 */
+								var id = o.attr('id');
+								if (!o.hasClass('activated')) {
+									// bug: carousel does not pause:'hover' if it was started while hovering
+									if (o.is(":hover")) {
+										o.one("mouseleave", function(){
+											o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
+										})
+									} else 
+										o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
+								}
+								return 'activated';	// only start once.
+							}
+						);	
+						return;
+					},
+				},
+			};
 			
-			/*
-			 * debug touch/no-touch
-			 */
-			if (0) $('html').removeClass('no-touch').addClass('touch');
+			CFG['carousel'].init();
 			
-			/*
-			 * animations
-			 */
-			switch (window.location.hash) {
-				case '#thank-you': 	// donate success return 
-					$('#sharing .thank-you').removeClass('hide');
-					break;
-				case '#not-yet': 	// donate cancel return 
-					break;
-			}
-			
-			// bg-slideshow
-			CFG['slideshow'].preloader = $('<img />')	
-				.bind('load', function() {
-				    // Background image has loaded.
-				    var fade = $('#bg-slideshow .fading').addClass('fade-slow');
-				    setTimeout(function(){
-				    	fade.remove();
-				    	delete fade;
-					}, 600);
+			$(window).scroll(function(e) {
+				/* Check the location of each desired element */
+				$('html.no-touch .carousel:not(.activated)').each(function(i, elem) {
+					CFG['carousel'].paging.autoPaging($(elem), CFG['carousel'].isLingeringTimer);
 				});
-			CFG['slideshow'].next = function(){
-				if (CFG['slideshow'].timer == null) {
-					CFG['slideshow'].timer = setInterval(
-						CFG['slideshow'].next,
-						CFG['timing']['slideshow']
-					);
-				} 
-				var bg = $('#bg-slideshow .bg.fixed');
-				if (bg.size()>1) return;
-				
-				var fade = bg.clone().addClass('fading');
-				$('#bg-slideshow').append(fade);
-				
-				// next slide
-				var i = parseInt(bg.attr('name'))+1;
-				if (i > CFG['slideshow'].count) i=1;
-				bg.attr('name', i );	
-				
-				// PRELOAD image
-				var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
-				CFG['slideshow'].preloader.attr('src', bkgSrc);
+			});
+			
+		}
+		
+		/*
+		 * iscroll load/init for html.touch
+		 */
+		var load_iscroll = function($) {
+			CFG['iscroll'] = {
+				init : function(){
+					$('html.touch .featurette.carousel').each(function(i, elem){
+						var id = $(elem).attr('id');
+						CFG['iscroll'][id].setWidths($(elem));
+						CFG['iscroll'][id].iscroll.refresh();
+						// init dot paging
+						$(elem).find(".carousel-pager div").click(function(e){ 
+					      var index = $(this).index(); 
+					      CFG['iscroll'][id].iscroll.scrollToPage(index);
+					      e.preventDefault();
+					    }); 
+					});
+				},
+				fullWidth: function(o) {
+					var count = o.find('.iscroll-scroller li').size();
+					var fw = $(window).width();
+					o.find("html.touch .carousel-inner > ul").css('width', (count*fw) +'px');
+					o.find("html.touch .carousel-inner, html.touch .carousel-inner > ul li").css('width', fw +'px');
+				},
+				// add one for each iscroll
+				'features': {
+					iscroll : null, 
+					setWidths : null,
+				},
+				'how-it-works': {
+					iscroll : null, 
+					setWidths : null,
+				},
 			}
-			CFG['slideshow'].next();
+			
 			
 			// #features iscroll
 			// NOTE: call constructor with id of .carousel-inner, i.e. #features-iscroll.carousel-inner
@@ -862,47 +950,43 @@ Let us roll up our sleeves so you can just play.
 			 */
 			CFG['iscroll'].init();
 			
-						
-			// make global
-			SHOW_DONATE = function() { 
-				$('#call-to-action .donate-form-wrap').fadeIn({
-						duration:400, 
-						complete: function(){
-								$('#call-to-action .donate a.btn').animate({opacity:0});
-							}
-						});
-				return false;		// onclick return value
+		}
+		
+		! function($) {
+			
+			/*
+			 * debug touch/no-touch
+			 */
+			if (0) $('html').removeClass('no-touch').addClass('touch');
+			
+			/*
+			 * animations
+			 */
+			switch (window.location.hash) {
+				case '#thank-you': 	// donate success return 
+					$('#sharing .thank-you').removeClass('hide');
+					break;
+				case '#not-yet': 	// donate cancel return 
+					break;
 			}
 			
-			$('html.no-touch .carousel').each(function(i, elem) {
-				init_CarouselDotPaging($(elem));
-			});
 			
-			var isLingeringTimer = {};
+			if ($('html').hasClass('touch')) {
+				load_iscroll($);
+			} else {	// html.no-touch
+				load_bootstrap_carousel($);
+			}
+			load_bg_slideshow();
+			
 			$(window).scroll(function(e) {
-				/* Check the location of each desired element */
-				$('html.no-touch .carousel').each(function(i, elem) {
-					if (CFG['carousel'].DISABLED) return;
-					init_CarouselAutoPaging($(elem), isLingeringTimer);
-				});
-				// manually implemented ScrollSpy
-				$('.featurette').each(function(i, elem) {
-					if (_isScrolledIntoView($(elem))) {
-						var id = $(elem).attr('id');
-						$('.navbar .nav li').removeClass('active');
-						var a = $('.navbar .nav li a[href$="#'+id+'"]').parent().addClass('active');
-						return false;					
-					}
-				});
+				CFG['util'].scrollSpy();
 			});
-			
+						
+			// make global
 			$('a').bind('click', function(e) {
-				var target = this.hash;
-				if (target) {
-			        e.preventDefault();
-			        console.log(target);
-			        $.scrollTo(target, 500);
-			    }
+				if (CFG['util'].animateScrollToHash(this)) {
+					e.preventDefault();
+				};
 		   });
 			
 			

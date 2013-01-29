@@ -277,7 +277,7 @@
   Carousel.prototype = {
 
     cycle: function (e) {
-console.log('carousel cycle');      	
+// console.log('carousel cycle');      	
       if (!e) this.paused = false
       this.options.interval
         && !this.paused
@@ -308,7 +308,7 @@ console.log('carousel cycle');
 
   , pause: function (e) {
       if (!e) this.paused = true
-console.log('carousel paused');      
+// console.log('carousel paused');      
       // see: https://github.com/twitter/bootstrap/issues/5747
       // if (this.$element.find('.next, .prev').length && $.support.transition.end) {
         // this.$element.trigger($.support.transition.end)
@@ -325,7 +325,7 @@ console.log('carousel paused');
 
   , prev: function () {
       if (this.sliding) return
-console.log('carousel prev');        
+// console.log('carousel prev');        
       return this.slide('prev')
     }
 

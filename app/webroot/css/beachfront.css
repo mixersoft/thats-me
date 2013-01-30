@@ -74,7 +74,7 @@
 	}
 	   
 /*   http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/*/
-   .alpha50b ,  .navbar-inner.alpha50b {
+   .alpha50b , .navbar .navbar-inner.alpha50b {
 		/* Fallback for web browsers that doesn't support RGBa */
 		background: rgb(0, 0, 0);
 		/* RGBa with 0.6 opacity */
@@ -84,7 +84,7 @@
 		/* For IE 8*/
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000)";
 	}
-	.alpha65b ,  .navbar-inner.alpha65b {
+	.alpha65b, .navbar .navbar-inner.alpha65b  {
 		/* Fallback for web browsers that doesn't support RGBa */
 		background: rgb(0, 0, 0);
 		/* RGBa with 0.6 opacity */
@@ -94,8 +94,7 @@
 		/* For IE 8*/
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#A5000000, endColorstr=#A5000000)";
 	}
-	
-	.alpha70b ,  .navbar-inner.alpha70b {
+	.alpha70b {
 		/* Fallback for web browsers that doesn't support RGBa */
 		background: rgb(0, 0, 0);
 		/* RGBa with 0.6 opacity */
@@ -210,9 +209,17 @@
 	.navbar-inverse .dropdown-menu li a {
 		color: #999;
 	} 
-	.navbar-inverse .dropdown-menu li a:hover  {
+	.navbar-inverse .dropdown-menu li a:hover,
+	.navbar-inverse .nav-collapse .nav > li > a:hover,
+  	.navbar-inverse .nav-collapse .dropdown-menu a:hover  {
 		color: #FFF;
 	}
+	
+	.nav-collapse .nav > li > a,
+  	.nav-collapse .dropdown-menu a {
+  		font-weight: normal;
+	}
+	
 	.dropdown-menu {
 		margin-top: 0;
 		border-radius: 0 0 6px 6px;

@@ -20,7 +20,7 @@
       <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
 	    <div class='bounding-box '>
         <div class="navbar navbar-inverse navbar-fixed-top alpha70b">
-          <div class="navbar-inner container">
+          <div class="navbar-inner container alpha70b">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
@@ -50,8 +50,8 @@
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
        </div>
-        <div class="alert-wrapper hide" >
-        	<div class='fade-wrap' style='diplay:none;'>
+        <div class="alert-wrapper show-navbar hide" >
+        	<div class='fade-wrap' style='display:none;'>
         		<div class='alert alert-info'></div>
         	</div>
         </div>

@@ -68,6 +68,39 @@ CFG['util'] = {
 	        $.scrollTo(target, 500);
 	    }
 	    return target;
+	},
+	slideInNavBar: function(type){
+		var navbar = $('.navbar-fixed-top');
+		if (navbar.css('position')=='absolute') {
+			var top = $(window).scrollTop();
+			navbar.css('top', top);
+			$('.alert-wrapper').css('top', navbar.css('height') );
+			switch (type) {
+				case 'touch':
+					navbar.on('click', function(e){
+						var target = $(e.target);
+						if (target.hasClass('navbar-inner') 
+							|| target.hasClass('navbar-fixed-top')
+							|| target.is('a:not(.dropdown-toggle)')
+						) {
+							navbar.css('top', 0);
+							$('.alert-wrapper').css('top', 0 );
+							navbar.off('click');
+						}
+					});	
+				break;
+				case 'no-touch':
+					navbar.one('mouseleave', function(){
+						setTimeout(function(){
+								navbar.css('top', 0);
+								$('.alert-wrapper').css('top', 0 );
+							}
+							, CFG['timing'].navbarSlideOut
+						);
+					});	
+				break;
+			}
+		}
 	}
 };
 
@@ -75,6 +108,7 @@ CFG['timing'] = {
 	linger: 1000,
 	carousel: 5000,
 	slideshow: 7000,
+	navbarSlideOut: 5000,
 }
 
 
@@ -302,6 +336,8 @@ var load_iscroll = function($) {
 	  		CFG['iscroll'][id].setWidths($(elem));
 	  		CFG['iscroll'][id].iscroll.refresh();
 	 	});
+	 	
+	 	
 	});
 	/*
 	 * init all iscrolls
@@ -359,8 +395,16 @@ $(document).ready(
 		
 		if ($('html').hasClass('touch')) {
 			load_iscroll($);
+			$('#header .show-navbar').on('click', function(e){
+				e.preventDefault();
+				CFG['util'].slideInNavBar('touch');
+			})
+			
 		} else {	// html.no-touch
 			load_bootstrap_carousel($);
+			$('#header .show-navbar').on('mouseenter', function(e){
+				CFG['util'].slideInNavBar('no-touch');
+			})
 		}
 		load_bg_slideshow();
 		

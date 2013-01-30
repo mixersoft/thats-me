@@ -42,6 +42,48 @@
 	html.no-touch .navbar .btn-navbar {
 		margin-right: 15px;
 	}	
+	
+	/* fix overlay background for .nav-collapse.in.collapse */ 
+	.navbar.alpha70b {
+		background: transparent;
+		box-shadow: none;
+	}
+	.navbar.alpha70b .navbar-inner {
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+		
+		/* same as alpha70b */
+		/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(0, 0, 0);
+		/* RGBa with 0.6 opacity */
+		background: rgba(0, 0, 0, 0.70);
+		/* For IE 5.5 - 7*/
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000);
+		/* For IE 8*/
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000)";
+	}
+	
+	.navbar-fixed-top, .navbar-fixed-bottom {
+		position: absolute;
+		z-index: 2000;
+		-webkit-transition: all 1s ease;
+			-moz-transition: all 1s ease;
+				-o-transition: all 1s ease;
+				transition: all 1s ease;
+				
+	}
+	
+	.navbar .nav-collapse.in.collapse {
+		border-radius: 0 0 6px 6px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+	}
+	/* touch zone for showing navbar */
+	#header .show-navbar {
+		height: 20px;
+		margin: 0;
+		display: block !important;
+	}
+	
+	
 		#fold {
 		    top: 320px;
 		    width: 480px;
@@ -50,6 +92,9 @@
 			min-height: 350px;
 		}
 	}
+	
+	
+	
 /* iPhone 4/5 retina display , portrait max-width: 320px   467 >= W  */
 @media (max-width: 467px) {
 		#fold {

@@ -38,7 +38,7 @@
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-                  <ul class="dropdown-menu pull-right">
+                  <ul class="dropdown-menu pull-right alpha70b">
                   	<li><a href="#see-the-movie">See the Movie Again</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#FAQ">FAQ</a></li>

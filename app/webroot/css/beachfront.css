@@ -179,13 +179,17 @@
     .navbar .nav > li > a {
     }
 	
-	.navbar-inverse .nav > li.active ,  .navbar-inverse .nav > li.active a {
+	.navbar-inverse .nav > li.active ,  
+	.navbar-inverse .nav > li.active a,
+	.navbar-inverse  .dropdown-menu li.active > a {
 		background-color:#000;
 		box-shadow: 0 2px 10px rgba(255, 255, 206, 0.25);
 		color: #FFFFCE !important;
 	}
 	
-	 .navbar-inverse .nav > li:hover {
+	.navbar-inverse .nav > li:hover, 
+	.navbar-inverse  .dropdown-menu li.active > a,
+	.navbar-inverse  .dropdown-menu li > a:hover {
 	 	box-shadow: 0 2px 10px rgba(255, 255, 206, 0.25);
 	 	
 	 	/* same as alpha50b */
@@ -198,13 +202,25 @@
 		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
 		/* For IE 8*/
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000)";
-	 }
-	 
+	}
+	.navbar .nav > li > .dropdown-menu:before,
+	.navbar .nav > li > .dropdown-menu:after {
+		border: none;		/*	triangle anchor for dropdown-menu	*/
+	}
+	.navbar-inverse .dropdown-menu li a {
+		color: #999;
+	} 
+	.navbar-inverse .dropdown-menu li a:hover  {
+		color: #FFF;
+	}
+	.dropdown-menu {
+		margin-top: 0;
+		border-radius: 0 0 6px 6px;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+		
+	} 
 	
-    /* Offset the responsive button for proper vertical alignment */
-    .navbar .btn-navbar {
-    }
-
+	
 	.alert-wrapper {
 		margin: 20px 0;
 	    opacity: 0.85;

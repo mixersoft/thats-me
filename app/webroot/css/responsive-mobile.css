@@ -37,7 +37,11 @@
 }
 
 /* iPhone 4 retina display , landscape max-width: 480px   767 >= W >= 468px */
-@media (max-width: 680px) {
+/* .navbar collapse */
+@media (max-width: 580px) {	
+	html.no-touch .navbar .btn-navbar {
+		margin-right: 15px;
+	}	
 		#fold {
 		    top: 320px;
 		    width: 480px;

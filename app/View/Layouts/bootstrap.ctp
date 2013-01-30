@@ -22,8 +22,8 @@
             }
         </style>
         <script type="text/javascript">CFG = {};</script>
-<!-- <link rel="stylesheet" href="/css/bootstrap-responsive.css"> -->
-        <link type="text/css" rel="stylesheet" href="http://snappi1.snaphappi.com/min/f=static/css/bootstrap/bootstrap-responsive.css" />
+<link rel="stylesheet" href="/css/bootstrap-responsive.css">
+<!--         <link type="text/css" rel="stylesheet" href="http://snappi1.snaphappi.com/min/f=static/css/bootstrap/bootstrap-responsive.css" /> -->
         <link rel="stylesheet" href="/css/main.css">
 <!-- <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script> -->
         <script src="http://snappi.snaphappi.com/static/js/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>

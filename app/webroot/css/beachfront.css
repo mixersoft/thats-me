@@ -105,12 +105,34 @@
 		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2000000, endColorstr=#B2000000)";
 	}
 	
-	.alpha70r {
+	.alpha70r {    /* same as #DD1260 */   
 		/* Fallback for web browsers that doesn't support RGBa */
 		background: rgb(221, 18, 96);
 		/* RGBa with 0.6 opacity */
 		background: rgba(221, 18, 96, 0.70);
 	}
+	
+	.alpha70y {  /* same as #FDF9D0 */
+		/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(253, 249, 208);
+		/* RGBa with 0.6 opacity */
+		background: rgba(253, 249, 208, 0.70);
+	}
+	
+	.alpha70rust {  /* same as #A0241B */
+		/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(160, 36, 27);
+		/* RGBa with 0.6 opacity */
+		background: rgba(160, 36, 27, 0.70);
+	}
+	
+	.alpha70peach {  /* same as #E9C1C1 */
+		/* Fallback for web browsers that doesn't support RGBa */
+		background: rgb(233, 193, 193);
+		/* RGBa with 0.6 opacity */
+		background: rgba(233, 193, 193, 0.70);
+	}
+	
 	
 	.alpha75w {
 		/* Fallback for web browsers that doesn't support RGBa */
@@ -183,7 +205,7 @@
 	.navbar-inverse  .dropdown-menu li.active > a {
 		background-color:#000;
 		box-shadow: 0 2px 10px rgba(255, 255, 206, 0.25);
-		color: #FFFFCE !important;
+		color: #FDF9D0 !important;
 	}
 	
 	.navbar-inverse .nav > li:hover, 
@@ -291,7 +313,7 @@
    }
    
    .featurette .footer {
-   		background-color: #FFFFCE;
+   		background-color: #FDF9D0;
 	    bottom: 0;
 	    color: black;
 	    font-size: 30px;
@@ -567,14 +589,14 @@
 	    width: 100%;
 	}
 	.carousel .carousel-pager div {
-		border: 3px solid #FFFFCE;
+		border: 3px solid #FDF9D0;
 		display: inline-block;
 		height: 10px;
 		width: 10px;
 		margin-right: 10px;
 		border-radius: 50%;
-		background: #FFFFCE;
-		color: #FFFFCE;
+		background: #FDF9D0;
+		color: #FDF9D0;
 		text-indent: -9999px;
 		cursor: pointer;
 	}

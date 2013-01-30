@@ -104,7 +104,7 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel slide track-page-view">
+    <div id="features" class="featurette carousel slide track-page-view alpha70rust">
 		
     <div class="vcenter-wrap">
 		<div class="vcenter-padding">
@@ -357,7 +357,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 <!--       <hr class="featurette-divider"> -->
       
 	  <a name='see-the-movie'></a>	
-      <div id="see-the-movie" class="featurette the-movie">
+      <div id="see-the-movie" class="featurette the-movie alpha70peach">
       	<div class='bg'></div>
       	<div class="container body">
 	        <h2 class="featurette-heading">See the Movie. <span class="muted">It'll knock your socks off.</span></h2>
@@ -374,7 +374,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 
       
       <a name='call-to-action'></a>
-      <div id='call-to-action' class="featurette call-to-action">
+      <div id='call-to-action' class="featurette call-to-action alpha70r">
       	<div class="container">
 	      	<div class="wrap alpha75w">
 	        <h2 class="featurette-heading">Still in the Darkroom</h2>

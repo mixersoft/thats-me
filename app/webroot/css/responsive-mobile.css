@@ -4,11 +4,12 @@
  * 		http://responsejs.com/labs/dimensions/
  * 		http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
  * 		- iphone 3+: 320x480
- * 		- iphone 4+/retina: 640x960px
- * 		- iphone 5: 640x1136px
+ * 		- iphone 4+/retina: 640x960px, pixel-density=2
+ * 		- iphone 5: 640x1136px,  pixel-density=2
  * 		- android, Galaxy Nexus: 360x592
  * 
- * 		use 640 >= W >= 468 for iphone 4/5
+ * 		use 768 >= W >= 468 for iphone 4 landscape, check at 480px
+ * 		use 467 >= W >= 320 for iphone 4/5 portrait, check at 320px
  * 		use 467 > W, and initial-scale for mobile/Galaxy Nexus
  * 		 
  */
@@ -35,8 +36,8 @@
 /* Styles */
 }
 
-/* iPhone 4/5 retina display , portrait max-width: 640   767 >= W >= 640 */
-@media (max-width: 500px) {
+/* iPhone 4 retina display , landscape max-width: 480px   767 >= W >= 468px */
+@media (max-width: 680px) {
 		#fold {
 		    top: 320px;
 		    width: 480px;
@@ -45,7 +46,7 @@
 			min-height: 350px;
 		}
 	}
-
+/* iPhone 4/5 retina display , portrait max-width: 320px   467 >= W  */
 @media (max-width: 467px) {
 		#fold {
 		    top: 480px;

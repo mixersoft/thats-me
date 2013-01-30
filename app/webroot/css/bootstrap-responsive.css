@@ -931,8 +931,8 @@
     position: static;
   }
 }
-/* change response collapse width from 979 to 767 */
-@media (max-width: 767px) {
+/* change response collapse width from 979 to 580 */
+@media (max-width: 580px) {
   body {
     padding-top: 0;
   }

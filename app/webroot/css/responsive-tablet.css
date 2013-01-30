@@ -55,29 +55,34 @@ and (orientation : portrait) {
     }
 
 
-    @media (max-width: 767px) {
-    
+@media (max-width: 767px) {
+	body {
+		overflow-x: hidden;
+	}    
+	.container, 
+	.navbar-static-top .container, 
+	.navbar-fixed-top .container, 
+	.navbar-fixed-bottom .container {
+		width: auto;					/*	row-fluid */
+	}
+	.nav-collapse.collapse {
+	    background-color: inherit;
+	}
+	
 		#fold {
 		    top: 1024px;
 		    width: 768px;
 		}
 	    	
-      .bounding-box {
-      	position: fixed;
-      	top: 0;
-      }	
-      .bounding-box.affix {
-    	position: fixed;
-      }
-      
 	  .navbar {
 	  	padding: 0;
 	  }
+	.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+		    margin-left: 0;
+		    margin-right: 0;
+	}
       .navbar  .navbar-inner {
         border-radius: 0;
-      }
-      .nav-collapse.collapse {
-      	background-color: #eee;
       }
 	.featurette .container {
       	width: 95%;

@@ -18,9 +18,9 @@
     <!-- NAVBAR
     ================================================== -->
       <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-	    <div class='bounding-box '   data-spy="affix" data-offset-top="10">
-        <div class="navbar navbar-inverse">
-          <div class="navbar-inner alpha65b">
+	    <div class='bounding-box '>
+        <div class="navbar navbar-inverse navbar-fixed-top alpha70b">
+          <div class="navbar-inner container">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>

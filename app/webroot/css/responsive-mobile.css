@@ -106,6 +106,17 @@
 	.bg.pix[name='5'] {
 		background-image: url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.sm.jpg);
 	}
+	html.touch .carousel-inner  .container {
+		padding: 0;
+		min-height: 250px;
+		width: 90%;	/* no paging arrows for touch */
+	}	
+	html.touch .carousel-inner li.item .container .carousel-caption h1 {
+		font-size: 18px;
+	}
+	html.touch .carousel-inner li.item .container p {
+		font-size: 10px;
+	}
 
 	.featurette {
 		min-height: 350px;

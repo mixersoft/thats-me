@@ -14,7 +14,7 @@
 html.touch .carousel-inner  .container {
 	padding: 60px 0px 20px;
 	min-height: 200px;
-	width: 100%;	/* no paging arrows for touch */
+	width: 90%;	/* no paging arrows for touch */
 }
 
 html.touch .carousel {
@@ -42,15 +42,7 @@ html.touch .carousel-inner > ul li.item {
 	height: 100%;
 	padding: 10px;
 }
-html.touch .carousel-inner li.item .container {
-	font-family: "GeoSansLightRegular";
-} 
-html.touch .carousel-inner li.item .container .carousel-caption h1 {
-	font-size: 30px;
-}
-html.touch .carousel-inner li.item .container p {
-	font-size: 14px;
-}
+
 
 /*  Required: set width in JS before calling iscroll.refresh() */
 html.touch .carousel-inner > ul {
@@ -66,13 +58,13 @@ html.touch .carousel a.carousel-control {
 	display: none;
 }
 
-.carousel .carousel-pager, .iscroll-pager {
+.carousel .carousel-pager {
 	bottom: 40px;	/* should be height of .fw-band.footer */
 	font-size: 10px;
 	line-height: 10px;
 	margin-bottom: 20px;	/* margin above .fw-band.footer */
 	position: absolute;
-	width: 100%;
+	width: 80%;
 }
 .carousel .carousel-pager div {
 	border: 3px solid #FFFFCE;

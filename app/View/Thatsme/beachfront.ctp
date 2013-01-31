@@ -9,9 +9,13 @@
 	<meta property="og:site_name" content="Snaphappi" />
 	<meta property="fb:admins" content="214157" />	
 	<link rel="stylesheet" href="/css/beachfront.css">
+	<?php if ($isTouch) {
+			// iscroll.js
+			echo '<link rel="stylesheet" href="/css/touch.css">';		
+			// echo '<script type="text/javascript" src="http://snappi.snaphappi.com/static/css/bootstrap/touch.css"></script>'
+		} ?>
 	<link rel="stylesheet" href="/css/responsive-tablet.css">
 	<link rel="stylesheet" href="/css/responsive-mobile.css">
-	<link rel="stylesheet" href="/css/touch.css">
 <?php $this->Layout->blockEnd(); ?>
 
 <?php $this->Layout->blockStart('header'); ?>
@@ -249,8 +253,8 @@ by rating the ones you love.
     <div class="offset5 span6">
 	    <div class="carousel-caption"><h1>Send Us Your Photos</h1></div>
 	    <p>
-With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10,000, 20,000, or over 100,000 shots! 
-Our Uploader lets you upload up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>	    	
+With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10 or 100 thousand shots!</p>
+<p>Our Uploader works up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>	    	
 	    </p>
     </div><!-- /.span -->
   </div><!-- /.row -->          	

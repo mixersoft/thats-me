@@ -4,7 +4,9 @@
 <!--[if IE 7]>         <html class="no-js ie7 lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js ie8 lt-ie9"> <![endif]-->
 <!--[if IE 9]>     	   <html class="ie ie9 lte9"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 9]><!--> 
+<html class="no-js <?php if ($isAndroid) echo 'android'; ?>"> 
+<!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

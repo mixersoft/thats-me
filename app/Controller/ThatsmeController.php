@@ -54,8 +54,8 @@ class ThatsmeController extends AppController {
 		$options = array('Android', 'iPod', 'iPhone', 'iPad','Opera Mobi','webOS', 'Windows Phone OS');			
 		$pattern = '/(' . implode('|', $options) . ')/i';
 		preg_match($pattern, env('HTTP_USER_AGENT'), $match);
-		$isTouch = !empty($match);
-		if ($isTouch) $this->view = 'iscroll';
+		$isTouch = !empty($match) || isset($this->request->query['touch']);
+		$this->set(compact('isTouch'));
 	}		// http://thats-me/i-need-this in routes.php
 	
 	

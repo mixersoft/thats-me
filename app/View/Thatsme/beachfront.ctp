@@ -660,10 +660,13 @@ Let us roll up our sleeves so you can just play.
     <script type="text/javascript" src="/js/base.js"></script>
 <?php $this->Layout->blockEnd(); ?>
 
-<?php $this->Layout->blockStart('javascript'); ?>
-	<!-- 	iscroll 	 -->
-<!-- 		<script type="text/javascript" src="http://snappi.snaphappi.com/svc/lib/cubiq-iscroll-d31d6e6/src/iscroll.js"></script> -->
-	<script type="text/javascript" src="http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js"></script>
+<?php $this->Layout->blockStart('javascript'); 
+		if ($isTouch) {
+			// iscroll.js
+			echo '<script type="text/javascript" src="http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js"></script>';		
+			// echo '<script type="text/javascript" src="http://snappi.snaphappi.com/svc/lib/cubiq-iscroll-d31d6e6/src/iscroll.js"></script>'
+			echo '<script type="text/javascript">CFG.isTouch = true;</script>';		}
+?>
 
     <script type="text/javascript">
     </script>

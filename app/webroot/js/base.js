@@ -379,7 +379,7 @@ $(document).ready(
 		/*
 		 * debug touch/no-touch
 		 */
-		if (0) $('html').removeClass('no-touch').addClass('touch');
+		if (CFG.isTouch) $('html').removeClass('no-touch').addClass('touch');
 		
 		/*
 		 * animations

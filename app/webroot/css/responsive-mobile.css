@@ -83,7 +83,25 @@
 		display: block !important;
 	}
 	
-	
+   /*
+    * .bg.pix content
+    */
+   .bg.pix[name='1'] {
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-01.sm.jpg);
+   }
+   .bg.pix[name='2'] {
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-02.sm.jpg);
+   }
+   .bg.pix[name='3'] {
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-03.sm.jpg);
+   }
+   .bg.pix[name='4'] {
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-04.sm.jpg);
+   }
+   .bg.pix[name='5'] {
+   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.sm.jpg);
+   }
+   	
 		#fold {
 		    top: 320px;
 		    width: 480px;

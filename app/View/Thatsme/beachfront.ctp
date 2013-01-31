@@ -64,11 +64,9 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
-	<div id="fold"></div>
 	<div id="bg-slideshow">
 		<div class='fixed bg pix' name='0'></div>
 	</div>
-	
 	
       <div id="home" class="featurette connect track-page-view">
       	<a name='home'></a>
@@ -242,8 +240,8 @@ by rating the ones you love.
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body">
 			
-      <div id="how-it-works-iscroll" class="carousel-inner XXXiscroll-wrapper">
-      <ul class="xxx-iscroll-scroller">	
+      <div id="how-it-works-iscroll" class="carousel-inner">
+      <ul class="">	
         <li class="item active">
 		          <div class="container">
 		          	

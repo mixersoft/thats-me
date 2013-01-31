@@ -55,6 +55,10 @@ class ThatsmeController extends AppController {
 		$pattern = '/(' . implode('|', $options) . ')/i';
 		preg_match($pattern, env('HTTP_USER_AGENT'), $match);
 		$isTouch = !empty($match) || isset($this->request->query['touch']);
+		// override ?touch=0 for testing on mobile
+		if (isset($this->request->query['touch']) && $this->request->query['touch']==0) {
+			$isTouch = false;
+		}
 		$this->set(compact('isTouch'));
 	}		// http://thats-me/i-need-this in routes.php
 	

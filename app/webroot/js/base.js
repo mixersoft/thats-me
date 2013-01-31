@@ -275,6 +275,9 @@ var load_iscroll = function($) {
 				var id = $(elem).attr('id');
 				CFG['iscroll'][id].setWidths($(elem));
 				CFG['iscroll'][id].iscroll.refresh();
+				
+// TODO: debug android chrome font-family bug, see: http://code.google.com/p/chromium/issues/detail?id=138257		
+// CFG['util'].notify($(elem).find('.carousel-row p').first().css('font-family')+', '+$(elem).find('.carousel-row p').first().css('font-size'));
 				// init dot paging
 				$(elem).find(".carousel-pager div").click(function(e){ 
 			      var index = $(this).index(); 
@@ -283,11 +286,11 @@ var load_iscroll = function($) {
 			    }); 
 			});
 		},
-		fullWidth: function(o) {
-			var count = o.find('.iscroll-scroller li').size();
+		fullWidth: function(o) {  // o.carousel
+			var count = o.find('.carousel-inner > ul li').size();
 			var fw = $(window).width();
-			o.find("html.touch .carousel-inner > ul").css('width', (count*fw) +'px');
-			o.find("html.touch .carousel-inner, html.touch .carousel-inner > ul li").css('width', fw +'px');
+			o.find(".carousel-inner > ul").css('width', (count*fw) +'px');
+			o.find(".carousel-inner, .carousel-inner > ul li").css('width', fw +'px');
 		},
 		// add one for each iscroll
 		'features': {
@@ -380,6 +383,7 @@ $(document).ready(
 		 * debug touch/no-touch
 		 */
 		if (CFG.isTouch) $('html').removeClass('no-touch').addClass('touch');
+		else $('html').removeClass('touch').addClass('no-touch');
 		
 		/*
 		 * animations
@@ -394,7 +398,7 @@ $(document).ready(
 		
 		
 		if ($('html').hasClass('touch')) {
-			load_iscroll($);
+			$('.carousel-inner > ul > li.item.active').removeClass('active');			load_iscroll($);
 			$('#header .show-navbar').on('click', function(e){
 				e.preventDefault();
 				CFG['util'].slideInNavBar('touch');

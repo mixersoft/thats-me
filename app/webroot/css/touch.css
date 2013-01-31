@@ -14,27 +14,42 @@
 html.touch .carousel-inner  .container {
 	padding: 60px 0px 20px;
 	min-height: 200px;
-	width: 80%;	/* fit inside paging arrows 10% */
+	width: 100%;	/* no paging arrows for touch */
+}
+
+html.touch .carousel {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 html.touch .carousel-inner > ul {
 	list-style: none;
 	display: block;
-	float: left;
+/*	float: left;*/
 	height: 100%;
 	padding: 0;
 	margin: 0;
 	text-align: left;
 }
 
-html.touch .carousel-inner > ul li {
+html.touch .carousel-inner > ul li.item {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-o-box-sizing: border-box;
 	box-sizing: border-box;
-	display: block;
+	display: inline-block;
 	float: left;
 	height: 100%;
+	padding: 10px;
+}
+html.touch .carousel-inner li.item .container {
+	font-family: "GeoSansLightRegular";
+} 
+html.touch .carousel-inner li.item .container .carousel-caption h1 {
+	font-size: 30px;
+}
+html.touch .carousel-inner li.item .container p {
+	font-size: 14px;
 }
 
 /*  Required: set width in JS before calling iscroll.refresh() */

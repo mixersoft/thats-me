@@ -95,7 +95,7 @@ and (orientation : portrait) {
       .carousel .item {
 /*        height: 700px;*/
       }
-      .carousel .carousel-inner .container ,  .iscroll-wrapper .container{
+      .carousel .carousel-inner .container {
       	padding: 20px 0;
 /*      	width: auto;*/
       }

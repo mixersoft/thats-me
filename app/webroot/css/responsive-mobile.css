@@ -4,8 +4,8 @@
  * 		http://responsejs.com/labs/dimensions/
  * 		http://css-tricks.com/snippets/css/media-queries-for-standard-devices/
  * 		- iphone 3+: 320x480
- * 		- iphone 4+/retina: 640x960px, pixel-density=2
- * 		- iphone 5: 640x1136px,  pixel-density=2
+ * 		- iphone 4+/retina: 640x960px, pixel-density=1 or 320x480 pixel-density=2
+ * 		- iphone 5: 640x1136px,  pixel-density=2 or 320x568 pixel-density=2
  * 		- android, Galaxy Nexus: 360x592
  * 
  * 		use 768 >= W >= 468 for iphone 4 landscape, check at 480px
@@ -39,6 +39,10 @@
 /* iPhone 4 retina display , landscape max-width: 480px   767 >= W >= 468px */
 /* .navbar collapse */
 @media (max-width: 580px) {	
+	body {
+		min-width: 360px;
+	}
+	
 	html.no-touch .navbar .btn-navbar {
 		margin-right: 15px;
 	}	
@@ -83,33 +87,30 @@
 		display: block !important;
 	}
 	
-   /*
-    * .bg.pix content
-    */
-   .bg.pix[name='1'] {
-   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-01.sm.jpg);
-   }
-   .bg.pix[name='2'] {
-   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-02.sm.jpg);
-   }
-   .bg.pix[name='3'] {
-   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-03.sm.jpg);
-   }
-   .bg.pix[name='4'] {
-   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-04.sm.jpg);
-   }
-   .bg.pix[name='5'] {
-   		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.sm.jpg);
-   }
-   	
-		#fold {
-		    top: 320px;
-		    width: 480px;
-		}
-		.featurette {
-			min-height: 350px;
-		}
+
+	/*
+	 * .bg.pix content
+	 */
+	.bg.pix[name='1'] {
+		background-image: url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-01.sm.jpg);
 	}
+	.bg.pix[name='2'] {
+		background-image: url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-02.sm.jpg);
+	}
+	.bg.pix[name='3'] {
+		background-image: url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-03.sm.jpg);
+	}
+	.bg.pix[name='4'] {
+		background-image: url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-04.sm.jpg);
+	}
+	.bg.pix[name='5'] {
+		background-image: url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.sm.jpg);
+	}
+
+	.featurette {
+		min-height: 350px;
+	}
+}
 	
 	
 	

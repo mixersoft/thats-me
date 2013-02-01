@@ -49,7 +49,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="http://snappi.snaphappi.com/static/js/bootstrap/jquery-1.8.3.min.js"><\/script>')</script>
 		<!-- // bootstrap -->
-		<script type="text/javascript" src="/min/b=static/js/bootstrap&amp;f=bootstrap.js,jquery.scrollTo-1.4.3.1-min.js"></script>
+		<script type="text/javascript" src="http://snappi.snaphappi.com/min/b=static/js/bootstrap&amp;f=bootstrap.js,jquery.scrollTo-1.4.3.1-min.js"></script>
 		<?php 
 			echo $this->element('sql_dump'); 
 			echo $this->fetch('javascript_Bottom');

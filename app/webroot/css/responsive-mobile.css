@@ -106,34 +106,69 @@
 	.bg.pix[name='5'] {
 		background-image: url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.sm.jpg);
 	}
-	html.touch .carousel-inner  .container {
-		padding: 0;
-		min-height: 250px;
-		width: 90%;	/* no paging arrows for touch */
-	}	
-	html.touch .carousel-inner li.item .container .carousel-caption h1 {
-		font-size: 18px;
-	}
-	html.touch .carousel-inner li.item .container p {
-		font-size: 10px;
-	}
+	
 
 	.featurette {
-		min-height: 350px;
+		min-height: 360px;
 	}
+	.vcenter-wrap {
+   		padding: 0 0 40px 0;   	 /* remove padding-top since navbar slides */
+   		height: 360px;
+   		min-height: 360px; 
+   	}
+	
+	.featurette .container {
+    }
+	.featurette .footer {
+		padding: 4px 5%;
+	}
+	.featurette .footer .container {
+	} 
+	      
+
+	.carousel .item {
+    	min-height: 240px;
+    }
+    .carousel .carousel-inner .container {
+		padding: 0;
+		min-height: 180px;
+		width: 90%;	
+	}	
+	.carousel-inner li.item .container .carousel-caption h1 {
+		font-size: 24px;
+	}
+	.carousel-inner li.item .container p {
+		font-size: 12px;
+	}
+    
+    html.touch .carousel-inner .container {
+		width: 90%;	/* no paging arrows for touch */
+	}	
 }
 	
 	
 	
 /* iPhone 4/5 retina display , portrait max-width: 320px   467 >= W  */
 @media (max-width: 467px) {
+	
+	.featurette .fw-band .featurette-heading {
+		margin: 0 10px;
+		padding: 10px 0;
+	} 
+	      
+	
+	.carousel .carousel-inner .container {
+	    padding: 10px 0;
+	}
+	
+	.carousel .item {
+    	min-height: 200px;
+    }	
+	
 		#fold {
 		    top: 480px;
 		    width: 320px;
 		}	
-	.carousel-caption {
-		margin-top: 60px;
-	}
 	.featurette {
 		min-height: 350px;
 	}

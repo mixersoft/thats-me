@@ -64,7 +64,7 @@
 		$js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
 	}
 	$js_bottom[] = 'http://www.youtube.com/iframe_api';
-	$js_bottom[] = "main";	// mixpanel and youtube control scripts
+	$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
 	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
 	
 ?>
@@ -131,11 +131,11 @@
 			        <h2 class="featurette-heading">Curated Family Photos</h2>
 			        <p>What do you do with your 10,000 photos? How do you find those precious moments?</p>
 			        <div style="position:relative">
-			        	<div class="graphic">Curated Timelines</div>
-			        	<div class="muted">with</div>
-			        	<div class="graphic">Beautiful Photos</div>
-			        	<div class="muted">picked by</div>
 			        	<div class="graphic">Trained Editors</div>
+			        	<div class="muted">find</div>
+			        	<div class="graphic">Beautiful Photos</div>
+			        	<div class="muted">featured on</div>
+			        	<div class="graphic">Curated Timelines</div>
 			        </div>
 			        	
 			        <p>Put your photos on <u>our</u> To-do list and Play with your photos once again.</p>
@@ -294,14 +294,17 @@ by rating the ones you love.
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body">
-			
+			<h1 class="featurette-heading center">How It Works</h1>	
       <div id="how-it-works-iscroll" class="carousel-inner">
       <ul class="">	
         <li class="item active">
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset5 span6">
+  	<div class="offset2 span4">
+  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  	</div>
+    <div class="span4">
 	    <div class="carousel-caption"><h1>Send Us Your Photos</h1></div>
 	    <p>
 With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10 or 100 thousand shots!</p>
@@ -315,7 +318,10 @@ With a few clicks, you can upload your entire photo archive to Snaphappi – whe
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset2 span7">
+    <div class="offset2 span4">
+  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  	</div>
+    <div class="span4">
     	<div class="carousel-caption"><h1>We'll Find your Beautiful Photos</h1></div>
     	<p>
 Our trained editors will find the beautiful photos that are featured on your Timeline. 
@@ -330,7 +336,10 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="span7">
+    <div class="offset2 span4">
+  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  	</div>
+    <div class="span4">
     	<div class="carousel-caption"><h1>And Build Your Curated Timeline</h1></div>
     	<p>
 You'll find all your photos on a stunning Curated Timeline to make your precious moments easy to find and a joy to use. 
@@ -347,7 +356,10 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset2 span8">
+    <div class="offset2 span4">
+  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  	</div>
+    <div class="span4">
     	<div class="carousel-caption"><h1>Just Push Your Finger to Play</h1></div>
     	<p>Re-live and share your special moments on the iPad with the push of a finger.</p>
     	<p>Quickly zoom across your Curated Timeline, jumping from moment to moment; 
@@ -363,7 +375,10 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 		          <div class="container">
 		          	
   <div class="row carousel-row">
-    <div class="offset2 span8">
+    <div class="offset2 span4">
+  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  	</div>
+    <div class="span4">
     	<div class="carousel-caption"><h1>All this for just a penny a photo!</h1></div>
         <p>There are many places to go to share your beautiful photos, but <u>someone</u> has to do the work to find them.
         	If it's not going to be you, then let it be Snaphappi.</p>

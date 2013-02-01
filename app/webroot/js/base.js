@@ -47,6 +47,11 @@ CFG['util'] = {
 				var id = $(elem).attr('id');
 				$('.navbar .nav li').removeClass('active');
 				var a = $('.navbar .nav li a[href$="#'+id+'"]').parent().addClass('active');
+				
+				if (id=='sharing' && !CFG['socialSharing']){
+					CFG['timing'].load_SocialSharing = 0;
+					load_social_sharing();	// load immediately on scrollIntoView
+				}
 				return false;					
 			}
 		});
@@ -109,6 +114,7 @@ CFG['timing'] = {
 	carousel: 5000,
 	slideshow: 7000,
 	navbarSlideOut: 5000,
+	load_SocialSharing: 5000,
 }
 
 
@@ -350,23 +356,27 @@ var load_iscroll = function($) {
 }
 
 var load_social_sharing = function() {
-	(function() {  //Closure, to not leak to the scope
-		// facebook javascript jdk 		
-		!function(d, s, id) {
-			  var js, fjs = d.getElementsByTagName(s)[0];
-			  if (d.getElementById(id)) return;
-			  js = d.createElement(s); js.id = id;
-			  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";
-			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-			  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk');
-		
-		// twitter
-		!function(d,s,id){
-			var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
-		}(document,"script","twitter-wjs");
+	setTimeout(function(){
+		if (CFG['socialSharing']) return;
+		CFG['socialSharing'] = 1;
+		(function() {  //Closure, to not leak to the scope
+			// facebook javascript jdk 		
+			!function(d, s, id) {
+				  var js, fjs = d.getElementsByTagName(s)[0];
+				  if (d.getElementById(id)) return;
+				  js = d.createElement(s); js.id = id;
+				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";
+				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+				  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk');
 			
-	})();  
+			// twitter
+			!function(d,s,id){
+				var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
+			}(document,"script","twitter-wjs");
+		})();		
+	}
+	, CFG['timing'].load_SocialSharing);
 }
 
 /*
@@ -391,11 +401,11 @@ $(document).ready(
 		switch (window.location.hash) {
 			case '#thank-you': 	// donate success return 
 				$('#sharing .thank-you').removeClass('hide');
+				CFG['timing'].load_SocialSharing = 0;
 				break;
 			case '#not-yet': 	// donate cancel return 
 				break;
 		}
-		
 		
 		if ($('html').hasClass('touch')) {
 			$('.carousel-inner > ul > li.item.active').removeClass('active');			load_iscroll($);
@@ -425,6 +435,7 @@ $(document).ready(
 		$('a#donate').one('click', function(e){
 			CFG.util.showDonateButtons();
 		})   
+		
 		load_social_sharing();
 	}
 )

@@ -1,24 +1,75 @@
 <?php 
-	$this->set("title_for_layout","Snaphappi &middot; Curated Family Photos");
-	$this->Layout->blockStart('HEAD'); ?>
-	<meta property="og:title" content="Snaphappi &middot; Curated Family Photos" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="http://thats-me.snaphappi.com/i-need-this" />
-	<meta property="og:image" content="http://thats-me.snaphappi.com/img/beachfront/snaphappi-logo-v2.png" />
-	<meta property="og:description" content="What do you do with your 10,000 photos &middot; how do you find those precious moments? Curated Timelines with Beautiful Photos picked by Trained Editors. Put your photos on our To-do list and Play with your photos once again." />
-	<meta property="og:site_name" content="Snaphappi" />
-	<meta property="fb:admins" content="214157" />	
-	<link rel="stylesheet" href="/css/beachfront.css">
-	<?php if ($isTouch) {
-			// iscroll.js
-			echo '<link rel="stylesheet" href="/css/touch.css">';		
-			// echo '<script type="text/javascript" src="http://snappi.snaphappi.com/static/css/bootstrap/touch.css"></script>'
-		} ?>
-	<link rel="stylesheet" href="/css/responsive-tablet.css">
-	<link rel="stylesheet" href="/css/responsive-mobile.css">
-<?php $this->Layout->blockEnd(); ?>
+	$title = "Snaphappi &middot; Curated Family Photos";
+	$description = "What do you do with your 10,000 photos &middot; how do you find those precious moments? Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines. Put your photos on our To-do list and Play with your photos once again.";
+	$viewport = "width=device-width, initial-scale=1.0";
+	/**
+	 * meta
+	 */
+	$this->set("title_for_layout", $title);
+	$this->Html->meta(array('name'=>'viewport', 'content'=>$viewport), null, array('inline' => false));
+	$this->Html->meta('favicon.ico', '/favicon.ico', array('type' => 'icon', 'inline' => false));
+	$this->Html->meta('description', $description, array('inline' => false));
+	/**
+	 * CSS
+	 */
+	if ($isTouch) {
+		$this->Html->css(array('fonts', 'beachfront.css', 'touch', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));
+	} else $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));
+	/**
+	 * other HEAD
+	 */
+	$this->start('HEAD_bottom');
+		echo $this->element('fb_open_graph', compact('description'));
+	$this->end();
+	/**
+	 * javascript HEAD
+	 */
+	$scriptBlock = array('CFG = {};');
+	if ($isTouch) {
+		$scriptBlock[] = 'CFG.isTouch = true;';
+	}	 
+	$this->Html->ScriptBlock(implode(' ', $scriptBlock), array('inline'=>false));
+	
+	/**
+	 * javascript body bottom
+	 */ 
+	$this->start('javascript_Bottom');
+?>
+		<script type="text/javascript" src="/js/base.js"></script>
+		<!-- start google Analytics -->
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-4086550-2']);
+		  _gaq.push(['_setDomainName', 'snaphappi.com']);
+		  _gaq.push(['_trackPageview']);
+		
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+		<!-- start Mixpanel -->
+		<script type="text/javascript">
+			(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
+			typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||
+			[]);
+			mixpanel.init("22ee941178e2f8bb1702c92f84cf91b2");
+		</script>		
+<?php
+	$this->end();	 
+	
+	$js_bottom = array();
+	if ($isTouch) {
+		$js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
+	}
+	$js_bottom[] = 'http://www.youtube.com/iframe_api';
+	$js_bottom[] = "main";	// mixpanel and youtube control scripts
+	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
+	
+?>
 
-<?php $this->Layout->blockStart('header'); ?>
+<?php $this->start('body_header'); ?>
     <!-- NAVBAR
     ================================================== -->
       <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
@@ -60,7 +111,7 @@
         	</div>
         </div>
 
-<?php $this->Layout->blockEnd(); ?> 
+<?php $this->end(); ?> 
 
    
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -508,139 +559,7 @@ Let us roll up our sleeves so you can just play.
       		<div class="wrap alpha70b center">
 	        	<h1 class="featurette-heading">Frequently Asked Questions</h1>
 	       </div>
-	       <div class="faq-section alpha70b">
-	        	<h2>Photo Editing</h2>
-	        	<p class="question">
-	How do you know which photos are beautiful?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	How do you build the Curated Timeline?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	How do you find events?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>	        	
-	        	<p class="question">
-	How do you find duplicates?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-				<p class="question">
-	What about face detection?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>        	
-	        	<p class="question">
-	How long does it take for your Editors to screen my photos?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	How much does it cost?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	       </div>
-	       <div class="faq-section alpha70b"> 	
-	        	<h2>Privacy &amp; Sharing</h2>
-	        	<p class="question">
-	What about the safety and privacy of my photos?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	What about sharing photos?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-			</div>
-	       <div class="faq-section alpha70b">	
-				<h2>Darkroom &amp; Launch</h2>
-				<p class="question">
-	Why do you want $1 from me?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-				<p class="question">
-	When will your service be ready?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        </div>
-	       <div class="faq-section alpha70b">	
-	        	<h2>Platforms &amp Systems</h2>
-				<p class="question">
-	Why is the Curated Timeline only available as an iPad App?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>	        	
-	        	<p class="question">
-	How do I upload my 10,000+ photos to Snaphappi?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-				<p class="question">
-	How long does it take to upload 10,000 photos?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	How and where are my photos stored?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	What about the originals?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	
-	        	<p class="question">
-	What platforms do you support?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	What file types do you support?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	What about the photos on my smartphone?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>
-	        	<p class="question">
-	What about my photos on Facebook/Flickr/Instagram/Picasaweb/iCloud/etc?	        		
-	        	</p>
-	        	<p class="answer">
-	Answer.        		
-	        	</p>	        		        	
-	        </div>
+			<?php echo $this->element('faq'); ?>
 	        <div class='padding'></div>
 	        <div class='fw-band footer'>
 	        	<div class="container ">
@@ -650,26 +569,10 @@ Let us roll up our sleeves so you can just play.
         </div>
       </div>      
       <!-- FOOTER -->
-<?php $this->Layout->blockStart('footer'); ?>      
+<?php $this->start('body_footer'); ?>      
       <footer>
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
       <div id="fb-root"></div>
-<?php $this->Layout->blockEnd(); ?>
-
-<?php $this->Layout->blockStart('javascript_base'); ?>
-    <script type="text/javascript" src="/js/base.js"></script>
-<?php $this->Layout->blockEnd(); ?>
-
-<?php $this->Layout->blockStart('javascript'); 
-		if ($isTouch) {
-			// iscroll.js
-			echo '<script type="text/javascript" src="http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js"></script>';		
-			// echo '<script type="text/javascript" src="http://snappi.snaphappi.com/svc/lib/cubiq-iscroll-d31d6e6/src/iscroll.js"></script>'
-			echo '<script type="text/javascript">CFG.isTouch = true;</script>';		}
-?>
-
-    <script type="text/javascript">
-    </script>
-<?php $this->Layout->blockEnd(); ?>
+<?php $this->end(); ?>

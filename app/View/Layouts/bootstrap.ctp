@@ -11,28 +11,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title><?php echo $title_for_layout; ?></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-		<link rel="stylesheet" href="/css/fonts.css">
-<!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
         <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/static/css/bootstrap/bootstrap.min.css" />
-   		<style>
-            body {
-                padding-top: 0px;
-                padding-bottom: 40px;
-            }
-        </style>
-        <script type="text/javascript">CFG = {};</script>
-<link rel="stylesheet" href="/css/bootstrap-responsive.css">
-<!--         <link type="text/css" rel="stylesheet" href="http://snappi1.snaphappi.com/min/f=static/css/bootstrap/bootstrap-responsive.css" /> -->
-        <link rel="stylesheet" href="/css/main.css">
-<!-- <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script> -->
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap-responsive.css">
         <script src="http://snappi.snaphappi.com/static/js/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        
-        <?php $this->Layout->output($this->viewVars['HEAD_for_layout']); ?>
-        
-        
+        <?php
+        	echo $this->fetch('meta'); 
+			echo $this->fetch('script'); 
+        	echo $this->fetch('css'); 
+        	echo $this->fetch('HEAD_bottom'); 
+        ?>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -43,59 +30,30 @@
 		<!--  This code taken from Cakephp layouts/default.ctp  -->
 		<div id="container" >
 			<div id="header"> 
-				<?php $this->Layout->output($this->viewVars['header_for_layout']); ?>
+				<?php echo $this->fetch('body_header');?>
 			</div>
 			<div id="content">
 	
 				<?php echo $this->Session->flash(); ?>
-	
 				<?php echo $this->fetch('content'); ?>
 			</div>
 			<div id="footer">
-				<?php $this->Layout->output($this->viewVars['footer_for_layout']); ?>
+				<?php echo $this->fetch('body_footer');?>
 				<p>&copy; 2013 Snaphappi Inc.
 					<a class="cakephp" target="_blank" href="http://www.cakephp.org/">
-						
 					</a>
 				</p>
 			</div>
 		</div> <!-- /container -->
-		<?php echo $this->element('sql_dump'); ?>
-        
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<!-- <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.8.3.min.js"><\/script>')</script>  -->       
-        <script>window.jQuery || document.write('<script src="http://snappi.snaphappi.com/static/js/bootstrap/jquery-1.8.3.min.js"><\/script>')</script>
-
-<!-- <script src="/js/vendor/bootstrap.js"></script> -->
-		<script type="text/javascript" src="http://snappi.snaphappi.com/min/f=static/js/bootstrap/bootstrap.js"></script>
-		<?php $this->Layout->output($this->viewVars['javascript_base_for_layout']); ?>
-		<script type="text/javascript">
-		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', 'UA-4086550-2']);
-		  _gaq.push(['_setDomainName', 'snaphappi.com']);
-		  _gaq.push(['_trackPageview']);
-		
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
-		</script>
-		<!-- start Mixpanel -->
-		<script type="text/javascript">
-			(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==
-			typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||
-			[]);
-			mixpanel.init("22ee941178e2f8bb1702c92f84cf91b2");
-		</script>
-		<!-- end Mixpanel --> 
-		<script src="http://www.youtube.com/iframe_api"></script>
-<!-- <script src="/js/vendor/jquery.scrollTo-1.4.3.1-min.js"></script>      	 -->
-		<script src="http://snappi.snaphappi.com/static/js/bootstrap/jquery.scrollTo-1.4.3.1-min.js"></script>
-		<script src="/js/main.js"></script>
-        <?php $this->Layout->output($this->viewVars['javascript_for_layout']); ?>
-        
+		<!-- // jquery with fallback -->		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="http://snappi.snaphappi.com/static/js/bootstrap/jquery-1.8.3.min.js"><\/script>')</script>
+		<!-- // bootstrap -->
+		<script type="text/javascript" src="/min/b=static/js/bootstrap&amp;f=bootstrap.js,jquery.scrollTo-1.4.3.1-min.js"></script>
+		<?php 
+			echo $this->element('sql_dump'); 
+			echo $this->fetch('javascript_Bottom');
+		?>
     </body>
 </html>
 	

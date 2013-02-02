@@ -1,0 +1,3 @@
+[submodule "app/Plugin/Less"]
+	path = app/Plugin/Less
+	url = https://github.com/Hyra/less.git

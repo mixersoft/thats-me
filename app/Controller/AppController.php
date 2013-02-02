@@ -21,6 +21,7 @@
  */
 
 App::uses('Controller', 'Controller');
+CakePlugin::load('Less');
 
 /**
  * Application Controller
@@ -33,7 +34,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	
-	public $helpers = array('Layout');
+	public $helpers = array('Less.Less');
 	
 	
 }

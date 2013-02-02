@@ -1,0 +1,60 @@
+/**
+ * 	Less 
+ */
+@red: #D01F40;
+@orange: #F16122;
+@cream: #FDF9D0;
+@peach: #E9C1C1;
+@darkgrey: #152437;
+
+/*   
+ * http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/ 
+ * http://stackoverflow.com/questions/9436776/lesscss-method-with-ie-filter-alpha-opacity-css
+ */
+
+.rgba(@hex:#000000, @alpha:0.7) {
+		/* Fallback for web browsers that doesn't support RGBa */
+		background-color: @hex;
+		/* RGBa with alpha */
+		background-color: hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
+		@ieGradient: argb(rgba(0, 0, 0, @alpha));
+		/* For IE 5.5 - 7*/
+		filter:~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieGradient} ;, endColorstr=@{ieGradient} )";
+		/* For IE 8*/
+		-ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieGradient}, endColorstr=@{ieGradient})";
+}
+
+.alpha70b {
+	.rgba(#000000, 0.7);
+}
+.alpha70r {    /* same as #DD1260 */   
+	.rgba(@red, 0.7);
+}
+.alpha70w {
+	.rgba(#FFFFFF, 0.7);
+}
+.alpha70cr {
+	.rgba(@cream, 0.7);
+}
+.alpha70ph {
+	.rgba(@peach, 0.7);
+}
+
+/*
+ * ie only for alpha
+ */
+	
+html.ie {
+	.alpha70b, .alpha70r, .alpha70w, .alpha70cr, .alpha70ph {
+		background: transparent;	/* makes border-radius invisible, wrap?  */
+	}
+}
+
+
+
+
+
+
+
+
+

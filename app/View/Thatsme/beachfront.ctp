@@ -134,7 +134,7 @@
 		        <div class="wrap">
 		        	<figure class="graphic">
 		        		<div><img src="/img/beachfront/trained-editors.sm.png"></div>
-		        		<figcaption>Trained Editors</figcaption>
+		        		<figcaption>Trained Editors<span class="action right">find your</span></figcaption>
 		        	</figure>
 		        	<figure class="graphic">
 		        		<div><img src="/img/beachfront/beauty.sm.png"></div>
@@ -142,7 +142,7 @@
 		        	</figure>
 		        	<figure class="graphic">
 		        		<div><img src="/img/beachfront/timeline.sm.png"></div>
-		        		<figcaption>Curated Timelines</figcaption>
+		        		<figcaption><span class="action left">featured on</span>Curated Timelines</figcaption>
 		        	</figure>
 		        </div>
 		        <p>Put your photos on <u>our</u> To-do list and Play with your photos once again.</p>

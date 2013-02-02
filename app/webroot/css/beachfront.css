@@ -382,6 +382,18 @@
    
    #home .container figure figcaption {
    		font-size: 20px;
+   		position:relative;
+   }
+   #home .container figure figcaption > span{
+   		position: absolute;
+   		font-size: 16px;
+   		color: #F16122
+   }
+   #home .container span.action.right {
+   		right: -50px;
+   }
+   #home .container span.action.left {
+   		left: -54px;
    }
    #home .container p {
    		font-size: 16px;

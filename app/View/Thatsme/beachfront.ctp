@@ -302,7 +302,7 @@ by rating the ones you love.
 		          	
   <div class="row carousel-row">
   	<div class="offset2 span4">
-  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+		<img class="graphic pull-right" src="/img/beachfront/send-us.png">
   	</div>
     <div class="span4">
 	    <div class="carousel-caption"><h1>Send Us Your Photos</h1></div>
@@ -319,7 +319,7 @@ With a few clicks, you can upload your entire photo archive to Snaphappi – whe
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  		<img class="graphic pull-right" src="/img/beachfront/beauty.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>We'll Find your Beautiful Photos</h1></div>
@@ -337,7 +337,7 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  		<img class="graphic pull-right" src="/img/beachfront/timeline.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>And Build Your Curated Timeline</h1></div>
@@ -357,7 +357,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  		<img class="graphic pull-right" src="/img/beachfront/ipad.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>Just Push Your Finger to Play</h1></div>
@@ -376,7 +376,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="http://twitter.github.com/bootstrap/assets/img/examples/browser-icon-firefox.png">
+  		<img class="graphic pull-right" src="/img/beachfront/penny.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>All this for just a penny a photo!</h1></div>
@@ -528,9 +528,8 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
       <a name='tag-line'></a>
       <div id='tag-line' class="featurette tag-line">
       	<div class="container">
-      		<div class="wrap alpha50b">
+      		<div class="wrap alpha70b">
         	<h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
-        	
         </div></div>
         <div class='fw-band footer'>
         	<div class="container ">

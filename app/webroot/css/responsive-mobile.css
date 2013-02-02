@@ -164,7 +164,9 @@
 	.carousel .item {
     	min-height: 200px;
     }	
-	
+	.carousel-inner li.item .container .carousel-caption h1 {
+		font-size: 18px;
+	}
 		#fold {
 		    top: 480px;
 		    width: 320px;

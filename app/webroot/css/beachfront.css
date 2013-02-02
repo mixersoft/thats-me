@@ -356,7 +356,8 @@
    .bg.pix[name='5'] {
    		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.jpg);
    }
-   
+
+
    #bg-slideshow {
 	/*	-webkit-backface-visibility: hidden;*/
    }   
@@ -561,8 +562,8 @@
     .carousel .item {
     	min-height: 300px;
     }
-    .carousel .carousel-row img.graphic {
-    	height: 70%;
+    .carousel .carousel-row .graphic {
+    	display: block;
     	max-height: 225px;
     }
 

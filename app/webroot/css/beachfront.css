@@ -361,21 +361,30 @@
    #bg-slideshow {
 	/*	-webkit-backface-visibility: hidden;*/
    }   
-   #home {
-	   	min-height: 700px;		/* section height */
-	   	overflow: visible;
-	   	color: #FFFFFF;
+   #home .container .wrap {
+   		width: 100%;
+   		margin: 0;
+   		padding: 0;
    }
-   #home .fw-band.body .graphic {
-		border: 1px solid white;
-	    border-radius: 10px 10px 10px 10px;
-	    display: inline-block;
+   #home .container figure {
+   		display: inline-block;
 	    font-size: 20px;
-	    margin: 20px 0;
+	    margin: 0 20px;
 	    padding: 10px;
-	    text-align: center;
 	    vertical-align: middle;
-	    width: 24%;
+   }
+   #home .container figure > div {
+   		height: 160px;
+   }
+   #home .container figure img{
+   	
+   }
+   
+   #home .container figure figcaption {
+   		font-size: 20px;
+   }
+   #home .container p {
+   		font-size: 16px;
    }
    #home .fw-band.body .muted {
    		color: #CCC;
@@ -562,7 +571,7 @@
     .carousel .item {
     	min-height: 300px;
     }
-    .carousel .carousel-row .graphic {
+    .carousel .carousel-row img.graphic {
     	display: block;
     	max-height: 225px;
     }

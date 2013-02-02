@@ -125,23 +125,29 @@
 	
       <div id="home" class="featurette connect track-page-view">
       	<a name='home'></a>
-        <div class="fw-band body alpha70b">
-			<div class="container">
-				<div class="offset1 span10">
-			        <h2 class="featurette-heading">Curated Family Photos</h2>
-			        <p>What do you do with your 10,000 photos? How do you find those precious moments?</p>
-			        <div style="position:relative">
-			        	<div class="graphic">Trained Editors</div>
-			        	<div class="muted">find</div>
-			        	<div class="graphic">Beautiful Photos</div>
-			        	<div class="muted">featured on</div>
-			        	<div class="graphic">Curated Timelines</div>
-			        </div>
-			        	
-			        <p>Put your photos on <u>our</u> To-do list and Play with your photos once again.</p>
+<div class="vcenter-wrap">
+	<div class="vcenter-padding">
+		<div class="fw-band alpha70b vcenter-body"> 
+			<div class="container center"> 
+				<h1 class="featurette-heading ">Curated Family Photos</h1>	    	
+		        <p>What do you do with your 10,000 photos? How do you find those precious moments?</p>
+		        <div class="wrap">
+		        	<figure class="graphic">
+		        		<div><img src="/img/beachfront/trained-editors.sm.png"></div>
+		        		<figcaption>Trained Editors</figcaption>
+		        	</figure>
+		        	<figure class="graphic">
+		        		<div><img src="/img/beachfront/beauty.sm.png"></div>
+		        		<figcaption>Beautiful Photos</figcaption>
+		        	</figure>
+		        	<figure class="graphic">
+		        		<div><img src="/img/beachfront/timeline.sm.png"></div>
+		        		<figcaption>Curated Timelines</figcaption>
+		        	</figure>
 		        </div>
+		        <p>Put your photos on <u>our</u> To-do list and Play with your photos once again.</p>
 		   </div>     
-        </div>        
+        </div></div></div>        
         <div class='fw-band footer'>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	

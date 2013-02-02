@@ -15,6 +15,7 @@
 	if ($isTouch) {
 		$this->Html->css(array('fonts', 'beachfront.css', 'touch', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));
 	} else $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));
+	$this->Less->css('beachfront-less');
 	/**
 	 * other HEAD
 	 */
@@ -129,20 +130,27 @@
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body"> 
 			<div class="container center"> 
-				<h1 class="featurette-heading ">Curated Family Photos</h1>	    	
-		        <p>What do you do with your 10,000 photos? How do you find those precious moments?</p>
-		        <div class="wrap">
+				<div class="featurette-heading">
+					<h1 class="red">Curated Family Photos</h1>	    	
+		        	<div class="subhead">What do you do with your 10,000 photos? How do you find those precious moments?</div>
+		        </div>
+		        <div class="wrapW">
 		        	<figure class="graphic">
-		        		<div><img src="/img/beachfront/trained-editors.sm.png"></div>
-		        		<figcaption>Trained Editors<span class="action right">find your</span></figcaption>
+		        		<div class="wrapH"><img src="/img/beachfront/trained-editors.sm.png"></div>
+		        		<figcaption>Trained Editors
+		        			<span class="action right">find your</span>
+		        		</figcaption>
 		        	</figure>
 		        	<figure class="graphic">
-		        		<div><img src="/img/beachfront/beauty.sm.png"></div>
+		        		<div class="wrapH"><img src="/img/beachfront/beauty.sm.png"></div>
 		        		<figcaption>Beautiful Photos</figcaption>
 		        	</figure>
 		        	<figure class="graphic">
-		        		<div><img src="/img/beachfront/timeline.sm.png"></div>
-		        		<figcaption><span class="action left">featured on</span>Curated Timelines</figcaption>
+		        		<div class="wrapH"><img src="/img/beachfront/timeline.sm.png"></div>
+		        		<figcaption>
+		        			<span class="action left">featured on</span>
+		        			Curated Timelines
+		        		</figcaption>
 		        	</figure>
 		        </div>
 		        <p>Put your photos on <u>our</u> To-do list and Play with your photos once again.</p>
@@ -167,94 +175,72 @@
 		
     <div class="vcenter-wrap">
 		<div class="vcenter-padding">
-			<div class="fw-band alpha70b vcenter-body">
-					
-      <div id="features-iscroll" class="carousel-inner">
-      	<ul class="">
-      		<li class="item active">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="offset5 span5">
-	    <div class="carousel-caption"><h1>Screened By Real Editors</h1></div>
-	    <p>
+			<div class="fw-band alpha80w vcenter-body">
+<div class="container center"> 
+		<div class="featurette-heading">
+			<h1 class="red">Features &amp; Benefits</h1>	    	
+        	<div class="subhead">Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; for only a Penny a Photo!</div>
+        </div>
+		
+        <div class="wrapW">
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/trained-editors.sm.png"></div>
+        		<figcaption>Screened By Real Editors
+        			<div class="body">
 No other photo service out there uses real people like we do. 
 Our trained photo editors hand-select the beautiful photos that are featured on your Timeline and hide duplicates just for you. 
 We promise 100% privacy.
-		</p>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-  
-		          </div>
-        </li><li class="item">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="offset2 span7">
-    	<div class="carousel-caption"><h1>Beautiful Curated Timeline</h1></div>
-    	<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos.</p>
+					</div>
+        		</figcaption>
+        	</figure>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/timeline.sm.png"></div>
+        		<figcaption>Beautiful Curated Timeline
+        			<div class="body">
+   	<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos.</p>
 <p>Quickly zoom across your Timeline, jumping from moment to moment; 
     		re-live those moments through beautiful Curated Stories; 
     		and dive deep into your photo archives when you want to see everything.</p>	          	
-      	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
-        </li><li class="item">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="span4">
-    	<div class="carousel-caption"><h1>Faster Uploads</h1></div>
+					</div>
+        		</figcaption>
+        	</figure>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/fast-uploads.sm.png"></div>
+        		<figcaption>Faster Uploads
+        			<div class="body">
     	<p>Our Uploader lets you upload up to 100x faster than other photo sites - we've seen speeds up to 3000 photos/hour.</p>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
-        </li><li class="item">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="offset2 span8">
-    	<div class="carousel-caption"><h1>Share Loved Memories</h1></div>
+					</div>
+        		</figcaption>
+        	</figure>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/share.png"></div>
+        		<figcaption>Share Loved Memories
+        			<div class="body">
         <p>The hardest part about sharing is finding something worth sharing. 
         But thanks to our Curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
         The rest is a snap.
           </p>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
-        </li><li class="item">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="span4">
-    	<div class="carousel-caption"><h1>You're in Control</h1></div>
+					</div>
+        		</figcaption>
+        	</figure>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/ipad.sm.png"></div>
+        		<figcaption>You're in Control
+        			<div class="body">
     	<p>You have complete control. You can adjust the photos highlighted on your Timeline
 by rating the ones you love.
 	          		</p>
-      	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
-        </li>
-        </ul>         
-      </div> <!-- /.carousel-inner  -->
+					</div>
+        		</figcaption>
+        	</figure>
+        </div>
+        <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a> 
+</div>					
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
 
-<div><a class="right carousel-control" href="#features" data-slide="next">&rsaquo;</a></div>
-<div><a class="left carousel-control" href="#features" data-slide="prev">&lsaquo;</a></div>	      
-	  	
       <div class='fw-band footer'>
-      	<div class="carousel-pager center">
-			<div class="active">0</div>
-			<div>1</div><div>2</div><div>3</div><div>4</div>
-        </div>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#on-our-way'>Learn More</a></div>
@@ -343,7 +329,7 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/timeline.png">
+  		<img class="graphic pull-right" src="/img/beachfront/timeline.sm.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>And Build Your Curated Timeline</h1></div>

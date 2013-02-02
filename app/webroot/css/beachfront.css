@@ -293,11 +293,11 @@
    		padding: 0;
    }
    #home .container figure {
-   		display: inline-block;
+/*   		display: inline-block;
 	    font-size: 20px;
 	    margin: 0 20px;
 	    padding: 10px;
-	    vertical-align: middle;
+	    vertical-align: middle;*/
    }
    #home .container figure > div {
    		height: 160px;
@@ -331,15 +331,6 @@
 	    text-align: center;
 	    vertical-align: middle;
 	    width: 7%;
-   }
-   #home .featurette-heading {
-   		text-shadow: 1px 2px 2px rgba(241, 97, 34, 0.5);
-   }
-   #features .featurette-heading {
-   		color: #D01F40;
-   }
-   #features .featurette-heading .subhead{
-   		color: #000000;
    }
 
    

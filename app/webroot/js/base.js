@@ -395,16 +395,51 @@ var load_iscroll = function($) {
 				var id = $(elem).attr('id');
 				CFG['iscroll'][id].setWidths($(elem));
 				CFG['iscroll'][id].iscroll.refresh();
-				
+				CFG['iscroll'].refresh_pageDots($(elem), CFG['iscroll'][id].iscroll);
 // TODO: debug android chrome font-family bug, see: http://code.google.com/p/chromium/issues/detail?id=138257		
-// CFG['util'].notify($(elem).find('.carousel-row p').first().css('font-family')+', '+$(elem).find('.carousel-row p').first().css('font-size'));
+// CFG['util'].notify($(elem).find('.carousel-row p').first().css('font-family')+', '+$(elem).find('.carousel-row p').first().css('font-size'));				// create dots
+				
 				// init dot paging
-				$(elem).find(".carousel-pager div").click(function(e){ 
+				$(elem).find(".carousel-pager a").click(function(e){ 
 			      var index = $(this).index(); 
 			      CFG['iscroll'][id].iscroll.scrollToPage(index);
 			      e.preventDefault();
 			    }); 
 			});
+			// refresh widths on window resize
+			$(window).resize(function() {
+				$('html.touch .featurette.carousel').each(function(i, elem){
+					var id = $(elem).attr('id');
+			  		CFG['iscroll'][id].setWidths($(elem));
+			  		CFG['iscroll'][id].iscroll.refresh();
+			  		CFG['iscroll'].refresh_pageDots($(elem), CFG['iscroll'][id].iscroll);
+			 	});
+			});
+		},
+		refresh_pageDots: function(o, iScroll){
+			var id = o.attr('id');
+			var itemW = o.find('.carousel-inner > ul li.item').first().outerWidth();
+			// var scrollerW = o.find('.carousel-inner > ul').outerWidth();			var viewportW = o.find(".carousel-inner").outerWidth();
+			var visibleItems = Math.floor(viewportW/itemW);
+			var carouselItems = o.find('.item').size();
+			var pages = carouselItems - visibleItems;
+			var pager = o.find('.carousel-pager');
+			var dots = pager.find('a');
+			if (dots.size()==0) {
+				for (var i=0; i<carouselItems; i++) {
+					pager.append('<a href="#'+ id +'">'+i+'</a>')
+				}
+				dots = pager.find('a');
+			}
+			
+			for (var i=0; i<carouselItems; i++) {
+				if (i>pages) {
+					dots.eq(i).addClass('hide');					
+				} else dots.eq(i).removeClass('hide');
+			}
+			iScroll = iScroll || CFG['iscroll'][id].iscroll;
+			var selected = iScroll.pageX || 0;
+			dots.removeClass('active').eq(selected).addClass('active');
 		},
 		fullWidth: function(o) {  // o.carousel
 			var count = o.find('.carousel-inner > ul li').size();
@@ -413,13 +448,15 @@ var load_iscroll = function($) {
 			o.find(".carousel-inner, .carousel-inner > ul li").css('width', fw +'px');
 		},
 		packedWidth: function(o) {	// show as many as can fit in .carousel-inner width
-			var items = o.find('.carousel-inner > ul li');
+			var items = o.find('.carousel-inner > ul li.item figure.graphic');
 			var count = items.size();
-			var fw = $(window).width() * 0.9;
-			var itemW = items.find('> *').first().outerWidth(true);
+			var itemW = items.first().outerWidth(true);
+			var fw = $(window).width(); // * 0.9;
+			fw = Math.floor(fw/itemW)* itemW;
+			
 			o.find(".carousel-inner").css('width', fw + 'px');
 			o.find(".carousel-inner > ul").css('width', (count*itemW) +'px');
-			o.find('.carousel-inner > ul li').css('width', itemW +'px');
+			o.find('.carousel-inner > ul li.item').css('width', itemW +'px');
 		},
 		// add one for each iscroll
 		'features': {
@@ -432,20 +469,23 @@ var load_iscroll = function($) {
 		},
 	}
 	
-	
 	// #features iscroll
 	// NOTE: call constructor with id of .carousel-inner, i.e. #features-iscroll.carousel-inner
 	CFG['iscroll']['features'].setWidths = CFG['iscroll'].packedWidth;
 	CFG['iscroll']['features'].iscroll = new iScroll('features-iscroll',{
-		snap: true,
+		snap: 'li.item',
 		momentum: false,
 		hScroll: true,
 		vScroll: false,
 		hScrollbar: false,
 		vScrollbar: false,
 		onScrollEnd: function () {
-			document.querySelector('#features .carousel-pager > div.active').className = '';
-			document.querySelector('#features .carousel-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+			// for packedWidth iscroll
+			var pages = $('#features .carousel-pager > a:not(.hide)').size();
+			var selected = (this.currPageX >= pages-1 ) ? pages-1 : this.currPageX; 
+			$('#features .carousel-pager a').removeClass('active').eq(selected).addClass('active');
+			// document.querySelector('#features .carousel-pager > a.active').className = '';
+			// document.querySelector('#features .carousel-pager > a:nth-child(' + (page) + ')').className = 'active';
 		}
 	});
 	// #how-it-works-iscroll
@@ -458,19 +498,11 @@ var load_iscroll = function($) {
 		hScrollbar: false,
 		vScrollbar: false,
 		onScrollEnd: function () {
-			document.querySelector('#how-it-works .carousel-pager > div.active').className = '';
-			document.querySelector('#how-it-works .carousel-pager > div:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+			document.querySelector('#how-it-works .carousel-pager > a.active').className = '';
+			document.querySelector('#how-it-works .carousel-pager > a:nth-child(' + (this.currPageX+1) + ')').className = 'active';
 		}
 	});
-	$(window).resize(function() {
-		$('html.touch .featurette.carousel').each(function(i, elem){
-			var id = $(elem).attr('id');
-	  		CFG['iscroll'][id].setWidths($(elem));
-	  		CFG['iscroll'][id].iscroll.refresh();
-	 	});
-	 	
-	 	
-	});
+	
 	/*
 	 * init all iscrolls
 	 */

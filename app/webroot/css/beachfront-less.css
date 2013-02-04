@@ -176,6 +176,13 @@ html.ie .alpha70ph {
 .featurette.carousel.fred .carousel-pager .selected {
   background-color: #F16122;
 }
+html.touch .featurette.carousel.fred figure.graphic {
+  cursor: default;
+  width: 80%;
+}
+html.touch #features.carousel .carousel-inner {
+  margin: 0 auto;
+}
 #features {
   background-color: #FFFFFF;
 }

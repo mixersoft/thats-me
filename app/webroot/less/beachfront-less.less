@@ -161,6 +161,8 @@ html.ie {
 		li.item {
 			text-align: center;
 			transition: none;
+			margin: 0;
+      padding: 0;
 		}
 	}	
 	
@@ -180,17 +182,24 @@ html.ie {
 	.carousel-control {
     color: @cream;
     opacity: 0.8;
+    background-color: transparent;
+    border: 0 none;
+    font-size: 120px;
+    height: 80px;
+    margin-top: 0;
+    .rgba-text-shadow(@orange);
   }
   .carousel-control:hover {
     opacity: 1;
-  }
+    // .rgba-text-shadow(@orange);
+    text-shadow: 0px 0px 10px rgba(241, 96, 34, 1);  }
   .carousel-pager {
       font-size: 10px;
       line-height: 10px;
       margin-bottom: 10px;  /* margin above .fw-band.footer */
       position: static;
       width: inherit;
-      > div, > a {
+      > a {
         border: 3px solid @cream;
         display: inline-block;
         height: 10px;
@@ -201,12 +210,30 @@ html.ie {
         color: transparent;
         cursor: pointer;
       }
-      > div:last-child, > a:last-child {
+      > a:hover{
+        box-shadow: 0px 0px 10px rgba(241, 96, 34, 1);
+      }
+      > a:last-child {
         margin-right: 0;
       }
       .active, .selected {
         background-color: @orange;    
       }
+  }
+}
+
+html.touch  {
+  .featurette.carousel.fred  {
+    figure.graphic {
+      cursor: default;
+      width:80%;
+    }
+  }
+  
+  #features.carousel {
+    .carousel-inner {
+      margin: 0 auto;
+    }
   }
 }
 
@@ -342,6 +369,9 @@ html.ie {
 		}
 		li.item {
 			padding: 0;
+		}
+		.carousel-control {
+		  font-size: 80px;
 		}
 		figure.graphic {
 			.wrapH {

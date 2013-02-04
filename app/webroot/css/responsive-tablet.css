@@ -79,7 +79,15 @@ and (orientation : portrait) {
 	.carousel-caption {
 		width: 100%;
 	}
-	
+	.carousel {
+/*	    margin-left: -20px;
+	    margin-right: -20px;*/
+	}
+	.carousel .item {
+    	min-height: 240px;
+    	padding: 0 10%;
+    }
+    	
 		#fold {
 		    top: 1024px;
 		    width: 768px;
@@ -104,16 +112,13 @@ and (orientation : portrait) {
 	}      
 	.featurette .footer .container {
 		margin: 0;
-	}  
+	}
+	  
 	
 	      
-      .carousel {
-        margin-left: -20px;
-        margin-right: -20px;
-      }
-      .carousel .item {
-/*        height: 700px;*/
-      }
+
+    
+    
       .carousel .carousel-inner .container {
       	padding: 20px 0;
 /*      	width: auto;*/
@@ -129,10 +134,7 @@ and (orientation : portrait) {
       .carousel-caption .btn {
         font-size: 18px;
       }
-	.carousel .item {
-      	padding: 0 10%;
-    	min-height: 240px;
-    }
+
 
       .marketing .span4 + .span4 {
         margin-top: 40px;

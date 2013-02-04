@@ -12,9 +12,8 @@
 }
 
 html.touch .carousel-inner  .container {
-	padding: 60px 0px 20px;
+	padding: 20px 0;
 	min-height: 200px;
-	width: 90%;	/* no paging arrows for touch */
 }
 
 html.touch .carousel {
@@ -40,7 +39,6 @@ html.touch .carousel-inner > ul li.item {
 	display: inline-block;
 	float: left;
 	height: 100%;
-	padding: 10px;
 }
 
 
@@ -59,12 +57,7 @@ html.touch .carousel a.carousel-control {
 }
 
 .carousel .carousel-pager {
-	bottom: 40px;	/* should be height of .fw-band.footer */
-	font-size: 10px;
-	line-height: 10px;
 	margin-bottom: 20px;	/* margin above .fw-band.footer */
-	position: absolute;
-	width: 80%;
 }
 .carousel .carousel-pager div {
 	border: 3px solid #FFFFCE;

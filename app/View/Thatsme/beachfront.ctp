@@ -37,6 +37,7 @@
 	$this->start('javascript_Bottom');
 ?>
 		<script type="text/javascript" src="/js/base.js"></script>
+		<script type="text/javascript" src="/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js"></script>
 		<!-- start google Analytics -->
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
@@ -131,22 +132,22 @@
 		<div class="fw-band alpha70b vcenter-body"> 
 			<div class="container center"> 
 				<div class="featurette-heading">
-					<h1 class="red">Curated Family Photos</h1>	    	
+					<h1 class="">Curated Family Photos</h1>	    	
 		        	<div class="subhead">What do you do with your 10,000 photos? How do you find those precious moments?</div>
 		        </div>
 		        <div class="wrapW">
 		        	<figure class="graphic">
-		        		<div class="wrapH"><img src="/img/beachfront/trained-editors.sm.png"></div>
+		        		<div class="wrapH"><img src="/img/beachfront/icon-sm-02.png"></div>
 		        		<figcaption>Trained Editors
 		        			<span class="action right">find your</span>
 		        		</figcaption>
 		        	</figure>
 		        	<figure class="graphic">
-		        		<div class="wrapH"><img src="/img/beachfront/beauty.sm.png"></div>
+		        		<div class="wrapH"><img src="/img/beachfront/icon-sm-01.png"></div>
 		        		<figcaption>Beautiful Photos</figcaption>
 		        	</figure>
 		        	<figure class="graphic">
-		        		<div class="wrapH"><img src="/img/beachfront/timeline.sm.png"></div>
+		        		<div class="wrapH"><img src="/img/beachfront/icon-sm-06.png"></div>
 		        		<figcaption>
 		        			<span class="action left">featured on</span>
 		        			Curated Timelines
@@ -171,20 +172,20 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel slide track-page-view alpha70rust">
+    <div id="features" class="featurette carousel fred slide track-page-view alpha70r">
 		
     <div class="vcenter-wrap">
 		<div class="vcenter-padding">
 			<div class="fw-band alpha80w vcenter-body">
-<div class="container center"> 
-		<div class="featurette-heading">
-			<h1 class="red">Features &amp; Benefits</h1>	    	
-        	<div class="subhead">Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; for only a Penny a Photo!</div>
-        </div>
-		
-        <div class="wrapW">
-        	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/trained-editors.sm.png"></div>
+		<div class="featurette-heading center">
+			<h1 class="">Features &amp; Benefits</h1>	    	
+       		<div class="subhead">Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; for only a Penny a Photo!</div>
+       </div>			
+      <div id="features-iscroll" class="carousel-inner">
+      	<ul class="scroller">
+      		<li class="item active">
+			<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
         		<figcaption>Screened By Real Editors
         			<div class="body">
 No other photo service out there uses real people like we do. 
@@ -193,8 +194,9 @@ We promise 100% privacy.
 					</div>
         		</figcaption>
         	</figure>
+        </li><li class="item">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/timeline.sm.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-sm-06.png"></div>
         		<figcaption>Beautiful Curated Timeline
         			<div class="body">
    	<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos.</p>
@@ -204,16 +206,18 @@ We promise 100% privacy.
 					</div>
         		</figcaption>
         	</figure>
+        </li><li class="item">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/fast-uploads.sm.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-sm-05.png"></div>
         		<figcaption>Faster Uploads
         			<div class="body">
     	<p>Our Uploader lets you upload up to 100x faster than other photo sites - we've seen speeds up to 3000 photos/hour.</p>
 					</div>
         		</figcaption>
-        	</figure>
-        	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/share.png"></div>
+        	</figure
+        </li><li class="item">
+       	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/icon-sm-03.png"></div>
         		<figcaption>Share Loved Memories
         			<div class="body">
         <p>The hardest part about sharing is finding something worth sharing. 
@@ -223,8 +227,9 @@ We promise 100% privacy.
 					</div>
         		</figcaption>
         	</figure>
+        </li><li class="item">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/ipad.sm.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-sm-04.png"></div>
         		<figcaption>You're in Control
         			<div class="body">
     	<p>You have complete control. You can adjust the photos highlighted on your Timeline
@@ -233,19 +238,27 @@ by rating the ones you love.
 					</div>
         		</figcaption>
         	</figure>
-        </div>
-        <a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a> 
-</div>					
+        </li>
+        </ul>         
+      </div> <!-- /.carousel-inner  -->
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
-
+<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>  
+<div><a class="right carousel-control" href="#features" direction="next">&rsaquo;</a></div>
+<div><a class="left carousel-control" href="#features" direction="prev">&lsaquo;</a></div>	      
+	  	
       <div class='fw-band footer'>
+      	<div class="carousel-pager center">
+			<div class="active">0</div><div>1</div><div>2</div><div>3</div><div>4</div>
+        </div>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#on-our-way'>Learn More</a></div>
         	</div>
         </div>  
+    </div><!-- /.carousel -->
+       
     </div><!-- /.carousel -->
     
     
@@ -254,27 +267,6 @@ by rating the ones you love.
     
     <!-- Carousel
     ================================================== -->
-    
-      <a name='on-our-way'></a>
-      <div id="on-our-way" class="featurette respond track-page-view">
-      	<div class='bg'></div>
-		<div class="container">
-			<h2 class="featurette-heading">Snaphappi is still in the darkroom <span class="">and we need to hear from you.</span></h2>
-			<div class="wrap ">
-				<div><p>"Curated Timelines featuring Beautiful Photos picked by Trained Photo Editors &mdash; for only a Penny a Photo? <span class="muted">Thats a Terrific idea!</span></p></div>
-				<div class="center">
-					<a class="btn btn-large btn-warning" href="#">Donate $1 to cheer us on!</a>
-				</div>
-			</div>
-			<div class='fw-band footer'>
-        	<div class="container ">
-        		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
-        		<div class="pull-right"><a href='#how-it-works'>Learn More</a></div>
-        	</div>
-        </div>
-		</div>
-      </div>    
-    
     
 	
 	
@@ -286,7 +278,9 @@ by rating the ones you love.
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body">
-			<h1 class="featurette-heading center">How It Works</h1>	
+			<div class="featurette-heading center">
+				<h1 class="featurette-heading center">How It Works</h1>	
+			</div>
       <div id="how-it-works-iscroll" class="carousel-inner">
       <ul class="">	
         <li class="item active">
@@ -294,7 +288,7 @@ by rating the ones you love.
 		          	
   <div class="row carousel-row">
   	<div class="offset2 span4">
-		<img class="graphic pull-right" src="/img/beachfront/send-us.png">
+		<img class="graphic pull-right" src="/img/beachfront/icon-lg-05.png">
   	</div>
     <div class="span4">
 	    <div class="carousel-caption"><h1>Send Us Your Photos</h1></div>
@@ -311,7 +305,7 @@ With a few clicks, you can upload your entire photo archive to Snaphappi – whe
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/beauty.png">
+  		<img class="graphic pull-right" src="/img/beachfront/icon-lg-02.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>We'll Find your Beautiful Photos</h1></div>
@@ -329,7 +323,7 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/timeline.sm.png">
+  		<img class="graphic pull-right" src="/img/beachfront/icon-lg-04.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>And Build Your Curated Timeline</h1></div>
@@ -349,7 +343,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/ipad.png">
+  		<img class="graphic pull-right" src="/img/beachfront/icon-lg-03.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>Just Push Your Finger to Play</h1></div>
@@ -368,7 +362,7 @@ You'll find all your photos on a stunning Curated Timeline to make your precious
 		          	
   <div class="row carousel-row">
     <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/penny.png">
+  		<img class="graphic pull-right" src="/img/beachfront/icon-lg-01.png">
   	</div>
     <div class="span4">
     	<div class="carousel-caption"><h1>All this for just a penny a photo!</h1></div>

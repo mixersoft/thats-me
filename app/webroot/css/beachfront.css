@@ -316,10 +316,10 @@
    		color: #F16122
    }
    #home .container span.action.right {
-   		right: -50px;
+   		right: -57px;
    }
    #home .container span.action.left {
-   		left: -54px;
+   		left: -69px;
    }
    #home .container p {
    		font-size: 16px;
@@ -508,6 +508,8 @@
 
     .carousel .item {
     	min-height: 300px;
+    	margin: 0;
+    	padding: 0;
     }
     .carousel .carousel-row img.graphic {
     	display: block;
@@ -546,7 +548,7 @@
 	    line-height: 10px;
 	    margin-bottom: 10px;	/* margin above .fw-band.footer */
 	    position: absolute;
-	    width: 100%;
+	    width: inherit;
 	}
 	.carousel .carousel-pager div {
 		border: 3px solid #FDF9D0;

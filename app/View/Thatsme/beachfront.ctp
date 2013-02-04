@@ -286,7 +286,7 @@ by rating the ones you love.
       <ul class="scroller">	
         <li class="item active">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/icon-lg-05.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-06.png"></div>
         		<figcaption>Send Us Your Photos
         			<div class="body">
 <p>With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10 or 100 thousand shots!</p>

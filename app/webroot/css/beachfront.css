@@ -197,7 +197,6 @@
    #content {
    		overflow-x: hidden;
    		position: relative;
-   	 	top: -60px;				/* don't know why I need this */
    }
    .fw-band {
    		position: absolute;
@@ -302,9 +301,6 @@
    #home .container figure > div {
    		height: 160px;
    }
-   #home .container figure img{
-   	
-   }
    
    #home .container figure figcaption {
    		font-size: 20px;
@@ -315,15 +311,7 @@
    		font-size: 16px;
    		color: #F16122
    }
-   #home .container span.action.right {
-   		right: -57px;
-   }
-   #home .container span.action.left {
-   		left: -69px;
-   }
-   #home .container p {
-   		font-size: 16px;
-   }
+   
    #home .fw-band.body .muted {
    		color: #CCC;
    		display: inline-block;

@@ -190,21 +190,114 @@ var load_bg_slideshow = function() {
  */
 var load_bootstrap_carousel = function($) {
 	CFG['carousel'] = { 
-		autoPaging: true,
+		autoPaging: false,
 		isLingeringTimer: {},
 		find: {},
-		init: function() {
-			$('html.no-touch .carousel').each(function(i, elem) {
-				CFG['carousel'].paging.dotPaging($(elem));
-			});
+		init:{ 
+			init: function(){
+				$('html.no-touch .carousel').each(function(i, elem) {
+					var o = $(elem);
+					if (o.hasClass('fred')){
+						CFG['carousel'].init.fred(o);
+					} else {
+						CFG['carousel'].init.bootstrap(o);
+					}
+				});
+				
+				$(window).resize(function() {
+					// carousel resize on window.resize
+					$('html.no-touch .carousel.fred').each(function(i, elem) {
+						CFG['carousel'].paging.fred_createDots($(elem));
+					});
+				});
+			},
+			fred: function(o) {
+					// http://caroufredsel.dev7studios.com/configuration.php
+					// Using custom configuration
+					// TODO: scale itemW by $(window).width() 
+					var itemW = 340;
+					if ($(window).width() <= 467 ) {
+						// scale itemW smaller
+console.info("scale itemW for .visible-phone");
+					}
+					var fred = o.find('.carousel-inner .scroller');
+					fred.carouFredSel({
+						responsive: true,
+						circular: false,
+						width: '90%',						align: 'center',						items		: {
+							width		: itemW,							visible		: {
+								min			: 1,
+								max			: 5,								// variable	: true,							}
+						},
+						auto : {
+							timeoutDuration: 5000,
+						},						scroll : {
+							items			: 1,
+							easing			: "linear",
+							duration		: 500,							
+							pauseOnHover	: 'immediate',
+							onAfter 		: function() {
+								var dots = o.find(".carousel-pager div");
+								var next = fred.triggerHandler("currentPosition");
+								dots.removeClass('active').eq(next).addClass('active'); 
+							},
+							conditions: function(){ 
+								return o.hasClass('activated'); 
+							}
+						},
+					});
+					CFG['carousel'].paging.dotPaging_fred(o);
+			},
+			bootstrap: function(o){
+				CFG['carousel'].paging.dotPaging_bootstrap(o);
+			}
 		},
 		paging : {
 			/*
-			 * dot paging for carousels
+			 * dot paging for carouFredSel
+			 */
+			fred_createDots: function(o, fred){
+				fred = fred || o.find('.carousel-inner .scroller');
+				var visibleItems = fred.triggerHandler("currentVisible").size();
+				var carouselItems = fred.find('.item').size();
+				var pages = carouselItems - visibleItems;
+				var pager = o.find(".carousel-pager").empty();
+				for (var i=0; i<=pages; i++) {
+					pager.append("<div>"+i+"</div>");						
+				}
+				var next = fred.triggerHandler("currentPosition");
+				pager.find('div').eq(next).addClass('active');
+			},
+			dotPaging_fred: function(o){
+				// show correct number of dots
+				CFG['carousel'].paging.fred_createDots(o);
+				// dot paging handler
+				o.on('click','.carousel-pager div',function(e){
+					var index = $(this).index(); 
+					var fred = o.find('.carousel-inner .scroller');
+					o.addClass('activated');
+					fred.trigger("slideTo", index);
+			      	e.preventDefault();
+			      	$(this).parent().find('.active').removeClass('active');
+			      	$(this).addClass('active');
+			    });
+			    // prev/next paging handler
+			    o.find(".carousel-control").click(function(e){
+			    	o.addClass('activated');
+					var action = $(this).attr('direction');
+					var fred = o.find('.carousel-inner .scroller');
+					fred.trigger(action);
+			      	e.preventDefault();
+			    });
+			    
+			},
+			/*
+			 * dot paging for bootstrap carousels
 			 * @param o.hasClass(.carousel)
 			 */
-			dotPaging: function(o) {			
+			dotPaging_bootstrap: function(o) {			
 				if ($('html').hasClass('touch')) return;			// uses iscroll, instead
+				if (o.hasClass('fred')) return; 
 				
 				CFG['carousel'].find[o.attr("id")] = o;				// back reference
 				
@@ -244,13 +337,16 @@ var load_bootstrap_carousel = function($) {
 						 */
 						var id = o.attr('id');
 						if (!o.hasClass('activated')) {
-							// bug: carousel does not pause:'hover' if it was started while hovering
-							if (o.is(":hover")) {
-								o.one("mouseleave", function(){
+							if (o.hasClass('fred')) o.addClass('activated');
+							else {
+								// bug: carousel does not pause:'hover' if it was started while hovering
+								if (o.is(":hover")) {
+									o.one("mouseleave", function(){
+										o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
+									})
+								} else 
 									o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
-								})
-							} else 
-								o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
+							}
 						}
 						return 'activated';	// only start once.
 					}
@@ -260,11 +356,12 @@ var load_bootstrap_carousel = function($) {
 		},
 	};
 	
-	CFG['carousel'].init();
+	CFG['carousel'].init.init();
 	
 	$(window).scroll(function(e) {
 		/* Check the location of each desired element */
 		$('html.no-touch .carousel:not(.activated)').each(function(i, elem) {
+			// start autoPaging on linger
 			CFG['carousel'].paging.autoPaging($(elem), CFG['carousel'].isLingeringTimer);
 		});
 	});
@@ -298,6 +395,15 @@ var load_iscroll = function($) {
 			o.find(".carousel-inner > ul").css('width', (count*fw) +'px');
 			o.find(".carousel-inner, .carousel-inner > ul li").css('width', fw +'px');
 		},
+		packedWidth: function(o) {	// show as many as can fit in .carousel-inner width
+			var items = o.find('.carousel-inner > ul li');
+			var count = items.size();
+			var fw = $(window).width() * 0.9;
+			var itemW = items.find('> *').first().outerWidth(true);
+			o.find(".carousel-inner").css('width', fw + 'px');
+			o.find(".carousel-inner > ul").css('width', (count*itemW) +'px');
+			o.find('.carousel-inner > ul li').css('width', itemW +'px');
+		},
 		// add one for each iscroll
 		'features': {
 			iscroll : null, 
@@ -312,7 +418,7 @@ var load_iscroll = function($) {
 	
 	// #features iscroll
 	// NOTE: call constructor with id of .carousel-inner, i.e. #features-iscroll.carousel-inner
-	CFG['iscroll']['features'].setWidths = CFG['iscroll'].fullWidth;
+	CFG['iscroll']['features'].setWidths = CFG['iscroll'].packedWidth;
 	CFG['iscroll']['features'].iscroll = new iScroll('features-iscroll',{
 		snap: true,
 		momentum: false,

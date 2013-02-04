@@ -41,6 +41,9 @@ html.ie .alpha70ph {
 .featurette .wrapW {
   margin: 0 auto;
 }
+.featurette .container p {
+  font-size: 16px;
+}
 .featurette .featurette-heading {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
   padding: 10px;
@@ -65,10 +68,19 @@ html.ie .alpha70ph {
   margin-top: 10px;
 }
 .featurette figure.graphic figcaption .body {
+  font-size: 14px;
+  line-height: 1;
+  text-align: left;
   text-shadow: none;
 }
 #home .wrapW {
   width: 80%;
+}
+#home .container span.action.right {
+  right: -57px;
+}
+#home .container span.action.left {
+  left: -69px;
 }
 #home .featurette-heading {
   text-shadow: 1px 1px 2px rgba(241,96,34,0.7);
@@ -79,6 +91,9 @@ html.ie .alpha70ph {
 }
 #home figure.graphic .wrapH {
   max-height: 160px;
+}
+#home figure.graphic .figcaption {
+  font-size: 24px;
 }
 #features .scroller {
   width: 1515px;
@@ -110,15 +125,8 @@ html.ie .alpha70ph {
 #features figure.graphic .wrapH {
   height: 120px;
 }
-#features figure.graphic .wrapH img {
-  box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
-}
 #features figure.graphic figcaption {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-#features figure.graphic figcaption .body {
-  font-size: 14px;
-  text-align: left;
 }
 @media (max-width: 767px) {
   #features li.item {
@@ -129,18 +137,46 @@ html.ie .alpha70ph {
   }
 }
 @media (max-width: 580px) {
-  #features .featurette-heading h1 {
+  .featurette .featurette-heading h1 {
     font-size: 42px;
   }
-  #features .featurette-heading .subhead {
+  .featurette .featurette-heading .subhead {
     font-size: 14px;
+  }
+  #home .featurette-heading {
+    margin: 20px auto;
   }
 }
 @media (max-width: 467px) {
+  .featurette .container p {
+    font-size: 12px;
+  }
+  .featurette .container p .featurette-heading h1 {
+    font-size: 32px;
+  }
+  .featurette .container p .featurette-heading .subhead {
+    font-size: 14px;
+  }
+  #home .container figure > div {
+    height: 80px;
+  }
+  #home .container figure span.action.left {
+    left: -75px;
+  }
+  #features .fw-band.vcenter-body {
+    height: 360px;
+  }
   #features li.item {
     padding: 0;
   }
   #features figure.graphic .wrapH {
     height: 60px;
+  }
+  #features figure.graphic figcaption {
+    font-size: 20px;
+  }
+  #features figure.graphic figcaption .body {
+    font-size: 12px;
+    line-height: 1;
   }
 }

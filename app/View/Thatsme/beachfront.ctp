@@ -154,7 +154,10 @@
 		        		</figcaption>
 		        	</figure>
 		        </div>
-		        <p>Put your photos on <u>our</u> To-do list and Play with your photos once again.</p>
+		        <div class="featurette-heading">
+		        	<div class="subhead">
+		        		Put your photos on <u>our</u> To-do list and Play with your photos once again.
+		        </div></div>
 		   </div>     
         </div></div></div>        
         <div class='fw-band footer'>
@@ -172,11 +175,11 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel fred slide track-page-view alpha70r">
+    <div id="features" class="featurette carousel fred slide track-page-view ">
 		
     <div class="vcenter-wrap">
 		<div class="vcenter-padding">
-			<div class="fw-band alpha80w vcenter-body">
+			<div class="fw-band vcenter-body">
 		<div class="featurette-heading center">
 			<h1 class="">Features &amp; Benefits</h1>	    	
        		<div class="subhead">Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; for only a Penny a Photo!</div>
@@ -284,98 +287,64 @@ by rating the ones you love.
       <div id="how-it-works-iscroll" class="carousel-inner">
       <ul class="">	
         <li class="item active">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-  	<div class="offset2 span4">
-		<img class="graphic pull-right" src="/img/beachfront/icon-lg-05.png">
-  	</div>
-    <div class="span4">
-	    <div class="carousel-caption"><h1>Send Us Your Photos</h1></div>
-	    <p>
-With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10 or 100 thousand shots!</p>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-05.png"></div>
+        		<figcaption>Send Us Your Photos
+        			<div class="body">
+<p>With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10 or 100 thousand shots!</p>
 <p>Our Uploader works up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>	    	
-	    </p>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-  
-		          </div>
+					</div>
+        		</figcaption>
+        	</figure>
         </li><li class="item">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/icon-lg-02.png">
-  	</div>
-    <div class="span4">
-    	<div class="carousel-caption"><h1>We'll Find your Beautiful Photos</h1></div>
-    	<p>
-Our trained editors will find the beautiful photos that are featured on your Timeline. 
-It may take awhile, but they will rate all your photos and hide the duplicates just for you.
-	          	</p>
-	    <p>And yes, they are <u>real</u> people - who else can say that?</p>	
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-02.png"></div>
+        		<figcaption>We'll Find your Beautiful Photos
+        			<div class="body">
+<p>Our trained editors will find the beautiful photos that are featured on your Timeline. 
+It may take awhile, but they will rate all your photos and hide the duplicates just for you.</p>
+<p>And yes, they are <u>real</u> people - who else can say that?</p>	
+					</div>
+        		</figcaption>
+        	</figure>        	
         </li><li class="item">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/icon-lg-04.png">
-  	</div>
-    <div class="span4">
-    	<div class="carousel-caption"><h1>And Build Your Curated Timeline</h1></div>
-    	<p>
-You'll find all your photos on a stunning Curated Timeline to make your precious moments easy to find and a joy to use. 
-</p>
-		<p>Your timeline is organized using automatic event detection to make your moments easy to find and 
-			we'll highlight your events with beautiful photos to make it a joy to use. 
-		<p>Your photos are ready to play.</p>
-<p></p>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-04.png"></div>
+        		<figcaption>And Build Your Curated Timeline
+        			<div class="body">
+<p>You'll find all your photos on a stunning Curated Timeline to make your precious moments easy to find and a joy to use.</p>
+<p>Your timeline is organized using automatic event detection to make your moments easy to find and 
+we'll highlight your events with beautiful photos to make it a joy to use. 
+<p>Your photos are ready to play.</p>        				
+					</div>
+        		</figcaption>
+        	</figure>        	
         </li><li class="item">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/icon-lg-03.png">
-  	</div>
-    <div class="span4">
-    	<div class="carousel-caption"><h1>Just Push Your Finger to Play</h1></div>
-    	<p>Re-live and share your special moments on the iPad with the push of a finger.</p>
-    	<p>Quickly zoom across your Curated Timeline, jumping from moment to moment; 
-    		re-live those moments through beautiful Curated Stories; 
-    		and dive deep into your photo archives when you want to see everything.</p>
- 		<p>We promise you'll see the Big Picture before you see the thumbnails.</p>
- 		<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-03.png"></div>
+        		<figcaption>Just Push Your Finger to Play
+        			<div class="body">
+<p>Re-live and share your special moments on the iPad with the push of a finger.</p>
+<p>Quickly zoom across your Curated Timeline, jumping from moment to moment; 
+	re-live those moments through beautiful Curated Stories; 
+	and dive deep into your photo archives when you want to see everything.</p>
+<p>We promise you'll see the Big Picture before you see the thumbnails.</p>
+<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>        				
+					</div>
+        		</figcaption>
+        	</figure>        	
         </li><li class="item">
-		          <div class="container">
-		          	
-  <div class="row carousel-row">
-    <div class="offset2 span4">
-  		<img class="graphic pull-right" src="/img/beachfront/icon-lg-01.png">
-  	</div>
-    <div class="span4">
-    	<div class="carousel-caption"><h1>All this for just a penny a photo!</h1></div>
-        <p>There are many places to go to share your beautiful photos, but <u>someone</u> has to do the work to find them.
-        	If it's not going to be you, then let it be Snaphappi.</p>
-         <p>Only Snaphappi uses real people - trained photos editors - to sort through your photos. 	
-       	We think it's a small price to pay for all the time you'll save.
-          </p>
-      	
-    </div><!-- /.span -->
-  </div><!-- /.row -->          	
-		          
-		          </div>
+        	<figure class="graphic">
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-01.png"></div>
+        		<figcaption>All this for just a penny a photo!
+        			<div class="body">
+<p>There are many places to go to share your beautiful photos, but <u>someone</u> has to do the work to find them.
+If it's not going to be you, then let it be Snaphappi.</p>
+<p>Only Snaphappi uses real people - trained photos editors - to sort through your photos. 	
+We think it's a small price to pay for all the time you'll save.</p>					
+					</div>
+        		</figcaption>
+        	</figure>        	
         </li> 
         </ul>
       </div> <!-- /.carousel-inner  -->

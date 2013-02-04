@@ -121,6 +121,9 @@ html.ie .alpha70ph {
   margin: 0 5%;
   width: 90%;
 }
+.featurette.carousel.fred .fw-band.vcenter-body .carousel-inner > div {
+  margin: 0 auto !important;
+}
 .featurette.carousel.fred .fw-band.vcenter-body li.item {
   text-align: center;
   transition: none;
@@ -130,6 +133,7 @@ html.ie .alpha70ph {
 .featurette.carousel.fred figure.graphic {
   width: auto;
   vertical-align: top;
+  max-width: 900px;
 }
 .featurette.carousel.fred figure.graphic figcaption {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
@@ -210,6 +214,7 @@ html.touch #features.carousel .carousel-inner {
 }
 #how-it-works figure.graphic .wrapH {
   float: left;
+  max-width: 640px;
 }
 #how-it-works figure.graphic figcaption {
   font-size: 32px;

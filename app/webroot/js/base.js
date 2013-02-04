@@ -190,7 +190,7 @@ var load_bg_slideshow = function() {
  */
 var load_bootstrap_carousel = function($) {
 	CFG['carousel'] = { 
-		autoPaging: false,
+		autoPaging: true,
 		isLingeringTimer: {},
 		find: {},
 		init:{ 
@@ -227,11 +227,6 @@ var load_bootstrap_carousel = function($) {
 			fred: function(o) {
 					// http://caroufredsel.dev7studios.com/configuration.php
 					// Using custom configuration
-					// TODO: scale itemW by $(window).width() 
-					if ($(window).width() <= 467 ) {
-						// scale itemW smaller
-console.info("scale itemW for .visible-phone");
-					}
 					var fred = o.find('.carousel-inner .scroller');
 					fred.carouFredSel(  CFG['carousel'][o.attr('id')] );
 			},
@@ -357,7 +352,7 @@ console.info("scale itemW for .visible-phone");
 			key			: "left",
 			items		: 1,
 			easing		: "cubic",
-			// duration	: 750
+			duration	: 500,
 
 		},
 		next : {
@@ -365,7 +360,7 @@ console.info("scale itemW for .visible-phone");
 			key			: "right",
 			items		: 1,
 			easing		: "cubic",
-			// duration	: 1500
+			duration	: 500,
 
 		},
 		pagination : {

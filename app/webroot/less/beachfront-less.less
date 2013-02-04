@@ -157,6 +157,9 @@ html.ie {
 		.carousel-inner {
 			margin: 0 5%;  
 			width: 90%;   /* TODO: set to 90% $(window).width() */
+			> div {
+			  margin: 0 auto !important;      /* OVERRIDE carouFredSel positioning */
+			}
 		}
 		li.item {
 			text-align: center;
@@ -169,6 +172,7 @@ html.ie {
 	figure.graphic {
 		width: auto;
 		vertical-align: top;
+		max-width: 900px;
 		.wrapH {
 			img {
 			}
@@ -269,6 +273,7 @@ html.touch  {
   figure.graphic {
     .wrapH {
       float: left;
+      max-width: 640px;
     }
     figcaption {
       font-size: 32px;

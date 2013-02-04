@@ -469,37 +469,10 @@
       z-index: 1;
     }
     
-    .carousel-inner > ul {
-    	margin: 0;
-    }
     .carousel-inner .fw-band {
     	top: 20%;
     }
 
-    .carousel .carousel-inner .container {
-      padding: 20px 0;		
-      min-height: 200px;
-	  /*width: 80%;	*/			/* fit inside paging arrows 10% */
-    }
-
-    .carousel-control {
-      height: 80px;
-      margin-top: 0;
-      font-size: 120px;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-      background-color: transparent;
-      border: 0;
-    }
-
-    .carousel .item {
-    	min-height: 300px;
-    	margin: 0;
-    	padding: 0;
-    }
-    .carousel .carousel-row img.graphic {
-    	display: block;
-    	max-height: 225px;
-    }
 
     .carousel-caption {
       background-color: transparent;
@@ -519,40 +492,6 @@
     .carousel-caption .btn {
       margin-top: 10px;
     }
-    .carousel-row {
-      line-height: 1.25;
-/*      color: #fff;*/
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-      margin: 0;
-    }
-
-	
-	.carousel .carousel-pager {
-		bottom: 40px;			/* should be height of .fw-band.footer */
-	    font-size: 10px;
-	    line-height: 10px;
-	    margin-bottom: 10px;	/* margin above .fw-band.footer */
-	    position: absolute;
-	    width: inherit;
-	}
-	.carousel .carousel-pager div {
-		border: 3px solid #FDF9D0;
-		display: inline-block;
-		height: 10px;
-		width: 10px;
-		margin-right: 10px;
-		border-radius: 50%;
-		background: #FDF9D0;
-		color: #FDF9D0;
-		text-indent: -9999px;
-		cursor: pointer;
-	}
-	.carousel .carousel-pager div:last-child {
-		margin-right: 0;
-	} 
-	.carousel .carousel-pager  div.active {
-		background-color: #d47000;
-	}
 
     /* MARKETING CONTENT
     -------------------------------------------------- */

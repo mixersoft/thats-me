@@ -124,6 +124,8 @@ html.ie .alpha70ph {
 .featurette.carousel.fred .fw-band.vcenter-body li.item {
   text-align: center;
   transition: none;
+  margin: 0;
+  padding: 0;
 }
 .featurette.carousel.fred figure.graphic {
   width: auto;
@@ -135,9 +137,16 @@ html.ie .alpha70ph {
 .featurette.carousel.fred .carousel-control {
   color: #FDF9D0;
   opacity: 0.8;
+  background-color: transparent;
+  border: 0 none;
+  font-size: 120px;
+  height: 80px;
+  margin-top: 0;
+  text-shadow: 1px 1px 2px rgba(241,96,34,0.7);
 }
 .featurette.carousel.fred .carousel-control:hover {
   opacity: 1;
+  text-shadow: 0px 0px 10px #f16022;
 }
 .featurette.carousel.fred .carousel-pager {
   font-size: 10px;
@@ -146,7 +155,6 @@ html.ie .alpha70ph {
   position: static;
   width: inherit;
 }
-.featurette.carousel.fred .carousel-pager > div,
 .featurette.carousel.fred .carousel-pager > a {
   border: 3px solid #FDF9D0;
   display: inline-block;
@@ -158,7 +166,9 @@ html.ie .alpha70ph {
   color: transparent;
   cursor: pointer;
 }
-.featurette.carousel.fred .carousel-pager > div:last-child,
+.featurette.carousel.fred .carousel-pager > a:hover {
+  box-shadow: 0px 0px 10px #f16022;
+}
 .featurette.carousel.fred .carousel-pager > a:last-child {
   margin-right: 0;
 }
@@ -261,6 +271,9 @@ html.ie .alpha70ph {
   }
   .featurette.carousel.fred li.item {
     padding: 0;
+  }
+  .featurette.carousel.fred .carousel-control {
+    font-size: 80px;
   }
   .featurette.carousel.fred figure.graphic .wrapH {
     float: left;

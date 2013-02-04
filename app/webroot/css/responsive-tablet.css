@@ -30,8 +30,6 @@ and (orientation : portrait) {
     -------------------------------------------------- */
 /* max container width=1170px */
 @media (max-width: 979px) {
-      .carousel .item {
-      }
       .carousel-caption {
 	  }
 
@@ -68,25 +66,9 @@ and (orientation : portrait) {
 	    background-color: inherit;
 	}
 
-    .carousel .carousel-row img.graphic {
-	    height: auto;
-	    width: 33%;
-	    margin-right: 20px;
-    }
-    .carousel .carousel-row img.graphic.pull-right {
-    	float: left;
-    }
 	.carousel-caption {
 		width: 100%;
 	}
-	.carousel {
-/*	    margin-left: -20px;
-	    margin-right: -20px;*/
-	}
-	.carousel .item {
-    	min-height: 240px;
-    	padding: 0 10%;
-    }
     	
 		#fold {
 		    top: 1024px;
@@ -115,18 +97,6 @@ and (orientation : portrait) {
 	}
 	  
 	
-	      
-
-    
-    
-      .carousel .carousel-inner .container {
-      	padding: 20px 0;
-/*      	width: auto;*/
-      }
-      
-
-    
-      
       .carousel-caption h1 {
         font-size: 30px;
       }

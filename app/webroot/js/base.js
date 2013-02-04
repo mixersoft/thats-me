@@ -190,28 +190,38 @@ var load_bg_slideshow = function() {
  */
 var load_bootstrap_carousel = function($) {
 	CFG['carousel'] = { 
-		autoPaging: true,
+		autoPaging: false,
 		isLingeringTimer: {},
 		find: {},
 		init:{ 
 			init: function(){
 				$('html.no-touch .carousel').each(function(i, elem) {
 					var o = $(elem);
-					if (o.hasClass('fred')){
-						CFG['carousel'].init.fred(o);
-						CFG['carousel'].paging.refresh_pageDots(o);
-						CFG['carousel'].paging.autoPaging(o, CFG['carousel'].isLingeringTimer);
-						o.one('click', function(e){
-							$(e.currentTarget).addClass('activated');						})
-					} else {
-						CFG['carousel'].init.bootstrap(o);
-					}
+					CFG['carousel'].init.fred(o);
+					CFG['carousel'].paging.refresh_pageDots(o);
+					CFG['carousel'].paging.autoPaging(o, CFG['carousel'].isLingeringTimer);
+					o.one('click', function(e){
+						$(e.currentTarget).addClass('activated');					})
 				});
 				
 				$(window).resize(function() {
 					// carousel resize on window.resize
 					$('html.no-touch .carousel.fred').each(function(i, elem) {
 						CFG['carousel'].paging.refresh_pageDots($(elem));					});
+				});
+				
+				// add .activated when lingers into view	
+				$(window).on('scroll.activate',function(e) {
+					/* Check the location of each desired element */
+					var inactive = $('html.no-touch .carousel:not(.activated)');
+					if (inactive.size()==0) {
+						$(window).off('scroll.activate');
+					} else {
+						inactive.each(function(i, elem) {
+							// start autoPaging on linger
+							CFG['carousel'].paging.autoPaging($(elem), CFG['carousel'].isLingeringTimer);
+						});
+					}
 				});
 			},
 			fred: function(o) {
@@ -244,56 +254,6 @@ console.info("scale itemW for .visible-phone");
 				}
 				o.find('.carousel-pager a').eq(selected).addClass('selected');
 			},
-			dotPaging_fred: function(o){
-				// show correct number of dots
-				CFG['carousel'].paging.fred_createDots(o);
-				// dot paging handler
-				o.on('click','.carousel-pager div',function(e){
-					var index = $(this).index(); 
-					var fred = o.find('.carousel-inner .scroller');
-					o.addClass('activated');
-					fred.trigger("slideTo", index);
-			      	e.preventDefault();
-			      	$(this).parent().find('.active').removeClass('active');
-			      	$(this).addClass('active');
-			    });
-			    // prev/next paging handler
-			    o.find(".carousel-control").click(function(e){
-			    	o.addClass('activated');
-					var action = $(this).attr('direction');
-					var fred = o.find('.carousel-inner .scroller');
-					fred.trigger(action);
-			      	e.preventDefault();
-			    });
-			    
-			},
-			/*
-			 * dot paging for bootstrap carousels
-			 * @param o.hasClass(.carousel)
-			 */
-			dotPaging_bootstrap: function(o) {			
-				if ($('html').hasClass('touch')) return;			// uses iscroll, instead
-				if (o.hasClass('fred')) return; 
-				
-				CFG['carousel'].find[o.attr("id")] = o;				// back reference
-				
-				  // .carousel({ interval: 5000 }) 
-				o.bind('slid', function(e) { 
-					var pager = o.find(".carousel-pager"),
-						dots = pager.find("div");
-					var next = o.find('.item.active').index();
-					dots.removeClass('active').eq(next).addClass('active'); 
-					if (++next >= dots.length) next = 0; 
-					pager.attr('next', next);
-				  }); 
-					
-			    o.find(".carousel-pager div").click(function(e){ 
-			      var index = $(this).index(); 
-			      o.carousel({interval:false}).carousel(index);
-			      var pager = o.find(".carousel-pager").attr('next', index);
-			      e.preventDefault();
-			    }); 
-			}, 
 			/*
 			 * autoPaging for bootstrap carousels, 
 			 * 	- initialize AFTER first scroll into view
@@ -306,24 +266,11 @@ console.info("scale itemW for .visible-phone");
 				// isLingeringInView(o, timers, delay, success){
 				CFG['util'].isLingeringInView(o, timers, CFG['timing']['lingering'], 
 					function(o){
-						// console.info("lingering for "+o.attr('id'));
-
 						/**
-						 * start carousel when .carousel lingers in view 
+						 * start .carousel.fred when .carousel lingers in view 
 						 */
 						var id = o.attr('id');
-						if (!o.hasClass('activated')) {
-							if (o.hasClass('fred')) o.addClass('activated');
-							else {
-								// bug: carousel does not pause:'hover' if it was started while hovering
-								if (o.is(":hover")) {
-									o.one("mouseleave", function(){
-										o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
-									})
-								} else 
-									o.addClass('activated').carousel({ interval: CFG['timing']['carousel'], pause: 'hover'});
-							}
-						}
+						if (!o.hasClass('activated')) o.addClass('activated');
 						return 'activated';	// only start once.
 					}
 				);	
@@ -435,14 +382,6 @@ console.info("scale itemW for .visible-phone");
 	}; 
 	
 	CFG['carousel'].init.init();
-	
-	$(window).scroll(function(e) {
-		/* Check the location of each desired element */
-		$('html.no-touch .carousel:not(.activated)').each(function(i, elem) {
-			// start autoPaging on linger
-			CFG['carousel'].paging.autoPaging($(elem), CFG['carousel'].isLingeringTimer);
-		});
-	});
 	
 }
 
@@ -606,7 +545,7 @@ $(document).ready(
 		}
 		load_bg_slideshow();
 		
-		$(window).scroll(function(e) {
+		$(window).on('scroll.spy',function(e) {
 			CFG['util'].scrollSpy();
 		});
 					

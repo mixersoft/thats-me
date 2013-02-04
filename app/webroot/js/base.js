@@ -190,7 +190,7 @@ var load_bg_slideshow = function() {
  */
 var load_bootstrap_carousel = function($) {
 	CFG['carousel'] = { 
-		autoPaging: false,
+		autoPaging: true,
 		isLingeringTimer: {},
 		find: {},
 		init:{ 
@@ -199,6 +199,10 @@ var load_bootstrap_carousel = function($) {
 					var o = $(elem);
 					if (o.hasClass('fred')){
 						CFG['carousel'].init.fred(o);
+						CFG['carousel'].paging.refresh_pageDots(o);
+						CFG['carousel'].paging.autoPaging(o, CFG['carousel'].isLingeringTimer);
+						o.one('click', function(e){
+							$(e.currentTarget).addClass('activated');						})
 					} else {
 						CFG['carousel'].init.bootstrap(o);
 					}
@@ -207,46 +211,19 @@ var load_bootstrap_carousel = function($) {
 				$(window).resize(function() {
 					// carousel resize on window.resize
 					$('html.no-touch .carousel.fred').each(function(i, elem) {
-						CFG['carousel'].paging.fred_createDots($(elem));
-					});
+						CFG['carousel'].paging.refresh_pageDots($(elem));					});
 				});
 			},
 			fred: function(o) {
 					// http://caroufredsel.dev7studios.com/configuration.php
 					// Using custom configuration
 					// TODO: scale itemW by $(window).width() 
-					var itemW = 340;
 					if ($(window).width() <= 467 ) {
 						// scale itemW smaller
 console.info("scale itemW for .visible-phone");
 					}
 					var fred = o.find('.carousel-inner .scroller');
-					fred.carouFredSel({
-						responsive: true,
-						circular: false,
-						width: '90%',						align: 'center',						items		: {
-							width		: itemW,							visible		: {
-								min			: 1,
-								max			: 5,								// variable	: true,							}
-						},
-						auto : {
-							timeoutDuration: 5000,
-						},						scroll : {
-							items			: 1,
-							easing			: "linear",
-							duration		: 500,							
-							pauseOnHover	: 'immediate',
-							onAfter 		: function() {
-								var dots = o.find(".carousel-pager div");
-								var next = fred.triggerHandler("currentPosition");
-								dots.removeClass('active').eq(next).addClass('active'); 
-							},
-							conditions: function(){ 
-								return o.hasClass('activated'); 
-							}
-						},
-					});
-					CFG['carousel'].paging.dotPaging_fred(o);
+					fred.carouFredSel(  CFG['carousel'][o.attr('id')] );
 			},
 			bootstrap: function(o){
 				CFG['carousel'].paging.dotPaging_bootstrap(o);
@@ -256,17 +233,16 @@ console.info("scale itemW for .visible-phone");
 			/*
 			 * dot paging for carouFredSel
 			 */
-			fred_createDots: function(o, fred){
+			refresh_pageDots: function(o, fred){
 				fred = fred || o.find('.carousel-inner .scroller');
 				var visibleItems = fred.triggerHandler("currentVisible").size();
 				var carouselItems = fred.find('.item').size();
 				var pages = carouselItems - visibleItems;
-				var pager = o.find(".carousel-pager").empty();
-				for (var i=0; i<=pages; i++) {
-					pager.append("<div>"+i+"</div>");						
+				var selected = fred.triggerHandler("currentPosition");
+				for (var i=pages+1; i<carouselItems; i++) {
+					o.find('.carousel-pager a').eq(i).addClass('hide');					
 				}
-				var next = fred.triggerHandler("currentPosition");
-				pager.find('div').eq(next).addClass('active');
+				o.find('.carousel-pager a').eq(selected).addClass('selected');
 			},
 			dotPaging_fred: function(o){
 				// show correct number of dots
@@ -355,6 +331,108 @@ console.info("scale itemW for .visible-phone");
 			},
 		},
 	};
+	CFG['carousel']['features'] = {
+		responsive: true,
+		circular: false,
+		width: '90%',
+		align: 'center',
+		items		: {
+			width		: 340,			visible		: {
+				min			: 1,
+				max			: 5,
+				// variable	: true,
+			}
+		},
+		auto : {
+			timeoutDuration: 5000,
+		},
+		scroll : {
+			items			: 1,
+			// easing			: "easeInOutCubic",
+			duration		: 500,							
+			pauseOnHover	: 'immediate',
+			onAfter 		: function() {
+				// var dots = o.find(".carousel-pager div");
+				// var next = fred.triggerHandler("currentPosition");
+				// dots.removeClass('active').eq(next).addClass('active'); 			},
+			conditions: function(){ 
+				return $(this).closest('.carousel.fred').hasClass('activated'); 
+			}
+		},
+		prev : {
+			button		: "#features .carousel-control.left",
+			key			: "left",
+			items		: 1,
+			easing		: "cubic",			// duration	: 750
+		},
+		next : {
+			button		: "#features .carousel-control.right",
+			key			: "right",
+			items		: 1,
+			easing		: "cubic",			// duration	: 1500
+		},
+		pagination : {
+			container	: "#features  .carousel-pager",
+			keys		: true,
+			easing		: "cubic",			duration	: 500,
+			anchorBuilder: function(nr) {
+				// this == li.item
+				var fred = $(this).closest('.carousel.fred');			    return markup = '<a href="#'+fred.attr('id')+'">'+nr+'</a>';
+			}
+		}		
+	};
+	CFG['carousel']['how-it-works'] = {
+		responsive: true,
+		circular: false,
+		width: '86%',
+		align: 'center',
+		items		: {
+			visible		: 1
+		},
+		auto : {
+			timeoutDuration: 5000,
+		},
+		scroll : {
+			items			: 1,
+			easing			: "linear",
+			duration		: 500,							
+			pauseOnHover	: 'immediate',
+			onAfter 		: function() {
+				// var dots = o.find(".carousel-pager div");
+				// var next = fred.triggerHandler("currentPosition");
+				// dots.removeClass('active').eq(next).addClass('active'); 			},
+			conditions: function(){ 
+				return $(this).closest('.carousel.fred').hasClass('activated'); 
+			}
+		},
+		prev : {
+			button		: "#how-it-works .carousel-control.left",
+			key			: "left",
+			items		: 1,
+			easing		: "cubic",
+			// duration	: 750
+
+		},
+		next : {
+			button		: "#how-it-works .carousel-control.right",
+			key			: "right",
+			items		: 1,
+			easing		: "cubic",
+			// duration	: 1500
+
+		},
+		pagination : {
+			container	: "#how-it-works  .carousel-pager",
+			keys		: true,
+			easing		: "cubic",
+			duration	: 500,
+			anchorBuilder: function(nr) {
+				// this == li.item
+				var fred = $(this).closest('.carousel.fred');
+			    return markup = '<a href="#'+fred.attr('id')+'">'+nr+'</a>';
+			}
+		}	
+	}; 
 	
 	CFG['carousel'].init.init();
 	

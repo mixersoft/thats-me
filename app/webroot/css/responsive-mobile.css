@@ -112,9 +112,9 @@
 		min-height: 360px;
 	}
 	.vcenter-wrap {
-   		padding: 0 0 40px 0;   	 /* remove padding-top since navbar slides */
-   		height: 360px;
-   		min-height: 360px; 
+/*   		padding: 0 0 40px 0;   	 /* remove padding-top since navbar slides */*/
+/*   		height: 360px;
+   		min-height: 360px; */
    	}
 	
 	.featurette .container {
@@ -138,7 +138,7 @@
 		font-size: 24px;
 	}
 	.carousel-inner li.item .container p {
-		font-size: 12px;
+		/*font-size: 12px;*/
 	}
     
     html.touch .carousel-inner .container {
@@ -157,12 +157,6 @@
 	
 /* iPhone 4/5 retina display , portrait max-width: 320px   467 >= W  */
 @media (max-width: 467px) {
-	
-	.featurette .fw-band .featurette-heading {
-		margin: 0 10px;
-		padding: 10px 0;
-	} 
-	      
 	
 	.carousel .carousel-inner .container {
 	    padding: 10px 0;

@@ -35,8 +35,16 @@ html.ie .alpha70cr,
 html.ie .alpha70ph {
   background: transparent;
 }
+.navbar li.dropdown a.dropdown-toggle {
+  color: #D01F40;
+}
+.featurette {
+  min-height: 700px;
+}
 .featurette .fw-band.vcenter-body {
   padding: 10px 0;
+  padding-top: 40px;
+  min-height: 700px;
 }
 .featurette .wrapW {
   margin: 0 auto;
@@ -46,16 +54,20 @@ html.ie .alpha70ph {
 }
 .featurette .featurette-heading {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-  padding: 10px;
+  width: 90%;
+  margin: 0 5%;
 }
 .featurette .featurette-heading h1 {
-  font-size: 60px;
+  font-size: 72px;
   font-weight: normal;
-  line-height: 1;
+  line-height: 1.15;
+}
+.featurette .featurette-heading .subhead {
+  font-size: 21px;
+  line-height: 1.15;
 }
 .featurette figure.graphic {
   display: inline-block;
-  font-size: 20px;
   margin: 0;
   padding: 10px;
   vertical-align: middle;
@@ -65,21 +77,22 @@ html.ie .alpha70ph {
   max-height: 100%;
 }
 .featurette figure.graphic figcaption {
+  font-size: 32px;
+  line-height: 1.15;
   margin-top: 10px;
 }
 .featurette figure.graphic figcaption .body {
-  font-size: 14px;
-  line-height: 1;
+  font-size: 18px;
   text-align: left;
   text-shadow: none;
 }
-#home .wrapW {
-  width: 80%;
+#home .container figcaption {
+  line-height: 20px;
 }
-#home .container span.action.right {
+#home .container figcaption span.action.right {
   right: -57px;
 }
-#home .container span.action.left {
+#home .container figcaption span.action.left {
   left: -69px;
 }
 #home .featurette-heading {
@@ -95,23 +108,66 @@ html.ie .alpha70ph {
 #home figure.graphic .figcaption {
   font-size: 24px;
 }
-#features .scroller {
-  width: 1515px;
+.featurette.carousel.fred .scroller {
   text-align: none;
 }
-#features .scroller li {
+.featurette.carousel.fred .scroller li {
   display: inline-block;
 }
-#features .fw-band.vcenter-body {
+.featurette.carousel.fred .fw-band.vcenter-body {
   height: 465px;
 }
-#features .fw-band.vcenter-body .carousel-inner {
+.featurette.carousel.fred .fw-band.vcenter-body .carousel-inner {
   margin: 0 5%;
   width: 90%;
 }
-#features .fw-band.vcenter-body li.item {
+.featurette.carousel.fred .fw-band.vcenter-body li.item {
   text-align: center;
   transition: none;
+}
+.featurette.carousel.fred figure.graphic {
+  width: auto;
+  vertical-align: top;
+}
+.featurette.carousel.fred figure.graphic figcaption {
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+.featurette.carousel.fred .carousel-control {
+  color: #FDF9D0;
+  opacity: 0.8;
+}
+.featurette.carousel.fred .carousel-control:hover {
+  opacity: 1;
+}
+.featurette.carousel.fred .carousel-pager {
+  font-size: 10px;
+  line-height: 10px;
+  margin-bottom: 10px;
+  position: static;
+  width: inherit;
+}
+.featurette.carousel.fred .carousel-pager > div,
+.featurette.carousel.fred .carousel-pager > a {
+  border: 3px solid #FDF9D0;
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: #FDF9D0;
+  color: transparent;
+  cursor: pointer;
+}
+.featurette.carousel.fred .carousel-pager > div:last-child,
+.featurette.carousel.fred .carousel-pager > a:last-child {
+  margin-right: 0;
+}
+.featurette.carousel.fred .carousel-pager .active,
+.featurette.carousel.fred .carousel-pager .selected {
+  background-color: #F16122;
+}
+#features {
+  background-color: #FFFFFF;
 }
 #features .featurette-heading {
   color: #D01F40;
@@ -120,23 +176,53 @@ html.ie .alpha70ph {
   color: #000;
   max-width: 240px;
   width: auto;
-  height: 320px;
+  min-height: 100px;
 }
 #features figure.graphic .wrapH {
   height: 120px;
 }
 #features figure.graphic figcaption {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  font-size: 20px;
+}
+#features figure.graphic figcaption .body {
+  font-size: 14px;
+}
+#features .carousel-control {
+  color: #F16122;
+}
+#how-it-works figure.graphic .wrapH {
+  float: left;
+}
+#how-it-works figure.graphic figcaption {
+  font-size: 32px;
+}
+#how-it-works figure.graphic figcaption .body {
+  font-size: 18px;
 }
 @media (max-width: 767px) {
   #features li.item {
     padding: 0;
+  }
+  #features figure.graphic {
+    font-size: 32px;
   }
   #features figure.graphic .wrapH {
     height: 80px;
   }
 }
 @media (max-width: 580px) {
+  .featurette {
+    min-height: 600px;
+  }
+  .featurette .fw-band.vcenter-body {
+    padding: 10px 0;
+    padding-top: inherit;
+    min-height: 600px;
+  }
+  .featurette .featurette-heading {
+    padding: 10px 0;
+  }
   .featurette .featurette-heading h1 {
     font-size: 42px;
   }
@@ -148,13 +234,20 @@ html.ie .alpha70ph {
   }
 }
 @media (max-width: 467px) {
+  .featurette {
+    min-height: 460px;
+  }
+  .featurette .fw-band.vcenter-body {
+    padding: 10px 0;
+    min-height: 460px;
+  }
   .featurette .container p {
     font-size: 12px;
   }
-  .featurette .container p .featurette-heading h1 {
+  .featurette .featurette-heading h1 {
     font-size: 32px;
   }
-  .featurette .container p .featurette-heading .subhead {
+  .featurette .featurette-heading .subhead {
     font-size: 14px;
   }
   #home .container figure > div {
@@ -163,20 +256,29 @@ html.ie .alpha70ph {
   #home .container figure span.action.left {
     left: -75px;
   }
-  #features .fw-band.vcenter-body {
-    height: 360px;
+  .featurette.carousel.fred .fw-band.vcenter-body {
+    height: 320px;
   }
-  #features li.item {
+  .featurette.carousel.fred li.item {
     padding: 0;
   }
-  #features figure.graphic .wrapH {
+  .featurette.carousel.fred figure.graphic .wrapH {
+    float: left;
     height: 60px;
   }
-  #features figure.graphic figcaption {
-    font-size: 20px;
+  .featurette.carousel.fred figure.graphic figcaption {
+    font-size: 16px;
   }
-  #features figure.graphic figcaption .body {
+  .featurette.carousel.fred figure.graphic figcaption .body {
     font-size: 12px;
-    line-height: 1;
+  }
+  #how-it-works figure.graphic .wrapH {
+    height: 80px;
+  }
+  #how-it-works figure.graphic figcaption {
+    font-size: 18px;
+  }
+  #how-it-works figure.graphic figcaption .body {
+    font-size: 14px;
   }
 }

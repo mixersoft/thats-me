@@ -50,98 +50,328 @@ html.ie {
 	}
 }
 
-.body-text-shadow(@hex=#000000, @alpha:0.7) {
-	text-shadow: 1px 2px 2px hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
+.rgba-text-shadow(@hex=#000000, @alpha:0.7) {
+	text-shadow: 1px 1px 2px hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
 }
-
+.navbar {
+	li.dropdown a.dropdown-toggle {
+		color: @red;
+	}
+}
 .featurette {
-	.container {
+    min-height: 700px;
+		.fw-band.vcenter-body {
+			padding: 10px 0; 
+			padding-top: 40px;       /*  for .navbar, remove when not fixed */
+			min-height: 700px;       /* full-height band */
+		}
 		.wrapW {
 			margin: 0 auto;
 		}
+		.container p {
+	   		font-size: 16px;
+	   	}
 		.featurette-heading {
-			.body-text-shadow();
-			color: #FFFFFF;
+			.rgba-text-shadow();
+			width: 90%;
+			margin: 0 5%;
+			h1 {
+				font-size: 72px;
+				font-weight: normal;
+				line-height: 1.15;
+			}
+			.subhead {
+			  font-size: 21px;
+			  line-height: 1.15;
+			}
 		}
 		figure.graphic {
 			display: inline-block;
-		    font-size: 20px;
-		    margin: 0 20px;
-		    padding: 10px;
-		    vertical-align: middle;
-		    width: auto;
-		    .wrapH {
-		    	img {
-		    		max-height: 100%;
-		    	}
-		    }
-		    figcaption {
-		    	.body-text-shadow();
-		    	.body {
-		    		text-shadow: none;
-		    	}
-		    }	
+	    margin: 0;
+	    padding: 10px;
+	    vertical-align: middle;
+	    width: auto;
+	    .wrapH {
+	    	img {
+	    		max-height: 100%;
+	    	}
+	    }
+	    figcaption {
+	      font-size: 32px;
+	      line-height: 1.15;
+	    	margin-top: 10px;
+	    	.body-text-shadow();
+	    	.body {
+	    		font-size: 18px;
+  				text-align: left;
+	    		text-shadow: none;
+	    	}
+	    }	
 		}
-	}
 }
+
+
+
 #home {
-	.wrapW {
-		width: 80%;
+	.container {
+	  figcaption {
+      line-height: 20px;
+  		span.action.right {
+  	   right: -57px;
+  	  }
+  	  span.action.left {
+  	   		left: -69px;
+  	  }
+	  }
 	}
 	.featurette-heading {
-		.body-text-shadow(@orange);
-		color: @cream;
+		.rgba-text-shadow(@orange);
 	}
 	figure.graphic {
 		color: @cream;
+		margin: 0 20px;
 	    .wrapH {
-	   		height: 160px;
-	   		img {
-				
-			}
+	   		max-height: 160px;
 	    }
 		.figcaption {
-			
+			font-size: 24px;
+			.body {
+			}
 		}
 	}
 }
 
-#features {
-	@figW: 200px;
-	.container {
-		overflow-x: hidden;
-	}
-	.wrapW {
-		width: (5*(@figW+60)+15);
+/*
+ * #features
+ */
+.featurette.carousel.fred {
+	@figW: 240px;
+	.scroller {
 		text-align: none;
+		li {
+			display:inline-block;
+		}
 	}
-	.featurette-heading {
-		.body-text-shadow(#000000);
-		color: @red;
-	}
+	.fw-band.vcenter-body {
+		height: 465px;
+		.carousel-inner {
+			margin: 0 5%;  
+			width: 90%;   /* TODO: set to 90% $(window).width() */
+		}
+		li.item {
+			text-align: center;
+			transition: none;
+		}
+	}	
+	
 	figure.graphic {
-		color: #000;
-		width: @figW;
-		height: 300px;
+		width: auto;
+		vertical-align: top;
 		.wrapH {
-			height: 120px;
 			img {
-				box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
 			}
 		}
 		figcaption {
-			.body {
-				font-size: 14px;
-				text-align: left;
+			.rgba-text-shadow();
+      .body {
+      }			
+		}
+	}
+	.carousel-control {
+    color: @cream;
+    opacity: 0.8;
+  }
+  .carousel-control:hover {
+    opacity: 1;
+  }
+  .carousel-pager {
+      font-size: 10px;
+      line-height: 10px;
+      margin-bottom: 10px;  /* margin above .fw-band.footer */
+      position: static;
+      width: inherit;
+      > div, > a {
+        border: 3px solid @cream;
+        display: inline-block;
+        height: 10px;
+        width: 10px;
+        margin-right: 10px;
+        border-radius: 50%;
+        background: @cream;
+        color: transparent;
+        cursor: pointer;
+      }
+      > div:last-child, > a:last-child {
+        margin-right: 0;
+      }
+      .active, .selected {
+        background-color: @orange;    
+      }
+  }
+}
+
+#features {
+  background-color: #FFFFFF;
+  .featurette-heading {
+    color: @red;
+  }
+  figure.graphic {
+    color: #000;
+    max-width: 240px;
+    width: auto;
+    min-height: 100px;    .wrapH {
+      height: 120px;
+      img {
+        /* box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1); */
+      }
+    }
+    figcaption {
+      .rgba-text-shadow();
+      font-size: 20px;
+      .body {
+        font-size: 14px;
+      }     
+    }
+  }
+  .carousel-control {
+    color: @orange;
+  }  
+}
+
+#how-it-works {
+  figure.graphic {
+    .wrapH {
+      float: left;
+    }
+    figcaption {
+      font-size: 32px;
+      .body {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+/*
+ * ipad Portrait
+ */
+@media (max-width: 979px) {
+}
+/*
+ * smaller than ipad Portrait
+ */
+@media (max-width: 767px) {
+	#features {
+		.carousel-inner {
+		}
+		li.item {
+			padding: 0;
+		}
+		figure.graphic {
+		  font-size: 32px;
+			.wrapH {
+				height: 80px;
 			}
 		}
 	}
 }
 
-
-
-
-
+/*
+ * .navbar.collapsed
+ */
+@media (max-width: 580px) {
+	.featurette {
+	  min-height: 600px;
+    .fw-band.vcenter-body {
+      padding: 10px 0; 
+      padding-top: inherit;   /* slideIn .navbar doesn't need this padding */
+      min-height: 600px;       /* full-height band */
+    } 
+  	.featurette-heading {
+  	  padding: 10px 0;
+  		h1 {
+  			font-size: 42px;
+  		}
+  		.subhead {
+  			font-size: 14px;
+  		}
+  	}
+ }
+	#home .featurette-heading {
+		margin: 20px auto;
+	}
+	.featurette.carousel.fred {
+		.featurette-heading {
+		}
+	}
+	
+}
+/*
+ * mobile portrait
+ */
+@media (max-width: 467px) {
+	.featurette {
+	  min-height: 460px;
+	  .fw-band.vcenter-body {
+      padding: 10px 0; 
+      min-height: 460px;       /* full-height band */
+    }
+		.container p {
+			font-size: 12px;
+		}
+		.featurette-heading {
+			h1 {
+				font-size: 32px;
+			}
+			.subhead {
+				font-size: 14px;
+			}
+		}	
+	}
+	#home .container figure {
+		> div {
+			height: 80px;
+		}
+		span.action.left {
+			left: -75px;
+		}
+	}
+	.featurette.carousel.fred {
+		.fw-band.vcenter-body {
+			height: 320px;
+		}
+		li.item {
+			padding: 0;
+		}
+		figure.graphic {
+			.wrapH {
+			  float: left;
+				height: 60px;
+			}
+			figcaption {
+				font-size: 16px;
+				.body {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+  #how-it-works {
+    li.item {
+    }
+    figure.graphic {
+      .wrapH {
+        height: 80px;
+      }
+      figcaption {
+        font-size: 18px;
+        .body {
+          font-size: 14px;
+        }
+      }
+    }
+  } 
+}
 
 
 

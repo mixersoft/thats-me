@@ -242,19 +242,17 @@ by rating the ones you love.
         		</figcaption>
         	</figure>
         </li>
-        </ul>         
+        </ul> 
       </div> <!-- /.carousel-inner  -->
+<div class="carousel-pager center"></div>       
+<div><a class="left carousel-control" href="#features" direction="prev">&lsaquo;</a></div>        
+<div><a class="right carousel-control" href="#features" direction="next">&rsaquo;</a></div>
+<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
-<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>  
-<div><a class="right carousel-control" href="#features" direction="next">&rsaquo;</a></div>
-<div><a class="left carousel-control" href="#features" direction="prev">&lsaquo;</a></div>	      
-	  	
+  
       <div class='fw-band footer'>
-      	<div class="carousel-pager center">
-			<div class="active">0</div><div>1</div><div>2</div><div>3</div><div>4</div>
-        </div>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#on-our-way'>Learn More</a></div>
@@ -276,7 +274,7 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette carousel slide track-page-view">
+    <div id="how-it-works" class="featurette carousel fred slide track-page-view">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
@@ -285,7 +283,7 @@ by rating the ones you love.
 				<h1 class="featurette-heading center">How It Works</h1>	
 			</div>
       <div id="how-it-works-iscroll" class="carousel-inner">
-      <ul class="">	
+      <ul class="scroller">	
         <li class="item active">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-05.png"></div>
@@ -322,21 +320,20 @@ we'll highlight your events with beautiful photos to make it a joy to use.
         </li><li class="item">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-03.png"></div>
-        		<figcaption>Just Push Your Finger to Play
+        		<figcaption>Push Your Finger<br />to Play
         			<div class="body">
 <p>Re-live and share your special moments on the iPad with the push of a finger.</p>
 <p>Quickly zoom across your Curated Timeline, jumping from moment to moment; 
 	re-live those moments through beautiful Curated Stories; 
 	and dive deep into your photo archives when you want to see everything.</p>
 <p>We promise you'll see the Big Picture before you see the thumbnails.</p>
-<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>        				
 					</div>
         		</figcaption>
         	</figure>        	
         </li><li class="item">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-01.png"></div>
-        		<figcaption>All this for just a penny a photo!
+        		<figcaption>Just a penny a photo!
         			<div class="body">
 <p>There are many places to go to share your beautiful photos, but <u>someone</u> has to do the work to find them.
 If it's not going to be you, then let it be Snaphappi.</p>
@@ -348,16 +345,14 @@ We think it's a small price to pay for all the time you'll save.</p>
         </li> 
         </ul>
       </div> <!-- /.carousel-inner  -->
+<div class="carousel-pager center"></div>       
+<div><a class="left carousel-control" href="#how-it-works" direction="prev">&lsaquo;</a></div>        
+<div><a class="right carousel-control" href="#how-it-works" direction="next">&rsaquo;</a></div>
+<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
-<div><a class="right carousel-control" href="#how-it-works" data-slide="next">&rsaquo;</a></div>
-<div><a class="left carousel-control" href="#how-it-works" data-slide="prev">&lsaquo;</a></div>	  
       <div class='fw-band footer'>
-      	<div class="center carousel-pager">
-			<div class="active">0</div>
-			<div>1</div><div>2</div><div>3</div><div>4</div>
-        </div>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
         		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>

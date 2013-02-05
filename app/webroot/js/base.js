@@ -188,21 +188,22 @@ var load_bg_slideshow = function() {
 /*
  * bootstrap carousel load/init for html.no-touch
  */
-var load_bootstrap_carousel = function($) {
+var load_carouFredSel = function($) {
 	CFG['carousel'] = { 
 		autoPaging: true,
 		isLingeringTimer: {},
 		find: {},
 		init:{ 
 			init: function(){
-				$('html.no-touch .carousel').each(function(i, elem) {
+				$('html.no-touch .carousel.fred').each(function(i, elem) {
 					var o = $(elem);
 					CFG['carousel'].init.fred(o);
 					CFG['carousel'].paging.refresh_pageDots(o);
-					CFG['carousel'].paging.autoPaging(o, CFG['carousel'].isLingeringTimer);
-					o.one('click', function(e){
-						$(e.currentTarget).addClass('activated');					})
-				});
+					// No .activated required for carouFredSel
+					// CFG['carousel'].paging.autoPaging(o, CFG['carousel'].isLingeringTimer);
+					// o.one('click', function(e){
+						// $(e.currentTarget).addClass('activated');
+					// })				});
 				
 				$(window).resize(function() {
 					// carousel resize on window.resize
@@ -210,10 +211,11 @@ var load_bootstrap_carousel = function($) {
 						CFG['carousel'].paging.refresh_pageDots($(elem));					});
 				});
 				
-				// add .activated when lingers into view	
+				// add .activated when lingers into view
+				// NOTE: not required for carouFredSel	
 				$(window).on('scroll.activate',function(e) {
 					/* Check the location of each desired element */
-					var inactive = $('html.no-touch .carousel:not(.activated)');
+					var inactive = $('html.no-touch .carousel:not(.fred.activated)');
 					if (inactive.size()==0) {
 						$(window).off('scroll.activate');
 					} else {
@@ -250,8 +252,12 @@ var load_bootstrap_carousel = function($) {
 				o.find('.carousel-pager a').eq(selected).addClass('selected');
 			},
 			/*
-			 * autoPaging for bootstrap carousels, 
+			 * @deprecate if using only carouFredSel
+			 * NOTE: carouFredSel DOES NOT check activated, only scrollIntoView
+			 *  
+			 * autoPaging for bootstrap,iscroll carousels, 
 			 * 	- initialize AFTER first scroll into view
+			 * 
 			 */
 			autoPaging: function(o, timers) {
 				if ($('html').hasClass('touch')) return;			// uses iscroll, instead
@@ -262,7 +268,7 @@ var load_bootstrap_carousel = function($) {
 				CFG['util'].isLingeringInView(o, timers, CFG['timing']['lingering'], 
 					function(o){
 						/**
-						 * start .carousel.fred when .carousel lingers in view 
+						 * start .carousel when .carousel lingers in view 
 						 */
 						var id = o.attr('id');
 						if (!o.hasClass('activated')) o.addClass('activated');
@@ -278,6 +284,9 @@ var load_bootstrap_carousel = function($) {
 		circular: false,
 		width: '90%',
 		align: 'center',
+		onCreate: function(data){
+			var check;
+		},
 		items		: {
 			width		: 340,			visible		: {
 				min			: 1,
@@ -286,41 +295,44 @@ var load_bootstrap_carousel = function($) {
 			}
 		},
 		auto : {
-			timeoutDuration: 5000,
+			timeoutDuration: 7000,
+			conditions: function(){ 
+				// return $(this).closest('.carousel.fred').hasClass('activated'); 
+				return CFG['util'].isScrolledIntoView($(this));
+			},
 		},
 		scroll : {
 			items			: 1,
 			// easing			: "easeInOutCubic",
 			duration		: 500,							
 			pauseOnHover	: 'immediate',
-			onAfter 		: function() {
-				// var dots = o.find(".carousel-pager div");
-				// var next = fred.triggerHandler("currentPosition");
-				// dots.removeClass('active').eq(next).addClass('active'); 			},
-			conditions: function(){ 
-				return $(this).closest('.carousel.fred').hasClass('activated'); 
-			}
-		},
+			onCreate 		: function(data){
+				
+			},
+			// onAfter 		: function() {	},		},
 		prev : {
 			button		: "#features .carousel-control.left",
 			key			: "left",
 			items		: 1,
-			easing		: "cubic",			// duration	: 750
+			easing		: "cubic",			duration	: 750,
 		},
 		next : {
 			button		: "#features .carousel-control.right",
 			key			: "right",
 			items		: 1,
-			easing		: "cubic",			// duration	: 1500
-		},
+			easing		: "cubic",			duration	: 750,		},
 		pagination : {
 			container	: "#features  .carousel-pager",
 			keys		: true,
-			easing		: "cubic",			duration	: 500,
+			easing		: "cubic",			duration	: 750,
 			anchorBuilder: function(nr) {
 				// this == li.item
 				var fred = $(this).closest('.carousel.fred');			    return markup = '<a href="#'+fred.attr('id')+'">'+nr+'</a>';
 			}
+		},
+		swipe : {
+			onTouch: true,
+			onMouse: true,
 		}		
 	};
 	CFG['carousel']['how-it-works'] = {
@@ -332,27 +344,24 @@ var load_bootstrap_carousel = function($) {
 			visible		: 1
 		},
 		auto : {
-			timeoutDuration: 5000,
+			timeoutDuration: 7000,
+			conditions: function(){ 
+				// return $(this).closest('.carousel.fred').hasClass('activated'); 
+				return CFG['UTIL'].isScrolledIntoView($(this));			},
 		},
 		scroll : {
 			items			: 1,
 			easing			: "linear",
 			duration		: 500,							
 			pauseOnHover	: 'immediate',
-			onAfter 		: function() {
-				// var dots = o.find(".carousel-pager div");
-				// var next = fred.triggerHandler("currentPosition");
-				// dots.removeClass('active').eq(next).addClass('active'); 			},
-			conditions: function(){ 
-				return $(this).closest('.carousel.fred').hasClass('activated'); 
-			}
-		},
+			onCreate 		: function(data) {	},
+			// onAfter 		: function() {	},		},
 		prev : {
 			button		: "#how-it-works .carousel-control.left",
 			key			: "left",
 			items		: 1,
 			easing		: "cubic",
-			duration	: 500,
+			duration	: 750,
 
 		},
 		next : {
@@ -360,14 +369,14 @@ var load_bootstrap_carousel = function($) {
 			key			: "right",
 			items		: 1,
 			easing		: "cubic",
-			duration	: 500,
+			duration	: 750,
 
 		},
 		pagination : {
 			container	: "#how-it-works  .carousel-pager",
 			keys		: true,
 			easing		: "cubic",
-			duration	: 500,
+			duration	: 750,
 			anchorBuilder: function(nr) {
 				// this == li.item
 				var fred = $(this).closest('.carousel.fred');
@@ -565,7 +574,7 @@ $(document).ready(
 			})
 			
 		} else {	// html.no-touch
-			load_bootstrap_carousel($);
+			load_carouFredSel($);
 			$('#header .show-navbar').on('mouseenter', function(e){
 				CFG['util'].slideInNavBar('no-touch');
 			})

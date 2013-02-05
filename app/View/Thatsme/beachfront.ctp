@@ -34,10 +34,20 @@
 	/**
 	 * javascript body bottom
 	 */ 
+	 
+	$js_bottom = array();
+	if (1 || $isTouch) {
+		// $js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
+		$js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
+	}
+	$js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';
+	$js_bottom[] = '/js/base.js';
+	$js_bottom[] = 'http://www.youtube.com/iframe_api';
+	$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
+	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
+	 
 	$this->start('javascript_Bottom');
 ?>
-		<script type="text/javascript" src="/js/base.js"></script>
-		<script type="text/javascript" src="/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js"></script>
 		<!-- start google Analytics -->
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
@@ -60,15 +70,6 @@
 		</script>		
 <?php
 	$this->end();	 
-	
-	$js_bottom = array();
-	if ($isTouch) {
-		$js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
-	}
-	$js_bottom[] = 'http://www.youtube.com/iframe_api';
-	$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
-	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
-	
 ?>
 
 <?php $this->start('body_header'); ?>

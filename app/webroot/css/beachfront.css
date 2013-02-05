@@ -47,7 +47,7 @@
 	}
 
 /*	http://www.jakpsatweb.cz/css/css-vertical-center-solution.html*/
-   	.vcenter-wrap {
+/*   	.vcenter-wrap {
    		display: table; 
    		overflow: hidden;
    		width:100%;
@@ -68,7 +68,7 @@
 	}
 	html.lt-ie8 .vcenter-body {
 		top: -50%;
-	}
+	}*/
 	   
 	.fade-slow {
 		  opacity: 0;

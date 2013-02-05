@@ -74,12 +74,13 @@ CFG['util'] = {
 	    }
 	    return target;
 	},
-	slideInNavBar: function(type){
+	slideInNavBar: function(){
 		var navbar = $('.navbar-fixed-top');
 		if (navbar.css('position')=='absolute') {
 			var top = $(window).scrollTop();
 			navbar.css('top', top);
 			$('.alert-wrapper').css('top', navbar.css('height') );
+			var type = $('html').hasClass('touch') ? 'touch' : 'no-touch';
 			switch (type) {
 				case 'touch':
 					navbar.on('click', function(e){
@@ -331,8 +332,8 @@ var load_carouFredSel = function($) {
 			}
 		},
 		swipe : {
-			onTouch: true,
-			onMouse: true,
+			onTouch: CFG.isTouch,
+			onMouse: !CFG.isTouch,
 		}		
 	};
 	CFG['carousel']['how-it-works'] = {
@@ -384,8 +385,8 @@ var load_carouFredSel = function($) {
 			}
 		},
 		swipe : {
-			onTouch: true,
-			onMouse: true,
+			onTouch: CFG.isTouch,
+			onMouse: !CFG.isTouch,
 		}			
 	}; 
 	
@@ -451,7 +452,7 @@ var load_iscroll = function($) {
 		},
 		fullWidth: function(o) {  // o.carousel
 			var count = o.find('.carousel-inner > ul li').size();
-			var fw = $(window).width();
+			var fw = $(window).width()*0.8;	// add 10% extra room for finger scrolling
 			o.find(".carousel-inner > ul").css('width', (count*fw) +'px');
 			o.find(".carousel-inner, .carousel-inner > ul li").css('width', fw +'px');
 		},
@@ -499,7 +500,7 @@ var load_iscroll = function($) {
 	// #how-it-works-iscroll
 	CFG['iscroll']['how-it-works'].setWidths = CFG['iscroll'].fullWidth;
 	CFG['iscroll']['how-it-works'].iscroll = new iScroll('how-it-works-iscroll',{
-		snap: true,
+		snap: 'li.item',
 		momentum: false,
 		hScroll: true,
 		vScroll: false,
@@ -574,13 +575,13 @@ $(document).ready(
 			$('.carousel-inner > ul > li.item.active').removeClass('active');			load_iscroll($);
 			$('#header .show-navbar').on('click', function(e){
 				e.preventDefault();
-				CFG['util'].slideInNavBar('touch');
+				CFG['util'].slideInNavBar();
 			})
 			
 		} else {	// html.no-touch
 			load_carouFredSel($);
 			$('#header .show-navbar').on('mouseenter', function(e){
-				CFG['util'].slideInNavBar('no-touch');
+				CFG['util'].slideInNavBar();
 			})
 		}
 		load_bg_slideshow();

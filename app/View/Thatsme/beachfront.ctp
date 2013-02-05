@@ -36,11 +36,12 @@
 	 */ 
 	 
 	$js_bottom = array();
-	if (1 || $isTouch) {
-		// $js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
+	if ($isTouch) {
+		$js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
+	} else {	
 		$js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
+		$js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';
 	}
-	$js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';
 	$js_bottom[] = '/js/base.js';
 	$js_bottom[] = 'http://www.youtube.com/iframe_api';
 	$js_bottom[] = "vendor";	// mixpanel and youtube control scripts

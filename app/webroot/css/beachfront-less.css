@@ -222,6 +222,18 @@ html.touch #features.carousel .carousel-inner {
 #how-it-works figure.graphic figcaption .body {
   font-size: 18px;
 }
+#see-the-movie {
+  background-color: #FFFFFF;
+}
+#see-the-movie .featurette-heading {
+  color: #D01F40;
+  padding-bottom: 0;
+}
+#see-the-movie iframe {
+  max-width: 853px;
+  width: 90%;
+  height: 480px;
+}
 @media (max-width: 767px) {
   #features li.item {
     padding: 0;
@@ -231,6 +243,10 @@ html.touch #features.carousel .carousel-inner {
   }
   #features figure.graphic .wrapH {
     height: 80px;
+  }
+  #see-the-movie iframe {
+    width: 90%;
+    height: 440px;
   }
 }
 @media (max-width: 580px) {
@@ -253,6 +269,10 @@ html.touch #features.carousel .carousel-inner {
   }
   #home .featurette-heading {
     margin: 20px auto;
+  }
+  #see-the-movie iframe {
+    width: 90%;
+    height: 340px;
   }
 }
 @media (max-width: 467px) {
@@ -305,5 +325,9 @@ html.touch #features.carousel .carousel-inner {
   }
   #how-it-works figure.graphic figcaption .body {
     font-size: 14px;
+  }
+  #see-the-movie iframe {
+    width: 90%;
+    height: 240px;
   }
 }

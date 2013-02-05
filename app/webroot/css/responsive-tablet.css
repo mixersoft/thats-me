@@ -118,9 +118,4 @@ and (orientation : portrait) {
         line-height: 1.5;
       }
   
-	  .featurette.the-movie iframe {
-	    	width: 90%;
-	    	height: 360px;
-	  }
-    
     }

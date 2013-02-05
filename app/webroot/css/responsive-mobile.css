@@ -140,10 +140,7 @@
 	.featurette {
 		min-height: 350px;
 	}
-	.featurette.the-movie iframe {
-	   	width: 90%;
-	   	height: 300px;
-	}
+	
 	.alert-wrapper {
 		margin: 10px 0;
 	}

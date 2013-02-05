@@ -260,16 +260,6 @@ by rating the ones you love.
         </div>  
     </div><!-- /.carousel -->
        
-    </div><!-- /.carousel -->
-    
-    
-    
-    
-    
-    <!-- Carousel
-    ================================================== -->
-    
-	
 	
     <!-- Carousel: How It Works
     ================================================== -->
@@ -375,10 +365,12 @@ We think it's a small price to pay for all the time you'll save.</p>
 <!--       <hr class="featurette-divider"> -->
       
 	  <a name='see-the-movie'></a>	
-      <div id="see-the-movie" class="featurette the-movie alpha70peach">
-      	<div class='bg'></div>
-      	<div class="container body">
-	        <h2 class="featurette-heading">See the Movie. <span class="muted">It'll knock your socks off.</span></h2>
+      <div id="see-the-movie" class="featurette see-the-movie">
+      	<div class='fw-band vcenter-body'>
+	      	<div class="featurette-heading center">
+		        <h1>See the Movie</h1>
+		        <div class="subhead hide">It'll knock your socks off</div>
+	       	</div>
 	        <div class='center'>
 	        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
 	        </div>

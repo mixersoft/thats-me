@@ -268,7 +268,7 @@ by rating the ones you love.
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
-		<div class="fw-band alpha70b vcenter-body">
+		<div class="fw-band alpha70r vcenter-body">
 			<div class="featurette-heading center">
 				<h1 class="featurette-heading center">How It Works</h1>	
 			</div>
@@ -384,31 +384,27 @@ We think it's a small price to pay for all the time you'll save.</p>
 
       
       <a name='call-to-action'></a>
-      <div id='call-to-action' class="featurette call-to-action alpha70r">
-      	<div class="container">
-	      	<div class="wrap alpha75w">
-	        <h2 class="featurette-heading">Still in the Darkroom</h2>
-	        <p class="lead">
-We're working hard to build Snaphappi into a service you never knew you needed but can't live without. 
-</p>	        	
-
+      <div id='call-to-action' class="featurette call-to-action alpha70b">
+      	<div class='fw-band vcenter-body'>
+      		<div class="container">
+      			<div class='row'>
+		      		<div class="span12">
+		      			<div class="heading">
+					        <h1>Still in the Darkroom</h1>
+					        <div class="subhead">We're working hard to build Snaphappi into a service you never knew you needed but can't live without.</div>
+				       	</div>
+					</div>
+      			</div>
 	        <div class="row">
-	        	<div class="span4">
-<p class="lead">
-While we are still in the darkroom, you have a great opportunity to help shape this service with your early participation and invaluable feedback.</p>
-					<form class="form-inline sign-up" action="/action/sign-me-up" method="post">
-			                <input type="text" placeholder="Email" class='email'><button id='join-email-list' type="submit" class="btn btn-primary track-click" track='join-list'>I Want It</button>
-					</form>
-	        	</div>
-	        	<div class="span5 donate">
+	        	<div class="offset1 span5 donate">
 					<p class="lead">
-But if you want this service ASAP, <b>let us know!</b> 
-We need your vocal support and by donating $1 to our favorite charity you'll be cheering us on through those long sleepless nights. 
+If you want this service ASAP, let us know &mdash; we need your vocal support! 
+Cheer us on through those long sleepless nights by sending us a buck ($1.00) We'll get the message. 
 	        		</p>
 	        		<a id='donate' class="btn btn-large btn-success track-click" href="#" onclick='return false;' track='donate'>I Want It ASAP!</a>
 	        			<div class='donate-form-wrap alpha70b' style='display:none;'>
 	        				<p class="lead">We like your enthusiasm!</p>
-	        				<p>Use one of the buttons below to donate $1 to Snaphappi</p>
+	        				<p>Use one of the buttons below to cheer on the guys at Snaphappi!</p>
 	        				<!--  Payal 	        			 -->
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate $1 with PayPal - The safer, easier way to pay online!">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -439,9 +435,17 @@ We need your vocal support and by donating $1 to our favorite charity you'll be 
 </form>		
 					</div>
 	        	</div>
+	        	<div class="span5">
+<p class="lead">
+If you are not completely sold on the idea just yet, you'll still have an opportunity to help shape this service with your early participation and invaluable feedback.</p>
+<form class="form-inline sign-up center" action="/action/sign-me-up" method="post">
+        <input type="text" placeholder="Email" class='email'><button id='join-email-list' type="submit" class="btn btn-primary btn-large track-click" track='join-list'>I Want It</button>
+</form>
+	        	</div>
+	        	<div class="span1"></div>
 	        </div>  <!-- / .row -->
-        </div></div>
-      </div>
+        </div>
+      </div></div> <!-- / .vcenter-body  -->
       
       <a name='thank-you'></a>
       <a name='sharing'></a>

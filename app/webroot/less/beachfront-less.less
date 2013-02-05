@@ -1,3 +1,10 @@
+html.fontface:not(.android) {
+  body, button, select {
+      font-family: "GeoSansLightRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;
+  }
+}
+
+
 /**
  * 	Less 
  */
@@ -50,6 +57,15 @@ html.ie {
 	}
 }
 
+.rounded-corners (@radius: 4px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+
 .rgba-text-shadow(@hex=#000000, @alpha:0.7) {
 	text-shadow: 1px 1px 2px hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
 }
@@ -69,8 +85,9 @@ html.ie {
 			margin: 0 auto;
 		}
 		.container p {
-	   		font-size: 16px;
-	   	}
+   		font-size: 16px;
+   		line-height: 1.15;
+   	}
 		.featurette-heading {
 			.rgba-text-shadow();
 			width: 90%;
@@ -297,6 +314,51 @@ html.touch  {
   }
 }
 
+#call-to-action {
+  .rgba-text-shadow();
+  .heading {
+    border: 2px solid @cream;
+    margin: 100px  0 40px;
+    padding: 20px;
+    h1 {
+      font-size: 60px;
+      font-weight: normal;
+    }
+    .subhead {
+      font-size: 21px;
+      line-height: 1.15;
+    }
+  }
+  .container p {
+    font-size: 21px;
+  }
+  form.sign-up {
+    input.email {
+      line-height: 20px;
+      margin-bottom: 8px;
+      padding: 10px 19px;
+      .rounded-corners(6px); 
+      -webkit-border-top-right-radius: 0;
+      -webkit-border-bottom-right-radius: 0;
+    
+      -moz-border-radius-topright: 0;
+      -moz-border-radius-bottomright: 0;
+    
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    button#join-email-list {
+      -webkit-border-top-left-radius: 0;
+      -webkit-border-bottom-left-radius: 0;
+    
+      -moz-border-radius-topleft: 0;
+      -moz-border-radius-bottomleft: 0;
+    
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
 
 /*
  * ipad Portrait

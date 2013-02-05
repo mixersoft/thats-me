@@ -435,7 +435,7 @@ Cheer us on through those long sleepless nights by sending us a buck ($1.00) We'
 </form>		
 					</div>
 	        	</div>
-	        	<div class="span5">
+	        	<div class="span5 join">
 <p class="lead">
 If you are not completely sold on the idea just yet, you'll still have an opportunity to help shape this service with your early participation and invaluable feedback.</p>
 <form class="form-inline sign-up center" action="/action/sign-me-up" method="post">
@@ -443,66 +443,80 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 </form>
 	        	</div>
 	        	<div class="span1"></div>
+    	     	<div class='wrapH center'>
+    				<img src="/img/beachfront/icon-lg-01.png">
+    			</div>
 	        </div>  <!-- / .row -->
         </div>
       </div></div> <!-- / .vcenter-body  -->
       
       <a name='thank-you'></a>
       <a name='sharing'></a>
-      <div id='sharing' class="featurette sharing">
-      	<div class="container">
-      		<div class="wrap alpha70b">
-	        	<h2 class="featurette-heading .thank-you"><span class="thank-you hide">Thank You for Your Support<br></span><span class="muted">Spread the Word!</span></h2>
-	        	<div class="social-sharing">
+      <div id='sharing' class="featurette sharing alpha70cr">
+      	<div class='fw-band vcenter-body'>
+      		<div class="container">
+      			<div class='row'>
+		      		<div class="span12">
+		      			<div class="heading alpha70b">
+					        <h1>
+					        	<span class="thank-you hide">Thank You for Your Support <span class="muted">and</span></span>
+					        	<span class="muted">Spread the Word!</span>
+					        </h1>
+					        <div class="subhead">You can also show your support by sharing Snaphappi will all your friends. We'd be very grateful.</div>
+					        
+				<div class="wrapH center">
+      				<div class="social-sharing">
 		        		<div class="fb-like" data-href="http://thats-me.snaphappi.com/i-need-this" data-send="true" data-layout="button_count" data-width="225" data-show-faces="true" data-font="arial"></div>
 		        		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/i-need-this" 
 		        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos.">Tweet</a>
 		        	</div>
-	        	<div class="row">
-	        		<div class="offset4 span5"><p class="lead">You can also show your support by sharing Snaphappi will all your friends. We'd be very grateful.</p></div>
-	        	</div>
-	        	
-	        	
-        	</div>
-        </div>
+      			</div>
+					        
+				       	</div>
+				       	<div class='wrapH center'>
+	        				<img src="/img/beachfront/icon-sm-03.png">
+	        			</div>
+					</div>
+      			</div>
+      		</div>
+		</div>		
         <div class='fw-band footer'>
         	<div class="container ">
         	</div>
         </div>
       </div>
-
-      <a name='tag-line'></a>
-      <div id='tag-line' class="featurette tag-line">
-      	<div class="container">
-      		<div class="wrap alpha70b">
-        	<h2 class="featurette-heading">Snaphappi <br><span class="muted">Your Photos Ready to Play</span></h2>
-        </div></div>
-        <div class='fw-band footer'>
-        	<div class="container ">
-        		<div class="pull-right">Next</div>
-        	</div>
-        </div>
-      </div>
-	
 
       <a name='about'></a>
-      <div id='about' class="featurette about track-page-view">
-      	<div class="container">
-      		<div class="wrap alpha70b">
-        	<h2 class="featurette-heading">About</h2>
-        	<p>
+      <div id='about' class="featurette about track-page-view alpha70ph">
+		<div class='fw-band vcenter-body'>
+      		<div class="container">
+      			<div class='row'>
+		      		<div class="span12">
+		      			<div class="heading alpha70b">
+					        <h1>About Snaphappi</h1>
+				       	</div>
+					</div>
+      			</div>
+      			<div class="row">
+		        	<div class="span12 body">
+						<p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
 But with a growing family and a hectic job, 
 who has time to scroll through 10,000 thumbnails to find your Beautiful Photos? 
 Most likely, it's not going to be you, and it's certainly not going to be fancy computer algorithm.        		
-        	</p>
-        	<p>
+			        	</p>
+			        	<p>
 Only Snaphappi uses real photo editors to screen your family photos. 
 We'll find your beautiful photos and hide duplicates, 
 saving you hours of time and making fun and easy to re-live your precious moments. 
 Let us roll up our sleeves so you can just play.
-        	</p>
-        </div></div>
+	        			</p>
+	        			<div class='wrapH center'>
+	        				<img src="/img/beachfront/icon-lg-03.png">
+	        			</div>
+	        	</div></div>
+      		</div>
+		</div>	      	
         <div class='fw-band footer'>
         	<div class="container ">
         	</div>

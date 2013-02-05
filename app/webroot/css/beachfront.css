@@ -419,16 +419,11 @@
    #sharing .lead {
    		color: #fff;
    } 
-   #sharing .social-sharing {
-   		position:absolute;
-   }
    #sharing .twitter-share-button {
    		vertical-align: top;
    }
  	
- 	#tag-line span.muted, #sharing span.muted{
-   		color: #ffaa00
-   }
+ 	
  	#FAQ .container {
  		padding: 20px;
  	}

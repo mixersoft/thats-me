@@ -41,11 +41,15 @@ html.fontface:not(.android) {
 	.rgba(#FFFFFF, 0.8);
 }
 .alpha70cr {
-	.rgba(@cream, 0.7);
+	.rgba(@cream, 0.8);
 }
 .alpha70ph {
 	.rgba(@peach, 0.7);
 }
+.alpha70o {
+  .rgba(@orange, 0.7);
+}
+
 
 /*
  * ie only for alpha
@@ -318,7 +322,7 @@ html.touch  {
   .rgba-text-shadow();
   .heading {
     border: 2px solid @cream;
-    margin: 100px  0 40px;
+    margin: 80px 0 20px;
     padding: 20px;
     h1 {
       font-size: 60px;
@@ -329,8 +333,13 @@ html.touch  {
       line-height: 1.15;
     }
   }
-  .container p {
-    font-size: 21px;
+  .container {
+    p {
+      font-size: 21px;
+    }
+    .wrapH img {
+      height: 160px;
+    }
   }
   form.sign-up {
     input.email {
@@ -360,10 +369,96 @@ html.touch  {
   }
 }
 
+#sharing, #thank-you, #about {
+  .rgba-text-shadow();
+  .heading {
+    border: 2px solid @orange;
+    margin: 80px 0 20px;
+    padding: 20px;
+    h1 {
+      font-size: 60px;
+      font-weight: normal;
+      line-height: 1;
+      span.muted{
+        color: @cream;
+        .rgba-text-shadow(@orange);
+      }
+    }
+    .subhead {
+      font-size: 21px;
+      line-height: 1.15;
+    }
+    .wrapH {
+      margin: 20px 0;
+    }
+  }
+  .container {
+    p {
+      font-size: 21px;
+    }
+    .wrapH img {
+      height: 160px;
+    }
+  }
+}
+
+#about {
+  .container .body {
+    color: @darkgrey;
+    .rgba-text-shadow();
+  }
+}
+
 /*
  * ipad Portrait
  */
 @media (max-width: 979px) {
+  #call-to-action, #sharing, #thank-you {
+    .container {
+      padding: 0 10px;
+    }
+    .container p {
+    }
+    .btn-large {
+        padding: 4px 12px;
+        font-size: 16px;
+    }
+    form.sign-up {
+      input.email {
+        font-size: 16px;
+        line-height: 16px;
+        padding: 4px 12px;
+        width: 160px;
+        -webkit-border-top-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+      
+        -moz-border-radius-topright: 0;
+        -moz-border-radius-bottomright: 0;
+      
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      button#join-email-list {
+        font-size: 16px;
+        -webkit-border-top-left-radius: 0;
+        -webkit-border-bottom-left-radius: 0;
+      
+        -moz-border-radius-topleft: 0;
+        -moz-border-radius-bottomleft: 0;
+      
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }    
+  }
+  
+  #call-to-action {
+    .span5.join, .span5.donate {
+      p.lead {
+        min-height: 145px;  
+      }
+    }
+  }
 }
 /*
  * smaller than ipad Portrait
@@ -388,6 +483,53 @@ html.touch  {
       height: 440px;
     }
   }
+  
+  #call-to-action {
+    .container {
+      padding: 0 20px;
+    }
+    .heading {
+      margin: 80px  0 40px;
+      h1 {
+        font-size: 60px;
+      }
+      .subhead {
+        font-size: 18px;
+      }
+    }
+    .container {
+      p {
+        font-size: 18px;
+      }
+      .wrapH img {
+        height: 120px;
+      }
+    }
+    .span5.join, .span5.donate {
+      p.lead {
+        min-height: auto;  
+      }
+    }
+  }
+  
+  #sharing, #thank-you, #about {
+    .heading {
+      margin: 60px 0 20px;
+      h1 {
+        font-size:48px;
+      } 
+    }
+    .container {
+      padding: 0 20px;
+      p {
+        font-size: 18px;
+      }
+      .wrapH img {
+        height: 120px;
+      }
+    }
+  } 
+  
 }
 
 /*
@@ -410,7 +552,7 @@ html.touch  {
   			font-size: 14px;
   		}
   	}
- }
+  }
 	#home .featurette-heading {
 		margin: 20px auto;
 	}
@@ -424,7 +566,41 @@ html.touch  {
       height: 340px;
     }
   }
-	
+	#call-to-action {
+    .container {
+      padding: 0 20px;
+    }
+    .heading {
+      margin: 60px  0 40px;
+      h1 {
+        font-size: 48px;
+      }
+      .subhead {
+        font-size: 18px;
+      }
+    }
+    .container p {
+      font-size: 18px;
+    }
+  }
+  #sharing, #thank-you, #about {
+    .heading {
+      margin: 60px 0 20px;
+      padding: 10px;
+      h1 {
+        font-size:36px;
+      } 
+    }
+    .container {
+      padding: 0 10px;
+      p {
+        font-size: 14px;
+      }
+      .wrapH img {
+        height: 120px;
+      }
+    }    
+  }  
 }
 /*
  * mobile portrait
@@ -500,7 +676,62 @@ html.touch  {
       height: 240px;
     }
   }
-   
+  #call-to-action, #sharing, #thank-you {
+    .container {
+      padding: 0 10px;
+    }
+    .heading {
+      margin: 40px  0 20px;
+      h1 {
+        font-size: 36px;
+      }
+      .subhead {
+        font-size: 14px;
+      }
+    }
+    .container p {
+      font-size: 14px;
+    }
+    .btn-large {
+        .rounded-corners(4px); 
+        font-size: 14px;
+        padding: 4px 12px;
+    }
+    form.sign-up {
+      input.email {
+        line-height: 14px;
+        margin-bottom: 8px;
+        padding: 4px 12px;
+        -webkit-border-top-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+      
+        -moz-border-radius-topright: 0;
+        -moz-border-radius-bottomright: 0;
+      
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      button#join-email-list {
+        -webkit-border-top-left-radius: 0;
+        -webkit-border-bottom-left-radius: 0;
+      
+        -moz-border-radius-topleft: 0;
+        -moz-border-radius-bottomleft: 0;
+      
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }    
+  } 
+  
+  #sharing, #thank-you, #about {
+    .heading {
+      margin: 60px  0 20px;
+    }
+    .container {
+      padding: 0 10px;
+    }
+  }  
 }
 
 

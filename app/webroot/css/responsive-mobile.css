@@ -107,28 +107,8 @@
 		background-image: url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.sm.jpg);
 	}
 	
-
-	.featurette {
-		min-height: 360px;
-	}
-	
-	.featurette .container {
-    }
 	.featurette .footer {
 		padding: 4px 5%;
-	}
-	.featurette .footer .container {
-	} 
-	      
-    html.touch .carousel-inner .container {
-		width: 90%;	/* no paging arrows for touch */
-	}	
-	
-	#home .container figure > div {
-   		height: 100px;
-   	}
-	#home .container figure img {
-		width: 66%;	
 	}
 }
 	
@@ -136,10 +116,6 @@
 	
 /* iPhone 4/5 retina display , portrait max-width: 320px   467 >= W  */
 @media (max-width: 467px) {
-	
-	.featurette {
-		min-height: 350px;
-	}
 	
 	.alert-wrapper {
 		margin: 10px 0;

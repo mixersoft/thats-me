@@ -382,7 +382,11 @@ var load_carouFredSel = function($) {
 				var fred = $(this).closest('.carousel.fred');
 			    return markup = '<a href="#'+fred.attr('id')+'">'+nr+'</a>';
 			}
-		}	
+		},
+		swipe : {
+			onTouch: true,
+			onMouse: true,
+		}			
 	}; 
 	
 	CFG['carousel'].init.init();

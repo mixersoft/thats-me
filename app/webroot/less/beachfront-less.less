@@ -85,6 +85,9 @@ html.ie {
 			padding-top: 40px;       /*  for .navbar, remove when not fixed */
 			min-height: 700px;       /* full-height band */
 		}
+		> .fw-band.vcenter-body {
+		  position: static;
+		}
 		.wrapW {
 			margin: 0 auto;
 		}
@@ -638,9 +641,15 @@ html.touch  {
 		}
 		li.item {
 			padding: 0;
+			// min-width: 240px;
 		}
 		.carousel-control {
-		  font-size: 80px;
+		  font-size: 60px;
+		  left:0;
+		}
+		.carousel-control.right {
+        right:0;
+        left: auto;
 		}
 		figure.graphic {
 			.wrapH {
@@ -679,6 +688,12 @@ html.touch  {
   #call-to-action, #sharing, #thank-you {
     .container {
       padding: 0 10px;
+      p {
+        font-size: 14px;
+      }
+      .wrapH img {
+        height: 80px;
+      }
     }
     .heading {
       margin: 40px  0 20px;

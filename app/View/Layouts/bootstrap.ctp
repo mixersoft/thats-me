@@ -5,14 +5,13 @@
 <!--[if IE 8]>         <html class="no-js ie8 lt-ie9"> <![endif]-->
 <!--[if IE 9]>     	   <html class="ie ie9 lte9"> <![endif]-->
 <!--[if gt IE 9]><!--> 
-<html class="no-js <?php if ($isAndroid) echo 'android'; ?>"> 
+<html class="no-js <?php if (!empty($isAndroid)) echo 'android'; ?>"> 
 <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title><?php echo $title_for_layout; ?></title>
-        <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/static/css/bootstrap/bootstrap.min.css" />
-        <link type="text/css" rel="stylesheet" href="/css/bootstrap-responsive.css">
+        <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap.min.css,bootstrap-responsive.css" />
         <script src="http://snappi.snaphappi.com/static/js/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <?php
         	echo $this->fetch('meta'); 

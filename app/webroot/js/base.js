@@ -425,11 +425,11 @@ var load_iscroll = function($) {
 // TODO: debug android chrome font-family bug, see: http://code.google.com/p/chromium/issues/detail?id=138257		
 // CFG['util'].notify(o.find('.carousel-row p').first().css('font-family')+', '+o.find('.carousel-row p').first().css('font-size'));
 				// init dot paging
-				o.find(".carousel-pager a").click(function(e){ 
-			      var index = $(this).index(); 
-			      CFG['iscroll'][id].iscroll.scrollToPage(index);
-			      e.preventDefault();
-			    }); 
+				// o.find(".carousel-pager a").click(function(e){ 
+			      // var index = $(this).index(); 
+			      // CFG['iscroll'][id].iscroll.scrollToPage(index);
+			      // e.preventDefault();
+			    // }); 
 			    
 			});
 			// refresh widths on window resize

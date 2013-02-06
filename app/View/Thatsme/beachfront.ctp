@@ -48,11 +48,11 @@
 		// $js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
 		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';			$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
 	}
-	if (strpos(env('HTTP_HOST'), 'snaphappi.com')) {
-		$js_bottom[] = '/min/b=js&f=base.js,vendor.js';
-	} else {
+	if (Configure::read('isLocal')) {
 		$js_bottom[] = 'base';
 		$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
+	} else {
+		$js_bottom[] = '/min/b=js&f=base.js,vendor.js';
 	}
 		// $js_bottom[] = '/min/b=js&f=base.js,vendor.js';	$js_bottom[] = 'http://www.youtube.com/iframe_api';
 	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));

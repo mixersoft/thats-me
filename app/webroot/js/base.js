@@ -196,8 +196,9 @@ var load_carouFredSel = function($) {
 		find: {},
 		init:{ 
 			init: function(){
-				$('html.no-touch .carousel.fred').each(function(i, elem) {
+				$('html.no-touch .carousel').each(function(i, elem) {
 					var o = $(elem);
+					var id = o.addClass('fred').attr('id');
 					CFG['carousel'].init.fred(o);
 					CFG['carousel'].paging.refresh_pageDots(o);
 					// No .activated required for carouFredSel
@@ -284,7 +285,7 @@ var load_carouFredSel = function($) {
 		responsive: true,
 		circular: false,
 		width: '90%',
-		align: 'center',
+		// height: 'auto',		align: 'center',
 		onCreate: function(data){
 			var check;
 		},
@@ -340,7 +341,10 @@ var load_carouFredSel = function($) {
 		responsive: true,
 		circular: false,
 		width: '86%',
-		align: 'center',
+		// height: 'auto',		align: 'center',
+		onCreate: function(data){
+			var check;
+		},
 		items		: {
 			visible		: 1
 		},
@@ -348,7 +352,7 @@ var load_carouFredSel = function($) {
 			timeoutDuration: 7000,
 			conditions: function(){ 
 				// return $(this).closest('.carousel.fred').hasClass('activated'); 
-				return CFG['UTIL'].isScrolledIntoView($(this));			},
+				return CFG['util'].isScrolledIntoView($(this));			},
 		},
 		scroll : {
 			items			: 1,
@@ -401,7 +405,7 @@ var load_iscroll = function($) {
 	CFG['iscroll'] = {
 		init : function(){
 			$('html.touch .featurette.carousel').each(function(i, elem){
-				var id = $(elem).attr('id');
+				var id = $(elem).addClass('iscroll').attr('id');
 				CFG['iscroll'][id].setWidths($(elem));
 				CFG['iscroll'][id].iscroll.refresh();
 				CFG['iscroll'].refresh_pageDots($(elem), CFG['iscroll'][id].iscroll);

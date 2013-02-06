@@ -177,7 +177,7 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel fred slide track-page-view ">
+    <div id="features" class="featurette carousel track-page-view ">
 		
     <div class="vcenter-wrap">
 		<div class="vcenter-padding">
@@ -266,7 +266,7 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette carousel fred slide track-page-view">
+    <div id="how-it-works" class="featurette carousel track-page-view">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
@@ -373,9 +373,9 @@ We think it's a small price to pay for all the time you'll save.</p>
 		        <h1>See the Movie</h1>
 		        <div class="subhead hide">It'll knock your socks off</div>
 	       	</div>
-	        <div class='center'>
+	        <div class='vcenter-body center'>
 	        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
-	        </div>
+			</div>
 	    </div>
 	    <div class='fw-band footer'>
         	<div class="container ">

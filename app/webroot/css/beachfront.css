@@ -18,14 +18,6 @@
 /*   		font-family: "LeagueGothicRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;*/
     }
     
-	#fold {
-		border-bottom: 1px solid red;
-	    height: 5px;
-	    position: fixed;
-	    top: 768px;
-	    width: 1024px;
-	    z-index: 999;
-	}
 	a, a:hover {
 		color: #000;
 	}
@@ -47,7 +39,7 @@
 	}
 
 /*	http://www.jakpsatweb.cz/css/css-vertical-center-solution.html*/
-/*   	.vcenter-wrap {
+   	.vcenter-wrap {
    		display: table; 
    		overflow: hidden;
    		width:100%;
@@ -59,16 +51,16 @@
 		display: table-cell; 
 		vertical-align: middle;
 	}
-	html.lt-ie8 .vcenter-padding {
+	html.lt-ie8 .vcenter-wrap > .vcenter-padding {
 		position: absolute; 
 		top: 50%;
 	}
 	.vcenter-wrap > .vcenter-padding > .vcenter-body {
 		position: relative; 
 	}
-	html.lt-ie8 .vcenter-body {
+	html.lt-ie8 .vcenter-wrap > .vcenter-padding > .vcenter-body {
 		top: -50%;
-	}*/
+	}
 	   
 	.fade-slow {
 		  opacity: 0;
@@ -277,9 +269,6 @@
    }
 
 
-   #bg-slideshow {
-	/*	-webkit-backface-visibility: hidden;*/
-   }   
    #home .container .wrap {
    		width: 100%;
    		margin: 0;
@@ -316,55 +305,10 @@
    }
 
    
-   #on-our-way {
-   		height: 400px;
-   		min-height: 400px;
-   }
-   
-   #on-our-way .bg {
-   		background-color: #E9C1C1;
-   }
-	#on-our-way .container {
-		padding-top: 40px;
-		height: 350px;
-		color: black;
-	} 
-	
-	#on-our-way .container .wrap {
-		position: relative;		
-		z-index: 1;
-		background-color: #FFF;
-		margin: 0 20%;
-		width: auto;
-		-webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-              box-shadow: 0 2px 10px rgba(0,0,0,.25);
-	  }	
-	#on-our-way .container .wrap p {
-		font-size: 20px;
-		line-height: 1;
-	}   
-	#on-our-way a.btn {
-		color: #000;
-	}
-	#on-our-way .fw-band.footer {
-	    height: 150px;
-	    z-index: 0;
-	  }	
-	#on-our-way .fw-band.footer > .container {
-		bottom: 10px;
-	    height: auto;
-	    margin-top: 80px;
-/*	    position: absolute;
-	    width: 100%;*/	  
-	}	  
 	#see-the-movie .bg {
    		background-color: #E9C1C1;
    }
    
-   #about {
-   		color: #fff;
-   }
    
    #see-the-movie .body.container {
    		padding: 60px 0;
@@ -454,36 +398,6 @@
  		height: 80px;
  	}
 
- 	
-    /* Carousel base class */
-    .carousel {
-      margin-bottom: 0;
-      z-index: 1;
-    }
-    
-    .carousel-inner .fw-band {
-    	top: 20%;
-    }
-
-
-    .carousel-caption {
-      background-color: transparent;
-      position: static;
-      padding: 0;
-/*      max-width: 550px;*/
-    }
-
-    .carousel-caption h1,
-    .carousel-caption .lead {
-      margin: 0;
-      line-height: 1.25;
-/*      color: #fff;*/
-      font-weight: 300;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
-    }
-    .carousel-caption .btn {
-      margin-top: 10px;
-    }
 
     /* MARKETING CONTENT
     -------------------------------------------------- */
@@ -516,41 +430,10 @@
     /* Featurettes
     ------------------------- */
 
-    .featurette-divider {
-      margin: 80px 0; /* Space out the Bootstrap <hr> more */
-    }
-    .featurette > .container{
-      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
-      overflow: hidden; /* Vertically center images part 2: clear their floats. */
-    }
-    .featurette > .container .featurette-image {
-      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
-    }
-
-    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
-    .featurette-image.pull-left {
-      margin-right: 40px;
-    }
-    .featurette-image.pull-right {
-      margin-left: 40px;
-    }
-
 	.visible-desktop.featurette {
 		min-height: 700px;
 	}
 
-    .featurette.the-movie {
-      padding-top: 40px; /* Vertically center images part 1: add padding above and below text. */
-    }
-    .featurette.the-movie .center {
-    	text-align:center;
-    }
-    
-    .featurette.the-movie iframe {
-    	width: 853px;
-    	height: 480px;
-    }
-    
     
 
  

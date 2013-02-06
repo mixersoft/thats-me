@@ -6,9 +6,14 @@
  * 	.iscroll-scroller == html.touch .carousel-inner > ul
  * 
  */
-.iscroll-wrapper, html.touch .carousel-inner {
+html.touch .carousel-inner, .iscroll-wrapper {
+	position: relative;
+	z-index: 1;
+	width: auto; 				/* required: center iscroll */
+	overflow: hidden;
+	margin: 0 auto;
 }
-.iscroll-scroller, html.touch .carousel-inner > ul{
+html.touch .carousel-inner > ul, .iscroll-scroller {
 }
 
 html.touch .carousel-inner  .container {
@@ -42,46 +47,3 @@ html.touch .carousel-inner > ul li.item {
 }
 
 
-/*  Required: set width in JS before calling iscroll.refresh() */
-html.touch .carousel-inner > ul {
-	width: 4700px;
-}
-html.touch .carousel-inner, html.touch .carousel-inner > ul li {
-	width: 940px;
-}
-
-
-/*carousel next, prev controls */
-html.touch .carousel a.carousel-control {
-	display: none;
-}
-
-.carousel .carousel-pager {
-	margin-bottom: 20px;	/* margin above .fw-band.footer */
-}
-.carousel .carousel-pager div {
-	border: 3px solid #FFFFCE;
-	display: inline-block;
-	height: 10px;
-	width: 10px;
-	margin-right: 10px;
-	border-radius: 50%;
-	background: #FFFFCE;
-	color: #FFFFCE;
-	text-indent: -9999px;
-	cursor: pointer;
-}
-.carousel .carousel-pager div:last-child, .iscroll-pager div:last-child {
-	margin-right: 0;
-}
-
-.carousel .carousel-pager  div.active, .iscroll-pager div.active {
-	background-color: #d47000;
-}
-
-
-@media (max-width: 767px) {
-	html.touch .carousel-inner .container{
-	      	padding-top: 20px;
-	}
-}

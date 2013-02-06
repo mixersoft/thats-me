@@ -39,8 +39,8 @@
 	if ($isTouch) {
 		$js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
 	} else {	
-		$js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
-		$js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';
+		// $js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
+		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
 	}
 	$js_bottom[] = '/js/base.js';
 	$js_bottom[] = 'http://www.youtube.com/iframe_api';
@@ -177,11 +177,11 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel track-page-view ">
+    <div id="features" class="featurette carousel track-page-view hidden">
 		
     <div class="vcenter-wrap">
 		<div class="vcenter-padding">
-			<div class="fw-band vcenter-body">
+			<div class="fw-band vcenter-body ">
 		<div class="featurette-heading center">
 			<h1 class="">Features &amp; Benefits</h1>	    	
        		<div class="subhead">Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; for only a Penny a Photo!</div>
@@ -268,11 +268,11 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette carousel track-page-view">
+    <div id="how-it-works" class="featurette carousel track-page-view hidden">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
-		<div class="fw-band alpha70r vcenter-body">
+		<div class="fw-band alpha70r vcenter-body ">
 			<div class="featurette-heading center">
 				<h1 class="featurette-heading center">How It Works</h1>	
 			</div>

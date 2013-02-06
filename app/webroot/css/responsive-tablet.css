@@ -83,15 +83,6 @@ and (orientation : portrait) {
       }
     
 	
-      .carousel-caption h1 {
-        font-size: 30px;
-      }
-      .carousel-caption .lead,
-      .carousel-caption .btn {
-        font-size: 18px;
-      }
-
-
       .marketing .span4 + .span4 {
         margin-top: 40px;
       }

@@ -46,4 +46,6 @@ html.touch .carousel-inner > ul li.item {
 	height: 100%;
 }
 
-
+html.touch .carousel.iscroll .carousel-control-wrap {
+/*	visibility: hidden;*/
+}

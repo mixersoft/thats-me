@@ -33,6 +33,7 @@
 	
 	.hidden {
 		visibility: hidden !important;
+		display:inherit;
 	}
 	.center {
 		text-align: center;
@@ -162,10 +163,27 @@
 		
 	} 
 	
+	/*
+	 * start item hidden
+	 */
+	.fadeOut {
+		visibility: hidden !important;
+		opacity: 0;
+		transition: opacity 1s ease-in, visibility 0s 1s ;
+	}
+	.fadeOut-slow {
+		visibility: hidden !important;
+		opacity: 0;
+		transition: opacity 3s ease-in, visibility 0s 3s ;
+	}
+	.fadeIn {
+		visibility: visible !important;
+		opacity: 1;
+		transition: opacity 0.5s linear;
+	}
 	
 	.alert-wrapper {
 		margin: 20px 0;
-	    opacity: 0.85;
 	    position: fixed;
 	    text-align: center;
 	    width: 100%;

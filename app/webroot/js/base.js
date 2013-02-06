@@ -33,10 +33,13 @@ CFG['util'] = {
 	},
 	notify: function notify(msg, type) {
 		try {
-			$('.alert-wrapper').removeClass('hide');
+			// $('.alert-wrapper').removeClass('hide');
 			$('.alert-wrapper .alert').html(msg);
 			// console.log(msg);
-			$('.alert-wrapper .fade-wrap').fadeIn(500).delay(1000).fadeOut("slow");
+			// $('.alert-wrapper .fade-wrap').fadeIn(500).delay(1000).fadeOut("slow");			$('.alert-wrapper').addClass('fadeIn');
+			setTimeout(function(){
+				$('.alert-wrapper').removeClass('fadeIn');
+			}, 1000)
 		} catch (e) {
 		}
 	},
@@ -48,9 +51,16 @@ CFG['util'] = {
 				$('.navbar .nav li').removeClass('active');
 				var a = $('.navbar .nav li a[href$="#'+id+'"]').parent().addClass('active');
 				
-				if (id=='sharing' && !CFG['socialSharing']){
-					CFG['timing'].load_SocialSharing = 0;
-					load_social_sharing();	// load immediately on scrollIntoView
+				if (!CFG['socialSharing']){
+					switch(id) {
+						case 'sharing':
+							CFG['timing'].load_SocialSharing = 0;
+							load_social_sharing();	// load immediately on scrollIntoView
+						break;
+						case 'call-to-action':
+							load_social_sharing();	// load immediately on scrollIntoView
+						break;
+					}
 				}
 				return false;					
 			}
@@ -408,19 +418,19 @@ var load_iscroll = function($) {
 			$('html.touch .featurette.carousel').each(function(i, elem){
 				var o = $(elem);
 				var id = o.addClass('iscroll').attr('id');
+				o.find('.carousel-control-wrap').addClass('fadeOut-slow');
 				CFG['iscroll'][id].setWidths(o);
 				CFG['iscroll'][id].iscroll.refresh();
 				CFG['iscroll'].refresh_pageDots(o, CFG['iscroll'][id].iscroll);
 // TODO: debug android chrome font-family bug, see: http://code.google.com/p/chromium/issues/detail?id=138257		
-// CFG['util'].notify(o.find('.carousel-row p').first().css('font-family')+', '+o.find('.carousel-row p').first().css('font-size'));				// create dots
-				
+// CFG['util'].notify(o.find('.carousel-row p').first().css('font-family')+', '+o.find('.carousel-row p').first().css('font-size'));
 				// init dot paging
 				o.find(".carousel-pager a").click(function(e){ 
 			      var index = $(this).index(); 
 			      CFG['iscroll'][id].iscroll.scrollToPage(index);
 			      e.preventDefault();
 			    }); 
-			    o.find('.carousel-control-wrap').attr('style', 'display:none;');
+			    
 			});
 			// refresh widths on window resize
 			$(window).resize(function() {
@@ -436,8 +446,11 @@ var load_iscroll = function($) {
 				$('html.touch .featurette.carousel.iscroll').each(function(i, elem){
 					var o = $(elem);
 					CFG['util'].isLingeringInView(o, CFG['iscroll'].timers, CFG['timing'].linger,
-						function(){
-							o.find('.carousel-control-wrap').fadeIn("slow").delay(1000).fadeOut("slow");		
+						function(o){
+							o.find('.carousel-control-wrap').addClass('fadeIn');		
+							setTimeout(function(){
+								o.find('.carousel-control-wrap').removeClass('fadeIn');
+							},100);
 						}
 					);
 				});
@@ -619,7 +632,5 @@ $(document).ready(
 		$('a#donate').one('click', function(e){
 			CFG.util.showDonateButtons();
 		})   
-		
-		load_social_sharing();
 	}
 )

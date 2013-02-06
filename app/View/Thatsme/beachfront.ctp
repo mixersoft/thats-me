@@ -109,8 +109,8 @@
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
        </div>
-        <div class="alert-wrapper show-navbar hide" >
-        	<div class='fade-wrap' style='display:none;'>
+        <div class="alert-wrapper show-navbar hidden fadeOut" >
+        	<div class='fade-wrap '>
         		<div class='alert alert-info'></div>
         	</div>
         </div>

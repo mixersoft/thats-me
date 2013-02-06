@@ -566,33 +566,40 @@ Let us roll up our sleeves so you can just play.
 	        	</div></div>
       		</div>
 		</div>	      	
-        <div class='fw-band footer'>
-			<div class='fw-band footer'>
-		    	<div class="container ">
-		    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
-		    		<div class="pull-right"><a href='#home'>Top</a></div>
-		    	</div>
-		    </div> 
-        </div>
+		<div class='fw-band footer'>
+	    	<div class="container ">
+	    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
+	    		<div class="pull-right"><a href='#home'>Top</a></div>
+	    	</div>
+	    </div> 
       </div>
       
       
 	
 
       <a name='FAQ'></a>
-      <div id='FAQ' class="featurette FAQ track-page-view">
-      	<div class='bg'></div>
-      	<div class="container">
-      		<div class="wrap alpha70b center">
-	        	<h1 class="featurette-heading">Frequently Asked Questions</h1>
-	       </div>
-			<?php echo $this->element('faq'); ?>
-	        <div class='padding'></div>
-	        <div class='fw-band footer'>
-	        	<div class="container ">
-	        		<div class="pull-right"><a href='#call-to-action'>I Want It</a></div>
+      <div id='FAQ' class="featurette FAQ track-page-view  alpha70r">
+		<div class='fw-band vcenter-body'>
+      		<div class="container">
+      			<div class='row'>
+		      		<div class="span12">
+		      			<div class="heading alpha70b">
+					        <h1>Frequently Asked Questions</h1>
+				       	</div>
+					</div>
+      			</div>
+      			<div class="row">
+		        	<div class="span12 body">
+<?php echo $this->element('faq'); ?>
+	        		</div>
 	        	</div>
-	        </div>
+      		</div>
+		</div>	      	
+        <div class='fw-band footer'>
+	    	<div class="container ">
+	    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
+	    		<div class="pull-right"><a href='#home'>Top</a></div>
+	    	</div>
         </div>
       </div>      
       <!-- FOOTER -->

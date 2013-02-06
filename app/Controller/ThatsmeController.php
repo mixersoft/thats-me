@@ -63,6 +63,11 @@ class ThatsmeController extends AppController {
 		$this->set(compact('isTouch', 'isAndroid'));
 	}		// http://thats-me/i-need-this in routes.php
 	
+	public function faq(){
+		
+	}
+	
+	
 	
 	public function iscroll() {}		// http://thats-me/i-need-this in routes.php
 	

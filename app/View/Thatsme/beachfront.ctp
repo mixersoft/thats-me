@@ -44,12 +44,17 @@
 	$js_bottom = array();
 	if ($isTouch) {
 		$js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
-	} else {	
+	} else {
 		// $js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
-		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
+		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';			$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
 	}
-	// $js_bottom[] = 'base';
-	// $js_bottom[] = "vendor";	// mixpanel and youtube control scripts	$js_bottom[] = '/min/b=js&f=base.js,vendor.js';	$js_bottom[] = 'http://www.youtube.com/iframe_api';
+	if (strpos(env('HTTP_HOST'), 'snaphappi.com')) {
+		$js_bottom[] = '/min/b=js&f=base.js,vendor.js';
+	} else {
+		$js_bottom[] = 'base';
+		$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
+	}
+		// $js_bottom[] = '/min/b=js&f=base.js,vendor.js';	$js_bottom[] = 'http://www.youtube.com/iframe_api';
 	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
 	 
 	$this->start('javascript_Bottom');
@@ -410,12 +415,48 @@ We think it's a small price to pay for all the time you'll save.</p>
 	        	<div class="offset1 span5 donate">
 					<p class="lead">
 If you want this service ASAP, let us know &mdash; we need your vocal support! 
-Cheer us on through those long sleepless nights by sending us a buck ($1.00) We'll get the message. 
+Cheer us on through those long sleepless nights by sending us a buck <span class="dollar">($1)</span>. 
+<br />We'll get the message. 
 	        		</p>
-	        		<a id='donate' class="btn btn-large btn-success track-click" href="#" onclick='return false;' track='donate'>I Want It ASAP!</a>
-	        			<div class='donate-form-wrap alpha70b' style='display:none;'>
-	        				<p class="lead">We like your enthusiasm!</p>
-	        				<p>Use one of the buttons below to cheer on the guys at Snaphappi!</p>
+	        	</div>
+	        	<div class="span5 join">
+<p class="lead">
+If you are not completely sold on the idea just yet, you'll still have an opportunity to help shape this service with your early participation and feedback. 
+<br />We'll send you an invite to our preview.
+</p>
+	        	</div>
+	        	<div class="span1"></div>
+	        </div>  <!-- / .row -->
+	        <div class="row">
+	        	<div class="span12 center">
+	        		
+<form class="form-inline call-to-action center" action="" method="post">	        		
+	<div class="control-group">
+	  <div class="controls">
+	  	<div class="input-prependx input-appendx">
+	  		<div class='wrapH left'>
+		  		<button id='cheer' type="submit" class="btn btn-primary track-click" track='cheer' title='Cheer us on for just a buck!'>
+		  			I Want it ASAP!
+		  		</button>
+		  		<i class="icon-arrow-left icon-white"></i>
+	  		</div>
+	  		<div class="wrapH">
+		    	<input type="email" placeholder="Email" class='email' required title="Join our email list">
+		    </div>
+		    <div class='wrapH right'>
+			    <i class="icon-arrow-right icon-white"></i>
+			    <button id='invite' type="submit" class="btn btn-warning track-click" track='invite' title='Request an invitation to our preview'>
+			    	I Want an Invite
+			    </button>
+		    </div>
+		</div>
+	  </div>
+	</div>
+</form>		
+
+<div class='donate-form-wrap' style='display:none;'>
+	        				<h2>We like your enthusiasm!</h2>
+	        				<p>Use one of the buttons below to cheer us on with a $1 donation</p>
 	        				<!--  Payal 	        			 -->
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" title="Donate $1 with PayPal - The safer, easier way to pay online!">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -444,20 +485,14 @@ Cheer us on through those long sleepless nights by sending us a buck ($1.00) We'
   <input type="hidden" name="signature" value="WPGLkoL/P0tPocJb8pCB76MCcSAcLg2MhUgPnHStVbs=" >
   <input  class='track-click' track='donate-Amazon' alt="Donate $1 with Amazon Payments" type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_darkbg.gif" border="0">
 </form>		
-					</div>
-	        	</div>
-	        	<div class="span5 join">
-<p class="lead">
-If you are not completely sold on the idea just yet, you'll still have an opportunity to help shape this service with your early participation and invaluable feedback.</p>
-<form class="form-inline sign-up center" action="/action/sign-me-up" method="post">
-        <input type="text" placeholder="Email" class='email'><button id='join-email-list' type="submit" class="btn btn-primary btn-large track-click" track='join-list'>I Want It</button>
-</form>
-	        	</div>
-	        	<div class="span1"></div>
-    	     	<div class='wrapH center'>
+</div>
+	        	</div>  
+	        </div> <!-- / .row -->
+	        <div class="row">
+	        	<div class='wrapH center'>
     				<img src="/img/beachfront/icon-lg-01.png">
     			</div>
-	        </div>  <!-- / .row -->
+	        </div> <!-- / .row -->
         </div>
       </div> <!-- / .vcenter-body  -->
     </div> 

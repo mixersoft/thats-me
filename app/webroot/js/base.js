@@ -66,13 +66,30 @@ CFG['util'] = {
 			}
 		});
 	},
+	postEmail: function(email, options, success) {
+		options = options || {};
+		success = success || function(){
+				console.log("post Email success");
+			}
+		var postData = $.extend({'data[User][email]':email}, options);
+		$.ajax({
+			type:"post",
+			url:"/action/sign-me-up",
+			data: postData,
+			success: success,
+			
+		}).fail(function(resp){
+			console.error("post Email failed");
+		});
+		return false;
+	},
 	showDonateButtons: function() { 
 		$('#call-to-action .donate-form-wrap').fadeIn({
-				duration:400, 
-				complete: function(){
-						$('#call-to-action .donate a.btn').animate({opacity:0});
-					}
-				});
+			duration:400, 
+			complete: function(){
+				$('#call-to-action .donate a.btn').addClass('invisible');
+			}
+		});
 		return false;		// onclick return value
 	},
 	// o.hasAttr('hash'), $(<A>)
@@ -631,9 +648,36 @@ $(document).ready(
 				e.preventDefault();
 			};
 		});
+		
+		// old style, deprecate
 		$('a#donate').one('click', function(e){
 			CFG.util.showDonateButtons();
 		})   
+		
+		$('form.call-to-action button').on('click', function(e){
+			var email=$('form.call-to-action input[type=email]').attr('value');
+			if (/[a-z\.]+@[a-z\.]+/.test(email)) {
+				var formId = $(e.currentTarget).attr('id');
+				switch (formId){
+					case "cheer":
+						CFG['util'].postEmail(email,{'action':'cheer'},function(){
+							// on success
+							CFG['util'].showDonateButtons();	
+						});
+						if ("debug") CFG['util'].showDonateButtons();	// show anyway
+					break;
+					case "join-email-list":
+						CFG['util'].postEmail(email,{'action':'join'},function(){
+							// on success
+							window.location.href = '#thank-you';	
+						});
+					break;
+				}
+				// jQuery post in background
+				e.preventDefault();
+				e.stopImmediatePropagation();
+			} 
+		}) 
 		
 		$('#home .invisible').addClass('fadeIn-slow');
 	}

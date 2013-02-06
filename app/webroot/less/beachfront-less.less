@@ -30,7 +30,6 @@ html.fontface:not(.android) {
 		/* For IE 8*/
 		-ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieGradient}, endColorstr=@{ieGradient})";
 }
-
 .alpha70b {
 	.rgba(#000000, 0.7);
 }
@@ -64,6 +63,11 @@ html.ie {
 		background: transparent;	/* makes border-radius invisible, wrap?  */
 	}
 }
+
+i.icon-white {
+  background-image:url(/img/glyphicons-halflings-white.png);
+}
+
 
 .rounded-corners (@radius: 4px) {
   -webkit-border-radius: @radius;
@@ -418,31 +422,33 @@ html.touch  {
     .wrapH img {
       height: 260px;
     }
-  }
-  form.sign-up {
-    input.email {
-      line-height: 20px;
-      margin-bottom: 8px;
-      padding: 10px 19px;
-      .rounded-corners(6px); 
-      -webkit-border-top-right-radius: 0;
-      -webkit-border-bottom-right-radius: 0;
-    
-      -moz-border-radius-topright: 0;
-      -moz-border-radius-bottomright: 0;
-    
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+    .dollar {
+      font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica,Arial,sans-serif; 
+      font-weight: bold;
     }
-    button#join-email-list {
-      -webkit-border-top-left-radius: 0;
-      -webkit-border-bottom-left-radius: 0;
-    
-      -moz-border-radius-topleft: 0;
-      -moz-border-radius-bottomleft: 0;
-    
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+  }
+  form.call-to-action {
+    .wrapH {
+      display: inline;
+      margin: 10px;
+    }
+    button {
+      font-size: 16px;
+    }
+    button#invite {
+      color: #000;
+      .rgba-text-shadow(#FFFFFF, 1);
+    }
+  }
+  .donate-form-wrap {
+    .rgba(#000000, 0.5);
+    .rounded-corners(10px); 
+    padding: 10px;
+    form.sign-up input.email {
+      font-size: 14px;
+    }
+    p.lead {
+      min-height: 0;
     }
   }
 }
@@ -501,20 +507,12 @@ html.touch  {
         padding: 4px 12px;
         font-size: 16px;
     }
-    form.sign-up {
+    form.sign-upxxx {
       input.email {
         font-size: 16px;
         line-height: 16px;
         padding: 4px 12px;
         width: 160px;
-        -webkit-border-top-right-radius: 0;
-        -webkit-border-bottom-right-radius: 0;
-      
-        -moz-border-radius-topright: 0;
-        -moz-border-radius-bottomright: 0;
-      
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
       }
       button#join-email-list {
         font-size: 16px;
@@ -527,12 +525,12 @@ html.touch  {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }
-    }    
+    }
   }
   
   #call-to-action {
     .span5.join, .span5.donate {
-      p.lead {
+      > p.lead {
         min-height: 145px;  
       }
     }
@@ -623,6 +621,23 @@ html.touch  {
   
 }
 
+@media (max-width: 620px){
+  #call-to-action {
+      form.call-to-action {
+      .wrapH {
+        display: block;
+        margin: 0;
+      }
+      .wrapH.left {
+        text-align: left;
+      }
+      .wrapH.right {
+        text-align: right;
+      }
+    }
+  }
+}
+
 /*
  * .navbar.collapsed
  */
@@ -680,6 +695,11 @@ html.touch  {
       }
       .wrapH img {
         height: 160px;
+      }
+    }
+    form.call-to-action {
+      .wrapH {
+        margin: 10px;
       }
     }
   }
@@ -817,7 +837,7 @@ html.touch  {
         font-size: 32px;
       }
     }
-    form.sign-up {
+    form.sign-upxxx {
       input.email {
         line-height: 14px;
         margin-bottom: 8px;

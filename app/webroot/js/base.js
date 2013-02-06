@@ -403,31 +403,47 @@ var load_carouFredSel = function($) {
  */
 var load_iscroll = function($) {
 	CFG['iscroll'] = {
+		timers: {}, 			// for isLingeringInView
 		init : function(){
 			$('html.touch .featurette.carousel').each(function(i, elem){
-				var id = $(elem).addClass('iscroll').attr('id');
-				CFG['iscroll'][id].setWidths($(elem));
+				var o = $(elem);
+				var id = o.addClass('iscroll').attr('id');
+				CFG['iscroll'][id].setWidths(o);
 				CFG['iscroll'][id].iscroll.refresh();
-				CFG['iscroll'].refresh_pageDots($(elem), CFG['iscroll'][id].iscroll);
+				CFG['iscroll'].refresh_pageDots(o, CFG['iscroll'][id].iscroll);
 // TODO: debug android chrome font-family bug, see: http://code.google.com/p/chromium/issues/detail?id=138257		
-// CFG['util'].notify($(elem).find('.carousel-row p').first().css('font-family')+', '+$(elem).find('.carousel-row p').first().css('font-size'));				// create dots
+// CFG['util'].notify(o.find('.carousel-row p').first().css('font-family')+', '+o.find('.carousel-row p').first().css('font-size'));				// create dots
 				
 				// init dot paging
-				$(elem).find(".carousel-pager a").click(function(e){ 
+				o.find(".carousel-pager a").click(function(e){ 
 			      var index = $(this).index(); 
 			      CFG['iscroll'][id].iscroll.scrollToPage(index);
 			      e.preventDefault();
 			    }); 
+			    o.find('.carousel-control-wrap').attr('style', 'display:none;');
 			});
 			// refresh widths on window resize
 			$(window).resize(function() {
-				$('html.touch .featurette.carousel').each(function(i, elem){
-					var id = $(elem).attr('id');
-			  		CFG['iscroll'][id].setWidths($(elem));
+				$('html.touch .featurette.carousel.iscroll').each(function(i, elem){
+					var id = o.attr('id');
+			  		CFG['iscroll'][id].setWidths(o);
 			  		CFG['iscroll'][id].iscroll.refresh();
-			  		CFG['iscroll'].refresh_pageDots($(elem), CFG['iscroll'][id].iscroll);
+			  		CFG['iscroll'].refresh_pageDots(o, CFG['iscroll'][id].iscroll);
 			 	});
 			});
+			
+			$(window).on('scroll.swipe',function(e) {
+				$('html.touch .featurette.carousel.iscroll').each(function(i, elem){
+					var o = $(elem);
+					CFG['util'].isLingeringInView(o, CFG['iscroll'].timers, CFG['timing'].linger,
+						function(){
+							o.find('.carousel-control-wrap').fadeIn("slow").delay(1000).fadeOut("slow");		
+						}
+					);
+				});
+			});
+			
+			
 		},
 		refresh_pageDots: function(o, iScroll){
 			var id = o.attr('id');

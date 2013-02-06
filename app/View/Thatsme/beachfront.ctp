@@ -256,12 +256,12 @@ by rating the ones you love.
         </li>
         </ul> 
       </div> <!-- /.carousel-inner  -->
-<div class="carousel-pager center"></div>       
+<div class="carousel-pager center"></div>  
+<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>     
 <div class="carousel-control-wrap">
 	<a class="left carousel-control" href="#features" direction="prev">&lsaquo;</a>        
 	<a class="right carousel-control" href="#features" direction="next">&rsaquo;</a>
 </div>
-<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
@@ -349,12 +349,12 @@ We think it's a small price to pay for all the time you'll save.</p>
         </li> 
         </ul>
       </div> <!-- /.carousel-inner  -->
-<div class="carousel-pager center"></div>       
+<div class="carousel-pager center"></div>  
+<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>     
 <div class="carousel-control-wrap">
 	<a class="left carousel-control" href="#how-it-works" direction="prev">&lsaquo;</a>
 	<a class="right carousel-control" href="#how-it-works" direction="next">&rsaquo;</a>
 </div>
-<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 

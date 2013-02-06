@@ -225,7 +225,7 @@ i.icon-white {
 		}
 	}
 	.fw-band.vcenter-body {
-		height: 465px;
+		height: auto;
 		li.item {
 			text-align: center;
 			transition: none;
@@ -296,7 +296,7 @@ i.icon-white {
 
 .featurette.carousel.fred { 
   .carousel-inner {
-    margin: 0 5%;  
+    margin: 0 auto;  
     width: 90%;   /* TODO: set to 90% $(window).width() */
     > div {
       margin: 0 auto !important;      /* OVERRIDE carouFredSel positioning */
@@ -324,16 +324,17 @@ html.touch  {
   background-color: #FFFFFF;
   .featurette-heading {
     color: @red;
+    text-shadow: 1px 1px 1px #333;
   }
   .carousel-inner {         /* start with one row, overflow-x: hidden */
-    max-width: 1170px;
+    max-width: 1300px;
     .scroller {
       width: 1300px;        /* count * itemW == 5 * 260 == 1300 */
     }
   }
   figure.graphic {
     color: #000;
-    max-width: 240px;
+    // max-width: 240px;
     width: auto;
     min-height: 100px;    .wrapH {
       height: 120px;
@@ -342,10 +343,10 @@ html.touch  {
       }
     }
     figcaption {
-      .rgba-text-shadow();
+      text-shadow: 1px 1px 1px #333;;
       font-size: 20px;
       .body {
-        font-size: 14px;
+        text-shadow: 0px 0px 1px #333;
       }     
     }
   }
@@ -366,11 +367,22 @@ html.touch  {
   }    
 }
 
+#features.carousel.iscroll {
+  figure.graphic {
+    max-width: 240px;  
+  }
+}
+
 #how-it-works {
   .carousel-inner {         /* start with one row, overflow-x: hidden */
     max-width: 1170px;
+    /* don't add height for carousel.fred */
     .scroller {
       width: 4600px;        /* count * itemW == 5 * 920 == 4600 */
+    }
+    .caroufredsel_wrapper {
+      li.item {
+      }
     }
   }
   figure.graphic {
@@ -384,6 +396,9 @@ html.touch  {
         font-size: 18px;
       }
     }
+  }
+  .carousel-pager {
+    margin-top:40px;
   }
 }
 
@@ -501,6 +516,9 @@ html.touch  {
  * ipad Portrait
  */
 @media (max-width: 979px) {
+  #features  .carousel-inner {         /* start with one row, overflow-x: hidden */
+    max-width: 1170px;
+  }
   #call-to-action, #sharing, #thank-you {
     .container {
       padding: 0 10px;
@@ -669,10 +687,11 @@ html.touch  {
 	#home .featurette-heading {
 		margin: 20px auto;
 	}
-	.featurette.carousel {
-		.featurette-heading {
-		}
-	}
+  #how-it-works.carousel { 
+    .carousel-pager {
+      margin-top: 10px;
+    }
+  }
 	#see-the-movie {
     iframe {
       height: 340px;

@@ -317,12 +317,12 @@ var load_carouFredSel = function($) {
 		responsive: true,
 		circular: false,
 		width: '90%',
-		// height: 'auto',		align: 'center',
+		height: 'variable',		align: 'center',
 		onCreate: function(data){
 			var check;
 		},
 		items		: {
-			width		: 340,			visible		: {
+			width		: 260,			visible		: {
 				min			: 1,
 				max			: 5,
 				// variable	: true,
@@ -373,12 +373,12 @@ var load_carouFredSel = function($) {
 		responsive: true,
 		circular: false,
 		width: '86%',
-		// height: 'auto',		align: 'center',
+		height: 'variable',		align: 'center',
 		onCreate: function(data){
 			var check;
 		},
 		items		: {
-			width 		: 400,
+			width 		: 500,
 			visible		: 1
 		},
 		auto : {
@@ -445,20 +445,14 @@ var load_iscroll = function($) {
 				CFG['iscroll'][id].setWidths(o);
 				CFG['iscroll'][id].iscroll.refresh();
 				CFG['iscroll'].refresh_pageDots(o, CFG['iscroll'][id].iscroll);
-// TODO: debug android chrome font-family bug, see: http://code.google.com/p/chromium/issues/detail?id=138257		
-// CFG['util'].notify(o.find('.carousel-row p').first().css('font-family')+', '+o.find('.carousel-row p').first().css('font-size'));
-				// init dot paging
-				// o.find(".carousel-pager a").click(function(e){ 
-			      // var index = $(this).index(); 
-			      // CFG['iscroll'][id].iscroll.scrollToPage(index);
-			      // e.preventDefault();
-			    // }); 
+
 			    o.find('.invisible').removeClass('invisible');
 			});
 			// refresh widths on window resize
 			$(window).resize(function() {
 				$('html.touch .featurette.carousel.iscroll').each(function(i, elem){
-					var id = o.attr('id');
+					var o = $(elem),
+						id = o.attr('id');
 			  		CFG['iscroll'][id].setWidths(o);
 			  		CFG['iscroll'][id].iscroll.refresh();
 			  		CFG['iscroll'].refresh_pageDots(o, CFG['iscroll'][id].iscroll);
@@ -498,7 +492,7 @@ var load_iscroll = function($) {
 			}
 			
 			for (var i=0; i<carouselItems; i++) {
-				if (i>pages) {
+				if (i>pages || pages==1) {
 					dots.eq(i).addClass('hide');					
 				} else dots.eq(i).removeClass('hide');
 			}
@@ -508,18 +502,24 @@ var load_iscroll = function($) {
 		},
 		fullWidth: function(o) {  // o.carousel
 			var count = o.find('.carousel-inner > ul li').size();
-			var fw = $(window).width()*0.8;	// add 10% extra room for finger scrolling
+			var fw = $(window).width()*0.9;	// add 10% extra room for finger scrolling
+			fw = Math.min(fw, 940);
 			o.find(".carousel-inner > ul").css('width', (count*fw) +'px');
 			o.find(".carousel-inner, .carousel-inner > ul li").css('width', fw +'px');
 		},
-		packedWidth: function(o) {	// show as many as can fit in .carousel-inner width
+		/*
+		 * #features.carousel.iscroll 
+		 * show as many as can fit in .carousel-inner width
+		 */
+		packedWidth: function(o) {	
 			var items = o.find('.carousel-inner > ul li.item figure.graphic');
 			var count = items.size();
 			var itemW = items.first().outerWidth(true);
-			var fw = $(window).width(); // * 0.9;
-			fw = Math.floor(fw/itemW)* itemW;
-			
-			o.find(".carousel-inner").css('width', fw + 'px');
+			var fw = $(window).width() * 0.90;
+			var visible = fw/itemW;
+			visible = visible < 1.56 ? 1 : Math.min(Math.round(visible), count);
+			itemW = Math.min(Math.max(fw/visible, 200), 260);	// min-width 200px, max-width=260px;
+			o.find(".carousel-inner").css('width', itemW*visible + 'px');
 			o.find(".carousel-inner > ul").css('width', (count*itemW) +'px');
 			o.find('.carousel-inner > ul li.item').css('width', itemW +'px');
 		},

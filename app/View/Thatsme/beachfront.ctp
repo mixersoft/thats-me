@@ -13,10 +13,10 @@
 	 * CSS
 	 */
 	if ($isTouch) {
-		// $this->Html->css(array('fonts', 'beachfront.css', 'touch', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));		$min = "http://thats-me/min/b=css&f=fonts.css,beachfront.css,touch.css,responsive-tablet.css,responsive-mobile.css";
+		// $this->Html->css(array('fonts', 'beachfront.css', 'touch', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));		$min = "/min/b=css&f=fonts.css,beachfront.css,touch.css,responsive-tablet.css,responsive-mobile.css";
 		$this->Html->css($min, null, array('inline' => false));
 	} else {
-		// $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));		$min = "http://thats-me/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css";
+		// $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));		$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css";
 		$this->Html->css($min, null, array('inline' => false));
 	}
 	$this->Less->css('beachfront-less');
@@ -46,9 +46,8 @@
 		// $js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
 		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
 	}
-	$js_bottom[] = '/js/base.js';
-	$js_bottom[] = 'http://www.youtube.com/iframe_api';
-	$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
+	// $js_bottom[] = 'base';
+	// $js_bottom[] = "vendor";	// mixpanel and youtube control scripts	$js_bottom[] = '/min/b=js&f=base.js,vendor.js';	$js_bottom[] = 'http://www.youtube.com/iframe_api';
 	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
 	 
 	$this->start('javascript_Bottom');

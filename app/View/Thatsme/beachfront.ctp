@@ -110,7 +110,7 @@
         </div><!-- /.navbar -->
        </div>
         <div class="alert-wrapper show-navbar hidden fadeOut" >
-        	<div class='fade-wrap '>
+        	<div class='fade-wrap fadeOut'>
         		<div class='alert alert-info'></div>
         	</div>
         </div>
@@ -164,7 +164,7 @@
         </div></div></div>        
         <div class='fw-band footer'>
         	<div class="container ">
-        		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
+        		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
         		<div class="pull-right"><a href='#features'>Learn More</a></div>
         	</div>
         </div>
@@ -258,8 +258,8 @@ by rating the ones you love.
   
       <div class='fw-band footer'>
         	<div class="container ">
-        		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
-        		<div class="pull-right"><a href='#on-our-way'>Learn More</a></div>
+        		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
+        		<div class="pull-right"><a href='#how-it-works'>Learn More</a></div>
         	</div>
         </div>  
     </div><!-- /.carousel -->
@@ -349,11 +349,11 @@ We think it's a small price to pay for all the time you'll save.</p>
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
       <div class='fw-band footer'>
-        	<div class="container ">
-        		<div class="pull-left"><a href='#call-to-action'>Sign up for early access</a></div>	
-        		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>
-        	</div>
-        </div>  
+    	<div class="container ">
+    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
+    		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>
+    	</div>
+      </div>  
     </div><!-- /.carousel -->
     
     
@@ -454,7 +454,8 @@ If you are not completely sold on the idea just yet, you'll still have an opport
     			</div>
 	        </div>  <!-- / .row -->
         </div>
-      </div></div> <!-- / .vcenter-body  -->
+      </div> <!-- / .vcenter-body  -->
+    </div> 
       
       <a name='thank-you'></a>
       <a name='sharing'></a>
@@ -488,7 +489,9 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 		</div>		
         <div class='fw-band footer'>
         	<div class="container ">
-        	</div>
+	    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
+	    		<div class="pull-right"><a href='#home'>Top</a></div>
+	    	</div>
         </div>
       </div>
 
@@ -524,8 +527,12 @@ Let us roll up our sleeves so you can just play.
       		</div>
 		</div>	      	
         <div class='fw-band footer'>
-        	<div class="container ">
-        	</div>
+			<div class='fw-band footer'>
+		    	<div class="container ">
+		    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
+		    		<div class="pull-right"><a href='#home'>Top</a></div>
+		    	</div>
+		    </div> 
         </div>
       </div>
       

@@ -133,8 +133,20 @@ html.ie {
 	    	}
 	    }	
 		}
+		.footer {
+      .rgba(#000000, 0.7);
+      bottom: 0;
+      color: @cream;
+      font-size: 24px;
+      line-height: 1;
+      padding: 8px 0;
+      a , a:hover {
+        color: @cream;
+        text-decoration: none;
+      }
+   }
 }
-
+   
 
 #home {
 	.container {
@@ -474,6 +486,23 @@ html.touch  {
  * smaller than ipad Portrait
  */
 @media (max-width: 767px) {
+  .featurette .footer {
+    width: 100%;
+    .container {
+      padding: 0 10px;
+    }
+  }
+  
+  // .featurette .footer {
+    // padding: 8px 5%; 
+    // margin: 0;
+    // font-size: 16px;
+    // width: 90%;
+  // }      
+  // .featurette .footer .container {
+    // margin: 0;
+  // }
+    
 	#features {
 		.carousel-inner {
 		}
@@ -561,6 +590,9 @@ html.touch  {
   			font-size: 14px;
   		}
   	}
+    .footer {
+      font-size: 16px;
+    }
   }
 	#home .featurette-heading {
 		margin: 20px auto;

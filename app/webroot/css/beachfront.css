@@ -254,18 +254,6 @@
 	    width: 80%;
    }
    
-   .featurette .footer {
-   		background-color: #FDF9D0;
-	    bottom: 0;
-	    color: black;
-	    font-size: 24px;
-	    line-height: 1;
-	    padding: 8px 0;
-   }
-   .footer > .container {
-   		padding: 0;
-   }
-   
    
    /*
     * .bg.pix content

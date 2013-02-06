@@ -181,12 +181,24 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	});
 	
 	$('.track-click').one('click', function(e, elem){
-		var properties = {
+		var track = $(e.currentTarget).attr('track'),
+			properties = {
 			url : window.location.pathname,
 			trigger : CFG['mixpanel'].TRIGGER,
-			'click-action' : $(e.currentTarget).attr('track'),	
+			'click-action' : track,	
 		}		
-		if (!CFG['mixpanel'].DISABLED) mixpanel.track('click', properties);
+		if (!CFG['mixpanel'].DISABLED) {
+			mixpanel.track('click', properties);
+			switch (track) {
+				case 'invite':
+				case 'cheer':
+					var email=$('form.call-to-action input[type=email]').attr('value');
+					// TODO: attach email to mixpanel unique ID
+				break;
+			}
+		}
+		$(e.currentTarget).removeClass('.track-click');
+		
 	})
 
 	// track first section

@@ -204,6 +204,9 @@ html.ie {
 			}
 		}
 	}
+	.fw-band.footer {
+	  .rgba(#000000, 0.91);    // double opacity:0.7 overlay
+	}
 }
 
 /*
@@ -318,6 +321,12 @@ html.touch  {
   .featurette-heading {
     color: @red;
   }
+  .carousel-inner {         /* start with one row, overflow-x: hidden */
+    max-width: 1170px;
+    .scroller {
+      width: 1300px;        /* count * itemW == 5 * 260 == 1300 */
+    }
+  }
   figure.graphic {
     color: #000;
     max-width: 240px;
@@ -354,6 +363,12 @@ html.touch  {
 }
 
 #how-it-works {
+  .carousel-inner {         /* start with one row, overflow-x: hidden */
+    max-width: 1170px;
+    .scroller {
+      width: 4600px;        /* count * itemW == 5 * 920 == 4600 */
+    }
+  }
   figure.graphic {
     .wrapH {
       float: left;

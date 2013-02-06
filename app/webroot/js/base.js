@@ -33,7 +33,7 @@ CFG['util'] = {
 	},
 	notify: function notify(msg, type) {
 		try {
-			// $('.alert-wrapper').removeClass('hide');
+			// $('.alert-wrapper').removeClass('hide');			if (/snaphappi.com/.test(window.location.host)) return;
 			$('.alert-wrapper .alert').html(msg);
 			// console.log(msg);
 			// $('.alert-wrapper .fade-wrap').fadeIn(500).delay(1000).fadeOut("slow");			$('.alert-wrapper').addClass('fadeIn');
@@ -86,10 +86,14 @@ CFG['util'] = {
 	},
 	slideInNavBar: function(){
 		var navbar = $('.navbar-fixed-top');
-		if (navbar.css('position')=='absolute') {
+		// collapsed .navbar has position:absolute, otherwise fixed
+		if (navbar.css('position')=='absolute') { 
 			var top = $(window).scrollTop();
-			navbar.css('top', top);
+			// slide in .navbar to current scrollTop
+			navbar.css('top', top); 		
 			$('.alert-wrapper').css('top', navbar.css('height') );
+			
+			// slide out .navbar on timer or click
 			var type = $('html').hasClass('touch') ? 'touch' : 'no-touch';
 			switch (type) {
 				case 'touch':
@@ -216,7 +220,7 @@ var load_carouFredSel = function($) {
 					// o.one('click', function(e){
 						// $(e.currentTarget).addClass('activated');
 					// })
-					o.removeClass('invisible');				});
+					o.find('.invisible').removeClass('invisible');				});
 				
 				$(window).resize(function() {
 					// carousel resize on window.resize
@@ -432,7 +436,7 @@ var load_iscroll = function($) {
 			      // CFG['iscroll'][id].iscroll.scrollToPage(index);
 			      // e.preventDefault();
 			    // }); 
-			    o.removeClass('invisible');
+			    o.find('.invisible').removeClass('invisible');
 			});
 			// refresh widths on window resize
 			$(window).resize(function() {
@@ -601,7 +605,8 @@ $(document).ready(
 		}
 		
 		if ($('html').hasClass('touch')) {
-			$('.carousel-inner > ul > li.item.active').removeClass('active');			load_iscroll($);
+			$('.carousel-inner > ul > li.item.active').removeClass('active');
+			load_iscroll($);
 			$('#header .show-navbar').on('click', function(e){
 				e.preventDefault();
 				CFG['util'].slideInNavBar();
@@ -612,7 +617,7 @@ $(document).ready(
 			$('#header .show-navbar').on('mouseenter', function(e){
 				CFG['util'].slideInNavBar();
 			})
-		}
+		} 	
 		load_bg_slideshow();
 		
 		
@@ -630,6 +635,6 @@ $(document).ready(
 			CFG.util.showDonateButtons();
 		})   
 		
-		$('#home').addClass('fadeIn');
+		$('#home .invisible').addClass('fadeIn-slow');
 	}
 )

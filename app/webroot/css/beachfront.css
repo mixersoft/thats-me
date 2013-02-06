@@ -165,7 +165,7 @@
 	}	
 	
 	.fadeOut {
-		visibility: hidden !important;
+		visibility: hidden;
 		opacity: 0;
 		transition: opacity 1s ease-in, visibility 0s 1s ;
 		-webkit-transition: opacity 1s ease-in, visibility 0s 1s ;
@@ -173,7 +173,7 @@
 		       -o-transition: opacity 1s ease-in, visibility 0s 1s ;
 	}
 	.fadeOut-slow {
-		visibility: hidden !important;
+		visibility: hidden;
 		opacity: 0;
 		transition: opacity 3s ease-in, visibility 0s 3s ;
 		-webkit-transition: opacity 3s ease-in, visibility 0s 3s ;
@@ -181,12 +181,20 @@
 		       -o-transition: opacity 3s ease-in, visibility 0s 3s ;
 	}
 	.fadeIn {
-		visibility: visible !important;
+		visibility: visible;
 		opacity: 1;
 		transition: opacity 0.5s linear;
 		-webkit-transition: opacity 0.5s linear;
 		     -moz-transition: opacity 0.5s linear;
 		       -o-transition: opacity 0.5s linear;
+	}
+	.fadeIn-slow {
+		visibility: visible;
+		opacity: 1;
+		transition: opacity 1.5s linear;
+		-webkit-transition: opacity 1.5s linear;
+		     -moz-transition: opacity 1.5s linear;
+		       -o-transition: opacity 1.5s linear;
 	}
 	
 	.alert-wrapper {

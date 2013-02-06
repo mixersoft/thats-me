@@ -19,7 +19,9 @@
 		// $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));		$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css";
 		$this->Html->css($min, null, array('inline' => false));
 	}
-	$this->Less->css('beachfront-less');
+	$this->start('css');
+		$this->Less->css('beachfront-less');
+	$this->end();
 	/**
 	 * other HEAD
 	 */
@@ -130,12 +132,12 @@
 		<div class='fixed bg pix' name='0'></div>
 	</div>
 	
-      <div id="home" class="featurette connect track-page-view invisible ">
+      <div id="home" class="featurette connect track-page-view ">
       	<a name='home'></a>
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
 		<div class="fw-band alpha70b vcenter-body"> 
-			<div class="container center"> 
+			<div class="container center invisible"> 
 				<div class="featurette-heading">
 					<h1 class="">Curated Family Photos</h1>	    	
 		        	<div class="subhead">What do you do with your 10,000 photos? How do you find those precious moments?</div>
@@ -180,7 +182,7 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel track-page-view invisible">
+    <div id="features" class="featurette carousel track-page-view">
 		
     <div class="vcenter-wrap">
 		<div class="vcenter-padding">
@@ -190,7 +192,7 @@
        		<div class="subhead">Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; for only a Penny a Photo!</div>
        </div>			
       <div id="features-iscroll" class="carousel-inner">
-      	<ul class="scroller">
+      	<ul class="scroller invisible">
       		<li class="item active">
 			<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
@@ -271,7 +273,7 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette carousel track-page-view invisible">
+    <div id="how-it-works" class="featurette carousel track-page-view ">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
@@ -280,7 +282,7 @@ by rating the ones you love.
 				<h1 class="featurette-heading center">How It Works</h1>	
 			</div>
       <div id="how-it-works-iscroll" class="carousel-inner">
-      <ul class="scroller">	
+      <ul class="scroller invisible">	
         <li class="item active">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-06.png"></div>

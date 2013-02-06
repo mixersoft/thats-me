@@ -98,6 +98,7 @@ html.ie {
 
 .featurette {
     min-height: 700px;
+    position:relative;
 		.fw-band.vcenter-body {
 			padding: 10px 0; 
 			padding-top: 40px;       /*  for .navbar, remove when not fixed */
@@ -116,8 +117,10 @@ html.ie {
    	}
 		.featurette-heading {
 			.rgba-text-shadow();
-			width: 90%;
+			font-weight: 300;
 			margin: 0 5%;
+			padding: 20px 0;
+			width: 90%;
 			h1 {
 				font-size: 72px;
 				font-weight: normal;
@@ -126,6 +129,7 @@ html.ie {
 			.subhead {
 			  font-size: 21px;
 			  line-height: 1.15;
+			  letter-spacing: -0.5px;
 			}
 		}
 		figure.graphic {
@@ -151,9 +155,12 @@ html.ie {
 	    	}
 	    }	
 		}
-		.footer {
+		.fw-band.footer {
       .rgba(#000000, 0.7);
+      position: relative;
       bottom: 0;
+      left: 0;
+      width: 100%;
       color: @cream;
       font-size: 24px;
       line-height: 1;
@@ -621,7 +628,7 @@ html.touch  {
   			font-size: 14px;
   		}
   	}
-    .footer {
+    .fw-band.footer {
       font-size: 16px;
     }
   }

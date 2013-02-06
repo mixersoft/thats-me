@@ -357,6 +357,7 @@ var load_carouFredSel = function($) {
 			var check;
 		},
 		items		: {
+			width 		: 400,
 			visible		: 1
 		},
 		auto : {

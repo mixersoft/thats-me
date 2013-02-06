@@ -209,37 +209,10 @@
    		overflow-x: hidden;
    		position: relative;
    }
-   .fw-band {
-   		position: absolute;
-    	width: 100%;
-    	left: 0;
-   }
    
-   .featurette {
-   		position:relative;
-   		min-height: 600px;
-   }
-   .featurette .fw-band.body {
-   		top: 33%;
-   }
    
-   .featurette .fw-band.body p {
-   		font-size: 16px;
-   }
    
-   .featurette  .featurette-heading {
-   		margin: 0 10px;
-   		padding: 20px 0;
-   		font-weight: 300;
-      	text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
-   }
-   
-   .featurette .featurette-heading .subhead {
-   		font-size: 18px;
-   		letter-spacing: -0.5px;
-   }
-   
-   .featurette .wrap {
+   #FAQ.featurette .wrap {
    		border-radius: 20px;
 	     -webkit-border-radius: 20px;
 	     -moz-border-radius: 20px;

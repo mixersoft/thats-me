@@ -39,9 +39,7 @@
 /* iPhone 4 retina display , landscape max-width: 480px   767 >= W >= 468px */
 /* .navbar collapse */
 @media (max-width: 580px) {	
-	body {
-		min-width: 320px;
-	}
+
 	
 	html.no-touch .navbar .btn-navbar {
 		margin-right: 15px;
@@ -116,7 +114,9 @@
 	
 /* iPhone 4/5 retina display , portrait max-width: 320px   467 >= W  */
 @media (max-width: 467px) {
-	
+	body {
+		min-width: 320px;
+	}	
 	.alert-wrapper {
 		margin: 10px 0;
 	}

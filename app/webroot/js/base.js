@@ -39,7 +39,7 @@ CFG['util'] = {
 			// $('.alert-wrapper .fade-wrap').fadeIn(500).delay(1000).fadeOut("slow");			$('.alert-wrapper').addClass('fadeIn');
 			setTimeout(function(){
 				$('.alert-wrapper').removeClass('fadeIn');
-			}, 1000)
+			}, 2000)
 		} catch (e) {
 		}
 	},
@@ -215,7 +215,8 @@ var load_carouFredSel = function($) {
 					// CFG['carousel'].paging.autoPaging(o, CFG['carousel'].isLingeringTimer);
 					// o.one('click', function(e){
 						// $(e.currentTarget).addClass('activated');
-					// })				});
+					// })
+					o.removeClass('invisible');				});
 				
 				$(window).resize(function() {
 					// carousel resize on window.resize
@@ -430,7 +431,7 @@ var load_iscroll = function($) {
 			      // CFG['iscroll'][id].iscroll.scrollToPage(index);
 			      // e.preventDefault();
 			    // }); 
-			    
+			    o.removeClass('invisible');
 			});
 			// refresh widths on window resize
 			$(window).resize(function() {
@@ -450,7 +451,7 @@ var load_iscroll = function($) {
 							o.find('.carousel-control-wrap').addClass('fadeIn');		
 							setTimeout(function(){
 								o.find('.carousel-control-wrap').removeClass('fadeIn');
-							},100);
+							},1000);
 						}
 					);
 				});
@@ -576,12 +577,6 @@ var load_social_sharing = function() {
 	, CFG['timing'].load_SocialSharing);
 }
 
-/*
- * jQuery ready
- */
-! function($) {
-	// console.info("jQuery loaded");	return;
-}(window.jQuery);
 
 $(document).ready(
 	function(){
@@ -619,6 +614,7 @@ $(document).ready(
 		}
 		load_bg_slideshow();
 		
+		
 		$(window).on('scroll.spy',function(e) {
 			CFG['util'].scrollSpy();
 		});
@@ -632,5 +628,7 @@ $(document).ready(
 		$('a#donate').one('click', function(e){
 			CFG.util.showDonateButtons();
 		})   
+		
+		$('#home').addClass('fadeIn');
 	}
 )

@@ -28,9 +28,9 @@
 		display: none !important; 
 	}
 	
-	.hidden {
-		visibility: hidden !important;
-		display:inherit;
+	.hidden, .invisible {
+		visibility: hidden;
+		opacity: 0;
 	}
 	.center {
 		text-align: center;
@@ -60,13 +60,6 @@
 		top: -50%;
 	}
 	   
-	.fade-slow {
-		  opacity: 0;
-		  -webkit-transition: opacity 0.5s linear;
-		     -moz-transition: opacity 0.5s linear;
-		       -o-transition: opacity 0.5s linear;
-		          transition: opacity 0.5s linear;
-	}
 		
     /* CUSTOMIZE THE NAVBAR
     -------------------------------------------------- */
@@ -163,20 +156,37 @@
 	/*
 	 * start item hidden
 	 */
+	.fade-slow {
+		  opacity: 0;
+		  -webkit-transition: opacity 0.5s linear;
+		     -moz-transition: opacity 0.5s linear;
+		       -o-transition: opacity 0.5s linear;
+		          transition: opacity 0.5s linear;
+	}	
+	
 	.fadeOut {
 		visibility: hidden !important;
 		opacity: 0;
 		transition: opacity 1s ease-in, visibility 0s 1s ;
+		-webkit-transition: opacity 1s ease-in, visibility 0s 1s ;
+		     -moz-transition: opacity 1s ease-in, visibility 0s 1s ;
+		       -o-transition: opacity 1s ease-in, visibility 0s 1s ;
 	}
 	.fadeOut-slow {
 		visibility: hidden !important;
 		opacity: 0;
 		transition: opacity 3s ease-in, visibility 0s 3s ;
+		-webkit-transition: opacity 3s ease-in, visibility 0s 3s ;
+		     -moz-transition: opacity 3s ease-in, visibility 0s 3s ;
+		       -o-transition: opacity 3s ease-in, visibility 0s 3s ;
 	}
 	.fadeIn {
 		visibility: visible !important;
 		opacity: 1;
 		transition: opacity 0.5s linear;
+		-webkit-transition: opacity 0.5s linear;
+		     -moz-transition: opacity 0.5s linear;
+		       -o-transition: opacity 0.5s linear;
 	}
 	
 	.alert-wrapper {

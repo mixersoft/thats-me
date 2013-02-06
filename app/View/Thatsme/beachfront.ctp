@@ -127,7 +127,7 @@
 		<div class='fixed bg pix' name='0'></div>
 	</div>
 	
-      <div id="home" class="featurette connect track-page-view">
+      <div id="home" class="featurette connect track-page-view invisible ">
       	<a name='home'></a>
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
@@ -177,7 +177,7 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel track-page-view hidden">
+    <div id="features" class="featurette carousel track-page-view invisible">
 		
     <div class="vcenter-wrap">
 		<div class="vcenter-padding">
@@ -268,7 +268,7 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette carousel track-page-view hidden">
+    <div id="how-it-works" class="featurette carousel track-page-view invisible">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">

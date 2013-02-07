@@ -166,7 +166,7 @@
 		        </div>
 		        <div class="featurette-heading footer">
 		        	<div class="subhead">
-		        		Put your photos on our To-do list and Play with your photos once again.
+		        		Put your photos on <strong>our</strong> To-do list and Play with your photos once again.
 		        </div></div>
 		   </div>     
         </div></div></div>        
@@ -280,7 +280,7 @@ by rating the ones you love.
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
-		<div class="fw-band alpha70r vcenter-body ">
+		<div class="fw-band alpha70card vcenter-body ">
 			<div class="featurette-heading center">
 				<h1 class="featurette-heading center">How It Works</h1>	
 			</div>
@@ -348,7 +348,8 @@ We think it's a small price to pay for all the time you'll save.</p>
         </ul>
       </div> <!-- /.carousel-inner  -->
 <div class="carousel-pager center"></div>  
-<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>     
+<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>  
+   
 <div class="carousel-control-wrap">
 	<a class="left carousel-control" href="#how-it-works" direction="prev">&lsaquo;</a>
 	<a class="right carousel-control" href="#how-it-works" direction="next">&rsaquo;</a>
@@ -413,7 +414,7 @@ We think it's a small price to pay for all the time you'll save.</p>
 	        	<div class="offset1 span5 donate">
 					<p class="lead">
 If you want this service ASAP, let us know &mdash; we need your vocal support! 
-Cheer us on through those long sleepless nights by sending us a buck <span class="dollar">($1)</span>. 
+Cheer us on through those long sleepless nights by sending us a buck <span class="strong">($1)</span>. 
 <br />We'll get the message. 
 	        		</p>
 	        	</div>
@@ -576,7 +577,7 @@ Let us roll up our sleeves so you can just play.
 	
 
       <a name='FAQ'></a>
-      <div id='FAQ' class="featurette FAQ track-page-view  alpha70r">
+      <div id='FAQ' class="featurette FAQ track-page-view  alpha70card">
 		<div class='fw-band vcenter-body'>
       		<div class="container">
       			<div class='row'>

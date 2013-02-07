@@ -38,7 +38,6 @@ class AppController extends Controller {
 	
 	function beforeFilter(){
 		if (isset($this->request->query['debug'])) Configure::write('debug', $this->request->query['debug']);
-		debug(Configure::read('debug'));
 	}
 	
 	

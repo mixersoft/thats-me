@@ -4,11 +4,17 @@ html.fontface:not(.android) {
   }
 }
 
+.strong {
+  font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica,Arial,sans-serif; 
+  font-weight: bold;
+}
+
 
 /**
  * 	Less 
  */
 @red: #D01F40;
+@card: #711124;
 @orange: #F16122;
 @cream: #FDF9D0;
 @peach: #E9C1C1;
@@ -35,6 +41,9 @@ html.fontface:not(.android) {
 }
 .alpha70r {    /* same as #DD1260 */   
 	.rgba(@red, 0.7);
+}
+.alpha70card {    /* same as #DD1260 */   
+  .rgba(@card, 0.7);
 }
 .alpha80w {
 	.rgba(#FFFFFF, 0.8);
@@ -438,10 +447,6 @@ html.touch  {
     }
     .wrapH img {
       height: 260px;
-    }
-    .dollar {
-      font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica,Arial,sans-serif; 
-      font-weight: bold;
     }
   }
   form.call-to-action {

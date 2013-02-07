@@ -11,4 +11,7 @@ $config = array(
 		'language' => 'eng'
 	),
 );
+if (!$isLocal) {
+	Configure::write('debug', 0);
+}
 ?>

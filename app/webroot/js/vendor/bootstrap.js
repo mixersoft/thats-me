@@ -710,9 +710,10 @@
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS
    * =================================== */
+  // TODO: ipad hack, see http://forwebonly.com/fix-for-twitter-bootstrap-dropdown-on-ipad-and-iphone/
 
   $(document)
-    .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)
+    // .on('click.dropdown.data-api touchstart.dropdown.data-api', clearMenus)    .on('click.dropdown.data-api', clearMenus)
     .on('click.dropdown touchstart.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
     .on('click.dropdown.data-api touchstart.dropdown.data-api'  , toggle, Dropdown.prototype.toggle)
     .on('keydown.dropdown.data-api touchstart.dropdown.data-api', toggle + ', [role=menu]' , Dropdown.prototype.keydown)

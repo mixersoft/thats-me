@@ -429,7 +429,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 	        <div class="row">
 	        	<div class="span12 center">
 	        		
-<form class="form-inline call-to-action center" action="" method="post" onsubmit="return false;">	        		
+<form class="form-inline call-to-action center" action="/action/sign-me-up" method="post" onsubmit="return false;">	        		
 	<div class="control-group">
 	  <div class="controls">
 	  	<div class="input-prependx input-appendx">
@@ -440,7 +440,12 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 		  		<i class="icon-arrow-left icon-white"></i>
 	  		</div>
 	  		<div class="wrapH">
-		    	<input type="email" placeholder="Email" class='email' required title="Join our email list">
+		    	<input type="email" placeholder="Email" class='email' 
+		    		required 
+		    		title="Join our email list" 
+		    		data-content="Please enter a valid email address." 
+		    		data-placement='bottom' 
+		    		data-trigger='manual' >
 		    </div>
 		    <div class='wrapH right'>
 			    <i class="icon-arrow-right icon-white"></i>

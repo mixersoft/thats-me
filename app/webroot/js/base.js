@@ -163,6 +163,7 @@ CFG['timing'] = {
 	slideshow: 7000,
 	navbarSlideOut: 5000,
 	load_SocialSharing: 5000,
+	validation_popover: 2000,
 }
 
 
@@ -643,7 +644,9 @@ $(document).ready(
 			case '#not-yet': 	// donate cancel return 
 				break;
 		}
-		
+		/*
+		 *     	touch device init
+		 */
 		if ($('html').hasClass('touch')) {
 			$('.carousel-inner > ul > li.item.active').removeClass('active');
 			load_iscroll($);
@@ -651,7 +654,11 @@ $(document).ready(
 				e.preventDefault();
 				CFG['util'].slideInNavBar();
 			})
-			
+		
+		
+		/*
+		 *		mouse/desktop init 
+		 */	
 		} else {	// html.no-touch
 			load_carouFredSel($);			$('#header .show-navbar').on('mouseenter', function(e){
 				CFG['util'].slideInNavBar();
@@ -677,19 +684,21 @@ $(document).ready(
 		})   
 		
 		$('form.call-to-action button').on('click', function(e){
-			var email=$('form.call-to-action input[type=email]').attr('value');
-			if (/[a-z\.]+@[a-z\.]+/.test(email)) {
+			var email=$('form.call-to-action input[type=email]'),
+				address = email.attr('value');
+			if (/[a-z\.]+@[a-z\.]+/.test(address)) {
+				email.popover('hide');
 				var formId = $(e.currentTarget).attr('id');
 				switch (formId){
 					case "cheer":
-						CFG['util'].postEmail(email,{'action':'cheer'},function(){
+						CFG['util'].postEmail(address,{'action':'cheer'},function(){
 							// on success
 							CFG['util'].showDonateButtons();	
 						});
 						if ("debug") CFG['util'].showDonateButtons();	// show anyway
 					break;
 					case "invite":
-						CFG['util'].postEmail(email,{'action':'join'},function(){
+						CFG['util'].postEmail(address,{'action':'join'},function(){
 							// on success
 							CFG['util'].animateScrollToHash({hash:'#sharing' });
 							$('#sharing .thank-you.hide ').removeClass('hide');
@@ -702,8 +711,12 @@ $(document).ready(
 				e.preventDefault();
 				e.stopImmediatePropagation();
 				return false;
-			} else {
+			} else if ( 0 || $('html.touch').size() ){
 				// ipad/mobile safari not validating form correctly
+				email.popover('show');
+				setTimeout(function(){
+					email.popover('hide');
+				}, CFG['timing'].validation_popover);
 			} 
 		}) 
 		

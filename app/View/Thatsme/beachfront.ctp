@@ -546,7 +546,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 					</div>
       			</div>
       			<div class="row">
-		        	<div class="span12 body">
+		        	<div class="offset1 span10 body">
 						<p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
 But with a growing family and a hectic job, 

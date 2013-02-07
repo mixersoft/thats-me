@@ -634,7 +634,9 @@ $(document).ready(
 		switch (window.location.hash) {
 			case '#thank-you': 	// donate success return 
 				$('#sharing .thank-you').removeClass('hide');
+			case '#sharing':				
 				CFG['timing'].load_SocialSharing = 0;
+				load_social_sharing();
 				break;
 			case '#not-yet': 	// donate cancel return 
 				break;

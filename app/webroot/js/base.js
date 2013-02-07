@@ -104,14 +104,16 @@ CFG['util'] = {
 				$('#call-to-action .donate a.btn').addClass('invisible');
 			}
 		});
+		$('#call-to-action .donate-form-wrap .icon-remove-sign').one('click', function(){
+			$('#call-to-action .donate-form-wrap').css('display', 'none');
+		});
 		return false;		// onclick return value
 	},
 	// o.hasAttr('hash'), $(<A>)
 	animateScrollToHash: function(o) {
 		var target = o.hash;
 		if (target) {
-	        console.log(target);
-	        $.scrollTo(target, 500);
+	        // console.log(target);	        $.scrollTo(target, 500);
 	    }
 	    return target;
 	},
@@ -686,16 +688,22 @@ $(document).ready(
 						});
 						if ("debug") CFG['util'].showDonateButtons();	// show anyway
 					break;
-					case "join-email-list":
+					case "invite":
 						CFG['util'].postEmail(email,{'action':'join'},function(){
 							// on success
-							window.location.href = '#thank-you';	
+							CFG['util'].animateScrollToHash({hash:'#sharing' });
+							$('#sharing .thank-you.hide ').removeClass('hide');
 						});
+						CFG['util'].animateScrollToHash({hash:'#sharing' });
+						$('#sharing .thank-you.hide ').removeClass('hide');
 					break;
 				}
 				// jQuery post in background
 				e.preventDefault();
 				e.stopImmediatePropagation();
+				return false;
+			} else {
+				// ipad/mobile safari not validating form correctly
 			} 
 		}) 
 		

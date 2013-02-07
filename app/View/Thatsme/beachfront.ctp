@@ -429,7 +429,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 	        <div class="row">
 	        	<div class="span12 center">
 	        		
-<form class="form-inline call-to-action center" action="" method="post">	        		
+<form class="form-inline call-to-action center" action="" method="post" onsubmit="return false;">	        		
 	<div class="control-group">
 	  <div class="controls">
 	  	<div class="input-prependx input-appendx">
@@ -454,6 +454,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 </form>		
 
 <div class='donate-form-wrap' style='display:none;'>
+							<i class="icon-remove-sign icon-white pull-right"></i>
 	        				<h2>We like your enthusiasm!</h2>
 	        				<p>Use one of the buttons below to cheer us on with a $1 donation</p>
 	        				<!--  Payal 	        			 -->

@@ -57,6 +57,26 @@ CFG['util'] = {
 		var copy = $('#home .fw-band.vcenter-body > .container');
 		copy.css('padding-top', (activeH-copy.height())/2 );
 	},
+	setNavbarCollapse: function(){
+		var navbar = $('.navbar-inner .nav-collapse:not(.in)');
+		if (navbar.size() == 0) return;
+		
+		var logo = $('.navbar a.brand');
+		var left = logo.offset().left+logo.outerWidth(true),
+			right = navbar.offset().left,
+			gap = right-left;
+		// reset movable
+		var dropdown = navbar.find('.dropdown');
+		dropdown.find('.dropdown-menu').prepend(navbar.find('.nav > .promote'));
+		// promote movable
+		var promote = dropdown.find('.promote').each(function(i,elem){
+			// assume width of menu item about 120px
+			if (gap-120 > 120) {			
+				dropdown.before($(elem));
+				gap -= 120;
+			}
+		});	
+	},
 	scrollSpy: function(){
 		// manually implemented ScrollSpy
 		$('.featurette').each(function(i, elem) {
@@ -259,6 +279,8 @@ var load_carouFredSel = function($) {
 					// carousel resize on window.resize
 					$('html.no-touch .carousel.fred').each(function(i, elem) {
 						CFG['carousel'].paging.refresh_pageDots($(elem));					});
+					// resize menubar items, desktop only
+					CFG['util'].setNavbarCollapse();
 				});
 				
 				// add .activated when lingers into view
@@ -630,7 +652,7 @@ $(document).ready(
 		 * set #Home section height
 		 */
 		CFG['util'].setFullFrameHeight();
-		
+		CFG['util'].setNavbarCollapse();
 		/*
 		 * animations
 		 */
@@ -672,16 +694,11 @@ $(document).ready(
 		});
 					
 		// make global
-		$('a').bind('click', function(e) {
+		$('a').bind('click.hashscroll', function(e) {
 			if (CFG['util'].animateScrollToHash(this)) {
 				e.preventDefault();
 			};
 		});
-		
-		// old style, deprecate
-		$('a#donate').one('click', function(e){
-			CFG.util.showDonateButtons();
-		})   
 		
 		$('form.call-to-action button').on('click', function(e){
 			var email=$('form.call-to-action input[type=email]'),

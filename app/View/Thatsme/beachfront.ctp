@@ -106,9 +106,9 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
                   <ul class="dropdown-menu pull-right alpha70b">
-                  	<li><a href="#see-the-movie">See the Movie Again</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#FAQ">FAQ</a></li>
+                    <li class='promote'><a href="#about">About</a></li>
+                    <li class='promote'><a href="#FAQ">FAQ</a></li>
+                    <li><a href="#see-the-movie">See the Movie Again</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
                   </ul>
                 </li>
@@ -166,7 +166,7 @@
 		        </div>
 		        <div class="featurette-heading footer">
 		        	<div class="subhead">
-		        		Put your photos on <strong>our</strong> To-do list and Play with your photos once again.
+		        		Put your photos on <strong>our</strong> To-do list &mdash; and <strong>Play</strong> with your photos once again.
 		        </div></div>
 		   </div>     
         </div></div></div>        
@@ -192,14 +192,16 @@
 			<div class="fw-band vcenter-body ">
 		<div class="featurette-heading center">
 			<h1 class="">Features &amp; Benefits</h1>	    	
-       		<div class="subhead">Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; for only a Penny a Photo!</div>
+       		<div class="subhead">
+Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; 
+<span><strong>for only a Penny a Photo!</strong></string></span></div>
        </div>			
       <div id="features-iscroll" class="carousel-inner">
       	<ul class="scroller invisible">
       		<li class="item active">
 			<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
-        		<figcaption>Screened By Real Editors
+        		<figcaption>Screened by <span>Real Editors</span>
         			<div class="body">
 No other photo service out there uses real people like we do. 
 Our trained photo editors hand-select the beautiful photos that are featured on your Timeline and hide duplicates just for you. 
@@ -210,7 +212,7 @@ We promise 100% privacy.
         </li><li class="item">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-06.png"></div>
-        		<figcaption>Beautiful Curated Timeline
+        		<figcaption>Beautiful <span>Curated Timeline</span>
         			<div class="body">
    	<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos.</p>
 <p>Quickly zoom across your Timeline, jumping from moment to moment; 
@@ -299,7 +301,7 @@ by rating the ones you love.
         </li><li class="item">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-02.png"></div>
-        		<figcaption>We'll Find your Beautiful Photos
+        		<figcaption>We'll Find Your <span>Beautiful Photos</span>
         			<div class="body">
 <p>Our trained editors will find the beautiful photos that are featured on your Timeline. 
 It may take awhile, but they will rate all your photos and hide the duplicates just for you.</p>
@@ -310,7 +312,7 @@ It may take awhile, but they will rate all your photos and hide the duplicates j
         </li><li class="item">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-04.png"></div>
-        		<figcaption>And Build Your Curated Timeline
+        		<figcaption>And Build Your <span>Curated Timeline</span>
         			<div class="body">
 <p>You'll find all your photos on a stunning Curated Timeline to make your precious moments easy to find and a joy to use.</p>
 <p>Your timeline is organized using automatic event detection to make your moments easy to find and 
@@ -322,7 +324,7 @@ we'll highlight your events with beautiful photos to make it a joy to use.
         </li><li class="item">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-03.png"></div>
-        		<figcaption>Push Your Finger<br />to Play
+        		<figcaption>Push Your Finger <span>to Play</span>
         			<div class="body">
 <p>Re-live and share your special moments on the iPad with the push of a finger.</p>
 <p>Quickly zoom across your Curated Timeline, jumping from moment to moment; 

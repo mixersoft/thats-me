@@ -157,6 +157,9 @@
 	 * start item hidden
 	 */
 	.fade-slow {
+		/* for background slideshow */
+			
+	  
 		  opacity: 0;
 		  -webkit-transition: opacity 0.5s linear;
 		     -moz-transition: opacity 0.5s linear;

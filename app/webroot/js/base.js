@@ -181,16 +181,15 @@ var load_bg_slideshow = function() {
 		next: null,			// next slide, function
 		count: 5,			// count of bg images, bg.pix[name='N'] defined in CSS
 		preloader: null,	// IMG object for binding onload
-		loaded: {},
+		loaded: [],			// array of slides that have already been cached, but page index 
 		init: function(){
 			CFG['slideshow'].preloader = $('<img />')	
 				.bind('load', function() {
 				    // Background image has loaded.
-				    var fade = $('#bg-slideshow .fading').addClass('fade-slow');
+				    var fade = $('#bg-slideshow .fading:first-child').addClass('fade-slow');
 				    CFG['slideshow'].loaded[fade.attr('name')]=1;
 				    setTimeout(function(){
-				    	fade.remove();
-				    	delete fade;
+					    $('#bg-slideshow .fading').remove();
 					}, 600);
 				});
 			// start the slideshow timer	
@@ -203,9 +202,9 @@ var load_bg_slideshow = function() {
 					CFG['slideshow'].next,
 					CFG['timing']['slideshow']
 				);
-			} 
+			}
+			if ($('#bg-slideshow .bg.fading').size()>1) return;
 			var bg = $('#bg-slideshow .bg.fixed');
-			if (bg.size()>1) return;
 			
 			var fade = bg.clone().addClass('fading');
 			$('#bg-slideshow').append(fade);
@@ -217,7 +216,7 @@ var load_bg_slideshow = function() {
 			
 			// PRELOAD image
 			var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
-			if (!CFG['slideshow'].loaded[i]) CFG['slideshow'].preloader.attr('src', bkgSrc);
+			if (CFG['slideshow'].loaded[i] == undefined) CFG['slideshow'].preloader.attr('src', bkgSrc);
 			else {
 				fade.addClass('fade-slow');
 				setTimeout(function(){
@@ -650,8 +649,7 @@ $(document).ready(
 			})
 			
 		} else {	// html.no-touch
-			load_carouFredSel($);
-			$('#header .show-navbar').on('mouseenter', function(e){
+			load_carouFredSel($);			$('#header .show-navbar').on('mouseenter', function(e){
 				CFG['util'].slideInNavBar();
 			})
 		} 	

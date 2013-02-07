@@ -43,6 +43,20 @@ CFG['util'] = {
 		} catch (e) {
 		}
 	},
+	/*
+	 * set the homepage to expand to the full window height
+	 */
+	setFullFrameHeight: function(){
+		// offsetH:  581+:89 320+:41
+		var offsetH = $('#home .fw-band.footer').height()==16 ? 41 : 89;
+			perfectH = $(window).height()-offsetH,
+			homeMinH = $('#home .fw-band.vcenter-body').css('min-height').split('px')[0];
+		var activeH = Math.min(Math.max(homeMinH, perfectH ),1100);
+		$('#home .fw-band.vcenter-body').css('min-height', activeH );
+		// center copy
+		var copy = $('#home .fw-band.vcenter-body > .container');
+		copy.css('padding-top', (activeH-copy.height())/2 );
+	},
 	scrollSpy: function(){
 		// manually implemented ScrollSpy
 		$('.featurette').each(function(i, elem) {
@@ -608,6 +622,12 @@ $(document).ready(
 		 */
 		if (CFG.isTouch) $('html').removeClass('no-touch').addClass('touch');
 		else $('html').removeClass('touch').addClass('no-touch');
+		
+		
+		/*
+		 * set #Home section height
+		 */
+		CFG['util'].setFullFrameHeight();
 		
 		/*
 		 * animations

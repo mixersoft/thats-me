@@ -50,14 +50,12 @@
 	}
 	if (Configure::read('isLocal')) {
 		$js_bottom[] = 'base';
-		$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
+		$js_bottom[] = 'http://www.youtube.com/iframe_api';		$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
 	} else {
 		$js_bottom[] = '/min/b=js&f=base.js,vendor.js';
+		$js_bottom[] = 'http://www.youtube.com/iframe_api';
 	}
-		// $js_bottom[] = '/min/b=js&f=base.js,vendor.js';	$js_bottom[] = 'http://www.youtube.com/iframe_api';
-	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
-	 
-	$this->start('javascript_Bottom');
+	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));	$this->start('javascript_Bottom');
 ?>
 		<!-- start google Analytics -->
 		<script type="text/javascript">
@@ -166,9 +164,9 @@
 		        		</figcaption>
 		        	</figure>
 		        </div>
-		        <div class="featurette-heading">
+		        <div class="featurette-heading footer">
 		        	<div class="subhead">
-		        		Put your photos on <u>our</u> To-do list and Play with your photos once again.
+		        		Put your photos on our To-do list and Play with your photos once again.
 		        </div></div>
 		   </div>     
         </div></div></div>        

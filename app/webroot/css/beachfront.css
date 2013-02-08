@@ -4,9 +4,7 @@
 
     body {
       font-family: Helvetica,Arial,sans-serif;
-      padding-left: 0;
-      padding-right: 0;
-      padding-bottom: 40px;
+      padding: 0;
 /*      for iOS CSS transitions */
       	-webkit-backface-visibility: hidden;		
     }
@@ -139,53 +137,4 @@
    .bg.pix[name='5'] {
    		background-image:url(http://snappi.snaphappi.com/static/css/bootstrap/img/bg-img-05.jpg);
    }
-
-   
-   
-   /* deprecate */
-   #FAQ.featurette .wrap {
-   		border-radius: 20px;
-	     -webkit-border-radius: 20px;
-	     -moz-border-radius: 20px;
-	    margin: 40px 20px 20px 60px;
-	    padding: 20px;
-	    width: 80%;
-   }
-   
-   #tag-line, #sharing {
-   		color: #d47000
-   }
-   #tag-line .bg.pix , #sharing  .bg.pix {
-   		height: 550px;
-   }
-   
-
-	#footer {
-		margin: 0 20px;	
-	}
-	
-	#footer .cakephp {
-		background: url("/img/cake.power.gif") repeat scroll 0 0 transparent;
-	    display: inline-block;
-	    height: 13px;
-	    margin-left: 10px;
-	    vertical-align: middle;
-	    width: 98px;
-	}
-
-
- 
-
-	
-
-
-
-
-
-
-
-
-
-
-
 

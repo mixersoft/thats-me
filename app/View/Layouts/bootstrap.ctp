@@ -37,12 +37,14 @@
 				<?php echo $this->Session->flash(); ?>
 				<?php echo $this->fetch('content'); ?>
 			</div>
-			<div id="footer">
-				<?php echo $this->fetch('body_footer');?>
-				<p>&copy; 2013 Snaphappi Inc.
-					<a class="cakephp" target="_blank" href="http://www.cakephp.org/">
-					</a>
-				</p>
+			<div id="footer" >
+				<div class="container">
+					<?php echo $this->fetch('body_footer');?>
+					<p>&copy; 2013 Snaphappi Inc.
+						<a class="cakephp" target="_blank" href="http://www.cakephp.org/">
+						</a>
+					</p>
+				</div>
 			</div>
 		</div> <!-- /container -->
 		<!-- // jquery with fallback -->		

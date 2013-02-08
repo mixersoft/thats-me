@@ -738,7 +738,9 @@ $(document).ready(
 				}, CFG['timing'].validation_popover);
 			} 
 		}) 
-		
-		$('#home .invisible').addClass('fadeIn-slow');
+		/**
+		 *	fade in #home content 
+		 */
+		$('#home .invisible, .navbar.invisible').addClass('fadeIn-slow');
 	}
 )

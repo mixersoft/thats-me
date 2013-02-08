@@ -1,4 +1,4 @@
-       <div class="navbar navbar-inverse navbar-fixed-top alpha70b">
+       <div class="navbar navbar-inverse navbar-fixed-top invisible alpha70b">
           <div class="navbar-inner container alpha70b">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">

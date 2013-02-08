@@ -257,7 +257,7 @@ by rating the ones you love.
 			</div>
       <div id="how-it-works-iscroll" class="carousel-inner">
       <ul class="scroller invisible">	
-        <li class="item active">
+        <li class="item left-image active">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-06.png"></div>
         		<figcaption>Send Us Your Photos
@@ -267,18 +267,18 @@ by rating the ones you love.
 					</div>
         		</figcaption>
         	</figure>
-        </li><li class="item">
+        </li><li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-02.png"></div>
         		<figcaption>We'll Find Your <span>Beautiful Photos</span>
         			<div class="body">
-<p>Our trained editors will find the beautiful photos that are featured on your Timeline. 
-It may take awhile, but they will rate all your photos and hide the duplicates just for you.</p>
-<p>And yes, they are <u>real</u> people - who else can say that?</p>	
+<p>Our Trained Editors will find the Beautiful Photos that are featured on your Curated Timeline. 
+They work quickly (assisted by sophisticated algorithms) to rate photos and hide duplicates &mdash; just for you.</p>
+<p>And yes, they are <strong>real people</strong> - who else can say that?</p>	
 					</div>
         		</figcaption>
         	</figure>        	
-        </li><li class="item">
+        </li><li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-04.png"></div>
         		<figcaption>And Build Your <span>Curated Timeline</span>
@@ -290,7 +290,7 @@ we'll highlight your events with beautiful photos to make it a joy to use.
 					</div>
         		</figcaption>
         	</figure>        	
-        </li><li class="item">
+        </li><li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-03.png"></div>
         		<figcaption>Push Your Finger <span>to Play</span>
@@ -303,10 +303,10 @@ we'll highlight your events with beautiful photos to make it a joy to use.
 					</div>
         		</figcaption>
         	</figure>        	
-        </li><li class="item">
+        </li><li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-01.png"></div>
-        		<figcaption>Just a penny a photo!
+        		<figcaption>Just a Penny a Photo!
         			<div class="body">
 <p>There are many places to go to share your beautiful photos, but <u>someone</u> has to do the work to find them.
 If it's not going to be you, then let it be Snaphappi.</p>
@@ -531,9 +531,9 @@ who has time to scroll through 10,000 thumbnails to find your Beautiful Photos?
 Most likely, it's not going to be you, and it's certainly not going to be fancy computer algorithm.        		
 			        	</p>
 			        	<p>
-Only Snaphappi uses real photo editors to screen your family photos. 
+Only Snaphappi uses Trained Editors <strong>(real people)</strong> assisted by sophisticated algorithms to screen your family photos. 
 We'll find your beautiful photos and hide duplicates, 
-saving you hours of time and making fun and easy to re-live your precious moments. 
+saving you hours of time and making it fun and easy to re-live your precious moments. 
 Let us roll up our sleeves so you can just play.
 	        			</p>
 	        			<div class='wrapH center'>

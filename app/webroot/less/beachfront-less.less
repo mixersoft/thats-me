@@ -369,10 +369,12 @@ html.touch  {
 		max-width: 900px;
 		vertical-align: top;
 		.wrapH {
+		  display: inline-block;
 			img {
 			}
 		}
 		figcaption {
+		  display: inline-block;
 			text-shadow: 1px 1px 2px #333333;
       .body {
       }			
@@ -421,6 +423,30 @@ html.touch  {
   }
 }
 
+/**
+ *  for left image right text w/o using float:left
+ *    used by #how-it-works
+ *    cancel @media 479 
+ */
+.featurette.carousel .carousel-inner {
+    li.item.left-image {      
+      text-align: left;
+      figure {
+        position: relative;
+        .wrapH {
+          display: inline-block;
+          width: 40%;
+          margin-left: 5%;
+        }
+        figcaption{
+          display: inline-block;
+          width: 50%;
+          vertical-align: middle;
+        }
+      }
+    }
+}
+
 .featurette.carousel.fred { 
   .carousel-inner {
     margin: 0 auto;  
@@ -431,11 +457,14 @@ html.touch  {
   }
 }
 
+
+
 html.touch  {
-  #features .carousel-inner {
+  /* use .active on touch event to show scroller */
+  #features .carousel-inner.active {
     box-shadow: 6px 0 2px @orange, -6px 0 2px @orange;
   }
-  #how-it-works .carousel-inner {
+  #how-it-works .carousel-inner.active {
     box-shadow: 6px 0 2px @cream, -6px 0 2px @cream;
   }
   .featurette.carousel.iscroll  {
@@ -525,7 +554,8 @@ html.touch  {
     min-height: 100px;
     width: auto;
     .wrapH {
-      // float: left;     /* WARNING: float breaks carouFredSel height="variable"       max-width: 640px;
+      /* WARNING: float breaks carouFredSel height="variable" , ok for desktop only */
+      // float: left;     // use li.item.image-left instead      max-width: 640px;
     }
     figcaption {
       font-size: 32px;
@@ -720,27 +750,13 @@ html.touch  {
         padding: 4px 12px;
         font-size: 16px;
     }
-    form.sign-upxxx {
-      input.email {
-        font-size: 16px;
-        line-height: 16px;
-        padding: 4px 12px;
-        width: 160px;
-      }
-      button#join-email-list {
-        font-size: 16px;
-        -webkit-border-top-left-radius: 0;
-        -webkit-border-bottom-left-radius: 0;
-      
-        -moz-border-radius-topleft: 0;
-        -moz-border-radius-bottomleft: 0;
-      
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-    }
   }
-  
+  #how-it-works .carousel-inner {
+    figure .wrapH {
+      /* WARNING: float breaks carouFredSel height="variable" , unset for portrait */
+      // float: none;       // use li.item.image-left instead
+    }
+  }   
   #call-to-action {
     .span5.join, .span5.donate {
       > p.lead {
@@ -993,8 +1009,7 @@ html.touch  {
 		}
 		figure.graphic {
 			.wrapH {
-			  float: left;
-				height: 60px;
+			  // float: left;				height: 60px;
 			}
 			figcaption {
 				font-size: 16px;
@@ -1004,6 +1019,33 @@ html.touch  {
 			}
 		}
 	}
+
+/**
+ *  for CANCELLING left image right text w/o using float:left
+ *  CHANGES TO STACKED LAYOUT
+ *    used by #how-it-works
+ *    cancel @media 479 
+ */
+.featurette.carousel .carousel-inner {
+    li.item.left-image {      
+      text-align: center;
+      figure {
+        position: relative;
+        .wrapH {
+          display: block;
+          float: none;
+          width: auto;
+          margin-left: auto;
+        }
+        figcaption{
+          display: inline;
+          width: auto;
+          vertical-align: middle;
+        }
+      }
+    }
+}	
+	
 	#home {
 	  .fw-band.vcenter-body {
       min-height: 520px;

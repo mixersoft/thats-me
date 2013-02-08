@@ -519,9 +519,9 @@ var load_iscroll = function($) {
 			var id = o.attr('id');
 			var itemW = o.find('.carousel-inner > ul li.item').first().outerWidth();
 			// var scrollerW = o.find('.carousel-inner > ul').outerWidth();			var viewportW = o.find(".carousel-inner").outerWidth();
-			var visibleItems = Math.floor(viewportW/itemW);
+			var visibleItems = Math.floor(viewportW/itemW + 0.1);
 			var carouselItems = o.find('.item').size();
-			var pages = carouselItems - visibleItems;
+			var pages = carouselItems - visibleItems;		// 0 based
 			var pager = o.find('.carousel-pager');
 			var dots = pager.find('a');
 			if (dots.size()==0) {
@@ -532,7 +532,7 @@ var load_iscroll = function($) {
 			}
 			
 			for (var i=0; i<carouselItems; i++) {
-				if (i>pages || pages==1) {
+				if (i>pages || pages==0) {
 					dots.eq(i).addClass('hide');					
 				} else dots.eq(i).removeClass('hide');
 			}

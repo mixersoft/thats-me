@@ -360,7 +360,7 @@ var load_carouFredSel = function($) {
 			var check;
 		},
 		items		: {
-			width		: 260,			visible		: {
+			width		: 280,			// 3 visible on 1024x768			visible		: {
 				min			: 1,
 				max			: 5,
 				// variable	: true,
@@ -531,10 +531,10 @@ var load_iscroll = function($) {
 				dots = pager.find('a');
 			}
 			
-			for (var i=0; i<carouselItems; i++) {
-				if (i>pages || pages==0) {
-					dots.eq(i).addClass('hide');					
-				} else dots.eq(i).removeClass('hide');
+			for (var j=0; j<carouselItems; j++) {
+				if (j>pages || pages==0) {
+					dots.eq(j).addClass('hide');					
+				} else dots.eq(j).removeClass('hide');
 			}
 			iScroll = iScroll || CFG['iscroll'][id].iscroll;
 			var selected = iScroll.pageX || 0;
@@ -542,7 +542,7 @@ var load_iscroll = function($) {
 		},
 		fullWidth: function(o) {  // o.carousel
 			var count = o.find('.carousel-inner > ul li').size();
-			var fw = $(window).width()*0.9;	// add 10% extra room for finger scrolling
+			var fw = $(window).width()*0.85;	// add 10% extra room for finger scrolling
 			fw = Math.min(fw, 940);
 			o.find(".carousel-inner > ul").css('width', (count*fw) +'px');
 			o.find(".carousel-inner, .carousel-inner > ul li").css('width', fw +'px');

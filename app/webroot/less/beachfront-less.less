@@ -217,11 +217,11 @@ html.touch  {
    }
 
 .featurette {
-    min-height: 700px;    position:relative;
+    position:relative;
 		.fw-band.vcenter-body {
 			padding: 10px 0; 
 			padding-top: 40px;       /*  for .navbar, remove when not fixed */
-			min-height: 700px;       /* full-height band */
+			min-height: 678px;        /* #features=768px tall page on ipad landscape */
 			position: static;        /* DISABLE vertical centering */
 		}
 		> .fw-band.vcenter-body {
@@ -262,7 +262,7 @@ html.touch  {
 			display: inline-block;
 	    margin: 0;
 	    padding: 10px;
-	    vertical-align: middle;
+	    padding-bottom: 0;	    vertical-align: middle;
 	    width: auto;
 	    .wrapH {
 	    	img {
@@ -366,8 +366,8 @@ html.touch  {
 	
 	figure.graphic {
 		width: auto;
-		vertical-align: top;
 		max-width: 900px;
+		vertical-align: top;
 		.wrapH {
 			img {
 			}
@@ -432,7 +432,13 @@ html.touch  {
 }
 
 html.touch  {
-  .featurette.carousel  {
+  #features .carousel-inner {
+    box-shadow: 6px 0 2px @orange, -6px 0 2px @orange;
+  }
+  #how-it-works .carousel-inner {
+    box-shadow: 6px 0 2px @cream, -6px 0 2px @cream;
+  }
+  .featurette.carousel.iscroll  {
     figure.graphic {
       cursor: default;
       width:80%;
@@ -444,6 +450,9 @@ html.touch  {
       margin: 0 auto;
       width: auto;   /* center iscroll */
     }
+  }
+  .carousel-pager {
+    margin-top: 10px;
   }
 }
 
@@ -494,9 +503,9 @@ html.touch  {
   }    
 }
 
-#features.carousel.iscroll {
+#features.carousel {
   figure.graphic {
-    max-width: 240px;  
+    max-width: 280px;  
   }
 }
 
@@ -525,10 +534,8 @@ html.touch  {
       }
     }
   }
-  .carousel-pager {
-    margin-top: 10px;           // desktop.touch
-  }
 }
+
 
 #see-the-movie {
   background-color: #FFFFFF;

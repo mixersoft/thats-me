@@ -42,8 +42,8 @@ html.touch .carousel-inner > ul li.item {
 	-o-box-sizing: border-box;
 	box-sizing: border-box;
 	display: inline-block;
-	float: left;
-	height: 100%;
+/*	float: left;*/
+/*	height: 100%;*/
 }
 
 html.touch .carousel.iscroll .carousel-control-wrap {

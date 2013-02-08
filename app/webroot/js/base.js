@@ -279,7 +279,7 @@ var load_carouFredSel = function($) {
 					// carousel resize on window.resize
 					$('html.no-touch .carousel.fred').each(function(i, elem) {
 						CFG['carousel'].paging.refresh_pageDots($(elem));					});
-					// resize menubar items, desktop only
+					// resize menubar items, 
 					CFG['util'].setNavbarCollapse();
 				});
 				
@@ -495,6 +495,8 @@ var load_iscroll = function($) {
 			  		CFG['iscroll'][id].iscroll.refresh();
 			  		CFG['iscroll'].refresh_pageDots(o, CFG['iscroll'][id].iscroll);
 			 	});
+			 	// resize menubar items, 
+				CFG['util'].setNavbarCollapse();
 			});
 			
 			$(window).on('scroll.swipe',function(e) {

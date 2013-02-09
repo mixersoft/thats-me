@@ -585,6 +585,10 @@ html.touch  {
 
 #call-to-action {
   .rgba-text-shadow();
+  .wrapZ {
+    position: relative;
+    z-index: 1;
+  }
   .heading {
     border: 2px solid @cream;
     margin: 80px 0 20px;
@@ -597,6 +601,17 @@ html.touch  {
       font-size: 21px;
       line-height: 1.15;
     }
+  }
+  img.darkroom {
+    background: url("/img/beachfront/darkroom.png") no-repeat scroll right top transparent;
+    background-size: 100%;
+    height: 110px;
+    width: 361px;
+    position: absolute;
+    right: -29px;
+    top: -59px;
+    width: 361px;
+    z-index: -1;
   }
   .container {
     p {
@@ -761,6 +776,11 @@ html.touch  {
     }
   }   
   #call-to-action {
+    img.darkroom {
+      background-size: 80%;
+      right: -29px;
+      top: -49px;
+    }    
     .span5.join, .span5.donate {
       > p.lead {
         min-height: 145px;  
@@ -816,6 +836,11 @@ html.touch  {
     .container {
       padding: 0 20px;
     }
+    img.darkroom {
+      background-size: 70%;
+      right: -27px;
+      top: -49px;
+    }   
     .heading {
       margin: 80px  0 40px;
       h1 {
@@ -924,6 +949,11 @@ html.touch  {
     .container {
       padding: 0 20px;
     }
+    img.darkroom {
+      background-size: 60%;
+      right: -27px;
+      top: -46px;
+    }    
     .heading {
       margin: 60px  0 40px;
       h1 {

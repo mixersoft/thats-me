@@ -376,8 +376,11 @@ We think it's a small price to pay for all the time you'll save.</p>
       			<div class='row'>
 		      		<div class="span12">
 		      			<div class="heading">
-					        <h1>Still in the Darkroom</h1>
-					        <div class="subhead">We're working hard to build Snaphappi into a service you never knew you needed but can't live without.</div>
+		      				<div class='wrapZ'>
+		      					<img class='darkroom' src='/img/spacer.gif'>
+						        <h1>Still in the Darkroom</h1>
+						        <div class="subhead">We're working hard to build Snaphappi into a service you never knew you needed but can't live without.</div>
+					        </div>
 				       	</div>
 					</div>
       			</div>

@@ -285,10 +285,10 @@ They work quickly (assisted by sophisticated algorithms) to rate photos and hide
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-04.png"></div>
         		<figcaption>And Build Your <span>Curated Timeline</span>
         			<div class="body">
-<p>You'll find all your photos on a stunning Curated Timeline to make your precious moments easy to find and a joy to use.</p>
-<p>Your timeline is organized using automatic event detection to make your moments easy to find and 
-we'll highlight your events with beautiful photos to make it a joy to use. 
-<p>Your photos are ready to play.</p>        				
+<p>You'll find all your photos on a stunning Curated Timeline 
+	to make your precious moments easy to find and a joy to use.</p>
+<p>Your Timeline is automatically organized by events and always feature Beautiful Photos, not thumbnails, to connect you instantly with the moment. 
+<p>We'll get your photos are Ready to Play.</p>        				
 					</div>
         		</figcaption>
         	</figure>        	

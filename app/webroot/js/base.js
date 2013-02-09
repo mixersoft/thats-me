@@ -302,7 +302,13 @@ var load_carouFredSel = function($) {
 					// http://caroufredsel.dev7studios.com/configuration.php
 					// Using custom configuration
 					var fred = o.find('.carousel-inner .scroller');
-					fred.carouFredSel(  CFG['carousel'][o.attr('id')] );
+					var id = o.attr('id'),
+						cfg =  CFG['carousel'][o.attr('id')];
+					
+					if (cfg.items.visible.max !== undefined && $(window).width() < 467 ) {
+						cfg.items.visible.max == cfg.items.visible.min;		// force visible=1
+					}
+					fred.carouFredSel(  cfg );
 			},
 			bootstrap: function(o){
 				CFG['carousel'].paging.dotPaging_bootstrap(o);
@@ -555,7 +561,7 @@ var load_iscroll = function($) {
 			var items = o.find('.carousel-inner > ul li.item figure.graphic');
 			var count = items.size();
 			var itemW = items.first().outerWidth(true);
-			var fw = $(window).width() * 0.90;
+			var fw = $(window).width() * 0.85;
 			var visible = fw/itemW;
 			visible = visible < 1.56 ? 1 : Math.min(Math.round(visible), count);
 			itemW = Math.min(Math.max(fw/visible, 200), 260);	// min-width 200px, max-width=260px;

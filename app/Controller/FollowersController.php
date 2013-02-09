@@ -52,8 +52,7 @@ class FollowersController extends AppController {
 			->to($address)
 			->subject('Welcome to Snaphappi!');
 		// $email->helpers(array('Html', 'Custom', 'Text'));			$email->viewVars(compact('address'));
-		$email->send();
-		
+		return $email->send();
 	}
 	/**
 	 * post to /followers/signMeUp.json for json response, using json view
@@ -74,7 +73,6 @@ class FollowersController extends AppController {
 				}		
 			}
 			$ret = $this->Follower->save($data, true);
-debug($ret);			
 			$response = isset($ret['Follower']) ? $ret['Follower'] : $ret;
 			$success = !empty($ret);
 			$json = compact('success', 'response');
@@ -85,16 +83,24 @@ debug($ret);
 			 */
 			 
 			 if ($success) {
-			 	// TODO: send emails from queue
-				if (!empty($ret['Follower']['cheer']) && empty($follower['Follower']['email_cheer'])) 
-				{
-					$this->_email_cheer($ret['Follower']['email']);
-				}  
-				else if (!empty($this->data['Follower']['join']) && empty($follower['Follower']['email_welcome'])) 
-				{
-debug("sending email welcome");					
-					$this->_email_welcome($ret['Follower']['email']);	
-				}
+			 	try {
+				 	// TODO: send emails from queue
+					if (!empty($ret['Follower']['cheer']) && empty($follower['Follower']['email_cheer'])) 
+					{
+						$this->_email_cheer($ret['Follower']['email']);
+						// TODO: update DB
+						$this->Follower->saveField('email_cheer', 1);
+					}  
+					else if (!empty($this->data['Follower']['join']) && empty($follower['Follower']['email_welcome'])) 
+					{
+						$ret = $this->_email_welcome($ret['Follower']['email']);	
+						// TODO: update DB
+						$this->Follower->saveField('email_welcome', 1);
+					}
+				} catch(SocketException $e) {
+					// email failed;
+					$this->log("Send Email failed for address={$ret['Follower']['email']}", LOG_DEBUG);
+				}	
 			}
 		}
 	}

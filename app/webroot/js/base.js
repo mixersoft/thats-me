@@ -102,17 +102,18 @@ CFG['util'] = {
 	},
 	postEmail: function(email, options, success) {
 		options = options || {};
-		success = success || function(){
+		success = success || function(json, status, o){
 				console.log("post Email success");
 			}
 		var postData = $.extend({'data[Follower][email]':email}, options);
 		$.ajax({
 			type:"post",
-			url:"/followers/signMeUp",
+			url:"/followers/signMeUp.json",
 			data: postData,
-			success: success,
+			dataType: 'json',			success: success,
 			
-		}).fail(function(resp){
+		}).fail(function(json, status, o){
+			alert('There was a problem on the server.');
 			console.error("post Email failed");
 		});
 		return false;
@@ -732,20 +733,25 @@ $(document).ready(
 				var formId = $(e.currentTarget).attr('id');
 				switch (formId){
 					case "cheer":
-						CFG['util'].postEmail(address,{'data[Follower][cheer]':'1'},function(){
+						CFG['util'].postEmail(address,{'data[Follower][cheer]':'1'},function(json, status, o){
 							// on success
-							CFG['util'].showDonateButtons();	
+							if (json.success) {
+								CFG['util'].showDonateButtons();	
+							} else {
+								alert('there was a problem saving your email.');
+							}
 						});
-						if ("debug") CFG['util'].showDonateButtons();	// show anyway
 					break;
 					case "invite":
-						CFG['util'].postEmail(address,{},function(){
+						CFG['util'].postEmail(address,{},function(json, status, o){
 							// on success
-							CFG['util'].animateScrollToHash({hash:'#sharing' });
-							$('#sharing .thank-you.hide ').removeClass('hide');
+							if (json.success) {
+								CFG['util'].animateScrollToHash({hash:'#sharing' });
+								$('#sharing .thank-you.hide ').removeClass('hide');
+							} else {
+								alert('there was a problem saving your email.');
+							}
 						});
-						CFG['util'].animateScrollToHash({hash:'#sharing' });
-						$('#sharing .thank-you.hide ').removeClass('hide');
 					break;
 				}
 				// jQuery post in background

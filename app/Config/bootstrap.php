@@ -181,3 +181,88 @@ CakeLog::config('error', array(
 ));
 
 Configure::load('config');
+
+
+
+
+
+
+/*
+ * helper functions for manipulating CakePHP Named Parameters
+ */
+function trimNamedParam($urlparts, $named) {
+	$url = $urlparts['url'];
+	unset($urlparts['url']);
+	$lastchar = strrchr($url, "?");
+	if ($lastchar == false)
+	$url .= "?";
+	$trimmedURL = preg_replace("/(^.*)\/$named:.*?([\/\?].*$)/", '$1$2', $url);
+	if ($lastchar == false) {
+		$trimmedURL = substr($trimmedURL, 0, strlen($trimmedURL) - 1);
+	}
+	if (!@ empty($urlparts)) {
+		$qs = '?'.http_build_query($urlparts);
+	} else
+	$qs = '';
+	return '/'.$trimmedURL.$qs;
+}
+
+/**
+ *	sets NamedParam value without changing anything else
+ *	 @params array $urlparts - set to $this->request->query
+ */
+function setNamedParam($urlparts, $named, $value) {
+	if (is_array($urlparts) && isset($urlparts['url'])) {	// comes from $this->request->query
+		$url = $urlparts['url'];
+		unset($urlparts['url']);
+		unset($urlparts['ext']);
+	} else $url = $urlparts;
+	$querystring = strrchr($url, "?");
+	if (strpos($url, $named) === false) {
+		if ($querystring) {
+			// add named param BEFORE $querystring
+			$trimmedURL = substr_replace($url, "/$named:$value", -strlen($querystring), 0);
+		} else 	$trimmedURL = $url."/$named:$value";
+	} else {
+		$trimmedURL = preg_replace("/(^.*)\/$named:.*?([\/\?].*$)/", '$1'."/$named:$value".'$2', $url);
+		if ($querystring == false) {
+			$trimmedURL = substr($trimmedURL, 0, strlen($trimmedURL) - 1);
+		}
+	}
+	// add qs from $this->request->query array form
+	if (is_array($urlparts) && !empty($urlparts)) {
+		$qs = '?'.http_build_query($urlparts);
+	} else $qs = '';
+	if (strpos($trimmedURL, '/')!==0) $trimmedURL = '/'.$trimmedURL;
+	return $trimmedURL.$qs;
+}
+
+
+/**
+ * convert GET params to POST params to test XHR in browser
+ * @param $forceXHR - debug level
+ * @param $showData - echo converted post params in debug 
+ */
+function setXHRDebug($controller, $forceXHR = 0, $showData = false){
+	if (isset($controller->request->query['forceXHR'])) {
+		$controller->request->query['forcexhr'] = $controller->request->query['forceXHR'];
+		unset($controller->request->query['forceXHR']);
+	}
+	if (isset($controller->request->query['forcexhr'])) {
+		$forceXHR = $controller->request->query['forcexhr'];
+	}
+	if ($forceXHR && isset($controller->request->query['data'])) {
+		$controller->data = $controller->request->query['data'];	
+		if ($showData) debug($controller->data);
+	}
+	if (isset($controller->request->query['debug'])) {
+		$debug = $controller->request->query['debug'];
+		Configure::write('debug', $debug );
+	} else if (isset($controller->request->named['debug'])) {
+		$debug = $controller->request->named['debug'];
+		Configure::write('debug', $debug );
+	} else if ($controller->request->isAjax()){
+		Configure::write('debug',$forceXHR);
+	} 
+	return $forceXHR;
+}

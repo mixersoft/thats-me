@@ -28,6 +28,8 @@
  Router::connect('/', array('controller' => 'thatsme', 'action' => 'index'));
  Router::connect('/i-need-this', array('controller' => 'thatsme', 'action'=>'beachfront'));
  Router::connect('/:action', array('controller' => 'thatsme'));
+ Router::connect('/social/:action/*', array('controller' => 'followers'));
+ Router::connect('/donate/:action/*', array('controller' => 'followers'));
 	// Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'launchrock'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.

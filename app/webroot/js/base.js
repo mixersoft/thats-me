@@ -105,10 +105,10 @@ CFG['util'] = {
 		success = success || function(){
 				console.log("post Email success");
 			}
-		var postData = $.extend({'data[User][email]':email}, options);
+		var postData = $.extend({'data[Follower][email]':email}, options);
 		$.ajax({
 			type:"post",
-			url:"/action/sign-me-up",
+			url:"/followers/signMeUp",
 			data: postData,
 			success: success,
 			
@@ -732,14 +732,14 @@ $(document).ready(
 				var formId = $(e.currentTarget).attr('id');
 				switch (formId){
 					case "cheer":
-						CFG['util'].postEmail(address,{'action':'cheer'},function(){
+						CFG['util'].postEmail(address,{'data[Follower][cheer]':'1'},function(){
 							// on success
 							CFG['util'].showDonateButtons();	
 						});
 						if ("debug") CFG['util'].showDonateButtons();	// show anyway
 					break;
 					case "invite":
-						CFG['util'].postEmail(address,{'action':'join'},function(){
+						CFG['util'].postEmail(address,{},function(){
 							// on success
 							CFG['util'].animateScrollToHash({hash:'#sharing' });
 							$('#sharing .thank-you.hide ').removeClass('hide');

@@ -34,28 +34,38 @@ class FollowersController extends AppController {
 
 	public $name = 'Follower';
 	public $layout = 'default';
+	public $components = array('RequestHandler');
 	
+	public function beforeFilter(){
+		if ($this->request->is('ajax')) {
+			Configure::write('debug',0);
+			$this->response->disableCache();
+		}
+	}
+	
+	/**
+	 * post to /followers/signMeUp.json for json response, using json view
+	 */
 	public function signMeUp() {
-		setXHRDebug($this,2,true);		if (!empty($this->data)) {
+		setXHRDebug($this,0,false);		if (!empty($this->data)) {
 			if (!empty($this->data['Follower']['email'])) {
 				$follower = $this->Follower->findByEmail($this->data['Follower']['email']);
 				if (!empty($follower['Follower']['id'])) {
 					// update, i.e. Follower.cheer=1
 					$this->Follower->id = $follower['Follower']['id'];
 					// update counts
-					if (isset($this->data[$this->alias]['tweet'])) $this->data[$this->alias]['tweet'] =  $follower['Follower']['tweet']+1;
-					if (isset($this->data[$this->alias]['fb_like'])) $this->data[$this->alias]['tweet'] =  $follower['Follower']['fb_like']+1;
-					if (isset($this->data[$this->alias]['fb_share'])) $this->data[$this->alias]['tweet'] =  $follower['Follower']['fb_share']+1;
+					if (isset($this->data['Follower']['tweet']))  $follower['Follower']['tweet'] += 1;
+					if (isset($this->data['Follower']['fb_like'])) $follower['Follower']['fb_like'] += 1;
+					if (isset($this->data['Follower']['fb_share'])) $follower['Follower']['fb_share'] += 1;
+					$data['Follower'] = array_intersect_key($follower['Follower'], $this->data['Follower']);
 				}		
-			}
-			$ret = $this->Follower->save($this->data, true);
-			if ($ret) {
-				echo "success";
-			} else {
-				echo "failed";
-			}
+			} else $data = $this->data;
+			$ret = $this->Follower->save($data, true);
+			$response = isset($ret['Follower']) ? $ret['Follower'] : $ret;
+			$success = !empty($ret) && 0;
+			$json = compact('success', 'response');
+			$this->set(compact('json', 'success', 'response'));
 		}
-		
 	}
 	
 	public function Amazon_IPN() {

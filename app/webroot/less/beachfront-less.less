@@ -53,6 +53,16 @@ html.fontface:not(.android) {
   .rgba(@orange, 0.7);
 }
 
+.rgb-text-shadow(@hex=#000000, @alpha:1) {
+  text-shadow: 1px 1px 2px hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
+}
+.rgb-text-shadow(@hex=#333333) {
+  text-shadow: 1px 1px 2px @hex;
+}
+.rgb-text-shadow-sm(@hex=#333333) {
+  text-shadow: 0 0 1px @hex;
+}
+
 body {
   .rgba(#000000, 0.7);
   color: @cream;  
@@ -78,7 +88,7 @@ i.icon-white {
     .popover-title {
       .strong;
       background-color: @red;
-      text-shadow: 0 0 1px #333333;
+      .rgb-text-shadow-sm();
       color: #FFF;
       font-size: 16px;
     }
@@ -98,16 +108,6 @@ i.icon-white {
   border-radius: @radius;
 }
 
-
-.rgb-text-shadow(@hex=#000000, @alpha:1) {
-	text-shadow: 1px 1px 2px hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
-}
-.rgb-text-shadow(@hex=#333333) {
-  text-shadow: 1px 1px 2px @hex;
-}
-.rgb-text-shadow-sm(@hex=#333333) {
-  text-shadow: 0 0 1px @hex;
-}
 
 /*
  * navbar elements
@@ -278,7 +278,7 @@ html.touch  {
 	      font-size: 32px;
 	      line-height: 1.15;
 	    	margin-top: 10px;
-	    	text-shadow: 1px 1px 2px #333333;
+	    	.rgb-text-shadow()    // text-shadow: 1px 1px 2px #333333;
 	    	> span {
 	    	  white-space:nowrap;
 	    	}	    	.body {
@@ -380,7 +380,7 @@ html.touch  {
 		}
 		figcaption {
 		  display: inline-block;
-			text-shadow: 1px 1px 2px #333333;
+			.rgb-text-shadow();
       .body {
       }			
 		}
@@ -496,7 +496,7 @@ html.touch  {
     color: @red;
     text-shadow: 1px 1px 1px #333;
     strong {
-      text-shadow: 0 0 1px #333;
+      .rgb-text-shadow-sm();
     }
   }
   .carousel-inner {         /* start with one row, overflow-x: hidden */
@@ -519,7 +519,7 @@ html.touch  {
       text-shadow: 1px 1px 1px #333;;
       font-size: 20px;
       .body {
-        text-shadow: 0px 0px 1px #333;
+        .rgb-text-shadow-sm();
       }     
     }
   }
@@ -698,7 +698,7 @@ html.touch  {
 #about {
   .container .body {
     color: @darkgrey;
-    text-shadow: 0 0 1px #000000;
+    .rgb-text-shadow-sm();
   }
 }
 #FAQ {

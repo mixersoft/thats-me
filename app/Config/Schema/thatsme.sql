@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS `followers` (
   `tweet` tinyint(4) UNSIGNED DEFAULT 0 COMMENT 'count of tweets',
   `fb_like` tinyint(4)UNSIGNED  DEFAULT 0 COMMENT 'count of fb likes',
   `fb_share` tinyint(4) UNSIGNED DEFAULT 0  COMMENT 'count of fb share on feed postings',
+  `email_welcome` tinyint(1) DEFAULT 0  COMMENT 'welcome email sent',
+  `email_cheer` tinyint(1) DEFAULT 0  COMMENT 'cheer email sent',
   `modified` datetime DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),

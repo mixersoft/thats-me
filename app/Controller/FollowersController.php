@@ -43,11 +43,24 @@ class FollowersController extends AppController {
 		}
 	}
 	
+	
+	public function _email_welcome($address) {
+		$email = new CakeEmail('social_at_gmail');
+		$email->template('welcome')
+			->emailFormat('both')
+			->from(array('social@snaphappi.com' => 'Snaphappi'))
+			->to($address)
+			->subject('Welcome to Snaphappi!');
+		// $email->helpers(array('Html', 'Custom', 'Text'));			$email->viewVars(compact('address'));
+		$email->send();
+		
+	}
 	/**
 	 * post to /followers/signMeUp.json for json response, using json view
 	 */
 	public function signMeUp() {
 		setXHRDebug($this,0,false);		if (!empty($this->data)) {
+			$data = $this->data;
 			if (!empty($this->data['Follower']['email'])) {
 				$follower = $this->Follower->findByEmail($this->data['Follower']['email']);
 				if (!empty($follower['Follower']['id'])) {
@@ -57,14 +70,32 @@ class FollowersController extends AppController {
 					if (isset($this->data['Follower']['tweet']))  $follower['Follower']['tweet'] += 1;
 					if (isset($this->data['Follower']['fb_like'])) $follower['Follower']['fb_like'] += 1;
 					if (isset($this->data['Follower']['fb_share'])) $follower['Follower']['fb_share'] += 1;
-					$data['Follower'] = array_intersect_key($follower['Follower'], $this->data['Follower']);
+					$data = array('Follower'=>array_intersect_key($follower['Follower'], $this->data['Follower']));
 				}		
-			} else $data = $this->data;
+			}
 			$ret = $this->Follower->save($data, true);
+debug($ret);			
 			$response = isset($ret['Follower']) ? $ret['Follower'] : $ret;
-			$success = !empty($ret) && 0;
+			$success = !empty($ret);
 			$json = compact('success', 'response');
 			$this->set(compact('json', 'success', 'response'));
+			/*
+			 * for json response?
+			 * return new CakeResponse(array('body' => json_encode($array)));
+			 */
+			 
+			 if ($success) {
+			 	// TODO: send emails from queue
+				if (!empty($ret['Follower']['cheer']) && empty($follower['Follower']['email_cheer'])) 
+				{
+					$this->_email_cheer($ret['Follower']['email']);
+				}  
+				else if (!empty($this->data['Follower']['join']) && empty($follower['Follower']['email_welcome'])) 
+				{
+debug("sending email welcome");					
+					$this->_email_welcome($ret['Follower']['email']);	
+				}
+			}
 		}
 	}
 	

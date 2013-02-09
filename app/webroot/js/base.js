@@ -743,7 +743,7 @@ $(document).ready(
 						});
 					break;
 					case "invite":
-						CFG['util'].postEmail(address,{},function(json, status, o){
+						CFG['util'].postEmail(address,{'data[Follower][join]':'1'},function(json, status, o){
 							// on success
 							if (json.success) {
 								CFG['util'].animateScrollToHash({hash:'#sharing' });

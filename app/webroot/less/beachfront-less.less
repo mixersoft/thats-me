@@ -99,10 +99,15 @@ i.icon-white {
 }
 
 
-.rgba-text-shadow(@hex=#000000, @alpha:1) {
+.rgb-text-shadow(@hex=#000000, @alpha:1) {
 	text-shadow: 1px 1px 2px hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
 }
-
+.rgb-text-shadow(@hex=#333333) {
+  text-shadow: 1px 1px 2px @hex;
+}
+.rgb-text-shadow-sm(@hex=#333333) {
+  text-shadow: 0 0 1px @hex;
+}
 
 /*
  * navbar elements
@@ -239,7 +244,7 @@ html.touch  {
       font-weight: bold;
     }
 		.featurette-heading {
-			.rgba-text-shadow();
+			.rgb-text-shadow();
 			font-weight: 400;
 			margin: 0 5%;
 			padding: 20px 0;
@@ -309,7 +314,7 @@ html.touch  {
     min-height: 460px;
   }
 	.featurette-heading {
-		.rgba-text-shadow(@orange);
+		.rgb-text-shadow(@orange);
 	}
 	figure.graphic {
 		color: @cream;
@@ -388,11 +393,11 @@ html.touch  {
     font-size: 120px;
     height: 80px;
     margin-top: 0;
-    .rgba-text-shadow(@orange);
+    .rgb-text-shadow(@orange);
   }
   .carousel-control:hover {
     opacity: 1;
-    // .rgba-text-shadow(@orange);
+    // .rgb-text-shadow(@orange);
     text-shadow: 0px 0px 10px rgba(241, 96, 34, 1);  }
   .carousel-pager {
       font-size: 10px;
@@ -584,7 +589,7 @@ html.touch  {
 }
 
 #call-to-action {
-  .rgba-text-shadow();
+  .rgb-text-shadow();
   .wrapZ {
     position: relative;
     z-index: 1;
@@ -631,7 +636,7 @@ html.touch  {
     }
     button#invite {
       color: #000;
-      .rgba-text-shadow(#FFFFFF, 1);
+      .rgb-text-shadow(#FFFFFF, 1);
     }
   }
   .donate-form-wrap {
@@ -652,7 +657,7 @@ html.touch  {
 }
 
 #sharing, #thank-you, #about, #FAQ {
-  .rgba-text-shadow();
+  .rgb-text-shadow();
   .heading {
     border: 2px solid @orange;
     margin: 80px 0 20px;
@@ -683,7 +688,7 @@ html.touch  {
 #sharing, #thank-you h1 {
   span.muted, .subhead {
     color: @cream;
-    .rgba-text-shadow(@orange);
+    .rgb-text-shadow(@orange);
   }
   .twitter-share-button {
     vertical-align: top;

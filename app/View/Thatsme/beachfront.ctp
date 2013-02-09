@@ -44,9 +44,11 @@
 	$js_bottom = array();
 	if ($isTouch) {
 		$js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
+		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js/Touchable-jQuery-Plugin-master&f=touchable.js,hoverable.js';
 	} else {
 		// $js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
-		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';			$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
+		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';	
+		// $js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
 	}
 	if (Configure::read('isLocal')) {
 		$js_bottom[] = 'base';

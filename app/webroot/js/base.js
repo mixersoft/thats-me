@@ -180,7 +180,7 @@ CFG['util'] = {
 CFG['timing'] = {
 	linger: 1000,
 	carousel: 5000,
-	slideshow: 7000,
+	slideshow: 10000,
 	navbarSlideOut: 5000,
 	load_SocialSharing: 5000,
 	validation_popover: 2000,
@@ -209,11 +209,11 @@ var load_bg_slideshow = function() {
 			CFG['slideshow'].preloader = $('<img />')	
 				.bind('load', function() {
 				    // Background image has loaded.
-				    var fade = $('#bg-slideshow .fading:first-child').addClass('fade-slow');
+				    var fade = $('#bg-slideshow .fading:first-child').addClass('fadeOut-slow');
 				    CFG['slideshow'].loaded[fade.attr('name')]=1;
 				    setTimeout(function(){
 					    $('#bg-slideshow .fading').remove();
-					}, 600);
+					}, 4000);
 				});
 			// start the slideshow timer	
 			CFG['slideshow'].next();	
@@ -408,10 +408,6 @@ var load_carouFredSel = function($) {
 				var fred = $(this).closest('.carousel.fred');			    return markup = '<a href="#'+fred.attr('id')+'">'+nr+'</a>';
 			}
 		},
-		swipe : {
-			onTouch: CFG.isTouch,
-			onMouse: !CFG.isTouch,
-		}		
 	};
 	CFG['carousel']['how-it-works'] = {
 		responsive: true,
@@ -465,10 +461,6 @@ var load_carouFredSel = function($) {
 			    return markup = '<a href="#'+fred.attr('id')+'">'+nr+'</a>';
 			}
 		},
-		swipe : {
-			onTouch: CFG.isTouch,
-			onMouse: !CFG.isTouch,
-		}			
 	}; 
 	
 	CFG['carousel'].init.init();
@@ -519,7 +511,30 @@ var load_iscroll = function($) {
 				});
 			});
 			
-			
+			$('a.carousel-control').click(function(e){
+				e.stopImmediatePropagation();
+				return false;
+			});
+			// listen for a touchstart event
+			$('.iscroll .carousel-inner').Hoverable({disableHover:true}).newHover(
+				function(e, touch) {//hoverIN
+					$(this).addClass('active');
+					$(this).next('.carousel-control-wrap').removeClass('fadeOut-slow').addClass('fadeOut').addClass('fadeIn');
+				}, 
+				function(e, touch) {//hoverOut
+					$(this).removeClass('active');
+					$(this).next('.carousel-control-wrap').removeClass('fadeIn');
+			}); 
+			$('.iscroll .fw-band.vcenter-body').Hoverable({disableHover:true}).newHover(
+				function(e, touch) {//hoverIN
+					$(this).find('.carousel-inner').addClass('active');
+					$(this).find('.carousel-control-wrap').removeClass('fadeOut-slow').addClass('fadeOut').addClass('fadeIn');
+				}, 
+				function(e, touch) {//hoverOut
+					$(this).find('.carousel-inner').removeClass('active');
+					$(this).find('.carousel-control-wrap').removeClass('fadeIn');
+			});
+ 
 		},
 		refresh_pageDots: function(o, iScroll){
 			var id = o.attr('id');
@@ -590,6 +605,7 @@ var load_iscroll = function($) {
 		vScroll: false,
 		hScrollbar: false,
 		vScrollbar: false,
+		lockDirection: false,
 		onScrollEnd: function () {
 			// for packedWidth iscroll
 			var pages = $('#features .carousel-pager > a:not(.hide)').size();

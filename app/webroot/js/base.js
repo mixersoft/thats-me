@@ -134,7 +134,13 @@ CFG['util'] = {
 	animateScrollToHash: function(o) {
 		var target = o.hash;
 		if (target) {
-	        // console.log(target);	        $.scrollTo(target, 500);
+	        // console.log(target);
+	        var delta = $(target).offset().top - $(window).scrollTop();
+	        if (delta < 0 || delta > 50) {
+	        	setTimeout(function(){
+	        		$.scrollTo(target, 500);
+	        	}, 50);
+	        } 
 	    }
 	    return target;
 	},

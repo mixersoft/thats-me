@@ -2,6 +2,7 @@
 	$title = "Snaphappi &middot; Curated Family Photos";
 	$description = "What do you do with your 10,000 photos &middot; how do you find those precious moments? Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines. Put your photos on our To-do list and Play with your photos once again.";
 	$viewport = "width=device-width, initial-scale=1.0";
+	
 	/**
 	 * meta
 	 */
@@ -41,13 +42,16 @@
 		// $js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
 		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';			$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';		// $js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
 	}
-	if (1 && Configure::read('isLocal')) {
+	if ($isLocal) {
 		$js_bottom[] = 'base';
 		$js_bottom[] = 'http://www.youtube.com/iframe_api';		$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
 	} else {
 		$js_bottom[] = '/min/b=js&f=base.js,vendor.js';		$js_bottom[] = 'http://www.youtube.com/iframe_api';
 	}
-	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));	$this->start('javascript_Bottom');
+	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
+	
+	if ($isLocal == false) {
+		// load google analytics/mixpanel only from snaphappi.com		$this->start('javascript_Bottom');
 ?>
 		<!-- start google Analytics -->
 		<script type="text/javascript">
@@ -70,7 +74,8 @@
 			mixpanel.init("22ee941178e2f8bb1702c92f84cf91b2");
 		</script>		
 <?php
-	$this->end();	 
+		$this->end();	 
+	}
 ?>
 
 <?php $this->start('body_header'); ?>

@@ -269,11 +269,6 @@ var load_carouFredSel = function($) {
 					var id = o.addClass('fred').attr('id');
 					CFG['carousel'].init.fred(o);
 					CFG['carousel'].paging.refresh_pageDots(o);
-					// No .activated required for carouFredSel
-					// CFG['carousel'].paging.autoPaging(o, CFG['carousel'].isLingeringTimer);
-					// o.one('click', function(e){
-						// $(e.currentTarget).addClass('activated');
-					// })
 					o.find('.invisible').removeClass('invisible');				});
 				
 				$(window).resize(function() {
@@ -284,20 +279,10 @@ var load_carouFredSel = function($) {
 					CFG['util'].setNavbarCollapse();
 				});
 				
-				// start autoPaging, add .activated when lingers into view
-				// deprecate: not required for carouFredSel	
-				// $(window).on('scroll.activate',function(e) {
-					// /* Check the location of each desired element */
-					// var inactive = $('.carousel:not(.fred.activated)');
-					// if (inactive.size()==0) {
-						// // $(window).off('scroll.activate');
-					// } else {
-						// inactive.each(function(i, elem) {
-							// // start autoPaging on linger
-							// CFG['carousel'].paging.autoPaging($(elem), CFG['carousel'].isLingeringTimer);
-						// });
-					// }
-				// });
+				$('.carousel-pager > div, .carousel-control-btn').on('click', function(e){
+					var hash = $(e.currentTarget).attr('href');
+					if (hash) CFG['util'].animateScrollToHash({hash: hash});
+				})
 			},
 			fred: function(o) {
 					// http://caroufredsel.dev7studios.com/configuration.php
@@ -311,10 +296,6 @@ var load_carouFredSel = function($) {
 					}
 					fred.carouFredSel(  cfg );
 			},
-			// ???: deprecate
-			// bootstrap: function(o){
-				// CFG['carousel'].paging.dotPaging_bootstrap(o);
-			// }
 		},
 		paging : {
 			/*
@@ -412,7 +393,7 @@ var load_carouFredSel = function($) {
 			duration		: 1000,							
 			pauseOnHover	: 'immediate',
 			onCreate 		: function(data) {	},
-			// onAfter 		: function() {	},		},
+		},
 		prev : {
 			button		: "#how-it-works .carousel-control-btn.left",
 			key			: "left",
@@ -446,176 +427,6 @@ var load_carouFredSel = function($) {
 	}; 
 	
 	CFG['carousel'].init.init();
-	
-}
-
-/*
- * iscroll load/init for html.touch
- */
-var load_iscroll = function($) {
-	CFG['iscroll'] = {
-		timers: {}, 			// for isLingeringInView
-		init : function(){
-			$('html.touch .featurette.carousel').each(function(i, elem){
-				var o = $(elem);
-				var id = o.addClass('iscroll').attr('id');
-				o.find('.carousel-control-wrap').addClass('fadeOut-slow');
-				CFG['iscroll'][id].setWidths(o);
-				CFG['iscroll'][id].iscroll.refresh();
-				CFG['iscroll'].refresh_pageDots(o, CFG['iscroll'][id].iscroll);
-
-			    o.find('.invisible').removeClass('invisible');
-			});
-			// refresh widths on window resize
-			$(window).resize(function() {
-				$('html.touch .featurette.carousel.iscroll').each(function(i, elem){
-					var o = $(elem),
-						id = o.attr('id');
-			  		CFG['iscroll'][id].setWidths(o);
-			  		CFG['iscroll'][id].iscroll.refresh();
-			  		CFG['iscroll'].refresh_pageDots(o, CFG['iscroll'][id].iscroll);
-			 	});
-			 	// resize menubar items, 
-				CFG['util'].setNavbarCollapse();
-			});
-			
-			$(window).on('scroll.swipe',function(e) {
-				$('html.touch .featurette.carousel.iscroll').each(function(i, elem){
-					var o = $(elem);
-					CFG['util'].isLingeringInView(o, CFG['iscroll'].timers, CFG['timing'].linger,
-						function(o){
-							o.find('.carousel-control-wrap').addClass('fadeIn');		
-							setTimeout(function(){
-								o.find('.carousel-control-wrap').removeClass('fadeIn');
-							},1000);
-						}
-					);
-				});
-			});
-			
-			$('.carousel-control-btn').click(function(e){
-				e.stopImmediatePropagation();
-				return false;
-			});
-			// listen for a touchstart event
-			$('.iscroll .carousel-inner').Hoverable({disableHover:true}).newHover(
-				function(e, touch) {//hoverIN
-					$(this).addClass('active');
-					$(this).next('.carousel-control-wrap').removeClass('fadeOut-slow').addClass('fadeOut').addClass('fadeIn');
-				}, 
-				function(e, touch) {//hoverOut
-					$(this).removeClass('active');
-					$(this).next('.carousel-control-wrap').removeClass('fadeIn');
-			}); 
-			$('.iscroll .fw-band.vcenter-body').Hoverable({disableHover:true}).newHover(
-				function(e, touch) {//hoverIN
-					$(this).find('.carousel-inner').addClass('active');
-					$(this).find('.carousel-control-wrap').removeClass('fadeOut-slow').addClass('fadeOut').addClass('fadeIn');
-				}, 
-				function(e, touch) {//hoverOut
-					$(this).find('.carousel-inner').removeClass('active');
-					$(this).find('.carousel-control-wrap').removeClass('fadeIn');
-			});
- 
-		},
-		refresh_pageDots: function(o, iScroll){
-			var id = o.attr('id');
-			var itemW = o.find('.carousel-inner > ul li.item').first().outerWidth();
-			// var scrollerW = o.find('.carousel-inner > ul').outerWidth();			var viewportW = o.find(".carousel-inner").outerWidth();
-			var visibleItems = Math.floor(viewportW/itemW + 0.1);
-			var carouselItems = o.find('.item').size();
-			var pages = carouselItems - visibleItems;		// 0 based
-			var pager = o.find('.carousel-pager');
-			var dots = pager.find('a');
-			if (dots.size()==0) {
-				for (var i=0; i<carouselItems; i++) {
-					pager.append('<a href="#'+ id +'">'+i+'</a>')
-				}
-				dots = pager.find('a');
-			}
-			
-			for (var j=0; j<carouselItems; j++) {
-				if (j>pages || pages==0) {
-					dots.eq(j).addClass('hide');					
-				} else dots.eq(j).removeClass('hide');
-			}
-			iScroll = iScroll || CFG['iscroll'][id].iscroll;
-			var selected = iScroll.pageX || 0;
-			dots.removeClass('active').eq(selected).addClass('active');
-		},
-		fullWidth: function(o) {  // o.carousel
-			var count = o.find('.carousel-inner > ul li').size();
-			var fw = $(window).width()*0.85;	// add 10% extra room for finger scrolling
-			fw = Math.min(fw, 940);
-			o.find(".carousel-inner > ul").css('width', (count*fw) +'px');
-			o.find(".carousel-inner, .carousel-inner > ul li").css('width', fw +'px');
-		},
-		/*
-		 * #features.carousel.iscroll 
-		 * show as many as can fit in .carousel-inner width
-		 */
-		packedWidth: function(o) {	
-			var items = o.find('.carousel-inner > ul li.item figure.graphic');
-			var count = items.size();
-			var itemW = items.first().outerWidth(true);
-			var fw = $(window).width() * 0.85;
-			var visible = fw/itemW;
-			visible = visible < 1.56 ? 1 : Math.min(Math.round(visible), count);
-			itemW = Math.min(Math.max(fw/visible, 200), 260);	// min-width 200px, max-width=260px;
-			o.find(".carousel-inner").css('width', itemW*visible + 'px');
-			o.find(".carousel-inner > ul").css('width', (count*itemW) +'px');
-			o.find('.carousel-inner > ul li.item').css('width', itemW +'px');
-		},
-		// add one for each iscroll
-		'features': {
-			iscroll : null, 
-			setWidths : null,
-		},
-		'how-it-works': {
-			iscroll : null, 
-			setWidths : null,
-		},
-	}
-	
-	// #features iscroll
-	// NOTE: call constructor with id of .carousel-inner, i.e. #features-iscroll.carousel-inner
-	CFG['iscroll']['features'].setWidths = CFG['iscroll'].packedWidth;
-	CFG['iscroll']['features'].iscroll = new iScroll('features-iscroll',{
-		snap: 'li.item',
-		momentum: false,
-		hScroll: true,
-		vScroll: false,
-		hScrollbar: false,
-		vScrollbar: false,
-		lockDirection: false,
-		onScrollEnd: function () {
-			// for packedWidth iscroll
-			var pages = $('#features .carousel-pager > a:not(.hide)').size();
-			var selected = (this.currPageX >= pages-1 ) ? pages-1 : this.currPageX; 
-			$('#features .carousel-pager a').removeClass('active').eq(selected).addClass('active');
-			// document.querySelector('#features .carousel-pager > a.active').className = '';
-			// document.querySelector('#features .carousel-pager > a:nth-child(' + (page) + ')').className = 'active';
-		}
-	});
-	// #how-it-works-iscroll
-	CFG['iscroll']['how-it-works'].setWidths = CFG['iscroll'].fullWidth;
-	CFG['iscroll']['how-it-works'].iscroll = new iScroll('how-it-works-iscroll',{
-		snap: 'li.item',
-		momentum: false,
-		hScroll: true,
-		vScroll: false,
-		hScrollbar: false,
-		vScrollbar: false,
-		onScrollEnd: function () {
-			document.querySelector('#how-it-works .carousel-pager > a.active').className = '';
-			document.querySelector('#how-it-works .carousel-pager > a:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-		}
-	});
-	
-	/*
-	 * init all iscrolls
-	 */
-	CFG['iscroll'].init();
 	
 }
 
@@ -677,13 +488,11 @@ $(document).ready(
 		 */
 		if ($('html').hasClass('touch')) {
 			$('.carousel-inner > ul > li.item.active').removeClass('active');
-			// load_iscroll($);
-load_carouFredSel($);			
+			load_carouFredSel($);			
 			$('#header .show-navbar').on('click', function(e){
 				e.preventDefault();
 				CFG['util'].slideInNavBar();
 			})
-		
 		
 		/*
 		 *		mouse/desktop init 
@@ -741,12 +550,6 @@ load_carouFredSel($);
 				e.preventDefault();
 				e.stopImmediatePropagation();
 				return false;
-			} else if ( 0 || $('html.touch').size() ){
-				// ipad/mobile safari not validating form correctly
-				email.popover('show');
-				setTimeout(function(){
-					email.popover('hide');
-				}, CFG['timing'].validation_popover);
 			} 
 		}) 
 		/**

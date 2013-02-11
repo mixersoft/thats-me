@@ -743,6 +743,7 @@ $(document).ready(
 						});
 					break;
 					case "invite":
+					case "join":
 						CFG['util'].postEmail(address,{'data[Follower][join]':'1'},function(json, status, o){
 							// on success
 							if (json.success) {

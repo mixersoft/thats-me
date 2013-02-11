@@ -54,11 +54,26 @@ class FollowersController extends AppController {
 		// $email->helpers(array('Html', 'Custom', 'Text'));			$email->viewVars(compact('address'));
 		return $email->send();
 	}
+	
+	public function _email_cheer($address) {
+		$email = new CakeEmail('social_at_gmail');
+		$email->template('cheer')
+			->emailFormat('both')
+			->from(array('social@snaphappi.com' => 'Snaphappi'))
+			->to($address)
+			->subject('Welcome to Snaphappi and thanks for the cheer!');
+		// $email->helpers(array('Html', 'Custom', 'Text'));	
+		$email->viewVars(compact('address'));
+		return $email->send();
+	}
+
 	/**
 	 * post to /followers/signMeUp.json for json response, using json view
 	 */
 	public function signMeUp() {
-		setXHRDebug($this,0,false);		if (!empty($this->data)) {
+		setXHRDebug($this,0,false);
+		if (!empty($this->data)) {
+			
 			$data = $this->data;
 			if (!empty($this->data['Follower']['email'])) {
 				$follower = $this->Follower->findByEmail($this->data['Follower']['email']);
@@ -87,9 +102,8 @@ class FollowersController extends AppController {
 				 	// TODO: send emails from queue
 					if (!empty($ret['Follower']['cheer']) && empty($follower['Follower']['email_cheer'])) 
 					{
-						$this->_email_cheer($ret['Follower']['email']);
-						// TODO: update DB
-						$this->Follower->saveField('email_cheer', 1);
+						// wait for IPN post to send email,
+						// should JS client scroll to #thank-you?
 					}  
 					else if (!empty($this->data['Follower']['join']) && empty($follower['Follower']['email_welcome'])) 
 					{
@@ -106,10 +120,61 @@ class FollowersController extends AppController {
 	}
 	
 	public function Amazon_IPN() {
-		$this->log(">>> Amazon_IPN:".print_r($this->data, true), LOG_DEBUG);
+		setXHRDebug($this,0,false);
+		if (!empty($this->data)) {
+			$success = false;
+			/*
+			 * ???: how do we connect an Amazon IPN post to the user's email
+			 */
+			$email = $this->data['email'];
+			$email_success = $this->_ipn_response($email);
+			$this->log(">>> Amazon_IPN:".print_r($this->data, true), LOG_DEBUG);
+			$this->response->statusCode(200);
+			echo "ok";
+		} else {
+			$this->response->statusCode(400);
+			echo "error";
+		} 
+		$this->autoRender = false;	
 	}
 	public function PayPal_IPN() {
-		$this->log(">>> PayPal_IPN:".print_r($this->data, true), LOG_DEBUG);
-	}		
+		setXHRDebug($this,0,false);
+		if (!empty($this->data)) {
+			$success = false;
+			/*
+			 * ???: how do we connect an Amazon IPN post to the user's email
+			 */
+			$email = $this->data['email'];
+			$email_success = $this->_ipn_response($email);
+			$this->log(">>> PayPal_IPN:".print_r($this->data, true), LOG_DEBUG);
+			$this->response->statusCode(200);
+			echo "ok";
+		} else {
+			$this->response->statusCode(400);
+			echo "error";
+		} 
+		$this->autoRender = false;		
+	}
+	
+	public function _ipn_response($email) {
+		$follower = $this->Follower->findByEmail($email);
+		if (!empty($follower['Follower']['id'])) {
+			$success = true;
+		} 
+		if ($success && !empty($follower) && empty($follower['Follower']['email_cheer'])) 
+		{
+			try {
+				$this->_email_cheer($follower['Follower']['email']);	
+				// TODO: update DB
+				$this->Follower->id = $follower['Follower']['id'];
+				$this->Follower->saveField('email_cheer', 1);
+				return true;
+			} catch(SocketException $e) {
+				// email failed;
+				$this->log("Send Email:cheer failed for address={$follower['Follower']['email']}", LOG_DEBUG);
+				return false;
+			}	
+		}
+	}
 	
 }

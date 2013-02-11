@@ -145,7 +145,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		TRIGGER : 'i-need-this',
 		FIRST_SECTION : '#home',
 		VIDEO_NAME : 'CuratedFamilPhotos',
-		DISABLED : /snaphappi.com/.test(window.location.host), 
+		DISABLED : !/snaphappi.com/.test(window.location.host), 
 		timers: {},
 	}
 

@@ -66,7 +66,27 @@ class FollowersController extends AppController {
 		$email->viewVars(compact('address'));
 		return $email->send();
 	}
-
+	
+	public function _send_ipn_email($email) {
+		$follower = $this->Follower->findByEmail($email);
+		if (!empty($follower['Follower']['id'])) {
+			$success = true;
+		} 
+		if ($success && !empty($follower) && empty($follower['Follower']['email_cheer'])) 
+		{
+			try {
+				$this->_email_cheer($follower['Follower']['email']);	
+				// TODO: update DB
+				$this->Follower->id = $follower['Follower']['id'];
+				$this->Follower->saveField('email_cheer', 1);
+				return true;
+			} catch(SocketException $e) {
+				// email failed;
+				$this->log("Send Email:cheer failed for address={$follower['Follower']['email']}", LOG_DEBUG);
+				return false;
+			}	
+		}
+	}
 	/**
 	 * post to /followers/signMeUp.json for json response, using json view
 	 */
@@ -127,7 +147,7 @@ class FollowersController extends AppController {
 			 * ???: how do we connect an Amazon IPN post to the user's email
 			 */
 			$email = $this->data['email'];
-			$email_success = $this->_ipn_response($email);
+			$email_success = $this->_send_ipn_email($email);
 			$this->log(">>> Amazon_IPN:".print_r($this->data, true), LOG_DEBUG);
 			$this->response->statusCode(200);
 			echo "ok";
@@ -145,7 +165,7 @@ class FollowersController extends AppController {
 			 * ???: how do we connect an Amazon IPN post to the user's email
 			 */
 			$email = $this->data['email'];
-			$email_success = $this->_ipn_response($email);
+			$email_success = $this->_send_ipn_email($email);
 			$this->log(">>> PayPal_IPN:".print_r($this->data, true), LOG_DEBUG);
 			$this->response->statusCode(200);
 			echo "ok";
@@ -156,25 +176,5 @@ class FollowersController extends AppController {
 		$this->autoRender = false;		
 	}
 	
-	public function _ipn_response($email) {
-		$follower = $this->Follower->findByEmail($email);
-		if (!empty($follower['Follower']['id'])) {
-			$success = true;
-		} 
-		if ($success && !empty($follower) && empty($follower['Follower']['email_cheer'])) 
-		{
-			try {
-				$this->_email_cheer($follower['Follower']['email']);	
-				// TODO: update DB
-				$this->Follower->id = $follower['Follower']['id'];
-				$this->Follower->saveField('email_cheer', 1);
-				return true;
-			} catch(SocketException $e) {
-				// email failed;
-				$this->log("Send Email:cheer failed for address={$follower['Follower']['email']}", LOG_DEBUG);
-				return false;
-			}	
-		}
-	}
 	
 }

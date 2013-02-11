@@ -385,29 +385,42 @@ html.touch  {
       }			
 		}
 	}
-	.carousel-control {
+	.carousel-control-btn  {
     color: @cream;
+    cursor: pointer;
     opacity: 0.8;
-    background-color: transparent;
+    background: none;
+    border-radius: none;
     border: 0 none;
     font-size: 120px;
+    font-weight: normal;
     height: 80px;
     margin-top: 0;
+    left: 15px;
+    line-height: 30px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: 40%;
+    width: 40px;
     .rgb-text-shadow(@orange);
   }
-  .carousel-control:hover {
-    opacity: 1;
-    // .rgb-text-shadow(@orange);
-    text-shadow: 0px 0px 10px rgba(241, 96, 34, 1);  }
+  
+  .carousel-control-btn.right {
+    left: auto;
+    right: 15px;
+  }
+  
   .carousel-pager {
       font-size: 10px;
       line-height: 10px;
       margin-bottom: 10px;  /* margin above .fw-band.footer */
       position: static;
       width: inherit;
-      > a {
+      > div {
         border: 3px solid @cream;
         display: inline-block;
+        font-size: 10px;
         height: 10px;
         width: 10px;
         margin-right: 10px;
@@ -416,17 +429,18 @@ html.touch  {
         color: transparent;
         cursor: pointer;
       }
-      > a:hover{
-        box-shadow: 0px 0px 10px rgba(241, 96, 34, 1);
-      }
-      > a:last-child {
+      
+      > div:last-child {
         margin-right: 0;
       }
       .active, .selected {
         background-color: @orange;    
+        box-shadow: none;
+        cursor: default;
       }
   }
 }
+
 
 /**
  *  for left image right text w/o using float:left
@@ -462,7 +476,18 @@ html.touch  {
   }
 }
 
-
+html.no-touch {
+  /* NOTE: we are supressing hover/click on html.touch next/prev/pagination to prevent CSS flashes */
+  .carousel-control-btn:hover {
+    opacity: 1;
+    text-shadow: 0px 0px 10px rgba(241, 96, 34, 1);
+  }
+  .carousel-pager {
+    > div:hover{
+      box-shadow: 0px 0px 10px rgba(241, 96, 34, 1);
+    }
+  }
+}
 
 html.touch  {
   /* use .active on touch event to show scroller */
@@ -485,8 +510,18 @@ html.touch  {
       width: auto;   /* center iscroll */
     }
   }
+  /* supress click on html.touch next/prev/pagination to prevent CSS flashes */
+  .carousel-control-btn {
+    cursor: default !important;  
+    -webkit-tap-highlight-color : rgba(0,0,0,0);  // prevent ipad CSS flashes
+  }
   .carousel-pager {
+    cursor: default;
     margin-top: 10px;
+    > div {
+      cursor: default !important;
+      -webkit-tap-highlight-color : rgba(0,0,0,0); // prevent ipad CSS flashes
+    }
   }
 }
 
@@ -523,17 +558,17 @@ html.touch  {
       }     
     }
   }
-  .carousel-control {
+  .carousel-control-btn {
     color: @orange;
   }
   .carousel-pager {
-    > a {
+    > div {
       border: 3px solid @orange;
       background: @orange;
     }
-    > a:hover{
-      box-shadow: 0px 0px 10px rgba(241, 96, 34, 1);
-    }
+    // > div:hover{
+      // box-shadow: 0px 0px 10px rgba(241, 96, 34, 1);
+    // }
     .active, .selected {
       background-color: @cream;    
     }
@@ -1037,11 +1072,11 @@ html.touch  {
 			padding: 0;
 			// min-width: 240px;
 		}
-		.carousel-control {
+		.carousel-control-btn {
 		  font-size: 60px;
 		  left:0;
 		}
-		.carousel-control.right {
+		.carousel-control-btn.right {
         right:0;
         left: auto;
 		}

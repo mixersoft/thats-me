@@ -264,7 +264,7 @@ var load_carouFredSel = function($) {
 		find: {},
 		init:{ 
 			init: function(){
-				$('html.no-touch .carousel').each(function(i, elem) {
+				$('.carousel').each(function(i, elem) {
 					var o = $(elem);
 					var id = o.addClass('fred').attr('id');
 					CFG['carousel'].init.fred(o);
@@ -278,26 +278,26 @@ var load_carouFredSel = function($) {
 				
 				$(window).resize(function() {
 					// carousel resize on window.resize
-					$('html.no-touch .carousel.fred').each(function(i, elem) {
+					$('.carousel.fred').each(function(i, elem) {
 						CFG['carousel'].paging.refresh_pageDots($(elem));					});
 					// resize menubar items, 
 					CFG['util'].setNavbarCollapse();
 				});
 				
-				// add .activated when lingers into view
-				// NOTE: not required for carouFredSel	
-				$(window).on('scroll.activate',function(e) {
-					/* Check the location of each desired element */
-					var inactive = $('html.no-touch .carousel:not(.fred.activated)');
-					if (inactive.size()==0) {
-						$(window).off('scroll.activate');
-					} else {
-						inactive.each(function(i, elem) {
-							// start autoPaging on linger
-							CFG['carousel'].paging.autoPaging($(elem), CFG['carousel'].isLingeringTimer);
-						});
-					}
-				});
+				// start autoPaging, add .activated when lingers into view
+				// deprecate: not required for carouFredSel	
+				// $(window).on('scroll.activate',function(e) {
+					// /* Check the location of each desired element */
+					// var inactive = $('.carousel:not(.fred.activated)');
+					// if (inactive.size()==0) {
+						// // $(window).off('scroll.activate');
+					// } else {
+						// inactive.each(function(i, elem) {
+							// // start autoPaging on linger
+							// CFG['carousel'].paging.autoPaging($(elem), CFG['carousel'].isLingeringTimer);
+						// });
+					// }
+				// });
 			},
 			fred: function(o) {
 					// http://caroufredsel.dev7studios.com/configuration.php
@@ -311,9 +311,10 @@ var load_carouFredSel = function($) {
 					}
 					fred.carouFredSel(  cfg );
 			},
-			bootstrap: function(o){
-				CFG['carousel'].paging.dotPaging_bootstrap(o);
-			}
+			// ???: deprecate
+			// bootstrap: function(o){
+				// CFG['carousel'].paging.dotPaging_bootstrap(o);
+			// }
 		},
 		paging : {
 			/*
@@ -326,35 +327,9 @@ var load_carouFredSel = function($) {
 				var pages = carouselItems - visibleItems;
 				var selected = fred.triggerHandler("currentPosition");
 				for (var i=pages+1; i<carouselItems; i++) {
-					o.find('.carousel-pager a').eq(i).addClass('hide');					
+					o.find('.carousel-pager > div').eq(i).addClass('hide');					
 				}
-				o.find('.carousel-pager a').eq(selected).addClass('selected');
-			},
-			/*
-			 * @deprecate if using only carouFredSel
-			 * NOTE: carouFredSel DOES NOT check activated, only scrollIntoView
-			 *  
-			 * autoPaging for bootstrap,iscroll carousels, 
-			 * 	- initialize AFTER first scroll into view
-			 * 
-			 */
-			autoPaging: function(o, timers) {
-				if ($('html').hasClass('touch')) return;			// uses iscroll, instead
-				if (o.hasClass('activated')) return;
-				if (CFG['carousel'].autoPaging == false) return;
-				
-				// isLingeringInView(o, timers, delay, success){
-				CFG['util'].isLingeringInView(o, timers, CFG['timing']['lingering'], 
-					function(o){
-						/**
-						 * start .carousel when .carousel lingers in view 
-						 */
-						var id = o.attr('id');
-						if (!o.hasClass('activated')) o.addClass('activated');
-						return 'activated';	// only start once.
-					}
-				);	
-				return;
+				o.find('.carousel-pager > div').eq(selected).addClass('selected');
 			},
 		},
 	};
@@ -376,7 +351,6 @@ var load_carouFredSel = function($) {
 		auto : {
 			timeoutDuration: 7000,
 			conditions: function(){ 
-				// return $(this).closest('.carousel.fred').hasClass('activated'); 
 				return CFG['util'].isScrolledIntoView($(this));
 			},
 		},
@@ -390,25 +364,30 @@ var load_carouFredSel = function($) {
 			},
 			// onAfter 		: function() {	},		},
 		prev : {
-			button		: "#features .carousel-control.left",
+			button		: "#features .carousel-control-btn.left",
 			key			: "left",
 			items		: 1,
-			easing		: "cubic",			duration	: 750,
+			easing		: "cubic",			duration	: 750,
+
 		},
 		next : {
-			button		: "#features .carousel-control.right",
+			button		: "#features .carousel-control-btn.right",
 			key			: "right",
 			items		: 1,
-			easing		: "cubic",			duration	: 750,		},
+			easing		: "cubic",			duration	: 750,
+		},
 		pagination : {
 			container	: "#features  .carousel-pager",
 			keys		: true,
 			easing		: "cubic",			duration	: 750,
 			anchorBuilder: function(nr) {
 				// this == li.item
-				var fred = $(this).closest('.carousel.fred');			    return markup = '<a href="#'+fred.attr('id')+'">'+nr+'</a>';
-			}
+				var fred = $(this).closest('.carousel.fred');			    return markup = '<div href="#'+fred.attr('id')+'">'+nr+'</div>';
+			},
 		},
+		swipe	: {
+			onTouch: CFG['isTouch'],
+		}
 	};
 	CFG['carousel']['how-it-works'] = {
 		responsive: true,
@@ -425,43 +404,45 @@ var load_carouFredSel = function($) {
 		auto : {
 			timeoutDuration: 7000,
 			conditions: function(){ 
-				// return $(this).closest('.carousel.fred').hasClass('activated'); 
 				return CFG['util'].isScrolledIntoView($(this));			},
 		},
 		scroll : {
 			items			: 1,
 			easing			: "linear",
-			duration		: 500,							
+			duration		: 1000,							
 			pauseOnHover	: 'immediate',
 			onCreate 		: function(data) {	},
 			// onAfter 		: function() {	},		},
 		prev : {
-			button		: "#how-it-works .carousel-control.left",
+			button		: "#how-it-works .carousel-control-btn.left",
 			key			: "left",
 			items		: 1,
 			easing		: "cubic",
-			duration	: 750,
+			duration	: 1000,
 
 		},
 		next : {
-			button		: "#how-it-works .carousel-control.right",
+			button		: "#how-it-works .carousel-control-btn.right",
 			key			: "right",
 			items		: 1,
 			easing		: "cubic",
-			duration	: 750,
+			duration	: 1000,
 
 		},
 		pagination : {
 			container	: "#how-it-works  .carousel-pager",
 			keys		: true,
 			easing		: "cubic",
-			duration	: 750,
+			duration	: 1000,
 			anchorBuilder: function(nr) {
 				// this == li.item
 				var fred = $(this).closest('.carousel.fred');
-			    return markup = '<a href="#'+fred.attr('id')+'">'+nr+'</a>';
+			    return markup = '<div href="#'+fred.attr('id')+'">'+nr+'</div>';
 			}
 		},
+		swipe	: {
+			onTouch: CFG['isTouch'],
+		}
 	}; 
 	
 	CFG['carousel'].init.init();
@@ -512,7 +493,7 @@ var load_iscroll = function($) {
 				});
 			});
 			
-			$('a.carousel-control').click(function(e){
+			$('.carousel-control-btn').click(function(e){
 				e.stopImmediatePropagation();
 				return false;
 			});
@@ -696,7 +677,8 @@ $(document).ready(
 		 */
 		if ($('html').hasClass('touch')) {
 			$('.carousel-inner > ul > li.item.active').removeClass('active');
-			load_iscroll($);
+			// load_iscroll($);
+load_carouFredSel($);			
 			$('#header .show-navbar').on('click', function(e){
 				e.preventDefault();
 				CFG['util'].slideInNavBar();

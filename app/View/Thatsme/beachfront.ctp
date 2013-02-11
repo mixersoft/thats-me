@@ -42,13 +42,12 @@
 	 */ 
 	 
 	$js_bottom = array();
-	if ($isTouch) {
+	if ( 0 && $isTouch) {
 		$js_bottom[] = 'http://snappi.snaphappi.com/min/f=static/js/iscroll/iscroll.js';
 		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js/Touchable-jQuery-Plugin-master&f=touchable.js,hoverable.js';
 	} else {
 		// $js_bottom[] = '/js/vendor/TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.js';
-		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';	
-		// $js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
+		// $js_bottom[] = '/js/vendor/carouFredSel-6.2.0/jquery.carouFredSel-6.2.0.js';			$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';		// $js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';
 	}
 	if (1 && Configure::read('isLocal')) {
 		$js_bottom[] = 'base';
@@ -229,8 +228,8 @@ by rating the ones you love.
 <div class="carousel-pager center"></div>  
 <div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>     
 <div class="carousel-control-wrap">
-	<a class="left carousel-control" href="#features" direction="prev">&lsaquo;</a>        
-	<a class="right carousel-control" href="#features" direction="next">&rsaquo;</a>
+	<div class="left carousel-control-btn" href="#features" direction="prev">&lsaquo;</div>        
+	<div class="right carousel-control-btn" href="#features" direction="next">&rsaquo;</div>
 </div>
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
@@ -323,8 +322,8 @@ We think it's a small price to pay for all the time you'll save.</p>
 <div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>  
    
 <div class="carousel-control-wrap">
-	<a class="left carousel-control" href="#how-it-works" direction="prev">&lsaquo;</a>
-	<a class="right carousel-control" href="#how-it-works" direction="next">&rsaquo;</a>
+	<div class="left carousel-control-btn" href="#how-it-works" direction="prev">&lsaquo;</div>
+	<div class="right carousel-control-btn" href="#how-it-works" direction="next">&rsaquo;</div>
 </div>
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 

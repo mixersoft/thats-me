@@ -12,13 +12,8 @@
 	/**
 	 * CSS
 	 */
-	if ($isTouch) {
-		// $this->Html->css(array('fonts', 'beachfront.css', 'touch', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));		$min = "/min/b=css&f=fonts.css,beachfront.css,touch.css,responsive-tablet.css,responsive-mobile.css";
-		$this->Html->css($min, null, array('inline' => false));
-	} else {
-		// $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));		$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css";
-		$this->Html->css($min, null, array('inline' => false));
-	}
+	// $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));	$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css";
+	$this->Html->css($min, null, array('inline' => false));
 	$this->start('css');
 		$this->Less->css('beachfront-less');
 	$this->end();

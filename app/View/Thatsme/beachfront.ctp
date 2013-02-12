@@ -98,7 +98,7 @@
     <![endif]-->
     
 	<div id="bg-slideshow">
-		<div class='fixed bg pix' name='0'></div>
+		<div class='fixed bg pix' name='1'></div>
 	</div>
 	
       <div id="home" class="featurette connect track-page-view ">

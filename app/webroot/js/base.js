@@ -216,43 +216,39 @@ var load_bg_slideshow = function() {
 			CFG['slideshow'].preloader = $('<img />')	
 				.bind('load', function() {
 				    // Background image has loaded.
-				    var fade = $('#bg-slideshow .fading:first-child').addClass('fadeOut-slow');
-				    CFG['slideshow'].loaded[fade.attr('name')]=1;
-				    setTimeout(function(){
-					    $('#bg-slideshow .fading').remove();
-					}, 4000);
+				    $('#bg-slideshow .active').addClass('fadeOut').removeClass('active');
+				    $('#bg-slideshow .loading').removeClass('loading').addClass('active');
+				    CFG['slideshow'].loaded[nextBg.attr('name')]=1;
 				});
 			// start the slideshow timer	
-			CFG['slideshow'].next();	
+			CFG['slideshow'].timer = setInterval(
+				CFG['slideshow'].next,
+				CFG['timing']['slideshow']
+			);
 		},
 		// slideshow timer
 		next: function(){
-			if (CFG['slideshow'].timer == null) {
-				CFG['slideshow'].timer = setInterval(
-					CFG['slideshow'].next,
-					CFG['timing']['slideshow']
-				);
-			}
-			if ($('#bg-slideshow .bg.fading').size()>1) return;
-			var bg = $('#bg-slideshow .bg.fixed');
-			
-			var fade = bg.clone().addClass('fading');
-			$('#bg-slideshow').append(fade);
+			// if ($('#bg-slideshow .bg.fading').size()>1) return;
+			var bg = $('#bg-slideshow .bg.fixed.active');
+			if (bg.size()==0) bg = $('#bg-slideshow .bg.fixed:first').addClass('active');
 			
 			// next slide
-			var i = parseInt(bg.attr('name'))+1;
+			var i = parseInt( bg.attr('name') || 1 ) +1;
 			if (i > CFG['slideshow'].count) i=1;
-			bg.attr('name', i );	
-			
-			// PRELOAD image
-			var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "")
-			if (CFG['slideshow'].loaded[i] == undefined) CFG['slideshow'].preloader.attr('src', bkgSrc);
-			else {
-				fade.addClass('fade-slow');
-				setTimeout(function(){
-				    	fade.remove();
-				    	delete fade;
-				}, 600);
+			var nextBg = $('#bg-slideshow .bg.fixed[name='+i+']'); 
+			if (nextBg.size()==0) {
+				// create nextBg by cloning active
+				nextBg = bg.clone().attr('name', i ).removeClass('active').removeClass('fadeOut').addClass('loading');
+				// add bg.addClass('fadeOut'); in onload
+				$('#bg-slideshow').prepend(nextBg);				// should be "below" face
+				
+							// PRELOAD image
+				var bkgSrc = bg.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "");
+				if (CFG['slideshow'].loaded[i] == undefined) CFG['slideshow'].preloader.attr('src', bkgSrc);
+				
+			} else {
+				$('#bg-slideshow > .active').removeClass('active').addClass('fadeOut');
+				nextBg.addClass('active').removeClass('fadeOut');
 			}
 		}
 	}

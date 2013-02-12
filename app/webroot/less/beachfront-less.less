@@ -221,16 +221,20 @@ html.touch  {
 
 .bg.fixed {
   .rgba(#000000, 0.7);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    height: 100%;
-    left: 0;
-    position: fixed;
-    top: 0px;   
-    width: 100%;
-    z-index: -1;
-   }
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0px;   
+  width: 100%;
+  z-index: -1;
+}
+.bg.fixed.active:nth-child(5) {
+  z-index: -2;      // should be below the fadeOut bg, in this case the :first
+}
+
 
 .featurette {
     position:relative;

@@ -151,7 +151,7 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel body-opaque track-page-view">
+    <div id="features" class="featurette carousel body-opaque track-page-view  track-carousel-end">
 	    <div class="vcenter-wrap opaque">
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body ">
@@ -243,7 +243,7 @@ by rating the ones you love.
     <!-- Carousel: How It Works
     ================================================== -->
     <a name='how-it-works'></a>
-    <div id="how-it-works" class="featurette carousel track-page-view ">
+    <div id="how-it-works" class="featurette carousel track-page-view track-carousel-end">
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
@@ -476,7 +476,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
       
       <a name='thank-you'></a>
       <a name='sharing'></a>
-      <div id='sharing' class="featurette sharing alpha70ph">
+      <div id='sharing' class="featurette sharing track-page-view alpha70ph">
       	<div class='fw-band vcenter-body'>
       		<div class="container">
       			<div class='row'>

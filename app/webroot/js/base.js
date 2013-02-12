@@ -315,6 +315,16 @@ var load_carouFredSel = function($) {
 				o.find('.carousel-pager > div').eq(selected).addClass('selected');
 			},
 		},
+		track_CarouselEnd: function(o){
+			var carousel = o.closest('.carousel'); 
+			if (carousel.hasClass('track-carousel-end')) {
+				carousel.removeClass('track-carousel-end');
+				CFG['mixpanel'].track({
+					event_name:'Page View',
+					section: carousel.attr('id')+":CAROUSEL-END",
+				});
+				// CFG['util'].notify('end of carousel');			}	// end if
+		}
 	};
 	CFG['carousel']['features'] = {
 		responsive: true,
@@ -333,6 +343,7 @@ var load_carouFredSel = function($) {
 		},
 		auto : {
 			timeoutDuration: 7000,
+			pauseOnHover	: 'immediate',
 			conditions: function(){ 
 				return CFG['util'].isScrolledIntoView($(this));
 			},
@@ -342,10 +353,12 @@ var load_carouFredSel = function($) {
 			// easing			: "easeInOutCubic",
 			duration		: 500,							
 			pauseOnHover	: 'immediate',
-			onCreate 		: function(data){
-				
-			},
-			// onAfter 		: function() {	},		},
+			onEnd			: function(direction) {
+				if (direction=='next') {
+					CFG['carousel'].track_CarouselEnd($(this));
+				}
+			}
+		},
 		prev : {
 			button		: "#features .carousel-control-btn.left",
 			key			: "left",
@@ -370,6 +383,7 @@ var load_carouFredSel = function($) {
 		},
 		swipe	: {
 			onTouch: CFG['isTouch'],
+			pauseOnHover	: 'immediate',
 		}
 	};
 	CFG['carousel']['how-it-works'] = {
@@ -386,6 +400,7 @@ var load_carouFredSel = function($) {
 		},
 		auto : {
 			timeoutDuration: 7000,
+			pauseOnHover	: 'immediate',
 			conditions: function(){ 
 				return CFG['util'].isScrolledIntoView($(this));			},
 		},
@@ -395,6 +410,11 @@ var load_carouFredSel = function($) {
 			duration		: 1000,							
 			pauseOnHover	: 'immediate',
 			onCreate 		: function(data) {	},
+			onEnd			: function(direction) {
+				if (direction=='next') {
+					CFG['carousel'].track_CarouselEnd($(this));
+				}
+			}
 		},
 		prev : {
 			button		: "#how-it-works .carousel-control-btn.left",
@@ -425,6 +445,7 @@ var load_carouFredSel = function($) {
 		},
 		swipe	: {
 			onTouch: CFG['isTouch'],
+			pauseOnHover	: 'immediate',
 		}
 	}; 
 	

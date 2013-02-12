@@ -147,6 +147,13 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		VIDEO_NAME : 'CuratedFamilPhotos',
 		DISABLED : !/snaphappi.com/.test(window.location.host), 
 		timers: {},
+		track: function(o){			// global track method
+			// requires o.event_name, o.section
+			var event_name = o.event_name; delete o.event_name;
+			var section = o.section; delete o.section;
+			var properties = $.extend({ section : section}, mixpanel_event_properties[event_name], o);
+			if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);
+		}
 	}
 
 	// track setTimeout timers, init in document.ready()

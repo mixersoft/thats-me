@@ -161,8 +161,8 @@
 Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; 
 <strong class="nowrap">for only a Penny a Photo!</strong></div>
        </div>			
-      <div id="features-iscroll" class="carousel-inner">
-      	<ul class="scroller invisible">
+      <div class="carousel-inner">
+      	<ul class="scroller xxxinvisible">
       		<li class="item active">
 			<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
@@ -251,8 +251,8 @@ by rating the ones you love.
 			<div class="featurette-heading center">
 				<h1 class="featurette-heading center">How It Works</h1>	
 			</div>
-      <div id="how-it-works-iscroll" class="carousel-inner">
-      <ul class="scroller invisible">	
+      <div class="carousel-inner">
+      <ul class="scroller xxxinvisible">	
         <li class="item left-image active">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-06.png"></div>

@@ -488,6 +488,10 @@ $(document).ready(
 				break;
 			case '#not-yet': 	// donate cancel return 
 				break;
+			case '#home':
+			case '':
+				$('#home .invisible, .navbar.invisible').addClass('fadeIn');
+				break;
 		}
 		/*
 		 *     	touch device init
@@ -561,6 +565,6 @@ $(document).ready(
 		/**
 		 *	fade in #home content 
 		 */
-		$('#home .invisible, .navbar.invisible').addClass('fadeIn-slow');
+		$('#home .invisible:not(.fadeIn), .navbar.invisible').addClass('fadeIn-slow');
 	}
 )

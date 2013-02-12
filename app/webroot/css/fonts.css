@@ -34,12 +34,12 @@
 	}
 	
 */
-@font-face {
+/*@font-face {
     font-family: "SourceSansProRegular";
     font-style: normal;
     font-weight: normal;
     src: url("/css/fonts/SourceSansPro/SourceSansPro-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("/css/fonts/SourceSansPro/SourceSansPro-Regular-webfont.woff") format("woff"), url("/css/fonts/SourceSansPro/SourceSansPro-Regular-webfont.ttf") format("truetype"), url("/css/fonts/SourceSansPro/SourceSansPro-Regular-webfont.svg#SourceSansProRegular") format("svg");
-}
+}*/
 @font-face {
   font-family: 'Roboto';
   font-style: normal;

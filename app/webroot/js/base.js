@@ -294,7 +294,7 @@ var load_carouFredSel = function($) {
 						cfg =  CFG['carousel'][o.attr('id')];
 					
 					if (cfg.items.visible.max !== undefined && $(window).width() < 467 ) {
-						cfg.items.visible.max == cfg.items.visible.min;		// force visible=1
+						cfg.items.visible.max = cfg.items.visible.min;		// force visible=1
 					}
 					fred.carouFredSel(  cfg );
 			},

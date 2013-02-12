@@ -142,6 +142,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	 */
 	// CONFIG, override in View File
 	CFG['mixpanel'] = {
+		instance: null,
 		TRIGGER : 'i-need-this',
 		FIRST_SECTION : '#home',
 		VIDEO_NAME : 'Imagine-0',
@@ -150,7 +151,9 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		identify: function(email, alias) {
 			if (!CFG['mixpanel'].DISABLED && email) {
 				mixpanel.identify(email);
-				if (alias) mixpanel.alias(email);
+// console.log("mixpanel.identify(), email="+email+", mixpanel.toString()="+mixpanel.toString());								if (alias) {
+					mixpanel.alias(email);
+// console.log("mixpanel.alias(), email="+email);									}
 			}
 		},
 		track: function(o){			// global track method
@@ -221,7 +224,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				url : window.location.pathname,
 				trigger : CFG['mixpanel'].TRIGGER,
 			};
-			
+			// CFG['mixpanel'].instance = mixpanel;		// not ready yet
 			var hash = window.location.hash || CFG['mixpanel'].FIRST_SECTION,
 				waypoint = hash.substr(1), 
 				event_name = 'Page View',

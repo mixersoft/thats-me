@@ -113,7 +113,7 @@ CFG['util'] = {
 			dataType: 'json',			success: function(json, status, o){
 				try {
 					var email = json.response.email,
-						alias = json.response.created;
+						alias = json.response.created || null;
 						CFG['mixpanel'].identify(email, alias);
 				} catch (e) {		}
 				success.call(this, json, status, o);
@@ -224,8 +224,8 @@ var load_bg_slideshow = function() {
 				.bind('load', function() {
 				    // Background image has loaded.
 				    $('#bg-slideshow .active').addClass('fadeOut').removeClass('active');
-				    $('#bg-slideshow .loading').removeClass('loading').addClass('active');
-				    CFG['slideshow'].loaded[nextBg.attr('name')]=1;
+				    var i = $('#bg-slideshow .loading').removeClass('loading').addClass('active').attr('name');
+				    CFG['slideshow'].loaded[i]=true;
 				});
 			// start the slideshow timer	
 			CFG['slideshow'].timer = setInterval(

@@ -60,7 +60,8 @@ class ThatsmeController extends AppController {
 		if (isset($this->request->query['touch']) && $this->request->query['touch']==0) {
 			$isTouch = false;
 		}
-		$this->set(compact('isTouch', 'isAndroid'));
+		$isLocal = Configure::read('isLocal');
+		$this->set(compact('isTouch', 'isAndroid', 'isLocal'));
 	}		// http://thats-me/i-need-this in routes.php
 	
 	public function faq(){

@@ -110,7 +110,14 @@ CFG['util'] = {
 			type:"post",
 			url:"/followers/signMeUp.json",
 			data: postData,
-			dataType: 'json',			success: success,
+			dataType: 'json',			success: function(json, status, o){
+				try {
+					var email = json.response.email,
+						alias = json.response.created;
+						CFG['mixpanel'].identify(email, alias);
+				} catch (e) {		}
+				success.call(this, json, status, o);
+			},
 			
 		}).fail(function(json, status, o){
 			alert('There was a problem on the server.');

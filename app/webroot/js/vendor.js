@@ -147,6 +147,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		VIDEO_NAME : 'CuratedFamilPhotos',
 		DISABLED : !/snaphappi.com/.test(window.location.host), 
 		timers: {},
+		identify: function(email, alias) {
+			if (!CFG['mixpanel'].DISABLED && email) {
+				mixpanel.identify(email);
+				if (alias) mixpanel.alias(email);
+			}
+		},
 		track: function(o){			// global track method
 			// requires o.event_name, o.section
 			var event_name = o.event_name; delete o.event_name;

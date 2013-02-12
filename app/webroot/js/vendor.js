@@ -144,7 +144,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	CFG['mixpanel'] = {
 		TRIGGER : 'i-need-this',
 		FIRST_SECTION : '#home',
-		VIDEO_NAME : 'CuratedFamilPhotos',
+		VIDEO_NAME : 'Imagine-0',
 		DISABLED : !/snaphappi.com/.test(window.location.host), 
 		timers: {},
 		identify: function(email, alias) {

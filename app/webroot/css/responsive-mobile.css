@@ -80,9 +80,12 @@
 	}
 	/* touch zone for showing navbar */
 	#header .show-navbar {
-		height: 20px;
+		display: block;
+		height: 30px;
 		margin: 0;
-		display: block !important;
+		position: fixed;
+		width: 100%;
+		
 	}
 	
 

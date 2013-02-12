@@ -1,4 +1,4 @@
-	       <div class="faq-section alpha70b">
+	       <div class="faq-section">
 	        	<h2>Photo Editing</h2>
 	        	<p class="question">
 	How do you know which photos are beautiful?	        		
@@ -43,7 +43,7 @@
 	Answer.        		
 	        	</p>
 	       </div>
-	       <div class="faq-section alpha70b"> 	
+	       <div class="faq-section "> 	
 	        	<h2>Privacy &amp; Sharing</h2>
 	        	<p class="question">
 	What about the safety and privacy of my photos?	        		
@@ -58,7 +58,7 @@
 	Answer.        		
 	        	</p>
 			</div>
-	       <div class="faq-section alpha70b">	
+	       <div class="faq-section ">	
 				<h2>Darkroom &amp; Launch</h2>
 				<p class="question">
 	Why do you want $1 from me?	        		
@@ -73,7 +73,7 @@
 	Answer.        		
 	        	</p>
 	        </div>
-	       <div class="faq-section alpha70b">	
+	       <div class="faq-section ">	
 	        	<h2>Platforms &amp Systems</h2>
 				<p class="question">
 	Why is the Curated Timeline only available as an iPad App?	        		

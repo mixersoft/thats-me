@@ -83,12 +83,12 @@
     ================================================== -->
       <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
  		<?php echo $this->element('navbar'); ?> 
-        <div class="alert-wrapper show-navbar invisible fadeOut" >
+        <div class="alert-wrapper invisible fadeOut" >
         	<div class='fade-wrap'>
         		<div class='alert alert-info'></div>
         	</div>
         </div>
-
+		<div class="show-navbar"></div>
 <?php $this->end(); ?> 
 
    
@@ -151,23 +151,22 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel track-page-view">
-		
-    <div class="vcenter-wrap">
+    <div id="features" class="featurette carousel body-opaque track-page-view">
+	    <div class="vcenter-wrap opaque">
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body ">
 		<div class="featurette-heading center">
 			<h1 class="">Features &amp; Benefits</h1>	    	
        		<div class="subhead">
 Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; 
-<span><strong>for only a Penny a Photo!</strong></string></span></div>
+<strong class="nowrap">for only a Penny a Photo!</strong></div>
        </div>			
       <div id="features-iscroll" class="carousel-inner">
       	<ul class="scroller invisible">
       		<li class="item active">
 			<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
-        		<figcaption>Screened by <span>Real Editors</span>
+        		<figcaption>Screened by <span class="nowrap">Real Editors</span>
         			<div class="body">
 No other photo service out there uses real people like we do. 
 Our trained photo editors hand-select the beautiful photos that are featured on your Timeline and hide duplicates just for you. 
@@ -178,7 +177,7 @@ We promise 100% privacy.
         </li><li class="item">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-06.png"></div>
-        		<figcaption>Beautiful <span>Curated Timeline</span>
+        		<figcaption>Beautiful <span class="nowrap">Curated Timeline</span>
         			<div class="body">
    	<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos.</p>
 <p>Quickly zoom across your Timeline, jumping from moment to moment; 
@@ -231,13 +230,13 @@ by rating the ones you love.
 		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
-  
       <div class='fw-band footer'>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
         		<div class="pull-right"><a href='#how-it-works'>Learn More</a></div>
         	</div>
         </div>  
+       
     </div><!-- /.carousel -->
        
 	
@@ -267,7 +266,7 @@ by rating the ones you love.
         </li><li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-02.png"></div>
-        		<figcaption>We'll Find Your <span>Beautiful Photos</span>
+        		<figcaption>We'll Find Your <span class="nowrap">Beautiful Photos</span>
         			<div class="body">
 <p>Our Trained Editors will find the Beautiful Photos that are featured on your Curated Timeline. 
 They work quickly (assisted by sophisticated algorithms) to rate photos and hide duplicates &mdash; just for you.</p>
@@ -278,7 +277,7 @@ They work quickly (assisted by sophisticated algorithms) to rate photos and hide
         </li><li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-04.png"></div>
-        		<figcaption>And Build Your <span>Curated Timeline</span>
+        		<figcaption>And Build Your <span class="nowrap">Curated Timeline</span>
         			<div class="body">
 <p>You'll find all your photos on a stunning Curated Timeline 
 	to make your precious moments easy to find and a joy to use.</p>
@@ -290,7 +289,7 @@ They work quickly (assisted by sophisticated algorithms) to rate photos and hide
         </li><li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-03.png"></div>
-        		<figcaption>Push Your Finger <span>to Play</span>
+        		<figcaption>Push Your Finger <span class="nowrap">to Play</span>
         			<div class="body">
 <p>Re-live and share your special moments on the iPad with the push of a finger.</p>
 <p>Quickly zoom across your Curated Timeline, jumping from moment to moment; 
@@ -348,15 +347,17 @@ We think it's a small price to pay for all the time you'll save.</p>
 <!--       <hr class="featurette-divider"> -->
       
 	  <a name='see-the-movie'></a>	
-      <div id="see-the-movie" class="featurette see-the-movie">
-      	<div class='fw-band vcenter-body'>
-	      	<div class="featurette-heading center">
-		        <h1>See the Movie</h1>
-		        <div class="subhead hide">It'll knock your socks off</div>
-	       	</div>
-	        <div class='vcenter-body center'>
-	        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
-			</div>
+      <div id="see-the-movie" class="featurette see-the-movie body-opaque">
+      	<div class="opaque">
+	      	<div class='fw-band vcenter-body'>
+		      	<div class="featurette-heading center">
+			        <h1>See the Movie</h1>
+			        <div class="subhead hide">It'll knock your socks off</div>
+		       	</div>
+		        <div class='vcenter-body center'>
+		        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/kVdU49dg3oo?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+				</div>
+		    </div>
 	    </div>
 	    <div class='fw-band footer'>
         	<div class="container ">
@@ -372,7 +373,7 @@ We think it's a small price to pay for all the time you'll save.</p>
       		<div class="container">
       			<div class='row'>
 		      		<div class="span12">
-		      			<div class="heading">
+		      			<div class="featurette-heading">
 		      				<div class='wrapZ'>
 		      					<img class='darkroom' src='/img/spacer.gif'>
 						        <h1>Still in the Darkroom</h1>
@@ -386,7 +387,7 @@ We think it's a small price to pay for all the time you'll save.</p>
 					<p class="lead">
 If you want this service ASAP, let us know &mdash; we need your vocal support! 
 Cheer us on through those long sleepless nights by sending us a buck <span class="strong">($1)</span>. 
-<br />We'll get the message. 
+<span>We'll get the message.</span> 
 	        		</p>
 	        	</div>
 	        	<div class="span5 join">
@@ -475,12 +476,12 @@ If you are not completely sold on the idea just yet, you'll still have an opport
       
       <a name='thank-you'></a>
       <a name='sharing'></a>
-      <div id='sharing' class="featurette sharing alpha70cr">
+      <div id='sharing' class="featurette sharing alpha70ph">
       	<div class='fw-band vcenter-body'>
       		<div class="container">
       			<div class='row'>
 		      		<div class="span12">
-		      			<div class="heading alpha70b">
+		      			<div class="featurette-heading alpha70b">
 					        <h1>
 					        	<span class="thank-you hide">Thank You for Your Support <span class="muted">and</span></span>
 					        	<span class="muted">Spread the Word!</span>
@@ -490,8 +491,10 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 				<div class="wrapH center">
       				<div class="social-sharing">
 		        		<div class="fb-like" data-href="http://thats-me.snaphappi.com/i-need-this" data-send="true" data-layout="button_count" data-width="225" data-show-faces="true" data-font="arial"></div>
+		        		<div class="tweet-wrap">
 		        		<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/i-need-this" 
 		        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos.">Tweet</a>
+		        			</div>
 		        	</div>
       			</div>
 					        
@@ -512,12 +515,12 @@ If you are not completely sold on the idea just yet, you'll still have an opport
       </div>
 
       <a name='about'></a>
-      <div id='about' class="featurette about track-page-view alpha70ph">
+      <div id='about' class="featurette about track-page-view alpha70card">
 		<div class='fw-band vcenter-body'>
       		<div class="container">
       			<div class='row'>
 		      		<div class="span12">
-		      			<div class="heading alpha70b">
+		      			<div class="featurette-heading alpha70b">
 					        <h1>About Snaphappi</h1>
 				       	</div>
 					</div>
@@ -554,12 +557,12 @@ Let us roll up our sleeves so you can just play.
 	
 
       <a name='FAQ'></a>
-      <div id='FAQ' class="featurette FAQ track-page-view  alpha70card">
+      <div id='FAQ' class="featurette FAQ track-page-view  alpha70b">
 		<div class='fw-band vcenter-body'>
       		<div class="container">
       			<div class='row'>
 		      		<div class="span12">
-		      			<div class="heading alpha70b">
+		      			<div class="featurette-heading ">
 					        <h1>Frequently Asked Questions</h1>
 				       	</div>
 					</div>

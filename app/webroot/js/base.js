@@ -504,7 +504,7 @@ $(document).ready(
 		 *		mouse/desktop init 
 		 */	
 		} else {	// html.no-touch
-			load_carouFredSel($);			$('#header .show-navbar').on('mouseenter', function(e){
+			load_carouFredSel($);			$('#header').on('mouseenter', function(e){
 				CFG['util'].slideInNavBar();
 			})
 		} 	

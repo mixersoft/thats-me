@@ -1,7 +1,24 @@
-html.fontface:not(.android) {
-  body, button, select {
-      font-family: "GeoSansLightRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;
+html.fontface {
+  body, select {
+      font-family: "Roboto", Helvetica,Arial,sans-serif;
   }
+  .navbar {
+    // font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;      
+    font-weight: 700 !important;
+  }
+  button, .featurette-heading, .fw-band.footer {
+    font-family: "GeoSansLightRegular", Helvetica,Arial,sans-serif;      
+    font-weight: normal;
+  }
+  figcaption .body, .container p  {
+      font-weight: 300;
+      line-height: 1.20;
+  }
+  #home figcaption, #FAQ h2 {
+    font-family: "GeoSansLightRegular", "Roboto", Helvetica,Arial,sans-serif;  
+    font-weight: normal;
+  }
+  
 }
 
 
@@ -109,12 +126,6 @@ i.icon-white {
 }
 
 
-/*
- * navbar elements
- */
-html.fontface .navbar {
-  font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;      
-}
 
 
 .navbar {
@@ -235,13 +246,14 @@ html.touch  {
 		.wrapW {
 			margin: 0 auto;
 		}
+		.nowrap {
+		  white-space:nowrap;
+		}
 		.container p {
    		font-size: 16px;
-   		line-height: 1.15;
    	}
    	strong {
-      font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica,Arial,sans-serif !important; 
-      font-weight: bold;
+      font-family: "Roboto", Helvetica,Arial,sans-serif !important;       font-weight: bold;
     }
 		.featurette-heading {
 			.rgb-text-shadow();
@@ -253,14 +265,12 @@ html.touch  {
 				font-size: 72px;
 				font-weight: normal;
 				line-height: 1.15;
+				margin: 0;
 			}
 			.subhead {
 			  font-size: 21px;
 			  line-height: 1.15;
 			  letter-spacing: -0.5px;
-			  > span {
-			    white-space:nowrap;
-			  }
 			}
 		}
 		figure.graphic {
@@ -279,9 +289,7 @@ html.touch  {
 	      line-height: 1.15;
 	    	margin-top: 10px;
 	    	.rgb-text-shadow()    // text-shadow: 1px 1px 2px #333333;
-	    	> span {
-	    	  white-space:nowrap;
-	    	}	    	.body {
+	    	.body {
 	    		font-size: 18px;
   				text-align: left;
 	    	}
@@ -297,13 +305,29 @@ html.touch  {
       font-size: 24px;
       line-height: 1;
       padding: 8px 0;
-      a , a:hover {
+      a , a:visited {
         color: @cream;
         text-decoration: none;
       }
+      a:hover {
+        color: @cream;
+        .rgb-text-shadow(@orange);
+      }
    }
 }
-   
+/*
+ * wrap transparent bands around opaque body 
+ */
+.featurette.body-opaque {
+  padding-top: 40px;
+  .rgba(#FFFFFF,0.7);
+  .opaque {
+    background-color: white;
+    .fw-band {
+      padding-top: 0;   // cancel out padding-top:40px
+    }
+  }
+}   
 
 #home {
   transition: opacity 2s ease-in 0s;
@@ -341,7 +365,7 @@ html.touch  {
     }
 	}
 	.fw-band.footer {
-	  .rgba(#000000, 0.91);    // double opacity:0.7 overlay
+	  .rgba(#000000, 0.8);    
 	}
 }
 
@@ -506,7 +530,6 @@ html.touch  {
 }
 
 #features {
-  background-color: #FFFFFF;
   .featurette-heading {
     color: @red;
     text-shadow: 1px 1px 1px #333;
@@ -521,9 +544,8 @@ html.touch  {
     }
   }
   figure.graphic {
-    color: #000;
-    // max-width: 240px;
     width: auto;
+    max-width: 280px;  
     min-height: 100px;    .wrapH {
       height: 120px;
       img {
@@ -531,10 +553,12 @@ html.touch  {
       }
     }
     figcaption {
-      text-shadow: 1px 1px 1px #333;;
+      color: #333;
+      text-shadow: 1px 1px 1px #666;
       font-size: 20px;
       .body {
-        .rgb-text-shadow-sm();
+        font-size: 16px;
+        text-shadow: none;
       }     
     }
   }
@@ -552,15 +576,11 @@ html.touch  {
     .active, .selected {
       background-color: @cream;    
     }
-  }    
-}
-
-#features.carousel {
-  figure.graphic {
-    max-width: 280px;  
   }
 }
 
+
+  
 #how-it-works {
   .carousel-inner {         /* start with one row, overflow-x: hidden */
     max-width: 1170px;
@@ -591,7 +611,6 @@ html.touch  {
 
 
 #see-the-movie {
-  background-color: #FFFFFF;
   .featurette-heading {
     color: @red;
     padding-bottom: 0;
@@ -609,17 +628,14 @@ html.touch  {
     position: relative;
     z-index: 1;
   }
-  .heading {
+  .featurette-heading {
     border: 2px solid @cream;
     margin: 80px 0 20px;
     padding: 20px;
+    line-height: 1.15;
     h1 {
       font-size: 60px;
-      font-weight: normal;
-    }
-    .subhead {
-      font-size: 21px;
-      line-height: 1.15;
+      margin: 0;
     }
   }
   img.darkroom {
@@ -673,18 +689,15 @@ html.touch  {
 
 #sharing, #thank-you, #about, #FAQ {
   .rgb-text-shadow();
-  .heading {
-    border: 2px solid @orange;
+  .featurette-heading {
+    border: 2px solid @cream;
+    color: @cream;
     margin: 80px 0 20px;
     padding: 20px;
+    line-height: 1.15;
     h1 {
       font-size: 60px;
-      font-weight: normal;
-      line-height: 1;
-    }
-    .subhead {
-      font-size: 21px;
-      line-height: 1.15;
+      margin: 0;
     }
     .wrapH {
       margin: 20px 0;
@@ -692,7 +705,7 @@ html.touch  {
   }
   .container {
     p {
-      font-size: 21px;
+      font-size: 18px;
     }
     .wrapH img {
       height: 160px;
@@ -701,29 +714,27 @@ html.touch  {
 }
 
 #sharing, #thank-you h1 {
+  .rgb-text-shadow(@orange);
   span.muted, .subhead {
     color: @cream;
     .rgb-text-shadow(@orange);
   }
-  .twitter-share-button {
+  .tweet-wrap {
+    display: inline-block;
+    height: 29px;
     vertical-align: top;
   }
 }
 
 #about {
   .container .body {
-    color: @darkgrey;
-    .rgb-text-shadow-sm();
+    color: @cream;
+    .rgb-text-shadow(#000);
   }
 }
 #FAQ {
-  .heading {
-    border: 2px solid @cream;
-  }
-  .featurette-heading {
-    color: #FFF;
-  }
   .faq-section {
+    .rgba(#000000, 0.5);
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 20px;
@@ -919,6 +930,9 @@ html.touch  {
       }
     }
   }
+  #sharing .tweet-wrap, #thank-you h1 .tweet-wrap {
+    vertical-align: bottom;   // don't know why this switches to bottom
+  }
 }
 
 /*
@@ -935,7 +949,7 @@ html.touch  {
   	.featurette-heading {
   	  padding: 10px 0;
   		h1 {
-  			font-size: 42px;
+  			font-size: 42px !important;
   		}
   		.subhead {
   			font-size: 14px;
@@ -945,6 +959,14 @@ html.touch  {
       font-size: 16px;
     }
   }
+  .featurette.body-opaque {
+    padding-top: inherit;
+    .opaque {
+      .fw-band {
+        padding-top: inherit; 
+      }
+    }
+  }    
   #home {
     .fw-band.vcenter-body {
       min-height: 608px;
@@ -1030,10 +1052,10 @@ html.touch  {
 		}
 		.featurette-heading {
 			h1 {
-				font-size: 32px;
+				font-size: 32px  !important;
 			}
 			.subhead {
-				font-size: 14px;
+				font-size: 14px !important;
 			}
 		}
 		figure.graphic {
@@ -1065,9 +1087,9 @@ html.touch  {
 			  // float: left;				height: 60px;
 			}
 			figcaption {
-				font-size: 16px;
+				font-size: 16px !important;
 				.body {
-					font-size: 14px;
+					font-size: 14px !important;
 				}
 			}
 		}

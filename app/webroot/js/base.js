@@ -120,7 +120,6 @@ CFG['util'] = {
 			},
 			
 		}).fail(function(json, status, o){
-			alert('There was a problem on the server.');
 			console.error("post Email failed");
 		});
 		return false;

@@ -34,14 +34,16 @@ class FollowersController extends AppController {
 
 	public $name = 'Follower';
 	public $layout = 'default';
-	public $components = array('RequestHandler');
+	public $components = array('RequestHandler', 'Cookie');
 	
 	public function beforeFilter(){
+		parent::beforeFilter();
 		if ($this->request->is('ajax')) {
 			Configure::write('debug',0);
 			$this->response->disableCache();
 		}
-	}
+		$this->Cookie->time = '1 month';
+		// $this->Cookie->domain = '.snaphappi.com';	}
 	
 	
 	public function _email_welcome($address) {
@@ -67,6 +69,10 @@ class FollowersController extends AppController {
 		return $email->send();
 	}
 	
+	/*
+	 * should call from IPN response
+	 * 	NOTE: or call from #thank-you hash until IPN response properly implemented
+	 */ 
 	public function _send_ipn_email($email) {
 		$follower = $this->Follower->findByEmail($email);
 		if (!empty($follower['Follower']['id'])) {
@@ -79,13 +85,13 @@ class FollowersController extends AppController {
 				// TODO: update DB
 				$this->Follower->id = $follower['Follower']['id'];
 				$this->Follower->saveField('email_cheer', 1);
-				return true;
 			} catch(SocketException $e) {
 				// email failed;
 				$this->log("Send Email:cheer failed for address={$follower['Follower']['email']}", LOG_DEBUG);
-				return false;
+				$success = false;
 			}	
 		}
+		return $success;
 	}
 	/**
 	 * post to /followers/signMeUp.json for json response, using json view
@@ -93,20 +99,32 @@ class FollowersController extends AppController {
 	public function signMeUp() {
 		setXHRDebug($this,0,false);
 		if (!empty($this->data)) {
-			
 			$data = $this->data;
-			if (!empty($this->data['Follower']['email'])) {
-				$follower = $this->Follower->findByEmail($this->data['Follower']['email']);
+			if (empty($data['Follower']['email'])) {
+				// get email address from cookie
+				$data['Follower']['email'] = $this->Cookie->read('email');
+			}
+			if (!empty($data['Follower']['email'])) {
+				$follower = $this->Follower->findByEmail($data['Follower']['email']);
 				if (!empty($follower['Follower']['id'])) {
 					// update, i.e. Follower.cheer=1
 					$this->Follower->id = $follower['Follower']['id'];
+					// update cheer, only update if > old value
+					if (isset($data['Follower']['cheer']) 
+						&& $data['Follower']['cheer'] > $follower['Follower']['cheer'])
+					{	
+						$follower['Follower']['cheer'] = $data['Follower']['cheer'];
+					}  
 					// update counts
 					if (isset($this->data['Follower']['tweet']))  $follower['Follower']['tweet'] += 1;
 					if (isset($this->data['Follower']['fb_like'])) $follower['Follower']['fb_like'] += 1;
 					if (isset($this->data['Follower']['fb_share'])) $follower['Follower']['fb_share'] += 1;
-					$data = array('Follower'=>array_intersect_key($follower['Follower'], $this->data['Follower']));
+					$data = array('Follower'=>array_intersect_key($follower['Follower'], $data['Follower']));
 				}		
 			}
+			// save email as Cookie for #welcome or #not-yet
+			
+			
 			$ret = $this->Follower->save($data, true);
 			$response = isset($ret['Follower']) ? $ret['Follower'] : $ret;
 			$success = !empty($ret);
@@ -118,12 +136,15 @@ class FollowersController extends AppController {
 			 */
 			 
 			 if ($success) {
+			 	$this->Cookie->write('email', $ret['Follower']['email']);
 			 	try {
 				 	// TODO: send emails from queue
-					if (!empty($ret['Follower']['cheer']) && empty($follower['Follower']['email_cheer'])) 
+					if (!empty($ret['Follower']['cheer']) 
+						&& $ret['Follower']['cheer']==4				// success determined by #thank-you
+						&& empty($follower['Follower']['email_cheer'])) 
 					{
-						// wait for IPN post to send email,
-						// should JS client scroll to #thank-you?
+						// TODO: wait for IPN post to send email,
+						$email_success = $this->_send_ipn_email($ret['Follower']['email']);
 					}  
 					else if (!empty($this->data['Follower']['join']) && empty($follower['Follower']['email_welcome'])) 
 					{
@@ -141,38 +162,42 @@ class FollowersController extends AppController {
 	
 	public function Amazon_IPN() {
 		setXHRDebug($this,0,false);
-		if (!empty($this->data)) {
+		$postData = $_POST;
+		if (!empty($postData)) {
 			$success = false;
 			/*
 			 * ???: how do we connect an Amazon IPN post to the user's email
 			 */
-			$email = $this->data['email'];
-			$email_success = $this->_send_ipn_email($email);
-			$this->log(">>> Amazon_IPN:".print_r($this->data, true), LOG_DEBUG);
+			$email = $postData['buyerEmail'];
+			if ($email) $email_success = $this->_send_ipn_email($email);
 			$this->response->statusCode(200);
 			echo "ok";
 		} else {
 			$this->response->statusCode(400);
 			echo "error";
 		} 
+		$this->log(">>> Amazon_IPN _POST".print_r($postData, true), LOG_DEBUG);
 		$this->autoRender = false;	
 	}
+	
+	/* TODO: respond to paypal accordingly, currently disabled */
 	public function PayPal_IPN() {
 		setXHRDebug($this,0,false);
-		if (!empty($this->data)) {
+		$postData = $_POST;
+		if (!empty($postData)) {
 			$success = false;
 			/*
 			 * ???: how do we connect an Amazon IPN post to the user's email
 			 */
-			$email = $this->data['email'];
-			$email_success = $this->_send_ipn_email($email);
-			$this->log(">>> PayPal_IPN:".print_r($this->data, true), LOG_DEBUG);
+			$email = $postData['email'];
+			if ($email) $email_success = $this->_send_ipn_email($email);
 			$this->response->statusCode(200);
 			echo "ok";
 		} else {
 			$this->response->statusCode(400);
 			echo "error";
 		} 
+		$this->log(">>> PayPal_IPN _POST".print_r($_POST, true), LOG_DEBUG);
 		$this->autoRender = false;		
 	}
 	

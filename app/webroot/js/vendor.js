@@ -282,7 +282,7 @@ console.log('gaq error category=Click, action='+properties['click-action']);
 				timers = CFG['mixpanel'].timers;
 			if ($(hash).hasClass('track-page-view') && CFG['util'].isScrolledIntoView($(hash))){
 				var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-				if (hash='#thank-you') {
+				if (hash=='#thank-you') {
 					// post successful cheer, email should come from cookie
 					CFG['util'].postEmail(null,{'data[Follower][cheer]':'4'},function(json, status, o){
 						// on success

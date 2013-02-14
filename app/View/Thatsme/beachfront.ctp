@@ -70,6 +70,7 @@
 typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,
 e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("22ee941178e2f8bb1702c92f84cf91b2");
+mixpanel.set_config({ cross_subdomain_cookie: false });
 CFG['mixpanel'].instance = mixpanel;
 </script><!-- end Mixpanel -->
 <?php
@@ -367,7 +368,7 @@ We think it's a small price to pay for all the time you'll save.</p>
 
       
       <a name='call-to-action'></a>
-      <div id='call-to-action' class="featurette call-to-action alpha70b">
+      <div id='call-to-action' class="featurette call-to-action  track-page-view alpha70b">
       	<div class='fw-band vcenter-body'>
       		<div class="container">
       			<div class='row'>

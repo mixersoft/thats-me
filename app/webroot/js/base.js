@@ -113,8 +113,8 @@ CFG['util'] = {
 			dataType: 'json',			success: function(json, status, o){
 				try {
 					var email = json.response.email,
-						alias = json.response.created || null;
-						CFG['mixpanel'].identify(email, alias);
+						created = json.response.created || null;
+						CFG['mixpanel'].identify(email, created);
 				} catch (e) {		}
 				success.call(this, json, status, o);
 			},

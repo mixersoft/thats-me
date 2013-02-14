@@ -96,9 +96,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		switch (event.data) {
 			case YT.PlayerState.PLAYING:
 				// play
-				if (!YT_player.mixpanel['play']) {
+				if (!CFG['mixpanel'].DISABLED && !YT_player.mixpanel['play']) {
 					var properties = $.extend({ state : 'play'}, mixpanel_event_properties[event_name]);
 					mixpanel.track(event_name, properties);
+					try {
+						_gaq.push(['_trackEvent', event_name, properties['state'], properties['trigger']]);
+					} catch(e){ }
 					// mixpanel.track('Video', {
 						// trigger : 'imagine',
 						// state : 'play'
@@ -108,9 +111,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				break;
 			case YT.PlayerState.ENDED:
 				// end
-				if (!YT_player.mixpanel['end']) {
+				if (!CFG['mixpanel'].DISABLED && !YT_player.mixpanel['end']) {
 					var properties = $.extend({ state : 'end'}, mixpanel_event_properties[event_name]);
 					mixpanel.track(event_name, properties);
+					try {
+						_gaq.push(['_trackEvent', event_name, properties['state'], properties['trigger']]);
+					} catch(e){ }
 					// mixpanel.track('Video', {
 						// trigger : 'imagine',
 						// state : 'end'
@@ -143,25 +149,41 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	// CONFIG, override in View File
 	CFG['mixpanel'] = {
 		instance: null,
-		TRIGGER : 'i-need-this',
-		FIRST_SECTION : '#home',
+		
+		// super properties: use mixpanel.register() (global)
+		TRIGGER : 'i-need-this',			// trigger: should be from the adwords campaign, or landing page
 		VIDEO_NAME : 'Imagine-0',
+		
+		// for tracking initial page view
+		FIRST_SECTION : '#home',
 		DISABLED : !/snaphappi.com/.test(window.location.host), 
 		timers: {},
-		identify: function(email, alias) {
+		identify: function(email, created) {
 			if (!CFG['mixpanel'].DISABLED && email) {
+				var person = {
+					"$email": email,
+					"last_click_action": new Date(),
+				}
 				mixpanel.identify(email);
-// console.log("mixpanel.identify(), email="+email+", mixpanel.toString()="+mixpanel.toString());								if (alias) {
+// console.log("mixpanel.identify(), email="+email+", mixpanel.toString()="+mixpanel.toString());								if (created) { 
+					// alias mixpanel id if follower was created
 					mixpanel.alias(email);
+					person["$created"] = created;
 // console.log("mixpanel.alias(), email="+email);									}
+				mixpanel.people.set(person);
 			}
 		},
-		track: function(o){			// global track method
+		track: function(o){			// global track method, called by track_CarouselEnd()
 			// requires o.event_name, o.section
 			var event_name = o.event_name; delete o.event_name;
 			var section = o.section; delete o.section;
 			var properties = $.extend({ section : section}, mixpanel_event_properties[event_name], o);
-			if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);
+			if (!CFG['mixpanel'].DISABLED) {
+				mixpanel.track(event_name, properties);
+				try {
+					_gaq.push(['_trackEvent', event_name, properties['section'], properties['trigger']]);
+				} catch(e){ }
+			}
 		}
 	}
 
@@ -182,7 +204,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 						var event_name = 'Page View',
 							waypoint = o.attr('id');
 						var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-						if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);
+						if (!CFG['mixpanel'].DISABLED) {
+							mixpanel.track(event_name, properties);
+							try {
+								_gaq.push(['_trackEvent', 'Page View', properties['section'], properties['trigger']]);
+							} catch(e){ }
+						}
 						o.addClass('tracked');
 						CFG['util'].notify(waypoint);
 						return "tracked";
@@ -204,14 +231,10 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			'click-action' : track,	
 		}		
 		if (!CFG['mixpanel'].DISABLED) {
-			mixpanel.track('click', properties);
-			switch (track) {
-				case 'invite':
-				case 'cheer':
-					var email=$('form.call-to-action input[type=email]').attr('value');
-					// TODO: attach email to mixpanel unique ID
-				break;
-			}
+			mixpanel.track('Click', properties);
+			try {
+				_gaq.push(['_trackEvent', 'Click', properties['click-action'], properties['trigger']]);
+			} catch(e){ }
 		}
 		$(e.currentTarget).removeClass('.track-click');
 		
@@ -220,6 +243,8 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	// track first section
 	$(document).ready(
 		function(){
+			// mixpanel.register() to register global/super properties
+			
 			mixpanel_event_properties['Page View'] = {
 				url : window.location.pathname,
 				trigger : CFG['mixpanel'].TRIGGER,
@@ -233,7 +258,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				CFG['util'].isLingeringInView($(hash), timers, 0,
 					function(){
 						var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-						if (!CFG['mixpanel'].DISABLED) mixpanel.track(event_name, properties);
+						if (!CFG['mixpanel'].DISABLED) {
+							mixpanel.track(event_name, properties);
+							try {
+							_gaq.push(['_trackEvent', 'Click', properties['click-action'], properties['trigger']]);
+						} catch(e){ }
+						}
 						CFG['util'].notify(waypoint);
 						return "tracked";
 				});

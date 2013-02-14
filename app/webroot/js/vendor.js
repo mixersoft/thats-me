@@ -208,7 +208,9 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 							mixpanel.track(event_name, properties);
 							try {
 								_gaq.push(['_trackEvent', 'Page View', properties['section'], properties['trigger']]);
-							} catch(e){ }
+							} catch(e){
+console.log('gaq error category=Page View, action='+properties['section']);									
+							}
 						}
 						o.addClass('tracked');
 						CFG['util'].notify(waypoint);
@@ -234,7 +236,9 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			mixpanel.track('Click', properties);
 			try {
 				_gaq.push(['_trackEvent', 'Click', properties['click-action'], properties['trigger']]);
-			} catch(e){ }
+			} catch(e){
+console.log('gaq error category=Click, action='+properties['click-action']);				
+			}
 		}
 		$(e.currentTarget).removeClass('.track-click');
 		
@@ -260,9 +264,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 						var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
 						if (!CFG['mixpanel'].DISABLED) {
 							mixpanel.track(event_name, properties);
-							try {
-							_gaq.push(['_trackEvent', 'Click', properties['click-action'], properties['trigger']]);
-						} catch(e){ }
+							// do NOT track initial page load as event in google analytic, _gaq
 						}
 						CFG['util'].notify(waypoint);
 						return "tracked";

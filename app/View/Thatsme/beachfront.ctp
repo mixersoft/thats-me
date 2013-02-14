@@ -366,7 +366,7 @@ We think it's a small price to pay for all the time you'll save.</p>
         </div>
       </div>
 
-      
+      <a name='not-yet' id='not-yet' class='track-page-view' ></a>
       <a name='call-to-action'></a>
       <div id='call-to-action' class="featurette call-to-action  track-page-view alpha70b">
       	<div class='fw-band vcenter-body'>
@@ -474,7 +474,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
       </div> <!-- / .vcenter-body  -->
     </div> 
       
-      <a name='thank-you'></a>
+      <a name='thank-you' id='thank-you' class='track-page-view'></a>
       <a name='sharing'></a>
       <div id='sharing' class="featurette sharing track-page-view alpha70ph">
       	<div class='fw-band vcenter-body'>

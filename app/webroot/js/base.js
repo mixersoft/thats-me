@@ -550,6 +550,8 @@ $(document).ready(
 			};
 		});
 		
+		
+		// update data[Follower][cheer] when a paypal/amazon button was clicked
 		$('form.call-to-action button').on('click', function(e){
 			var email=$('form.call-to-action input[type=email]'),
 				address = email.attr('value');

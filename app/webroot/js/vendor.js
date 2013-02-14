@@ -231,7 +231,7 @@ console.log('gaq error category=Page View, action='+properties['section']);
 			url : window.location.pathname,
 			trigger : CFG['mixpanel'].TRIGGER,
 			'click-action' : track,	
-		}		
+		}
 		if (!CFG['mixpanel'].DISABLED) {
 			mixpanel.track('Click', properties);
 			try {
@@ -241,7 +241,29 @@ console.log('gaq error category=Click, action='+properties['click-action']);
 			}
 		}
 		$(e.currentTarget).removeClass('.track-click');
-		
+		switch(track) {
+			case 'donate-PayPal':
+			case 'donate-Amazon':
+				// post data[Follower][cheer]=2 to DB
+				var email=$('form.call-to-action input[type=email]'),
+					address = email.attr('value');
+				var form = $(e.currentTarget).closest('form');
+				form.css('cursor','wait');	
+				e.preventDefault();		// wait until XHR completes before submit
+				CFG['util'].postEmail(address,{'data[Follower][cheer]':'2'},function(json, status, o){
+					// on success
+					if (json.success) {
+						// wait extra 1 sec for mixpanel
+						setTimeout(function(){
+							form.trigger('submit');
+						}
+						, 1000);
+					} else {
+						console.log('There was a problem posting data[Follower][cheer]=2');
+					}
+				});
+			break;
+		}
 	})
 
 	// track first section
@@ -258,17 +280,33 @@ console.log('gaq error category=Click, action='+properties['click-action']);
 				waypoint = hash.substr(1), 
 				event_name = 'Page View',
 				timers = CFG['mixpanel'].timers;
-			if ($(hash).hasClass('track-page-view')){
-				CFG['util'].isLingeringInView($(hash), timers, 0,
-					function(){
-						var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-						if (!CFG['mixpanel'].DISABLED) {
-							mixpanel.track(event_name, properties);
-							// do NOT track initial page load as event in google analytic, _gaq
+			if ($(hash).hasClass('track-page-view') && CFG['util'].isScrolledIntoView($(hash))){
+				var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
+				if (hash='#thank-you') {
+					// post successful cheer, email should come from cookie
+					CFG['util'].postEmail(null,{'data[Follower][cheer]':'4'},function(json, status, o){
+						// on success
+						if (json.success) {
+							
+						} else {
+							console.log('there was a problem posting successful cheer by #thank-you');
 						}
-						CFG['util'].notify(waypoint);
-						return "tracked";
-				});
+					});
+				}
+				if (!CFG['mixpanel'].DISABLED) {
+					mixpanel.track(event_name, properties);
+					switch(hash) {
+						case '#thank-you':
+						case '#not-yet':
+							try {		// google analytic track these PageViews automatically onload
+								_gaq.push(['_trackEvent', 'Page View', properties['section'], properties['trigger']]);
+							} catch(e){
+							}
+						break;
+					}
+					// do NOT track initial page load as event in google analytic, _gaq
+				}
+				CFG['util'].notify(waypoint);
 			}
 		}
 	)

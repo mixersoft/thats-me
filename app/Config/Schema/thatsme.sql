@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `followers` (
   `lastVisit` timestamp NULL DEFAULT NULL,
   `cohort` tinyint(4) UNSIGNED DEFAULT NULL COMMENT 'week joined, 0=Jan2013',
 -- actions taken by follower  
-  `cheer` tinyint(4) UNSIGNED DEFAULT 0 COMMENT 'cheered us on',
+  `cheer` tinyint(4) UNSIGNED DEFAULT 0 COMMENT 'cheer btn  1=show, 2=pmt attempt, 4=pmt complete'',
   `tweet` tinyint(4) UNSIGNED DEFAULT 0 COMMENT 'count of tweets',
   `fb_like` tinyint(4)UNSIGNED  DEFAULT 0 COMMENT 'count of fb likes',
   `fb_share` tinyint(4) UNSIGNED DEFAULT 0  COMMENT 'count of fb share on feed postings',

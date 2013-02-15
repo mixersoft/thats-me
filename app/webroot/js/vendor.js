@@ -97,220 +97,293 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			case YT.PlayerState.PLAYING:
 				// play
 				if (!CFG['mixpanel'].DISABLED && !YT_player.mixpanel['play']) {
-					var properties = $.extend({ state : 'play'}, mixpanel_event_properties[event_name]);
-					mixpanel.track(event_name, properties);
-					try {
-						_gaq.push(['_trackEvent', event_name, properties['state'], properties['trigger']]);
-					} catch(e){ }
-					// mixpanel.track('Video', {
-						// trigger : 'imagine',
-						// state : 'play'
-					// });					YT_player.mixpanel['play'] = 1;
+					CFG['mixpanel'].track_Video('play');
+					YT_player.mixpanel['play'] = 1;		// suppress tracking on repeated play for this page load
 				}
 				CFG['util'].notify("video play");
 				break;
 			case YT.PlayerState.ENDED:
 				// end
 				if (!CFG['mixpanel'].DISABLED && !YT_player.mixpanel['end']) {
-					var properties = $.extend({ state : 'end'}, mixpanel_event_properties[event_name]);
-					mixpanel.track(event_name, properties);
-					try {
-						_gaq.push(['_trackEvent', event_name, properties['state'], properties['trigger']]);
-					} catch(e){ }
-					// mixpanel.track('Video', {
-						// trigger : 'imagine',
-						// state : 'end'
-					// });					YT_player.mixpanel['end'] = 1;
+					CFG['mixpanel'].track_Video('end');					YT_player.mixpanel['end'] = 1;
 				}
 				CFG['util'].notify("end of video");
 				break;
 		}
 		// console.log("onStateChange has fired! New state:" + event.data);		}
-	$(document).ready(
-		function(){
-			mixpanel_event_properties['Video'] = {
-				video_name : CFG['mixpanel'].VIDEO_NAME,
-			};
-			var check;
-		}
-	)
-
 })();  // end YouTube API closure
 
 
+(function() {//Closure, to not leak to the scope
 
+	var GoogleAdWordsHelper = function() {
+		// empty class def for outline view
+	};
+	/**
+	 * trigger AdWords conversion
+	 * @param label String, maps to AdWords conversion label
+	 * @param value int, conversion value
+	 */
+	GoogleAdWordsHelper.conversion = function(name) {
+		var conversion = {
+		  'invite': {
+		  	label: "kSD2CJ2hkAUQg76I1wM",
+		  	value: 1,
+		  },
+		  'cheer': {
+		  	label: "ntDkCJWikAUQg76I1wM",
+		  	value: 4,
+		  },
+		  'thank-you': {
+		  	label: "lf9jCP2kkAUQg76I1wM",
+		  	value: 10,
+		  }
+		};
 
+		var google_conversion_id = 987897603;
+		var google_conversion_language = "en";
+		var google_conversion_format = "3";
+		var google_conversion_color = "ffffff";
+		var google_conversion_label =  conversion['invite'].label;
+		var google_conversion_value = conversion['invite'].value;
+		
+		if (conversion[name]) {
+			google_conversion_label = conversion[name].label;
+			google_conversion_value = conversion[name].value;
+		}
+		
+		document.write = function(node) {
+			$('body').append(node);
+		};
+		$.getScript('https://www.googleadservices.com/pagead/conversion.js').done(function() {
+			// console.log("google adwords conversion script loaded");		});
+	}
+	GoogleAdWordsHelper.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction){
+		try {
+			_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);
+		} catch(e){ }
+	}
+	
+	// make global
+	CFG['ga'] = GoogleAdWordsHelper; 
+
+})();
+// end google analytics helper closure
 
 (function() {//Closure, to not leak to the scope
 
 	/**
 	 * mixpanel helper functions for tracking events
 	 */
+	var MixpanelHelper = function() {
+		// empty class def for outline view
+	};
+	// // make global
+	CFG['mixpanel'] = MixpanelHelper;
+
+	
+	// private properties
+	// track setTimeout timers, init in document.ready()
+	var mixpanel_event_properties = {} // page-level properties for mixpanel.track, initialized in init
+	
+	// static properties
+	MixpanelHelper.instance = null;	// mixpanel instance
+		
+	// super properties: use mixpanel.register() (global)
 	// CONFIG, override in View File
-	CFG['mixpanel'] = {
-		instance: null,
-		
-		// super properties: use mixpanel.register() (global)
-		TRIGGER : 'i-need-this',			// trigger: should be from the adwords campaign, or landing page
-		VIDEO_NAME : 'Imagine-0',
-		
-		// for tracking initial page view
-		FIRST_SECTION : '#home',
-		DISABLED : !/snaphappi.com/.test(window.location.host), 
-		timers: {},
-		identify: function(email, created) {
+	MixpanelHelper.TRIGGER = 'i-need-this';			// trigger: should be from the adwords campaign, or landing page
+	MixpanelHelper.VIDEO_NAME = 'Imagine-0';
+	
+	// for tracking initial page view
+	MixpanelHelper.FIRST_SECTION = '#home';
+	MixpanelHelper.DISABLED = !/snaphappi.com/.test(window.location.host); 
+	MixpanelHelper.timers = {};		// for lingerIntoView timings
+	
+	MixpanelHelper.identify = function(email, created) {
 			if (!CFG['mixpanel'].DISABLED && email) {
 				var person = {
 					"$email": email,
 					"last_click_action": new Date(),
 				}
 				mixpanel.identify(email);
-// console.log("mixpanel.identify(), email="+email+", mixpanel.toString()="+mixpanel.toString());								if (created) { 
+// console.log("mixpanel.identify(), email="+email+", mixpanel.toString()="+mixpanel.toString());				
+				if (created) { 
 					// alias mixpanel id if follower was created
 					mixpanel.alias(email);
 					person["$created"] = created;
-// console.log("mixpanel.alias(), email="+email);									}
+// console.log("mixpanel.alias(), email="+email);					
+				}
 				mixpanel.people.set(person);
 			}
-		},
-		track: function(o){			// global track method, called by track_CarouselEnd()
+	};
+	/**
+	 *	mixpanel track for Page Views 
+	 *	@params o object, o.event_name, o.section, plus additional properties 
+	 */
+	MixpanelHelper.track_PageView = function(o){	// global track method, called by track_CarouselEnd()
 			// requires o.event_name, o.section
-			var event_name = o.event_name; delete o.event_name;
+			var event_name = 'Page View';
 			var section = o.section; delete o.section;
 			var properties = $.extend({ section : section}, mixpanel_event_properties[event_name], o);
 			if (!CFG['mixpanel'].DISABLED) {
 				mixpanel.track(event_name, properties);
 				try {
-					_gaq.push(['_trackEvent', event_name, properties['section'], properties['trigger']]);
+					_gaq.push(['_trackEvent', event_name, properties['section'], MixpanelHelper.TRIGGER]);
 				} catch(e){ }
 			}
-		}
+	};
+	MixpanelHelper.track_Video= function(state){		
+		state = state || 'play';
+		var event_name = 'Video' 
+		var properties = $.extend({ 'state' : state}, mixpanel_event_properties[event_name]);
+		mixpanel.track(event_name, properties);
+		try {
+			_gaq.push(['_trackEvent', event_name, properties['state'], MixpanelHelper.TRIGGER]);
+		} catch(e){ }
 	}
 
-	// track setTimeout timers, init in document.ready()
-	var mixpanel_event_properties = {} // page-level properties for mixpanel.track
-
-
-	/* Every time the window is scrolled ... */
-	$(window).scroll(function(e, elem) {
-
-		/* Check the location of each desired element */
-		$('.track-page-view:not(.tracked)').each(function(i, elem) {
-			/* If the object is completely visible in the window, fade it in */
-			// isLingeringInView: function(o, timers, delay, success)
-			var timers = CFG['mixpanel'].timers;			CFG['util'].isLingeringInView($(elem), timers, CFG['timing'].linger,
-				function(o) {
-					try {
-						var event_name = 'Page View',
-							waypoint = o.attr('id');
-						var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-						if (!CFG['mixpanel'].DISABLED) {
-							mixpanel.track(event_name, properties);
-							try {
-								_gaq.push(['_trackEvent', 'Page View', properties['section'], properties['trigger']]);
-							} catch(e){
-console.log('gaq error category=Page View, action='+properties['section']);									
+	MixpanelHelper.init = function(o){
+		/* 
+		 * 	start listeners
+		 */
+		$(window).scroll(function(e, elem) {
+			// track sections as Page View
+			$('.track-page-view:not(.tracked)').each(function(i, elem) {
+				/* If the object is completely visible in the window, fade it in */
+				// isLingeringInView: function(o, timers, delay, success)
+				var timers = MixpanelHelper.timers;				CFG['util'].isLingeringInView($(elem), timers, CFG['timing'].linger,
+					function(o) {
+						try {
+							var event_name = 'Page View',
+								waypoint = o.attr('id');
+							var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
+							if (!MixpanelHelper.DISABLED) {
+								mixpanel.track(event_name, properties);
+								try {
+									_gaq.push(['_trackEvent', 'Page View', properties['section'], MixpanelHelper.TRIGGER]);
+								} catch(e){
+								}
 							}
+							o.addClass('tracked');
+							CFG['util'].notify(waypoint);
+							return "tracked";
+						} catch (e) {
+							throw new Exception("ERROR: mixpanel not loaded?");
 						}
-						o.addClass('tracked');
-						CFG['util'].notify(waypoint);
-						return "tracked";
-					} catch (e) {
-						throw new Exception("ERROR: mixpanel not loaded?");
+						return "error";
 					}
-					return "error";
-				}
-			);
-		});
-
-	});
+				);
+			});
 	
-	$('.track-click').one('click', function(e, elem){
-		var track = $(e.currentTarget).attr('track'),
-			properties = {
-			url : window.location.pathname,
-			trigger : CFG['mixpanel'].TRIGGER,
-			'click-action' : track,	
-		}
-		if (!CFG['mixpanel'].DISABLED) {
-			mixpanel.track('Click', properties);
-			try {
-				_gaq.push(['_trackEvent', 'Click', properties['click-action'], properties['trigger']]);
-			} catch(e){
-console.log('gaq error category=Click, action='+properties['click-action']);				
-			}
-		}
-		$(e.currentTarget).removeClass('.track-click');
-		switch(track) {
-			case 'donate-PayPal':
-			case 'donate-Amazon':
-				// post data[Follower][cheer]=2 to DB
-				var email=$('form.call-to-action input[type=email]'),
-					address = email.attr('value');
-				var form = $(e.currentTarget).closest('form');
-				form.css('cursor','wait');	
-				e.preventDefault();		// wait until XHR completes before submit
-				CFG['util'].postEmail(address,{'data[Follower][cheer]':'2'},function(json, status, o){
-					// on success
-					if (json.success) {
-						// wait extra 1 sec for mixpanel
-						setTimeout(function(){
-							form.trigger('submit');
-						}
-						, 1000);
-					} else {
-						console.log('There was a problem posting data[Follower][cheer]=2');
+		});
+		
+		
+		$('.track-click').one('click', function(e, elem){
+			// track Clicks
+			var track = $(e.currentTarget).attr('track'),
+				event_name = 'Click',
+				properties = $.extend({ 'click-action' : track }, mixpanel_event_properties[event_name]);
+			if (!MixpanelHelper.DISABLED) {
+				mixpanel.track('Click', properties);
+				try {
+					_gaq.push(['_trackEvent', 'Click', properties['click-action'], MixpanelHelper.TRIGGER]);
+					switch(properties['click-action']){
+						case "invite":
+						case "cheer":
+							CFG['ga'].conversion('invite');	// 1 point
+							break;
+						case "donate-PayPal":
+						case "donate-Amazon":
+							CFG['ga'].conversion('cheer');	// 4 points
+							break;
 					}
-				});
-			break;
-		}
-	})
-
-	// track first section
-	$(document).ready(
-		function(){
-			// mixpanel.register() to register global/super properties
+				} catch(e){
+				}
+			}
+			$(e.currentTarget).removeClass('.track-click');
 			
-			mixpanel_event_properties['Page View'] = {
-				url : window.location.pathname,
-				trigger : CFG['mixpanel'].TRIGGER,
-			};
-			// CFG['mixpanel'].instance = mixpanel;		// not ready yet
-			var hash = window.location.hash || CFG['mixpanel'].FIRST_SECTION,
-				waypoint = hash.substr(1), 
-				event_name = 'Page View',
-				timers = CFG['mixpanel'].timers;
-			if ($(hash).hasClass('track-page-view') && CFG['util'].isScrolledIntoView($(hash))){
-				var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-				if (hash=='#thank-you') {
-					// post successful cheer, email should come from cookie
-					CFG['util'].postEmail(null,{'data[Follower][cheer]':'4'},function(json, status, o){
+			// additional click processing, including posting to DB
+			switch(track) {
+				case 'donate-PayPal':
+				case 'donate-Amazon':
+					// post data[Follower][cheer]=2 to DB
+					var email=$('form.call-to-action input[type=email]'),
+						address = email.attr('value');
+					var form = $(e.currentTarget).closest('form');
+					form.css('cursor','wait');	
+					e.preventDefault();		// wait until XHR completes before submit
+					CFG['util'].postEmail(address,{'data[Follower][cheer]':'2'},function(json, status, o){
 						// on success
 						if (json.success) {
-							
+							// wait extra 1 sec for mixpanel
+							setTimeout(function(){
+								form.trigger('submit');
+							}
+							, 1000);
 						} else {
-							console.log('there was a problem posting successful cheer by #thank-you');
+							console.log('There was a problem posting data[Follower][cheer]=2');
 						}
 					});
-				}
-				if (!CFG['mixpanel'].DISABLED) {
-					mixpanel.track(event_name, properties);
-					switch(hash) {
-						case '#thank-you':
-						case '#not-yet':
-							try {		// google analytic track these PageViews automatically onload
-								_gaq.push(['_trackEvent', 'Page View', properties['section'], properties['trigger']]);
-							} catch(e){
-							}
-						break;
-					}
-					// do NOT track initial page load as event in google analytic, _gaq
-				}
-				CFG['util'].notify(waypoint);
+				break;
 			}
-		}
-	)
+		})
 	
-	
+		// track first section
+		$(document).ready(
+			function(){
+				// mixpanel.register() to register global/super properties
+				mixpanel.register({
+					trigger: MixpanelHelper.TRIGGER,		// can override in View 
+				})
+				
+				// set default event properites
+				mixpanel_event_properties['Page View'] = {
+					url : window.location.pathname,
+				};
+				mixpanel_event_properties['Video'] = {
+					video_name : MixpanelHelper.VIDEO_NAME,
+				};
+				mixpanel_event_properties['Click'] = {
+					url : window.location.pathname,
+				}
+				// MixpanelHelper.instance = mixpanel;		// not ready yet				
+				// track page load first section as Page View
+				var hash = window.location.hash || MixpanelHelper.FIRST_SECTION,
+					waypoint = hash.substr(1), 
+					event_name = 'Page View',
+					timers = MixpanelHelper.timers;
+				if ($(hash).hasClass('track-page-view') && CFG['util'].isScrolledIntoView($(hash))){
+					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
+					if (hash=='#thank-you') {
+						// post successful cheer, email should come from cookie
+						CFG['util'].postEmail(null,{'data[Follower][cheer]':'4'},function(json, status, o){
+							// on success
+							if (json.success) {
+								
+							} else {
+								console.log('there was a problem posting successful cheer by #thank-you');
+							}
+						});
+					}
+					if (!MixpanelHelper.DISABLED) {
+						mixpanel.track(event_name, properties);
+						switch(hash) {
+							case '#thank-you':
+								CFG['ga'].conversion('thank-you');		// adWords conversion, 10 points
+							case '#not-yet':
+								try {		// google analytic track these PageViews automatically onload
+									_gaq.push(['_trackEvent', 'Page View', properties['section'], MixpanelHelper.TRIGGER]);
+								} catch(e){
+								}
+							break;
+						}
+						// do NOT track initial page load as event in google analytic, _gaq
+					}
+					CFG['util'].notify(waypoint);
+				}
+			}
+		)
+	}	
+	MixpanelHelper.init();
 })();
 // end mixpanel helper closure

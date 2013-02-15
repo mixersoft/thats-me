@@ -325,8 +325,7 @@ var load_carouFredSel = function($) {
 			var carousel = o.closest('.carousel'); 
 			if (carousel.hasClass('track-carousel-end')) {
 				carousel.removeClass('track-carousel-end');
-				CFG['mixpanel'].track({
-					event_name:'Page View',
+				CFG['mixpanel'].track_PageView({
 					section: carousel.attr('id')+":CAROUSEL-END",
 				});
 				// CFG['util'].notify('end of carousel');			}	// end if

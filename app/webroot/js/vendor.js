@@ -331,10 +331,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		// track first section
 		$(document).ready(
 			function(){
-				// mixpanel.register() to register global/super properties
-				mixpanel.register({
-					trigger: MixpanelHelper.TRIGGER,		// can override in View 
-				})
+				if (!MixpanelHelper.DISABLED) {
+					// mixpanel.register() to register global/super properties
+					mixpanel.register({
+						trigger: MixpanelHelper.TRIGGER,		// can override in View 
+					})
+				}
 				
 				// set default event properites
 				mixpanel_event_properties['Page View'] = {

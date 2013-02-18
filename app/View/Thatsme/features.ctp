@@ -1,5 +1,5 @@
 <?php 
-	$title = "Snaphappi &middot; FAQ";
+	$title = "Snaphappi &middot; What Makes Us Special";
 	$this->set("title_for_layout", $title);
 ?>	
 <?php
@@ -10,7 +10,7 @@
 ?>
 
 <?php 
-	echo $this->element('faq');
+	echo $this->element('features');
 	
 	$this->extend('/Thatsme/beachfront');  
 ?> 	

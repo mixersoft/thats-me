@@ -1,3 +1,16 @@
+<a name='FAQ' id='faq'></a>
+      <div id='FAQ' class="featurette FAQ track-page-view  alpha70b">
+		<div class='fw-band vcenter-body'>
+      		<div class="container">
+      			<div class='row'>
+		      		<div class="span12">
+		      			<div class="featurette-heading ">
+					        <h1>Frequently Asked Questions</h1>
+				       	</div>
+					</div>
+      			</div>
+      			<div class="row">
+		        	<div class="span12 body">
 	       <div class="faq-section">
 	        	<h2>Photo Editing</h2>
 	        	<p class="question">
@@ -131,3 +144,15 @@
 	Answer.        		
 	        	</p>	        		        	
 	        </div>
+	        		</div>
+	        	</div>
+      		</div>
+		</div>	      	
+        <div class='fw-band footer'>
+	    	<div class="container ">
+	    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
+	    		<div class="pull-right"><a href='#home'>Top</a></div>
+	    	</div>
+        </div>
+      </div>          
+      

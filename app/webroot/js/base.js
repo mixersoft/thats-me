@@ -83,7 +83,8 @@ CFG['util'] = {
 			if (CFG['util'].isScrolledIntoView($(elem))) {
 				var id = $(elem).attr('id');
 				$('.navbar .nav li').removeClass('active');
-				var a = $('.navbar .nav li a[href$="#'+id+'"]').parent().addClass('active');
+				var prefix = ($('.navbar.use-hash').length) ? '#' : '/';
+				var a = $('.navbar .nav li a[href^="'+prefix+id+'"]').parent().addClass('active');
 				
 				if (!CFG['socialSharing']){
 					switch(id) {
@@ -492,14 +493,16 @@ $(document).ready(
 		else $('html').removeClass('touch').addClass('no-touch');
 		
 		
+		CFG['util'].setNavbarCollapse();
 		/*
 		 * set #Home section height
 		 */
-		CFG['util'].setFullFrameHeight();
-		CFG['util'].setNavbarCollapse();
-		$('#home figure.graphic').on('click',function(e){
-			CFG['util'].animateScrollToHash({hash: '#features'});
-		})
+		if ($('#home').length) {
+			CFG['util'].setFullFrameHeight();
+			$('#home figure.graphic').on('click',function(e){
+				CFG['util'].animateScrollToHash({hash: '#features'});
+			})
+		}
 		
 		/*
 		 * animations
@@ -518,12 +521,34 @@ $(document).ready(
 				$('#home .invisible, .navbar.invisible').addClass('fadeIn');
 				break;
 		}
+
+		load_bg_slideshow();
+		load_carouFredSel($);
 		/*
-		 *     	touch device init
+		 *  convert hash -> link for individual pages
+		 */
+		if ($('.navbar.use-hash').length==0){
+			$('a[href^="#"]').each(function(i,elem){
+				var href = $(elem).attr('href');
+				if (href.length == 1) return;		// skip for '#'
+				switch (href) {
+					// manual lookups
+					case "#call-to-action":
+						href = '#i-want-it';
+					break;
+				}
+				href = href.substr(1);
+				$(elem).attr('href', href);
+			});	
+		}
+		CFG['util'].scrollSpy();
+		
+		/**
+		 * start page listeners 
 		 */
 		if ($('html').hasClass('touch')) {
+			// html.touch .navbar for .visible-mobile
 			$('.carousel-inner > ul > li.item.active').removeClass('active');
-			load_carouFredSel($);			
 			$('#header .show-navbar').on('click', function(e){
 				e.preventDefault();
 				CFG['util'].slideInNavBar();
@@ -532,13 +557,12 @@ $(document).ready(
 		/*
 		 *		mouse/desktop init 
 		 */	
-		} else {	// html.no-touch
-			load_carouFredSel($);			$('#header').on('mouseenter', function(e){
+		} else {	
+			// html.no-touch .navbar for .visible-mobile
+			$('#header').on('mouseenter', function(e){
 				CFG['util'].slideInNavBar();
 			})
-		} 	
-		load_bg_slideshow();
-		
+		} 	
 		
 		$(window).on('scroll.spy',function(e) {
 			CFG['util'].scrollSpy();

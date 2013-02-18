@@ -48,8 +48,10 @@ class ThatsmeController extends AppController {
 
 	public $layout = 'bootstrap';
 	public function index() {
-		$this->redirect(array('action'=>'beachfront'), null, true);
-	}
+		$this->redirect(array('action'=>'home'), null, true);	}
+	/*
+	 * common Action+View File
+	 */ 
 	public function beachfront() {
 		$options = array('Android', 'iPod', 'iPhone', 'iPad','Opera Mobi','webOS', 'Windows Phone OS');			
 		$pattern = '/(' . implode('|', $options) . ')/i';
@@ -64,19 +66,28 @@ class ThatsmeController extends AppController {
 		$this->set(compact('isTouch', 'isAndroid', 'isLocal'));
 	}		// http://thats-me/i-need-this in routes.php
 	
-	public function faq(){
-		
+	// mapped to 'i-need-this' in routes.php
+	public function home(){
+		$this->beachfront(); 
 	}
-	
-	
-	
-	public function iscroll() {}		// http://thats-me/i-need-this in routes.php
-	
-	public function orange() {}
-	
-	public function overwhelmed() {}
-	public function launchrock (){ } 
-	public function carousel (){ } 
+	public function features(){
+		$this->beachfront(); 
+	}
+	public function howItWorks(){
+		$this->beachfront(); 
+	}
+	public function seeTheMovie(){
+		$this->beachfront(); 
+	}
+	public function iWantIt(){
+		$this->beachfront(); 
+	}
+	public function about(){
+		$this->beachfront(); 
+	}	
+	public function faq(){
+		$this->beachfront(); 
+	}
 	
 
 /**

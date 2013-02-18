@@ -26,9 +26,13 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
- Router::connect('/', array('controller' => 'thatsme', 'action' => 'index'));
- Router::connect('/i-need-this', array('controller' => 'thatsme', 'action'=>'beachfront'));
- Router::connect('/:action', array('controller' => 'thatsme'));
+ Router::connect('/', array('controller' => 'thatsme'));
+ Router::connect('/i-need-this', array('controller' => 'thatsme', 'action'=>'home'));
+ Router::connect('/how-it-works', array('controller' => 'thatsme', 'action'=>'howItWorks'));
+ Router::connect('/see-the-movie', array('controller' => 'thatsme', 'action'=>'seeTheMovie'));
+ Router::connect('/i-want-it', array('controller' => 'thatsme', 'action'=>'iWantIt'));
+ Router::connect('/:action', array('controller' => 'thatsme'));
+ 
  Router::connect('/social/:action/*', array('controller' => 'followers'));
  Router::connect('/donate/:action/*', array('controller' => 'followers'));
 	// Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'launchrock'));

@@ -264,7 +264,6 @@ html.touch  {
 			font-weight: 400;
 			margin: 0 5%;
 			padding: 20px 0;
-			width: 90%;
 			h1 {
 				font-size: 72px;
 				font-weight: normal;
@@ -834,10 +833,15 @@ html.touch  {
  * smaller than ipad Portrait
  */
 @media (max-width: 767px) {
-  .featurette .footer {
-    width: 100%;
-    .container {
-      padding: 0 10px;
+  .featurette {
+    .featurette-heading {
+      width: 90%;
+    }
+    .footer {
+      width: 100%;
+      .container {
+        padding: 0 10px;
+      }
     }
   }
   

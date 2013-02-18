@@ -112,17 +112,17 @@ CFG['mixpanel'].instance = mixpanel;
 		        	<div class="subhead">What do you do with your 10,000 photos? How do you find those precious moments?</div>
 		        </div>
 		        <div class="wrapW">
-		        	<figure class="graphic">
+		        	<figure class="graphic track-click" track='home-editors'>
 		        		<div class="wrapH"><img src="/img/beachfront/icon-sm-02.png"></div>
 		        		<figcaption>Trained Editors
 		        			<span class="action right">find your</span>
 		        		</figcaption>
 		        	</figure>
-		        	<figure class="graphic">
+		        	<figure class="graphic track-click" track='home-photos'>
 		        		<div class="wrapH"><img src="/img/beachfront/icon-sm-01.png"></div>
 		        		<figcaption>Beautiful Photos</figcaption>
 		        	</figure>
-		        	<figure class="graphic">
+		        	<figure class="graphic track-click" track='home-timeline'>
 		        		<div class="wrapH"><img src="/img/beachfront/icon-sm-06.png"></div>
 		        		<figcaption>
 		        			<span class="action left">featured on</span>
@@ -168,7 +168,7 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
         		<figcaption>Screened by <span class="nowrap">Real Editors</span>
         			<div class="body">
-No other photo service out there uses real people like we do. 
+No other photo service out there uses <strong>real people</strong> like we do. 
 Our trained photo editors hand-select the beautiful photos that are featured on your Timeline and hide duplicates just for you. 
 We promise 100% privacy.
 					</div>

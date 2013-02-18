@@ -334,10 +334,9 @@ var load_carouFredSel = function($) {
 	CFG['carousel']['features'] = {
 		responsive: true,
 		circular: false,
-		width: '90%',
+		width:  "90%",
 		height: 'variable',		align: 'center',
 		onCreate: function(data){
-			var check;
 		},
 		items		: {
 			width		: 280,			// 3 visible on 1024x768			visible		: {
@@ -498,6 +497,10 @@ $(document).ready(
 		 */
 		CFG['util'].setFullFrameHeight();
 		CFG['util'].setNavbarCollapse();
+		$('#home figure.graphic').on('click',function(e){
+			CFG['util'].animateScrollToHash({hash: '#features'});
+		})
+		
 		/*
 		 * animations
 		 */

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://thats-me.snaphappi.com/i-need-this</loc>
+  <changefreq>daily</changefreq>
+  <priority>1.0</priority>
+</url><url>  
+  <loc>http://thats-me.snaphappi.com/about</loc>
+  <changefreq>daily</changefreq>
+  <priority>0.8</priority>
+</url><url>
+  <loc>http://thats-me.snaphappi.com/features</loc>
+  <changefreq>daily</changefreq>
+</url><url>
+  <loc>http://thats-me.snaphappi.com/how-it-works</loc>
+  <changefreq>daily</changefreq>
+</url><url>
+  <loc>http://thats-me.snaphappi.com/i-want-it</loc>
+  <changefreq>daily</changefreq>
+</url><url>
+  <loc>http://thats-me.snaphappi.com/faq</loc>
+  <changefreq>daily</changefreq>
+</url>
+</urlset>

@@ -54,7 +54,7 @@
 <?php echo $this->element('see-the-movie'); ?>
 <?php echo $this->element('i-want-it'); ?>
      
-      <a name='thank-you' id='thank-you' class='track-page-view'></a>
+      <a name='thank-you' id='thank-you' class='track-page-view  track-requires-hash'></a>
       <a name='sharing'></a>
       <div id='sharing' class="featurette sharing track-page-view alpha70ph">
       	<div class='fw-band vcenter-body'>

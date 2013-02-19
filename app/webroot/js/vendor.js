@@ -125,18 +125,26 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	 * @param value int, conversion value
 	 */
 	GoogleAdWordsHelper.conversion = function(name) {
-		var conversion = {
+		var events = {
+		  'how-it-works:END': {
+		  	label: "Wv8OCNXilgUQg76I1wM",
+		  	value: 1,
+		  },
+		  'video:END': {
+		  	label: "svEDCM3jlgUQg76I1wM",
+		  	value: 2,
+		  },
 		  'invite': {
 		  	label: "kSD2CJ2hkAUQg76I1wM",
-		  	value: 1,
+		  	value: 4,
 		  },
 		  'cheer': {
 		  	label: "ntDkCJWikAUQg76I1wM",
-		  	value: 4,
+		  	value: 8,
 		  },
 		  'thank-you': {
 		  	label: "lf9jCP2kkAUQg76I1wM",
-		  	value: 10,
+		  	value: 16,
 		  }
 		};
 
@@ -144,12 +152,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		var google_conversion_language = "en";
 		var google_conversion_format = "3";
 		var google_conversion_color = "ffffff";
-		var google_conversion_label =  conversion['invite'].label;
-		var google_conversion_value = conversion['invite'].value;
+		var google_conversion_label =  events['invite'].label;
+		var google_conversion_value = events['invite'].value;
 		
-		if (conversion[name]) {
-			google_conversion_label = conversion[name].label;
-			google_conversion_value = conversion[name].value;
+		if (events[name]) {
+			google_conversion_label = events[name].label;
+			google_conversion_value = events[name].value;
 		}
 		
 		document.write = function(node) {
@@ -232,7 +240,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				} catch(e){ }
 			}
 	};
-	MixpanelHelper.track_Video= function(state){		
+	MixpanelHelper.track_Video = function(state){		
 		state = state || 'play';
 		var event_name = 'Video' 
 		var properties = $.extend({ 'state' : state}, mixpanel_event_properties[event_name]);
@@ -256,6 +264,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 						try {
 							var event_name = 'Page View',
 								waypoint = o.attr('id');
+								
+							if (o.hasClass('track-requires-hash')) {
+								// for #thank-you and #not-yet return from payment vendors
+								if (window.location.hash !== '#'+waypoint) return;
+							}
+								
 							var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
 							if (!MixpanelHelper.DISABLED) {
 								mixpanel.track(event_name, properties);
@@ -354,7 +368,10 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 					waypoint = hash.substr(1), 
 					event_name = 'Page View',
 					timers = MixpanelHelper.timers;
-				if ($(hash).hasClass('track-page-view') && CFG['util'].isScrolledIntoView($(hash))){
+				/**
+				 * .track-page-view onload, not on scroll  
+				 */	
+				if ($(hash).hasClass('track-page-view:not(.tracked)') && CFG['util'].isScrolledIntoView($(hash))){
 					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
 					if (hash=='#thank-you') {
 						// post successful cheer, email should come from cookie
@@ -371,16 +388,17 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 						mixpanel.track(event_name, properties);
 						switch(hash) {
 							case '#thank-you':
-								CFG['ga'].conversion('thank-you');		// adWords conversion, 10 points
+								CFG['ga'].conversion('thank-you');		// adWords conversion, 16 points
+								// also track the Page View for id=thank-you, ignores .track-requires-hash
 							case '#not-yet':
-								try {		// google analytic track these PageViews automatically onload
+							// default: // do NOT track initial page load as event in google analytic, _gaq								try {		// google analytic track these PageViews automatically onload
 									_gaq.push(['_trackEvent', 'Page View', properties['section'], MixpanelHelper.TRIGGER]);
 								} catch(e){
 								}
 							break;
 						}
-						// do NOT track initial page load as event in google analytic, _gaq
 					}
+					$(hash).addClass('tracked');
 					CFG['util'].notify(waypoint);
 				}
 			}

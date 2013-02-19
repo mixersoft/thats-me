@@ -1,5 +1,5 @@
-	  <div id='i-want-it' class='featurette track-page-view hide' ></div>
-      <a name='not-yet' id='not-yet' class='track-page-view' ></a>
+	  <div id='i-want-it' class='featurette hide' ></div>
+      <a name='not-yet' id='not-yet' class='track-page-view track-requires-hash' ></a>
       <a name='call-to-action'></a>
       <div id='call-to-action' class="featurette call-to-action  track-page-view alpha70b">
       	<div class='fw-band vcenter-body'>

@@ -30,3 +30,6 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 app/tmp/
 app/webroot/css/beachfront-less.css
+cakephp-cakephp-0a6d85c/
+app/webroot/js/vendor/TouchSwipe-Jquery-Plugin-master/
+app/webroot/min/

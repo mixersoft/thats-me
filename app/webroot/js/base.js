@@ -349,7 +349,7 @@ var load_carouFredSel = function($) {
 			}
 		},
 		auto : {
-			timeoutDuration: 7000,
+			timeoutDuration: CFG['isTouch'] ? 10000 : 7000,
 			pauseOnHover	: 'immediate',
 			conditions: function(){ 
 				return CFG['util'].isScrolledIntoView($(this));
@@ -357,8 +357,7 @@ var load_carouFredSel = function($) {
 		},
 		scroll : {
 			items			: 1,
-			// easing			: "easeInOutCubic",
-			duration		: 500,							
+			// easing			: "easeInOutCubic",			duration		: 300,							
 			pauseOnHover	: 'immediate',
 			onEnd			: function(direction) {
 				if (direction=='next') {
@@ -370,19 +369,26 @@ var load_carouFredSel = function($) {
 			button		: "#features .carousel-control-btn.left",
 			key			: "left",
 			items		: 1,
-			easing		: "cubic",			duration	: 750,
-
+			easing		: "linear",			duration	: 300,
+			conditions	: function(){
+				return !$(this).closest('.carousel').find('.carousel-pager div:first-child').hasClass('selected');
+			}
 		},
 		next : {
 			button		: "#features .carousel-control-btn.right",
 			key			: "right",
 			items		: 1,
-			easing		: "cubic",			duration	: 750,
+			easing		: "linear",			duration	: 300,
+			conditions	: function(){
+				var activeDots = $(this).closest('.carousel').find('.carousel-pager div:not(.hide)');
+				return !activeDots.last().hasClass('selected');
+			}
+
 		},
 		pagination : {
 			container	: "#features  .carousel-pager",
 			keys		: true,
-			easing		: "cubic",			duration	: 750,
+			easing		: "linear",			duration	: 300,
 			anchorBuilder: function(nr) {
 				// this == li.item
 				var fred = $(this).closest('.carousel.fred');			    return markup = '<div href="#'+fred.attr('id')+'">'+nr+'</div>';

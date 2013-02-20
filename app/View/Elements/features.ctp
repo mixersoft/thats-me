@@ -53,13 +53,12 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-03.png"></div>
         		<figcaption>Share Loved Memories
         			<div class="body">
-<p>It's hard to share when you can't</p>
-<p><strong>find something worth sharing</strong></p>   
-<p>among the 10,000 photos in your family archive. 
-But thanks to our Curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
+<p>It's hard to share when you have to dig through 10,000 photos to</p>
+<p><strong>find something worth sharing.</strong></p>   
+<p>But thanks to our Curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
 The rest is a snap.
 </p>
-<p>We also promise to <strong>respect your privacy</strong> &mdash; your photos are private by default.</p>
+<p>We also promise to <strong>respect your privacy</strong> &mdash; your photos are private until you share them.</p>
 					</div>
         		</figcaption>
         	</figure>

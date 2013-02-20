@@ -29,10 +29,9 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
         </li><li class="item">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-06.png"></div>
-        		<figcaption>Beautiful <span class="nowrap">Curated Timeline</span>
+        		<figcaption><span class='narrow'>Beautiful </span><span class="nowrap narrow">Curated Timeline</span>
         			<div class="body">
-<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos. We'll help you </p>
-<p><strong>stop digging through thumbnails!</strong></p>
+<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos. We'll help you <strong>stop digging through thumbnails!</strong></p>
 <p>Quickly zoom across your Timeline, jumping from moment to moment; 
     		re-live those moments through beautiful Curated Stories; 
     		and dive deep into your photo archives when you want to see everything.</p>	          	
@@ -53,8 +52,7 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-03.png"></div>
         		<figcaption>Share Loved Memories
         			<div class="body">
-<p>It's hard to share when you have to dig through 10,000 photos to</p>
-<p><strong>find something worth sharing.</strong></p>   
+<p>It's hard to share when you have to dig through 10,000 photos to <strong>find something worth sharing.</strong></p>   
 <p>But thanks to our Curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
 The rest is a snap.
 </p>

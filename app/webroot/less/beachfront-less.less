@@ -622,19 +622,26 @@ html.touch  {
     }
     .caroufredsel_wrapper {
       li.item {
+        position: static;
       }
     }
   }
   figure.graphic {
     min-height: 100px;
-    width: inherit;
+    width: inherit;     // set by carouFredSel in li.item
+    position: static;
     .wrapH {
-      /* WARNING: float breaks carouFredSel height="variable" , ok for desktop only */
-      // float: left;     // use li.item.image-left instead      max-width: 640px;
+      max-height: 260px;    
     }
     figcaption {
       font-size: 32px;
       .body {
+        /*
+         * for some reason, the FIRST figcaption .body
+         * must be taller than .wrapH for height=variable to work.
+         * set figcaption .body min-height = .wrapH height or max-height
+         */
+        min-height: 260px;
         font-size: 18px;
       }
     }
@@ -839,8 +846,6 @@ html.touch  {
   }
   #how-it-works .carousel-inner {
     figure .wrapH {
-      /* WARNING: float breaks carouFredSel height="variable" , unset for portrait */
-      // float: none;       // use li.item.image-left instead
     }
   }   
   #call-to-action {
@@ -899,6 +904,9 @@ html.touch  {
     figure.graphic {
       .wrapH {
         height: 200px;
+      }
+      figcaption .body {
+        min-height: 200px;
       }
     }
     .carousel-pager {
@@ -1197,6 +1205,7 @@ html.touch  {
       figcaption {
         font-size: 18px;
         .body {
+          min-height: 80px;
           font-size: 14px;
         }
       }

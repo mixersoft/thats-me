@@ -11,7 +11,7 @@
 				<h1 class="featurette-heading center">How It Works</h1>	
 			</div>
       <div class="carousel-inner">
-      <ul class="scroller xxxinvisible">	
+      <ul class="scroller">	
         <li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-06.png"></div>

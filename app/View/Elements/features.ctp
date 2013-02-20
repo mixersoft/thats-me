@@ -12,7 +12,7 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
 <strong class="nowrap">for only a Penny a Photo!</strong></div>
        </div>			
       <div class="carousel-inner">
-      	<ul class="scroller xxxinvisible">
+      	<ul class="scroller">
       		<li class="item active">
 			<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>

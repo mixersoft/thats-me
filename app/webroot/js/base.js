@@ -145,7 +145,7 @@ CFG['util'] = {
 	        var delta = $(target).offset().top - $(window).scrollTop();
 	        if (delta < 0 || delta > 50) {
 	        	setTimeout(function(){
-	        		$.scrollTo(target, 500);
+	        		$.scrollTo(target, 1000);
 	        	}, 50);
 	        } 
 	    }
@@ -198,6 +198,8 @@ CFG['timing'] = {
 	navbarSlideOut: 5000,
 	load_SocialSharing: 5000,
 	validation_popover: 2000,
+	vscroll_hint_in: 2000,
+	vscroll_hint_out: 4000,
 }
 
 
@@ -518,7 +520,6 @@ $(document).ready(
 				break;
 			case '#home':
 			case '':
-				$('#home .invisible, .navbar.invisible').addClass('fadeIn');
 				break;
 		}
 
@@ -617,5 +618,15 @@ $(document).ready(
 		 *	fade in #home content 
 		 */
 		$('#home .invisible:not(.fadeIn), .navbar.invisible').addClass('fadeIn-slow');
+		// fade in Vscroll hint
+		setTimeout(function() {
+			var hint = $('#home .vscroll-hint'); 
+			hint.addClass('fadeIn-slow').on('click', function(e){
+				hint.removeClass('fadeIn-slow');
+			});
+			setTimeout(function() {
+				hint.removeClass('fadeIn-slow');
+			}, CFG['timing'].vscroll_hint_out);
+		}, CFG['timing'].vscroll_hint_in);
 	}
 )

@@ -6,7 +6,7 @@
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body ">
 		<div class="featurette-heading center">
-			<h1 class="">Features &amp; Benefits</h1>	    	
+			<h1 class="">What Makes Us Different</h1>	    	
        		<div class="subhead">
 Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; 
 <strong class="nowrap">for only a Penny a Photo!</strong></div>
@@ -18,9 +18,11 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
         		<figcaption>Screened by <span class="nowrap">Real Editors</span>
         			<div class="body">
-No other photo service out there uses <strong>real people</strong> like we do. 
-Our trained photo editors hand-select the beautiful photos that are featured on your Timeline and hide duplicates just for you. 
-We promise 100% privacy.
+<p>No other photo service uses</p>
+<p><strong>real people</strong></p>   
+<p>like we do. Our trained photo editors hand-select the beautiful photos that are featured on your Curated Timeline and hide duplicates just for you. 
+</p>
+<p>We also promise to <strong>respect your privacy</strong> &mdash; we carefully monitor editorial access to your photos.</p>
 					</div>
         		</figcaption>
         	</figure>
@@ -29,7 +31,8 @@ We promise 100% privacy.
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-06.png"></div>
         		<figcaption>Beautiful <span class="nowrap">Curated Timeline</span>
         			<div class="body">
-   	<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos.</p>
+<p>Your most precious moments are highlighted in a stunning Curated Timeline, marked by beautiful photos. We'll help you </p>
+<p><strong>stop digging through thumbnails!</strong></p>
 <p>Quickly zoom across your Timeline, jumping from moment to moment; 
     		re-live those moments through beautiful Curated Stories; 
     		and dive deep into your photo archives when you want to see everything.</p>	          	
@@ -41,7 +44,7 @@ We promise 100% privacy.
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-05.png"></div>
         		<figcaption>Faster Uploads
         			<div class="body">
-    	<p>Our Uploader lets you upload up to 100x faster than other photo sites - we've seen speeds up to 3000 photos/hour.</p>
+<p>Our Uploader lets you upload up to 50x faster than other photo sites - we've seen speeds up to 3000 photos/hour.</p>
 					</div>
         		</figcaption>
         	</figure
@@ -50,10 +53,13 @@ We promise 100% privacy.
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-03.png"></div>
         		<figcaption>Share Loved Memories
         			<div class="body">
-        <p>The hardest part about sharing is finding something worth sharing. 
-        But thanks to our Curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
-        The rest is a snap.
-          </p>
+<p>It's hard to share when you can't</p>
+<p><strong>find something worth sharing</strong></p>   
+<p>among the 10,000 photos in your family archive. 
+But thanks to our Curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
+The rest is a snap.
+</p>
+<p>We also promise to <strong>respect your privacy</strong> &mdash; your photos are private by default.</p>
 					</div>
         		</figcaption>
         	</figure>
@@ -62,9 +68,9 @@ We promise 100% privacy.
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-04.png"></div>
         		<figcaption>You're in Control
         			<div class="body">
-    	<p>You have complete control. You can adjust the photos highlighted on your Timeline
-by rating the ones you love.
-	          		</p>
+<p>You have complete control. You can adjust the photos featured on your Curated Timeline
+by rating the ones you love. You can also see hidden duplicates and pick a new favorite. </p>
+<p>And you can always see all your photos when you have the urge &mdash; but we think you'll be happy with the Beautiful Photos we've found.</p>
 					</div>
         		</figcaption>
         	</figure>

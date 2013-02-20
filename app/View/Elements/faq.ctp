@@ -99,7 +99,19 @@ Once the photos are rated, our Curated Timelines and Stories can be built automa
 	Why do you want $1 from me?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+We don't want the dollar (really). What we really want is confirmation that we are offering a valuable service at an attractive price &mdash; one that solves a real problem of yours. 
+</p><p class="answer">
+We are offering a completely new vision for family photos, one that asks you to</p>
+<ul class='answer'>
+	<li>trust real human editors to accurately screen through 1000s of photos and find your beautiful shots;</li>
+	<li>believe in stunning Curated Timelines that make it fun &amp; easy to find your precious moments;</li>
+	<li>accept that digging through pages and pages of thumbnails is not the best way; and </li>
+	<li>think that you will <i>play with</i> your family photos and not <i>work with</i> them.</li>
+</ul>
+<p class="answer">
+With so much innovation and change, it’s not clear that everyone is ready to accept this vision.
+</p><p class="answer">
+By making the extra effort of sending us $1, you are sending us a clear message that you believe in our vision for this service and that we can count on your business if we faithfully deliver on our promises. Your commitment will help us convince key developers and partners to join us, and allow us deliver this service sooner.        		
 	        	</p>
 				<p class="question">
 	When will your service be ready?	        		

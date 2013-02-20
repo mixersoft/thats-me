@@ -167,6 +167,18 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			// console.log("google adwords conversion script loaded");		});
 	}
 	GoogleAdWordsHelper.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction){
+		opt_label = opt_label || '';
+		opt_noninteraction = opt_noninteraction || false;
+		
+		var value_lookup = {
+			'how-it-works:CAROUSEL-END': 1,
+			'end': 2,	// video end
+			'invite': 4,
+			'cheer': 8,
+			'thank-you': 16,
+		}
+		opt_value = opt_value || value_lookup[action] || 0;
+		
 		try {
 			_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);
 		} catch(e){ }
@@ -236,7 +248,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			if (!CFG['mixpanel'].DISABLED) {
 				mixpanel.track(event_name, properties);
 				try {
-					_gaq.push(['_trackEvent', event_name, properties['section'], MixpanelHelper.TRIGGER]);
+					CFG['ga'].trackEvent( event_name, properties['section'], MixpanelHelper.TRIGGER);
 				} catch(e){ }
 			}
 	};
@@ -246,7 +258,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		var properties = $.extend({ 'state' : state}, mixpanel_event_properties[event_name]);
 		mixpanel.track(event_name, properties);
 		try {
-			_gaq.push(['_trackEvent', event_name, properties['state'], MixpanelHelper.TRIGGER]);
+			CFG['ga'].trackEvent( event_name, properties['state'], MixpanelHelper.TRIGGER);
 		} catch(e){ }
 	}
 
@@ -274,7 +286,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 							if (!MixpanelHelper.DISABLED) {
 								mixpanel.track(event_name, properties);
 								try {
-									_gaq.push(['_trackEvent', 'Page View', properties['section'], MixpanelHelper.TRIGGER]);
+									CFG['ga'].trackEvent( 'Page View', properties['section'], MixpanelHelper.TRIGGER);
 								} catch(e){
 								}
 							}
@@ -300,7 +312,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			if (!MixpanelHelper.DISABLED) {
 				mixpanel.track('Click', properties);
 				try {
-					_gaq.push(['_trackEvent', 'Click', properties['click-action'], MixpanelHelper.TRIGGER]);
+					CFG['ga'].trackEvent( 'Click', properties['click-action'], MixpanelHelper.TRIGGER);
 					switch(properties['click-action']){
 						case "invite":
 						case "cheer":
@@ -392,7 +404,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 								// also track the Page View for id=thank-you, ignores .track-requires-hash
 							case '#not-yet':
 							// default: // do NOT track initial page load as event in google analytic, _gaq								try {		// google analytic track these PageViews automatically onload
-									_gaq.push(['_trackEvent', 'Page View', properties['section'], MixpanelHelper.TRIGGER]);
+									CFG['ga'].trackEvent( 'Page View', properties['section'], MixpanelHelper.TRIGGER);
 								} catch(e){
 								}
 							break;

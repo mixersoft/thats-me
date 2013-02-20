@@ -502,7 +502,8 @@ $(document).ready(
 		if ($('#home').length) {
 			CFG['util'].setFullFrameHeight();
 			$('#home figure.graphic').on('click',function(e){
-				CFG['util'].animateScrollToHash({hash: '#features'});
+				if ($(e.currentTarget).closest('#home').hasClass('tracked'))
+					CFG['util'].animateScrollToHash({hash: '#features'});
 			})
 		}
 		

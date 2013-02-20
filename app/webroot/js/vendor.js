@@ -371,7 +371,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				/**
 				 * .track-page-view onload, not on scroll  
 				 */	
-				if ($(hash).hasClass('track-page-view:not(.tracked)') && CFG['util'].isScrolledIntoView($(hash))){
+				if ($(hash +'.track-page-view:not(.tracked)').length && CFG['util'].isScrolledIntoView($(hash))){
 					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
 					if (hash=='#thank-you') {
 						// post successful cheer, email should come from cookie

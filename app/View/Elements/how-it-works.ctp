@@ -18,7 +18,7 @@
         		<figcaption>Send Us Your Photos
         			<div class="body">
 <p>With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10 or 100 thousand shots!</p>
-<p>Our Uploader works up to 100x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>	    	
+<p>Our Uploader works up to 50x faster than normal photo sites - we've seen speeds up to 3000 photos/hour.</p>	    	
 					</div>
         		</figcaption>
         	</figure>

@@ -20,7 +20,7 @@
 					<p class="lead">
 If you want this service ASAP, let us know &mdash; we need your vocal support! 
 Cheer us on through those long sleepless nights by sending us a buck <span class="strong">($1)</span>. 
-<span>We'll get the message.</span> 
+<span>We'll get the message &mdash; and we'll donate every dollar we receive to charity.</span><i class="icon-question-sign icon-white" title="It's not the money we're after, it's the extra effort that signals a real commitment to the idea."></i> 
 	        		</p>
 	        	</div>
 	        	<div class="span5 join">

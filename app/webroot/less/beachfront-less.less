@@ -427,6 +427,9 @@ html.touch  {
 		figcaption {
 		  display: inline-block;
 			.rgb-text-shadow();
+			.narrow {
+        letter-spacing: -1px;
+      }
       .body {
       }			
 		}
@@ -624,7 +627,7 @@ html.touch  {
   }
   figure.graphic {
     min-height: 100px;
-    width: auto;
+    width: inherit;
     .wrapH {
       /* WARNING: float breaks carouFredSel height="variable" , ok for desktop only */
       // float: left;     // use li.item.image-left instead      max-width: 640px;

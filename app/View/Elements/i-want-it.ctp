@@ -19,8 +19,8 @@
 	        	<div class="offset1 span5 donate">
 					<p class="lead">
 If you want this service ASAP, let us know &mdash; we need your vocal support! 
-Cheer us on through those long sleepless nights by sending us a buck <span class="strong">($1)</span>. 
-<span>We'll get the message &mdash; and we'll donate every dollar we receive to charity.</span><i class="icon-question-sign icon-white" title="It's not the money we're after, it's the extra effort that signals a real commitment to the idea."></i> 
+Cheer us on through those long sleepless nights by sending us a buck <strong>($1)</strong>. 
+<span>We'll get the message &mdash; and we'll donate every dollar we receive to charity.</span><i class="icon-asterisk icon-white" title="It's not the money we're after, it's the extra effort that signals a real commitment to the idea."></i> 
 	        		</p>
 	        	</div>
 	        	<div class="span5 join">
@@ -98,6 +98,14 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 </div>
 	        	</div>  
 	        </div> <!-- / .row -->
+	        <div class="row">
+	        	<p class='footnote offset1 span10'>
+		        	<i class="icon-asterisk icon-white"></i>
+		        	We don't want the dollar (really). We want an extra effort on your part to signal a real need for this service. 
+		        	Your commitment will help us convince key developers and partners to join us and deliver this service sooner.
+	        	</p>
+	        </div> <!-- / .row -->
+	        
 	        <div class="row">
 	        	<div class='wrapH center'>
     				<img src="/img/beachfront/icon-lg-01.png">

@@ -67,7 +67,7 @@ The rest is a snap.
         		<figcaption>You're in Control
         			<div class="body">
 <p>You have complete control. You can adjust the photos featured on your Curated Timeline
-by rating the ones you love. You can also see hidden duplicates and pick a new favorite. </p>
+by rating the ones you love. You can also see your hidden duplicates and pick a new favorite.</p>
 <p>And you can always see all your photos when you have the urge &mdash; but we think you'll be happy with the Beautiful Photos we've found.</p>
 					</div>
         		</figcaption>

@@ -126,6 +126,10 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	 */
 	GoogleAdWordsHelper.conversion = function(name) {
 		var events = {
+		 'features': {
+		  	label: "iKqqCM3qlwUQg76I1wM",
+		  	value: 0.5,
+		  },
 		  'how-it-works:END': {
 		  	label: "Wv8OCNXilgUQg76I1wM",
 		  	value: 1,
@@ -166,22 +170,41 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		$.getScript('https://www.googleadservices.com/pagead/conversion.js').done(function() {
 			// console.log("google adwords conversion script loaded");		});
 	}
+	/*
+	 * track section view as virtual page view in google analytics
+	 */
+	GoogleAdWordsHelper.trackPageview = function(opt_pageURL) {
+		if (!opt_pageURL) return;
+		try {
+			_gaq.push(['_trackPageview', 'opt_pageURL']);
+		} catch(e){
+			console.error('Error: GoogleAdWordsHelper.trackPageview()');
+		}
+	}
 	GoogleAdWordsHelper.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction){
 		opt_label = opt_label || '';
 		opt_noninteraction = opt_noninteraction || false;
 		
 		var value_lookup = {
-			'how-it-works:CAROUSEL-END': 1,
-			'end': 2,	// video end
-			'invite': 4,
-			'cheer': 8,
-			'thank-you': 16,
+			'Page View:features': 1,					// opt_value Int
+			'Page View:how-it-works:CAROUSEL-END': 1,
+			'Video:end': 2,	// video end
+			'Click:invite': 4,
+			'Click:cheer': 8,
+			'Page View:thank-you': 16,
 		}
-		opt_value = opt_value || value_lookup[action] || 0;
-		
+		opt_value = opt_value || value_lookup[category + ':' + action] || 0;
 		try {
-			_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);
-		} catch(e){ }
+			if (category == 'Page View' && /\:/.test(action)) {
+				GoogleAdWordsHelper.trackPageview('/'+action);
+				if (action=='features') GoogleAdWordsHelper.conversion('features');	// 0.5 point for Adwords conversion
+			} 
+			// also track Event for now
+			_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);	
+			
+		} catch(e){ 
+			console.error('Error: GoogleAdWordsHelper.trackEvent()');
+		}
 	}
 	
 	// make global
@@ -237,8 +260,11 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			}
 	};
 	/**
-	 *	mixpanel track for Page Views 
-	 *	@params o object, o.event_name, o.section, plus additional properties 
+	 *	external mixpanel track method for manually tracking virtual Page Views
+	 *	@params o object, o.event_name, o.section, plus additional properties
+	 * 	
+	 * 	called by CFG['carousel'].track_CarouselEnd()
+	 *  
 	 */
 	MixpanelHelper.track_PageView = function(o){	// global track method, called by track_CarouselEnd()
 			// requires o.event_name, o.section
@@ -252,6 +278,55 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				} catch(e){ }
 			}
 	};
+	MixpanelHelper.track_Click = function(o){
+		// track Clicks
+			var track = o.attr('track'),
+				event_name = 'Click',
+				properties = $.extend({ 'click-action' : track }, mixpanel_event_properties[event_name]);
+			if (!MixpanelHelper.DISABLED) {
+				mixpanel.track('Click', properties);
+				try {
+					CFG['ga'].trackEvent( 'Click', properties['click-action'], MixpanelHelper.TRIGGER);
+					switch(properties['click-action']){
+						case "invite":
+						case "cheer":
+							CFG['ga'].conversion('invite');	// 1 point
+							break;
+						case "donate-PayPal":
+						case "donate-Amazon":
+							CFG['ga'].conversion('cheer');	// 4 points
+							break;
+					}
+				} catch(e){
+				}
+			}
+			o.addClass('tracked');
+			
+			// additional click processing, including posting to DB
+			switch(track) {
+				case 'donate-PayPal':
+				case 'donate-Amazon':
+					// post data[Follower][cheer]=2 to DB
+					var email=$('form.call-to-action input[type=email]'),
+						address = email.attr('value');
+					var form = o.closest('form');
+					form.css('cursor','wait');	
+					e.preventDefault();		// wait until XHR completes before submit
+					CFG['util'].postEmail(address,{'data[Follower][cheer]':'2'},function(json, status, o){
+						// on success
+						if (json.success) {
+							// wait extra 1 sec for mixpanel
+							setTimeout(function(){
+								form.trigger('submit');
+							}
+							, 1000);
+						} else {
+							console.log('There was a problem posting data[Follower][cheer]=2');
+						}
+					});
+				break;
+			}		
+	}
 	MixpanelHelper.track_Video = function(state){		
 		state = state || 'play';
 		var event_name = 'Video' 
@@ -304,54 +379,8 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		});
 		
 		
-		$('.track-click').one('click', function(e, elem){
-			// track Clicks
-			var track = $(e.currentTarget).attr('track'),
-				event_name = 'Click',
-				properties = $.extend({ 'click-action' : track }, mixpanel_event_properties[event_name]);
-			if (!MixpanelHelper.DISABLED) {
-				mixpanel.track('Click', properties);
-				try {
-					CFG['ga'].trackEvent( 'Click', properties['click-action'], MixpanelHelper.TRIGGER);
-					switch(properties['click-action']){
-						case "invite":
-						case "cheer":
-							CFG['ga'].conversion('invite');	// 1 point
-							break;
-						case "donate-PayPal":
-						case "donate-Amazon":
-							CFG['ga'].conversion('cheer');	// 4 points
-							break;
-					}
-				} catch(e){
-				}
-			}
-			$(e.currentTarget).removeClass('.track-click');
-			
-			// additional click processing, including posting to DB
-			switch(track) {
-				case 'donate-PayPal':
-				case 'donate-Amazon':
-					// post data[Follower][cheer]=2 to DB
-					var email=$('form.call-to-action input[type=email]'),
-						address = email.attr('value');
-					var form = $(e.currentTarget).closest('form');
-					form.css('cursor','wait');	
-					e.preventDefault();		// wait until XHR completes before submit
-					CFG['util'].postEmail(address,{'data[Follower][cheer]':'2'},function(json, status, o){
-						// on success
-						if (json.success) {
-							// wait extra 1 sec for mixpanel
-							setTimeout(function(){
-								form.trigger('submit');
-							}
-							, 1000);
-						} else {
-							console.log('There was a problem posting data[Follower][cheer]=2');
-						}
-					});
-				break;
-			}
+		$('.track-click:not(.tracked)').one('click', function(e){
+			MixpanelHelper.track_Click($(e.currentTarget));
 		})
 	
 		// track first section

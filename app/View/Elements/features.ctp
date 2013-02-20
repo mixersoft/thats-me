@@ -23,6 +23,7 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
 <p>like we do. Our trained photo editors hand-select the beautiful photos that are featured on your Curated Timeline and hide duplicates just for you. 
 </p>
 <p>We also promise to <strong>respect your privacy</strong> &mdash; we carefully monitor editorial access to your photos.</p>
+<br />
 					</div>
         		</figcaption>
         	</figure>

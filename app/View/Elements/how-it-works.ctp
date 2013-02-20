@@ -12,7 +12,7 @@
 			</div>
       <div class="carousel-inner">
       <ul class="scroller xxxinvisible">	
-        <li class="item left-image active">
+        <li class="item left-image">
         	<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-lg-06.png"></div>
         		<figcaption>Send Us Your Photos

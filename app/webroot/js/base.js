@@ -270,7 +270,7 @@ var load_bg_slideshow = function() {
  */
 var load_carouFredSel = function($) {
 	CFG['carousel'] = { 
-		autoPaging: true,
+		autoPaging: false,
 		isLingeringTimer: {},
 		find: {},
 		init:{ 
@@ -352,7 +352,7 @@ var load_carouFredSel = function($) {
 			timeoutDuration: CFG['isTouch'] ? 10000 : 7000,
 			pauseOnHover	: 'immediate',
 			conditions: function(){ 
-				return CFG['util'].isScrolledIntoView($(this));
+				return CFG['carousel'].autoPaging && CFG['util'].isScrolledIntoView($(this));
 			},
 		},
 		scroll : {
@@ -415,7 +415,7 @@ var load_carouFredSel = function($) {
 			timeoutDuration: 7000,
 			pauseOnHover	: 'immediate',
 			conditions: function(){ 
-				return CFG['util'].isScrolledIntoView($(this));			},
+				return CFG['carousel'].autoPaging && CFG['util'].isScrolledIntoView($(this));			},
 		},
 		scroll : {
 			items			: 1,
@@ -423,6 +423,10 @@ var load_carouFredSel = function($) {
 			duration		: 1000,							
 			pauseOnHover	: 'immediate',
 			onCreate 		: function(data) {	},
+			onAfter 		: function(data) {	
+				// var h = $(this).find('li.item:first-child').height() + 60;
+				// $(this).closest('.caroufredsel_wrapper').css('height', h+'px');
+				// var check;		// this gets reset later			},
 			onEnd			: function(direction) {
 				if (direction=='next') {
 					CFG['carousel'].track_CarouselEnd($(this));

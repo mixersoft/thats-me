@@ -19,6 +19,9 @@
         <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap-responsive.css" />
          -->        
         <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&amp;f=bootstrap.min.css,bootstrap-responsive.css" />
+	    <!--[if IE 7]>
+		<link rel="stylesheet" href="/css/fonts/FortAwesome-Font-Awesome-13d5dd3/css/font-awesome-ie7.min.css">
+		<![endif]-->        
         <script src="http://snappi.snaphappi.com/static/js/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <?php
         	echo $this->fetch('meta'); 

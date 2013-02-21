@@ -15,12 +15,10 @@
 	    <!--[if lt IE 9]>
 	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	    <![endif]-->
-		<!--    
-		<link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap.min.css" />
-        <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap-responsive.css" />
-         -->        
+		<link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap.min.css&123" />
+        <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap-responsive.css&123" />
         <!--  NOTE: append &123 to minify request string for 1 year max-age  --> 
-        <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&amp;f=bootstrap.min.css,bootstrap-responsive.css&123" />
+<!--         <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&amp;f=bootstrap.min.css,bootstrap-responsive.css&123" /> -->
 	    <!--[if IE 7]>
 		<link rel="stylesheet" href="/css/fonts/FortAwesome-Font-Awesome-13d5dd3/css/font-awesome-ie7.min.css">
 		<![endif]-->        

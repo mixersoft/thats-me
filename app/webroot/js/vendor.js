@@ -176,7 +176,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	GoogleAdWordsHelper.trackPageview = function(opt_pageURL) {
 		if (!opt_pageURL) return;
 		try {
-			_gaq.push(['_trackPageview', 'opt_pageURL']);
+			_gaq.push(['_trackPageview', opt_pageURL]);
 		} catch(e){
 			console.error('Error: GoogleAdWordsHelper.trackPageview()');
 		}

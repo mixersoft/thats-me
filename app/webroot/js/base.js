@@ -198,7 +198,7 @@ CFG['timing'] = {
 	navbarSlideOut: 5000,
 	load_SocialSharing: 5000,
 	validation_popover: 2000,
-	vscroll_hint_in: 2000,
+	vscroll_hint_in: 4000,
 	vscroll_hint_out: 4000,
 }
 
@@ -509,6 +509,7 @@ $(document).ready(
     	    	$('#curtain .wrapV').addClass('fadeIn'); // fade in #curtain .logo 
     	    },
     	    onFail: function(o){
+    	    	$('.navbar .brand').html('<img src="/img/beachfront/snaphappi-logo-v2.png">');
     	    	$('#curtain').remove();
     	    },
 		});

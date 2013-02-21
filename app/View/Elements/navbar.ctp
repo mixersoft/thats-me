@@ -9,7 +9,7 @@
             </a>
             <a class="brand" href="/i-need-this">
             	<div class='logo'>snap<span class='cursive'>happi</span></div>
-            	<img class="hide" src='/img/beachfront/snaphappi-logo-v2.png'>
+<!--             	<img src='/img/beachfront/snaphappi-logo-v2.png'> -->
             </a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse pull-right">

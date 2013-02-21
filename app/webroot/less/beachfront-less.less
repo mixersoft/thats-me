@@ -6,7 +6,7 @@ html.fontface {
     // font-family: "SourceSansProRegular", "Helvetica Neue", Helvetica,Arial,sans-serif;      
     font-weight: 700 !important;
   }
-  button, .featurette-heading, .fw-band.footer {
+  .featurette-heading, .fw-band.footer, #home figcaption, #FAQ h2, button, #curtain {
     font-family: "GeoSansLightRegular", Helvetica,Arial,sans-serif;      
     font-weight: normal;
   }
@@ -14,11 +14,26 @@ html.fontface {
       font-weight: 300;
       line-height: 1.20;
   }
-  #home figcaption, #FAQ h2 {
-    font-family: "GeoSansLightRegular", "Roboto", Helvetica,Arial,sans-serif;  
+  .logo {   // use with $('.checkfont').fontChecker()
+    color: white;
+    font-family: "GeoSansLightRegular";  
+    font-size: 24px;
     font-weight: normal;
+    line-height: 40px;
+    text-shadow: none;
+    .cursive {
+      color: @cream;  
+      font-family: 'Homemade Apple';
+      text-shadow:  0 0 1px #F16122;
+      padding-left: 2px;
+    }
   }
-  
+  .fontloading {
+    visibility: hidden !important; 
+  }
+  .fontFail {
+    visibility: visible !important;
+  }
 }
 
 
@@ -125,6 +140,28 @@ i.icon-white {
   border-radius: @radius;
 }
 
+#curtain {
+  height: 100%;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  z-index: 9998;
+  cursor: wait;
+  .wrapV {
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    top: 40%;
+    z-index: 9999;
+    .logo {
+      font-size: 40px;
+      padding: 20px;
+      .cursive {
+        text-shadow: 2px 2px 2px @orange;
+      }
+    }
+  }
+}
 
 
 
@@ -394,6 +431,10 @@ html.touch  {
 	.fw-band.footer {
 	  .rgba(#000000, 0.8);    
 	}
+}
+
+html.js #home .fw-band.vcenter-body {
+  height: 1100px;
 }
 
 /*

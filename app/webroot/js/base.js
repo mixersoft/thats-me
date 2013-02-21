@@ -52,7 +52,7 @@ CFG['util'] = {
 			perfectH = $(window).height()-offsetH,
 			homeMinH = $('#home .fw-band.vcenter-body').css('min-height').split('px')[0];
 		var activeH = Math.min(Math.max(homeMinH, perfectH ),1100);
-		$('#home .fw-band.vcenter-body').css('min-height', activeH );
+		$('#home .fw-band.vcenter-body').css('height', activeH );
 		// center copy
 		var copy = $('#home .fw-band.vcenter-body > .container');
 		copy.css('padding-top', (activeH-copy.height())/2 );
@@ -225,9 +225,10 @@ var load_bg_slideshow = function() {
 			CFG['slideshow'].preloader = $('<img />')	
 				.bind('load', function() {
 				    // Background image has loaded.
-				    $('#bg-slideshow .active').addClass('fadeOut').removeClass('active');
+				    var fadeOut = $('#bg-slideshow .active'); 
 				    var i = $('#bg-slideshow .loading').removeClass('loading').addClass('active').attr('name');
 				    CFG['slideshow'].loaded[i]=true;
+				    fadeOut.addClass('fadeOut').removeClass('active');
 				});
 			// start the slideshow timer	
 			CFG['slideshow'].timer = setInterval(
@@ -497,7 +498,20 @@ var load_social_sharing = function() {
 
 $(document).ready(
 	function(){
-		// console.info("document ready");		
+		// console.info("document ready");
+		/*
+		 * check @font-family load
+		 */		
+		$('.checkfont').fontChecker({
+			onLoadClass: 'fontLoading',
+    	    onFailClass: 'fontFail',
+    	    onLoad: function(o){
+    	    	$('#curtain .wrapV').addClass('fadeIn'); // fade in #curtain .logo 
+    	    },
+    	    onFail: function(o){
+    	    	$('#curtain').remove();
+    	    },
+		});
 		/*
 		 * debug touch/no-touch
 		 */
@@ -626,9 +640,10 @@ $(document).ready(
 			} 
 		}) 
 		/**
-		 *	fade in #home content 
+		 *	remove curtain and fade in #home content 
 		 */
-		$('#home .invisible:not(.fadeIn), .navbar.invisible').addClass('fadeIn-slow');
+		$('#curtain').remove();
+		$('#home .invisible:not(.fadeIn), .navbar.invisible').addClass('fadeIn');
 		// fade in Vscroll hint
 		setTimeout(function() {
 			var hint = $('#home .vscroll-hint'); 

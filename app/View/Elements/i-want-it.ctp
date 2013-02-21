@@ -20,7 +20,7 @@
 					<p class="lead">
 If you want this service ASAP, let us know &mdash; we need your vocal support! 
 Cheer us on through those long sleepless nights by sending us a buck <strong>($1)</strong>. 
-<span>We'll get the message &mdash; and we'll donate every dollar we receive to charity.</span><i class="icon-asterisk icon-white" title="It's not the money we're after, it's the extra effort that signals a real commitment to the idea."></i> 
+<span>We'll get the message &mdash; and we'll donate every dollar we receive to charity.</span><i class="icon-asterisk" title="It's not the money we're after, it's the extra effort that signals a real commitment to the idea."></i> 
 	        		</p>
 	        	</div>
 	        	<div class="span5 join">
@@ -42,7 +42,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 		  		<button id='cheer' type="submit" class="btn btn-primary track-click" track='cheer' title='Cheer us on for just a buck!'>
 		  			I Want it ASAP!
 		  		</button>
-		  		<i class="icon-arrow-left icon-white"></i>
+		  		<i class="icon-arrow-left"></i>
 	  		</div>
 	  		<div class="wrapH">
 		    	<input type="email" placeholder="Email" class='email' 
@@ -53,7 +53,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 		    		data-trigger='manual' >
 		    </div>
 		    <div class='wrapH right'>
-			    <i class="icon-arrow-right icon-white"></i>
+			    <i class="icon-arrow-right"></i>
 			    <button id='invite' type="submit" class="btn btn-warning track-click" track='invite' title='Request an invitation to our preview'>
 			    	I Want an Invite
 			    </button>
@@ -64,7 +64,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 </form>		
 
 <div class='donate-form-wrap' style='display:none;'>
-							<i class="icon-remove-sign icon-white pull-right"></i>
+							<i class="icon-remove-sign pull-right"></i>
 	        				<h2>We like your enthusiasm!</h2>
 	        				<p>Use one of the buttons below to cheer us on with a $1 donation</p>
 	        				<!--  Payal 	        			 -->
@@ -100,7 +100,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 	        </div> <!-- / .row -->
 	        <div class="row">
 	        	<p class='footnote offset1 span10'>
-		        	<i class="icon-asterisk icon-white"></i>
+		        	<i class="icon-asterisk"></i>
 		        	We don't want the dollar (really). We want an extra effort on your part to signal a real need for this service. 
 		        	Your commitment will help us convince key developers and partners to join us and deliver this service sooner.
 	        	</p>

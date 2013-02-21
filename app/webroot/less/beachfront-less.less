@@ -295,7 +295,7 @@ html.touch  {
    	    font-size: 16px;
    		}
    		p.footnote {
-   		  font-size: 0.8em !important;
+   		  font-size: 1em !important;
    		}
    	}
    	strong {
@@ -412,7 +412,7 @@ html.touch  {
 	.vscroll-hint {
     box-shadow: 0 2px 10px rgba(253, 249, 208, 0.25);
     cursor: default;
-    padding: 0 4px 8px;
+    padding: 8px 4px;
     position: absolute;
     right: 40px;
     top: 50%;
@@ -420,12 +420,9 @@ html.touch  {
 	  .rounded-corners(20px);
 	  .rgb-text-shadow(@orange);
 	  -webkit-tap-highlight-color : rgba(0,0,0,0);
-	  .arrow {
-	    font-size: 48px;
+	  i {
+	    font-size: 20px;
 	    line-height: 1;
-	  }
-	  .arrow.up {
-	    margin-bottom: 10px;
 	  }
 	}
 	.about {
@@ -746,6 +743,10 @@ html.touch  {
   .container {
     p {
       font-size: 21px;
+      .icon-asterisk {
+        font-size: 0.6em;
+        vertical-align: top
+      }
     }
     .wrapH img {
       height: 260px;

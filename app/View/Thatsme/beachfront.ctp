@@ -13,7 +13,7 @@
 	/**
 	 * CSS
 	 */
-	// $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));	$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css";
+	// $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));	$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css,fonts/FortAwesome-Font-Awesome-13d5dd3/css/font-awesome.css";
 	$this->Html->css($min, null, array('inline' => false));
 	$this->start('css');
 		$this->Less->css('beachfront-less');

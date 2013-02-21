@@ -31,7 +31,7 @@
 		        			Curated Timelines
 		        		</figcaption>
 		        	</figure>
-		        	<div class="vscroll-hint alpha70b fadeOut"><div class='arrow up'>&and;</div><div>scroll for more</div><div class='arrow'>&or;</div></div>
+		        	<div class="vscroll-hint alpha70b fadeOut"><i class='icon-arrow-up'></i><div>scroll for more</div><i class='icon-arrow-down'></i></div>
 		        </div>
 		        <div class="featurette-heading footer">
 		        	<div class="subhead">

@@ -106,17 +106,42 @@ html.ie {
   .alpha70b, .alpha70r, .alpha70card , .alpha80w, .alpha70cr, .alpha70ph, .alpha70o  {
 		background: transparent;	/* makes border-radius invisible, wrap?  */
 	}
-	.dropdown-menu li.active > a,
-  .dropdown-menu li > a:hover {
-    background: transparent;
-  }
   .featurette .fw-band.footer, .featurette.body-opaque, #FAQ .faq-section, #call-to-action .donate-form-wrap  {
     background: transparent;
   }
   .navbar-inverse .navbar-inner {
-    filter: none;
-    -ms-filter: none;
+    /* For IE 5.5 - 7*/
+    filter:~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+    /* For IE 8*/
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
   }
+  
+  .no-ie-alpha70b {
+    background: #222 !important;
+  }
+  .navbar.navbar-inverse {
+    background: #222 !important;
+    .navbar-inner {
+      background: #222 !important;
+      .nav > li:hover,
+      .dropdown-menu li.active > a,
+      .dropdown-menu li > a:hover {
+        // background-color: transparent;        background: #222 !important;
+        filter:~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+        /* For IE 8*/
+        -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+      }
+      .nav > li.dropdown, ul.dropdown-menu {
+        background: #000 !important;
+      }
+    }
+  }
+}
+
+html:not(.ie){
+  .no-ie-alpha70b {
+    .rgba(#000000, 0.7);
+  }  
 }
 
 i.icon-white {
@@ -207,7 +232,7 @@ i.icon-white {
   }
   .dropdown-menu {
     margin-top: 0;
-    border-radius: 0 0 6px 6px;
+    background-color: transparent;    border-radius: 0 0 6px 6px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
   }
 }
@@ -253,6 +278,7 @@ i.icon-white {
     color: @red;
   }
 }
+
 
 html.touch  {
   .nav-collapse .nav > li > a,

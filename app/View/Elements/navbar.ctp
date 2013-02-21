@@ -1,6 +1,6 @@
 <?php if (!empty($useHash)) { ?>       
-       <div class="navbar navbar-inverse navbar-fixed-top use-hash invisible alpha70b">
-          <div class="navbar-inner container alpha70b">
+       <div class="navbar navbar-inverse navbar-fixed-top use-hash invisible no-ie-alpha70b">
+          <div class="navbar-inner container ">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
@@ -21,7 +21,7 @@
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-                  <ul class="dropdown-menu pull-right alpha70b">
+                  <ul class="dropdown-menu pull-right no-ie-alpha70b">
                     <li class='promote'><a href="#about">About</a></li>
                     <li class='promote'><a href="#FAQ">FAQ</a></li>
                     <li><a href="#see-the-movie">See the Movie Again</a></li>
@@ -33,8 +33,8 @@
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
 <?php } else { ?>
-       <div class="navbar navbar-inverse navbar-fixed-top invisible alpha70b">
-          <div class="navbar-inner container alpha70b">
+       <div class="navbar navbar-inverse navbar-fixed-top invisible no-ie-alpha70b">
+          <div class="navbar-inner container">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
               <span class="icon-bar"></span>
@@ -52,7 +52,7 @@
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">More<b class="caret"></b></a>
-                  <ul class="dropdown-menu pull-right alpha70b">
+                  <ul class="dropdown-menu pull-right no-ie-alpha70b">
                     <li class='promote'><a href="/about">About</a></li>
                     <li class='promote'><a href="/faq">FAQ</a></li>
                     <li><a href="/see-the-movie">See the Movie Again</a></li>

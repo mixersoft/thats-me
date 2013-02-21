@@ -3,7 +3,7 @@
 	$this->set("title_for_layout", $title);
 	$this->extend('/Thatsme/beachfront');  
 ?>	
-      <div id="home" class="featurette connect track-page-view ">
+      <div id="home" class="featurette home track-page-view ">
       	<a name='home'></a>
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">

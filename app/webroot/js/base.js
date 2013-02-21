@@ -50,7 +50,7 @@ CFG['util'] = {
 		// offsetH:  581+:89 320+:41
 		var offsetH = $('#home .fw-band.footer').height()==16 ? 41 : 89;
 			perfectH = $(window).height()-offsetH,
-			homeMinH = $('#home .fw-band.vcenter-body').css('min-height').split('px')[0];
+			homeMinH = $('#home .fw-band.vcenter-body').css('height', 'auto').height();
 		var activeH = Math.min(Math.max(homeMinH, perfectH ),1100);
 		$('#home .fw-band.vcenter-body').css('height', activeH );
 		// center copy

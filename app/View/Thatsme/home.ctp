@@ -37,6 +37,19 @@
 		        	<div class="subhead">
 		        		Put your photos on <strong>our</strong> To-do list &mdash; and <strong>Play</strong> with your photos once again.
 		        </div></div>
+		        <div class='row'>
+		        	<div class='about alpha70b offset2 span8'>
+						<p>
+At Snaphappi, we know that a single photo can launch a thousand happy memories. 
+But with a growing family and a hectic job, who has time to scroll through 10,000 thumbnails to find your great shots? 
+			        	</p>
+			        	<p>
+Only Snaphappi uses Trained Editors <strong>(real people)</strong> to screen your family photos. 
+We'll find your Beautiful Photos, hide the duplicates, and let you see it all on a stunning Curated Timeline.  
+Let us do the work, and we'll get your photos ready to play.  
+	        			</p>
+		        	</div>
+		        </div>
 		   </div>     
         </div></div></div>        
         <div class='fw-band footer'>

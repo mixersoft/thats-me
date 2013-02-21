@@ -15,14 +15,15 @@
 	    <!--[if lt IE 9]>
 	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	    <![endif]-->
-<!--    <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap.min.css" />
+		<!--    
+		<link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&f=bootstrap-responsive.css" />
          -->        
-        <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&amp;f=bootstrap.min.css,bootstrap-responsive.css" />
+        <!--  NOTE: append &123 to minify request string for 1 year max-age  --> 
+        <link type="text/css" rel="stylesheet" href="http://snappi.snaphappi.com/min/b=static/css/bootstrap&amp;f=bootstrap.min.css,bootstrap-responsive.css&123" />
 	    <!--[if IE 7]>
 		<link rel="stylesheet" href="/css/fonts/FortAwesome-Font-Awesome-13d5dd3/css/font-awesome-ie7.min.css">
 		<![endif]-->        
-        <script src="http://snappi.snaphappi.com/static/js/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <?php
         	echo $this->fetch('meta'); 
 			echo $this->fetch('script'); 
@@ -59,7 +60,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="http://snappi.snaphappi.com/static/js/bootstrap/jquery-1.8.3.min.js"><\/script>')</script>
 		<!-- // twitter bootstrap -->
-		<script type="text/javascript" src="http://snappi.snaphappi.com/min/b=static/js/bootstrap&amp;f=bootstrap.js,font-checker.js,jquery.scrollTo-1.4.3.1-min.js"></script>
+<!-- 		<script type="text/javascript" src="http://snappi.snaphappi.com/min/b=static/js/bootstrap&amp;f=modernizr-2.6.2-respond-1.1.0.min.js,bootstrap.min.js,font-checker.js,jquery.scrollTo-1.4.3.1-min.js"></script> -->
 		<?php 
 			echo $this->element('sql_dump'); 
 			echo $this->fetch('javascript_Bottom');

@@ -31,14 +31,14 @@
 		        			Curated Timelines
 		        		</figcaption>
 		        	</figure>
-		        	<div class="vscroll-hint alpha70b fadeOut"><i class='icon-arrow-up'></i><div>scroll for more</div><i class='icon-arrow-down'></i></div>
+		        	<div class="vscroll-hint no-ie-alpha70b fadeOut"><i class='icon-arrow-up'></i><div>scroll for more</div><i class='icon-arrow-down'></i></div>
 		        </div>
 		        <div class="featurette-heading footer">
 		        	<div class="subhead">
 		        		Put your photos on <strong>our</strong> To-do list &mdash; and <strong>Play</strong> with your photos once again.
 		        </div></div>
 		        <div class='row'>
-		        	<div class='about alpha70b offset2 span8'>
+		        	<div class='about no-ie-alpha70b offset2 span8'>
 						<p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
 But with a growing family and a hectic job, who has time to scroll through 10,000 thumbnails to find your great shots? 

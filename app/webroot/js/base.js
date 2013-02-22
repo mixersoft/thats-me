@@ -498,7 +498,7 @@ var load_social_sharing = function() {
 
 $(document).ready(
 	function(){
-		// console.info("document ready");
+		// console.info("document ready");		if ($('html').hasClass('ie8') && document.documentMode==8) $('html').addClass('doc-mode-ie8');
 		/*
 		 * check @font-family load
 		 */		

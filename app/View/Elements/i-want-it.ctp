@@ -1,8 +1,8 @@
 	  <div id='i-want-it' class='featurette hide' ></div>
       <a name='not-yet' id='not-yet' class='track-page-view track-requires-hash' ></a>
       <a name='call-to-action'></a>
-      <div id='call-to-action' class="featurette call-to-action  track-page-view alpha70b">
-      	<div class='fw-band vcenter-body'>
+      <div id='call-to-action' class="featurette call-to-action  track-page-view">
+      	<div class='fw-band vcenter-body  alpha rgba70b '>
       		<div class="container">
       			<div class='row'>
 		      		<div class="span12">

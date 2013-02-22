@@ -52,10 +52,10 @@
 		// $js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js';	}
 	// NOTE: append &123 to minify request string for 1 year max-age
 	if ($isLocal) {
-		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=bootstrap/modernizr-2.6.2-respond-1.1.0.min.js,bootstrap/bootstrap.min.js,bootstrap/font-checker.js,bootstrap/jquery.scrollTo-1.4.3.1-min.js,TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js&123';		$js_bottom[] = 'base';
+		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=bootstrap/modernizr-2.6.2-respond-1.1.0.min.js,bootstrap/bootstrap.js,bootstrap/font-checker.js,bootstrap/jquery.scrollTo-1.4.3.1-min.js,TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js&123';		$js_bottom[] = 'base';
 		$js_bottom[] = 'http://www.youtube.com/iframe_api';		$js_bottom[] = "vendor";	// mixpanel and youtube control scripts
 	} else {
-		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=bootstrap/modernizr-2.6.2-respond-1.1.0.min.js,bootstrap/bootstrap.min.js,bootstrap/font-checker.js,bootstrap/jquery.scrollTo-1.4.3.1-min.js,TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js&123';
+		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=bootstrap/modernizr-2.6.2-respond-1.1.0.min.js,bootstrap/bootstrap.js,bootstrap/font-checker.js,bootstrap/jquery.scrollTo-1.4.3.1-min.js,TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js&123';
 		$js_bottom[] = '/min/b=js&f=base.js,vendor.js';		$js_bottom[] = 'http://www.youtube.com/iframe_api';
 	}
 	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));

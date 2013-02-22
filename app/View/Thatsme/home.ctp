@@ -7,7 +7,7 @@
       	<a name='home'></a>
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
-		<div class="fw-band alpha70b vcenter-body"> 
+		<div class="fw-band alpha rgba70b vcenter-body"> 
 			<div class="container center invisible"> 
 				<div class="featurette-heading">
 					<h1 class="">Curated Family Photos</h1>	    	
@@ -52,7 +52,7 @@ Let us do the work, and we'll get your photos ready to play.
 		        </div>
 		   </div>     
         </div></div></div>        
-        <div class='fw-band footer'>
+        <div class='fw-band footer alpha rgba80b'>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
         		<div class="pull-right"><a href='#features'>Learn More</a></div>
@@ -70,12 +70,12 @@ Let us do the work, and we'll get your photos ready to play.
      
       <a name='thank-you' id='thank-you' class='track-page-view  track-requires-hash'></a>
       <a name='sharing'></a>
-      <div id='sharing' class="featurette sharing track-page-view alpha70ph">
-      	<div class='fw-band vcenter-body'>
+      <div id='sharing' class="featurette sharing track-page-view">
+      	<div class='fw-band vcenter-body  alpha rgba70ph'>
       		<div class="container">
       			<div class='row'>
 		      		<div class="span12">
-		      			<div class="featurette-heading alpha70b">
+		      			<div class="featurette-heading alpha rgba50b">
 					        <h1>
 					        	<span class="thank-you hide">Thank You for Your Support <span class="muted">and</span></span>
 					        	<span class="muted">Spread the Word!</span>
@@ -100,7 +100,7 @@ Let us do the work, and we'll get your photos ready to play.
       			</div>
       		</div>
 		</div>		
-        <div class='fw-band footer'>
+        <div class='fw-band footer alpha rgba80b'>
         	<div class="container ">
 	    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
 	    		<div class="pull-right"><a href='#home'>Top</a></div>

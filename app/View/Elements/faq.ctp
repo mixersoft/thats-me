@@ -1,6 +1,6 @@
 <a name='FAQ' id='faq'></a>
-      <div id='FAQ' class="featurette FAQ track-page-view  alpha70b">
-		<div class='fw-band vcenter-body'>
+<div id='FAQ' class="featurette FAQ track-page-view  ">
+		<div class='fw-band vcenter-body alpha rgba70b'>
       		<div class="container">
       			<div class='row'>
 		      		<div class="span12">
@@ -182,7 +182,7 @@ By making the extra effort of sending us $1, you are sending us a clear message 
 	        	</div>
       		</div>
 		</div>	      	
-        <div class='fw-band footer'>
+        <div class='fw-band footer alpha rgba80b'>
 	    	<div class="container ">
 	    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
 	    		<div class="pull-right"><a href='#home'>Top</a></div>

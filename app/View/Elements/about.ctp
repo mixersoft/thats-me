@@ -1,10 +1,10 @@
      <a name='about'></a>
-      <div id='about' class="featurette about track-page-view alpha70card">
+      <div id='about' class="featurette about track-page-view alpha rgba70card">
 		<div class='fw-band vcenter-body'>
       		<div class="container">
       			<div class='row'>
 		      		<div class="span12">
-		      			<div class="featurette-heading alpha70b">
+		      			<div class="featurette-heading alpha rgba50b">
 					        <h1>About Snaphappi</h1>
 				       	</div>
 					</div>
@@ -29,7 +29,7 @@ Let us roll up our sleeves so you can just play.
 	        	</div></div>
       		</div>
 		</div>	      	
-		<div class='fw-band footer'>
+		<div class='fw-band footer alpha rgba80b'>
 	    	<div class="container ">
 	    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
 	    		<div class="pull-right"><a href='#home'>Top</a></div>

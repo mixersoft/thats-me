@@ -44,7 +44,7 @@
 				<?php echo $this->Session->flash(); ?>
 				<?php echo $this->fetch('content'); ?>
 			</div>
-			<div id="footer" >
+			<div id="footer" class='alpha rgba70b' >
 				<div class="container">
 					<?php echo $this->fetch('body_footer');?>
 					<p>&copy; 2013 Snaphappi Inc.

@@ -11,7 +11,7 @@
 				</div>
 		    </div>
 	    </div>
-	    <div class='fw-band footer'>
+	    <div class='fw-band footer  alpha rgba80b'>
         	<div class="container ">
         		<div class="pull-right"><a href='#call-to-action'>I Want It</a></div>
         	</div>

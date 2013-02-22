@@ -6,7 +6,7 @@
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
-		<div class="fw-band alpha70card vcenter-body ">
+		<div class="fw-band alpha rgba70card vcenter-body ">
 			<div class="featurette-heading center">
 				<h1 class="featurette-heading center">How It Works</h1>	
 			</div>
@@ -80,10 +80,10 @@ We think it's a small price to pay for all the time you'll save.</p>
 	<div class="left carousel-control-btn" href="#how-it-works" direction="prev">&lsaquo;</div>
 	<div class="right carousel-control-btn" href="#how-it-works" direction="next">&rsaquo;</div>
 </div>
-		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
+		</div> <!-- / .vcenter-body .fw-band alpha rgba70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
-      <div class='fw-band footer'>
+      <div class='fw-band footer alpha rgba80b'>
     	<div class="container ">
     		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
     		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>

@@ -81,10 +81,10 @@ by rating the ones you love. You can also see your hidden duplicates and pick a 
 	<div class="left carousel-control-btn" href="#features" direction="prev">&lsaquo;</div>        
 	<div class="right carousel-control-btn" href="#features" direction="next">&rsaquo;</div>
 </div>
-		</div> <!-- / .vcenter-body .fw-band alpha70b --> 
+		</div> <!-- / .vcenter-body .fw-band --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
-      <div class='fw-band footer'>
+      <div class='fw-band footer  alpha rgba80b'>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
         		<div class="pull-right"><a href='#how-it-works'>Learn More</a></div>

@@ -79,15 +79,23 @@ CFG['util'] = {
 	},
 	scrollSpy: function(){
 		// manually implemented ScrollSpy
-		$('.featurette').each(function(i, elem) {
+		var current = $('.navbar .nav li.active'),
+			href = current.first().find('a').attr('href'),
+			visibleId;
+		$('.featurette:not(.hide)').each(function(i, elem) {
 			if (CFG['util'].isScrolledIntoView($(elem))) {
-				var id = $(elem).attr('id');
-				$('.navbar .nav li').removeClass('active');
+				visibleId = $(elem).attr('id');
+				if (href && href.indexOf(visibleId)!=-1) {
+					// current active is still visible, skip
+					return true;
+				}
+
 				var prefix = ($('.navbar.use-hash').length) ? '#' : '/';
-				var a = $('.navbar .nav li a[href^="'+prefix+id+'"]').parent().addClass('active');
+				var li = $('.navbar .nav li a[href^="'+prefix+visibleId+'"]').parent().addClass('active');
+				current.removeClass('active');
 				
 				if (!CFG['socialSharing']){
-					switch(id) {
+					switch(visibleId) {
 						case 'sharing':
 							CFG['timing'].load_SocialSharing = 0;
 							load_social_sharing();	// load immediately on scrollIntoView
@@ -139,13 +147,20 @@ CFG['util'] = {
 	},
 	// o.hasAttr('hash'), $(<A>)
 	animateScrollToHash: function(o) {
-		var target = o.hash;
+		var target = $(o.hash);
+		if (!target.length) return;
+		if ((o.source == 'carousel') && $('html.touch')) {
+			// scrolling on carousel scroll causes flashes
+			if (CFG['util'].isScrolledIntoView(target)) {
+				return;
+			}
+		}
 		if (target) {
-	        // console.log(target);
-	        var delta = $(target).offset().top - $(window).scrollTop();
+	        // console.log(o.hash);
+	        var delta = target.offset().top - $(window).scrollTop();
 	        if (delta < 0 || delta > 50) {
 	        	setTimeout(function(){
-	        		$.scrollTo(target, 1000);
+	        		$.scrollTo(o.hash, 1000);
 	        	}, 50);
 	        } 
 	    }
@@ -154,7 +169,7 @@ CFG['util'] = {
 	slideInNavBar: function(){
 		var navbar = $('.navbar-fixed-top');
 		// collapsed .navbar has position:absolute, otherwise fixed
-		if (navbar.css('position')=='absolute') { 
+		if (navbar.length && navbar.css('position')=='absolute') { 
 			var top = $(window).scrollTop();
 			// slide in .navbar to current scrollTop
 			navbar.css('top', top); 		
@@ -293,7 +308,7 @@ var load_carouFredSel = function($) {
 				
 				$('.carousel-pager > div, .carousel-control-btn').on('click', function(e){
 					var hash = $(e.currentTarget).attr('href');
-					if (hash) CFG['util'].animateScrollToHash({hash: hash});
+					if (hash) CFG['util'].animateScrollToHash({hash: hash, source:'carousel'});
 				})
 			},
 			fred: function(o) {

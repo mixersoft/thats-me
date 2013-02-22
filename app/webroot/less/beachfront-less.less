@@ -280,7 +280,7 @@ i.icon-white {
   }
   .nav > li.dropdown > .dropdown-menu:before,
   .nav > li.dropdown > .dropdown-menu:after {
-    border: none;   /*  triangle anchor for dropdown-menu */
+    border: none !important;   /*  triangle anchor for dropdown-menu */
   }
   .nav-collapse {
     .nav > li > a,
@@ -291,7 +291,9 @@ i.icon-white {
   .dropdown-menu {  /* show by clicking more button */
     margin-top: 0;
     background-color: transparent;    border-radius: 0 0 6px 6px;
+    border-top: 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+    
   }
   
   .nav-collapse.in.collapse { 
@@ -373,8 +375,8 @@ html.touch  {
   .navbar .nav-collapse.in.collapse .nav  li > a, 
   .dropdown.open .dropdown-menu li > a
   {
-    padding-top: 8px;  /* extra vertical space for fingers */
-    padding-bottom: 8px;
+    padding-top: 10px;  /* extra vertical space for fingers */
+    padding-bottom: 10px;
   }
 }
 

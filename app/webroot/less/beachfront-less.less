@@ -71,8 +71,11 @@ html.fontface {
     -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieGradient}, endColorstr=@{ieGradient})";
 }
 
+html:not(.lt-ie9) .nav-collapse.in.collapsed-alpha.rgba80b {    
+    background-color: rgba(0, 0, 0, 0.8) !important;}
 html:not(.lt-ie9){
-  .alpha.rgba80b {    /* for darker navbar, footer */
+  .alpha.rgba80b,
+  .nav-collapse.in.collapsed-alpha.rgba80b {    /* for darker navbar, footer */
     .rgba(#000000, 0.8);  
   }
   .alpha.rgba70b {
@@ -164,10 +167,12 @@ html.lt-ie9 {
     background: transparent;
   }
   .navbar-inverse .navbar-inner {
+    background-image: none;
+    background-color: red;
     /* For IE 5.5 - 7*/
-    filter:~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+    // filter:~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
     /* For IE 8*/
-    -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+    // -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
   }
   
   .no-ie-alpha70b {
@@ -181,9 +186,9 @@ html.lt-ie9 {
       .dropdown-menu li.active > a,
       .dropdown-menu li > a:hover {
         // background-color: transparent;        background: #222 !important;
-        filter:~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+        // filter:~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
         /* For IE 8*/
-        -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
+        // -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled = false)";
       }
       .nav > li.dropdown, ul.dropdown-menu {
         background: #000 !important;
@@ -299,6 +304,8 @@ i.icon-white {
   
   .nav-collapse.collapse:not(.in) {
     /* full width menu, not collapsed */
+    background-color: transparent !important;
+    background:transparent !important;
     .dropdown.open .dropdown-menu {
       // extra .alpha.rgba80 not a problem for no-ie
     }
@@ -307,6 +314,11 @@ i.icon-white {
 }
 
 .navbar.navbar-inverse  {
+  > .navbar-inner.ie-no-filter,
+  > .navbar-inner.ie-no-filter ul.nav {
+      filter:~"progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+      -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+  }
   .nav > li.active ,  
   .nav > li.active a,
   .dropdown-menu li.active > a {
@@ -356,12 +368,19 @@ i.icon-white {
 }
 
 
-html  {
+html.touch  {
   .navbar .nav-collapse.in.collapse .nav  li > a, 
   .dropdown.open .dropdown-menu li > a
   {
     padding-top: 8px;  /* extra vertical space for fingers */
     padding-bottom: 8px;
+  }
+}
+
+html.ie9 .navbar {
+  .dropdown-menu li > a:hover  {    /* TODO: this is NOT working */
+    background-color: transparent;  /* cancel the blue gradient */
+    background-image: none;
   }
 }
 

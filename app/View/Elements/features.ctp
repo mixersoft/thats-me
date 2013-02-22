@@ -1,7 +1,7 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel body-opaque track-page-view  track-carousel-end">
+    <div id="features" class="featurette carousel body-opaque alpha rgba50b track-page-view  track-carousel-end">
 	    <div class="vcenter-wrap opaque">
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body ">

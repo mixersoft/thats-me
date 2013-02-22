@@ -1,5 +1,5 @@
 	  <a name='see-the-movie'></a>	
-      <div id="see-the-movie" class="featurette see-the-movie body-opaque">
+      <div id="see-the-movie" class="featurette see-the-movie body-opaque alpha rgba30b ">
       	<div class="opaque">
 	      	<div class='fw-band vcenter-body'>
 		      	<div class="featurette-heading center">

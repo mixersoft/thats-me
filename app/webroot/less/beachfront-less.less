@@ -71,8 +71,6 @@ html.fontface {
     -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieGradient}, endColorstr=@{ieGradient})";
 }
 
-html:not(.lt-ie9) .nav-collapse.in.collapsed-alpha.rgba80b {    
-    background-color: rgba(0, 0, 0, 0.8) !important;}
 html:not(.lt-ie9){
   .alpha.rgba80b,
   .nav-collapse.in.collapsed-alpha.rgba80b {    /* for darker navbar, footer */
@@ -83,6 +81,9 @@ html:not(.lt-ie9){
   }
   .alpha.rgba50b {      /* for .alpha .alpha.rgba70b */
     .rgba(#000000, 0.5);
+  }
+  .alpha.rgba30b {      /* for .body-opaque */
+    .rgba(#000000, 0.3);
   }
   .alpha.rgba70r {    /* same as #DD1260 */   
     .rgba(@red, 0.7);
@@ -390,7 +391,7 @@ html.ie9 .navbar {
  */
 
 .bg.fixed {
-  // .rgba(#000000, 0.7);  background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: 100%;
@@ -494,9 +495,8 @@ html.ie9 .navbar {
 /*
  * wrap transparent bands around opaque body 
  */
-.featurette.body-opaque {
+.featurette.body-opaque.alpha {
   padding-top: 40px;
-  .rgba(#FFFFFF,0.7);
   .opaque {
     background-color: white;
     .fw-band {
@@ -566,9 +566,6 @@ html.ie9 .navbar {
 	    .rgb-text-shadow-sm(@orange);
 	    font-size: 14px;
 	  }
-	}
-	.fw-band.footer {
-	  .rgba(#000000, 0.8);    
 	}
 }
 
@@ -900,9 +897,9 @@ html.touch  {
     }
   }
   .donate-form-wrap {
-    .rgba(#000000, 0.5);
     .rounded-corners(10px); 
     padding: 10px;
+    margin-bottom: 10px;
     form {
       display: inline-block;
       padding: 0 40px;
@@ -963,7 +960,6 @@ html.touch  {
 }
 #FAQ {
   .faq-section {
-    .rgba(#000000, 0.3);
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 20px;

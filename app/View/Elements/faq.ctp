@@ -11,7 +11,7 @@
       			</div>
       			<div class="row">
 		        	<div class="span12 body">
-	       <div class="faq-section">
+	       <div class="faq-section alpha rgba50b">
 	        	<h2>Photo Editing</h2>
 	        	<p class="question">
 	How do you know which photos are beautiful?	        		
@@ -78,7 +78,7 @@ On the other hand, this fee might seem incredibly low considering there are real
 Once the photos are rated, our Curated Timelines and Stories can be built automatically. And the Curated Timeline App will always be distributed for free.        		
 	        	</p>
 	       </div>
-	       <div class="faq-section "> 	
+	       <div class="faq-section alpha rgba50b "> 	
 	        	<h2>Privacy &amp; Sharing</h2>
 	        	<p class="question">
 	What about the safety and privacy of my photos?	        		
@@ -93,7 +93,7 @@ Once the photos are rated, our Curated Timelines and Stories can be built automa
 	Answer.        		
 	        	</p>
 			</div>
-	       <div class="faq-section ">	
+	       <div class="faq-section alpha rgba50b ">	
 				<h2>Darkroom &amp; Launch</h2>
 				<p class="question">
 	Why do you want $1 from me?	        		
@@ -120,7 +120,7 @@ By making the extra effort of sending us $1, you are sending us a clear message 
 	Answer.        		
 	        	</p>
 	        </div>
-	       <div class="faq-section ">	
+	       <div class="faq-section alpha rgba50b ">	
 	        	<h2>Platforms &amp Systems</h2>
 				<p class="question">
 	Why is the Curated Timeline only available as an iPad App?	        		

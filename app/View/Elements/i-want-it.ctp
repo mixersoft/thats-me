@@ -63,7 +63,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 	</div>
 </form>		
 
-<div class='donate-form-wrap' style='display:none;'>
+<div class='donate-form-wrap alpha rgba50b' style='display:none;'>
 							<i class="icon-remove-sign pull-right"></i>
 	        				<h2>We like your enthusiasm!</h2>
 	        				<p>Use one of the buttons below to cheer us on with a $1 donation</p>

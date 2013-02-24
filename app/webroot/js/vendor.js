@@ -171,7 +171,11 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		 */
 		// remove all prior conversion iframes 
 		$('iframe.ga-conversion').remove();	
-		var conversion_src = '/thatsme/conversion/label:'+google_conversion_label+'/value:'+google_conversion_value;
+		if (1) {	// use querystring params to trigger iframe conversion
+			var conversion_src = window.location.pathname+'?conversion&label='+google_conversion_label+'&value='+google_conversion_value;
+		} else {	// use action+named params to trigger iframe conversion
+			var conversion_src = '/thatsme/conversion/label:'+google_conversion_label+'/value:'+google_conversion_value;
+		}
 		GoogleAdWordsHelper.conversion_tracked[name] = 1;
 		$('<iframe id="iframe-'+name+'" class="ga-conversion" src="'+conversion_src+'" width="0px" height="0px"></iframe>').appendTo($('body'));  
 

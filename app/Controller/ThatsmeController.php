@@ -52,7 +52,7 @@ class ThatsmeController extends AppController {
 	/*
 	 * common Action+View File
 	 */ 
-	public function beachfront() {
+	public function _beachfront() {
 		$options = array('Android', 'iPod', 'iPhone', 'iPad','Opera Mobi','webOS', 'Windows Phone OS');			
 		$pattern = '/(' . implode('|', $options) . ')/i';
 		preg_match($pattern, env('HTTP_USER_AGENT'), $match);
@@ -66,30 +66,55 @@ class ThatsmeController extends AppController {
 		$this->set(compact('isTouch', 'isAndroid', 'isLocal'));
 	}		// http://thats-me/i-need-this in routes.php
 	
-	// mapped to 'i-need-this' in routes.php
-	public function home(){
-		$this->beachfront(); 
-	}
-	public function features(){
-		$this->beachfront(); 
-	}
-	public function howItWorks(){
-		$this->beachfront(); 
-	}
-	public function seeTheMovie(){
-		$this->beachfront(); 
-	}
-	public function iWantIt(){
-		$this->beachfront(); 
-	}
-	public function about(){
-		$this->beachfront(); 
-	}	
-	public function faq(){
-		$this->beachfront(); 
+	/*
+	 * respond with google AdWords conversion code for iframe
+	 * 	INSTEAD of normal markup
+	 * expected query_params:
+	 * 	&conversion
+	 *  &label String AdWords conversion label
+	 *  &value Float AdWords conversion value
+	 */ 
+	public function _ga_conversion_iframe (){
+		if (isset($this->request->query['conversion'])){
+			$label = $this->request->query['label'];
+			$value = $this->request->query['value'];
+			if ($label && $value) {
+				// label and value must be set to respond with conversion markup
+				$this->set(compact('label','value'));
+				$this->autoRender = false;
+				$this->render('conversion', 'ajax');
+			}
+		}	
 	}
 	
-	public function adwords_conversion() {
+	// mapped to 'i-need-this' in routes.php
+	public function home(){
+		$this->_beachfront(); 
+		$this->_ga_conversion_iframe();
+	}
+	public function features(){
+		$this->_beachfront(); 
+		$this->_ga_conversion_iframe();
+	}
+	public function howItWorks(){
+		$this->_beachfront(); 
+		$this->_ga_conversion_iframe();
+	}
+	public function seeTheMovie(){
+		$this->_beachfront(); 
+	}
+	public function iWantIt(){
+		$this->_beachfront(); 
+		$this->_ga_conversion_iframe();
+	}
+	public function about(){
+		$this->_beachfront(); 
+	}	
+	public function faq(){
+		$this->_beachfront(); 
+	}
+	
+	public function conversion() {
 		$this->layout = 'ajax';
 		$label = $this->request->named['label'];
 		$value = $this->request->named['value'];

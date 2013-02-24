@@ -8,7 +8,7 @@
 	 */
 	if (empty($this->viewVars['title_for_layout'])) $this->set("title_for_layout", $title);
 	$this->Html->meta(array('name'=>'viewport', 'content'=>$viewport), null, array('inline' => false));
-	$this->Html->meta('favicon.ico', '/favicon.ico', array('type' => 'icon', 'inline' => false));
+	$this->Html->meta('favicon.ico', '/img/beachfront/bp.ico', array('type' => 'icon', 'inline' => false));
 	$this->Html->meta('description', $description, array('inline' => false));
 	/**
 	 * CSS
@@ -60,8 +60,13 @@
 	}
 	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
 	
+	if (0 && $isLocal) {
+		// load google analytics in HEAD		$this->append('script');
+		$this->end(); 
+	}
 	if ($isLocal == false) {
-		// load google analytics/mixpanel only from snaphappi.com		$this->start('javascript_Bottom');
+		// load google analytics/mixpanel only from snaphappi.com
+		$this->start('javascript_Bottom');
 ?>
 		<!-- start google Analytics -->
 		<script type="text/javascript">
@@ -85,7 +90,7 @@ CFG['mixpanel'].instance = mixpanel;
 </script><!-- end Mixpanel -->
 <?php
 		$this->end();	 
-	}
+	}	
 ?>
 
 

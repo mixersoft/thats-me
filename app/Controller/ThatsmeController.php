@@ -89,6 +89,13 @@ class ThatsmeController extends AppController {
 		$this->beachfront(); 
 	}
 	
+	public function adwords_conversion() {
+		$this->layout = 'ajax';
+		$label = $this->request->named['label'];
+		$value = $this->request->named['value'];
+		if ($label && $value) $this->set(compact('label','value'));
+		else $this->autoRender = false;
+ 	}	
 
 /**
  * Displays a view

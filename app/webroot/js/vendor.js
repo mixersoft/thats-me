@@ -164,11 +164,22 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			google_conversion_value = events[name].value;
 		}
 		
-		document.write = function(node) {
-			$('body').append(node);
-		};
-		$.getScript('https://www.googleadservices.com/pagead/conversion.js').done(function() {
-			// console.log("google adwords conversion script loaded");		});
+		/*
+		 * use javscript conversion tracking in iframe
+		 */
+		var conversion_src = '/thatsme/adwords_conversion/label:'+google_conversion_label+'/value:'+google_conversion_value;
+		$('<iframe src="'+conversion_src+'" width="0px" height="0px"></iframe>').appendTo($('body'));  
+		
+		/*
+		 * use javascript method for reporting conversion
+		 * TODO: doesn't work
+		 */
+		// document.write = function(node) {
+			// $('body').append(node);
+		// };
+		// $.getScript('https://www.googleadservices.com/pagead/conversion.js').done(function() {
+			// console.log("google adwords conversion script loaded");
+		// });
 	}
 	/*
 	 * track section view as virtual page view in google analytics
@@ -275,7 +286,34 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				mixpanel.track(event_name, properties);
 				try {
 					CFG['ga'].trackEvent( event_name, properties['section'], MixpanelHelper.TRIGGER);
+					switch(section) {
+						case 'thank-you':
+							CFG['ga'].conversion('thank-you');		// adWords conversion, 16 points
+							break;
+						default: break;	
+					}					
 				} catch(e){ }
+			}
+			/*
+			 * these actions also apply to isLocal = true
+			 */
+			switch(section) {
+				case 'thank-you':
+					// post successful cheer, email should come from cookie
+					CFG['util'].postEmail(null,{'data[Follower][cheer]':'4'},function(json, status, o){
+						// on success
+						if (json.success) {
+							
+						} else {
+							console.log('there was a problem posting successful cheer by #thank-you');
+						}
+					});
+					break;
+				case 'features':
+					// MANUAL DEBUG adwords conversion
+					CFG['ga'].conversion('features');		// adWords conversion, 16 points
+					break;
+				default: break;	
 			}
 	};
 	MixpanelHelper.track_Click = function(o){
@@ -341,43 +379,39 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		/* 
 		 * 	start listeners
 		 */
-		$(window).scroll(function(e, elem) {
+		$(window).scroll(function(e, onload) {
 			// track sections as Page View
-			$('.track-page-view:not(.tracked)').each(function(i, elem) {
+			if (onload=='onload') {		// triggered by init()
+				var hash = window.location.hash || MixpanelHelper.FIRST_SECTION;
+				$(hash).removeClass('track-requires-hash'); 
+			}
+			$('.track-page-view').not('.tracked,.track-requires-hash').each(function(i, elem) {
 				/* If the object is completely visible in the window, fade it in */
 				// isLingeringInView: function(o, timers, delay, success)
-				var timers = MixpanelHelper.timers;				CFG['util'].isLingeringInView($(elem), timers, CFG['timing'].linger,
+				CFG['util'].isLingeringInView($(elem), MixpanelHelper.timers, CFG['timing'].linger,
 					function(o) {
 						try {
-							var event_name = 'Page View',
-								waypoint = o.attr('id');
-								
+							var section = o.attr('id');
 							if (o.hasClass('track-requires-hash')) {
+console.error("jquery not('.tracked,.track-requires-hash') not working");								
 								// for #thank-you and #not-yet return from payment vendors
-								if (window.location.hash !== '#'+waypoint) return;
+								if (window.location.hash !== '#'+section) return 0; // lingering timer
 							}
-								
-							var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-							if (!MixpanelHelper.DISABLED) {
-								mixpanel.track(event_name, properties);
-								try {
-									CFG['ga'].trackEvent( 'Page View', properties['section'], MixpanelHelper.TRIGGER);
-								} catch(e){
-								}
-							}
+							MixpanelHelper.track_PageView({
+								section: section
+							});
 							o.addClass('tracked');
-							CFG['util'].notify(waypoint);
+							CFG['util'].notify(section);
 							return "tracked";
 						} catch (e) {
 							throw new Exception("ERROR: mixpanel not loaded?");
 						}
-						return "error";
+						return 'error';			// lingering timer
 					}
 				);
+				return true;
 			});
-	
 		});
-		
 		
 		$('.track-click:not(.tracked)').one('click', function(e){
 			MixpanelHelper.track_Click($(e.currentTarget));
@@ -403,45 +437,10 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				mixpanel_event_properties['Click'] = {
 					url : window.location.pathname,
 				}
-				// MixpanelHelper.instance = mixpanel;		// not ready yet				
-				// track page load first section as Page View
-				var hash = window.location.hash || MixpanelHelper.FIRST_SECTION,
-					waypoint = hash.substr(1), 
-					event_name = 'Page View',
-					timers = MixpanelHelper.timers;
 				/**
-				 * .track-page-view onload, not on scroll  
+				 * .track-page-view on first load by triggering scroll  
 				 */	
-				if ($(hash +'.track-page-view:not(.tracked)').length && CFG['util'].isScrolledIntoView($(hash))){
-					var properties = $.extend({ section : waypoint }, mixpanel_event_properties[event_name]);
-					if (hash=='#thank-you') {
-						// post successful cheer, email should come from cookie
-						CFG['util'].postEmail(null,{'data[Follower][cheer]':'4'},function(json, status, o){
-							// on success
-							if (json.success) {
-								
-							} else {
-								console.log('there was a problem posting successful cheer by #thank-you');
-							}
-						});
-					}
-					if (!MixpanelHelper.DISABLED) {
-						mixpanel.track(event_name, properties);
-						switch(hash) {
-							case '#thank-you':
-								CFG['ga'].conversion('thank-you');		// adWords conversion, 16 points
-								// also track the Page View for id=thank-you, ignores .track-requires-hash
-							case '#not-yet':
-							// default: // do NOT track initial page load as event in google analytic, _gaq								try {		// google analytic track these PageViews automatically onload
-									CFG['ga'].trackEvent( 'Page View', properties['section'], MixpanelHelper.TRIGGER);
-								} catch(e){
-								}
-							break;
-						}
-					}
-					$(hash).addClass('tracked');
-					CFG['util'].notify(waypoint);
-				}
+				$(window).trigger('scroll',['onload']);
 			}
 		)
 	}	

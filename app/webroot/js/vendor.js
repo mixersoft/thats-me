@@ -171,7 +171,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		 */
 		// remove all prior conversion iframes 
 		$('iframe.ga-conversion').remove();	
-		var conversion_src = '/thatsme/adwords_conversion/label:'+google_conversion_label+'/value:'+google_conversion_value;
+		var conversion_src = '/thatsme/conversion/label:'+google_conversion_label+'/value:'+google_conversion_value;
 		GoogleAdWordsHelper.conversion_tracked[name] = 1;
 		$('<iframe id="iframe-'+name+'" class="ga-conversion" src="'+conversion_src+'" width="0px" height="0px"></iframe>').appendTo($('body'));  
 

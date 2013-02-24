@@ -124,7 +124,9 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	 * @param label String, maps to AdWords conversion label
 	 * @param value int, conversion value
 	 */
+	GoogleAdWordsHelper.conversion_tracked = {};
 	GoogleAdWordsHelper.conversion = function(name) {
+		if (GoogleAdWordsHelper.conversion_tracked[name]) return;
 		var events = {
 		 'features': {
 		  	label: "iKqqCM3qlwUQg76I1wM",
@@ -167,19 +169,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		/*
 		 * use javscript conversion tracking in iframe
 		 */
+		// remove all prior conversion iframes 
+		$('iframe.ga-conversion').remove();	
 		var conversion_src = '/thatsme/adwords_conversion/label:'+google_conversion_label+'/value:'+google_conversion_value;
-		$('<iframe src="'+conversion_src+'" width="0px" height="0px"></iframe>').appendTo($('body'));  
-		
-		/*
-		 * use javascript method for reporting conversion
-		 * TODO: doesn't work
-		 */
-		// document.write = function(node) {
-			// $('body').append(node);
-		// };
-		// $.getScript('https://www.googleadservices.com/pagead/conversion.js').done(function() {
-			// console.log("google adwords conversion script loaded");
-		// });
+		GoogleAdWordsHelper.conversion_tracked[name] = 1;
+		$('<iframe id="iframe-'+name+'" class="ga-conversion" src="'+conversion_src+'" width="0px" height="0px"></iframe>').appendTo($('body'));  
+
 	}
 	/*
 	 * track section view as virtual page view in google analytics
@@ -206,13 +201,21 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		}
 		opt_value = opt_value || value_lookup[category + ':' + action] || 0;
 		try {
-			if (category == 'Page View' && /\:/.test(action)) {
-				GoogleAdWordsHelper.trackPageview('/'+action);
-				if (action=='features') GoogleAdWordsHelper.conversion('features');	// 0.5 point for Adwords conversion
-			} 
 			// also track Event for now
 			_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);	
-			
+
+			// track virtual PageViews, i.e. :CAROUSEL-END
+			if (category == 'Page View' && /\:/.test(action)) {
+				GoogleAdWordsHelper.trackPageview('/'+action);
+			} 
+			// track Adwords conversions
+			switch (category + ':' + action) {
+				case 'Page View:features':
+				case 'Page View:how-it-works:CAROUSEL-END':
+					
+					GoogleAdWordsHelper.conversion(action);	// 0.5 point for Adwords conversion
+				break;
+			}
 		} catch(e){ 
 			console.error('Error: GoogleAdWordsHelper.trackEvent()');
 		}
@@ -310,9 +313,10 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 					});
 					break;
 				case 'features':
-					// MANUAL DEBUG adwords conversion
-					CFG['ga'].conversion('features');		// adWords conversion, 16 points
-					break;
+				case 'how-it-works:CAROUSEL-END':
+					// MANUAL DEBUG adwords conversion, use $isLocal override
+					CFG['ga'].trackEvent( event_name, properties['section'], "DEBUG");
+					// CFG['ga'].conversion('features');		// adWords conversion, 16 points					break;
 				default: break;	
 			}
 	};

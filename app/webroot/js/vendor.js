@@ -132,7 +132,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		  	label: "iKqqCM3qlwUQg76I1wM",
 		  	value: 0.5,
 		  },
-		  'how-it-works:END': {
+		  "how-it-works:CAROUSEL-END": {
 		  	label: "Wv8OCNXilgUQg76I1wM",
 		  	value: 1,
 		  },
@@ -158,8 +158,8 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		var google_conversion_language = "en";
 		var google_conversion_format = "3";
 		var google_conversion_color = "ffffff";
-		var google_conversion_label =  events['invite'].label;
-		var google_conversion_value = events['invite'].value;
+		var google_conversion_label =  "";
+		var google_conversion_value = 0;
 		
 		if (events[name]) {
 			google_conversion_label = events[name].label;
@@ -208,13 +208,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			// track all PageViews, including virtual PageViews, i.e. :CAROUSEL-END
 			if (category == 'Page View' && action!=='home') {				
 				GoogleAdWordsHelper.trackPageview('/'+action);
-				console.warn('ga TrackPageView '+category+':'+action);				
-			} 
+				// console.warn('ga TrackPageView '+category+':'+action);							} 
 			
 			// also track Event for any event with value
 			if (opt_value) {
 				_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);	
-				console.info('ga TrackEvent '+category+':'+action);						}
+				// console.info('ga TrackEvent '+category+':'+action);						}
 
 			// track Adwords conversions
 			switch (category + ':' + action) {

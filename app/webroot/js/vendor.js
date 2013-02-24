@@ -315,8 +315,8 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				case 'features':
 				case 'how-it-works:CAROUSEL-END':
 					// MANUAL DEBUG adwords conversion, use $isLocal override
-					CFG['ga'].trackEvent( event_name, properties['section'], "DEBUG");
-					// CFG['ga'].conversion('features');		// adWords conversion, 16 points					break;
+					if (_gaq) CFG['ga'].trackEvent( event_name, properties['section'], "DEBUG");
+					break;
 				default: break;	
 			}
 	};

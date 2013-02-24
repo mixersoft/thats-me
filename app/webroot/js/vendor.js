@@ -204,13 +204,18 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		opt_value = opt_value || value_lookup[category + ':' + action] || 0;
 		
 		try {
-			// also track Event for now
-			_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);	
-
-			// for tracking only virtual PageViews, use: if (category == 'Page View' && /\:/.test(action)) {			// track all PageViews, including virtual PageViews, i.e. :CAROUSEL-END
-			if (category == 'Page View') {				
+			// for tracking only virtual PageViews, use: if (category == 'Page View' && /\:/.test(action)) {
+			// track all PageViews, including virtual PageViews, i.e. :CAROUSEL-END
+			if (category == 'Page View' && action!=='home') {				
 				GoogleAdWordsHelper.trackPageview('/'+action);
+				console.warn('ga TrackPageView '+category+':'+action);				
 			} 
+			
+			// also track Event for any event with value
+			if (opt_value) {
+				_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);	
+				console.info('ga TrackEvent '+category+':'+action);						}
+
 			// track Adwords conversions
 			switch (category + ':' + action) {
 				case 'Page View:thank-you':
@@ -296,6 +301,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			var event_name = 'Page View';
 			var section = o.section; delete o.section;
 			var properties = $.extend({ section : section}, mixpanel_event_properties[event_name], o);
+			
 			if (!CFG['mixpanel'].DISABLED) {
 				mixpanel.track(event_name, properties);
 				try {
@@ -317,14 +323,13 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 						}
 					});
 					break;
-				case 'features':
-				case 'how-it-works:CAROUSEL-END':
+				default:	
 					/* 
 					 * MANUAL DEBUG adwords conversion, use $isLocal override
 					 */ 
-					if (typeof(_gaq) != 'undefined') CFG['ga'].trackEvent( event_name, properties['section'], "DEBUG");
-					break;
-				default: break;	
+					var _gaq_DEBUG = typeof(_gaq) != 'undefined';
+					if (CFG['mixpanel'].DISABLED && _gaq_DEBUG) CFG['ga'].trackEvent( event_name, properties['section'], "DEBUG");
+					break;	
 			}
 	};
 	MixpanelHelper.track_Click = function(o){

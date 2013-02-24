@@ -187,10 +187,12 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			console.error('Error: GoogleAdWordsHelper.trackPageview()');
 		}
 	}
+	/**
+	 * called by Mixpanel.track_PageView, track_Click, track_Video 
+	 */
 	GoogleAdWordsHelper.trackEvent = function(category, action, opt_label, opt_value, opt_noninteraction){
 		opt_label = opt_label || '';
 		opt_noninteraction = opt_noninteraction || false;
-		
 		var value_lookup = {
 			'Page View:features': 1,					// opt_value Int
 			'Page View:how-it-works:CAROUSEL-END': 1,
@@ -200,20 +202,29 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			'Page View:thank-you': 16,
 		}
 		opt_value = opt_value || value_lookup[category + ':' + action] || 0;
+		
 		try {
 			// also track Event for now
 			_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);	
 
-			// track virtual PageViews, i.e. :CAROUSEL-END
-			if (category == 'Page View' && /\:/.test(action)) {
+			// for tracking only virtual PageViews, use: if (category == 'Page View' && /\:/.test(action)) {			// track all PageViews, including virtual PageViews, i.e. :CAROUSEL-END
+			if (category == 'Page View') {				
 				GoogleAdWordsHelper.trackPageview('/'+action);
 			} 
 			// track Adwords conversions
 			switch (category + ':' + action) {
+				case 'Page View:thank-you':
 				case 'Page View:features':
 				case 'Page View:how-it-works:CAROUSEL-END':
-					
-					GoogleAdWordsHelper.conversion(action);	// 0.5 point for Adwords conversion
+					GoogleAdWordsHelper.conversion(action);	
+					break;
+				case 'Click:invite':
+				case 'Click:cheer':
+					GoogleAdWordsHelper.conversion('invite');	// 1 point
+					break;
+				case 'Click:donate-PayPal':
+				case 'Click:donate-Amazon':
+					GoogleAdWordsHelper.conversion('cheer');	// 4 points
 				break;
 			}
 		} catch(e){ 
@@ -289,12 +300,6 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				mixpanel.track(event_name, properties);
 				try {
 					CFG['ga'].trackEvent( event_name, properties['section'], MixpanelHelper.TRIGGER);
-					switch(section) {
-						case 'thank-you':
-							CFG['ga'].conversion('thank-you');		// adWords conversion, 16 points
-							break;
-						default: break;	
-					}					
 				} catch(e){ }
 			}
 			/*
@@ -314,8 +319,10 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 					break;
 				case 'features':
 				case 'how-it-works:CAROUSEL-END':
-					// MANUAL DEBUG adwords conversion, use $isLocal override
-					if (_gaq) CFG['ga'].trackEvent( event_name, properties['section'], "DEBUG");
+					/* 
+					 * MANUAL DEBUG adwords conversion, use $isLocal override
+					 */ 
+					if (typeof(_gaq) != 'undefined') CFG['ga'].trackEvent( event_name, properties['section'], "DEBUG");
 					break;
 				default: break;	
 			}
@@ -329,16 +336,6 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				mixpanel.track('Click', properties);
 				try {
 					CFG['ga'].trackEvent( 'Click', properties['click-action'], MixpanelHelper.TRIGGER);
-					switch(properties['click-action']){
-						case "invite":
-						case "cheer":
-							CFG['ga'].conversion('invite');	// 1 point
-							break;
-						case "donate-PayPal":
-						case "donate-Amazon":
-							CFG['ga'].conversion('cheer');	// 4 points
-							break;
-					}
 				} catch(e){
 				}
 			}
@@ -396,11 +393,6 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 					function(o) {
 						try {
 							var section = o.attr('id');
-							if (o.hasClass('track-requires-hash')) {
-console.error("jquery not('.tracked,.track-requires-hash') not working");								
-								// for #thank-you and #not-yet return from payment vendors
-								if (window.location.hash !== '#'+section) return 0; // lingering timer
-							}
 							MixpanelHelper.track_PageView({
 								section: section
 							});

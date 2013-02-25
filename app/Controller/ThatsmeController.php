@@ -87,11 +87,29 @@ class ThatsmeController extends AppController {
 		}	
 	}
 	
-	// mapped to 'i-need-this' in routes.php
+	/**
+	 * mapped to '/i-need-this' in routes.php
+	 * load all sections in a single page, uses deferred loading
+	 */
 	public function home(){
 		$this->_beachfront(); 
 		$this->_ga_conversion_iframe();
 	}
+	/*
+	 * load deferred content by XHR after initial section load
+	 */ 
+	public function home_deferred(){
+		if ($this->request->isAjax()) {
+			$this->layout = null;
+			$this->render('home_deferred');
+		} else {
+			$this->redirect('/home', null, true);
+		}
+	}
+	
+	/**
+	 * these actions load sections as individual page
+	 */ 
 	public function features(){
 		$this->_beachfront(); 
 		$this->_ga_conversion_iframe();

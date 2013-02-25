@@ -13,7 +13,7 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
        </div>			
       <div class="carousel-inner">
       	<ul class="scroller">
-      		<li class="item active">
+      		<li class="item">
 			<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
         		<figcaption>Screened by <span class="nowrap">Real Editors</span>

@@ -7,7 +7,8 @@ CFG['timing'] = {
 	carousel: 5000,
 	slideshow: 10000,
 	navbarSlideOut: 5000,
-	load_SocialSharing: 5000,
+	load_ytapi: 5000,
+	load_SocialSharing: 6000,
 	validation_popover: 2000,
 	vscroll_hint_in: 4000,
 	vscroll_hint_out: 4000,
@@ -109,16 +110,27 @@ Util.scrollSpy = function(){
 			var prefix = ($('.navbar.use-hash').length) ? '#' : '/';
 			var li = $('.navbar .nav li a[href^="'+prefix+visibleId+'"]').parent().addClass('active');
 			current.removeClass('active');
-			
+			if (!CFG['ytapi']){
+				switch(visibleId) {
+					case 'features':
+					case 'how-it-works':
+						Util.load_ytapi();	// load immediately on scrollIntoView
+						break;
+					case 'see-the-movie':
+						CFG['timing'].load_ytapi = 0;
+						Util.load_ytapi();	// load immediately on scrollIntoView
+						break;
+				}
+			}
 			if (!CFG['socialSharing']){
 				switch(visibleId) {
+					case 'call-to-action':
+						Util.load_SocialSharing();	// load immediately on scrollIntoView
+						break;
 					case 'sharing':
 						CFG['timing'].load_SocialSharing = 0;
-						Util.load_social_sharing();	// load immediately on scrollIntoView
-					break;
-					case 'call-to-action':
-						Util.load_social_sharing();	// load immediately on scrollIntoView
-					break;
+						Util.load_SocialSharing();	// load immediately on scrollIntoView
+						break;
 				}
 			}
 			return false;					
@@ -220,7 +232,7 @@ Util.slideInNavBar = function(){
 		}
 	}
 };
-Util.load_social_sharing = function() {
+Util.load_SocialSharing = function() {
 	setTimeout(function(){
 		if (CFG['socialSharing']) return;
 		CFG['socialSharing'] = 1;
@@ -243,41 +255,22 @@ Util.load_social_sharing = function() {
 	}
 	, CFG['timing'].load_SocialSharing);
 }
-Util.documentReady = function() {
-		// console.info("document ready");
-		if ($('html').hasClass('ie8') && document.documentMode==8) $('html').addClass('doc-mode-ie8');
-		/*
-		 * check @font-family load
-		 */		
-		$('.checkfont').fontChecker({
-			onLoadClass: 'fontLoading',
-    	    onFailClass: 'fontFail',
-    	    onLoad: function(o){
-    	    	$('#curtain .wrapV').addClass('fadeIn'); // fade in #curtain .logo 
-    	    },
-    	    onFail: function(o){
-    	    	$('.navbar .brand').html('<img src="/img/beachfront/snaphappi-logo-v2.png">');
-    	    	$('#curtain').remove();
-    	    },
-		});
-
-		/*
-		 * debug touch/no-touch
-		 */
-		if (CFG.isTouch) $('html').removeClass('no-touch').addClass('touch');
-		else $('html').removeClass('touch').addClass('no-touch');
-		
-		/*
-		 * set #Home section height
-		 */
-		if ($('#home').length) {
-			Util.setFullFrameHeight();
-			$('#home figure.graphic').on('click',function(e){
-				if ($(e.currentTarget).closest('#home').hasClass('tracked'))
-					Util.animateScrollToHash({hash: '#features'});
-			})
-		}
-		
+Util.load_ytapi = function() {
+	setTimeout(function(){
+		if (CFG['ytapi']) return;
+		CFG['ytapi'] = 1;
+		(function() {  //Closure, to not leak to the scope
+			$.getScript('http://www.youtube.com/iframe_api').done(function() {
+				// console.log("google adwords conversion script loaded");
+			});
+		})();		
+	}
+	, CFG['timing'].load_ytapi);
+}
+/*
+ * init code for deferred markup
+ */
+Util.deferredMarkupReady = function() {
 		/*
 		 * load section from hash. i.e. #thank-you
 		 */
@@ -286,7 +279,11 @@ Util.documentReady = function() {
 				$('#sharing .thank-you').removeClass('hide');
 			case '#sharing':				
 				CFG['timing'].load_SocialSharing = 0;
-				Util.load_social_sharing();
+				Util.load_SocialSharing();
+				break;
+			case '#see-the-movie':				
+				CFG['timing'].load_ytapi = 0;
+				Util.load_ytapi();
 				break;
 			case '#not-yet': 	// donate cancel return 
 				break;
@@ -295,14 +292,13 @@ Util.documentReady = function() {
 				break;
 		}
 
-		CFG['slideshow'].init();
 		load_carouFredSel($);
 		
 		
 		/*
 		 * navbar init
-		 * 
 		 * 		convert hash -> link for individual pages
+		 *  TODO: move to Util.deferredMarkupReady
 		 */
 		if ($('.navbar.use-hash').length==0){
 			$('a[href^="#"]').each(function(i,elem){
@@ -326,7 +322,6 @@ Util.documentReady = function() {
 		 ************************************************************************/
 		if ($('html').hasClass('touch')) {
 			// html.touch .navbar for .visible-mobile
-			$('.carousel-inner > ul > li.item.active').removeClass('active');
 			$('#header .show-navbar').on('click', function(e){
 				e.preventDefault();
 				CFG['util'].slideInNavBar();
@@ -390,7 +385,61 @@ Util.documentReady = function() {
 				e.stopImmediatePropagation();
 				return false;
 			} 
-		}) 
+		}) 	
+}
+/*
+ * just minimum code necessary to show first section,
+ * 	remaining sections, if any, will be loaded by XHR, and 
+ * 	initialized via Util.deferredMarkupReady() 
+ */
+Util.documentReady = function() {
+		// console.info("document ready");
+		if ($('html').hasClass('ie8') && document.documentMode==8) $('html').addClass('doc-mode-ie8');
+		/*
+		 * check @font-family load
+		 */		
+		$('.checkfont').fontChecker({
+			onLoadClass: 'fontLoading',
+    	    onFailClass: 'fontFail',
+    	    onLoad: function(o){
+    	    	$('#curtain .wrapV').addClass('fadeIn'); // fade in #curtain .logo 
+    	    },
+    	    onFail: function(o){
+    	    	$('.navbar .brand').html('<img src="/img/beachfront/snaphappi-logo-v2.png">');
+    	    	$('#curtain').remove();
+    	    },
+		});
+
+		/*
+		 * debug touch/no-touch
+		 */
+		if (CFG.isTouch) $('html').removeClass('no-touch').addClass('touch');
+		else $('html').removeClass('touch').addClass('no-touch');
+		
+		/*
+		 * set #Home section height
+		 */
+		if ($('#home').length) {
+			Util.setFullFrameHeight();
+			// TODO: move to Util.deferredMarkupReady
+			$('#home figure.graphic').on('click',function(e){
+				if ($(e.currentTarget).closest('#home').hasClass('tracked'))
+					Util.animateScrollToHash({hash: '#features'});
+			})
+		}
+		
+		var deferred = $('#deferred');
+		if (deferred.length == 1) {
+			setTimeout( function() {
+				deferred.load(deferred.attr('data-href-deferred'), function(){
+					Util.deferredMarkupReady();
+				});
+			}, 50);	
+		} else {
+			Util.deferredMarkupReady();
+		}
+		
+
 		/***********************************************************
 		 *	remove curtain and fade in #home content 
 		 *************************************************************/
@@ -406,6 +455,11 @@ Util.documentReady = function() {
 				hint.removeClass('fadeIn-slow');
 			}, CFG['timing'].vscroll_hint_out);
 		}, CFG['timing'].vscroll_hint_in);	
+		
+		/*
+		 * start slideshow
+		 */
+		CFG['slideshow'].init();
 }
 
 

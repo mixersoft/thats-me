@@ -9,7 +9,7 @@
 	if (empty($this->viewVars['title_for_layout'])) $this->set("title_for_layout", $title);
 	$this->Html->meta(array('name'=>'viewport', 'content'=>$viewport), null, array('inline' => false));
 	$this->Html->meta('favicon.ico', '/img/beachfront/bp.ico', array('type' => 'icon', 'inline' => false));
-	$this->Html->meta('description', $description, array('inline' => false));
+	if ($this->action=='home')  $this->Html->meta('description', $description, array('inline' => false));
 	/**
 	 * CSS
 	 */

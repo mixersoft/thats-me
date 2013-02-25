@@ -15,14 +15,14 @@
 	 */
 	// $this->Html->css(array('fonts', 'beachfront.css', 'responsive-tablet', 'responsive-mobile'), null, array('inline' => false));
 	if ($isLocal) {
-		$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css,fonts/FortAwesome-Font-Awesome-13d5dd3/css/font-awesome.css";
+		$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css,font-awesome.css";
 		$this->Html->css($min, null, array('inline' => false));
 		$this->start('css');
 			$this->Less->css('beachfront-less');
 		$this->end();	
 	} else {
 		$this->Less->css('beachfront-less', array('no_output'=>true));
-		$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css,beachfront-less.css,fonts/FortAwesome-Font-Awesome-13d5dd3/css/font-awesome.min.css";
+		$min = "/min/b=css&f=fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css,beachfront-less.css,font-awesome.css";
 		$this->Html->css($min, null, array('inline' => false));
 	}	
 	

@@ -165,7 +165,7 @@ Util.postEmail = function(email, options, success) {
 				var email = json.response.email,
 					created = json.response.created || null;
 					CFG['mixpanel'].identify(email, created);
-			} catch (e) {		}
+			} catch (ex) {		}
 			success.call(this, json, status, o);
 		},
 		
@@ -300,10 +300,9 @@ Util.deferredMarkupReady = function() {
 				break;
 			case '#not-yet': 	// donate cancel return 
 				break;
-			case '#home':
-			case '':
 				break;
 		}
+		Util.animateScrollToHash({hash: window.location.hash});
 
 		load_carouFredSel($);
 		

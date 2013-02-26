@@ -146,7 +146,7 @@ if (typeof ($.cookie) != 'undefined') {
 		  	label: "Wv8OCNXilgUQg76I1wM",
 		  	value: 1,
 		  },
-		  'video:END': {
+		  'video:end': {
 		  	label: "svEDCM3jlgUQg76I1wM",
 		  	value: 2,
 		  },
@@ -201,7 +201,7 @@ if (typeof ($.cookie) != 'undefined') {
 		} else {
 			try {
 				_gaq.push(['_trackPageview', opt_pageURL]);
-			} catch(e){
+			} catch(ex){
 				console.error('Error: GoogleAdWordsHelper.trackPageview()');
 			}
 		}
@@ -225,7 +225,7 @@ if (typeof ($.cookie) != 'undefined') {
 		try {
 			// for tracking only virtual PageViews, use: if (category == 'Page View' && /\:/.test(action)) {
 			// track all PageViews, including virtual PageViews, i.e. :CAROUSEL-END
-			GoogleAdWordsHelper.trackPageview('/'+action);
+			if (category == 'Page View') GoogleAdWordsHelper.trackPageview('/'+action);
 			// console.warn('ga TrackPageView '+category+':'+action);							
 			// also track Event for any event with value
 			if (opt_value) {
@@ -248,7 +248,7 @@ if (typeof ($.cookie) != 'undefined') {
 					GoogleAdWordsHelper.conversion('cheer');	// 4 points
 				break;
 			}
-		} catch(e){ 
+		} catch(ex){ 
 			console.error('Error: GoogleAdWordsHelper.trackEvent()');
 		}
 	}
@@ -325,7 +325,7 @@ if (typeof ($.cookie) != 'undefined') {
 				mixpanel.track(event_name, properties);
 				try {
 					CFG['ga'].trackEvent( event_name, properties['section'], MixpanelHelper.TRIGGER);
-				} catch(e){ }
+				} catch(ex){ }
 				CFG['cracker'][event_name].push(properties['section']);
 				$.cookie('cracker', CFG['cracker']);
 			}
@@ -354,7 +354,12 @@ if (typeof ($.cookie) != 'undefined') {
 					break;	
 			}
 	};
-	MixpanelHelper.track_Click = function(o){
+	/**
+	 * @param o o.is(.track-click)
+	 * @param e jquery Event object, required to call e.preventDefault() defer form.submit until 
+	 * 		after postEmail is complete  
+	 */
+	MixpanelHelper.track_Click = function(o, e){
 		// track Clicks
 			var track = o.attr('track'),
 				event_name = 'Click',
@@ -363,7 +368,7 @@ if (typeof ($.cookie) != 'undefined') {
 				mixpanel.track('Click', properties);
 				try {
 					CFG['ga'].trackEvent( 'Click', properties['click-action'], MixpanelHelper.TRIGGER);
-				} catch(e){
+				} catch(ex){
 				}
 				CFG['cracker'][event_name].push(properties['click-action']);
 				$.cookie('cracker', CFG['cracker']);	
@@ -379,7 +384,7 @@ if (typeof ($.cookie) != 'undefined') {
 						address = email.attr('value');
 					var form = o.closest('form');
 					form.css('cursor','wait');	
-					e.preventDefault();		// wait until XHR completes before submit
+					e.preventDefault();		// wait until XHR completes before submit/leaving page
 					CFG['util'].postEmail(address,{'data[Follower][cheer]':'2'},function(json, status, o){
 						// on success
 						if (json.success) {
@@ -403,7 +408,7 @@ if (typeof ($.cookie) != 'undefined') {
 			mixpanel.track(event_name, properties);
 			try {
 				CFG['ga'].trackEvent( event_name, properties['state'], MixpanelHelper.TRIGGER);
-			} catch(e){ }
+			} catch(ex){ }
 			CFG['cracker'][event_name].push(properties['state']);
 			$.cookie('cracker', CFG['cracker']);
 		}
@@ -440,7 +445,7 @@ if (typeof ($.cookie) != 'undefined') {
 		
 		$('body').delegate('.track-click', 'click.mixpanel', function(e){
 			if ($(e.currentTarget).not('.tracked').not('.track-disabled')) 
-				MixpanelHelper.track_Click($(e.currentTarget));
+				MixpanelHelper.track_Click($(e.currentTarget), e);
 		})
 	
 		// track first section

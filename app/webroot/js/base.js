@@ -348,6 +348,9 @@ Util.deferredMarkupReady = function() {
 			};
 		});
 		
+		$('#home figure.graphic').on('click',function(e){
+				Util.animateScrollToHash({hash: '#features'});
+		})
 		
 		// update data[Follower][cheer] when a paypal/amazon button was clicked
 		$('form.call-to-action button').on('click.submit', function(e){
@@ -422,11 +425,6 @@ Util.documentReady = function() {
 		 */
 		if ($('#home').length) {
 			Util.setFullFrameHeight();
-			// TODO: move to Util.deferredMarkupReady
-			$('#home figure.graphic').on('click',function(e){
-				if ($(e.currentTarget).closest('#home').hasClass('tracked'))
-					Util.animateScrollToHash({hash: '#features'});
-			})
 		}
 		
 		var deferred = $('#deferred');

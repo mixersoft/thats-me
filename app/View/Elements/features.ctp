@@ -16,11 +16,11 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
       		<li class="item">
 			<figure class="graphic">
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-02.png"></div>
-        		<figcaption>Screened by <span class="nowrap">Real Editors</span>
+        		<figcaption>Screened by <span class="nowrap narrow">Trained Editors</span>
         			<div class="body">
 <p>No other photo service uses</p>
 <p><strong>real people</strong></p>   
-<p>like we do. Our trained photo editors hand-select the beautiful photos that are featured on your Curated Timeline and hide duplicates just for you. 
+<p>like we do. Our editors hand-select the beautiful photos that are featured on your Curated Timeline and hide duplicates <span class='nowrap'>just for you</span>. 
 </p>
 <p>We also promise to <strong>respect your privacy</strong> &mdash; we carefully monitor editorial access to your photos.</p>
 <br />

@@ -469,6 +469,19 @@ Util.documentReady = function() {
 		}, CFG['timing'].vscroll_hint_in);	
 		
 		/*
+		 * show .row.overlay
+		 */
+		var qs = CFG['util'].parseQueryString();
+		var overlay = qs['var'] || 'about';
+		$('#home .row .overlay').addClass('hide');
+		$('#home .row .overlay.'+overlay).removeClass('hide').removeClass('invisible');
+		if (qs['var']=='curator') {
+			var foo = $('#home figcaption').first().html();
+			foo = foo.replace('Editor', 'Curator');
+			$('#home figcaption').first().html(foo);
+		}
+		
+		/*
 		 * start slideshow
 		 */
 		CFG['slideshow'].init();

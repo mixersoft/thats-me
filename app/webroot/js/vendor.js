@@ -193,11 +193,17 @@ if (typeof ($.cookie) != 'undefined') {
 	 * track section view as virtual page view in google analytics
 	 */
 	GoogleAdWordsHelper.trackPageview = function(opt_pageURL) {
-		if (!opt_pageURL || opt_pageURL=='home') return;
-		try {
-			_gaq.push(['_trackPageview', opt_pageURL]);
-		} catch(e){
-			console.error('Error: GoogleAdWordsHelper.trackPageview()');
+		var here = window.location.pathname;
+		if (here == '/i-need-this') here = '/home';		// adjust for routing
+		if (!opt_pageURL || (opt_pageURL == here) ) {
+			// don't track first section, same as CFG['mixpanel'].FIRST_SECTION
+			return;	
+		} else {
+			try {
+				_gaq.push(['_trackPageview', opt_pageURL]);
+			} catch(e){
+				console.error('Error: GoogleAdWordsHelper.trackPageview()');
+			}
 		}
 	}
 	/**
@@ -281,7 +287,7 @@ if (typeof ($.cookie) != 'undefined') {
 	MixpanelHelper.VIDEO_NAME = 'Imagine-0';
 	
 	// for tracking initial page view
-	MixpanelHelper.FIRST_SECTION = '#home';
+	MixpanelHelper.FIRST_SECTION = '#' + ($('.featurette').first().attr('id') || 'home');
 	MixpanelHelper.DISABLED = !/snaphappi.com/.test(window.location.host); 
 	MixpanelHelper.timers = {};		// for lingerIntoView timings
 	
@@ -409,7 +415,7 @@ if (typeof ($.cookie) != 'undefined') {
 		 */
 		$(window).scroll(function(e, onload) {
 			// track sections as Page View
-			if (onload=='onload') {		// triggered by init()
+			if (onload=='onload') {		// from $(window).trigger('scroll',['onload']);
 				var hash = window.location.hash || MixpanelHelper.FIRST_SECTION;
 				$(hash).removeClass('track-requires-hash'); 
 			}

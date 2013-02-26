@@ -452,11 +452,11 @@ if (typeof ($.cookie) != 'undefined') {
 						trigger: MixpanelHelper.TRIGGER,
 					};
 					var qs = CFG['util'].parseQueryString();
-					if (qs.mtm_source) super_properties['mtm_source']=mtm_source;
-					if (qs.mtm_medium) super_properties['mtm_medium']=mtm_medium;
-					if (qs.mtm_campaign) super_properties['mtm_campaign']=mtm_campaign;
-					if (qs.mtm_content) super_properties['mtm_content']=mtm_content;
-					if (qs.mtm_term) super_properties['mtm_term']=mtm_term;
+					if (qs.mtm_source) super_properties['mtm_source']=qs.mtm_source;
+					if (qs.mtm_medium) super_properties['mtm_medium']=qs.mtm_medium;
+					if (qs.mtm_campaign) super_properties['mtm_campaign']=qs.mtm_campaign;
+					if (qs.mtm_content) super_properties['mtm_content']=qs.mtm_content;
+					if (qs.mtm_term) super_properties['mtm_term']=qs.mtm_term;
 					mixpanel.register(super_properties);
 				}
 				

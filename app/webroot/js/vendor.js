@@ -114,8 +114,19 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 })();  // end YouTube API closure
 
 
-(function() {//Closure, to not leak to the scope
 
+/*
+ * load cookie 'cracker'
+ */
+if (typeof ($.cookie) != 'undefined') {
+	$.cookie.json = true;
+	$.cookie.defaults = {expires : 30};
+	CFG['cracker']= $.cookie("cracker") || {'Page View':[], 'Click':[], 'Video':[], 'gaq':[]};
+}
+
+
+
+(function() {//Closure, to not leak to the scope
 	var GoogleAdWordsHelper = function() {
 		// empty class def for outline view
 	};
@@ -124,9 +135,8 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	 * @param label String, maps to AdWords conversion label
 	 * @param value int, conversion value
 	 */
-	GoogleAdWordsHelper.conversion_tracked = {};
 	GoogleAdWordsHelper.conversion = function(name) {
-		if (GoogleAdWordsHelper.conversion_tracked[name]) return;
+		if (CFG['cracker']['gaq'].indexOf(name) > -1) return;
 		var events = {
 		 'features': {
 		  	label: "iKqqCM3qlwUQg76I1wM",
@@ -176,15 +186,14 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		} else {	// use action+named params to trigger iframe conversion
 			var conversion_src = '/thatsme/conversion/label:'+google_conversion_label+'/value:'+google_conversion_value;
 		}
-		GoogleAdWordsHelper.conversion_tracked[name] = 1;
 		$('<iframe id="iframe-'+name+'" class="ga-conversion" src="'+conversion_src+'" width="0px" height="0px"></iframe>').appendTo($('body'));  
-
+		CFG['cracker']['gaq'].push(name);	// mark as tracked in cookie		
 	}
 	/*
 	 * track section view as virtual page view in google analytics
 	 */
 	GoogleAdWordsHelper.trackPageview = function(opt_pageURL) {
-		if (!opt_pageURL) return;
+		if (!opt_pageURL || opt_pageURL=='home') return;
 		try {
 			_gaq.push(['_trackPageview', opt_pageURL]);
 		} catch(e){
@@ -210,10 +219,8 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		try {
 			// for tracking only virtual PageViews, use: if (category == 'Page View' && /\:/.test(action)) {
 			// track all PageViews, including virtual PageViews, i.e. :CAROUSEL-END
-			if (category == 'Page View' && action!=='home') {				
-				GoogleAdWordsHelper.trackPageview('/'+action);
-				// console.warn('ga TrackPageView '+category+':'+action);							} 
-			
+			GoogleAdWordsHelper.trackPageview('/'+action);
+			// console.warn('ga TrackPageView '+category+':'+action);							
 			// also track Event for any event with value
 			if (opt_value) {
 				_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);	
@@ -245,6 +252,9 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 
 })();
 // end google analytics helper closure
+
+
+
 
 (function() {//Closure, to not leak to the scope
 
@@ -299,18 +309,21 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 	 * 	called by CFG['carousel'].track_CarouselEnd()
 	 *  
 	 */
-	MixpanelHelper.track_PageView = function(o){	// global track method, called by track_CarouselEnd()
+	MixpanelHelper.track_PageView = function(o, cfg){	// global track method, called by track_CarouselEnd()
 			// requires o.event_name, o.section
 			var event_name = 'Page View';
-			var section = o.section; delete o.section;
-			var properties = $.extend({ section : section}, mixpanel_event_properties[event_name], o);
+			var section = o.attr('id');
+			var properties = $.extend({ section : section}, mixpanel_event_properties[event_name], cfg);
 			
-			if (!CFG['mixpanel'].DISABLED) {
+			if (!CFG['mixpanel'].DISABLED && (CFG['cracker'][event_name].indexOf(properties['section']) == -1)) {
 				mixpanel.track(event_name, properties);
 				try {
 					CFG['ga'].trackEvent( event_name, properties['section'], MixpanelHelper.TRIGGER);
 				} catch(e){ }
+				CFG['cracker'][event_name].push(properties['section']);
+				$.cookie('cracker', CFG['cracker']);
 			}
+			o.addClass('tracked');
 			/*
 			 * these actions also apply to isLocal = true
 			 */
@@ -340,12 +353,14 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			var track = o.attr('track'),
 				event_name = 'Click',
 				properties = $.extend({ 'click-action' : track }, mixpanel_event_properties[event_name]);
-			if (!MixpanelHelper.DISABLED) {
+			if (!MixpanelHelper.DISABLED && (CFG['cracker'][event_name].indexOf(properties['click-action']) == -1) ){
 				mixpanel.track('Click', properties);
 				try {
 					CFG['ga'].trackEvent( 'Click', properties['click-action'], MixpanelHelper.TRIGGER);
 				} catch(e){
 				}
+				CFG['cracker'][event_name].push(properties['click-action']);
+				$.cookie('cracker', CFG['cracker']);	
 			}
 			o.addClass('tracked');
 			
@@ -378,10 +393,14 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		state = state || 'play';
 		var event_name = 'Video' 
 		var properties = $.extend({ 'state' : state}, mixpanel_event_properties[event_name]);
-		mixpanel.track(event_name, properties);
-		try {
-			CFG['ga'].trackEvent( event_name, properties['state'], MixpanelHelper.TRIGGER);
-		} catch(e){ }
+		if (!CFG['mixpanel'].DISABLED && (CFG['cracker'][event_name].indexOf(properties['state']) == -1)) {
+			mixpanel.track(event_name, properties);
+			try {
+				CFG['ga'].trackEvent( event_name, properties['state'], MixpanelHelper.TRIGGER);
+			} catch(e){ }
+			CFG['cracker'][event_name].push(properties['state']);
+			$.cookie('cracker', CFG['cracker']);
+		}
 	}
 
 	MixpanelHelper.init = function(o){
@@ -400,12 +419,8 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				CFG['util'].isLingeringInView($(elem), MixpanelHelper.timers, CFG['timing'].linger,
 					function(o) {
 						try {
-							var section = o.attr('id');
-							MixpanelHelper.track_PageView({
-								section: section
-							});
-							o.addClass('tracked');
-							CFG['util'].notify(section);
+							MixpanelHelper.track_PageView(o);
+							CFG['util'].notify(o.attr('id'));
 							return "tracked";
 						} catch (e) {
 							throw new Exception("ERROR: mixpanel not loaded?");
@@ -417,8 +432,9 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 			});
 		});
 		
-		$('.track-click:not(.tracked)').one('click', function(e){
-			MixpanelHelper.track_Click($(e.currentTarget));
+		$('body').delegate('.track-click', 'click.mixpanel', function(e){
+			if ($(e.currentTarget).not('.tracked').not('.track-disabled')) 
+				MixpanelHelper.track_Click($(e.currentTarget));
 		})
 	
 		// track first section

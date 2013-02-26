@@ -39,7 +39,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 	  <div class="controls">
 	  	<div class="input-prependx input-appendx">
 	  		<div class='wrapH left'>
-		  		<button id='cheer' type="submit" class="btn btn-primary track-click" track='cheer' title='Cheer us on for just a buck!'>
+		  		<button id='cheer' type="submit" class="btn btn-primary track-click track-disabled" track='cheer' title='Cheer us on for just a buck!'>
 		  			I Want it ASAP!
 		  		</button>
 		  		<i class="icon-arrow-left"></i>
@@ -54,7 +54,7 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 		    </div>
 		    <div class='wrapH right'>
 			    <i class="icon-arrow-right"></i>
-			    <button id='invite' type="submit" class="btn btn-warning track-click" track='invite' title='Request an invitation to our preview'>
+			    <button id='invite' type="submit" class="btn btn-warning track-click track-disabled" track='invite' title='Request an invitation to our preview'>
 			    	I Want an Invite
 			    </button>
 		    </div>

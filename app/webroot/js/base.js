@@ -350,7 +350,7 @@ Util.deferredMarkupReady = function() {
 		
 		
 		// update data[Follower][cheer] when a paypal/amazon button was clicked
-		$('form.call-to-action button').on('click', function(e){
+		$('form.call-to-action button').on('click.submit', function(e){
 			var email=$('form.call-to-action input[type=email]'),
 				address = email.attr('value');
 			if (/[a-z\.]+@[a-z\.]+/.test(address)) {
@@ -380,11 +380,12 @@ Util.deferredMarkupReady = function() {
 						});
 					break;
 				}
-				// jQuery post in background
-				e.preventDefault();
-				e.stopImmediatePropagation();
-				return false;
-			} 
+				$(e.currentTarget).removeClass('track-disabled');
+				if ($(e.currentTarget).is(':not(.tracked)')) {
+					$(e.currentTarget).trigger('click.mixpanel');				}
+				// jQuery post in background, do not submit
+				e.preventDefault();			} 
+			e.stopImmediatePropagation();
 		}) 	
 }
 /*
@@ -529,7 +530,7 @@ Slideshow.next = function(){
  */
 var load_carouFredSel = function($) {
 	CFG['carousel'] = { 
-		autoPaging: false,
+		autoPaging: true,
 		isLingeringTimer: {},
 		find: {},
 		init:{ 
@@ -587,7 +588,7 @@ var load_carouFredSel = function($) {
 			var carousel = o.closest('.carousel'); 
 			if (carousel.hasClass('track-carousel-end')) {
 				carousel.removeClass('track-carousel-end');
-				CFG['mixpanel'].track_PageView({
+				CFG['mixpanel'].track_PageView(carousel, {
 					section: carousel.attr('id')+":CAROUSEL-END",
 				});
 				// CFG['util'].notify('end of carousel');			}	// end if

@@ -284,7 +284,7 @@ if (typeof ($.cookie) != 'undefined') {
 	// super properties: use mixpanel.register() (global)
 	// CONFIG, override in View File
 	MixpanelHelper.TRIGGER = 'i-need-this';			// trigger: should be from the adwords campaign, or landing page
-	MixpanelHelper.VIDEO_NAME = 'Imagine-0';
+	MixpanelHelper.VIDEO_NAME = 'CuratedFamilyPhotos';
 	
 	// for tracking initial page view
 	MixpanelHelper.FIRST_SECTION = '#' + ($('.featurette').first().attr('id') || 'home');
@@ -449,7 +449,7 @@ if (typeof ($.cookie) != 'undefined') {
 				if (!MixpanelHelper.DISABLED) {
 					// mixpanel.register() to register global/super properties
 					var super_properties = {
-						trigger: MixpanelHelper.TRIGGER,
+						trigger: MixpanelHelper.TRIGGER,  // same as mtm_content???
 					};
 					var qs = CFG['util'].parseQueryString();
 					if (qs.mtm_source) super_properties['mtm_source']=qs.mtm_source;
@@ -457,6 +457,7 @@ if (typeof ($.cookie) != 'undefined') {
 					if (qs.mtm_campaign) super_properties['mtm_campaign']=qs.mtm_campaign;
 					if (qs.mtm_content) super_properties['mtm_content']=qs.mtm_content;
 					if (qs.mtm_term) super_properties['mtm_term']=qs.mtm_term;
+					if (qs['var']) super_properties['variation']=qs['var'];
 					mixpanel.register(super_properties);
 				}
 				

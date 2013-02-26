@@ -437,6 +437,19 @@ Util.documentReady = function() {
 		 * set #Home section height
 		 */
 		if ($('#home').length) {
+			/*
+			 * show variation, BEFORE setFullFrameHeight()
+			 * overlay_variation = [who-has-time|curator]
+			 */
+			var qs = CFG['util'].parseQueryString();
+			var overlay_variation = qs['var'];
+			$('#home .row .overlay.'+overlay_variation).removeClass('hide');
+			if (qs['var']=='curator') {
+				var foo = $('#home figcaption').first().html();
+				foo = foo.replace('Editor', 'Curator');
+				$('#home figcaption').first().html(foo);
+			}
+			
 			Util.setFullFrameHeight();
 		}
 		
@@ -468,18 +481,6 @@ Util.documentReady = function() {
 			}, CFG['timing'].vscroll_hint_out);
 		}, CFG['timing'].vscroll_hint_in);	
 		
-		/*
-		 * show .row.overlay
-		 */
-		var qs = CFG['util'].parseQueryString();
-		var overlay = qs['var'] || 'about';
-		$('#home .row .overlay').addClass('hide');
-		$('#home .row .overlay.'+overlay).removeClass('hide').removeClass('invisible');
-		if (qs['var']=='curator') {
-			var foo = $('#home figcaption').first().html();
-			foo = foo.replace('Editor', 'Curator');
-			$('#home figcaption').first().html(foo);
-		}
 		
 		/*
 		 * start slideshow

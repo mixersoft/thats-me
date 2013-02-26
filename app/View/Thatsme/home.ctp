@@ -38,7 +38,7 @@
 		        		Put your photos on <strong>our</strong> To-do list &mdash; and <strong>Play</strong> with your photos once again.
 		        </div></div>
 		        <div class='row'>
-		        	<div class='overlay about no-ie-alpha70b offset2 span8 invisible'>
+		        	<div class='overlay who-has-time no-ie-alpha70b offset2 span8 hide'>
 						<p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
 But with a growing family and a hectic job, who has time to scroll through 10,000 thumbnails to find your great shots? 
@@ -49,7 +49,7 @@ We'll find your Beautiful Photos, hide the duplicates, and let you see it all on
 Let us do the work, and we'll get your photos ready to play.  
 	        			</p>
 		        	</div>
-		        	<div class='overlay curator no-ie-alpha70b offset2 span8 invisible hide'>
+		        	<div class='overlay curator no-ie-alpha70b offset2 span8 hide'>
 						<p><a href='http://dictionary.reference.com/browse/curator' target='_blank'>
 <strong style='font-size: 18px;line-height: 1;' title="Dictionary.com Unabridged. Random House, Inc. 26 Feb. 2013.">cu&middot;ra&middot;tor</strong></a> [kyoo-<b>rey</b>-ter] <b>noun</b><br />
 1. the person in charge of a museum, art collection, etc.<br />

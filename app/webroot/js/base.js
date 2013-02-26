@@ -21,6 +21,19 @@ CFG['timing'] = {
 // static class for IDE outline browser
 var Util = new function(){}
 CFG['util'] = Util;		// make global
+Util.parseQueryString = function(a) {
+	a = a || (window.location.search.substr(1).split('&'));
+    if (a == "") return {};
+    var b = {};
+    for (var i = 0; i < a.length; ++i)
+    {
+        var p=a[i].split('=');
+        if (p.length != 2) continue;
+        b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+    }
+    return b;
+};
+
 /*
  * http://stackoverflow.com/questions/9097501/show-div-when-scroll-position
  * see also: http://imakewebthings.com/jquery-waypoints/

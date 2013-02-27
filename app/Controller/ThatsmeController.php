@@ -86,6 +86,12 @@ class ThatsmeController extends AppController {
 			}
 		}	
 	}
+
+	public function show(){
+		$this->autoRender = false;
+		$this->home();
+		$this->render('home');
+	}
 	
 	/**
 	 * mapped to '/i-need-this' in routes.php

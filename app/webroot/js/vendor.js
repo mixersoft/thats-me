@@ -213,7 +213,7 @@ if (typeof ($.cookie) != 'undefined') {
 		opt_label = opt_label || '';
 		opt_noninteraction = opt_noninteraction || false;
 		var value_lookup = {
-			'Page View:features': 1,					// opt_value Int
+			'Page View:features': 0.5,					// opt_value Int
 			'Page View:how-it-works:CAROUSEL-END': 1,
 			'Video:end': 2,	// video end
 			'Click:invite': 4,

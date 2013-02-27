@@ -100,13 +100,17 @@ While we don’t have a social sharing platform of our own, we will provide link
 	       <div class="faq-section alpha rgba50b ">	
 				<h2>Darkroom &amp; Launch</h2>
 				<p class="question">
-	Why doesn't this site actually do anything?
+	What's the point? Why doesn't this site actually do anything?
 		        </p>	        		
 		        	<p class="answer">
-The goal of this “launch” site is to build buzz and commitment behind our vision. If you haven’t been following, it’s been a real challenge recently for startups to build the right team - talented software developers have so many big tech companies and other startups clamoring for their services. 
+The goal of this  &ldquo;launch&rdquo; site is to declare our vision and build buzz and commitment behind it &mdash; it’s kind of like a Kickstarter campaign.  
 </p><p class="answer">
-Our hope is to take your rabid support for our vision and use it to attract software developers and partners who are also passionate about online digital photos and eager to do something completely different. As our team grows, so will our ability to deliver on our vision.         		
-					</p>
+We are using this site to make a statement about who we are; what we believe in; and how we are going to change the world, one step at a time. 
+We want to give people a chance to stand up and say, &ldquo;I want this!&rdquo;  	
+</p><p class="answer">
+But we also want to let talented software developers and partners find us &mdash; 
+those who share our values; believe in our vision; and want to join us and build something great. Your rabid support just makes it easier for them to say &ldquo;yes!&rdquo;					
+				</p>
 				<p class="question">
 	Why do you want $1 from me?	        		
 	        	</p>
@@ -121,9 +125,10 @@ We are offering a completely new vision for family photos, one that asks you to<
 	<li>think that you will <i>play with</i> your family photos and not <i>work with</i> them.</li>
 </ul>
 <p class="answer">
-With so much innovation and change, it’s not clear that everyone is ready to accept this vision.
+With so much innovation and change, it’s not clear that everyone is ready to accept this vision. We want to give people a chance to stand up and say,  &ldquo;I want this! &rdquo;
 </p><p class="answer">
-By making the extra effort of sending us $1, you are sending us a clear message that you believe in our vision for this service and that we can count on your business if we faithfully deliver on our promises. Your commitment will help us convince key developers and partners to join us, and allow us deliver this service sooner.        		
+By making the extra effort of sending us $1, you are sending us a clear message that you believe in our vision for this service and that we can count on your business if we faithfully deliver on our promises.
+And we plan to use your support to help us build a great team.         		
 	        	</p>
 				<p class="question">
 	When will your service be ready?	        		
@@ -131,7 +136,11 @@ By making the extra effort of sending us $1, you are sending us a clear message 
 	        	<p class="answer">
 We’ve still got a ways to go before we will be ready for a preview - maybe later this year. 
 </p><p class="answer">
-We have already put in years of engineering to build the Photo Editing System and the Workorder Management System, but that is not something site members will see; the super-charged Desktop Uploader is nearly complete; but we are just at the planning stage for the Curated Timeline App on the iPad. This last piece is essential to delivering the fun and easy experience we promise for our customers. 
+We have already put in years of engineering to build the Photo Editing System and the Workorder Management System, but this is not something site members will see. 
+The super-charged Desktop Uploader is nearly complete. 
+But we are just at the planning stage for the Curated Timeline App on the iPad, and this last piece is essential to delivering the fun and easy experience we promise for our customers. 
+</p><p class="answer">
+And, of course, the faster we build a great team, the faster we can deliver a great service.
 	        	</p>
 	        </div>
 	       <div class="faq-section alpha rgba50b ">	
@@ -140,57 +149,62 @@ We have already put in years of engineering to build the Photo Editing System an
 	Why is the Curated Timeline only available as an iPad App?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+We feel that people are more eager to play with their photos when they can touch and feel them &mdash; like on the iPad. Plus it’s easier and more natural to share the experience with someone next to you from an iPad.		 	 	
+</p><p class="answer">
+You only need the super large screen of a notebook or desktop computer when you have to dig through pages and pages of extra-large thumbnails to find the photos you want &mdash; but that’s no longer a problem with our Curated Timelines. Repeat after me, <strong>&ldquo;No more thumbnails!&rdquo;</strong>       		
 	        	</p>	        	
 	        	<p class="question">
 	How do I upload my 10,000+ photos to Snaphappi?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+In the short term, we’ll be providing a special application, our Desktop Uploader, as a downloadable file for installation on Windows PCs and Macs. A special application is necessary to make the process as quick and easy as possible. 
+</p><p class="answer">
+You’ll need to create an account at Snaphappi and sign-in beforehand. After that, you just choose the folders which contain your photos and the Desktop Uploader will scan them for JPG files and automatically upload them to your Snaphappi account. All this happens in the background. And the Desktop Uploader can always be safely and easily stopped and restarted if something unexpected should come up.        		
 	        	</p>
 				<p class="question">
 	How long does it take to upload 10,000 photos?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+Our Desktop Uploader works really fast &mdash; we’ve seen speeds up to 3000 photos/hour on the cheapest home connection from Verizon FIOS. And this is just testing against our itty-bitty development server hosted at Amazon. The secret? We just upload web-sized JPGs that are much smaller than the original JPG files from your 12- to 20-Megapixel digital camera. But these web-sized images are more than large enough for our Trained Editors to accurately curate your family photos.        		
 	        	</p>
 	        	<p class="question">
 	How and where are my photos stored?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+We host our site and all your photos on the servers at Amazon Web Services.      		
 	        	</p>
 	        	<p class="question">
 	What about the originals?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+When you are ready, you can ask our Desktop Uploader upload the original files for <strong>just your Beautiful Photos</strong> and not everything else. Trust us, this will save you a lot of time.        		
 	        	</p>
 	        	
 	        	<p class="question">
 	What platforms do you support?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+Our initial plans are to provide a Desktop Uploader for Windows PCs and Macs and also a Curated Timeline App for the iPad. 
+A special plugin will also be available to import photos directly from iPhoto libraries. 
+But if we are successful, we will likely add more platforms across the board.       		
 	        	</p>
 	        	<p class="question">
 	What file types do you support?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
-	        	</p>
+Our initial plans are to support only JPG files with embedded EXIF data, which is the file format that comes out of every digital camera and smartphone. 
+</p><p class="answer">
+Note that we can only put JPG photos with valid EXIF timestamps on the Curated Timeline. Digital cameras from as far back as the late 1990s automatically include these timestamps in the JPG files they produce. However, it is possible that the EXIF data was inadvertently erased by certain software programs produced in the early days of digital photography. Unfortunately, if we don’t know when the photo was taken, we can’t put it on a timeline.	        	</p>
 	        	<p class="question">
 	What about the photos on my smartphone?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
-	        	</p>
+The photos on your smartphone are becoming an important part of your family photo archive, and we definitely have plans to include them. But our initial plans are to focus on the 1000s of photos already saved on your hard drive. If you can get them onto your hard drive then we’ll take them &mdash; and you should probably do so, just in case you lose your phone.	        	</p>
 	        	<p class="question">
 	What about my photos on Facebook/Flickr/Instagram/Picasaweb/iCloud/etc?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
-	        	</p>	        		        	
+We also have plans to allow you to import your photos from a number of the popular online photo and cloud storage services. More details will follow.                	        	</p>	        		        	
 	        </div>
 	        		</div>
 	        	</div>

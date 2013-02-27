@@ -35,7 +35,7 @@ But most of all, we have developed a “secret sauce” that automatically picks
 	How do you find events?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+We use a special algorithm that looks at the time when each individual photo was originally taken and clusters them together into meaningful groups based on the time scale of your Timeline view.         		
 	        	</p>	        	
 	        	<p class="question">
 	How do you find duplicates?	        		
@@ -84,17 +84,29 @@ Once the photos are rated, our Curated Timelines and Stories can be built automa
 	What about the safety and privacy of my photos?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+We believe that you are the owner your photos and we are just caretakers. Thus, we take great care in protecting your privacy with clear and reasonable privacy settings. At this time, the default (and only) privacy setting is ‘private’ and the photos you upload into your own account will not be visible to other site members or the general public. 
+</p><p class="answer">
+However, our algorithms and Trained Editors both need access to your photos in order to do the job of curating your photos. Where people are involved, we promise to limit this access to only those Editors who are assigned to your photos. Furthermore, we promise to carefully control the “chain of custody” of your photos, and will keep logs of every access by our Editors photos through our editing system.
+</p><p class="answer">
+In the future, our hope is to offer you the choice of multiple processing centers so that you’ll have more control over where your photos are sent, who sees them, what type of access they have, and most of all, what security & controls are enforced by the facility. But for now, as we’re just getting started, you’ll just have to trust that we’ll do the right thing by you.        		
 	        	</p>
 	        	<p class="question">
 	What about sharing photos?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+While we don’t have a social sharing platform of our own, we will provide links that allow you to you share your photos and Curated Stories by email and through other social media sites like Facebook, Twitter, etc.      		
 	        	</p>
 			</div>
 	       <div class="faq-section alpha rgba50b ">	
 				<h2>Darkroom &amp; Launch</h2>
+				<p class="question">
+	Why doesn't this site actually do anything?
+		        </p>	        		
+		        	<p class="answer">
+The goal of this “launch” site is to build buzz and commitment behind our vision. If you haven’t been following, it’s been a real challenge recently for startups to build the right team - talented software developers have so many big tech companies and other startups clamoring for their services. 
+</p><p class="answer">
+Our hope is to take your rabid support for our vision and use it to attract software developers and partners who are also passionate about online digital photos and eager to do something completely different. As our team grows, so will our ability to deliver on our vision.         		
+					</p>
 				<p class="question">
 	Why do you want $1 from me?	        		
 	        	</p>
@@ -117,7 +129,9 @@ By making the extra effort of sending us $1, you are sending us a clear message 
 	When will your service be ready?	        		
 	        	</p>
 	        	<p class="answer">
-	Answer.        		
+We’ve still got a ways to go before we will be ready for a preview - maybe later this year. 
+</p><p class="answer">
+We have already put in years of engineering to build the Photo Editing System and the Workorder Management System, but that is not something site members will see; the super-charged Desktop Uploader is nearly complete; but we are just at the planning stage for the Curated Timeline App on the iPad. This last piece is essential to delivering the fun and easy experience we promise for our customers. 
 	        	</p>
 	        </div>
 	       <div class="faq-section alpha rgba50b ">	

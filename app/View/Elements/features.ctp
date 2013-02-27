@@ -87,7 +87,7 @@ by rating the ones you love. You can also see your hidden duplicates and pick a 
       <div class='fw-band footer  alpha rgba80b'>
         	<div class="container ">
         		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
-        		<div class="pull-right"><a href='#how-it-works'>Learn More</a></div>
+        		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>
         	</div>
         </div>  
        

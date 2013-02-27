@@ -1,7 +1,7 @@
 
-<?php echo $this->element('features'); ?>	
+<?php echo $this->element('features'); ?>
+<?php echo $this->element('see-the-movie'); ?>	
 <?php echo $this->element('how-it-works'); ?>	
-<?php echo $this->element('see-the-movie'); ?>
 <?php echo $this->element('i-want-it'); ?>
      
       <a name='thank-you' id='thank-you' class='track-page-view  track-requires-hash'></a>

@@ -86,7 +86,7 @@ We think it's a small price to pay for all the time you'll save.</p>
       <div class='fw-band footer alpha rgba80b'>
     	<div class="container ">
     		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
-    		<div class="pull-right"><a href='#see-the-movie'>Learn More</a></div>
+    		<div class="pull-right"><a href='#call-to-action'>Learn More</a></div>
     	</div>
       </div>  
     </div><!-- /.carousel -->

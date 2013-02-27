@@ -97,7 +97,10 @@ In the future, our hope is to offer you the choice of multiple processing center
 While we don’t have a social sharing platform of our own, we will provide links that allow you to you share your photos and Curated Stories by email and through other social media sites like Facebook, Twitter, etc.      		
 	        	</p>
 			</div>
-	       <div class="faq-section alpha rgba50b ">	
+			
+			
+		   <a name='faq-darkroom'></a>			
+	       <div id='faq-darkroom' class="faq-section alpha rgba50b ">	
 				<h2>Darkroom &amp; Launch</h2>
 				<p class="question">
 	What's the point? Why doesn't this site actually do anything?
@@ -128,7 +131,9 @@ We are offering a completely new vision for family photos, one that asks you to<
 With so much innovation and change, it’s not clear that everyone is ready to accept this vision. We want to give people a chance to stand up and say,  &ldquo;I want this! &rdquo;
 </p><p class="answer">
 By making the extra effort of sending us $1, you are sending us a clear message that you believe in our vision for this service and that we can count on your business if we faithfully deliver on our promises.
-And we plan to use your support to help us build a great team.         		
+And we plan to use your support to help us build a great team.    
+</p><p class="answer">
+<a href='#call-to-action' title='take me back so I can give you a buck'><strong>[OK. I get it, and I want it!]</strong></a>     		
 	        	</p>
 				<p class="question">
 	When will your service be ready?	        		

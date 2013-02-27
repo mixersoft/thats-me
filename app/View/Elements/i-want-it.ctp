@@ -101,8 +101,8 @@ If you are not completely sold on the idea just yet, you'll still have an opport
 	        <div class="row">
 	        	<p class='footnote offset1 span10'>
 		        	<i class="icon-asterisk"></i>
-		        	We don't want the dollar (really). We want an extra effort on your part to signal a real need for this service. 
-		        	Your commitment will help us convince key developers and partners to join us and deliver this service sooner.
+We don't want the dollar (really). We just want an extra effort on your part to confirm that we are offering a valuable service at an attractive price — one that solves a real problem of yours.  
+It's kind of a Kickstarter thing. Your support will help us build buzz around our vision. <a href='#faq-darkroom' title='see the FAQ'><strong>[FAQ]</strong></a>
 	        	</p>
 	        </div> <!-- / .row -->
 	        

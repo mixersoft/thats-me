@@ -10,7 +10,7 @@ CFG['timing'] = {
 	load_ytapi: 5000,
 	load_SocialSharing: 6000,
 	validation_popover: 2000,
-	vscroll_hint_in: 4000,
+	vscroll_hint_in: 8000,
 	vscroll_hint_out: 4000,
 };
 

@@ -10,11 +10,17 @@
 		      				<div class='wrapZ'>
 		      					<img class='darkroom' src='/img/spacer.gif'>
 						        <h1>Still in the Darkroom</h1>
-						        <div class="subhead">We're working hard to build Snaphappi into a service you never knew you needed but can't live without.</div>
+						        <div class="subhead">We're working hard to build Snaphappi into a service you never knew you needed but <strong>can't live without.</strong></div>
 					        </div>
 				       	</div>
 					</div>
       			</div>
+      		<div class="row"><div class='offset1 span10'>
+<p class="lead">      			
+The honest truth is... <strong>we're not ready</strong> to deliver this service yet. 
+The point of this site is to declare our vision and build buzz, support and even commitment from our fans.
+</p>      			
+      		</div></div>
 	        <div class="row">
 	        	<div class="offset1 span5 donate">
 					<p class="lead">
@@ -25,8 +31,8 @@ Cheer us on through those long sleepless nights by sending us a buck <strong>($1
 	        	</div>
 	        	<div class="span5 join">
 <p class="lead">
-If you are not completely sold on the idea just yet, you'll still have an opportunity to help shape this service with your early participation and feedback. 
-<br />We'll send you an invite to our preview.
+If you are not completely sold on our idea just yet, you'll still have an opportunity to help shape this service with your early participation and feedback. 
+Get on our list now, and we'll send you an invite to our preview when it's ready.
 </p>
 	        	</div>
 	        	<div class="span1"></div>

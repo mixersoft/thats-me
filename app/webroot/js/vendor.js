@@ -139,32 +139,32 @@ if (typeof ($.cookie) != 'undefined') {
 		if (CFG['cracker']['gaq'].indexOf(name) > -1) return;
 		var events = {
 		 'features': {
-		  	label: "iKqqCM3qlwUQg76I1wM",
-		  	value: 0.5,
+		  	label: "xqCgCIztrAUQyvCg8AM",
+		  	value: 0.1,
 		  },
 		  "how-it-works:CAROUSEL-END": {
-		  	label: "Wv8OCNXilgUQg76I1wM",
-		  	value: 1,
+		  	label: "7OZkCPzurAUQyvCg8AM",
+		  	value: 0.2,
 		  },
 		  'video:end': {
-		  	label: "svEDCM3jlgUQg76I1wM",
-		  	value: 2,
+		  	label: "YwP1CPTvrAUQyvCg8AM",
+		  	value: 0.2,
 		  },
 		  'invite': {
-		  	label: "kSD2CJ2hkAUQg76I1wM",
-		  	value: 4,
+		  	label: "-6PXCOzwrAUQyvCg8AM",
+		  	value: 0.5,
 		  },
 		  'cheer': {
-		  	label: "ntDkCJWikAUQg76I1wM",
-		  	value: 8,
+		  	label: "8NgbCOTxrAUQyvCg8AM",
+		  	value: 2,
 		  },
 		  'thank-you': {
-		  	label: "lf9jCP2kkAUQg76I1wM",
-		  	value: 16,
+		  	label: "0dXsCNzyrAUQyvCg8AM",
+		  	value: 7,
 		  }
 		};
 
-		var google_conversion_id = 987897603;
+		var google_conversion_id = 1040726090;
 		var google_conversion_language = "en";
 		var google_conversion_format = "3";
 		var google_conversion_color = "ffffff";
@@ -213,12 +213,12 @@ if (typeof ($.cookie) != 'undefined') {
 		opt_label = opt_label || '';
 		opt_noninteraction = opt_noninteraction || false;
 		var value_lookup = {
-			'Page View:features': 0.5,					// opt_value Int
-			'Page View:how-it-works:CAROUSEL-END': 1,
-			'Video:end': 2,	// video end
-			'Click:invite': 4,
-			'Click:cheer': 8,
-			'Page View:thank-you': 16,
+			'Page View:features': 0.1,					// opt_value Int
+			'Page View:how-it-works:CAROUSEL-END': 0.2,
+			'Video:end': 0.2,	// video end
+			'Click:invite': 0.5,
+			'Click:cheer': 2,
+			'Page View:thank-you': 7,
 		}
 		opt_value = opt_value || value_lookup[category + ':' + action] || 0;
 		

@@ -66,8 +66,12 @@ Let us do the work, and we'll get your photos ready to play.
         </div></div></div>        
         <div class='fw-band footer alpha rgba80b'>
         	<div class="container ">
-        		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
-        		<div class="pull-right"><a href='#features'>Learn More</a></div>
+        		<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+			    	I Want It
+			    </button></a></div>	
+        		<div class="pull-right"><a href='#features'><button class="btn btn-warning" title='See what makes us different from all the other online photo sites'>
+			    	Learn More
+			    </button></a></div>
         	</div>
         </div>
       </div>

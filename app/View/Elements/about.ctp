@@ -31,8 +31,12 @@ Let us roll up our sleeves so you can just play.
 		</div>	      	
 		<div class='fw-band footer alpha rgba80b'>
 	    	<div class="container ">
-	    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
-	    		<div class="pull-right"><a href='#home'>Top</a></div>
+				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+			    	I Want It
+			    </button></a></div>	
+        		<div class="pull-right"><a href='#faq'><button class="btn btn-warning" title='Go to the next section to learn more about Snaphappi'>
+			    	Learn More
+			    </button></a></div>	    		
 	    	</div>
 	    </div> 
       </div>

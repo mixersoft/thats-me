@@ -206,7 +206,10 @@ body {
   background-color: @orange;
   vertical-align: text-bottom;
 }
-
+.btn.btn-warning {
+  color: #000000;
+  .rgb-text-shadow(#ffffff);
+}
 
 // for form .email
 .popover {
@@ -526,6 +529,7 @@ html.ie9 .navbar {
 	figure.graphic {
 		color: @cream;
 		margin: 0 20px;
+		cursor: pointer;
     .wrapH {
    		max-height: 160px;
    		height: 160px;
@@ -910,10 +914,7 @@ html.touch  {
     }
     button {
       font-size: 16px;
-    }
-    button#invite {
-      color: #000;
-      .rgb-text-shadow(#FFFFFF, 1);
+      line-height: 1.4;
     }
   }
   .donate-form-wrap {

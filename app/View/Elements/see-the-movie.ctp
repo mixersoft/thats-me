@@ -13,8 +13,12 @@
 	    </div>
 	    <div class='fw-band footer  alpha rgba80b'>
         	<div class="container ">
-        		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
-        		<div class="pull-right"><a href='#how-it-works'>Learn More</a></div>
+				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+			    	I Want It
+			    </button></a></div>	
+        		<div class="pull-right"><a href='#how-it-works'><button class="btn btn-warning" title='Learn how it works in 5 easy steps'>
+			    	Learn More
+			    </button></a></div>
         	</div>
         </div>
       </div>

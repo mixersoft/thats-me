@@ -24,14 +24,14 @@ The point of this site is to declare our vision and build buzz, support and even
 	        <div class="row">
 	        	<div class="offset1 span5 donate">
 					<p class="lead">
-If you want this service ASAP, let us know &mdash; we need your vocal support! 
+If you love our ideas and want this service ASAP, let us know &mdash; we need your vocal support! 
 Cheer us on through those long sleepless nights by sending us a buck <strong>($1)</strong>. 
-<span>We'll get the message &mdash; and we'll donate every dollar we receive to <span class='nowrap'>charity.<i class="icon-asterisk"></i></span> 
+<span>We'll get the message &mdash; and we'll donate every dollar to <span class='nowrap'>charity.<i class="icon-asterisk"></i></span> 
 	        		</p>
 	        	</div>
 	        	<div class="span5 join">
 <p class="lead">
-If you are not completely sold on our idea just yet, you'll still have an opportunity to help shape this service with your early participation and feedback. 
+If you are not completely sold (you want to see more), you still have an opportunity to help shape this service with your early participation and feedback. 
 Get on our list now, and we'll send you an invite to our preview when it's ready.
 </p>
 	        	</div>
@@ -45,13 +45,18 @@ Get on our list now, and we'll send you an invite to our preview when it's ready
 	  <div class="controls">
 	  	<div class="input-prependx input-appendx">
 	  		<div class='wrapH left'>
-		  		<button id='cheer' type="submit" class="btn btn-primary track-click track-disabled" track='cheer' title='Cheer us on for just a buck!'>
+		  		<button id='cheer' type="submit" class="btn btn-primary track-click track-disabled" 
+		  		track='cheer' 
+		  		title='Cheer us on for just a buck!'
+		  		data-loading-text='<i class="icon-spinner icon-spin"></i>&nbsp;One moment...'
+		  		data-error-text='Oops, Try Again?'
+		  		data-complete-text='Thanks for Leaving Your Email'>
 		  			I Want it ASAP!
 		  		</button>
 		  		<i class="icon-arrow-left"></i>
 	  		</div>
 	  		<div class="wrapH">
-		    	<input type="email" placeholder="Email" class='email' 
+		    	<input type="email" placeholder="Enter your email and choose" class='email' 
 		    		required 
 		    		title="Join our email list" 
 		    		data-content="Please enter a valid email address." 
@@ -60,7 +65,12 @@ Get on our list now, and we'll send you an invite to our preview when it's ready
 		    </div>
 		    <div class='wrapH right'>
 			    <i class="icon-arrow-right"></i>
-			    <button id='invite' type="submit" class="btn btn-warning track-click track-disabled" track='invite' title='Request an invitation to our preview'>
+			    <button id='invite' type="submit" class="btn btn-warning track-click track-disabled" 
+			    	track='invite' 
+			    	title='Request an invitation to our preview'
+			    	data-loading-text='<i class="icon-spinner icon-spin"></i>&nbsp;One moment...'
+			    	data-error-text='Oops, Try Again?'
+			    	data-complete-text='Thanks for Leaving Your Email'>
 			    	I Want an Invite
 			    </button>
 		    </div>

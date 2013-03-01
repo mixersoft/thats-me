@@ -11,7 +11,7 @@ CFG['timing'] = {
 	load_SocialSharing: 6000,
 	validation_popover: 2000,
 	vscroll_hint_in: 8000,
-	vscroll_hint_out: 4000,
+	vscroll_hint_out: 12000,
 };
 
 
@@ -168,7 +168,6 @@ Util.postEmail = function(email, options, success) {
 			} catch (ex) {		}
 			success.call(this, json, status, o);
 		},
-		
 	}).fail(function(json, status, o){
 		console.error("post Email failed");
 	});
@@ -367,17 +366,22 @@ Util.deferredMarkupReady = function() {
 		// update data[Follower][cheer] when a paypal/amazon button was clicked
 		$('form.call-to-action button').on('click.submit', function(e){
 			var email=$('form.call-to-action input[type=email]'),
+				button = $(e.currentTarget),
 				address = email.attr('value');
 			if (/[a-z\.]+@[a-z\.]+/.test(address)) {
 				email.popover('hide');
-				var formId = $(e.currentTarget).attr('id');
+				button.button('loading');
+				return;
+				var formId = button.attr('id');
 				switch (formId){
 					case "cheer":
 						CFG['util'].postEmail(address,{'data[Follower][cheer]':'1'},function(json, status, o){
 							// on success
 							if (json.success) {
+								button.button('complete');
 								CFG['util'].showDonateButtons();	
 							} else {
+								button.button('error');
 								alert('there was a problem saving your email.');
 							}
 						});
@@ -387,9 +391,10 @@ Util.deferredMarkupReady = function() {
 						CFG['util'].postEmail(address,{'data[Follower][join]':'1'},function(json, status, o){
 							// on success
 							if (json.success) {
-								CFG['util'].animateScrollToHash({hash:'#sharing' });
-								$('#sharing .thank-you.hide ').removeClass('hide');
+								button.button('complete');
+								CFG['util'].animateScrollToHash({hash:'#sharing' });								$('#sharing .thank-you.hide ').removeClass('hide');
 							} else {
+								button.button('error');
 								alert('there was a problem saving your email.');
 							}
 						});
@@ -399,8 +404,17 @@ Util.deferredMarkupReady = function() {
 				if ($(e.currentTarget).is(':not(.tracked)')) {
 					$(e.currentTarget).trigger('click.mixpanel');				}
 				// jQuery post in background, do not submit
-				e.preventDefault();			} 
-			e.stopImmediatePropagation();
+				e.preventDefault();
+				e.stopImmediatePropagation();
+				return false;
+			} else if ( 0 || $('html.touch').length ){
+				// ipad/mobile safari not validating form correctly
+				email.popover('show');
+				setTimeout(function(){
+					email.popover('hide');
+				}, CFG['timing'].validation_popover);
+			}
+			return true;		// allows for field validation downstream
 		}) 	
 }
 /*

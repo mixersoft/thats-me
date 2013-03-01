@@ -96,9 +96,13 @@ We think it's a small price to pay for all the time you'll save.</p>
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
       <div class='fw-band footer alpha rgba80b'>
-    	<div class="container ">
-    		<div class="pull-left"><a href='#call-to-action'>I Want It</a></div>	
-    		<div class="pull-right"><a href='#call-to-action'>Learn More</a></div>
+    	<div class="container invisible">
+				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+			    	I Want It
+			    </button></a></div>	
+        		<div class="pull-right"><a href='#call-to-action'><button class="btn btn-warning" title='See the honest truth and show us how much you like it'>
+			    	Learn More
+			    </button></a></div>
     	</div>
       </div>  
     </div><!-- /.carousel -->

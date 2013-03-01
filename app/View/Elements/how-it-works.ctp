@@ -8,13 +8,17 @@
 	<div class="vcenter-padding">
 		<div class="fw-band alpha rgba70card vcenter-body ">
 			<div class="featurette-heading center">
-				<h1 class="featurette-heading center">How It Works</h1>	
+				<h1 class="featurette-heading center">How It Works
+					<div class='subhead'>In <span class='badge badge-orange'>5</span> easy steps</div>
+				</h1>	
 			</div>
       <div class="carousel-inner">
       <ul class="scroller">	
         <li class="item left-image">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/icon-lg-06.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-06.png">
+        			<span class='badge badge-orange'>1/5</span>
+        		</div>
         		<figcaption>Send Us Your Photos
         			<div class="body">
 <p>With a few clicks, you can upload your entire photo archive to Snaphappi – whether 10 or 100 thousand shots!</p>
@@ -24,7 +28,9 @@
         	</figure>
         </li><li class="item left-image">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/icon-lg-02.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-02.png">
+        			<span class='badge badge-orange'>2/5</span>
+        		</div>
         		<figcaption>We'll Find Your <span class="nowrap">Beautiful Photos</span>
         			<div class="body">
 <p>Our Trained Editors will find the Beautiful Photos that are featured on your Curated Timeline. 
@@ -35,7 +41,9 @@ They work quickly (assisted by sophisticated algorithms) to rate photos and hide
         	</figure>        	
         </li><li class="item left-image">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/icon-lg-04.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-04.png">
+        			<span class='badge badge-orange'>3/5</span>
+        		</div>
         		<figcaption>And Build Your <span class="nowrap">Curated Timeline</span>
         			<div class="body">
 <p>You'll find all your photos on a stunning Curated Timeline 
@@ -47,7 +55,9 @@ They work quickly (assisted by sophisticated algorithms) to rate photos and hide
         	</figure>        	
         </li><li class="item left-image">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/icon-lg-03.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-03.png">
+        			<span class='badge badge-orange'>4/5</span>
+        		</div>
         		<figcaption>Push Your Finger <span class="nowrap">to Play</span>
         			<div class="body">
 <p>Re-live and share your special moments on the iPad with the push of a finger.</p>
@@ -60,7 +70,9 @@ They work quickly (assisted by sophisticated algorithms) to rate photos and hide
         	</figure>        	
         </li><li class="item left-image">
         	<figure class="graphic">
-        		<div class='wrapH'><img src="/img/beachfront/icon-lg-01.png"></div>
+        		<div class='wrapH'><img src="/img/beachfront/icon-lg-01.png">
+        			<span class='badge badge-orange'>5/5</span>
+        		</div>
         		<figcaption>Just a Penny a Photo!
         			<div class="body">
 <p>There are many places to go to share your beautiful photos, but <u>someone</u> has to do the work to find them.
@@ -77,7 +89,7 @@ We think it's a small price to pay for all the time you'll save.</p>
 <div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>  
    
 <div class="carousel-control-wrap">
-	<div class="left carousel-control-btn" href="#how-it-works" direction="prev">&lsaquo;</div>
+	<div class="left carousel-control-btn invisible" href="#how-it-works" direction="prev">&lsaquo;</div>
 	<div class="right carousel-control-btn" href="#how-it-works" direction="next">&rsaquo;</div>
 </div>
 		</div> <!-- / .vcenter-body .fw-band alpha rgba70b --> 

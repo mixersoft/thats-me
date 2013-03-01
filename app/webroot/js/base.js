@@ -564,7 +564,7 @@ var load_carouFredSel = function($) {
 					var id = o.addClass('fred').attr('id');
 					CFG['carousel'].init.fred(o);
 					CFG['carousel'].paging.refresh_pageDots(o);
-					o.find('.invisible').removeClass('invisible');				});
+					o.find('.invisible:not(.left)').removeClass('invisible');				});
 				
 				$(window).resize(function() {
 					// carousel resize on window.resize
@@ -602,8 +602,10 @@ var load_carouFredSel = function($) {
 				var carouselItems = fred.find('.item').size();
 				var pages = carouselItems - visibleItems;
 				var selected = fred.triggerHandler("currentPosition");
+				var dots = o.find('.carousel-pager > div');
 				for (var i=pages+1; i<carouselItems; i++) {
-					o.find('.carousel-pager > div').eq(i).addClass('hide');					
+					if (i==carouselItems) break;		// why do I need this?
+					dots.eq(i).addClass('hide');					
 				}
 				o.find('.carousel-pager > div').eq(selected).addClass('selected');
 			},
@@ -643,6 +645,15 @@ var load_carouFredSel = function($) {
 			items			: 1,
 			// easing			: "easeInOutCubic",			duration		: 300,							
 			pauseOnHover	: 'immediate',
+			onAfter			: function(o) {
+				var i = $(this).triggerHandler("currentPosition"),
+					parent = $(this).closest('.carousel'),
+					activeDots =  parent.find('.carousel-pager div:not(.hide)');
+				if (i==0) parent.find('.left.carousel-control-btn').addClass('invisible');
+				else parent.find('.left.carousel-control-btn').removeClass('invisible');
+				if (activeDots.last().hasClass('selected')) parent.find('.right.carousel-control-btn').addClass('invisible');
+				else parent.find('.right.carousel-control-btn').removeClass('invisible');
+			},
 			onEnd			: function(direction) {
 				if (direction=='next') {
 					CFG['carousel'].track_CarouselEnd($(this));
@@ -656,7 +667,7 @@ var load_carouFredSel = function($) {
 			easing		: "linear",			duration	: 300,
 			conditions	: function(){
 				return !$(this).closest('.carousel').find('.carousel-pager div:first-child').hasClass('selected');
-			}
+			},
 		},
 		next : {
 			button		: "#features .carousel-control-btn.right",
@@ -707,10 +718,15 @@ var load_carouFredSel = function($) {
 			duration		: 1000,							
 			pauseOnHover	: 'immediate',
 			onCreate 		: function(data) {	},
-			onAfter 		: function(data) {	
-				// var h = $(this).find('li.item:first-child').height() + 60;
-				// $(this).closest('.caroufredsel_wrapper').css('height', h+'px');
-				// var check;		// this gets reset later			},
+			onAfter			: function(o) {
+				var i = $(this).triggerHandler("currentPosition"),
+					parent = $(this).closest('.carousel'),
+					activeDots =  parent.find('.carousel-pager div:not(.hide)');
+				if (i==0) parent.find('.left.carousel-control-btn').addClass('invisible');
+				else parent.find('.left.carousel-control-btn').removeClass('invisible');
+				if (activeDots.last().hasClass('selected')) parent.find('.right.carousel-control-btn').addClass('invisible');
+				else parent.find('.right.carousel-control-btn').removeClass('invisible');
+			},
 			onEnd			: function(direction) {
 				if (direction=='next') {
 					CFG['carousel'].track_CarouselEnd($(this));

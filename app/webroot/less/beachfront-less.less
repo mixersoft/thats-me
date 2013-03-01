@@ -201,11 +201,12 @@ body {
  * ie only for alpha
  */
 	
-
-
-i.icon-white {
-  background-image:url(/img/glyphicons-halflings-white.png);
+.badge.badge-orange {
+  color: inherit;
+  background-color: @orange;
+  vertical-align: text-bottom;
 }
+
 
 // for form .email
 .popover {
@@ -806,6 +807,10 @@ html.touch  {
 
   
 #how-it-works {
+  .badge {
+    font-family: "Roboto", Helvetica,Arial,sans-serif;
+    box-shadow: 1px 1px 2px #333333;
+  }
   .carousel-inner {         /* start with one row, overflow-x: hidden */
     max-width: 1170px;
     /* don't add height for carousel.fred */
@@ -823,7 +828,13 @@ html.touch  {
     width: inherit;     // set by carouFredSel in li.item
     position: static;
     .wrapH {
-      max-height: 260px;    
+      max-height: 260px; 
+      position:relative;   
+      .badge {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     }
     figcaption {
       font-size: 32px;
@@ -1481,6 +1492,4 @@ html.touch  {
     }
   }
 }
-
-
 

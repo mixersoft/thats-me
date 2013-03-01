@@ -89,6 +89,10 @@ class ThatsmeController extends AppController {
 
 	public function show(){
 		$this->autoRender = false;
+		if (isset($this->request->query['debug'])) {
+			Configure::write('debug', $this->request->query['debug']);
+			Configure::write('isLocal', $this->request->query['debug']);
+		}
 		$this->home();
 		$this->render('home');
 	}

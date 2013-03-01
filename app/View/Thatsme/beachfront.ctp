@@ -60,10 +60,6 @@
 	}
 	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
 	
-	if (0 && $isLocal) {
-		// load google analytics in HEAD		$this->append('script');
-		$this->end(); 
-	}
 	if (0 || $isLocal == false) {
 		// load google analytics/mixpanel only from snaphappi.com
 		$this->start('javascript_Bottom');

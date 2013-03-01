@@ -364,14 +364,13 @@ Util.deferredMarkupReady = function() {
 		})
 		
 		// update data[Follower][cheer] when a paypal/amazon button was clicked
-		$('form.call-to-action button').on('click.submit', function(e){
+		$('form.call-to-action button.btn').on('click.submit', function(e){
 			var email=$('form.call-to-action input[type=email]'),
 				button = $(e.currentTarget),
 				address = email.attr('value');
 			if (/[a-z\.]+@[a-z\.]+/.test(address)) {
 				email.popover('hide');
 				button.button('loading');
-				return;
 				var formId = button.attr('id');
 				switch (formId){
 					case "cheer":
@@ -410,9 +409,11 @@ Util.deferredMarkupReady = function() {
 			} else if ( 0 || $('html.touch').length ){
 				// ipad/mobile safari not validating form correctly
 				email.popover('show');
+				
 				setTimeout(function(){
 					email.popover('hide');
 				}, CFG['timing'].validation_popover);
+
 			}
 			return true;		// allows for field validation downstream
 		}) 	
@@ -493,7 +494,6 @@ Util.documentReady = function() {
 				hint.removeClass('fadeIn-slow');
 			}, CFG['timing'].vscroll_hint_out);
 		}, CFG['timing'].vscroll_hint_in);	
-		
 		
 		/*
 		 * start slideshow

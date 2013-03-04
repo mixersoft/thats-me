@@ -102,7 +102,15 @@ class ThatsmeController extends AppController {
 	 * load all sections in a single page, uses deferred loading
 	 */
 	public function home(){
-		$this->_beachfront(); 
+		if (isset($this->request->query['debug'])) {
+			Configure::write('debug', $this->request->query['debug']);
+			Configure::write('isLocal', !empty($this->request->query['isLocal']));
+		}
+		if ($this->request->url == 'i-need-this') {
+			$ga_experiment = '67810021-0';	
+			$this->set(compact('ga_experiment'));		
+		}
+		$this->_beachfront();
 		$this->_ga_conversion_iframe();
 	}
 	/*

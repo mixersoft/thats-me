@@ -4,11 +4,14 @@
 	      	<div class='fw-band vcenter-body'>
 		      	<div class="featurette-heading center">
 			        <h1>See the Movie</h1>
-			        <div class="subhead hide">It'll knock your socks off</div>
 		       	</div>
 		        <div class='vcenter-body center'>
 		        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/YM7U1qfi2qQ?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
 				</div>
+				<div class="featurette-heading footer">
+		        	<div class="subhead center">
+		        		It's only 50 sec and you see a preview of our Curated Timeline &amp; Stories on the iPad.
+		        </div></div>
 		    </div>
 	    </div>
 	    <div class='fw-band footer  alpha rgba80b'>

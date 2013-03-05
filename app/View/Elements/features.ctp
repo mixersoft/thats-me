@@ -53,9 +53,9 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-03.png"></div>
         		<figcaption>Share Loved Memories
         			<div class="body">
-<p>It's hard to share when you have to dig through 10,000 photos to <strong>find something worth sharing.</strong></p>   
-<p>But thanks to our Curated Timelines, you'll have quick and easy access to all your precious moments and beautiful photos. 
-The rest is a snap.
+<p>Your friends appreciate when you have something nice to share; but with 10,000 photos to sort through, who has the time?
+	</p>   
+<p>Curated Stories automatically show highlights of any event on your Timeline; feature Beautiful Photos; and were made to be shared. 
 </p>
 <p>We also promise to <strong>respect your privacy</strong> &mdash; your photos are private until you share them.</p>
 					</div>
@@ -66,8 +66,8 @@ The rest is a snap.
         		<div class='wrapH'><img src="/img/beachfront/icon-sm-04.png"></div>
         		<figcaption>You're in Control
         			<div class="body">
-<p>You have complete control. You can adjust the photos featured on your Curated Timeline
-by rating the ones you love. You can also see your hidden duplicates and pick a new favorite.</p>
+<p>Change the photos featured on your Curated Timeline &amp; Stories
+by rating the ones you love. Your hidden duplicates are just a click away &mdash; pick a new favorite.</p>
 <p>And you can always see all your photos when you have the urge &mdash; but we think you'll be happy with the Beautiful Photos we've found.</p>
 					</div>
         		</figcaption>

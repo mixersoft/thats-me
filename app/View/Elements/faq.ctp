@@ -14,6 +14,18 @@
 	       <div class="faq-section alpha rgba50b">
 	        	<h2>Photo Editing</h2>
 	        	<p class="question">
+	How much does it cost?	        		
+	        	</p>
+	        	<p class="answer">
+We are trying to build a business that can thrive while charging just a penny a photo to screen your photos. That’s just $10.00 for 1000 photos if you want us to do the math. 
+</p><p class="answer">
+Compared to other free photo services, this fee (or any fee) might seem extravagant. But this fee pays for the cost of hiring trained editors (real people) to sort through and rate all the digital photos you send us. No one else offers this service at this price point. 
+</p><p class="answer">
+On the other hand, this fee might seem incredibly low considering there are real people who need to live off these wages. Just realize that we use a lot of special algorithms to make our editors incredibly productive. We save you time because our editors can do the job faster.
+</p><p class="answer">
+Once your photos are rated, our Curated Timelines and Curated Stories are be built automatically. Plus, the Curated Timeline iPad App will be available as a <strong class='nowrap'>free download</strong>.        		
+	        	</p>
+	        	<p class="question">
 	How do you know which photos are beautiful?	        		
 	        	</p>
 	        	<p class="answer">
@@ -29,8 +41,18 @@ Our editors are also trained to focus on photos with people, faces, or scenery. 
 	        	<p class="answer">
 Our Curated Timelines are built automatically from your rated photostream. We read the EXIF timestamps recorded in the JPG files of most modern digital cameras to know exactly when the original photo was taken. Plus, we have special algorithms to detect events from within your photostream, allowing us to group your photos together in a meaningful way. 
 </p><p class="answer">
-But most of all, we have developed a “secret sauce” that automatically picks out the beautiful photos we feature for each and every event. This allows our Curated Timelines to connect you instantly to your precious moments without having to dig through pages of thumbnails.        		
+But most of all, we have developed a &ldquo;secret sauce&rdquo; that automatically picks out the beautiful photos we feature for each and every event. This allows our Curated Timelines to connect you instantly to your precious moments without having to dig through pages of thumbnails.        		
 	        	</p>
+	        	<p class="question">
+	What are Curated Stories? How do you build them?	        		
+	        	</p>
+	        	<p class="answer">
+Curated Stories are a quick and easy way to see the highlights of any event on your timeline &mdash; they’ll bring you back in time and help you re-live your precious moments.
+</p><p class="answer">
+Our Curated Stories are smart enough to automatically build layouts which feature top-rated photos in prominent locations while still including other beautiful shots. Full-screen photos are still just a click away, but the pages of thumbnails and duplicates are hidden until you ask for them. This is only possible when all your photos are rated and your beautiful photos found.
+</p><p class="answer">
+Our Curated Stories are easily updated to reflect your personal preferences, and they are made to be shared. 
+	        	</p>	        	
 	        	<p class="question">
 	How do you find events?	        		
 	        	</p>
@@ -65,18 +87,6 @@ We’ve developed and tested our basic editing process, so we know how fast each
 </p><p class="answer">
 Furthermore, we are still in the process of building and organizing our editing studios. Until this is complete, we are unable to promise delivery times.        		
 	        	</p>
-	        	<p class="question">
-	How much does it cost?	        		
-	        	</p>
-	        	<p class="answer">
-We are trying to build a business that can thrive while charging just a penny a photo to screen your photos. That’s just $10.00 for 1000 photos if you want us to do the math. 
-</p><p class="answer">
-Compared to other free photo services, this fee (or any fee) might seem extravagant. But this fee pays for the cost of hiring trained editors (real people) to sort through and rate all the digital photos you send us. No one else offers this service at this price point. 
-</p><p class="answer">
-On the other hand, this fee might seem incredibly low considering there are real people who need to live off these wages. Just realize that we use a lot of special algorithms to make our editors incredibly productive. We save you time because our editors can do the job faster.
-</p><p class="answer">
-Once the photos are rated, our Curated Timelines and Stories can be built automatically. And the Curated Timeline App will always be distributed for free.        		
-	        	</p>
 	       </div>
 	       <div class="faq-section alpha rgba50b "> 	
 	        	<h2>Privacy &amp; Sharing</h2>
@@ -94,7 +104,7 @@ In the future, our hope is to offer you the choice of multiple processing center
 	What about sharing photos?	        		
 	        	</p>
 	        	<p class="answer">
-While we don’t have a social sharing platform of our own, we will provide links that allow you to you share your photos and Curated Stories by email and through other social media sites like Facebook, Twitter, etc.      		
+ The hardest part about sharing photos is taking the time to find/make something worth sharing — something your friends and family will appreciate. Our Curated Stories make this easy, and they are made for sharing. We provide custom links that allow you to you share your Curated Stories and individual photos by email or online.
 	        	</p>
 			</div>
 			
@@ -204,13 +214,23 @@ Note that we can only put JPG photos with valid EXIF timestamps on the Curated T
 	What about the photos on my smartphone?	        		
 	        	</p>
 	        	<p class="answer">
-The photos on your smartphone are becoming an important part of your family photo archive, and we definitely have plans to include them. But our initial plans are to focus on the 1000s of photos already saved on your hard drive. If you can get them onto your hard drive then we’ll take them &mdash; and you should probably do so, just in case you lose your phone.	        	</p>
+The photos on your smartphone are becoming an important part of your family photo archive, and we definitely have plans to include them. But our initial plans are to focus on the 1000s of photos already saved on your hard drive. If you can get them onto your hard drive then we’ll take them &mdash; and you should probably do so, just in case you lose your phone.	        	
+				</p>
 	        	<p class="question">
 	What about my photos on Facebook/Flickr/Instagram/Picasaweb/iCloud/etc?	        		
 	        	</p>
 	        	<p class="answer">
 We also have plans to allow you to import your photos from a number of the popular online photo and cloud storage services. More details will follow.                	        	</p>	        		        	
-	        </div>
+				</p>
+	        	<p class="question">
+	What about all the old photos &amp; slides I have stored in boxes? 	        		
+	        	</p>
+	        	<p class="answer">
+Unfortunately, Snaphappi can only work with the digital photos from your camera or smartphone. 
+Even if you have your old photos &amp; slides scanned into JPG files, we will not have an easy way to know exactly when the original photos were taken. 
+Thus, we are unable to put them on a Curated Timeline.	        	
+				</p>
+	        </div>				
 	        		</div>
 	        	</div>
       		</div>

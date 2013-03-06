@@ -997,9 +997,17 @@ html.touch  {
 }
 
 #about {
-  .container .body {
+  .container {
     color: @cream;
     .rgb-text-shadow(#000);
+    .tabbable > {
+      .nav-tabs a, .nav-tabs a:hover {
+        color: @cream !important;
+      }
+      .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+        .rgba(#000000, 0.5);
+      }
+    }
   }
 }
 #FAQ {

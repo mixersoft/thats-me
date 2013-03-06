@@ -116,7 +116,7 @@ In the future, our hope is to offer you the choice of multiple processing center
 	What's the point? Why doesn't this site actually do anything?
 		        </p>	        		
 		        	<p class="answer">
-The goal of this  &ldquo;launch&rdquo; site is to declare our vision and build buzz and commitment behind it &mdash; it’s kind of like a Kickstarter campaign.  
+The goal of this &ldquo;launch&rdquo; site is to declare our vision and build buzz and commitment behind it &mdash; it’s kind of like a Kickstarter campaign.  
 </p><p class="answer">
 We are using this site to make a statement about who we are; what we believe in; and how we are going to change the world, one step at a time. 
 We want to give people a chance to stand up and say, &ldquo;I want this!&rdquo;  	

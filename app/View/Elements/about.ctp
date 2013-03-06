@@ -75,7 +75,7 @@ Michael also worked for many, many years at Oracle. See his full profile at <a t
           	<p>
           	If you are a star talent who loves what we are selling, then we'd like to find a place for you &mdash; it's lonely on this page. Send us an email and introduce yourself.
           	</p><p class='center'>
-          		<strong class='nowrap'>jobs (at) snaphappi (dot) com</strong>
+          		<strong class='nowrap'>jobs (at) snaphappi.com</strong>
           	</p><p>
           	We are especially interested in web and iOS developers who can help build this service, along with social media experts who can help us find our audience.
           	</p>

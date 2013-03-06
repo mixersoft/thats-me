@@ -723,6 +723,7 @@ var load_carouFredSel = function($) {
 			items		: 1,
 			easing		: "linear",			duration	: 300,
 			conditions	: function(){
+				$('#features .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');
 				return !$(this).closest('.carousel').find('.carousel-pager div:first-child').hasClass('selected');
 			},
 		},
@@ -732,6 +733,7 @@ var load_carouFredSel = function($) {
 			items		: 1,
 			easing		: "linear",			duration	: 300,
 			conditions	: function(){
+				$('#features .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');
 				var activeDots = $(this).closest('.carousel').find('.carousel-pager div:not(.hide)');
 				return !activeDots.last().hasClass('selected');
 			}
@@ -796,7 +798,10 @@ var load_carouFredSel = function($) {
 			items		: 1,
 			easing		: "cubic",
 			duration	: 1000,
-
+			conditions	: function(){
+				$('#how-it-works .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');
+				return true;
+			},
 		},
 		next : {
 			button		: "#how-it-works .carousel-control-btn.right",
@@ -804,7 +809,10 @@ var load_carouFredSel = function($) {
 			items		: 1,
 			easing		: "cubic",
 			duration	: 1000,
-
+			conditions	: function(){
+				$('#how-it-works .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');
+				return true;
+			},
 		},
 		pagination : {
 			container	: "#how-it-works  .carousel-pager",

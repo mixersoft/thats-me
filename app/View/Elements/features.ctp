@@ -68,7 +68,7 @@ Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &md
         			<div class="body">
 <p>Change the photos featured on your Curated Timeline &amp; Stories
 by rating the ones you love. Your hidden duplicates are just a click away &mdash; pick a new favorite.</p>
-<p>And you can always see all your photos when you have the urge &mdash; but we think you'll be happy with the Beautiful Photos we've found.</p>
+<p>Remember, you can always choose to see all your photos. But we show your Beautiful Photos first because it makes for a better experience.</p>
 					</div>
         		</figcaption>
         	</figure>

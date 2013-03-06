@@ -1,4 +1,5 @@
-       <div class="navbar navbar-inverse navbar-fixed-top use-hash invisible alpha rgba80b">
+<?php $useHash = !empty($useHash) ? 'use-hash' : '';  ?>  
+	    <div class="navbar navbar-inverse navbar-fixed-top <?php echo $useHash; ?> invisible alpha rgba80b">
           <div class="navbar-inner container">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">

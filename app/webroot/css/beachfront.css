@@ -25,6 +25,9 @@
 	.center {
 		text-align: center;
 	}
+	.right {
+		text-align: right;
+	}	
 
 /*	http://www.jakpsatweb.cz/css/css-vertical-center-solution.html*/
    	.vcenter-wrap {

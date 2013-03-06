@@ -31,7 +31,10 @@
 		        			Curated Timelines
 		        		</figcaption>
 		        	</figure>
-		        	<div class="vscroll-hint no-ie-alpha70b fadeOut"><i class='icon-arrow-up'></i><div>scroll for more</div><i class='icon-arrow-down'></i></div>
+		        	<div class="vscroll-hint no-ie-alpha70b fadeOut">
+		        		<div class='right'><i class='icon-remove-sign'></i></div>
+		        		<i class='icon-arrow-up hide'></i><div class='body'>scroll down<br />to see each section</div><i class='icon-arrow-down'></i>
+		        	</div>
 		        </div>
 		        <div class="featurette-heading footer">
 		        	<div class="subhead">

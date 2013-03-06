@@ -10,6 +10,8 @@ CFG['timing'] = {
 	load_ytapi: 5000,
 	load_SocialSharing: 6000,
 	validation_popover: 2000,
+	carousel_hint_in: 2000,
+	carousel_hint_out: 8000,
 	vscroll_hint_in: 8000,
 	vscroll_hint_out: 12000,
 };
@@ -58,6 +60,8 @@ Util.isLingeringInView = function(o, lingering_timers, delay, success){
 		lingering_timers[id] = 0;
 		if (CFG['util'].isScrolledIntoView(o)) {
 			lingering_timers[id] = success(o);
+			// show any hints when scrolled into View
+			Util.fadeIn_hints(o);		
 		}
 	}, delay);
 };
@@ -185,22 +189,25 @@ Util.showDonateButtons = function() {
 	});
 	return false;		// onclick return value
 };
-// o.hasAttr('hash'), $(<A>)
-Util.animateScrollToHash = function(o) {
-	var target = $(o.hash);
+/*
+ * @param el HTMLElement, o.hasAttr('hash'), $(<A>)
+ */
+Util.animateScrollToHash = function(el) {
+	var target = $(el.hash);
 	if (!target.length) return;
-	if ((o.source == 'carousel') && $('html.touch')) {
+	
+	if (target.hasClass('carousel') && $('html.touch')) {
 		// scrolling on carousel scroll causes flashes
 		if (CFG['util'].isScrolledIntoView(target)) {
-			return;
+			return target;
 		}
 	}
 	if (target) {
-        // console.log(o.hash);
+        // console.log(e.hash);
         var delta = target.offset().top - $(window).scrollTop();
         if (delta < 0 || delta > 50) {
         	setTimeout(function(){
-        		$.scrollTo(o.hash, 1000);
+        		$.scrollTo(el.hash, 1000);
         	}, 50);
         } 
     }
@@ -244,6 +251,42 @@ Util.slideInNavBar = function(){
 		}
 	}
 };
+Util.fadeIn_hints = function(o) {
+	switch(o.attr('id')){
+		case 'home':
+			// fade in Vscroll hint
+			setTimeout(function() {
+				var hint = $('#home .vscroll-hint:not(.disabled)'); 
+				if (hint.length==0) return;
+				
+				hint.addClass('fadeIn-slow').on('click', function(e){
+					hint.removeClass('fadeIn-slow').addClass('disabled');
+				});
+				setTimeout(function() {
+					hint.removeClass('fadeIn-slow');
+				}, CFG['timing'].vscroll_hint_out);
+			}, CFG['timing'].vscroll_hint_in);			
+		break;
+		case 'features':
+		case 'how-it-works':
+			// fade in Vscroll hint
+			setTimeout(function() {
+				var hint = $('#'+o.attr('id')+' .carousel-hint:not(.disabled)'); 
+				if (hint.length==0) return;
+				
+				if ($('html.touch').length) hint.find('.swipe').removeClass('hide');
+				else hint.find('.click').removeClass('hide');
+				
+				hint.addClass('fadeIn-slow').on('click', function(e){
+					hint.removeClass('fadeIn-slow').addClass('disabled');
+				});
+				setTimeout(function() {
+					hint.removeClass('fadeIn-slow');
+				}, CFG['timing'].carousel_hint_out);
+			}, CFG['timing'].carousel_hint_in);
+		break;
+	}
+}
 Util.load_SocialSharing = function() {
 	setTimeout(function(){
 		if (CFG['socialSharing']) return;

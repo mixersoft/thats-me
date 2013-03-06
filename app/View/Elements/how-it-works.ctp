@@ -92,6 +92,15 @@ We think it's a small price to pay for all the time you'll save.</p>
 	<div class="left carousel-control-btn invisible" href="#how-it-works" direction="prev">&lsaquo;</div>
 	<div class="right carousel-control-btn" href="#how-it-works" direction="next">&rsaquo;</div>
 </div>
+<div class="carousel-hint alpha rgba80b fadeOut">
+	<div class='right'><i class='icon-remove-sign'></i></div>
+	<div class="body swipe center hide">
+		<i class='icon-arrow-left'></i>&nbsp;&nbsp;<span>swipe to see more</span>&nbsp;&nbsp;<i class='icon-arrow-right'></i>
+	</div>
+	<div class="body click center hide">
+		<i class='icon-arrow-left'></i>&nbsp;&nbsp;<span>click to see more</span>&nbsp;&nbsp;<i class='icon-arrow-right'></i>
+	</div>
+</div>
 		</div> <!-- / .vcenter-body .fw-band alpha rgba70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 

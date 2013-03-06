@@ -81,6 +81,15 @@ by rating the ones you love. Your hidden duplicates are just a click away &mdash
 	<div class="left carousel-control-btn invisible" href="#features" direction="prev">&lsaquo;</div>        
 	<div class="right carousel-control-btn" href="#features" direction="next">&rsaquo;</div>
 </div>
+<div class="carousel-hint alpha rgba80b fadeOut">
+	<div class='right'><i class='icon-remove-sign'></i></div>
+	<div class="body swipe center hide">
+		<i class='icon-arrow-left'></i>&nbsp;&nbsp;<span>swipe to see more</span>&nbsp;&nbsp;<i class='icon-arrow-right'></i>
+	</div>
+	<div class="body click center hide">
+		<i class='icon-arrow-left'></i>&nbsp;&nbsp;<span>click to see more</span>&nbsp;&nbsp;<i class='icon-arrow-right'></i>
+	</div>
+</div>
 		</div> <!-- / .vcenter-body .fw-band --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 

@@ -13,6 +13,7 @@
     <li class=""><a href="#about-team" data-toggle="tab">Team</a></li>
   </ul>
   <div class="tab-content">
+<!--    *********** Right Now ********   -->  	
   	<div class="tab-pane active" id="about-now">
 <p>
 At Snaphappi, we know that a single photo can launch a thousand happy memories. 
@@ -26,6 +27,7 @@ saving you hours of time and making it fun and easy to re-live your precious mom
 Let us roll up our sleeves so you can just play.
 </p>	
     </div>
+<!--    *********** mission ********   -->
     <div class="tab-pane" id="about-mission">
 <p class='lead'>
 <strong>Our mission is to take the <em>&ldquo;work&rdquo;</em> out of family photos and make it <em>&ldquo;play&rdquo;</em>.</strong> 
@@ -33,7 +35,7 @@ Let us roll up our sleeves so you can just play.
 With today’s rapid-fire digital cameras and smartphones, it’s so easy to snap photos, and we’ll be the last to stop the fun. 
 But unless you have the time and discipline to tend to your family photo archives, the fun does stop &mdash; right on the steps of the family photo archive. 
 Faced with an overwhelming pile of unsorted photos (10,000+ is no longer uncommon) the current system and tools for managing family photos are broken. 
-It’s a lot of work and that is your family photos are often ignored.
+It's a lot of work and it's why your family photos are being ignored.
 </p><p>
 Nobody wants to look at pages and pages of thumbnails, or row after row of duplicates. But everybody is happy to make the final cut. Our mission is to bridge this gap. 
 </p><p>
@@ -52,6 +54,7 @@ We hope to always offer our customers a choice as to who and where they find the
 but we plan to partner with social enterprises to offer training and job opportunities to some of the worlds poorest citizens.
       </p>
     </div>
+<!--    *********** Team ********   -->    
     <div class="tab-pane" id="about-team">
     	<div class="media">
           <div class="media-body">

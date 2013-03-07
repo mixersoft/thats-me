@@ -78,7 +78,8 @@ They work quickly (assisted by sophisticated algorithms) to rate photos and hide
 <p>There are many places to go to share your beautiful photos, but <u>someone</u> has to do the work to find them.
 If it's not going to be you, then let it be Snaphappi.</p>
 <p>Only Snaphappi uses real people - trained photos editors - to sort through your photos. 	
-We think it's a small price to pay for all the time you'll save.</p>					
+We think it's a small price to pay for all the time you'll save.</p>
+<p>Later, we hope you'll let us make photobooks and calendars for you to earn our keep.</p>					
 					</div>
         		</figcaption>
         	</figure>        	

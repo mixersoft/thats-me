@@ -363,6 +363,11 @@ Util.deferredMarkupReady = function() {
 					case "#call-to-action":
 						href = '#i-want-it';
 					break;
+					case "#about-now":
+					case "#about-mission":
+					case "#about-team":
+						return true;
+					break;
 				}
 				href = href.substr(1);
 				$(elem).attr('href', href);

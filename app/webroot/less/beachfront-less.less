@@ -995,10 +995,19 @@ html.touch  {
     color: @cream;
     .rgb-text-shadow(@orange);
   }
-  .tweet-wrap {
-    display: inline-block;
-    height: 29px;
-    vertical-align: top;
+  .container {
+    color: #000;
+    .rgb-text-shadow(@orange);
+    a, a:visited {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+      text-shadow: 2px 2px 4px white;
+    }
+    i {
+      font-size: 30px;
+    }
   }
 }
 

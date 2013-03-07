@@ -143,6 +143,10 @@ class ThatsmeController extends AppController {
 		$this->_beachfront(); 
 		$this->_ga_conversion_iframe();
 	}
+	public function sharing(){
+		$this->_beachfront(); 
+		$this->_ga_conversion_iframe();
+	}
 	public function about(){
 		$this->_beachfront(); 
 	}	

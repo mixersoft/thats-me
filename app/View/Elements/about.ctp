@@ -39,7 +39,7 @@ It's a lot of work and it's why your family photos are being ignored.
 </p><p>
 Nobody wants to look at pages and pages of thumbnails, or row after row of duplicates. But everybody is happy to make the final cut. Our mission is to bridge this gap. 
 </p><p>
-We are promoting a new workflow for casual/family photography, one that combines a team of trained digital craftsmen with some sophisticated computer algorithms to transform your fast and furious stream of snapshots into something fun and easy to play with and enjoy. 
+Snaphappi is promoting a new workflow for casual/family photography, one that combines a team of trained digital craftsmen with some sophisticated computer algorithms to transform your fast and furious stream of snapshots into something fun and easy to play with and enjoy. 
 You recognize that not all photos are equal. 
 We do the work to present the best photos upfront &mdash; while keeping everything else just a few taps or clicks away.
 </p><p>
@@ -98,10 +98,11 @@ Michael also worked for many, many years at Oracle. See his full profile at <a t
       		</div>
 		</div>	      	
 		<div class='fw-band footer alpha rgba80b'>
-	    	<div class="container ">
+	    	<div class="container center">
 				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
+		    	<a target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>&nbsp;<a target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
         		<div class="pull-right"><a href='#faq'><button class="btn btn-warning" title='Go to the next section to learn more about Snaphappi'>
 			    	Learn More
 			    </button></a></div>	    		

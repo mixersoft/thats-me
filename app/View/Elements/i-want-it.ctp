@@ -129,5 +129,12 @@ It's kind of a Kickstarter thing. Your support will help us build buzz around ou
 	        </div> <!-- / .row -->
         </div>
       </div> <!-- / .vcenter-body  -->
+      
+      <div class='fw-band footer alpha rgba80b'>
+    	<div class="container center">
+		    <a target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>&nbsp;<a target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
+    	</div>
+    </div>
+        
     </div> 
  

@@ -68,10 +68,11 @@ Let us do the work, and we'll get your photos ready to play.
 		   </div>     
         </div></div></div>        
         <div class='fw-band footer alpha rgba80b'>
-        	<div class="container ">
+        	<div class="container center">
         		<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
+			    	<a target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>&nbsp;<a target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
         		<div class="pull-right"><a href='#features'><button class="btn btn-warning" title='See what makes us different from all the other online photo sites'>
 			    	Learn More
 			    </button></a></div>

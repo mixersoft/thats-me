@@ -416,7 +416,7 @@ Util.deferredMarkupReady = function() {
 			var email=$('form.call-to-action input[type=email]'),
 				button = $(e.currentTarget),
 				address = email.attr('value');
-			if (/[a-z\.]+@[a-z\.]+/.test(address)) {
+			if (/^[\w.+-]+@[\w.-]+\.[a-zA-Z]{2,4}$/.test(address)) {
 				email.popover('hide');
 				button.button('loading');
 				var formId = button.attr('id');
@@ -454,7 +454,7 @@ Util.deferredMarkupReady = function() {
 				e.preventDefault();
 				e.stopImmediatePropagation();
 				return false;
-			} else if ( 0 || $('html.touch').length ){
+			} else if ( /^[\w.+-]+@[\w]/.test(address) || $('html.touch').length ){
 				// ipad/mobile safari not validating form correctly
 				email.popover('show');
 				

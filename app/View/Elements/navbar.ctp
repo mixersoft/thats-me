@@ -25,6 +25,7 @@
                   <ul class="dropdown-menu pull-right alpha rgba80b">
                     <li class='promote'><a href="#about">About</a></li>
                     <li class='promote'><a href="#FAQ">FAQ</a></li>
+                    <li class='promote'><a href="#sharing">Chatter</a></li>
                     <li><a href="#see-the-movie">See the Movie Again</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
                   </ul>
@@ -42,6 +43,7 @@
                   <ul class="dropdown-menu pull-right alpha rgba80b">
                     <li class='promote'><a href="/about">About</a></li>
                     <li class='promote'><a href="/faq">FAQ</a></li>
+                    <li class='promote'><a href="/sharing">Chatter</a></li>
                     <li><a href="/see-the-movie">See the Movie Again</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
                   </ul>

@@ -161,12 +161,15 @@ And, of course, the faster we build a great team, the faster we can deliver a gr
 	       <div class="faq-section alpha rgba50b ">	
 	        	<h2>Platforms &amp Systems</h2>
 				<p class="question">
-	Why is the Curated Timeline only available as an iPad App?	        		
+	Why are the Curated Timeline & Stories first available as an iPad App?	        		
 	        	</p>
 	        	<p class="answer">
-We feel that people are more eager to play with their photos when they can touch and feel them &mdash; like on the iPad. Plus it’s easier and more natural to share the experience with someone next to you from an iPad.		 	 	
+We feel that people are more eager to play with their photos when they can touch and feel them &mdash; like on the iPad. Plus it’s easier and more natural to share the experience with someone next to you from an iPad.
 </p><p class="answer">
-You only need the super large screen of a notebook or desktop computer when you have to dig through pages and pages of extra-large thumbnails to find the photos you want &mdash; but that’s no longer a problem with our Curated Timelines. Repeat after me, <strong>&ldquo;No more thumbnails!&rdquo;</strong>       		
+You only need the super large screen of a notebook or desktop computer when you have to dig through pages and pages of extra-large thumbnails to find the photos you want &mdash; but that’s no longer a problem with our Curated Timelines. 
+Repeat after me, <strong>&ldquo;No more thumbnails!&rdquo;</strong>
+</p><p class="answer">
+However, we'll probably make the Curated Timeline available on other tablets and desktop browsers once we hit our stride.      		
 	        	</p>	        	
 	        	<p class="question">
 	How do I upload my 10,000+ photos to Snaphappi?	        		

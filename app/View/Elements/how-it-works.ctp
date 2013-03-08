@@ -49,7 +49,7 @@ They work quickly (assisted by sophisticated algorithms) to rate photos and hide
 <p>You'll find all your photos on a stunning Curated Timeline 
 	to make your precious moments easy to find and a joy to use.</p>
 <p>Your Timeline is automatically organized by events and always feature Beautiful Photos, not thumbnails, to connect you instantly with the moment. 
-<p>We'll get your photos are Ready to Play.</p>        				
+<p>We'll get your photos &ldquo;ready to Play&rdquo;.</p>        				
 					</div>
         		</figcaption>
         	</figure>        	

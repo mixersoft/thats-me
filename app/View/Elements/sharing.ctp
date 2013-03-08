@@ -32,12 +32,13 @@
 					<div class="offset2 span8 body">
 						<ul class='unstyled'>
 	      					<li>
-	      						<a target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>
-	      						Snaphappi on Facebook
+	      						<a target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i> 
+	      						Snaphappi on Facebook</a>
 	      					</li>
 	      					<li>
-	      						<a target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
+	      						<a target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i> 
 	      						Snaphappi on Twitter 
+	      						</a>
 	      					</li>
 	      				</ul>
 	      			</div>

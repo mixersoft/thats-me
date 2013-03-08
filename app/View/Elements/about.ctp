@@ -44,14 +44,16 @@ You recognize that not all photos are equal.
 We do the work to present the best photos upfront &mdash; while keeping everything else just a few taps or clicks away.
 </p><p>
 Re-living moments, telling stories, sharing photos &mdash; everything is easier when you can see the big picture, and more fun when the final cut is just a few tweaks away. 
-</p><p>
-</p><p class='lead'>
+</p>
+<br />
+<p class='lead'>
 <strong>Our other mission...</strong>	
 </p><p>
 Snaphappi is also a for-profit enterprise with a social mission. 
 Our goal is to to build a dynamic marketplace connecting global photographers to digital craftsmen. 
 We hope to always offer our customers a choice as to who and where they find their digital craftsmen, 
-but we plan to partner with social enterprises to offer training and job opportunities to some of the worlds poorest citizens.
+but we plan to partner with social enterprises to offer training and fair-trade work opportunities 
+to under-privileged citizens from some of the world's less developed economies.
       </p>
     </div>
 <!--    *********** Team ********   -->    

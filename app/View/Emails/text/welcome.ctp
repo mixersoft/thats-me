@@ -8,3 +8,5 @@ Thank you for joining us in the "Darkroom".
 Cheers,
 
 -- Snaphappi 
+
+Find us on Facebook and 'like' our page - http://www.facebook.com/pages/Snaphappi/16486082015

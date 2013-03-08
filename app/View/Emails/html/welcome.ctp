@@ -13,4 +13,6 @@ Thank you for joining us in the "Darkroom".
 <div class="footer">
 <p>Cheers,</p>
 <p>&mdash; Snaphappi</p>
+<br />
+<a target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'>Find us on Facebook</a> and 'like' our page.
 </div>

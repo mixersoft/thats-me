@@ -18,21 +18,22 @@
       		<div class="row"><div class='offset1 span10'>
 <p class="lead">      			
 The honest truth is... <strong>we're not ready</strong> to deliver this service yet. 
-The point of this site is to declare our vision and build buzz, support and even commitment from our fans.
+The point of this site is to declare our vision and build a base of support &amp; commitment from our fans.
+We need this support to reach investors and grow our team.
 </p>      			
       		</div></div>
 	        <div class="row">
 	        	<div class="offset1 span5 donate">
 					<p class="lead">
 If you love our ideas and want this service ASAP, let us know &mdash; we need your vocal support! 
-Cheer us on through those long sleepless nights by sending us a buck <strong>($1)</strong>. 
-<span>We'll get the message &mdash; and we'll donate every dollar to <span class='nowrap'>charity.<i class="icon-asterisk"></i></span> 
+Send us a buck <strong>($1)</strong> to show you mean it. 
+We don't want the dollar (really)<i class="icon-asterisk"></i> but we need to be able to prove that we have some rabid fans.
 	        		</p>
 	        	</div>
 	        	<div class="span5 join">
 <p class="lead">
 If you are not completely sold (you want to see more), you still have an opportunity to help shape this service with your early participation and feedback. 
-Get on our list now, and we'll send you an invite to our preview when it's ready.
+Get on our list now, and we'll invite you to our preview when it's ready.
 </p>
 	        	</div>
 	        	<div class="span1"></div>
@@ -43,7 +44,7 @@ Get on our list now, and we'll send you an invite to our preview when it's ready
 <form class="form-inline call-to-action center" action="/action/sign-me-up" method="post" onsubmit="return false;">	        		
 	<div class="control-group">
 	  <div class="controls">
-	  	<div class="input-prependx input-appendx">
+	  	<div>
 	  		<div class='wrapH left'>
 		  		<button id='cheer' type="submit" class="btn btn-primary track-click track-disabled" 
 		  		track='cheer' 
@@ -51,7 +52,7 @@ Get on our list now, and we'll send you an invite to our preview when it's ready
 		  		data-loading-text='<i class="icon-spinner icon-spin"></i>&nbsp;One moment...'
 		  		data-error-text='Oops, Try Again?'
 		  		data-complete-text='Thanks for Leaving Your Email'>
-		  			I Want it ASAP!
+		  			I Want it ASAP! <strong>($1)</strong> 
 		  		</button>
 		  		<i class="icon-arrow-left"></i>
 	  		</div>
@@ -117,8 +118,11 @@ Get on our list now, and we'll send you an invite to our preview when it's ready
 	        <div class="row">
 	        	<p class='footnote offset1 span10'>
 		        	<i class="icon-asterisk"></i>
-We don't want the dollar (really). We just want an extra effort on your part to confirm that we are offering a valuable service at an attractive price — one that solves a real problem of yours.  
-It's kind of a Kickstarter thing. Your support will help us build buzz around our vision. <a href='#faq-darkroom' title='see the FAQ'><strong>[FAQ]</strong></a>
+We'll donate every dollar we receive to charity. 
+We just want an extra effort from you to confirm that we are offering a valuable service at an attractive price — one that solves a real problem of yours. 
+It's kind of a Kickstarter thing.
+<?php $target = ($this->request->url=='i-want-it') ? '/faq#faq-darkroom' : '#faq-darkroom'; ?>
+<a href='<?php echo $target?>' title='see the FAQ'><strong>[FAQ]</strong></a>
 	        	</p>
 	        </div> <!-- / .row -->
 	        

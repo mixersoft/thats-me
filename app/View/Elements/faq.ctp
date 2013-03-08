@@ -116,13 +116,13 @@ In the future, our hope is to offer you the choice of multiple processing center
 	What's the point? Why doesn't this site actually do anything?
 		        </p>	        		
 		        	<p class="answer">
-The goal of this &ldquo;launch&rdquo; site is to declare our vision and build buzz and commitment behind it &mdash; it’s kind of like a Kickstarter campaign.  
+The goal of this &ldquo;launch&rdquo; site is to declare our vision and build buzz and commitment behind it &mdash; it’s kind of like a Kickstarter campaign (which is in the works).
 </p><p class="answer">
 We are using this site to make a statement about who we are; what we believe in; and how we are going to change the world, one step at a time. 
-We want to give people a chance to stand up and say, &ldquo;I want this!&rdquo;  	
+We want to give people a chance to stand up and say, <strong>&ldquo;I want this!&rdquo;</strong> 
 </p><p class="answer">
 But we also want to let talented software developers and partners find us &mdash; 
-those who share our values; believe in our vision; and want to join us and build something great. Your rabid support just makes it easier for them to say &ldquo;yes!&rdquo;					
+those who share our values; believe in our vision; and want to join us and build something great. 
 				</p>
 				<p class="question">
 	Why do you want $1 from me?	        		
@@ -138,10 +138,11 @@ We are offering a completely new vision for family photos, one that asks you to<
 	<li>think that you will <i>play with</i> your family photos and not <i>work with</i> them.</li>
 </ul>
 <p class="answer">
-With so much innovation and change, it’s not clear that everyone is ready to accept this vision. We want to give people a chance to stand up and say,  &ldquo;I want this! &rdquo;
+With so much innovation and change, it’s not clear that everyone is ready to accept this vision. 
 </p><p class="answer">
-By making the extra effort of sending us $1, you are sending us a clear message that you believe in our vision for this service and that we can count on your business if we faithfully deliver on our promises.
-And we plan to use your support to help us build a great team.    
+By making the extra effort of sending us $1, you are giving us your vocal support. 
+You are sending a clear message that you want this service and that we can count on your business if we faithfully deliver on our promises.
+We need your support to help convince the right people and partners to join us and help make it happen.    
 </p><p class="answer">
 <a href='#call-to-action' title='take me back so I can give you a buck'><strong>[OK. I get it, and I want it!]</strong></a>     		
 	        	</p>

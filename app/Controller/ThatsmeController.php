@@ -161,6 +161,10 @@ class ThatsmeController extends AppController {
 		if ($label && $value) $this->set(compact('label','value'));
 		else $this->autoRender = false;
  	}	
+	
+	public function demo(){
+		$this->_beachfront(); 
+	}
 
 /**
  * Displays a view

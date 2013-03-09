@@ -20,7 +20,7 @@
 		        <h1>Curated Timeline</h1>
 	       	</div>
 	       	<div class='row'>
-	       		<div class='span12 ipad portrait alpha rgba50b'>
+	       		<div class='span12 ipad landscape alpha rgba50b'>
 	       	
 <hr>		
 <ul class='timeline inline unstyled'>
@@ -32,9 +32,9 @@
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">
 			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/120x80'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/120x80'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/120x80'></div>
+				<div><img class='top img-polaroid' data-src='holder.js/240x160/auto'></div>
+				<div><img class='mid img-polaroid' data-src='holder.js/240x160/auto'></div>
+				<div><img class='bot img-polaroid' data-src='holder.js/240x160/auto'></div>
 			</div>
 			</div>
 		</div>
@@ -47,9 +47,9 @@
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">
 			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/120x80'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/120x80'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/120x80'></div>
+				<div><img class='top img-polaroid' data-src='holder.js/160x240/auto'></div>
+				<div><img class='mid img-polaroid' data-src='holder.js/240x160/auto'></div>
+				<div><img class='bot img-polaroid' data-src='holder.js/240x160/auto'></div>
 			</div>
 			</div>
 		</div>
@@ -62,9 +62,9 @@
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">
 			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/240x160'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/240x160'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/106x160'></div>
+				<div><img class='top img-polaroid' data-src='holder.js/240x160/auto'></div>
+				<div><img class='mid img-polaroid' data-src='holder.js/240x160/auto'></div>
+				<div><img class='bot img-polaroid' data-src='holder.js/160x240/auto'></div>
 			</div>	
 			</div>
 		</div>
@@ -77,9 +77,9 @@
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">
 			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/120x80'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/54x80'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/120x80'></div>
+				<div><img class='top img-polaroid' data-src='holder.js/240x160/auto'></div>
+				<div><img class='mid img-polaroid' data-src='holder.js/160x240/auto'></div>
+				<div><img class='bot img-polaroid' data-src='holder.js/240x160/auto'></div>
 			</div>
 		</div>
 	</li>
@@ -91,9 +91,9 @@
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">
 			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/120x80'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/120x80'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/120x80'></div>
+				<div><img class='top img-polaroid' data-src='holder.js/240x160/auto'></div>
+				<div><img class='mid img-polaroid' data-src='holder.js/240x160/auto'></div>
+				<div><img class='bot img-polaroid' data-src='holder.js/240x160/auto'></div>
 			</div>
 			</div>
 		</div>

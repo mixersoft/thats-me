@@ -116,6 +116,13 @@ hr {
         line-height: 20px;
       }
     }
+    .feature .vcenter-body {
+      img.img-polaroid {
+        @downscale: 80%;      /* 80% of .vcenter-body */
+        height: @downscale;
+        width: @downscale;
+      }
+    }
   }
   li.active {
     width: 320px;

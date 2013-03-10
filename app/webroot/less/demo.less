@@ -48,28 +48,37 @@ ul.inline > li {
 }
 
 
-#demo .container {
+#timeline .container {
   .ipad {
     position: relative;
     left: 50%;
     overflow: hidden;
     .rounded-corners(20px);
+    .caroufredsel_wrapper {
+      width: 100% !important;     /* caroufredsel bug? */
+      left: 0 !important;
+    }
   }
   .ipad.landscape {
     width: 1024px;
     height: 768px;
     margin-left: -512px;
-    .feature {
-      height: 664px;    /* 768-102-2 = 664px */
+    .timeline {
+      left: -12px !important;
+      .feature {
+        height: 664px;    /* 768-102-2 = 664px */
+      }
     }
   }
   .ipad.portrait{
     height: 1024px;
     width: 768px;
     margin-left: -384px;
-    .feature {
-      height: 920px;    /* 1024-102-2 = 920px */
-    }
+    .timeline {
+      .feature {
+        height: 920px;    /* 1024-102-2 = 920px */
+      }
+    } 
   }  
 }
 hr {
@@ -107,8 +116,8 @@ hr {
       text-shadow: 1px 1px 2px #F16122;
     }
   }
-  li:not(.active) {
-    width: 200px;
+  li:not(:nth-child(3)), li:not(.active) {
+    width: 180px;
     .wrap.evt-label{
       padding-top: 28px;
       > .evt-label {
@@ -118,13 +127,12 @@ hr {
     }
     .feature .vcenter-body {
       img.img-polaroid {
-        @downscale: 80%;      /* 80% of .vcenter-body */
-        height: @downscale;
+        @downscale: 90%;      /* 80% of .vcenter-body */
         width: @downscale;
       }
     }
   }
-  li.active {
+  li:nth-child(3), li.active {
     width: 320px;
     .wrap.evt-label{
       padding-top: 14px;
@@ -180,10 +188,5 @@ hr {
 }
 
 ul.timeline {
-    /*
-   * hscroll position
-   */
-  margin-left: -50px;
   text-align: left;
-  width: 5000px;      /* wider than .timeline > li */
 }

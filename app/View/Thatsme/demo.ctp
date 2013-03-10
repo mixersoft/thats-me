@@ -3,8 +3,16 @@
 	$this->set("title_for_layout", $title);
 	$this->append('css');
 		$this->Less->css('demo');
-	$this->end();	
-	$this->Html->script('/js/vendor/holder-master/holder.js', array('block' => 'javascript_Bottom'));
+	$this->end();
+	
+	$this->extend('/Thatsme/beachfront'); 
+	 
+	$this->append('javascript_Bottom');
+		echo '<script src="/js/vendor/holder-master/holder.js"></script>';
+		echo '<script src="/js/timeline.js"></script>';
+	$this->end();
+	
+	
 ?>	
 <?php
 	$this->start('body_header'); 
@@ -12,18 +20,19 @@
 		echo $this->element('notify');
 	$this->end(); 
 ?>
-<a name='demo'></a>
-<div id='demo' class="featurette">
+<a name='timeline'></a>
+<div id='timeline' class="featurette">
 	<div class='fw-band vcenter-body alpha rgba70b '>
 		<div class='container'>
 			<div class="featurette-heading ">
 		        <h1>Curated Timeline</h1>
 	       	</div>
 	       	<div class='row'>
-	       		<div class='span12 ipad landscape alpha rgba50b'>
+	       		<div class='span12 ipad portrait alpha rgba50b'>
 	       	
 <hr>		
-<ul class='timeline inline unstyled'>
+<div class='carousel-inner'>
+<ul class='timeline inline unstyled scroller'>
 	<li>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>February</span></div>
@@ -54,7 +63,7 @@
 			</div>
 		</div>
 	</li>
-	<li class='active'>
+	<li class=''>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>April</span></div>
 			<div class='wrap circle lg'><span class='circle'>100</span></div>
@@ -98,12 +107,15 @@
 			</div>
 		</div>
 	</li>
-</ul>		
-				</div>
+</ul></div>		
+				</div>  <!-- /.carousel-inner  -->
 			</div>		
 		</div>
+		<div class="carousel-pager center"></div>  
+<div class="carousel-control-wrap">
+	<div class="left carousel-control-btn invisible" href="#how-it-works" direction="prev">&lsaquo;</div>
+	<div class="right carousel-control-btn" href="#how-it-works" direction="next">&rsaquo;</div>
+</div>
 	</div>
 </div>
-<?php 
-	$this->extend('/Thatsme/beachfront');  
-?> 	
+

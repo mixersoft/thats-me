@@ -58,7 +58,11 @@
 		$js_bottom[] = 'http://snappi.snaphappi.com/min/b=static/js&f=bootstrap/modernizr-2.6.2-respond-1.1.0.min.js,bootstrap/bootstrap.js,bootstrap/font-checker.js,bootstrap/jquery.cookie.js,bootstrap/jquery.scrollTo-1.4.3.1-min.js,TouchSwipe-Jquery-Plugin-master/jquery.touchSwipe.min.js,carouFredSel-6.2.0/jquery.carouFredSel-6.2.0-packed.js&123';
 		$js_bottom[] = '/min/b=js&f=base.js,vendor.js';		// $js_bottom[] = 'http://www.youtube.com/iframe_api';
 	}
-	$this->Html->script($js_bottom, array('block' => 'javascript_Bottom'));
+	
+	/*
+	 * prepend, put these scripts first, any additional scripts in extended view files go after
+	 */
+	$this->prepend('javascript_Bottom', $this->Html->script($js_bottom));
 	
 	if (0 || $isLocal == false) {
 		// load google analytics/mixpanel only from snaphappi.com, also ?debug=true/false

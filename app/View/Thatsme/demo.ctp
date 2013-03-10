@@ -27,13 +27,14 @@
 			<div class="featurette-heading ">
 		        <h1>Curated Timeline</h1>
 	       	</div>
-	       	<div class='row'>
-	       		<div class='span12 ipad portrait alpha rgba50b'>
+	       		<div class='ipad landscape alpha rgba50b'>
 	       	
 <hr>		
 <div class='carousel-inner'>
 <ul class='timeline inline unstyled scroller'>
-	<li>
+	<li class='padding'></li>
+	<li class='padding'></li>
+	<li class='item'>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>February</span></div>
 			<div class='wrap circle sm'><span class='circle'>12</span></div>
@@ -48,7 +49,7 @@
 			</div>
 		</div>
 	</li>
-	<li>
+	<li class='item'>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>March</span></div>
 			<div class='wrap circle sm'><span class='circle'>12</span></div>
@@ -63,7 +64,7 @@
 			</div>
 		</div>
 	</li>
-	<li class=''>
+	<li class='item'>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>April</span></div>
 			<div class='wrap circle lg'><span class='circle'>100</span></div>
@@ -78,7 +79,7 @@
 			</div>
 		</div>
 	</li>
-	<li>
+	<li class='item'>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>May</span></div>
 			<div class='wrap circle med'><span class='circle'>75</span></div>
@@ -92,7 +93,7 @@
 			</div>
 		</div>
 	</li>
-	<li>
+	<li class='item'>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>June</span></div>
 			<div class='wrap circle sm'><span class='circle'>12</span></div>
@@ -107,10 +108,10 @@
 			</div>
 		</div>
 	</li>
+	<li class='padding'></li>
 </ul></div>		
 				</div>  <!-- /.carousel-inner  -->
 			</div>		
-		</div>
 		<div class="carousel-pager center"></div>  
 <div class="carousel-control-wrap">
 	<div class="left carousel-control-btn invisible" href="#how-it-works" direction="prev">&lsaquo;</div>

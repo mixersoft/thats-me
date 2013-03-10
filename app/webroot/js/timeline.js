@@ -18,8 +18,7 @@ Timeline.carousel_cfg = {
 			CFG['carousel'].autoPaging = false;
 		},
 		items		: {
-			width		: 'variable',			// 3 visible on 1024x768			visible		: $('.ipad').hasClass('portrait') ? 3 : 5,
-		},
+			width		: 'variable',			// 3 visible on 1024x768			visible		: $('.ipad').hasClass('portrait') ? 3 : 5,		},
 		auto : {
 			timeoutDuration: CFG['isTouch'] ? 10000 : 7000,
 			pauseOnHover	: 'immediate',
@@ -75,6 +74,7 @@ Timeline.carousel_cfg = {
 			duration	: 300,
 			anchorBuilder: function(nr) {
 				// this == li.item
+				if ($(this).hasClass('padding')) return;
 				var fred = $(this).closest('.carousel');
 			    return markup = '<div href="#'+fred.attr('id')+'">'+nr+'</div>';
 			},

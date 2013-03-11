@@ -165,7 +165,7 @@ class ThatsmeController extends AppController {
 	 * Timeline demo
 	 * use this for content: http://snappi-dev/person/odesk_photos/venice/page:1/perpage:12/sort:0.rating/direction:desc/.json
 	 */ 
-	public function demo($idOrUsername){
+	public function timeline($idOrUsername){
 		$this->set('userid', $idOrUsername);
 		$this->_beachfront(); 
 	}

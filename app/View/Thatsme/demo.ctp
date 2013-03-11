@@ -10,7 +10,23 @@
 	$this->append('javascript_Bottom');
 		echo '<script src="/js/vendor/holder-master/holder.js"></script>';
 		echo '<script src="/js/timeline.js"></script>';
-	$this->end();
+	$this->end();	/**
+	 * javascript HEAD for Timeline
+	 */
+	$userid = $userid ? $userid : 'paris';  // id or username ok for demo
+	$perpage = 15;
+	$story = false;		
+	$host = Configure::read('isLocal') ? 'snappi-dev' : 'preview.snaphappi.com';
+	$options[] = $userid;
+	$options[] = "page:1";
+	$options[] = "perpage:{$perpage}";
+	$options[] = "sort:0.score/direction:desc";
+	$options[] = "montage:".($story ? 1 : 0);
+	$options[] = ".json";
+	$cc_src = "http://{$host}/person/odesk_photos/".join('/',$options);
+	$scriptBlock = array('PAGE = {};');
+	$scriptBlock[] = "PAGE.src = '{$cc_src}';";
+	$this->Html->ScriptBlock(implode(' ', $scriptBlock), array('inline'=>false));
 	
 	
 ?>	

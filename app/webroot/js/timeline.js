@@ -1,5 +1,83 @@
 (function() {//Closure, to not leak to the scope
-	
+
+var Util = new function(){}
+Util.getImgSrcBySize = function(src, size){
+    size = size || 'tn';
+    var parts = Util.parseSrcString(src);
+    if (size && !parts.dirname.match(/.thumbs\/$/)) 
+        parts.dirname += '.thumbs/';
+    return parts.dirname + (size ? size + '~' : '') + parts.filename + (parts.crop ? '~' + parts.crop : '');
+};
+Util.parseSrcString = function(src){
+    var i = src.lastIndexOf('/');
+    var name = {
+        dirname: '',
+        size: '',
+        filename: '',
+        crop: ''
+    };
+    name.dirname = src.substring(0, i + 1);
+    var parts = src.substring(i + 1).split('~');
+        switch (parts.length) {
+            case 3:
+                name.size = parts[0];
+                name.filename = parts[1];
+                name.crop = parts[2];
+                break;
+            case 2:
+                if (parts[0].length == 2) {
+                    name.size = parts[0];
+                    name.filename = parts[1];
+                }
+                else {
+                    name.filename = parts[0];
+                    name.crop = parts[1];
+                }
+                break;
+            case 1:
+                name.filename = parts[0];
+                break;
+            default:
+                name.filename = src.substring(i + 1);
+                break;
+        }
+        return name;
+};
+Util.getCC = function(src, success){
+	$.ajax({
+		url: src,
+		data: {'debug':0},
+		dataType: 'json',
+		success: function(json, status, o){
+			try {
+				var resp = json.response;
+				PAGE.jsonData = $.extend(PAGE.jsonData || {}, json.response.castingCall); 
+				Util.parseCC(PAGE.jsonData.castingCall);
+			} catch (ex) {		}
+			success.call(this, json, status, o);
+		},
+	}).fail(function(json, status, o){
+		console.error("getCC failed");
+	});
+}
+Util.Auditions = 'empty';
+Util.parseCC = function(cc, force){
+	cc = cc || PAGE.jsonData.CastingCall;
+	if (CFG['util'].Auditions !== 'empty' && !force) return Util.Auditions;
+	var i, oSrc, score, id, 
+		parsedAuditions = {},
+		auditions = cc.Auditions.Audition;
+	for (i in auditions) {
+		id = auditions[i].Photo.id;
+		parsedAuditions[id] = $.extend({
+			id: id,
+			score: parseInt(auditions[i].Photo.Fix.Score)
+		}, auditions[i].Photo.Img.Src);
+	}
+	CFG['util'].Auditions = parsedAuditions;	// make global
+}
+CFG['util'] = $.extend(CFG['util'] || {}, Util);
+
 	
 // static class for IDE outline browser
 var Timeline = new function(){}
@@ -8,6 +86,23 @@ CFG['timeline'] = Timeline;		// make global
 Timeline.documentReady = function () {
 	CFG['carousel']['timeline'] = Timeline.carousel_cfg;
 	$('#timeline').addClass('carousel');	CFG['carousel'].init.init();
+	
+	CFG['util'].getCC(PAGE.src, function(json){
+		Timeline.render();
+	});
+}
+Timeline.render = function(cc) {
+	if (cc) CFG['util'].parseCC(cc, true);
+	
+	var baseurl = PAGE.jsonData.CastingCall.Auditions.Baseurl,
+		audition, src, j=0;
+	var placeholders = $('.timeline .item .feature img.img-polaroid');
+	for (var i in CFG['util'].Auditions) {
+		audition = CFG['util'].Auditions[i];
+		src = CFG['util'].getImgSrcBySize(baseurl + audition.rootSrc , 'bs');
+		placeholders.eq(j++).attr('src', src);
+	}
+	
 }
 Timeline.carousel_cfg = {
 		responsive: true,
@@ -92,6 +187,6 @@ Timeline.carousel_cfg = {
 
 
 $(document).ready( CFG['timeline'].documentReady );
-
+	
 })();  
 // end module closure

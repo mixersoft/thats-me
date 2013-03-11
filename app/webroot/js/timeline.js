@@ -50,8 +50,10 @@ Util.getCC = function(src, success){
 		dataType: 'json',
 		success: function(json, status, o){
 			try {
-				var resp = json.response;
-				PAGE.jsonData = $.extend(PAGE.jsonData || {}, json.response.castingCall); 
+				PAGE.jsonData = json.response;
+				delete(PAGE.jsonData.lookups);
+				delete(PAGE.jsonData.filter);
+				delete(PAGE.jsonData.profile);
 				Util.parseCC(PAGE.jsonData.castingCall);
 			} catch (ex) {		}
 			success.call(this, json, status, o);
@@ -66,7 +68,7 @@ Util.parseCC = function(cc, force){
 	if (CFG['util'].Auditions !== 'empty' && !force) return Util.Auditions;
 	var i, oSrc, score, id, 
 		parsedAuditions = {},
-		auditions = cc.Auditions.Audition;
+		auditions = cc.CastingCall.Auditions.Audition;
 	for (i in auditions) {
 		id = auditions[i].Photo.id;
 		parsedAuditions[id] = $.extend({
@@ -94,7 +96,7 @@ Timeline.documentReady = function () {
 Timeline.render = function(cc) {
 	if (cc) CFG['util'].parseCC(cc, true);
 	
-	var baseurl = PAGE.jsonData.CastingCall.Auditions.Baseurl,
+	var baseurl = PAGE.jsonData.castingCall.CastingCall.Auditions.Baseurl,
 		audition, src, j=0;
 	var placeholders = $('.timeline .item .feature img.img-polaroid');
 	for (var i in CFG['util'].Auditions) {

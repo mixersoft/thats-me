@@ -49,7 +49,16 @@
 		<div class='container'>
 			<div class="featurette-heading ">
 		        <h1>Curated Story
-		        		<div class='subhead'>A quick prototype of our Curated Stories to demonstrate our ideas</h1>
+		        	<div class='subhead'>A simple prototype to help illustrate our ideas
+		        	<span class='more-stories pull-right'>
+		    				<span class='label2'>Some other stories:</span> 
+		    				<a href='/story/bali'><span class=' label alpha rgba80b'>Bali</span></a>
+		    				<a href='/story/newyork'><span class=' label alpha rgba80b'>New York</span></a>
+		    				<a href='/story/paris'><span class=' label alpha rgba80b'>Paris</span></a>
+		    				<a href='/story/venice'><span class=' label alpha rgba80b'>Venice</span></a>
+					</span>
+					</div>
+		        </h1>
 	       	</div>
 	       	<div class='ipad landscape alpha rgba50b'>
 <section class='montage-container container grid_16'>
@@ -61,13 +70,6 @@
 <div class='share-story'>
 	<i class="icon-facebook-sign"></i>&nbsp;<i class="icon-twitter-sign"></i>&nbsp;<i class="icon-envelope-alt"></i>
 </div>       	
-			</div>
-			<div class='more-stories center'>
-    				<span class='label2'>Some other stories:</span> 
-    				<a href='/story/bali'><span class=' label alpha rgba80b'>Bali</span></a>
-    				<a href='/story/newyork'><span class=' label alpha rgba80b'>New York</span></a>
-    				<a href='/story/paris'><span class=' label alpha rgba80b'>Paris</span></a>
-    				<a href='/story/venice'><span class=' label alpha rgba80b'>Venice</span></a>
 			</div>
 	</div>
 </div>

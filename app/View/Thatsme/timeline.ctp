@@ -42,8 +42,8 @@
 	<div class='fw-band vcenter-body alpha rgba70b '>
 		<div class='container'>
 			<div class="featurette-heading ">
-		        <h1  title="we'll be adding more features over time">Curated Timeline
-		        	<div class='subhead'>A quick prototype of our Curated Timeline to demonstrate our ideas</div></h1>
+		        <h1 >Curated Timeline
+		        	<div class='subhead'>A simple prototype to help illustrate our ideas</div></h1>
 	       	</div>
 	       		<div class='ipad landscape alpha rgba50b'>
 <div class='timescale'>

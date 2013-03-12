@@ -87,8 +87,10 @@ We think it's a small price to pay for all the time you'll save.</p>
         </ul>
       </div> <!-- /.carousel-inner  -->
 <div class="carousel-pager center"></div>  
-<div class="center"><a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a></div>  
-<a class="btn btn-large btn-primary" href="/timeline/venice" target='_blank'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
+<div class="center">
+	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
+	<a class="btn btn-large btn-primary" href="/timeline/venice" target='_blank'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
+</div>  
    
 <div class="carousel-control-wrap">
 	<div class="left carousel-control-btn invisible" href="#how-it-works" direction="prev">&lsaquo;</div>

@@ -92,6 +92,51 @@ Timeline.documentReady = function () {
 	CFG['util'].getCC(PAGE.src, function(json){
 		Timeline.render();
 	});
+	
+	/*
+	 * initialize popovers
+	 */
+	$('.timescale').popover({trigger:'hover',
+		html: true,
+		title: "<div style='padding-left:50px;'>Time Scale",
+		content:'<div style="padding-left:50px;">selectable time scale allows for quick navigation (disabled)<div>', 
+		placement:'bottom'});
+	Timeline.movePopovers();
+	if (1 || $('html.touch').length) Timeline.togglePopovers();
+	
+	// click handler for nav to Story
+	$('.timeline').delegate('.item .feature img', 'click',function(){
+		var next = window.location.href.replace('timeline','story');
+		window.location.href = next;
+	});
+}
+Timeline.movePopovers = function(){
+	Timeline.popovers = Timeline.popovers || [];
+	var p;
+	while (p = Timeline.popovers.shift()) {
+		p.popover('destroy');
+	}
+	Timeline.popovers.push( $('.item:nth-child(3) .eventbar span.evt-label').popover({trigger:'hover',
+		html: true,
+		title: "<div style='margin-top:16px;'>Timeline Events</div>",
+		content:'automatic event detection based on your shooting patterns', 
+		placement:'left'})
+	);
+	Timeline.popovers.push( $('.item:nth-child(3) .eventbar div.circle').popover({trigger:'hover',
+		content:'The number of photos in each event', 
+		placement:'bottom'})
+	);
+	Timeline.popovers.push( $('.item:nth-child(3) .feature div.vcenter-body').popover({trigger:'hover',
+		html: true,
+		title: 'Featured Photos',
+		content:'See featured photos to instantly connect with the moment.<br />Much better than thumbnails, right?', 
+		placement:'left'})
+	);
+}
+Timeline.togglePopovers = function(){
+	$('.timescale').popover({'trigger': 'manual'}).popover('show');	for (var i in Timeline.popovers) {
+		Timeline.popovers[i].popover({'trigger': 'manual'}).popover('show');
+	}
 }
 Timeline.render = function(cc) {
 	if (cc) CFG['util'].parseCC(cc, true);
@@ -136,6 +181,7 @@ Timeline.carousel_cfg = {
 				else parent.find('.left.carousel-control-btn').removeClass('invisible');
 				if (activeDots.last().hasClass('selected')) parent.find('.right.carousel-control-btn').addClass('invisible');
 				else parent.find('.right.carousel-control-btn').removeClass('invisible');
+				Timeline.movePopovers();
 			},
 			onEnd			: function(direction) {
 				if (direction=='next') {

@@ -138,7 +138,43 @@ var Story = new function(){}
 CFG['story'] = Story;		// make global
 
 Story.documentReady = function () {
-	CFG['util'].getCC(PAGE.src, function(json){		Util.loadYuiPagemaker(SNAPPI.Y);	});}
+	CFG['util'].getCC(PAGE.src, function(json){		Util.loadYuiPagemaker();	});
+	
+		// click handler for nav to Story
+	$('.ipad').delegate('.timeline', 'click',function(){
+		var next = window.location.href.replace('story', 'timeline');
+		window.location.href = next;
+	});
+
+}
+Story.initPopovers = function(){
+	/*
+	 * initialize popovers
+	 */
+	Story.popovers = Story.popovers || [];
+	Story.popovers.push( $('.pageGallery:first').popover({trigger:'hover',
+		html: true,
+		title: "<div style='padding-left:50px;'>Curated Stories",
+		content:'<div style="padding-left:50px;"><ul><li>see highlights for each event</li><li>top-rated photos are always the largest</li><li>thumbnails are just a click away (disabled)</li></ul>', 
+		placement:'left'})
+	);
+	Story.popovers.push( $('.pageGallery .FigureBox.Montage:first img ').popover({trigger:'hover',
+		content:'click on a photo to see full screen (disabled)', 
+		placement:'bottom'})
+	);
+	Story.popovers.push( $('.share-story').popover({trigger:'hover',
+		html: true,
+		title: "Easy Sharing",
+		content:'<div  style="padding-right:22px;">get links to share Stories on all your favorite places (disabled)</div>', 
+		placement:'top'})
+	);
+	if (1 || $('html.touch').length) Story.togglePopovers();
+}
+Story.togglePopovers = function(){
+	for (var i in Story.popovers) {
+		Story.popovers[i].popover({'trigger': 'manual'}).popover('show');
+	}
+}
 Story.getConfig = function(montage) {
 	var cfg={};
 	cfg.arrangement = montage || PAGE.jsonData.montage;
@@ -177,6 +213,7 @@ Story.getConfig = function(montage) {
 		stage.listen['render'] = SNAPPI.Y.on('snappi-pm:render', function(Pr, node){
 			SNAPPI.PM.PageMakerPlugin.startPlayer({page:1});
 			stage.all('.pageGallery').removeClass('hidden');
+			Story.initPopovers(); 
 		});
 		stage.listen['resize'] = SNAPPI.Y.on('snappi-pm:resize', 
 			function(player, containerH){

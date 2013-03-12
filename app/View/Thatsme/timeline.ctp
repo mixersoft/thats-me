@@ -25,6 +25,7 @@
 	$options[] = ".json";
 	$cc_src = "http://{$host}/person/odesk_photos/".join('/',$options);
 	$scriptBlock = array('PAGE = {};');
+	$scriptBlock[] = "PAGE.snappi_comboHost = '{$host}';";
 	$scriptBlock[] = "PAGE.src = '{$cc_src}';";
 	$this->Html->ScriptBlock(implode(' ', $scriptBlock), array('inline'=>false));
 	
@@ -41,10 +42,15 @@
 	<div class='fw-band vcenter-body alpha rgba70b '>
 		<div class='container'>
 			<div class="featurette-heading ">
-		        <h1>Curated Timeline</h1>
+		        <h1  title="we'll be adding more features over time">Curated Timeline
+		        	<div class='subhead'>A quick prototype of our Curated Timeline to demonstrate our ideas</div></h1>
 	       	</div>
 	       		<div class='ipad landscape alpha rgba50b'>
-	       	
+<div class='timescale'>
+		<span class=' label focus'>Week</span>
+		<span class=' label'>Month</span>
+		<span class=' label'>Year</span>
+</div>	       	
 <hr>		
 <div class='carousel-inner'>
 <ul class='timeline inline unstyled scroller'>
@@ -83,7 +89,7 @@
 	<li class='item'>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>April</span></div>
-			<div class='wrap circle lg'><span class='circle'>100</span></div>
+			<div class='help wrap circle lg'><span class='circle'>100</span></div>
 		</div>
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">
@@ -98,7 +104,7 @@
 	<li class='item'>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>May</span></div>
-			<div class='wrap circle med'><span class='circle'>75</span></div>
+			<div class='help wrap circle med'><span class='circle'>75</span></div>
 		</div>
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">
@@ -112,7 +118,7 @@
 	<li class='item'>
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>June</span></div>
-			<div class='wrap circle sm'><span class='circle'>12</span></div>
+			<div class='help wrap circle sm'><span class='circle'>12</span></div>
 		</div>
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">

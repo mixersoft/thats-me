@@ -1,6 +1,21 @@
+body {
+  font-size: 100% important!;
+}
+
 ul.inline > li {
   display: inline-block;
 }
+/**
+ *  Less 
+ */
+@red: #D01F40;
+@card: #711124;
+@orange: #F16122;
+@cream: #FDF9D0;
+@peach: #E9C1C1;
+@darkgrey: #152437;
+
+
 @black-3d {
   /*  http://www.colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D*/
   background: #7d7e7d; /* Old browsers */
@@ -11,6 +26,17 @@ ul.inline > li {
   background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
   background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+}
+
+@black-3d-reverse {
+background: #0e0e0e; /* Old browsers */
+background: -moz-linear-gradient(top,  #0e0e0e 0%, #7d7e7d 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0e0e0e), color-stop(100%,#7d7e7d)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #0e0e0e 0%,#7d7e7d 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #0e0e0e 0%,#7d7e7d 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #0e0e0e 0%,#7d7e7d 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #0e0e0e 0%,#7d7e7d 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 ); /* IE6-9 */
 }
 
 .rounded-corners (@radius: 4px) {
@@ -34,6 +60,45 @@ ul.inline > li {
     /* IE6,IE7 */
     /* filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476); */    /* IE8 */
     /* -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.7071067811865476, M12=-0.7071067811865475, M21=0.7071067811865475, M22=0.7071067811865476)"; */ }
+.popover {
+  box-shadow: 1px 1px 2px @cream;
+  background-clip: inherit;
+  .popover-title {
+    background-color: @red !important;
+  }
+  .popover-inner .popover-content p {
+    color: @red !important;
+    text-shadow: 1px 1px 2px #000000 !important;
+  }
+}
+
+#timeline .timescale {
+  left: 20px;
+  position: absolute;
+  top: 4px;
+  z-index: 99;
+  .label {
+    font-weight: normal;
+    color: @cream;
+    @black-3d
+  }
+  .label.focus {
+    @black-3d-reverse;
+  }
+}
+#story .share-story, #story .timeline {
+  position:absolute;
+  right: 20px;
+  bottom: 4px;
+  z-index: 99;
+  font-size: 40px;
+  cursor: default;
+}
+
+#story .timeline {
+  left: 20px;
+  right: inherit;
+}
 
 .circle:not(.wrap) {
   @black-3d;
@@ -48,7 +113,7 @@ ul.inline > li {
 }
 
 
-#timeline .container {
+.container {
   .ipad {
     position: relative;
     left: 50%;

@@ -11,7 +11,7 @@
 	$this->append('javascript_Bottom');
 		echo '<script src="/js/story.js"></script>';
 		echo "<script src='http://snappi.snaphappi.com/svc/lib/alloy-1.5.0/build/aui/aui-min.js' type='text/javascript'></script>";
-		echo "<script src='http://snappi-dev/js/snappi/base_aui.js' type='text/javascript'></script>";
+		echo "<script src='http://snappi.snaphappi.com/js/snappi/base_aui.js' type='text/javascript'></script>";
 		echo "<meta id='css-start'>"; 
 	$this->end();	/**
 	 * javascript HEAD for Timeline
@@ -30,7 +30,7 @@
 	$options[] = ".json";
 	$cc_src = "http://{$host}/person/odesk_photos/".join('/',$options);
 	$scriptBlock = array('PAGE = {};');
-	$scriptBlock[] = "PAGE.snappi_comboHost = 'snappi-dev';";
+	$scriptBlock[] = "PAGE.snappi_comboHost = '{$host}';";
 	$scriptBlock[] = "PAGE.src = '{$cc_src}';";
 	$scriptBlock[] = "ALLOY_VERSION='alloy-1.5.0';";
 	$this->Html->ScriptBlock(implode(' ', $scriptBlock), array('inline'=>false));
@@ -43,15 +43,24 @@
 		echo $this->element('notify');
 	$this->end(); 
 ?>
-<a name='timeline'></a>
-<div id='timeline' class="featurette">
+<a name='story'></a>
+<div id='story' class="featurette">
 	<div class='fw-band vcenter-body alpha rgba70b '>
 		<div class='container'>
 			<div class="featurette-heading ">
-		        <h1>Curated Story</h1>
+		        <h1>Curated Story
+		        		<div class='subhead'>A quick prototype of our Curated Stories to demonstrate our ideas</div></h1>
 	       	</div>
 	       	<div class='ipad landscape alpha rgba50b'>
-<section class='montage-container container grid_16'><div class='stage-body'></div></section>	       	
+<section class='montage-container container grid_16'>
+	<div class='stage-body'></div>
+</section>	
+<div class='timeline' title="back to timeline">
+	<i class="icon-circle-arrow-left"></i>
+</div>
+<div class='share-story'>
+	<i class="icon-facebook-sign"></i>&nbsp;<i class="icon-twitter-sign"></i>&nbsp;<i class="icon-envelope-alt"></i>
+</div>       	
 			</div>		
 	</div>
 </div>

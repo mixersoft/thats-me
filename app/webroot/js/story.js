@@ -104,11 +104,10 @@ Util.loadYuiPagemaker = function(external_Y, cfg){
 					i++;
 					if (i >= PAGE.jsonData.montage.length){
 						done.detach();
-						SNAPPI.Y.one('.ipad').setStyles({
-							'overflowX':'hidden',
-							'overflowY':'scroll',
-						})
-						return;
+						// SNAPPI.Y.one('.ipad').setStyles({
+							// 'overflowX':'hidden',
+							// 'overflowY':'scroll',
+						// })						return;
 					} 
 					var cfg = Story.getConfig(PAGE.jsonData.montage[i]);
 					SNAPPI.UIHelper.create.get_Montage(cfg);
@@ -137,7 +136,16 @@ CFG['util'] = $.extend(CFG['util'] || {}, Util);
 var Story = new function(){}
 CFG['story'] = Story;		// make global
 
+Story.onRender = function() {
+	SNAPPI.PM.PageMakerPlugin.startPlayer({page:1});
+	$('#story .ipad, #story .montage-container').css('height','auto');
+	setTimeout(function(){Story.initPopovers()},1000); 
+	$('#curtain').remove(); 
+	$('body').removeClass('wait');
+}
 Story.documentReady = function () {
+	$('#curtain .wrapV').html('<i class="icon-spinner icon-spin" style="font-size:40px;"></i> <div style="font-size:24px;font-family:roboto;"><br />one moment...</div>').addClass('fadeIn'); 
+	
 	CFG['util'].getCC(PAGE.src, function(json){		Util.loadYuiPagemaker();	});
 	
 		// click handler for nav to Story
@@ -219,11 +227,11 @@ Story.getConfig = function(montage) {
     				}	
     			} catch(e){}
     	};
-		    	
+		/*
+		 * on Story Render
+		 */    	
 		stage.listen['render'] = SNAPPI.Y.on('snappi-pm:render', function(Pr, node){
-			SNAPPI.PM.PageMakerPlugin.startPlayer({page:1});
-			stage.all('.pageGallery').removeClass('hidden');
-			Story.initPopovers(); 
+			Story.onRender.call(this, Pr, node);
 		});
 		stage.listen['resize'] = SNAPPI.Y.on('snappi-pm:resize', 
 			function(player, containerH){

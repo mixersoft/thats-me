@@ -74,21 +74,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', end
 .navbar-inner .nav-collapse {
   font-size: 14px !important;
 }
-#timeline .timescale {
-  left: 20px;
-  position: absolute;
-  top: 4px;
-  z-index: 99;
-  .label {
-    font-weight: normal;
-    color: @cream;
-    @black-3d
+
+#timeline { 
+  .timescale {
+    left: 20px;
+    position: absolute;
+    top: 4px;
+    z-index: 99;
+    .label {
+      font-weight: normal;
+      color: @cream;
+      @black-3d
+    }
+    .label.focus {
+      @black-3d-reverse;
+    }
   }
-  .label.focus {
-    @black-3d-reverse;
+  .carousel-control-btn {
+    z-index:99;
   }
 }
+
+
 #story {
+  .ipad {
+    height: auto !important;
+    min-height: 768px;
+  }
   .share-story, .nav-timeline {
     position:absolute;
     right: 20px;
@@ -162,10 +174,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', end
     } 
   }  
 }
+
 hr {
     margin: 0;
     position: relative  ;
-    top: 76px;
+    top: 78px;
     z-index: 1;
   }
 .timeline {
@@ -187,6 +200,10 @@ hr {
         font-size: 14px;
         font-weight: 300;
       }
+      >.date {
+        font-size: 0.8em;
+        line-height: 1;
+      }
     }
     .wrap.circle {
     }
@@ -200,7 +217,7 @@ hr {
   li:not(:nth-child(3)) {
     width: 180px;
     .wrap.evt-label{
-      padding-top: 28px;
+      padding-top: 18px;
       > .evt-label {
         font-size: 14px;
         line-height: 20px;
@@ -216,7 +233,7 @@ hr {
   li:nth-child(3), li.active {
     width: 320px;
     .wrap.evt-label{
-      padding-top: 14px;
+      padding-top: 4px;
       > .evt-label {
         font-size: 28px;
         line-height:34px;
@@ -262,9 +279,11 @@ hr {
   }
   .top.img-polaroid, .bot.img-polaroid {
     .img-rotate(3deg);
+    cursor: pointer;
   }
   .mid.img-polaroid{
     .img-rotate(-3deg);
+    cursor: pointer;
   }
 }
 

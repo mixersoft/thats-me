@@ -86,28 +86,10 @@ var Timeline = new function(){}
 CFG['timeline'] = Timeline;		// make global
 
 Timeline.documentReady = function () {
+	$('#curtain .wrapV').html('<i class="icon-spinner icon-spin" style="font-size:40px;"></i> <div style="font-size:24px;font-family:roboto;"><br />one moment...</div>').addClass('fadeIn'); 
 	CFG['carousel']['timeline'] = Timeline.carousel_cfg;
-	$('#timeline').addClass('carousel');	CFG['carousel'].init.init();
-	
-	CFG['util'].getCC(PAGE.src, function(json){
+	$('#timeline').addClass('carousel');	CFG['util'].getCC(PAGE.src, function(json){
 		Timeline.render();
-	});
-	
-	/*
-	 * initialize popovers
-	 */
-	$('.timescale').popover({trigger:'hover',
-		html: true,
-		title: "<div style='padding-left:50px;'>Time Scale",
-		content:'<div style="padding-left:50px;">selectable time scale allows for quick navigation (disabled)<div>', 
-		placement:'bottom'});
-	Timeline.movePopovers();
-	if (1 || $('html.touch').length) Timeline.togglePopovers();
-	
-	// click handler for nav to Story
-	$('.timeline').delegate('.item .feature img', 'click',function(){
-		var next = window.location.href.replace('timeline','story');
-		window.location.href = next;
 	});
 }
 Timeline.movePopovers = function(){
@@ -140,10 +122,65 @@ Timeline.togglePopovers = function(state){
 	}
 	setTimeout(function(){
 		Timeline.togglePopovers('hide')
-	}, 10000);
+	}, 5000);
 }
 Timeline.render = function(cc) {
 	if (cc) CFG['util'].parseCC(cc, true);
+	var eventstream = [
+		{
+			id:'newyork',
+			label:'New York',
+			count: 367,
+			'circle-size':'med',
+			from: '2009-08-27 08:01:52',
+			to: '2009-08-30 14:38:14',
+		},
+		{
+			id:'paris',
+			label:'Paris',
+			count: 228,
+			'circle-size':'sm',
+			from: '2009-08-31 13:09:39',
+			to: '2009-09-03 17:27:27',
+		},
+		{
+			id:'venice',
+			label:'Venice',
+			count: 249,
+			'circle-size':'sm',
+			from: '2009-09-09 15:23:59',
+			to: '2009-09-11 20:02:27',
+		},
+		{
+			id:'bali',
+			label:'Bali',
+			count: 492,
+			'circle-size':'lg',
+			from: '2011-10-01 18:12:17',
+			to: '2011-10-09 13:06:27',
+		},
+	];
+	var k, ev, markup, 
+		item_markup = $('.markup li.item')[0].outerHTML,
+		parent = $('ul.timeline').html('');
+	var formatDate = function(string, dropyear) {
+		var d = new Date(string.replace(' ', 'T'));
+		var curr_date = d.getDate();
+		var curr_month = d.getMonth();
+		var curr_year = d.getFullYear();
+		if (dropyear) return curr_month+'/'+curr_date;
+		else return curr_month+'/'+curr_date+'/'+curr_year;
+	}
+	parent.append("<li class='padding'></li><li class='padding'></li>");
+	for (k=0; k<eventstream.length; k++) {
+		ev = eventstream[k];
+		markup = item_markup;
+		markup = markup.replace(':label', ev.label).replace(':id', ev.id)
+			.replace(':count', ev.count).replace(':circle-size', ev['circle-size'])
+			.replace(':from', formatDate(ev.from, true)).replace(':to', formatDate(ev.to));
+		parent.append(markup);
+	}
+	parent.append("<li class='padding'></li><li class='padding'></li>");
 	
 	var baseurl = PAGE.jsonData.castingCall.CastingCall.Auditions.Baseurl,
 		audition, src, j=0;
@@ -154,6 +191,24 @@ Timeline.render = function(cc) {
 		placeholders.eq(j++).attr('src', src);
 	}
 	
+	CFG['carousel'].init.init();
+	$('#curtain').remove(); 
+	/*
+	 * initialize popovers
+	 */
+	$('.timescale').popover({trigger:'hover',
+		html: true,
+		title: "<div style='padding-left:50px;'>Time Scale",
+		content:'<div style="padding-left:50px;">selectable time scale allows for quick navigation (disabled)<div>', 
+		placement:'bottom'});
+	Timeline.movePopovers();
+	if (1 || $('html.touch').length) Timeline.togglePopovers();
+	
+	// click handler for nav to Story
+	$('.timeline').delegate('.item .feature img', 'click',function(){
+		var next = window.location.href.replace('timeline','story');
+		window.location.href = next;
+	});
 }
 Timeline.carousel_cfg = {
 		responsive: true,

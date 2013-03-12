@@ -56,80 +56,6 @@
 <ul class='timeline inline unstyled scroller'>
 	<li class='padding'></li>
 	<li class='padding'></li>
-	<li class='item'>
-		<div class='eventbar'>
-			<div class='wrap evt-label'><span class='event evt-label'>February</span></div>
-			<div class='wrap circle sm'><span class='circle'>12</span></div>
-		</div>
-		<div class='feature vcenter-wrap'>
-			<div class="vcenter-padding">
-			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/240x160/auto'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/240x160/auto'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/240x160/auto'></div>
-			</div>
-			</div>
-		</div>
-	</li>
-	<li class='item'>
-		<div class='eventbar'>
-			<div class='wrap evt-label'><span class='event evt-label'>March</span></div>
-			<div class='wrap circle sm'><span class='circle'>12</span></div>
-		</div>
-		<div class='feature vcenter-wrap'>
-			<div class="vcenter-padding">
-			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/160x240/auto'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/240x160/auto'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/240x160/auto'></div>
-			</div>
-			</div>
-		</div>
-	</li>
-	<li class='item'>
-		<div class='eventbar'>
-			<div class='wrap evt-label'><span class='event evt-label'>April</span></div>
-			<div class='help wrap circle lg'><span class='circle'>100</span></div>
-		</div>
-		<div class='feature vcenter-wrap'>
-			<div class="vcenter-padding">
-			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/240x160/auto'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/240x160/auto'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/160x240/auto'></div>
-			</div>	
-			</div>
-		</div>
-	</li>
-	<li class='item'>
-		<div class='eventbar'>
-			<div class='wrap evt-label'><span class='event evt-label'>May</span></div>
-			<div class='help wrap circle med'><span class='circle'>75</span></div>
-		</div>
-		<div class='feature vcenter-wrap'>
-			<div class="vcenter-padding">
-			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/240x160/auto'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/160x240/auto'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/240x160/auto'></div>
-			</div>
-		</div>
-	</li>
-	<li class='item'>
-		<div class='eventbar'>
-			<div class='wrap evt-label'><span class='event evt-label'>June</span></div>
-			<div class='help wrap circle sm'><span class='circle'>12</span></div>
-		</div>
-		<div class='feature vcenter-wrap'>
-			<div class="vcenter-padding">
-			<div class='wrap cover vcenter-body'>
-				<div><img class='top img-polaroid' data-src='holder.js/240x160/auto'></div>
-				<div><img class='mid img-polaroid' data-src='holder.js/240x160/auto'></div>
-				<div><img class='bot img-polaroid' data-src='holder.js/240x160/auto'></div>
-			</div>
-			</div>
-		</div>
-	</li>
 	<li class='padding'></li>
 </ul></div>		
 				</div>  <!-- /.carousel-inner  -->
@@ -140,5 +66,26 @@
 	<div class="right carousel-control-btn" href="#how-it-works" direction="next">&rsaquo;</div>
 </div>
 	</div>
+</div>
+
+<div class='markup hide'>
+	<li class='item' data-id=":id">
+		<div class='eventbar'>
+			<div class='wrap evt-label'><span class='event evt-label'>:label</span>
+				<div class='date'><span class='event evt-from'>:from</span> &mdash; <span class='event evt-to'>:to</span>
+				</div>
+			</div>
+			<div class='wrap circle :circle-size'><span class='circle evt-count'>:count</span></div>
+		</div>
+		<div class='feature vcenter-wrap'>
+			<div class="vcenter-padding">
+			<div class='wrap cover vcenter-body'>
+				<div><img class='top img-polaroid' ></div>
+				<div><img class='mid img-polaroid' ></div>
+				<div><img class='bot img-polaroid' ></div>
+			</div>
+			</div>
+		</div>
+	</li>	
 </div>
 

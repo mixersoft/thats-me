@@ -133,10 +133,14 @@ Timeline.movePopovers = function(){
 		placement:'left'})
 	);
 }
-Timeline.togglePopovers = function(){
-	$('.timescale').popover({'trigger': 'manual'}).popover('show');	for (var i in Timeline.popovers) {
-		Timeline.popovers[i].popover({'trigger': 'manual'}).popover('show');
+Timeline.togglePopovers = function(state){
+	state = state || 'show';
+	$('.timescale').popover({'trigger': 'manual'}).popover(state);	for (var i in Timeline.popovers) {
+		Timeline.popovers[i].popover({'trigger': 'manual'}).popover(state);
 	}
+	setTimeout(function(){
+		Timeline.togglePopovers('hide')
+	}, 10000);
 }
 Timeline.render = function(cc) {
 	if (cc) CFG['util'].parseCC(cc, true);

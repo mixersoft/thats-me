@@ -145,6 +145,12 @@ Story.documentReady = function () {
 		var next = window.location.href.replace('story', 'timeline');
 		window.location.href = next;
 	});
+	$('.nav-timeline').click(function(e){
+		e.preventDefault();
+		var next = window.location.href.replace('/story/','/timeline/');
+		window.location.href = next;
+		return false;
+	});
 
 }
 Story.initPopovers = function(){
@@ -170,10 +176,14 @@ Story.initPopovers = function(){
 	);
 	if (1 || $('html.touch').length) Story.togglePopovers();
 }
-Story.togglePopovers = function(){
+Story.togglePopovers = function(state){
+	state = state || 'show';
 	for (var i in Story.popovers) {
-		Story.popovers[i].popover({'trigger': 'manual'}).popover('show');
+		Story.popovers[i].popover({'trigger': 'manual'}).popover(state);
 	}
+	setTimeout(function(){
+		Story.togglePopovers('hide')
+	}, 10000);
 }
 Story.getConfig = function(montage) {
 	var cfg={};

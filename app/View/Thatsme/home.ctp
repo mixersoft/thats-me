@@ -79,4 +79,4 @@ Let us do the work, and we'll get your photos ready to play.
         	</div>
         </div>
       </div>
-      <div id='deferred' data-href-deferred='/thatsme/home_deferred'></div>
+      <div id='deferred' data-href-deferred='/home_deferred'></div>

@@ -169,6 +169,10 @@ class ThatsmeController extends AppController {
 		$this->set('userid', $idOrUsername);
 		$this->_beachfront(); 
 	}
+	public function story($idOrUsername){
+		$this->set('userid', $idOrUsername);
+		$this->_beachfront(); 
+	}
 
 /**
  * Displays a view

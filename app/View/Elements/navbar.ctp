@@ -46,6 +46,7 @@
                     <li class='promote'><a href="/faq">FAQ</a></li>
                     <li class='promote'><a href="/sharing">Chatter</a></li>
                     <li><a href="/see-the-movie">See the Movie Again</a></li>
+                    <li><a href="/timeline/venice" target="_blank">See the Prototype</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
                   </ul>
                 </li>

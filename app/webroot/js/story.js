@@ -98,8 +98,27 @@ Util.loadYuiPagemaker = function(external_Y, cfg){
 		 */
 		var callback = function(Y, result){
 			PM = SNAPPI.PM;
-			var cfg = Story.getConfig();
-			SNAPPI.UIHelper.create.get_Montage(cfg);
+			if (SNAPPI.Y.Lang.isArray(PAGE.jsonData.montage)) {
+				var i = 0;
+				var done = SNAPPI.Y.on('snappi-pm:render', function(Pr, node){
+					i++;
+					if (i >= PAGE.jsonData.montage.length){
+						done.detach();
+						SNAPPI.Y.one('.ipad').setStyles({
+							'overflowX':'hidden',
+							'overflowY':'scroll',
+						})
+						return;
+					} 
+					var cfg = Story.getConfig(PAGE.jsonData.montage[i]);
+					SNAPPI.UIHelper.create.get_Montage(cfg);
+				});
+				var cfg = Story.getConfig(PAGE.jsonData.montage[0]);
+				SNAPPI.UIHelper.create.get_Montage(cfg);
+			} else {
+				var cfg = Story.getConfig(PAGE.jsonData.montage);
+				SNAPPI.UIHelper.create.get_Montage(cfg);
+			}
 		};
 		
 		SNAPPI.LazyLoad.extras({
@@ -120,9 +139,10 @@ CFG['story'] = Story;		// make global
 
 Story.documentReady = function () {
 	CFG['util'].getCC(PAGE.src, function(json){		Util.loadYuiPagemaker(SNAPPI.Y);	});}
-Story.getConfig = function() {
+Story.getConfig = function(montage) {
 	var cfg={};
-	cfg.arrangement = PAGE.jsonData.montage;
+	cfg.arrangement = montage || PAGE.jsonData.montage;
+	if (SNAPPI.Y.Lang.isArray(cfg.arrangement)) cfg.arrangement = cfg.arrangement[0]; 
 	cfg.stageType = 'montage';
 	cfg.noHeader = true;
 	cfg.getStage = SNAPPI.UIHelper.create.getStage_montage;
@@ -131,7 +151,7 @@ Story.getConfig = function() {
 	cfg.spacing = 1;		// border spacing
 	cfg.margin = 0.0001;
 	cfg.allowedRatios = {'h':'768:1024', 'v':'1024:768'}; 	
-	cfg.scrollView = 0;
+	cfg.scrollView = 1;
 	cfg.MARGIN_W = 0;
 	SNAPPI.UIHelper.create.MAX_HEIGHT = 768-40;	// used by getStage_modal
 	SNAPPI.UIHelper.create.MAX_WIDTH = 1024-40;
@@ -156,7 +176,7 @@ Story.getConfig = function() {
 		    	
 		stage.listen['render'] = SNAPPI.Y.on('snappi-pm:render', function(Pr, node){
 			SNAPPI.PM.PageMakerPlugin.startPlayer({page:1});
-			stage.one('.pageGallery').removeClass('hidden');
+			stage.all('.pageGallery').removeClass('hidden');
 		});
 		stage.listen['resize'] = SNAPPI.Y.on('snappi-pm:resize', 
 			function(player, containerH){

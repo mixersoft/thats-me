@@ -25,7 +25,7 @@
 	$options[] = "perpage:{$perpage}";
 	$options[] = "sort:0.score/direction:desc";
 	$options[] = "montage:".($story ? 1 : 0);
-	$options[] = ($story ? "count:".min($perpage,12) : '');	// montage count
+	$options[] = ($story ? "role_count:".min($perpage,9) : '');	// montage count
 	$options[] = "w:984/h:728";		// ipad landscape, margin: 20px
 	$options[] = ".json";
 	$cc_src = "http://{$host}/person/odesk_photos/".join('/',$options);

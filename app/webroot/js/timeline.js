@@ -195,6 +195,7 @@ Timeline.render = function(cc) {
 			.replace(':from', formatDate(ev.from, true)).replace(':to', formatDate(ev.to));
 		parent.append(markup);
 	}
+	parent.find('li.item:first').addClass('active');
 	parent.append("<li class='padding'></li><li class='padding'></li>");
 	
 	var baseurl = PAGE.jsonData.castingCall.CastingCall.Auditions.Baseurl,
@@ -255,6 +256,8 @@ Timeline.carousel_cfg = {
 				else parent.find('.left.carousel-control-btn').removeClass('invisible');
 				if (activeDots.last().hasClass('selected')) parent.find('.right.carousel-control-btn').addClass('invisible');
 				else parent.find('.right.carousel-control-btn').removeClass('invisible');
+				var active_i = Math.min(i,2);  // carousel keeps only 2 li.item to the left of .active 
+				$(this).find('li.item').removeClass('active').eq(active_i).addClass('active');
 				Timeline.movePopovers();
 			},
 			onEnd			: function(direction) {
@@ -270,7 +273,8 @@ Timeline.carousel_cfg = {
 			easing		: "linear",
 			duration	: 300,
 			conditions	: function(){
-				// $('#features .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');				return !$(this).closest('.carousel').find('.carousel-pager div:first-child').hasClass('selected');
+				// $('#features .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');
+				return !$(this).closest('.carousel').find('.carousel-pager div:first-child').hasClass('selected');
 			},
 		},
 		next : {
@@ -298,6 +302,7 @@ Timeline.carousel_cfg = {
 		},
 		swipe	: {
 			onTouch: CFG['isTouch'],
+			onMouse: false,
 			pauseOnHover	: 'immediate',
 		}
 	};

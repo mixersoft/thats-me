@@ -672,6 +672,10 @@ var load_carouFredSel = function($) {
 						dots.eq(i).addClass('hide');					
 					}
 					o.find('.carousel-pager > div').eq(selected).addClass('selected');
+					
+					if (pages==0) {
+						o.find('.carousel-hint').addClass('disabled');
+					}
 				} catch (ex){
 					// carousel not yet initialized
 				}
@@ -690,7 +694,7 @@ var load_carouFredSel = function($) {
 	CFG['carousel']['features'] = {
 		responsive: true,
 		circular: false,
-		width:  "90%",
+		width:  "90%",				/* set .caroufredsel_wrapper margin-left= 10%/2 = 5% */
 		height: 'variable',		align: 'center',
 		onCreate: function(data){
 		},
@@ -768,11 +772,11 @@ var load_carouFredSel = function($) {
 		circular: false,
 		width: '86%',
 		height: 'variable',		align: 'center',
+		padding: [0, 40, 0 ,0],
 		onCreate: function(data){
 			var check;
 		},
 		items		: {
-			width 		: 500,
 			visible		: 1
 		},
 		auto : {

@@ -530,7 +530,7 @@ Util.documentReady = function() {
 		/***********************************************************
 		 *	remove curtain and fade in #home content 
 		 *************************************************************/
-		$('#curtain').remove();
+		if ($('.ipad').length==0) $('#curtain').remove();
 		$('#home .invisible:not(.fadeIn), .navbar.invisible').addClass('fadeIn');
 		// fade in Vscroll hint
 		setTimeout(function() {
@@ -623,7 +623,6 @@ var load_carouFredSel = function($) {
 			init: function(){
 				$('.carousel').each(function(i, elem) {
 					var o = $(elem);
-					var id = o.addClass('fred').attr('id');
 					CFG['carousel'].init.fred(o);
 					CFG['carousel'].paging.refresh_pageDots(o);
 					o.find('.invisible:not(.left)').removeClass('invisible');				});
@@ -646,7 +645,9 @@ var load_carouFredSel = function($) {
 					// Using custom configuration
 					var fred = o.find('.carousel-inner .scroller');
 					var id = o.attr('id'),
-						cfg =  CFG['carousel'][o.attr('id')];
+						cfg =  CFG['carousel'][o.attr('id')] || null;
+					
+					if (!cfg) return;
 					
 					if (cfg.items.visible.max !== undefined && $(window).width() < 467 ) {
 						cfg.items.visible.max = cfg.items.visible.min;		// force visible=1
@@ -660,16 +661,20 @@ var load_carouFredSel = function($) {
 			 */
 			refresh_pageDots: function(o, fred){
 				fred = fred || o.find('.carousel-inner .scroller');
-				var visibleItems = fred.triggerHandler("currentVisible").size();
-				var carouselItems = fred.find('.item').size();
-				var pages = carouselItems - visibleItems;
-				var selected = fred.triggerHandler("currentPosition");
-				var dots = o.find('.carousel-pager > div');
-				for (var i=pages+1; i<carouselItems; i++) {
-					if (i==carouselItems) break;		// why do I need this?
-					dots.eq(i).addClass('hide');					
+				try {
+					var visibleItems = fred.triggerHandler("currentVisible").size();
+					var carouselItems = fred.find('.item').size();
+					var pages = carouselItems - visibleItems;
+					var selected = fred.triggerHandler("currentPosition");
+					var dots = o.find('.carousel-pager > div');
+					for (var i=pages+1; i<carouselItems; i++) {
+						if (i==carouselItems) break;		// why do I need this?
+						dots.eq(i).addClass('hide');					
+					}
+					o.find('.carousel-pager > div').eq(selected).addClass('selected');
+				} catch (ex){
+					// carousel not yet initialized
 				}
-				o.find('.carousel-pager > div').eq(selected).addClass('selected');
 			},
 		},
 		track_CarouselEnd: function(o){

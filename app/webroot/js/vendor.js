@@ -230,19 +230,7 @@ if (typeof ($.cookie) != 'undefined') {
 			// also track Event for any event with value
 			if (opt_value) {
 				_gaq.push(['_trackEvent', category, action, opt_label, opt_value, opt_noninteraction]);	
-/*
- * test value = 0.1 vs value=1
- * to reset cookie: 
- * 		delete (CFG['cracker']['Page View'][1]);
- * 		$.cookie('cracker', CFG['cracker']);
- */
-if (action=='features') {	
-	console.info('ga TrackEvent '+category+':'+action+', value='+opt_value);
-	var new_action = 'test-'+action;
-	var new_value = 1;
-	_gaq.push(['_trackEvent', category, new_action, opt_label, new_value, opt_noninteraction]);
-	console.info('ga TrackEvent '+category+':'+new_action+', value='+new_value);			
-}			}
+			}
 
 			// track Adwords conversions
 			switch (category + ':' + action) {

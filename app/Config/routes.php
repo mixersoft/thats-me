@@ -31,7 +31,8 @@
  Router::connect('/how-it-works', array('controller' => 'thatsme', 'action'=>'howItWorks'));
  Router::connect('/see-the-movie', array('controller' => 'thatsme', 'action'=>'seeTheMovie'));
  Router::connect('/i-want-it', array('controller' => 'thatsme', 'action'=>'iWantIt'));
- Router::connect('/:action/*', array('controller' => 'thatsme'));
+ Router::connect('/timeline/*', array('controller' => 'thatsme', 'action'=>'timeline'));
+ Router::connect('/story/*', array('controller' => 'thatsme', 'action'=>'story'));Router::connect('/:action', array('controller' => 'thatsme'));
  
  Router::connect('/social/:action/*', array('controller' => 'followers'));
  Router::connect('/donate/:action/*', array('controller' => 'followers'));

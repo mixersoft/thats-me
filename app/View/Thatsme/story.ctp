@@ -1,6 +1,10 @@
 <?php 
 	$title = "Snaphappi &middot; Curated Story Demo";
 	$this->set("title_for_layout", $title);
+	$description = "See a quick demo of our Curated Stories as shown in the Movie. Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines.";
+	$this->start('HEAD_bottom');
+		echo $this->element('fb_open_graph', compact('description'));
+	$this->end();
 	$this->append('css');
 		$this->Less->css('demo');
 		
@@ -73,7 +77,28 @@
 	<i class="icon-facebook-sign"></i>&nbsp;<i class="icon-twitter-sign"></i>&nbsp;<i class="icon-envelope-alt"></i>
 </div>       	
 			</div>
+			
+				<div class='row'>
+		      		<div class="center" style='font-size:14px;'>
+		      				Share the Curated Timeline demo with your friends 
+		      				<div class="fb-like" data-href="http://thats-me.snaphappi.com/story" data-send="true" data-layout="button_count" data-width="225" data-show-faces="true" data-font="arial"></div>
+		      				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/story" 
+				        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos."></a>
+					</div>
+					<br />
+      			</div>	
 	</div>
+	<div class='fw-band footer alpha rgba80b'>
+    	<div class="container center">
+			<div class="pull-left"><a href='/home#i-want-it'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+		    	I Want It
+		    </button></a></div>	
+		    <a target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>&nbsp;<a target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
+    		<div class="pull-right"><a href='/home#about' target='_parent'><button class="btn btn-warning" title='Go to the next section to learn more about Snaphappi'>
+		    	Learn More
+		    </button></a></div>        		
+    	</div>
+    </div>	
 </div>
 
 <div class='markup hide'>

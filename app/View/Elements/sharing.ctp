@@ -20,14 +20,14 @@
 		      					</li>
 		      					<li>
 		      						<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/i-need-this" 
-				        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos.">Tweet</a>
+				        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos."></a>
 		      					</li>
 		      				</ul>
 					</div>
       			</div>
       			<div class='row'>
 		      		<div class="offset1 span10 body">
-		      			<p>Tell us what you think. You can find us at these social media sites:</p>
+		      			<p>Tell us what you think, stay up-to-date, or just follow us. You can do all that and more from our official pages on these social media sites:</p>
 					</div>
 					<div class="offset2 span8 body">
 						<ul class='unstyled'>

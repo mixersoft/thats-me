@@ -168,7 +168,8 @@ Story.documentReady = function () {
 		return false;
 	});
 	
-	
+	CFG['timing'].load_SocialSharing = 1000;
+	CFG['util'].load_SocialSharing();
 
 }
 Story.initPopovers = function(){

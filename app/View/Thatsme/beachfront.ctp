@@ -29,7 +29,7 @@
 	/**
 	 * other HEAD
 	 */
-	$this->start('HEAD_bottom');
+	$this->startIfEmpty('HEAD_bottom');
 		echo $this->element('fb_open_graph', compact('description'));
 	$this->end();
 	/**

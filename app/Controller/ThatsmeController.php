@@ -165,11 +165,11 @@ class ThatsmeController extends AppController {
 	 * Timeline demo
 	 * use this for content: http://snappi-dev/person/odesk_photos/venice/page:1/perpage:12/sort:0.rating/direction:desc/.json
 	 */ 
-	public function timeline($idOrUsername){
+	public function timeline($idOrUsername='venice'){
 		$this->set('userid', $idOrUsername);
 		$this->_beachfront(); 
 	}
-	public function story($idOrUsername){
+	public function story($idOrUsername='venice'){
 		$this->set('userid', $idOrUsername);
 		$this->_beachfront(); 
 	}

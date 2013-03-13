@@ -77,9 +77,8 @@ by rating the ones you love. Your hidden duplicates are just a click away &mdash
       </div> <!-- /.carousel-inner  -->
 <div class="carousel-pager center"></div>  
 <div class="center">
-	<span>
 	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-	<a class="btn btn-large btn-primary" href="/timeline/venice" target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
+	<a class="btn btn-large btn-primary hide" href="/timeline/venice" target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
 </div>     
 <div class="carousel-control-wrap">
 	<div class="left carousel-control-btn invisible" href="#features" direction="prev">&lsaquo;</div>        

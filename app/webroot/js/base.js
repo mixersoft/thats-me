@@ -145,6 +145,7 @@ Util.scrollSpy = function(){
 						Util.load_SocialSharing();	// load immediately on scrollIntoView
 						break;
 					case 'sharing':
+					case 'see-the-movie':
 						CFG['timing'].load_SocialSharing = 0;
 						Util.load_SocialSharing();	// load immediately on scrollIntoView
 						break;
@@ -772,7 +773,6 @@ var load_carouFredSel = function($) {
 		circular: false,
 		width: '86%',
 		height: 'variable',		align: 'center',
-		padding: [0, 40, 0 ,0],
 		onCreate: function(data){
 			var check;
 		},

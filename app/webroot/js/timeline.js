@@ -98,6 +98,10 @@ Timeline.documentReady = function () {
 	$('.icon-question-sign').click(function(){
 		Timeline.togglePopovers('toggle', 20000);
 	})
+	
+	
+	CFG['timing'].load_SocialSharing = 1000;
+	CFG['util'].load_SocialSharing();
 }
 Timeline.movePopovers = function(){
 	Timeline.popovers = Timeline.popovers || [];

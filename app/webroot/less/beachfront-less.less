@@ -515,6 +515,8 @@ html.ie9 .navbar {
   padding-top: 40px;
   .opaque {
     background-color: white;
+    color: @red;
+    
     .fw-band {
       padding-top: 0;   // cancel out padding-top:40px
     }
@@ -753,6 +755,8 @@ html.js #home .fw-band.vcenter-body {
   }
 }
 
+.twitter-share-button[style] { vertical-align: text-bottom !important; }
+
 html.no-touch {
   /* NOTE: we are supressing hover/click on html.touch next/prev/pagination to prevent CSS flashes */
   .carousel-control-btn:hover {
@@ -894,11 +898,11 @@ html.touch  {
 
 
 #see-the-movie {
+  color: @red;
   .featurette-heading {
-    color: @red;
     padding-bottom: 0;
   }
-  iframe {
+  iframe#yt-player {
     max-width: 853px;
     width: 90%;
     height: 480px;
@@ -1174,7 +1178,7 @@ html.touch  {
 		}
 	}
 	#see-the-movie {
-    iframe {
+    iframe#yt-player {
       width: 90%;
       height: 440px;
     }
@@ -1326,7 +1330,7 @@ html.touch  {
     }
   }
 	#see-the-movie {
-    iframe {
+    iframe#yt-player {
       height: 340px;
       margin-top: 60px;
       width: 90%;
@@ -1503,7 +1507,7 @@ html.touch  {
     }
   }
   #see-the-movie {
-    iframe {
+    iframe#yt-player {
       height: 240px;
       margin-top: 48px;
       width: 90%;

@@ -1,5 +1,14 @@
-<?php 
-	$url = "http://thats-me.snaphappi.com/{$this->request->url}"; 
+<?php
+	switch ($this->request->url) {
+		case 'sharing':
+		case 'timeline':	
+			$page = 'i-need-this'; break;
+			break;	
+		default:
+			$page = $this->request->url; 
+			break;
+	}
+	$url = "http://thats-me.snaphappi.com/{$page}"; 
 ?> 
 <!-- element/fb-open-graph  -->
 <meta property="og:title" content="Snaphappi &middot; Curated Family Photos" />

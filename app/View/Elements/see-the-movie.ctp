@@ -12,6 +12,18 @@
 		        	<div class="subhead center">
 		        		It's only 50 sec and you see a preview of our Curated Timeline &amp; Stories on the iPad.
 		        </div></div>
+		        <br />
+		        <div class='row'>
+		        	<div class="center">
+						<a class="btn btn-large btn-primary" href="/timeline/venice" target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
+					</div>
+					<br />
+					<div class="center"> 	
+						<div class="fb-like" data-href="http://thats-me.snaphappi.com/see-the-movie" data-send="true" data-layout="button_count" data-width="225" data-show-faces="true" data-font="arial"></div>
+						<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://thats-me.snaphappi.com/see-the-movie" 
+			        			data-text="Checkout Snaphappi, it's a great new site for Curated Family Photos."></a>
+					</div> 
+      			</div>
 		    </div>
 	    </div>
 	    <div class='fw-band footer  alpha rgba80b'>

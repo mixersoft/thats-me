@@ -44,7 +44,7 @@
 	$this->end(); 
 ?>
 <a name='story'></a>
-<div id='story' class="featurette">
+<div id='story' class="featurette track-page-view ">
 	<div class='fw-band vcenter-body alpha rgba70b '>
 		<div class='container'>
 			<div class="featurette-heading ">

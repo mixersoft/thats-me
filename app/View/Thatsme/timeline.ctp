@@ -38,7 +38,7 @@
 	$this->end(); 
 ?>
 <a name='timeline'></a>
-<div id='timeline' class="featurette">
+<div id='timeline' class="featurette track-page-view ">
 	<div class='fw-band vcenter-body alpha rgba70b '>
 		<div class='container'>
 			<div class="featurette-heading ">

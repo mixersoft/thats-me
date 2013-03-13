@@ -1,5 +1,5 @@
 <?php 
-	$title = "Snaphappi &middot; Curated Timeline";
+	$title = "Snaphappi &middot; Curated Story Demo";
 	$this->set("title_for_layout", $title);
 	$this->append('css');
 		$this->Less->css('demo');
@@ -48,8 +48,8 @@
 	<div class='fw-band vcenter-body alpha rgba70b '>
 		<div class='container'>
 			<div class="featurette-heading ">
-		        <h1>Curated Story
-		        	<div class='subhead'>A simple prototype to help illustrate our ideas
+		        <h1>Curated Stories
+		        	<div class='subhead'>This is a simple prototype to help illustrate the ideas mentioned in The Movie
 		        	<span class='more-stories pull-right'>
 		    				<span class='label2'>Some other stories:</span> 
 		    				<a href='/story/bali'><span class=' label alpha rgba80b'>Bali</span></a>
@@ -61,12 +61,14 @@
 		        </h1>
 	       	</div>
 	       	<div class='ipad landscape alpha rgba50b'>
+<div class='nav pull-right'>
+	<i class="nav-timeline icon-circle-arrow-left" title="back to timeline"></i>
+	&nbsp;
+	<i class='help icon-question-sign'  title="toggle popups"></i>
+</div>	       		
 <section class='montage-container container grid_16'>
 	<div class='stage-body'></div>
 </section>	
-<div class='nav-timeline' title="back to timeline">
-	<a href=''><i class="icon-circle-arrow-left"></i></a>
-</div>
 <div class='share-story'>
 	<i class="icon-facebook-sign"></i>&nbsp;<i class="icon-twitter-sign"></i>&nbsp;<i class="icon-envelope-alt"></i>
 </div>       	
@@ -74,3 +76,12 @@
 	</div>
 </div>
 
+<div class='markup hide'>
+	<div class='loading'>
+		<i class="icon-spinner icon-spin" style="font-size:40px;"></i> 
+		<div style="font-size:18px;font-family:GeoSansLightRegular;line-height:1.4;">
+			<br />Please wait a moment
+			<br />while we load this simple demo...
+		</div>		
+	</div>
+</div>

@@ -138,18 +138,26 @@ CFG['story'] = Story;		// make global
 
 Story.onRender = function() {
 	SNAPPI.PM.PageMakerPlugin.startPlayer({page:1});
+}
+Story.onFirstRender = function() {
 	$('#story .ipad, #story .montage-container').css('height','auto');
-	setTimeout(function(){Story.initPopovers()},1000); 
+	setTimeout(function(){
+		Story.initPopovers();
+		// help listener
+		$('.icon-question-sign').click(function(){
+			Story.togglePopovers('toggle', 20000);
+		})
+	},1000);
 	$('#curtain').remove(); 
 	$('body').removeClass('wait');
 }
 Story.documentReady = function () {
-	$('#curtain .wrapV').html('<i class="icon-spinner icon-spin" style="font-size:40px;"></i> <div style="font-size:24px;font-family:roboto;"><br />one moment...</div>').addClass('fadeIn'); 
+	$('#curtain .wrapV').html( $('.markup .loading').html() ).addClass('fadeIn'); 
 	
 	CFG['util'].getCC(PAGE.src, function(json){		Util.loadYuiPagemaker();	});
 	
 		// click handler for nav to Story
-	$('.ipad').delegate('.timeline', 'click',function(){
+	$('.ipad').delegate('.nav .nav-timeline', 'click',function(){
 		var next = window.location.href.replace('story', 'timeline');
 		window.location.href = next;
 	});
@@ -159,6 +167,8 @@ Story.documentReady = function () {
 		window.location.href = next;
 		return false;
 	});
+	
+	
 
 }
 Story.initPopovers = function(){
@@ -184,14 +194,18 @@ Story.initPopovers = function(){
 	);
 	if (1 || $('html.touch').length) Story.togglePopovers();
 }
-Story.togglePopovers = function(state){
+Story.togglePopovers = function(state, hideDelay){
 	state = state || 'show';
+	if (state == 'toggle') state = Story.popoverState=='show' ? 'hide' : 'show';
+	hideDelay = hideDelay || 10000;
 	for (var i in Story.popovers) {
 		Story.popovers[i].popover({'trigger': 'manual'}).popover(state);
 	}
+	Story.popoverState = state;
+	if (state=='hide') return;
 	setTimeout(function(){
 		Story.togglePopovers('hide')
-	}, 10000);
+	}, hideDelay);
 }
 Story.getConfig = function(montage) {
 	var cfg={};
@@ -230,6 +244,9 @@ Story.getConfig = function(montage) {
 		/*
 		 * on Story Render
 		 */    	
+		stage.listen['render'] = SNAPPI.Y.once('snappi-pm:render', function(Pr, node){
+			Story.onFirstRender.call(this, Pr, node);
+		});
 		stage.listen['render'] = SNAPPI.Y.on('snappi-pm:render', function(Pr, node){
 			Story.onRender.call(this, Pr, node);
 		});

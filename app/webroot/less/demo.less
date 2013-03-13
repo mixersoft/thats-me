@@ -76,7 +76,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', end
 }
 
 #timeline { 
-  .timescale {
+  .featurette-heading .subhead {
+    .btn{
+      vertical-align: text-bottom;
+    }
+  }
+  .timescale{
     left: 20px;
     position: absolute;
     top: 4px;
@@ -95,26 +100,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', end
   }
 }
 
-
+#timeline .nav, #story .nav {
+  position: absolute;
+  top: 4px;
+  z-index: 99;
+  right: 20px;
+  display: inline;
+  color: @cream;
+  i {
+    font-size: 18px !important;
+    cursor: pointer;
+    text-shadow: 1px 1px 2px #000;
+    vertical-align: text-bottom;
+  }
+  i:hover {
+    text-shadow: 1px 1px 2px @orange;
+  }
+}
 #story {
   .ipad {
     height: auto !important;
     min-height: 768px;
   }
-  .share-story, .nav-timeline {
+  .share-story {
     position:absolute;
     right: 20px;
     bottom: 4px;
     z-index: 99;
     font-size: 40px;
     cursor: default;
-  }
-  .nav-timeline {
-    left: 20px;
-    right: inherit;
-    i {
-      color: @cream;
-    }
   }
   .more-stories {
     span.label2 {

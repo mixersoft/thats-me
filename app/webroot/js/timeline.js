@@ -86,11 +86,18 @@ var Timeline = new function(){}
 CFG['timeline'] = Timeline;		// make global
 
 Timeline.documentReady = function () {
-	$('#curtain .wrapV').html('<i class="icon-spinner icon-spin" style="font-size:40px;"></i> <div style="font-size:24px;font-family:roboto;"><br />one moment...</div>').addClass('fadeIn'); 
+	$('#curtain .wrapV').html($('.markup .loading').html()).addClass('fadeIn'); 
 	CFG['carousel']['timeline'] = Timeline.carousel_cfg;
 	$('#timeline').addClass('carousel');	CFG['util'].getCC(PAGE.src, function(json){
 		Timeline.render();
 	});
+	
+	// reveal see-the-movie button if not already seen
+	if (CFG['cracker'].Video.length==0) $('#timeline a[href$=see-the-movie]').removeClass('hide');
+	// help listener
+	$('.icon-question-sign').click(function(){
+		Timeline.togglePopovers('toggle', 20000);
+	})
 }
 Timeline.movePopovers = function(){
 	Timeline.popovers = Timeline.popovers || [];
@@ -100,7 +107,7 @@ Timeline.movePopovers = function(){
 	}
 	Timeline.popovers.push( $('.item:nth-child(3) .eventbar span.evt-label').popover({trigger:'hover',
 		html: true,
-		title: "<div style='margin-top:16px;'>Timeline Events</div>",
+		title: "<div style='margin-top:36px;'>Timeline Events</div>",
 		content:'automatic event detection based on your shooting patterns', 
 		placement:'left'})
 	);
@@ -115,14 +122,18 @@ Timeline.movePopovers = function(){
 		placement:'left'})
 	);
 }
-Timeline.togglePopovers = function(state){
+Timeline.togglePopovers = function(state, hideDelay){
 	state = state || 'show';
+	if (state == 'toggle') state = Timeline.popoverState=='show' ? 'hide' : 'show';
+	hideDelay = hideDelay || 5000;
 	$('.timescale').popover({'trigger': 'manual'}).popover(state);	for (var i in Timeline.popovers) {
 		Timeline.popovers[i].popover({'trigger': 'manual'}).popover(state);
 	}
+	Timeline.popoverState = state;
+	if (state=='hide') return;
 	setTimeout(function(){
 		Timeline.togglePopovers('hide')
-	}, 5000);
+	}, hideDelay);
 }
 Timeline.render = function(cc) {
 	if (cc) CFG['util'].parseCC(cc, true);
@@ -205,7 +216,7 @@ Timeline.render = function(cc) {
 	if (1 || $('html.touch').length) Timeline.togglePopovers();
 	
 	// click handler for nav to Story
-	$('.timeline').delegate('.item .feature img', 'click',function(){
+	$('#timeline').delegate('.item .feature img, .nav .nav-timeline', 'click',function(){
 		var next = window.location.href.replace('timeline','story');
 		window.location.href = next;
 	});

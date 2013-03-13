@@ -40,6 +40,11 @@
 	      						Snaphappi on Twitter 
 	      						</a>
 	      					</li>
+	      					<li>
+	      						<a target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i> 
+	      						Snaphappi on Pinterest 
+	      						</a>
+	      					</li>
 	      				</ul>
 	      			</div>
       			</div>

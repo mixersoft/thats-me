@@ -307,6 +307,11 @@ Util.load_SocialSharing = function() {
 			!function(d,s,id){
 				var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
 			}(document,"script","twitter-wjs");
+			
+			// pinterest
+			(function (w, d, load) {
+				 var script, first = d.getElementsByTagName('SCRIPT')[0], n = load.length, i = 0, go = function () {   for (i = 0; i < n; i = i + 1) {     script = d.createElement('SCRIPT');     script.type = 'text/javascript';     script.async = true;     script.src = load[i];     first.parentNode.insertBefore(script, first);   } }; if (w.attachEvent) { w.attachEvent('onload', go); } else { w.addEventListener('load', go, false); }
+			}(window, document, ['//assets.pinterest.com/js/pinit.js']));    
 		})();		
 	}
 	, CFG['timing'].load_SocialSharing);
@@ -777,6 +782,7 @@ var load_carouFredSel = function($) {
 			var check;
 		},
 		items		: {
+			width		: 500, 
 			visible		: 1
 		},
 		auto : {

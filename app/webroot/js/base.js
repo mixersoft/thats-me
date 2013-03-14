@@ -328,6 +328,61 @@ Util.load_ytapi = function() {
 	}
 	, CFG['timing'].load_ytapi);
 }
+Util.show_demo = function(show){
+	if (show == undefined) show=true;
+	if (show){
+		$('body').css('overflow','hidden');
+		$('iframe#demo').removeClass('hide');
+	} else {
+		$('iframe#demo').addClass('hide');
+		$('body').css('overflow','visible');
+	}
+}
+Util.load_demo = function(popup){
+	popup = popup || false;
+	if (popup) return true;
+	else if ($('iframe#demo').length) {
+		Util.show_demo(true);
+	} else {
+		// load in iframe
+		var src = "/timeline/iframe:1";
+		var iframe_markup = '<iframe id="demo" class="alpha rgba80b" type="text/html" src=":src" frameborder="0" allowfullscreen></iframe>';
+		iframe_markup = iframe_markup.replace(':src', src);
+		var iframe_border = '<div class="demo-border">:iframe_markup</div>';
+		iframe_border = iframe_border.replace(':iframe_markup', iframe_markup);
+		$('body').append(iframe_border);
+		Util.show_demo(true);
+	}
+	return false;
+	
+}
+Util.setVariant = function(qs){
+	qs = qs || {};
+	// show overlay variation
+	var variant = qs['var'];
+	switch (variant) {
+		case 'curator':
+			// change additional copy for curator var
+			var foo = $('#home figcaption').first().html();
+			foo = foo.replace('Editor', 'Curator');
+			$('#home figcaption').first().html(foo);
+			// then unhide
+		case 'who-has-time':
+			$('#home .row .overlay.'+variant).removeClass('hide');
+			Util.setFullFrameHeight();
+			break;
+		case 'peek':
+			// do NOT set fullFrameHeight;
+			$('#home .fw-band.vcenter-body').css('height', 'auto');
+			break;
+		default:	
+			Util.setFullFrameHeight();
+			break;
+	}
+	return variant;
+}
+
+
 /*
  * init code for deferred markup
  */
@@ -510,15 +565,7 @@ Util.documentReady = function() {
 			 * overlay_variation = [who-has-time|curator]
 			 */
 			var qs = CFG['util'].parseQueryString();
-			var overlay_variation = qs['var'];
-			$('#home .row .overlay.'+overlay_variation).removeClass('hide');
-			if (qs['var']=='curator') {
-				var foo = $('#home figcaption').first().html();
-				foo = foo.replace('Editor', 'Curator');
-				$('#home figcaption').first().html(foo);
-			}
-			
-			Util.setFullFrameHeight();
+			var variant = Util.setVariant(qs);
 		}
 		
 		var deferred = $('#deferred');

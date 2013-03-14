@@ -86,6 +86,40 @@ var Timeline = new function(){}
 CFG['timeline'] = Timeline;		// make global
 
 Timeline.documentReady = function () {
+	
+	var iframe = window != window.parent; ;
+	if (iframe) {
+		$('#header ').on('click', function(e){
+			// $('iframe#demo', top.document).addClass('hide');
+			window.parent.CFG['util'].show_demo(false);
+		})
+		$('a').on('click', function(e){
+			var $this = $(e.currentTarget),
+				href = $this.attr('href');
+			if (/^\/(timeline|story)/.test(href)) {
+				// nav within demo letterbox	
+				if ((/\/iframe\:1/i).test(href) == false) {
+					// need to add named param to all internal links
+					href += '/iframe:1';
+					$this.attr('href', href);
+					return true; 
+				}
+			} else {
+				// $('iframe#demo', top.document).addClass('hide');
+				window.parent.CFG['util'].show_demo(false);
+				if ((/^\/(i-need-this|home)/).test(window.parent.location.pathname)) {
+					// scroll to hash
+					var hash = href.replace('/', '#');
+					if (hash=='#i-need-this') hash='#home';
+					window.parent.CFG['util'].animateScrollToHash({hash:hash});
+				} else if (window.parent.location.pathname !== href){
+					window.parent.location.href = href;
+				}
+			}
+		})
+	}
+	
+	
 	$('#curtain .wrapV').html($('.markup .loading').html()).addClass('fadeIn'); 
 	CFG['carousel']['timeline'] = Timeline.carousel_cfg;
 	$('#timeline').addClass('carousel');	CFG['util'].getCC(PAGE.src, function(json){

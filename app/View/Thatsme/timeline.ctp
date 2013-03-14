@@ -32,13 +32,13 @@
 	$scriptBlock[] = "PAGE.snappi_comboHost = '{$host}';";
 	$scriptBlock[] = "PAGE.src = '{$cc_src}';";
 	$this->Html->ScriptBlock(implode(' ', $scriptBlock), array('inline'=>false));
-	
-	
-	
+	// show simple view with no external links for $isIframe=1
+	$isIFrame = !empty($this->request->named['iframe']);
 ?>	
 <?php
 	$this->start('body_header'); 
-		echo $this->element('navbar', array('hash'=>false)); 
+		$navbar = $isIFrame ? 'iframe-close' : 'navbar';
+		echo $this->element($navbar, array('hash'=>false)); 
 		echo $this->element('notify');
 	$this->end(); 
 ?>
@@ -46,45 +46,15 @@
 <div id='timeline' class="featurette track-page-view ">
 	<div class='fw-band vcenter-body alpha rgba70b '>
 		<div class='container'>
-			<div class="featurette-heading ">
-		        <h1 >Curated Timeline
-		        	<div class='subhead'>This is a simple prototype to help illustrate the ideas mentioned in The Movie 
-		        		<span class='pull-right'><a class="btn btn-primary hide" href="/see-the-movie">See the Movie</a></span>
-		        	</div>
-		        </h1>
-		        	
-	       	</div>
-	       		<div class='ipad landscape alpha rgba50b'>
-<div class='timescale'>
-		<span class=' label focus'>Week</span>
-		<span class=' label'>Month</span>
-		<span class=' label'>Year</span>
-</div>	       	
-<div class='nav pull-right'>
-	<i class="nav-timeline icon-circle-arrow-right" title="click to see matching story"></i>
-	&nbsp;
-	<i class='help icon-question-sign'  title="toggle popups"></i>
-</div>	
-<hr>		
-<div class='carousel-inner'>
-<ul class='timeline inline unstyled scroller'>
-	<li class='padding'></li>
-	<li class='padding'></li>
-	<li class='padding'></li>
-</ul></div>		
-				</div>  <!-- /.carousel-inner  -->
-				<div class="carousel-pager center"></div>  
-				<div class="carousel-control-wrap">
-					<div class="left carousel-control-btn invisible" href="#how-it-works" direction="prev">&lsaquo;</div>
-					<div class="right carousel-control-btn" href="#how-it-works" direction="next">&rsaquo;</div>
+			<?php echo $this->element('timeline-body'); ?>
+			<div class='row'>
+	      		<div class="center">
+	      				Share the Curated Timeline demo with your friends <?php echo $this->element('social-button-row'); ?>  
 				</div>
-				<div class='row'>
-		      		<div class="center">
-		      				Share the Curated Timeline demo with your friends <?php echo $this->element('social-button-row'); ?>  
-					</div>
-      			</div>				
+  			</div>				
 		</div>
 	</div>
+	<?php if (!$isIFrame) { ?>
 	<div class='fw-band footer alpha rgba80b'>
     	<div class="container center">
 			<div class="pull-left"><a href='/home#i-want-it'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
@@ -98,6 +68,8 @@
 		    </button></a></div>        		
     	</div>
     </div>	
+    <?php } ?>
+    <div class='alpha rgba70b' style='height:200px;'>&nbsp;</div>
 </div>
 
 <div class='markup hide'>
@@ -123,7 +95,7 @@
 		<i class="icon-spinner icon-spin" style="font-size:40px;"></i> 
 		<div style="font-size:18px;font-family:GeoSansLightRegular;line-height:1.4;">
 			<br />Please wait a moment
-			<br />while we load this simple demo...
+			<br />while we load the Timeline...
 		</div>	
 	</div>
 </div>

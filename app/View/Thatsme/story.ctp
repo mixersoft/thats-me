@@ -38,12 +38,14 @@
 	$scriptBlock[] = "PAGE.src = '{$cc_src}';";
 	$scriptBlock[] = "ALLOY_VERSION='alloy-1.5.0';";
 	$this->Html->ScriptBlock(implode(' ', $scriptBlock), array('inline'=>false));
-	
+	// show simple view with no external links for $isIframe=1
+	$isIFrame = !empty($this->request->named['iframe']);
 	
 ?>	
 <?php
 	$this->start('body_header'); 
-		echo $this->element('navbar', array('hash'=>false)); 
+		$navbar = $isIFrame ? 'iframe-close' : 'navbar';
+		echo $this->element($navbar, array('hash'=>false)); 
 		echo $this->element('notify');
 	$this->end(); 
 ?>
@@ -64,27 +66,16 @@
 					</div>
 		        </h1>
 	       	</div>
-	       	<div class='ipad landscape alpha rgba50b'>
-<div class='nav pull-right'>
-	<i class="nav-timeline icon-circle-arrow-left" title="back to timeline"></i>
-	&nbsp;
-	<i class='help icon-question-sign'  title="toggle popups"></i>
-</div>	       		
-<section class='montage-container container grid_16'>
-	<div class='stage-body'></div>
-</section>	
-<div class='share-story'>
-	<i class="icon-facebook-sign"></i>&nbsp;<i class="icon-twitter-sign"></i>&nbsp;<i class="icon-envelope-alt"></i>
-</div>       	
-			</div>
-			
-				<div class='row'>
-		      		<div class="center" style='font-size:14px;'>
-		      				Share the Curated Timeline demo with your friends <?php echo $this->element('social-button-row'); ?> 
-					</div>
-					<br />
-      			</div>	
-	</div>
+			<?php echo $this->element('story-body'); ?>
+			<div class='row'>
+	      		<div class="center" style='font-size:14px;'>
+	      				Share the Curated Timeline demo with your friends <?php echo $this->element('social-button-row'); ?> 
+				</div>
+				<br />
+  			</div>	
+		</div>
+	</div>	
+	<?php if (!$isIFrame) { ?>
 	<div class='fw-band footer alpha rgba80b'>
     	<div class="container center">
 			<div class="pull-left"><a href='/home#i-want-it'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
@@ -97,15 +88,18 @@
 		    	Learn More
 		    </button></a></div>        		
     	</div>
-    </div>	
+    </div>
+    <?php } ?>
+    <div class='alpha rgba70b' style='height:200px;'>&nbsp;</div>
+	
 </div>
-
 <div class='markup hide'>
 	<div class='loading'>
 		<i class="icon-spinner icon-spin" style="font-size:40px;"></i> 
 		<div style="font-size:18px;font-family:GeoSansLightRegular;line-height:1.4;">
 			<br />Please wait a moment
-			<br />while we load this simple demo...
+			<br />while we load the Story...
+			<br />(this one takes longer)
 		</div>		
 	</div>
 </div>

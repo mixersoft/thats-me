@@ -15,7 +15,7 @@
 		        <br />
 		        <div class='row'>
 		        	<div class="center">
-						<a class="btn btn-large btn-primary" href="/timeline/venice" target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
+						<a class="btn btn-large btn-primary" href="/timeline/venice" onclick='return CFG["util"].load_demo();' target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
 					</div>
 					<br />
 					<div class="center"> <?php echo $this->element('social-button-row'); ?>	

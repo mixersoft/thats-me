@@ -118,7 +118,16 @@ Timeline.documentReady = function () {
 			}
 		})
 	}
-	
+
+	// use responsive @media queries instead	
+	// if ($(window).attr('innerHeight') < 1024) {
+		// $('.ipad').removeClass('landscape').addClass('portrait');
+	// } else $('.ipad').removeClass('portrait').addClass('landscape');
+	// $(window).resize(function(e) {
+		// if ($(window).attr('innerHeight') < 1024) {
+			// $('.ipad').removeClass('landscape').addClass('portrait');
+		// } else $('.ipad').removeClass('portrait').addClass('landscape');
+	// });
 	
 	$('#curtain .wrapV').html($('.markup .loading').html()).addClass('fadeIn'); 
 	CFG['carousel']['timeline'] = Timeline.carousel_cfg;
@@ -147,7 +156,7 @@ Timeline.movePopovers = function(){
 		html: true,
 		title: "<div style='margin-top:36px;'>Timeline Events</div>",
 		content:'automatic event detection based on your shooting patterns', 
-		placement:'left'})
+		placement:'right'})
 	);
 	Timeline.popovers.push( $('.item:nth-child(3) .eventbar div.circle').popover({trigger:'hover',
 		content:'The number of photos in each event', 
@@ -263,7 +272,7 @@ Timeline.render = function(cc) {
 Timeline.carousel_cfg = {
 		responsive: true,
 		// circular: false,		width:  null,
-		height: $('.ipad').hasClass('portrait') ? 1024 : 768,
+		// height: $('.ipad').hasClass('portrait') ? 1024 : 768,		height: 'variable',
 		align: 'center',
 		onCreate: function(data){
 			CFG['carousel'].autoPaging = false;

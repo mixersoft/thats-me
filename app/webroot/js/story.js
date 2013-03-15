@@ -208,11 +208,11 @@ Story.initPopovers = function(){
 	 * initialize popovers
 	 */
 	Story.popovers = Story.popovers || [];
-	Story.popovers.push( $('.pageGallery:first').popover({trigger:'hover',
+	Story.popovers.push( $('.pageGallery:first article:first figure').popover({trigger:'hover',
 		html: true,
-		title: "<div style='padding-left:50px;'>Curated Stories",
-		content:'<div style="padding-left:50px;"><ul><li>see highlights for each event</li><li>top-rated photos are always the largest</li><li>thumbnails are just a click away (disabled)</li></ul>', 
-		placement:'left'})
+		title: "<div>Curated Stories",
+		content:'<div><ul><li>see highlights for each event</li><li>top-rated photos are always the largest</li><li>thumbnails are just a click away (disabled)</li></ul>', 
+		placement:'bottom'})
 	);
 	Story.popovers.push( $('.pageGallery .FigureBox.Montage:first img ').popover({trigger:'hover',
 		content:'click on a photo to see full screen (disabled)', 

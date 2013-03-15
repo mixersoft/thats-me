@@ -339,7 +339,7 @@ Util.show_demo = function(show){
 	}
 }
 Util.load_demo = function(popup){
-	popup = popup || false;
+	popup = popup || ($('html.touch').length); // ipad uses popup, not iframe, to allow Vscroll
 	if (popup) return true;
 	else if ($('iframe#demo').length) {
 		Util.show_demo(true);

@@ -4,7 +4,7 @@
 		&nbsp;
 		<i class='help icon-question-sign'  title="toggle popups"></i>
 	</div>	       		
-	<section class='montage-container container grid_16'>
+	<section class='montage-container container'>
 		<div class='stage-body'></div>
 	</section>	
 	<div class='share-story'>

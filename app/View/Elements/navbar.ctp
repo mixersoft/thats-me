@@ -5,7 +5,6 @@
  * 		typically used for standard analytic pageView tracking after returning from demo
  * $hash = false, use links to individual section pages
  */
- (debug($hash));
 if (!isset($hash)) $hash = false;
 if ($hash == 'append') {
 	$referer = env('HTTP_REFERER');	
@@ -15,7 +14,6 @@ if ($hash == 'append') {
 		$hash = $referer = false;	// some other domain, don't use hash
 	}
 } 
-(debug($referer));
 $hashClass = $hash ? 'use-hash' : '';  
 ?>  
 	    <div class="navbar navbar-inverse navbar-fixed-top <?php echo $hashClass; ?> invisible alpha rgba80b">

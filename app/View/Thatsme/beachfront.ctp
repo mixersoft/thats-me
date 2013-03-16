@@ -79,7 +79,7 @@
 
 <!-- NAVBAR -->
 <?php $this->startIfEmpty('body_header'); 
-		echo $this->element('navbar', array('useHash'=>true));
+		echo $this->element('navbar', array('hash'=>true));
 	    echo $this->element('notify');
  	$this->end(); 
 ?> 

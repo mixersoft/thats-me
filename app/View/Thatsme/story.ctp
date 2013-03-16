@@ -45,7 +45,7 @@
 <?php
 	$this->start('body_header'); 
 		$navbar = $isIFrame ? 'iframe-close' : 'navbar';
-		echo $this->element($navbar, array('hash'=>false)); 
+		echo $this->element($navbar, array('hash'=>'append')); 
 		echo $this->element('notify');
 	$this->end(); 
 ?>

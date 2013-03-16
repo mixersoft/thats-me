@@ -212,8 +212,24 @@ Util.animateScrollToHash = function(el) {
         	}, 50);
         } 
     }
+    target.addClass('viewed');
     return target;
 };
+/*
+ * cycle through sequence of sections on each click of home page icons, 
+ * 		after all is viewed, just go to #features
+ */
+Util.home_clickHandler = function(e) {
+	var sequence = ['features', 'see-the-movie', 'how-it-works', 'about', 'FAQ', 'call-to-action', 'features'];
+	var visited = CFG['cracker']['Page View'] || [];
+	var next;
+	while (sequence.length) {
+		next = sequence.shift();
+		if ($('#'+next).hasClass('viewed') == false) break;
+		if (visited.indexOf(next) === false) break;
+	};
+	Util.animateScrollToHash({hash: '#'+next});
+}
 Util.slideInNavBar = function(){
 	var navbar = $('.navbar-fixed-top');
 	// collapsed .navbar has position:absolute, otherwise fixed
@@ -469,7 +485,7 @@ Util.deferredMarkupReady = function() {
 		});
 		
 		$('#home figure.graphic').on('click',function(e){
-				Util.animateScrollToHash({hash: '#features'});
+			Util.home_clickHandler(e); 
 		})
 		
 		// update data[Follower][cheer] when a paypal/amazon button was clicked

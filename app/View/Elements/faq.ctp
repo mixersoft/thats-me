@@ -128,6 +128,7 @@ We want to give people a chance to stand up and say, <strong>&ldquo;I want this!
 But we also want to let talented software developers and partners find us &mdash; 
 those who share our values; believe in our vision; and want to join us and build something great. 
 				</p>
+<div class='hide'>				
 				<p class="question">
 	Why do you want $1 from me?	        		
 	        	</p>
@@ -150,6 +151,7 @@ We need your support to help convince the right people and partners to join us a
 </p><p class="answer">
 <a href='#call-to-action' title='take me back so I can give you a buck'><strong>[OK. I get it, and I want it!]</strong></a>     		
 	        	</p>
+</div>	        	
 				<p class="question">
 	When will your service be ready?	        		
 	        	</p>

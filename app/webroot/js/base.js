@@ -116,6 +116,10 @@ Util.scrollSpy = function(){
 	var current = $('.navbar .nav li.active'),
 		href = current.first().find('a').attr('href'),
 		visibleId;
+	if (window.location.pathname == '/i-want-it' && !CFG['socialSharing']) {
+		CFG['timing'].load_SocialSharing = 0;
+		Util.load_SocialSharing();	// load immediately on scrollIntoView
+	}	
 	$('.featurette:not(.hide)').each(function(i, elem) {
 		if (CFG['util'].isScrolledIntoView($(elem))) {
 			visibleId = $(elem).attr('id');
@@ -146,6 +150,8 @@ Util.scrollSpy = function(){
 						break;
 					case 'sharing':
 					case 'see-the-movie':
+					case 'call-to-action':
+					case 'i-want-it':
 						CFG['timing'].load_SocialSharing = 0;
 						Util.load_SocialSharing();	// load immediately on scrollIntoView
 						break;
@@ -409,7 +415,8 @@ Util.deferredMarkupReady = function() {
 		switch (window.location.hash) {
 			case '#thank-you': 	// donate success return 
 				$('#sharing .thank-you').removeClass('hide');
-			case '#sharing':				
+			case '#call-to-action':				
+			case '#sharing':	
 				CFG['timing'].load_SocialSharing = 0;
 				Util.load_SocialSharing();
 				break;

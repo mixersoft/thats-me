@@ -237,6 +237,10 @@ body {
   border-radius: @radius;
 }
 
+i {
+  cursor: default;
+}
+
 #curtain {
   height: 100%;
   position: fixed;
@@ -440,6 +444,19 @@ html.ie9 .navbar {
    		p.footnote {
    		  font-size: 18px !important;
    		}
+   		.social-btns  {
+   		  a , a:visited {
+          color: @cream;
+          text-decoration: none;
+        }
+        a:hover {
+          color: @cream;
+          .rgb-text-shadow(@orange);
+        }
+   		  i {   // from .fw-band.footer a
+          font-size: 30px;
+        }
+      }
    	}
    	strong {
       font-family: "Roboto", Helvetica,Arial,sans-serif !important;       font-weight: bold;
@@ -955,6 +972,12 @@ html.touch  {
         font-size: 0.6em;
         vertical-align: super;
       }
+    }
+    .media {
+      margin-bottom: 32px;
+    }
+    .fb-like-box {
+      background-color: #FFFFFF;
     }
     .wrapH img {
       height: 260px;

@@ -22,6 +22,48 @@ The point of this site is to declare our vision and build a base of support &amp
 We need this support to reach investors and grow our team.
 </p>      			
       		</div></div>
+<div class='get-fb-like'>      		
+	        <div class="row">
+	        	<div class='offset1 span10'>
+	        		<p class="lead">If you would like to offer your vocal support and cheer us on, please do the following:</p>
+<div class="media">
+	<img class="media-object pull-left" alt="Spread the word" style="width: 120px; height: 120px;" src="/img/beachfront/icon-sm-03.png">
+	<div class="media-body">
+		<h4 class="media-heading">Join our Revolution</h4>          	
+		<p class='lead'>
+			Like our Facebook Page. This helps us by allowing us to buy sponsored posts to show your Facebook friends that you <strong>like</strong> Snaphappi. 
+		</p>
+		<div class="fb-like-box" data-href="http://www.facebook.com/pages/Snaphappi/16486082015" data-width="480" data-show-faces="true" data-colorscheme="light" data-stream="false" data-border-color="#FDF9D0" data-header="true"></div>
+	  </div>
+</div>		        		
+<div class="media">
+	<i class='icon-group media-object pull-left'style="font-size:90px;"></i>
+	<div class="media-body">
+		<h4 class="media-heading">Spread the Word</h4>          	
+		<p class='lead'>
+			Use these buttons to share our story with your friends.
+			<div class=""> <?php echo $this->element('social-button-row'); ?></div>
+		</p>
+	  </div>
+</div>	
+<div class="media">
+	<i class='icon-comments-alt media-object pull-left'style="font-size:90px;"></i>
+	<div class="media-body">
+		<h4 class="media-heading">Tell Us What You Think</h4>          	
+		<p class='lead'>
+			Find us on these social media sites and join the conversation.
+		</p>
+		<div class="social-btns">
+		<a title='see our Facebook page' target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>
+&nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
+&nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
+		</div>
+		<br /><br /><br />
+	  </div>
+</div>  
+	        	</div>
+	        </div> <!-- / .row -->	
+<div class='get-email hide'>      		
 	        <div class="row">
 	        	<div class="offset1 span5 donate">
 					<p class="lead">
@@ -125,17 +167,18 @@ It's kind of a Kickstarter thing.
 <a href='<?php echo $target?>' title='see the FAQ'><strong>[FAQ]</strong></a>
 	        	</p>
 	        </div> <!-- / .row -->
-	        
 	        <div class="row">
 	        	<div class='wrapH center'>
     				<img src="/img/beachfront/icon-lg-01.png">
     			</div>
 	        </div> <!-- / .row -->
+</div> <!--  end get-email  -->		        
         </div>
       </div> <!-- / .vcenter-body  -->
       
       <div class='fw-band footer alpha rgba80b'>
-    	<div class="container center">
+      	&nbsp;
+    	<div class="container center hidden">
 		    <a title='see our Facebook page' target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>
 		    &nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 		    &nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>

@@ -232,7 +232,7 @@ Util.home_clickHandler = function(e) {
 	while (sequence.length) {
 		next = sequence.shift();
 		if ($('#'+next).hasClass('viewed') == false) break;
-		if (visited.indexOf(next) === false) break;
+		if (visited.indexOf(next) === -1) break;
 	};
 	Util.animateScrollToHash({hash: '#'+next});
 }
@@ -310,6 +310,13 @@ Util.fadeIn_hints = function(o) {
 		break;
 	}
 }
+Util.setButtonIcons = function() {
+	if (CFG['cracker']['Video'].indexOf('end') !== -1) {
+		// add checkmark on Video end
+		$('a.btn[href*=see-the-movie]').html("See the Movie <i class='icon-ok' style='color:lightgreen;'></i>");
+		$('a.btn[target*=snappi-demo]').removeClass('hide').removeClass('disabled');
+	}
+}
 Util.load_SocialSharing = function() {
 	setTimeout(function(){
 		if (CFG['socialSharing']) return;
@@ -360,7 +367,7 @@ Util.show_demo = function(show){
 		$('body').css('overflow','visible');
 	}
 }
-Util.load_demo = function(popup){
+Util.load_demo = function(e, popup){
 	popup = popup || ($('html.touch').length); // ipad uses popup, not iframe, to allow Vscroll
 	if (popup) return true;
 	else if ($('iframe#demo').length) {

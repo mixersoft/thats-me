@@ -96,7 +96,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 		switch (event.data) {
 			case YT.PlayerState.PLAYING:
 				// play
-				if (!CFG['mixpanel'].DISABLED && !YT_player.mixpanel['play']) {
+				if (!YT_player.mixpanel['play']) {
 					CFG['mixpanel'].track_Video('play');
 					YT_player.mixpanel['play'] = 1;		// suppress tracking on repeated play for this page load
 				}
@@ -104,7 +104,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
 				break;
 			case YT.PlayerState.ENDED:
 				// end
-				if (!CFG['mixpanel'].DISABLED && !YT_player.mixpanel['end']) {
+				if (!YT_player.mixpanel['end']) {
 					CFG['mixpanel'].track_Video('end');					YT_player.mixpanel['end'] = 1;
 				}
 				CFG['util'].notify("end of video");
@@ -326,9 +326,9 @@ if (typeof ($.cookie) != 'undefined') {
 				try {
 					CFG['ga'].trackEvent( event_name, properties['section'], MixpanelHelper.TRIGGER);
 				} catch(ex){ }
-				CFG['cracker'][event_name].push(properties['section']);
-				$.cookie('cracker', CFG['cracker']);
 			}
+			CFG['cracker'][event_name].push(properties['section']);
+			$.cookie('cracker', CFG['cracker']);
 			o.addClass('tracked');
 			/*
 			 * these actions also apply to isLocal = true
@@ -370,9 +370,10 @@ if (typeof ($.cookie) != 'undefined') {
 					CFG['ga'].trackEvent( 'Click', properties['click-action'], MixpanelHelper.TRIGGER);
 				} catch(ex){
 				}
-				CFG['cracker'][event_name].push(properties['click-action']);
-				$.cookie('cracker', CFG['cracker']);	
+					
 			}
+			CFG['cracker'][event_name].push(properties['click-action']);
+			$.cookie('cracker', CFG['cracker']);
 			o.addClass('tracked');
 			
 			// additional click processing, including posting to DB
@@ -409,8 +410,11 @@ if (typeof ($.cookie) != 'undefined') {
 			try {
 				CFG['ga'].trackEvent( event_name, properties['state'], MixpanelHelper.TRIGGER);
 			} catch(ex){ }
-			CFG['cracker'][event_name].push(properties['state']);
-			$.cookie('cracker', CFG['cracker']);
+		}
+		CFG['cracker'][event_name].push(properties['state']);
+		$.cookie('cracker', CFG['cracker']);
+		if (state=='end') {
+			CFG['util'].setButtonIcons();
 		}
 	}
 

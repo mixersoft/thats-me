@@ -36,7 +36,7 @@
 		        		<i class='icon-arrow-up hide'></i><div class='body'>scroll down<br />to see each section</div><i class='icon-arrow-down'></i>
 		        	</div>
 		        </div>
-		        <div class="featurette-heading footer">
+		        <div class="featurette-heading">
 		        	<div class="subhead">
 		        		Put your photos on <strong>our</strong> To-do list &mdash; and <strong>Play</strong> with your photos once again.
 		        </div></div>

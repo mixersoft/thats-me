@@ -49,7 +49,7 @@
 			<?php echo $this->element('timeline-body'); ?>
 			<div class='row'>
 	      		<div class="center">
-	      				Share the Curated Timeline demo with your friends <?php echo $this->element('social-button-row'); ?>  
+	      				Share the Curated Timeline demo with your friends <?php echo $this->element('social-button-row', array('like_page'=>'timeline')); ?>  
 				</div>
   			</div>				
 		</div>

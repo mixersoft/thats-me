@@ -158,6 +158,10 @@ if (typeof ($.cookie) != 'undefined') {
 		  	label: "8NgbCOTxrAUQyvCg8AM",
 		  	value: 2,
 		  },
+		  'fb-like': {							// TODO: create new Adword conversion, for now override cheer with fb-like
+		  	label: "8NgbCOTxrAUQyvCg8AM",
+		  	value: 2,
+		  },
 		  'thank-you': {
 		  	label: "0dXsCNzyrAUQyvCg8AM",
 		  	value: 7,
@@ -217,7 +221,10 @@ if (typeof ($.cookie) != 'undefined') {
 			'Page View:how-it-works:CAROUSEL-END': 1,
 			'Video:end': 1,	// video end
 			'Click:invite': 2,
+			'Click:fb-like-home': 2,		// like home page
+			'Click:fb-like-fb-page': 3,		// like snaphappi fb page
 			'Click:cheer': 5,
+			'Click:fb-comment': 6,
 			'Page View:thank-you': 10,
 		}
 		opt_value = opt_value || value_lookup[category + ':' + action] || 0;
@@ -238,6 +245,10 @@ if (typeof ($.cookie) != 'undefined') {
 				case 'Page View:features':
 				case 'Page View:how-it-works:CAROUSEL-END':
 					GoogleAdWordsHelper.conversion(action);	
+					break;
+				case 'Click:fb-like-home':
+				case 'Click:fb-like-fb-page':
+					GoogleAdWordsHelper.conversion('fb-like');	// 2 point					
 					break;
 				case 'Click:invite':
 				case 'Click:cheer':
@@ -308,6 +319,46 @@ if (typeof ($.cookie) != 'undefined') {
 				mixpanel.people.set(person);
 			}
 	};
+	
+	MixpanelHelper.listenFB = function(e){
+		FB.Event.subscribe('auth.authResponseChange', function(response) {
+		  console.info('The status of the session is: ' + response.status);
+		});
+		FB.Event.subscribe('edge.create',
+		    function(response) {
+		        // console.info('You liked the URL: ' + response);
+		        var event = 'fb-like';
+		        if (/\/pages\/snaphappi/i.test(response)) event += '-fb-page'; 
+		        else if (/\/(home|i-need-this)/i.test(response)) event += '-home';		        MixpanelHelper.track_Click({'click-event':event, 'fb-target': response.substr(29)});
+		    }
+		);
+		FB.Event.subscribe('edge.remove',
+		    function(response) {
+		        // console.info('You unliked the URL: ' + response);				var event = 'fb-unlike';
+		        if (/\/pages\/snaphappi/i.test(response)) event += '-fb-page'; 
+		        else if (/\/(home|i-need-this)/i.test(response)) event += '-home';
+		        MixpanelHelper.track_Click({'click-event':event, 'fb-target': response.substr(29)});
+		    }
+		);
+		FB.Event.subscribe('comment.create',
+		    function(response) {
+		        console.info('You commented on URL: ' + response);
+		        MixpanelHelper.track_Click({'click-event':'fb-comment', 'fb-target': response.href.substr(29)});
+		    }
+		);
+		FB.Event.subscribe('comment.remove',
+		    function(response) {
+		        // console.info('You removed comment on URL: ' + response);
+		        MixpanelHelper.track_Click({'click-event':'fb-uncomment', 'fb-target': response.href.substr(29)});
+		    }
+		);
+		FB.Event.subscribe('message.send',
+		    function(response) {
+		        console.info('You sent the URL: ' + response);
+		        MixpanelHelper.track_Click({'click-event':'fb-send', 'fb-target': response.substr(29)});
+		    }
+		);
+	}
 	/**
 	 *	external mixpanel track method for manually tracking virtual Page Views
 	 *	@params o object, o.event_name, o.section, plus additional properties
@@ -355,26 +406,37 @@ if (typeof ($.cookie) != 'undefined') {
 			}
 	};
 	/**
-	 * @param o o.is(.track-click)
+	 * @param o o.is(.track-click) or o={click-event:[click-event]}
 	 * @param e jquery Event object, required to call e.preventDefault() defer form.submit until 
 	 * 		after postEmail is complete  
 	 */
 	MixpanelHelper.track_Click = function(o, e){
 		// track Clicks
-			var track = o.attr('track'),
+			var track,
 				event_name = 'Click',
-				properties = $.extend({ 'click-action' : track }, mixpanel_event_properties[event_name]);
+				properties = mixpanel_event_properties[event_name];
+				
+			try {
+				track = o.attr('track');
+			} catch (ex) {
+				track = o['click-event'];
+				delete o['click-event'];
+				properties = $.extend(properties, o);
+			}
+			properties['click-action'] = track;
+			
 			if (!MixpanelHelper.DISABLED && (CFG['cracker'][event_name].indexOf(properties['click-action']) == -1) ){
 				mixpanel.track('Click', properties);
 				try {
 					CFG['ga'].trackEvent( 'Click', properties['click-action'], MixpanelHelper.TRIGGER);
 				} catch(ex){
 				}
-					
 			}
-			CFG['cracker'][event_name].push(properties['click-action']);
-			$.cookie('cracker', CFG['cracker']);
-			o.addClass('tracked');
+			if ( CFG['cracker'][event_name].indexOf(properties['click-action']) == -1 ) {
+				CFG['cracker'][event_name].push(properties['click-action']);
+				$.cookie('cracker', CFG['cracker']);
+			}
+			if (o.addClass) o.addClass('tracked');
 			
 			// additional click processing, including posting to DB
 			switch(track) {
@@ -451,7 +513,9 @@ if (typeof ($.cookie) != 'undefined') {
 			if ($(e.currentTarget).not('.tracked').not('.track-disabled')) 
 				MixpanelHelper.track_Click($(e.currentTarget), e);
 		})
-	
+		$(window).one('fb-init', function(e){
+			MixpanelHelper.listenFB(e);
+		});
 		// track first section
 		$(document).ready(
 			function(){

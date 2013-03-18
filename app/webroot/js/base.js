@@ -323,15 +323,30 @@ Util.load_SocialSharing = function() {
 		CFG['socialSharing'] = 1;
 		(function() {  //Closure, to not leak to the scope
 			// facebook javascript jdk 		
-			!function(d, s, id) {
-				  var js, fjs = d.getElementsByTagName(s)[0];
-				  if (d.getElementById(id)) return;
-				  js = d.createElement(s); js.id = id;
-				  // js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=16753672679";
-				  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-				  fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk');
+			  window.fbAsyncInit = function() {
+// console.info('window.fbAsyncInit called');			  				    // init the FB JS SDK
+			    FB.init({
+			      // appId      : 'YOUR_APP_ID', // App ID from the App Dashboard			      channelUrl : '//'+window.location.host+'/pages/fb-channel-file', // Channel File for x-domain communication
+			      status     : false, // check the login status upon init?
+			      cookie     : true, // set sessions cookies to allow your server to access the session?
+			      xfbml      : true  // parse XFBML tags on this page?
+			    });
+				$(window).trigger('fb-init');
+			    // Additional initialization code such as adding Event Listeners goes here
+			  };
 			
+			// Load the SDK's source Asynchronously
+			  // Note that the debug version is being actively developed and might 
+			  // contain some type checks that are overly strict. 
+			  // Please report such bugs using the bugs tool.
+			  (!function(d, debug){
+			     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			     if (d.getElementById(id)) {return;}
+			     js = d.createElement('script'); js.id = id; js.async = true;
+			     js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+			     ref.parentNode.insertBefore(js, ref);
+			   }(document, /*debug*/ false));
+   
 			// twitter
 			!function(d,s,id){
 				var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}
@@ -436,7 +451,8 @@ Util.deferredMarkupReady = function() {
 		switch (window.location.hash) {
 			case '#thank-you': 	// donate success return 
 				$('#sharing .thank-you').removeClass('hide');
-			case '#call-to-action':				
+			case '#call-to-action':	
+			case '#i-want-this':				
 			case '#sharing':	
 				CFG['timing'].load_SocialSharing = 0;
 				Util.load_SocialSharing();

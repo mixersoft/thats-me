@@ -90,7 +90,6 @@
       <footer >
         <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
-      <div id="fb-root"></div>
 <?php $this->end(); ?>
 
 <!-- BODY CONTENT -->

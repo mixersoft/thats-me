@@ -35,7 +35,7 @@
         <![endif]-->
 
 		<!--  This code taken from Cakephp layouts/default.ctp  -->
-		
+		<div id="fb-root"></div>
 		<div id="container" >
 			<div id="header"> 
 				<?php echo $this->fetch('body_header');?>

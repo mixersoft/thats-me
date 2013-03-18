@@ -110,6 +110,7 @@ class ThatsmeController extends AppController {
 			$ga_experiment = '67810021-0';	
 			$this->set(compact('ga_experiment'));		
 		}
+		$this->set("hash", true);				// for navbar useHash
 		$this->_beachfront();
 		$this->_ga_conversion_iframe();
 	}

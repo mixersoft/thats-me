@@ -6,7 +6,7 @@
  * $hash = false, use links to individual section pages
  */
 if (!isset($hash)) $hash = false;
-if ($hash == 'append') {
+if ($hash === 'append') {
 	$referer = env('HTTP_REFERER');	
 	if (strpos($referer, 'thats-me') || strpos($referer, 'snaphappi.com')) {
 		// referer from internal page, ok

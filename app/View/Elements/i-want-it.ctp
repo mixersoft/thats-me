@@ -36,7 +36,7 @@ We need this support to reach investors and grow our team.
 		<div class="fb-like-box" data-href="http://www.facebook.com/pages/Snaphappi/16486082015" data-width="480" data-show-faces="true" data-colorscheme="light" data-stream="false" data-border-color="#FDF9D0" data-header="true"></div>
 	  </div>
 </div>		        		
-<div class="media">
+<div class="media social-btn-row">
 	<i class='icon-group media-object pull-left'style="font-size:90px;"></i>
 	<div class="media-body">
 		<h4 class="media-heading">Spread the Word</h4>          	

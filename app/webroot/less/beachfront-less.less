@@ -782,7 +782,9 @@ html.js #home .fw-band.vcenter-body {
 .twitter-share-button[style] { vertical-align: text-bottom !important; }
 a[href*=pinterest\.com] { top: 4px; }
 .fb-like > span > iframe {  z-index:999 !important; }
-
+.media.social-btn-row, .media.social-btn-row .media-body {
+  overflow: visible;
+}
 
 html.no-touch {
   /* NOTE: we are supressing hover/click on html.touch next/prev/pagination to prevent CSS flashes */
@@ -980,6 +982,9 @@ html.touch  {
     }
     .media {
       margin-bottom: 32px;
+      .media-body {
+        overflow-y: visible;
+      }
     }
     .fb-like-box {
       background-color: #FFFFFF;

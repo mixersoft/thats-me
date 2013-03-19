@@ -250,8 +250,8 @@ Thus, we are unable to put them on a Curated Timeline.
 				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-        		<div class="pull-right"><a href='#home'><button class="btn btn-warning" title='Go to the next section to learn more about Snaphappi'>
-			    	Top
+        		<div class="pull-right"><a href='#home'><button class="btn btn-warning" >
+			    	Home
 			    </button></a></div>	    		
 	    	</div>
         </div>

@@ -1,11 +1,14 @@
-
-<?php echo $this->element('features'); ?>
-<?php echo $this->element('see-the-movie'); ?>	
-<?php echo $this->element('how-it-works'); ?>	
-<?php echo $this->element('i-want-it'); ?>
-<?php echo $this->element('sharing'); ?>    
-
-
-
-<?php echo $this->element('about'); ?>      
-<?php echo $this->element('faq'); ?>
+<?php 
+	if ($variation['follow']=='movie') {
+		echo $this->element('see-the-movie');
+		echo $this->element('features'); 
+	} else {	// features first
+		echo $this->element('features'); 
+		echo $this->element('see-the-movie');
+	}
+	echo $this->element('how-it-works');
+	echo $this->element('i-want-it');
+	// echo $this->element('sharing');
+	echo $this->element('about');
+	echo $this->element('faq');     
+?>

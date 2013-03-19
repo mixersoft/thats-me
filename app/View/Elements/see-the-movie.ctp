@@ -1,5 +1,5 @@
 	  <a name='see-the-movie'></a>	
-      <div id="see-the-movie" class="featurette see-the-movie body-opaque alpha rgba30b ">
+      <div id="see-the-movie" class="featurette see-the-movie track-page-view body-opaque alpha rgba30b ">
       	<div class="opaque">
 	      	<div class='fw-band vcenter-body'>
 		      	<div class="featurette-heading center">
@@ -32,7 +32,7 @@
 				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-        		<div class="pull-right"><a href='#how-it-works'><button class="btn btn-warning" title='Learn how it works in 5 easy steps'>
+        		<div class="pull-right"><a href='#how-it-works'  data-next='.featurette'><button class="btn btn-warning" >
 			    	Learn More
 			    </button></a></div>
         	</div>

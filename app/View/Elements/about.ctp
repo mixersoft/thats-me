@@ -107,7 +107,7 @@ Michael also worked for many, many years at Oracle. See his full profile at <a t
 		    <a title='see our Facebook page' target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>
 		    &nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 		    &nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
-        		<div class="pull-right"><a href='#faq'><button class="btn btn-warning" title='Go to the next section to learn more about Snaphappi'>
+        		<div class="pull-right"><a href='#faq'  data-next='.featurette'><button class="btn btn-warning">
 			    	Learn More
 			    </button></a></div>	    		
 	    	</div>

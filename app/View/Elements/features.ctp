@@ -101,7 +101,7 @@ by rating the ones you love. Your hidden duplicates are just a click away &mdash
 				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-        		<div class="pull-right"><a href='#see-the-movie'><button class="btn btn-warning" title='See the movie to understand how it all comes together'>
+        		<div class="pull-right"><a href='#see-the-movie'  data-next='.featurette'><button class="btn btn-warning" >
 			    	Learn More
 			    </button></a></div>
         	</div>

@@ -65,7 +65,7 @@
 				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-        		<div class="pull-right"><a href='#about'><button class="btn btn-warning" title='Go to the next section to learn more about Snaphappi'>
+        		<div class="pull-right"><a href='#about'  data-next='.featurette'><button class="btn btn-warning">
 			    	Learn More
 			    </button></a></div>        		
 	    	</div>

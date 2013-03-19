@@ -75,10 +75,17 @@ Let us do the work, and we'll get your photos ready to play.
 <a title='see our Facebook page' target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>
 &nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 &nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
-        		<div class="pull-right"><a href='#features'><button class="btn btn-warning" title='See what makes us different from all the other online photo sites'>
+        		<div class="pull-right"><a href='#features' data-next='.featurette'><button class="btn btn-warning" >
 			    	Learn More
 			    </button></a></div>
         	</div>
         </div>
       </div>
-      <div id='deferred' data-href-deferred='/home_deferred'></div>
+<?php 
+	/*
+	 * set deferred load url
+	 */
+	$deferred = "/home_deferred?{$_SERVER['QUERY_STRING']}";
+	echo "<div id='deferred' data-href-deferred='{$deferred}'></div>";
+?>      
+      

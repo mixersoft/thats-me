@@ -200,8 +200,16 @@ Util.showDonateButtons = function() {
  * @param el HTMLElement, o.hasAttr('hash'), $(<A>)
  */
 Util.animateScrollToHash = function(el) {
-	var target = $(el.hash);
-	if (!target.length) return;
+	var top, next, target;
+	if ($(el).attr('data-next')=='.featurette') {
+		// just scan for the next valid .featurette in the page
+		top = $(el).closest('.featurette');
+		if (top.attr('id') === 'home') next = $('#deferred .featurette:first');
+		else next = top.nextAll('.featurette:not(.hide):first');
+		target = (next.length) ? next :  $(el.hash);
+	} else target = $(el.hash);
+	
+	if (!target.length) return false;
 	
 	if (target.hasClass('carousel') && $('html.touch')) {
 		// scrolling on carousel scroll causes flashes
@@ -214,7 +222,7 @@ Util.animateScrollToHash = function(el) {
         var delta = target.offset().top - $(window).scrollTop();
         if (delta < 0 || delta > 50) {
         	setTimeout(function(){
-        		$.scrollTo(el.hash, 1000);
+        		$.scrollTo(target, 1000);
         	}, 50);
         } 
     }
@@ -226,15 +234,17 @@ Util.animateScrollToHash = function(el) {
  * 		after all is viewed, just go to #features
  */
 Util.home_clickHandler = function(e) {
-	var sequence = ['features', 'see-the-movie', 'how-it-works', 'about', 'FAQ', 'call-to-action', 'features'];
+	var sequence = $('.featurette').not('#home').not('.hide').not('.viewed');
 	var visited = CFG['cracker']['Page View'] || [];
 	var next;
-	while (sequence.length) {
-		next = sequence.shift();
-		if ($('#'+next).hasClass('viewed') == false) break;
-		if (visited.indexOf(next) === -1) break;
-	};
-	Util.animateScrollToHash({hash: '#'+next});
+	for (var i=0; i<sequence.length; i++) {
+		if (visited.indexOf(sequence[i].id) === -1) {
+			next = sequence[i];
+			break;
+		}
+	}
+	if (!next) next = $('#features')[0];
+	Util.animateScrollToHash({hash:'#'+next.id});
 }
 Util.slideInNavBar = function(){
 	var navbar = $('.navbar-fixed-top');
@@ -454,6 +464,7 @@ Util.deferredMarkupReady = function() {
 			case '#call-to-action':	
 			case '#i-want-this':				
 			case '#sharing':	
+			case '#social': 	// just the social part of #i-want-this
 				CFG['timing'].load_SocialSharing = 0;
 				Util.load_SocialSharing();
 				break;

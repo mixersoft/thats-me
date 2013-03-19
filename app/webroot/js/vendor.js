@@ -378,8 +378,10 @@ if (typeof ($.cookie) != 'undefined') {
 					CFG['ga'].trackEvent( event_name, properties['section'], MixpanelHelper.TRIGGER);
 				} catch(ex){ }
 			}
-			CFG['cracker'][event_name].push(properties['section']);
-			$.cookie('cracker', CFG['cracker']);
+			if ( CFG['cracker'][event_name].indexOf(properties['section']) == -1 ) {
+				CFG['cracker'][event_name].push(properties['section']);
+				$.cookie('cracker', CFG['cracker']);
+			}
 			o.addClass('tracked');
 			/*
 			 * these actions also apply to isLocal = true
@@ -473,8 +475,10 @@ if (typeof ($.cookie) != 'undefined') {
 				CFG['ga'].trackEvent( event_name, properties['state'], MixpanelHelper.TRIGGER);
 			} catch(ex){ }
 		}
-		CFG['cracker'][event_name].push(properties['state']);
-		$.cookie('cracker', CFG['cracker']);
+		if ( CFG['cracker'][event_name].indexOf(properties['state']) == -1 ) {
+			CFG['cracker'][event_name].push(properties['state']);
+			$.cookie('cracker', CFG['cracker']);
+		}
 		if (state=='end') {
 			CFG['util'].setButtonIcons();
 		}

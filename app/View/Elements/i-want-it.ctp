@@ -26,6 +26,7 @@ We need this support to reach investors and grow our team.
 	        <div class="row">
 	        	<div class='offset1 span10'>
 	        		<p class="lead">If you would like to offer your vocal support and cheer us on, please do the following:</p>
+<a id='social' name='social'></a>	        		
 <div class="media">
 	<img class="media-object pull-left" alt="Spread the word" style="width: 120px; height: 120px;" src="/img/beachfront/icon-sm-03.png">
 	<div class="media-body">

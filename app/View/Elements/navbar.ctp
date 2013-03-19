@@ -44,7 +44,7 @@ $hashClass = $hash ? 'use-hash' : '';
                   <ul class="dropdown-menu pull-right alpha rgba80b">
                     <li class='promote'><a href="<?php echo $referer; ?>#about">About</a></li>
                     <li class='promote'><a href="<?php echo $referer; ?>#FAQ">FAQ</a></li>
-                    <li class='promote'><a href="<?php echo $referer; ?>#sharing">Chatter</a></li>
+                    <li class='promote'><a href="<?php echo $referer; ?>#social">Social</a></li>
                     <li><a href="<?php echo $referer; ?>#see-the-movie">See the Movie Again</a></li>
                     <li><a href="/timeline/venice" onclick='return CFG["util"].load_demo();'  target="snappi-demo">See the Demo</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
@@ -64,7 +64,7 @@ $hashClass = $hash ? 'use-hash' : '';
                   <ul class="dropdown-menu pull-right alpha rgba80b">
                     <li class='promote'><a href="#about">About</a></li>
                     <li class='promote'><a href="#FAQ">FAQ</a></li>
-                    <li class='promote'><a href="#sharing">Chatter</a></li>
+                    <li class='promote'><a href="#social">Social</a></li>
                     <li><a href="#see-the-movie">See the Movie Again</a></li>
                     <li><a href="/timeline/venice" onclick='return CFG["util"].load_demo();'  target="snappi-demo">See the Demo</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
@@ -83,7 +83,7 @@ $hashClass = $hash ? 'use-hash' : '';
                   <ul class="dropdown-menu pull-right alpha rgba80b">
                     <li class='promote'><a href="/about">About</a></li>
                     <li class='promote'><a href="/faq">FAQ</a></li>
-                    <li class='promote'><a href="/sharing">Chatter</a></li>
+                    <li class='promote'><a href="/sharing">Social</a></li>
                     <li><a href="/see-the-movie">See the Movie Again</a></li>
                     <li><a href="/timeline/venice"  onclick='return CFG["util"].load_demo();'  target="snappi-demo">See the Demo</a></li>
                     <li class='hide'><a href="#">Playground</a></li>

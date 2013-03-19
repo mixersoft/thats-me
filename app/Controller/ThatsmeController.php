@@ -108,9 +108,15 @@ class ThatsmeController extends AppController {
 		}
 		if ($this->request->url == 'i-need-this') {
 			$ga_experiment = '67810021-0';	
-			$this->set(compact('ga_experiment'));		
+			$this->set(compact('ga_experiment'));	
 		}
-		$this->set("hash", true);				// for navbar useHash
+		// setup experiment keys
+		$variation_keys = array_fill_keys(array('home','follow'), null);
+		$variation = array_intersect_key(array_merge($variation_keys, $this->request->query), $variation_keys);
+		
+		$hash = true; // for navbar useHash
+		
+		$this->set(compact('hash','variation'));				
 		$this->_beachfront();
 		$this->_ga_conversion_iframe();
 	}
@@ -120,6 +126,13 @@ class ThatsmeController extends AppController {
 	public function home_deferred(){
 		if ($this->request->isAjax()) {
 			$this->layout = null;
+			// setup experiment keys
+			$variation_keys = array_fill_keys(array('home','follow'), null);
+			$variation = array_intersect_key(array_merge($variation_keys, $this->request->query), $variation_keys);
+			
+			$hash = true; // for navbar useHash
+			
+			$this->set(compact('variation'));				
 			$this->render('home_deferred');
 		} else {
 			$this->redirect('/home', null, true);

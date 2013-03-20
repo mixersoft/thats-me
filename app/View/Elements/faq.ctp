@@ -108,8 +108,27 @@ In the future, our hope is to offer you the choice of multiple processing center
 	What about sharing photos?	        		
 	        	</p>
 	        	<p class="answer">
- The hardest part about sharing photos is taking the time to find/make something worth sharing — something your friends and family will appreciate. Our Curated Stories make this easy, and they are made for sharing. We provide custom links that allow you to you share your Curated Stories and individual photos by email or online.
+The hardest part about sharing photos is taking the time to find/make something worth sharing — something your friends and family will appreciate. Our Curated Stories make this easy, and they are made for sharing. We provide custom links that allow you to you share your Curated Stories and individual photos by email or online.
 	        	</p>
+	        	<p class="question">
+	What about the privacy and handling of my personal information?	        		
+	        	</p>
+	        	<p class="answer">
+We plan to build a service that survives by screening photos at a penny a photo and thrives by selling value-added services to our members &mdash; thats you. One example is by offering handcrafted photobooks assembled from your favorite photos which you can preview, edit, and purchase online. (But not yet.)
+</p><p class="answer">
+As a result, we have no plans to sell your information to 3rd party advertisers. 	        		
+</p><p class="answer">
+Instead, we hope to put that information to use ourselves to build our audience and offer you fantastic products and services. We do use 3rd party web analytic packages to track what you do on this site. 
+These vendors include Google Analytics and Mixpanel, and both of them save 3rd party cookies in your browser. 
+The information we gain by tracking your actions and understanding the results helps us:
+<ul style='font-weight:300;'>
+	<li>identify common trouble spots with this website and improve your user experience,</li>
+	<li>understand the demographics of our biggest fans, and</li>
+	<li>improve the effectiveness of our advertising dollar as we try to reach out and build an audience.</li>
+</ul>
+
+  
+	        	</p>	        	
 			</div>
 			
 			

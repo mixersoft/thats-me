@@ -427,25 +427,26 @@ Util.load_demo = function(e, popup){
 Util.setVariant = function(qs){
 	qs = qs || {};
 	// show overlay variation
-	var variant = qs['var'];
+	var variant = qs['home'];
 	switch (variant) {
+		case 'fill':
+			Util.setFullFrameHeight();
+			break;
 		case 'curator':
 			// change additional copy for curator var
 			var foo = $('#home figcaption').first().html();
 			foo = foo.replace('Editor', 'Curator');
 			$('#home figcaption').first().html(foo);
 			// then unhide
-		case 'who-has-time':
+		case 'who-has-time': // inactive
 			$('#home .row .overlay.'+variant).removeClass('hide');
 			Util.setFullFrameHeight();
 			break;
 		case 'peek':
+		default:
 			// do NOT set fullFrameHeight;
 			$('#home .fw-band.vcenter-body').css('height', 'auto');
-			break;
-		default:	
-			Util.setFullFrameHeight();
-			break;
+			break;			
 	}
 	return variant;
 }
@@ -458,7 +459,9 @@ Util.deferredMarkupReady = function() {
 		/*
 		 * load section from hash. i.e. #thank-you
 		 */
-		switch (window.location.hash) {
+		var hash = window.location.hash, 
+			qs = CFG['util'].parseQueryString();
+		switch (hash) {
 			case '#thank-you': 	// donate success return 
 				$('#sharing .thank-you').removeClass('hide');
 			case '#call-to-action':	
@@ -474,9 +477,11 @@ Util.deferredMarkupReady = function() {
 				break;
 			case '#not-yet': 	// donate cancel return 
 				break;
-				break;
 		}
-		Util.animateScrollToHash({hash: window.location.hash});
+		if (!hash && qs.hash === 'see-the-movie') {
+			hash = '#'+qs.hash;
+		}
+		Util.animateScrollToHash({hash: hash});
 
 		load_carouFredSel($);
 		

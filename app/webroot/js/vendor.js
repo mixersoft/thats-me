@@ -219,13 +219,13 @@ if (typeof ($.cookie) != 'undefined') {
 		var value_lookup = {
 			'Page View:features': 1,					// opt_value Int
 			'Page View:how-it-works:CAROUSEL-END': 1,
-			'Video:end': 1,	// video end
-			'Click:invite': 2,
-			'Click:fb-like-home': 2,		// like home page
-			'Click:fb-like-fb-page': 3,		// like snaphappi fb page
-			'Click:cheer': 5,
-			'Click:fb-comment': 6,
-			'Page View:thank-you': 10,
+			'Page View:call-to-action': 1,
+			'Video:play': 1,	// video end
+			'Video:end': 2,	// video end
+			// 'Click:invite': 2,			'Click:fb-like-home': 4,		// like home page
+			'Click:fb-like-fb-page': 6,		// like snaphappi fb page
+			// 'Click:cheer': 5,			'Click:fb-comment': 10,
+			// 'Page View:thank-you': 10,
 		}
 		opt_value = opt_value || value_lookup[category + ':' + action] || 0;
 		
@@ -257,6 +257,10 @@ if (typeof ($.cookie) != 'undefined') {
 				case 'Click:donate-PayPal':
 				case 'Click:donate-Amazon':
 					GoogleAdWordsHelper.conversion('cheer');	// 4 points
+				case 'Video:start':	
+				case 'Video:end':
+					// simulate PageView for ga experiments
+					GoogleAdWordsHelper.trackPageview('/see-the-movie/'+category + ':' + action);
 				break;
 			}
 		} catch(ex){ 

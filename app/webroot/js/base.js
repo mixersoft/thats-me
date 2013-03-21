@@ -41,6 +41,7 @@ Util.parseQueryString = function(a) {
  * see also: http://imakewebthings.com/jquery-waypoints/
  */
 Util.isScrolledIntoView = function (o) {
+	if (o.length !== 1) return false;
 	var docViewTop = $(window).scrollTop();
 	var docViewBottom = docViewTop + $(window).height();
 

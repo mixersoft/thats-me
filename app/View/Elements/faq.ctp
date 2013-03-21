@@ -92,13 +92,16 @@ We’ve developed and tested our basic editing process, so we know how fast each
 Furthermore, we are still in the process of building and organizing our editing studios. Until this is complete, we are unable to promise delivery times.        		
 	        	</p>
 	       </div>
+	       <a id='faq-privacy' name='faq-privacy'></a>
 	       <div class="faq-section alpha rgba50b "> 	
 	        	<h2>Privacy &amp; Sharing</h2>
 	        	<p class="question">
 	What about the safety and privacy of my photos?	        		
 	        	</p>
 	        	<p class="answer">
-We believe that you are the owner your photos and we are just caretakers. Thus, we take great care in protecting your privacy with clear and reasonable privacy settings. At this time, the default (and only) privacy setting is ‘private’ and the photos you upload into your own account will not be visible to other site members or the general public. 
+We believe that you are the owner your photos and we are just caretakers. Thus, we take great care in protecting your privacy with clear and reasonable privacy settings. 
+At this time, we are not accepting photo uploads from the general public. 
+But when we do, the default privacy setting is <strong>'private'</strong> and the photos you upload into your own account will not be visible to other site members or the general public unless you explicitly share them. 
 </p><p class="answer">
 However, our algorithms and Trained Editors both need access to your photos in order to do the job of curating your photos. Where people are involved, we promise to limit this access to only those Editors who are assigned to your photos. Furthermore, we promise to carefully control the “chain of custody” of your photos, and will keep logs of every access by our Editors photos through our editing system.
 </p><p class="answer">

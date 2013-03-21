@@ -88,7 +88,7 @@
 <!-- FOOTER -->
 <?php $this->startIfEmpty('body_footer'); ?>      
       <footer >
-        <p><a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p><a href="/faq#faq-privacy">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 <?php $this->end(); ?>
 

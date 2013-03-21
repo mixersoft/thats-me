@@ -119,12 +119,14 @@ We plan to build a service that survives by screening photos at a penny a photo 
 As a result, we have no plans to sell your information to 3rd party advertisers. 	        		
 </p><p class="answer">
 Instead, we hope to put that information to use ourselves to build our audience and offer you fantastic products and services. We do use 3rd party web analytic packages to track what you do on this site. 
-These vendors include Google Analytics and Mixpanel, and both of them save 3rd party cookies in your browser. 
-The information we gain by tracking your actions and understanding the results helps us:
-<ul style='font-weight:300;'>
-	<li>identify common trouble spots with this website and improve your user experience,</li>
+These vendors include Google Analytics, Mixpanel, and even Facebook. 
+These packages save 3rd party cookies in your browser, and they tell us things like: what pages your visited; what buttons you clicked; if you liked or shared anything; and even when you left our site and returned. 
+The information we gain by tracking your actions and understanding the results help us:
+<ul>
+	<li>identify and eliminate common trouble spots with this website,</li>
+	<li>fine tune our copy and offerings to better fill your needs,</li>
 	<li>understand the demographics of our biggest fans, and</li>
-	<li>improve the effectiveness of our advertising dollar as we try to reach out and build an audience.</li>
+	<li>improve the effectiveness of our advertising dollar as we reach out to similar people and build our audience.</li>
 </ul>
 
   

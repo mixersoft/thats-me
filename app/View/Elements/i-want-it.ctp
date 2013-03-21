@@ -32,9 +32,16 @@ We need this support to reach investors and grow our team.
 	<div class="media-body">
 		<h4 class="media-heading">Join our Revolution</h4>          	
 		<p class='lead'>
-			Like our Facebook Page. This helps us by allowing us to buy sponsored posts to show your Facebook friends that you <strong>like</strong> Snaphappi. 
+			Like the Snaphappi Page on Facebook. 
+			This action puts your Like on your Facebook Timeline and in front of your friends. 
+			For every 250 friends, that's worth $1 of free advertising to us!
 		</p>
-		<div class="fb-like-box" data-href="http://www.facebook.com/pages/Snaphappi/16486082015" data-width="480" data-show-faces="true" data-colorscheme="light" data-stream="false" data-border-color="#FDF9D0" data-header="true"></div>
+		<div class="fb-like-box" data-href="http://www.facebook.com/pages/Snaphappi/16486082015" data-width="480" data-show-faces="true" data-colorscheme="light" data-stream="false" data-border-color="#FDF9D0" data-header="true">
+		</div>
+		<div class='center fb-spinner'><i class='icon-spinner icon-spin'></i> Loading Facebook Like Box...</div>
+		<p>
+			We'll also be able to stay connected through our Facebook Page. And finally, we can buy Sponsored Stories so your Like gets seen.
+		</p>
 	  </div>
 </div>		        		
 <div class="media social-btn-row">
@@ -42,17 +49,17 @@ We need this support to reach investors and grow our team.
 	<div class="media-body">
 		<h4 class="media-heading">Spread the Word</h4>          	
 		<p class='lead'>
-			Use these buttons to share our story with your friends.
-			<div class=""> <?php echo $this->element('social-button-row'); ?></div>
-		</p>
-	  </div>
+			Share our story with your friends whenever you can. 
+			Like this page, Tweet your love, Pin it! These buttons will help you get started.</p>
+			<div class="center"> <?php echo $this->element('social-button-row'); ?></div>
+	</div>
 </div>	
 <div class="media">
 	<i class='icon-comments-alt media-object pull-left'style="font-size:90px;"></i>
 	<div class="media-body">
 		<h4 class="media-heading">Tell Us What You Think</h4>          	
 		<p class='lead'>
-			Find us on these social media sites and join the conversation.
+			Find us on these social media sites, say &ldquo;hello!&rdquo;, and join the conversation. 
 		</p>
 		<div class="social-btns">
 		<a title='see our Facebook page' target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>

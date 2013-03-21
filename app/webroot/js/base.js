@@ -160,6 +160,10 @@ Util.scrollSpy = function(){
 			return false;					
 		}
 	});
+	if (CFG['util'].isScrolledIntoView($('.fb-spinner'))) {
+		CFG['timing'].load_SocialSharing = 0;
+		Util.load_SocialSharing();	// load immediately on scrollIntoView
+	}
 };
 Util.postEmail = function(email, options, success) {
 	options = options || {};
@@ -328,6 +332,17 @@ Util.setButtonIcons = function() {
 	}
 }
 Util.load_SocialSharing = function() {
+	$(window).one('fb-init', function(e){
+		$('.fb-spinner').remove();
+		// FB.Event.subscribe('auth.login', function(response) {
+		  // console.info('The status of login is: ' + response.status);
+		// });
+		// FB.Event.subscribe('auth.authResponseChange', function(response) {
+		  // console.info('The status of authResponseChange is: ' + response.status);
+		// });
+		// FB.Event.subscribe('auth.statusChange', function(response) {
+		  // console.info('The status of statusChange is: ' + response.status);
+		// });	});
 	setTimeout(function(){
 		if (CFG['socialSharing']) return;
 		CFG['socialSharing'] = 1;

@@ -136,16 +136,17 @@ CFG['util'] = $.extend(CFG['util'] || {}, Util);
 var Story = new function(){}
 CFG['story'] = Story;		// make global
 
-Story.onRender = function() {
+Story.onRender = function(Pr, node) {
 	SNAPPI.PM.PageMakerPlugin.startPlayer({page:1});
 }
-Story.onFirstRender = function() {
+Story.onFirstRender = function(Pr, node) {
 	$('#story .ipad, #story .montage-container').css('height','auto');
 	setTimeout(function(){
 		Story.initPopovers();
 		// help listener
 		$('.icon-question-sign').click(function(){
 			Story.togglePopovers('toggle', 20000);
+			$(this).popover('destroy');			// only show help hint once
 		})
 	},1000);
 	$('#curtain').remove(); 
@@ -192,9 +193,9 @@ Story.documentReady = function () {
 		var next = window.location.href.replace('story', 'timeline');
 		window.location.href = next;
 	});
-	$('.nav-timeline').click(function(e){
+	$('.nav .nav-btn.timeline').click(function(e){
 		e.preventDefault();
-		var next = window.location.href.replace('/story/','/timeline/');
+		var next = window.location.href.replace('/story','/timeline');
 		window.location.href = next;
 		return false;
 	});
@@ -224,7 +225,14 @@ Story.initPopovers = function(){
 		content:'<div  style="padding-right:22px;">get links to share Stories on all your favorite places (disabled)</div>', 
 		placement:'top'})
 	);
-	if (1 || $('html.touch').length) Story.togglePopovers();
+	$('i.help').popover({trigger:'click',
+		html: true,
+		title: "Story Hints <i class='icon-remove-sign pull-right'></i>",
+		content:'<div>Click here to show/hide key<br />Story features</div>',
+		placement:'bottom'}).popover('show');
+	$('.popover-title .icon-remove-sign').one('click', function(){
+		$(this).closest('.popover').addClass('hide');
+	})	
 }
 Story.togglePopovers = function(state, hideDelay){
 	state = state || 'show';

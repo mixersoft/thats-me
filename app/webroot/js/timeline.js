@@ -140,6 +140,7 @@ Timeline.documentReady = function () {
 	// help listener
 	$('.icon-question-sign').click(function(){
 		Timeline.togglePopovers('toggle', 20000);
+		$(this).popover('destroy');			// only show help hint once
 	})
 	
 	
@@ -158,8 +159,9 @@ Timeline.movePopovers = function(){
 		content:'automatic event detection based on your shooting patterns', 
 		placement:'right'})
 	);
-	Timeline.popovers.push( $('.item:nth-child(3) .eventbar div.circle').popover({trigger:'hover',
-		content:'The number of photos in each event', 
+	Timeline.popovers.push( $('.item:nth-child(3) .eventbar div.circle .circle').popover({trigger:'hover',
+		html: true,
+		content:'The number of photos<br />in this event.<br />Click to see the Curated Story', 
 		placement:'bottom'})
 	);
 	Timeline.popovers.push( $('.item:nth-child(3) .feature div.vcenter-body').popover({trigger:'hover',
@@ -255,16 +257,26 @@ Timeline.render = function(cc) {
 	/*
 	 * initialize popovers
 	 */
+	// static popovers
 	$('.timescale').popover({trigger:'hover',
 		html: true,
 		title: "<div style='padding-left:50px;'>Time Scale",
 		content:'<div style="padding-left:50px;">selectable time scale allows for quick navigation (disabled)<div>', 
 		placement:'bottom'});
+	$('i.help').popover({trigger:'click',
+		html: true,
+		title: "Timeline Hints <i class='icon-remove-sign pull-right'></i>",
+		content:'<div>Click here to show/hide key<br />Timeline features</div>',
+		placement:'bottom'}).popover('show');
+	$('.popover-title .icon-remove-sign').one('click', function(){
+		$(this).closest('.popover').addClass('hide');
+	})
+			
+	// dynamic popovers	
 	Timeline.movePopovers();
-	if (1 || $('html.touch').length) Timeline.togglePopovers();
-	
-	// click handler for nav to Story
-	$('#timeline').delegate('.item .feature img, .nav .nav-timeline', 'click',function(){
+	// if (1 || $('html.touch').length) Timeline.togglePopovers();	
+	// click handler for nav to Story, see also iframe click handler
+	$('#timeline').delegate('html#no-touch .item .feature img, .eventbar .circle.evt-count, .nav .nav-btn.story', 'click',function(){
 		var next = window.location.href.replace('timeline','story');
 		window.location.href = next;
 	});

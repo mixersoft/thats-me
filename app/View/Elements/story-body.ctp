@@ -1,8 +1,9 @@
 <div class='ipad landscape alpha rgba50b'>
-	<div class='nav pull-right'>
-		<i class="nav-timeline icon-circle-arrow-left" title="back to timeline"></i>
-		&nbsp;
-		<i class='help icon-question-sign'  title="toggle popups"></i>
+	<div class='nav'>
+		<div class='nav-btn timeline' >
+			<i class="icon-circle-arrow-left"></i>
+			Back to Timeline
+		</div>
 	</div>	       		
 	<section class='montage-container container'>
 		<div class='stage-body'></div>

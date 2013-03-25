@@ -46,6 +46,18 @@ class PagesController extends AppController {
 	public $uses = array();
 
 
+	public function _setLayout($page) {
+		switch ($page) {
+			case 'fb-channel-file': 
+				$this->layout = false;	break; 
+			case 'ads':  	
+				$this->layout = 'bootstrap-iframe'; break;
+			case 'html5':  
+			case 'folder-chooser':	
+			default:
+				$this->layout = 'html5'; break;
+		}
+	}
 /**
  * Displays a view
  *
@@ -70,9 +82,8 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 
-if ($page == 'html5') 		$this->layout = 'html5';		
-if ($page == 'folder-chooser') 		$this->layout = 'html5';	
-if ($page == 'fb-channel-file') 		$this->layout = false;	
+		$this->_setLayout($page);
+
 		
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 		$this->render(implode('/', $path));

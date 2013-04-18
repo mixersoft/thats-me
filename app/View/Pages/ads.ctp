@@ -120,8 +120,11 @@
 	
 	
 	
-	<div class='display-ad medium' title='300x250'>
-		
+	<div class='display-ad medium privacy-icon' title='300x250'>
+		<div class='center wrap'>
+			<img src='/img/beachfront/icon-sm-privacy.png'>
+			<i class='icon-lock'></i>
+		</div>
 	</div>
         </div>
 	</div>

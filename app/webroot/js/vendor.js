@@ -266,7 +266,39 @@ if (typeof ($.cookie) != 'undefined') {
 		} catch(ex){ 
 			console.error('Error: GoogleAdWordsHelper.trackEvent()');
 		}
+		try {
+			GoogleAdWordsHelper.trackConversion_facebook(category + ':' + action);
+		} catch(ex) {
+			console.error('Error: GoogleAdWordsHelper.trackConversion_facebook()');
+		}
 	}
+	
+	/*
+	 * facebook conversion tracking for different events
+	 * @param event = category + ':' + action, i.e. 'Video:start'
+	 */
+	GoogleAdWordsHelper.trackConversion_facebook = function(event){
+		var fb_param = {};
+		fb_param.pixel_id = '6007696914783';	// i-need-this PageView
+		fb_param.value = '0.00';
+		switch(event) {
+			case 'Video:start':
+			// case 'Video:end':
+				fb_param.pixel_id = '6007697127183';	// Video:play
+				fb_param.value = '0.20';				// same as adwords conversion				break;
+			case 'Page View:how-it-works:CAROUSEL-END':				
+				fb_param.pixel_id = '6007697244983';
+				fb_param.value = '0.10';
+				break;
+			default:
+				return;		//default is no action
+		}
+		var a = 'https://www.facebook.com/offsite_event.php',
+			b = a+'?id='+fb_param.pixel_id;
+		b+='&value='+encodeURIComponent(fb_param.value);
+		var c = new Image();
+		c.src = b;
+	};
 	
 	// make global
 	CFG['ga'] = GoogleAdWordsHelper; 

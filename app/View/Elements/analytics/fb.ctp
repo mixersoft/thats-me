@@ -1,8 +1,10 @@
 <!-- FB conversion tracking: fb pageview conversion -->
 <script type="text/javascript">
 var fb_param = {};
-fb_param.pixel_id = '6007696914783';
-fb_param.value = '1.00';
+fb_param.pixel_id = '6007696914783';	// PageView
+fb_param.value = '0.10';
+// fb_param.pixel_id = '6007697127183';	// Video:play, same as gaq Video:end
+// fb_param.value = '0.20';
 (function(){
   var fpw = document.createElement('script');
   fpw.async = true;

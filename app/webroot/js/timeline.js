@@ -69,6 +69,13 @@ Util.parseCC = function(cc, force){
 	var i, oSrc, score, id, 
 		parsedAuditions = {},
 		auditions = cc.CastingCall.Auditions.Audition;
+		
+if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
+	auditions = PAGE.jsonData.shot_CastingCall.CastingCall.Auditions.Audition;
+	// TODO: parse using SNAPPI.Auditions???
+		
+}	
+		
 	for (i in auditions) {
 		id = auditions[i].Photo.id;
 		parsedAuditions[id] = $.extend({
@@ -220,11 +227,32 @@ Timeline.render = function(cc) {
 			to: '2011-10-09 13:06:27',
 		},
 	];
+	
+if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
+	auditions = PAGE.jsonData.castingCall.CastingCall.Auditions.Audition;
+	eventstream = [];
+	var events = PAGE.jsonData.eventGroups.Events;
+	for (var h=0;h<events.length;h++) {
+		eventstream.push({
+			id: events[h].FirstPhotoID,
+			label: events[h].BeginDate,
+			count: events[h].PhotoCount, 
+			'circle-size':'med',			// TODO: need algo for circle-size, normalize all event PhotoCounts
+			from: events[h].BeginDate,
+			to: events[h].EndDate,
+		});
+	}		
+}
+
+	
 	var k, ev, markup, 
 		item_markup = $('.markup li.item')[0].outerHTML,
 		parent = $('ul.timeline').html('');
 	var formatDate = function(string, dropyear) {
-		var d = new Date(string.replace(' ', 'T'));
+		var d;
+		if (isNaN(string)) d = new Date(string.replace(' ', 'T'));
+		else d = new Date (string*1000);		
+
 		var curr_date = d.getDate();
 		var curr_month = d.getMonth();
 		var curr_year = d.getFullYear();
@@ -232,6 +260,8 @@ Timeline.render = function(cc) {
 		else return curr_month+'/'+curr_date+'/'+curr_year;
 	}
 	parent.append("<li class='padding'></li><li class='padding'></li>");
+		
+	
 	for (k=0; k<eventstream.length; k++) {
 		ev = eventstream[k];
 		markup = item_markup;
@@ -240,18 +270,46 @@ Timeline.render = function(cc) {
 			.replace(':from', formatDate(ev.from, true)).replace(':to', formatDate(ev.to));
 		parent.append(markup);
 	}
+
 	parent.find('li.item:first').addClass('active');
 	parent.append("<li class='padding'></li><li class='padding'></li>");
 	
 	var baseurl = PAGE.jsonData.castingCall.CastingCall.Auditions.Baseurl,
 		audition, src, j=0;
 	var placeholders = $('.timeline .item .feature img.img-polaroid');
+		
+if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
+	var m=0, j=0,
+		auditions=PAGE.jsonData.shot_CastingCall.CastingCall.Auditions.Audition,
+		shots=PAGE.jsonData.castingCall.CastingCall.Auditions.Audition; 
+	for (k=0; k<eventstream.length; k++) {
+		var shot = shots[k],
+			audition = auditions[m],
+			featured;
+				
+		featured = auditions.slice(m, m+shot.Shot.count);
+		m += (shot.Shot.count);		
+		featured.sort(function(a,b){
+				return b.Photo.Fix.Score - a.Photo.Fix.Score;
+		});
+		audition = featured.shift(); 
+		var featured_count = 3;
+		while (featured_count--) {
+			if (audition) {
+				src = CFG['util'].getImgSrcBySize(baseurl + audition.Photo.Img.Src.rootSrc , 'bs');
+				placeholders.eq(j++).attr('src', src).attr('title', 'score: '+audition.Photo.Fix.Score);
+			} else placeholders.eq(j++).remove();
+			audition = featured.shift(); 
+		}
+	}	
+} else {	
 	for (var i in CFG['util'].Auditions) {
 		audition = CFG['util'].Auditions[i];
 		src = CFG['util'].getImgSrcBySize(baseurl + audition.rootSrc , 'bs');
-		placeholders.eq(j++).attr('src', src);
+		placeholders.eq(j++).attr('src', src).attr('title', 'score: '+audition.Photo.Fix.Score);
 	}
-	
+}
+
 	CFG['carousel'].init.init();
 	$('#curtain').remove(); 
 	/*

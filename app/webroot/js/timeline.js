@@ -293,11 +293,11 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 				return b.Photo.Fix.Score - a.Photo.Fix.Score;
 		});
 		audition = featured.shift(); 
-		var featured_count = 3;
+		var featured_count = 3; 
 		while (featured_count--) {
 			if (audition) {
 				src = CFG['util'].getImgSrcBySize(baseurl + audition.Photo.Img.Src.rootSrc , 'bs');
-				placeholders.eq(j++).attr('src', src).attr('title', 'score: '+audition.Photo.Fix.Score);
+				placeholders.eq(j++).attr('src', src).attr('title', 'score: '+ audition.Photo.Fix.Score);
 			} else placeholders.eq(j++).remove();
 			audition = featured.shift(); 
 		}
@@ -306,7 +306,7 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	for (var i in CFG['util'].Auditions) {
 		audition = CFG['util'].Auditions[i];
 		src = CFG['util'].getImgSrcBySize(baseurl + audition.rootSrc , 'bs');
-		placeholders.eq(j++).attr('src', src).attr('title', 'score: '+audition.Photo.Fix.Score);
+		placeholders.eq(j++).attr('src', src).attr('title', 'score: '+audition.score);   // "fake" auditions. not parsed using YUI classes
 	}
 }
 

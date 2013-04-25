@@ -81,13 +81,14 @@ Util.notify = function notify(msg, type) {
 /*
  * set the homepage to expand to the full window height
  */
-Util.setFullFrameHeight = function(){
+Util.setFullFrameHeight = function(peek){
+	peek = peek || 80;	// peek ahead, show pixels from next section		
 	// offsetH:  581+:89 320+:41
-	var offsetH = $('#home .fw-band.footer').height()==16 ? 41 : 89;
+	var offsetH = $('#home .fw-band.footer').height()==16 ? 41 : 89,
 		perfectH = $(window).attr('innerHeight')-offsetH,
 		homeMinH = $('#home .fw-band.vcenter-body').css('height', 'auto').height();
-	var activeH = Math.min(Math.max(homeMinH, perfectH ),1100);
-	$('#home .fw-band.vcenter-body').css('height', activeH );
+	var activeH = Math.min(Math.max(homeMinH, perfectH-peek ),1100);
+	$('#home .fw-band.vcenter-body').css('height', activeH-peek );
 	// center copy
 	var copy = $('#home .fw-band.vcenter-body > .container');
 	copy.css('padding-top', (activeH-copy.height())/2 );
@@ -445,23 +446,9 @@ Util.setVariant = function(qs){
 	// show overlay variation
 	var variant = qs['home'];
 	switch (variant) {
-		case 'fill':
-			Util.setFullFrameHeight();
-			break;
-		case 'curator':
-			// change additional copy for curator var
-			var foo = $('#home figcaption').first().html();
-			foo = foo.replace('Editor', 'Curator');
-			$('#home figcaption').first().html(foo);
-			// then unhide
-		case 'who-has-time': // inactive
-			$('#home .row .overlay.'+variant).removeClass('hide');
-			Util.setFullFrameHeight();
-			break;
-		case 'peek':
 		default:
-			// do NOT set fullFrameHeight;
-			$('#home .fw-band.vcenter-body').css('height', 'auto');
+			// winning variant: peek ahead, movie in section 2
+			Util.setFullFrameHeight(80);
 			break;			
 	}
 	return variant;

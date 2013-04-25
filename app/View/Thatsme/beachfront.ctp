@@ -73,6 +73,7 @@
 			}
 			echo $this->element('analytics/gaq');				// google analytics
 			echo $this->element('analytics/mixpanel');			// mixpanel
+			echo $this->element('analytics/fb');				// fb conversion tracking
 		$this->end();	 
 	}
 ?>

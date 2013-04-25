@@ -106,7 +106,7 @@ class ThatsmeController extends AppController {
 			Configure::write('debug', $this->request->query['debug']);
 			Configure::write('isLocal', !empty($this->request->query['isLocal']));
 		}
-		if ($this->request->url == 'i-need-this') {
+		if (0 && $this->request->url == 'i-need-this') {
 			$ga_experiment = '67810021-0';	
 			$this->set(compact('ga_experiment'));	
 		}

@@ -56,6 +56,7 @@
 			<div class="featurette-heading ">
 		        <h1>Curated Stories
 		        	<div class='subhead'>This is a simple prototype to help illustrate the ideas mentioned in The Movie
+		        		<i class='help icon-question-sign'></i>
 		        	<span class='more-stories pull-right'>
 		    				<span class='label2'>Some other stories:</span> 
 		    				<a href='/story/bali'><span class=' label alpha rgba80b'>Bali</span></a>

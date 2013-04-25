@@ -1,21 +1,21 @@
 <div class="featurette-heading ">
     <h1 >Curated Timeline
-    	<div class='subhead'>This is a simple prototype to help illustrate the ideas mentioned in The Movie 
+    	<div class='subhead'>This is a simple prototype to help illustrate the ideas mentioned in The Movie <i class='help icon-question-sign'></i> 
     		<span class='pull-right'><a class="btn btn-primary hide" href="/see-the-movie">See the Movie</a></span>
     	</div>
     </h1>
-    	
 </div>
 <div class='ipad landscape alpha rgba50b'>
-	<div class='timescale'>
+	<div class='nav'>
+		<div class='timescale'>
 			<span class=' label focus'>Week</span>
 			<span class=' label'>Month</span>
 			<span class=' label'>Year</span>
-	</div>	       	
-	<div class='nav pull-right'>
-		<i class="nav-timeline icon-circle-arrow-right" title="click to see matching story"></i>
-		&nbsp;
-		<i class='help icon-question-sign'  title="toggle popups"></i>
+		</div>
+		<div class='nav-btn story' >
+			<i class="icon-circle-arrow-right" title="click to see matching story"></i>
+			Show Story
+		</div>
 	</div>	
 	<hr>		
 	<div class='carousel-inner'>

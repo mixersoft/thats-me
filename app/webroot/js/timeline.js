@@ -153,12 +153,34 @@ Timeline.documentReady = function () {
 	
 	CFG['timing'].load_SocialSharing = 1000;
 	CFG['util'].load_SocialSharing();
+	
+		// click handler for nav to Story, see also iframe click handler
+	// once per render
+	$('#timeline').delegate('.eventbar .circle.evt-count', 'click',function(e){
+		var eventId = $(this).closest('li').attr('data-id'),
+			focus;
+		for (var i in PAGE.jsonData.eventGroups.Events){
+			if (PAGE.jsonData.eventGroups.Events[i].FirstPhotoID == eventId) {
+				focus = PAGE.jsonData.eventGroups.Events[i].BeginDate; 
+				break;
+			}
+		}
+		Timeline.setTimescale(focus);
+	});
+	$('#timeline').delegate('html#no-touch .item .feature img, .nav .nav-btn.story', 'click',function(){
+		var next = window.location.href.replace('timeline','story');
+		window.location.href = next;
+	});
 }
 Timeline.movePopovers = function(){
 	Timeline.popovers = Timeline.popovers || [];
 	var p;
 	while (p = Timeline.popovers.shift()) {
 		p.popover('destroy');
+	}
+	if (window.location.host == 'thats-me') {
+		$('i.help').popover('destroy');
+		return;	// turn off popoffs for localhost
 	}
 	Timeline.popovers.push( $('.item:nth-child(3) .eventbar span.evt-label').popover({trigger:'hover',
 		html: true,
@@ -188,11 +210,31 @@ Timeline.togglePopovers = function(state, hideDelay){
 	Timeline.popoverState = state;
 	if (state=='hide') return;
 	setTimeout(function(){
-		Timeline.togglePopovers('hide')
+		Timeline.togglePopovers('hide');
 	}, hideDelay);
 }
-Timeline.render = function(cc) {
+Timeline.render = function(cc, focus) {
 	if (cc) CFG['util'].parseCC(cc, true);
+	
+if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
+	auditions = PAGE.jsonData.castingCall.CastingCall.Auditions.Audition;
+	eventstream = []
+	event_focus = 0;
+	var events = PAGE.jsonData.eventGroups.Events;
+	for (var h=0;h<events.length;h++) {
+		eventstream.push({
+			id: events[h].FirstPhotoID,
+			label: events[h].BeginDate,
+			count: events[h].PhotoCount, 
+			'circle-size':'med',			// TODO: need algo for circle-size, normalize all event PhotoCounts
+			from: events[h].BeginDate,
+			to: events[h].EndDate,
+		});
+		if (events[h].BeginDate <= focus && focus <= events[h].EndDate) {
+			event_focus = h;	// init carousel to this index
+		}
+	}		
+} else {
 	var eventstream = [
 		{
 			id:'newyork',
@@ -226,22 +268,7 @@ Timeline.render = function(cc) {
 			from: '2011-10-01 18:12:17',
 			to: '2011-10-09 13:06:27',
 		},
-	];
-	
-if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
-	auditions = PAGE.jsonData.castingCall.CastingCall.Auditions.Audition;
-	eventstream = [];
-	var events = PAGE.jsonData.eventGroups.Events;
-	for (var h=0;h<events.length;h++) {
-		eventstream.push({
-			id: events[h].FirstPhotoID,
-			label: events[h].BeginDate,
-			count: events[h].PhotoCount, 
-			'circle-size':'med',			// TODO: need algo for circle-size, normalize all event PhotoCounts
-			from: events[h].BeginDate,
-			to: events[h].EndDate,
-		});
-	}		
+	];	
 }
 
 	
@@ -285,10 +312,23 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	for (k=0; k<eventstream.length; k++) {
 		var shot = shots[k],
 			audition = auditions[m],
+			starttime = eventstream[k].from,
+			endtime = eventstream[k].to,
 			featured;
-				
+		
+	if ('use-date-boundaries') {
+		// TODO: use BeginDate/EndDate instead of count to allow filtering
+		featured = [];
+		for (m=0;m<auditions.length;m++){
+			if (starttime <= auditions[m].Photo.TS && auditions[m].Photo.TS <= endtime) {
+				featured.push(auditions[m]);
+			}
+			if (auditions[m].Photo.TS > endtime) break;
+		}
+	} else {
 		featured = auditions.slice(m, m+shot.Shot.count);
 		m += (shot.Shot.count);		
+	}
 		featured.sort(function(a,b){
 				return b.Photo.Fix.Score - a.Photo.Fix.Score;
 		});
@@ -311,9 +351,11 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 }
 
 	CFG['carousel'].init.init();
+	if (event_focus) $('.carousel-inner .scroller').trigger('slideTo',[event_focus])
 	$('#curtain').remove(); 
 	/*
 	 * initialize popovers
+	 * TODO: move to documentReady?
 	 */
 	// static popovers
 	$('.timescale').popover({trigger:'hover',
@@ -333,11 +375,19 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	// dynamic popovers	
 	Timeline.movePopovers();
 	// if (1 || $('html.touch').length) Timeline.togglePopovers();	
-	// click handler for nav to Story, see also iframe click handler
-	$('#timeline').delegate('html#no-touch .item .feature img, .eventbar .circle.evt-count, .nav .nav-btn.story', 'click',function(){
-		var next = window.location.href.replace('timeline','story');
-		window.location.href = next;
-	});
+
+}
+Timeline.setTimescale = function(focus) {
+	$('body').addClass('wait');
+	if (PAGE.src.indexOf('timescale:0.25')>0) PAGE.src = PAGE.src.replace('timescale:0.25','timescale:7');
+	else if (PAGE.src.indexOf('timescale:0.5')>0) PAGE.src = PAGE.src.replace('timescale:0.5','timescale:0.25');
+	else if (PAGE.src.indexOf('timescale:1')>0) PAGE.src = PAGE.src.replace('timescale:1','timescale:0.5');
+	else if (PAGE.src.indexOf('timescale:7')>0) PAGE.src = PAGE.src.replace('timescale:7','timescale:1');
+		CFG['util'].Auditions = 'empty';
+		CFG['util'].getCC(PAGE.src, function(json){
+			Timeline.render(null, focus);
+			$('body').removeClass('wait');
+		});
 }
 Timeline.carousel_cfg = {
 		responsive: true,

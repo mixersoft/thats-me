@@ -32,7 +32,7 @@
 	/*
 	 * use event_group source
 	 */
-	if ($userid === "5170506a-5300-4ab9-80ac-38f70afc6d44") {
+	if (strlen($userid) == 36) {
 		$timescale = !empty($this->request->named['timescale']) ? $this->request->named['timescale'] : 1; 
 		$grlim = !empty($this->request->named['grlim']) ? $this->request->named['grlim'] : 199;
 		$cc_src = "http://{$host}/person/event_group/{$userid}/timescale:{$timescale}/perpage:{$grlim}/.json?forcexhr=1";

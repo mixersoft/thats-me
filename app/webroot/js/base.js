@@ -503,11 +503,22 @@ Util.deferredMarkupReady = function() {
 					case "#call-to-action":
 						href = '#i-want-it';
 					break;
-					case "#about-now":
+					case "#features":
+					case "#how-it-works":
+					case "#i-want-it":
+					case "#call-to-action":
+					case "#about":
+					case "#faq":
+					case "#about":
+					case "#sharing":
+					case "#see-the-movie":
+						break;
+					// keep these hash/anchors	
+					case "#about-now":  	
 					case "#about-mission":
-					case "#about-team":
-						return true;
-					break;
+					case "#about-team":	
+					default:
+						return true;	// skip everything else
 				}
 				href = href.substr(1);
 				$(elem).attr('href', href);
@@ -657,6 +668,22 @@ Util.documentReady = function() {
 		} else {
 			Util.deferredMarkupReady();
 		}
+		
+		
+		/*
+		 * FAQ/accordion listener for show-all
+		 */
+		$(document).on('click.accordion-show-all', '[data-action=show-all]', function (e) {
+			var parent = $(e.currentTarget).attr('data-parent');
+			if ($(e.currentTarget).html()==='show all') {
+				$(e.currentTarget).html('hide all');
+				$(parent).find('.accordion-body').collapse('show');
+			} else {
+				$(e.currentTarget).html('show all');
+				$(parent).find('.accordion-body').collapse('hide');
+			}
+			
+		})
 		
 
 		/***********************************************************

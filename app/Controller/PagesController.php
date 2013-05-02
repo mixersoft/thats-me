@@ -52,6 +52,8 @@ class PagesController extends AppController {
 				$this->layout = false;	break; 
 			case 'ads':  	
 				$this->layout = 'bootstrap-iframe'; break;
+			case 'bootstrap':  	
+				$this->layout = 'twbootstrap'; break;	
 			case 'html5':  
 			case 'folder-chooser':	
 			default:

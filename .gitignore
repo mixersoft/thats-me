@@ -35,3 +35,6 @@ app/webroot/js/vendor/TouchSwipe-Jquery-Plugin-master/
 app/webroot/min/
 app/webroot/css/fonts/FortAwesome-Font-Awesome-13d5dd3/
 app/webroot/js/vendor/carouFredSel-6.2.0/
+app/webroot/css/*-less.css
+app/Plugin/Less/
+desktop.ini

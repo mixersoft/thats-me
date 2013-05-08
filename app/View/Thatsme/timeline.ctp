@@ -33,9 +33,15 @@
 	 * use event_group source
 	 */
 	if (strlen($userid) == 36) {
-		$timescale = !empty($this->request->named['timescale']) ? $this->request->named['timescale'] : 1; 
-		$grlim = !empty($this->request->named['grlim']) ? $this->request->named['grlim'] : 199;
-		$cc_src = "http://{$host}/person/event_group/{$userid}/timescale:{$timescale}/perpage:{$grlim}/.json?forcexhr=1";
+		$allowed = array('grlim', 'xxxtimescale', 'coarse_spacing', 'fine_spacing', 'day', 'iterations');
+		$options = array_intersect_key($this->request->named, array_flip($allowed));
+		if (isset($options['grlim'])) {
+			$options['perpage'] = $options['grlim'];
+			unset($options['grlim']);
+		} else $options['perpage'] = 199;
+		$options['sort'] = 'dateTaken';
+		$event_group_request = array('controller'=>'person', 'action'=>'event_group', 0=>$userid) + $options;
+		$cc_src = "http://{$host}".Router::url($event_group_request)."/.json?forcexhr=1";
 	}
 	
 	$scriptBlock = array('PAGE = {};');
@@ -89,7 +95,7 @@
 				<div class='date'><span class='event evt-from'>:from</span> &mdash; <span class='event evt-to'>:to</span>
 				</div>
 			</div>
-			<div class='wrap circle :circle-size'><span class='circle evt-count'>:count</span></div>
+			<div class='wrap circle :circle-size'><span class='circle evt-count :has-child' :tooltip >:count</span></div>
 		</div>
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">

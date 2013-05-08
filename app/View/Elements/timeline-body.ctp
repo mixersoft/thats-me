@@ -8,9 +8,8 @@
 <div class='ipad landscape alpha rgba50b'>
 	<div class='nav'>
 		<div class='timescale'>
-			<span class=' label focus'>Week</span>
-			<span class=' label'>Month</span>
-			<span class=' label'>Year</span>
+			<span data-value='big' class=' label focus'>Big</span>
+			<span data-value='small' class=' label'>Small</span>
 		</div>
 		<div class='nav-btn story' >
 			<i class="icon-circle-arrow-right" title="click to see matching story"></i>

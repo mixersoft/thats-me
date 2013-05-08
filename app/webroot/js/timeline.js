@@ -154,18 +154,31 @@ Timeline.documentReady = function () {
 	CFG['timing'].load_SocialSharing = 1000;
 	CFG['util'].load_SocialSharing();
 	
-		// click handler for nav to Story, see also iframe click handler
+	// click handler for changing timeline timescale. add .has-child class if clickable
 	// once per render
-	$('#timeline').delegate('.eventbar .circle.evt-count', 'click',function(e){
+	$('#timeline').delegate('.eventbar .circle.evt-count.has-child', 'click',function(e){
 		var eventId = $(this).closest('li').attr('data-id'),
 			focus;
+		// TODO: detect COARSE/FINE events
 		for (var i in PAGE.jsonData.eventGroups.Events){
 			if (PAGE.jsonData.eventGroups.Events[i].FirstPhotoID == eventId) {
+				// TODO: should focus on first visible photo
+				// COARSE event found
 				focus = PAGE.jsonData.eventGroups.Events[i].BeginDate; 
+				var fine_events = PAGE.jsonData.eventGroups.Events[i].Children || null;
+				Timeline.setTimescale(focus, fine_events);
 				break;
 			}
 		}
-		Timeline.setTimescale(focus);
+			// update Timeline
+		$('.nav .timescale .label').removeClass('focus');
+		$('.nav .timescale .label[data-value=small]').addClass('focus');
+		$('.nav .timescale .label[data-value=big]').one('click', function(e){
+			$('.nav .timescale .label').removeClass('focus');
+			$('.nav .timescale .label[data-value=big]').addClass('focus');
+			Timeline.setTimescale(focus, null);
+		});
+
 	});
 	$('#timeline').delegate('html#no-touch .item .feature img, .nav .nav-btn.story', 'click',function(){
 		var next = window.location.href.replace('timeline','story');
@@ -181,6 +194,9 @@ Timeline.movePopovers = function(){
 	if (window.location.host == 'thats-me') {
 		$('i.help').popover('destroy');
 		return;	// turn off popoffs for localhost
+	} else if (PAGE.src.indexOf('coarse_spacing:')>0) {
+		$('i.help').popover('destroy');
+		return;	// turn off popoffs for coarse event_group testing
 	}
 	Timeline.popovers.push( $('.item:nth-child(3) .eventbar span.evt-label').popover({trigger:'hover',
 		html: true,
@@ -213,22 +229,32 @@ Timeline.togglePopovers = function(state, hideDelay){
 		Timeline.togglePopovers('hide');
 	}, hideDelay);
 }
-Timeline.render = function(cc, focus) {
+/**
+ * render timeline with event_groups from castingCall
+ * @param cc raw, unparsed castingCall, default = PAGE.jsonData.castingCall
+ * @param focus unixtime (UTC), will set focus to event which includes this timestamp
+ * @param events object, default PAGE.jsonData.eventGroups.Events for COARSE events, or 
+ * 		Events[i].Children for FINE events   
+ */
+Timeline.render = function(cc, focus, events) {
 	if (cc) CFG['util'].parseCC(cc, true);
 	
 if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	auditions = PAGE.jsonData.castingCall.CastingCall.Auditions.Audition;
 	eventstream = []
 	event_focus = 0;
-	var events = PAGE.jsonData.eventGroups.Events;
+	events = events || PAGE.jsonData.eventGroups.Events;
 	for (var h=0;h<events.length;h++) {
 		eventstream.push({
 			id: events[h].FirstPhotoID,
 			label: events[h].BeginDate,
 			count: events[h].PhotoCount, 
-			'circle-size':'med',			// TODO: need algo for circle-size, normalize all event PhotoCounts
+			// TODO: need algo for circle-size, normalize all event PhotoCounts
+			// for now, lg circles have children/fine events
+			'circle-size': events[h].Children ? 'lg' : 'med',			
 			from: events[h].BeginDate,
 			to: events[h].EndDate,
+			children: events[h].Children ? events[h].Children.length : 0
 		});
 		if (events[h].BeginDate <= focus && focus <= events[h].EndDate) {
 			event_focus = h;	// init carousel to this index
@@ -294,7 +320,9 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 		markup = item_markup;
 		markup = markup.replace(':label', ev.label).replace(':id', ev.id)
 			.replace(':count', ev.count).replace(':circle-size', ev['circle-size'])
-			.replace(':from', formatDate(ev.from, true)).replace(':to', formatDate(ev.to));
+			.replace(':from', formatDate(ev.from, true)).replace(':to', formatDate(ev.to))
+			.replace(':has-child', ev.children ? 'has-child' : '' )
+			.replace(':tooltip', ev.children ? 'title=\"contains '+ev.children+' events\"' : '' );
 		parent.append(markup);
 	}
 
@@ -377,17 +405,28 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	// if (1 || $('html.touch').length) Timeline.togglePopovers();	
 
 }
-Timeline.setTimescale = function(focus) {
-	$('body').addClass('wait');
-	if (PAGE.src.indexOf('timescale:0.25')>0) PAGE.src = PAGE.src.replace('timescale:0.25','timescale:7');
-	else if (PAGE.src.indexOf('timescale:0.5')>0) PAGE.src = PAGE.src.replace('timescale:0.5','timescale:0.25');
-	else if (PAGE.src.indexOf('timescale:1')>0) PAGE.src = PAGE.src.replace('timescale:1','timescale:0.5');
-	else if (PAGE.src.indexOf('timescale:7')>0) PAGE.src = PAGE.src.replace('timescale:7','timescale:1');
+// change Timescale based on user action
+/**
+ * 
+ * @param {Object} focus, unix timestamp, set focus to event which contains timestamp
+ * @param {Object} child_events, same default null, from PAGE.jsonData.eventGroups.Events[i].Children
+ */
+Timeline.setTimescale = function(focus, child_events) {
+	if (PAGE.src.indexOf('timescale:')>0) {
+		$('body').addClass('wait');
+		// for event_group v1.0
+		if (PAGE.src.indexOf('timescale:0.25')>0) PAGE.src = PAGE.src.replace('timescale:0.25','timescale:7');
+		else if (PAGE.src.indexOf('timescale:0.5')>0) PAGE.src = PAGE.src.replace('timescale:0.5','timescale:0.25');
+		else if (PAGE.src.indexOf('timescale:1')>0) PAGE.src = PAGE.src.replace('timescale:1','timescale:0.5');
+		else if (PAGE.src.indexOf('timescale:7')>0) PAGE.src = PAGE.src.replace('timescale:7','timescale:1');
 		CFG['util'].Auditions = 'empty';
 		CFG['util'].getCC(PAGE.src, function(json){
 			Timeline.render(null, focus);
 			$('body').removeClass('wait');
 		});
+	} else if (PAGE.src.indexOf('coarse_spacing:')>0) {
+		Timeline.render(null, focus, child_events);
+	}
 }
 Timeline.carousel_cfg = {
 		responsive: true,

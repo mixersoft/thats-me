@@ -129,7 +129,7 @@ Get on our list now, and we'll invite you to our preview when it's ready.
 	  </div>
 	</div>
 </form>		
-
+<?php if ($show_donate_form = false) { ?>
 <div class='donate-form-wrap alpha rgba50b' style='display:none;'>
 							<i class="icon-remove-sign pull-right"></i>
 	        				<h2>We like your enthusiasm!</h2>
@@ -163,6 +163,7 @@ Get on our list now, and we'll invite you to our preview when it's ready.
   <input  class='track-click' track='donate-Amazon' alt="Donate $1 with Amazon Payments" type="image" src="http://g-ecx.images-amazon.com/images/G/01/asp/golden_small_paynow_withlogo_darkbg.gif" border="0">
 </form>		
 </div>
+<?php } // endif show-donate-form ?>
 	        	</div>  
 	        </div> <!-- / .row -->
 	        <div class="row">

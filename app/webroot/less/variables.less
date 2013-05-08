@@ -2,6 +2,40 @@
 // Variables
 // --------------------------------------------------
 
+// snaphappi variables
+@snappi-red:            #D01F40;
+@snappi-darkred:        #711124;
+@snappi-orange:         #F16122;
+@snappi-yellow:         #FDF9D0;
+@snappi-darkblue:       #152437;   
+@snappi-peach: #E9C1C1;
+
+/*   
+ * http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/ 
+ * http://stackoverflow.com/questions/9436776/lesscss-method-with-ie-filter-alpha-opacity-css
+ */
+
+.rgba(@hex:#000000, @alpha:0.7) {
+    /* Fallback for web browsers that doesn't support RGBa */
+    background-color: @hex;
+    /* RGBa with alpha */
+    background-color: hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
+}
+
+.ie-rgba(@hex:#000000, @alpha:0.7) {
+    /* Fallback for web browsers that doesn't support RGBa */
+    background-color: transparent;
+    /* RGBa with alpha */
+    background-color: hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
+
+    @ieGradient: argb(rgba(0, 0, 0, @alpha));
+    /* For IE 5.5 - 7*/
+    filter:~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieGradient}, endColorstr=@{ieGradient} )";
+    /* For IE 8*/
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{ieGradient}, endColorstr=@{ieGradient})";
+}
+
+@rgba70b:               rgba(0,0,0,0.7);
 
 // Global values
 // --------------------------------------------------
@@ -20,41 +54,42 @@
 
 // Accent colors
 // -------------------------
+
 @blue:                  #049cdb;
 @blueDark:              #0064cd;
 @green:                 #46a546;
-@red:                   #9d261d;
-@yellow:                #ffc40d;
-@orange:                #f89406;
+@red:                   @snappi-red;        // #9d261d;
+@yellow:                @snappi-yellow;    // #ffc40d;
+@orange:                @snappi-orange;    // #f89406;
 @pink:                  #c3325f;
 @purple:                #7a43b6;
 
 
 // Scaffolding
 // -------------------------
-@bodyBackground:        @white;
-@textColor:             @grayDark;
+@bodyBackground:        @snappi-darkblue;   //  @white;
+@textColor:             @yellow;    // @grayDark;
 
 
 // Links
 // -------------------------
-@linkColor:             #08c;
+@linkColor:             @orange;      // #08c;  // blue
 @linkColorHover:        darken(@linkColor, 15%);
 
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+@sansFontFamily:        "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @serifFontFamily:       Georgia, "Times New Roman", Times, serif;
 @monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
 
-@baseFontSize:          14px;
+@baseFontSize:          16px;                 // 14px;
 @baseFontFamily:        @sansFontFamily;
-@baseLineHeight:        20px;
+@baseLineHeight:        @baseFontSize * 1.4;  //20px;
 @altFontFamily:         @serifFontFamily;
 
-@headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
-@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsFontFamily:    "GeoSansLightRegular", Helvetica, Arial, sans-serif; // empty to use BS default, @baseFontFamily
+@headingsFontWeight:    normal;    // instead of browser default, bold
 @headingsColor:         inherit; // empty to use BS default, @textColor
 
 
@@ -86,9 +121,9 @@
 // -------------------------
 @btnBackground:                     @white;
 @btnBackgroundHighlight:            darken(@white, 10%);
-@btnBorder:                         #bbb;
+@btnBorder:                         @yellow;    // #bbb;
 
-@btnPrimaryBackground:              @linkColor;
+@btnPrimaryBackground:              #08c;     // @linkColor;
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
 
 @btnInfoBackground:                 #5bc0de;
@@ -177,7 +212,7 @@
 
 // Navbar
 // -------------------------
-@navbarCollapseWidth:             979px;
+@navbarCollapseWidth:             580px;    // 979px;
 @navbarCollapseDesktopWidth:      @navbarCollapseWidth + 1;
 
 @navbarHeight:                    40px;
@@ -202,9 +237,9 @@
 @navbarInverseText:                      @grayLight;
 @navbarInverseLinkColor:                 @grayLight;
 @navbarInverseLinkColorHover:            @white;
-@navbarInverseLinkColorActive:           @navbarInverseLinkColorHover;
+@navbarInverseLinkColorActive:           @yellow;  // @navbarInverseLinkColorHover;
 @navbarInverseLinkBackgroundHover:       transparent;
-@navbarInverseLinkBackgroundActive:      @navbarInverseBackground;
+@navbarInverseLinkBackgroundActive:      transparent;  // @navbarInverseBackground;
 
 @navbarInverseSearchBackground:          lighten(@navbarInverseBackground, 25%);
 @navbarInverseSearchBackgroundFocus:     @white;
@@ -299,3 +334,6 @@
 // 768px-979px
 @fluidGridColumnWidth768:      percentage(@gridColumnWidth768/@gridRowWidth768);
 @fluidGridGutterWidth768:      percentage(@gridGutterWidth768/@gridRowWidth768);
+
+
+

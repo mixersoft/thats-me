@@ -942,16 +942,6 @@ html.touch  {
     position: relative;
     z-index: 1;
   }
-  .featurette-heading {
-    border: 2px solid @cream;
-    margin: 80px 0 20px;
-    padding: 20px;
-    line-height: 1.15;
-    h1 {
-      font-size: 60px;
-      margin: 0;
-    }
-  }
   img.darkroom {
     background: url("/img/beachfront/darkroom.png") no-repeat scroll right top transparent;
     background-size: 100%;
@@ -965,7 +955,6 @@ html.touch  {
   }
   .container {
     p {
-      font-size: @fontSizeLarge;
       .icon-asterisk {
         font-size: 0.6em;
         vertical-align: super;
@@ -974,6 +963,11 @@ html.touch  {
     .media {
       margin-bottom: 32px;
       .media-body {
+        .media-heading {
+          font-family: @baseFontFamily;
+          color: @orange;
+          font-weight: 400; 
+        }
         overflow-y: visible;
       }
     }
@@ -1046,6 +1040,11 @@ html.touch  {
       .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
         .rgba(#000000, 0.5);
       }
+    }
+    .media-heading {
+      font-family: @baseFontFamily;
+      color: @yellow;
+      font-weight: 400; 
     }
   }
 }

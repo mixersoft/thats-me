@@ -11,7 +11,7 @@
 			<div class="container center invisible"> 
 				<div class="featurette-heading center">
 					<h1 class="">Curated Family Photos</h1>	    	
-		        	<div class="subhead">What do you do with your 10,000 photos? How do you find those precious moments?</div>
+		        	<div class="subhead">We'll find the precious moments buried under 1000s of family photos.</div>
 		        </div>
 		        <div class="wrapW">
 		        	<figure class="graphic track-click" track='home-editors'>

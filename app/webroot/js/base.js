@@ -87,11 +87,11 @@ Util.setFullFrameHeight = function(peek){
 	var offsetH = $('#home .fw-band.footer').height()==16 ? 41 : 89,
 		perfectH = $(window).attr('innerHeight')-offsetH,
 		homeMinH = $('#home .fw-band.vcenter-body').css('height', 'auto').height();
-	var activeH = Math.min(Math.max(homeMinH, perfectH-peek ),1100);
+	var activeH = Math.min(Math.max(homeMinH, perfectH ),1100);
 	$('#home .fw-band.vcenter-body').css('height', activeH-peek );
 	// center copy
 	var copy = $('#home .fw-band.vcenter-body > .container');
-	copy.css('padding-top', (activeH-copy.height())/2 );
+	copy.css('padding-top', (activeH-copy.height())/2 - 40 );
 };
 Util.setNavbarCollapse = function(){
 	var navbar = $('.navbar-inner .nav-collapse:not(.in)');

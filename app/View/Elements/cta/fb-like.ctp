@@ -35,7 +35,7 @@
 	<div class="media-body">
 		<h4 class="media-heading">Tell Us What You Think</h4>          	
 		<p class='lead'>
-			Find us on these social media sites, say &ldquo;hello!&rdquo;, and join the conversation. 
+			Find us on these social media sites, say &ldquo;hello!&rdquo; and join the conversation. 
 		</p>
 		<div class="social-btns">
 		<a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>

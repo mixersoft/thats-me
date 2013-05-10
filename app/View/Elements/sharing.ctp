@@ -35,7 +35,7 @@
 					<div class="offset2 span8 body">
 						<ul class='unstyled'>
 	      					<li>
-	      						<a target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i> 
+	      						<a target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i> 
 	      						Snaphappi on Facebook</a>
 	      					</li>
 	      					<li>
@@ -60,12 +60,12 @@
       			</div>
       		</div>
 		</div>		
-        <div class='fw-band footer alpha rgba80b'>
+        <div class='fw-band footer alpha black a85'>
         	<div class="container center">
-				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-awesome" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-        		<div class="pull-right"><a href='#about'  data-next='.featurette'><button class="btn btn-warning">
+        		<div class="pull-right"><a href='#about'  data-next='.featurette'><button class="btn btn-awesome">
 			    	Learn More
 			    </button></a></div>        		
 	    	</div>

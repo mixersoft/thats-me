@@ -1,8 +1,8 @@
      <a name='about'></a>
-      <div id='about' class="featurette about track-page-view alpha rgba70card">
+      <div id='about' class="featurette about track-page-view alpha darkred a70 ">
 		<div class='fw-band vcenter-body'>
       		<div class="container">
-      			<div class="featurette-heading alpha rgba50b">
+      			<div class="featurette-heading">
 			        <h1>About Snaphappi</h1>
       			</div>
 	        	<div class='row span11'>
@@ -99,15 +99,15 @@ Michael also worked for many, many years at Oracle. See his full profile at <a t
 	        	</div></div>  <!--  end .row-->
       		</div>
 		</div>	      	
-		<div class='fw-band footer alpha rgba80b'>
+		<div class='fw-band footer alpha black a85'>
 	    	<div class="container center">
-				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-awesome" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-		    <a title='see our Facebook page' target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>
+		    <a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>
 		    &nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 		    &nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
-        		<div class="pull-right"><a href='#faq'  data-next='.featurette'><button class="btn btn-warning">
+        		<div class="pull-right"><a href='#faq'  data-next='.featurette'><button class="btn btn-awesome">
 			    	Learn More
 			    </button></a></div>	    		
 	    	</div>

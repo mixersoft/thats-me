@@ -1,5 +1,6 @@
 @import "variables.less"; // Modify this for custom colors, font-sizes, etc
 
+
 html.fontface {
   body, select {
       font-family: "Roboto", Helvetica,Arial,sans-serif;
@@ -194,6 +195,9 @@ html.ie8.doc-mode-ie8 {
 .rgb-text-shadow-sm(@hex=#333333) {
   text-shadow: 0 0 1px @hex;
 }
+.rgb-box-shadow(@hex=#000000, @alpha:1) {
+  box-shadow: 1px 1px 2px hsla(hue(@hex), saturation(@hex), lightness(@hex), @alpha);
+}
 
 body {
   margin: 0;
@@ -236,7 +240,6 @@ body.wait {
 }
 
 #see-the-movie .popover .popover-inner .popover-content p {
-  text-shadow: 1px 1px 2px #333333;
   color: #D01F40;
 }
 
@@ -515,10 +518,6 @@ html.ie9 .navbar {
       a , a:visited {
         color: @cream;
         text-decoration: none;
-      }
-      a:hover {
-        color: @cream;
-        .rgb-text-shadow(@orange);
       }
    }
 }
@@ -811,7 +810,7 @@ html.touch  {
 }
 
 #features {
-  background-color: @white;
+  color: @red;
   .featurette-heading {
     color: @red;
     // text-shadow: 1px 1px 1px #333;
@@ -927,8 +926,6 @@ html.touch  {
 
 
 #see-the-movie {
-  color: @red;
-  background-color: @white;
   .featurette-heading {
     padding-bottom: 0;
   }
@@ -968,7 +965,7 @@ html.touch  {
   }
   .container {
     p {
-      font-size: 21px;
+      font-size: @fontSizeLarge;
       .icon-asterisk {
         font-size: 0.6em;
         vertical-align: super;
@@ -1013,36 +1010,8 @@ html.touch  {
     }
   }
 }
-#FAQ {
-  a {
-    color: @orange;
-  }
-}
-#sharing, #thank-you, #about, #FAQ {
-  .rgb-text-shadow();
-  .featurette-heading {
-    border: 2px solid @cream;
-    color: @cream;
-    margin: 80px 0 20px;
-    padding: 20px;
-    line-height: 1.15;
-    h1 {
-      font-size: 60px;
-      margin: 0;
-    }
-    .wrapH {
-      margin: 20px 0;
-    }
-  }
-  .container {
-    p {
-      font-size: 18px;
-    }
-    .wrapH img {
-      height: 160px;
-    }
-  }
-}
+
+
 
 #sharing, #thank-you h1 {
   .rgb-text-shadow(@orange);
@@ -1080,45 +1049,7 @@ html.touch  {
     }
   }
 }
-#FAQ {
-  .faq-section {
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 20px;
-  }
-  .faq-section h2{
-    color: #BBB;
-  }
-  .container {
-    .row ul {
-      font-weight: 300;
-    }
-    .accordion-group {
-      border: none;
-      margin-bottom: 10px;
-      .accordion-heading .accordion-toggle {
-        padding: 8px 15px 0;
-      }
-      .accordion-body  {
-        padding-left: 15px;
-      }  
-    }
-    .question {
-      color: white;
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.4;
-      margin: 14px 0 4px;
-      text-decoration: none;
-    }
-    
-    .answer {
-      color: @cream;
-      font-weight: 300;
-      font-size: 14px;
-    }
-  }
-}
+
 
 #footer {
   margin: 0;

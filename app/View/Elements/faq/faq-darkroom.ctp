@@ -6,7 +6,7 @@
 			</a>
 		</div>
 		<div id="faq-darkroom-1" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 The goal of this &ldquo;launch&rdquo; site is to declare our vision and build buzz and commitment behind it &mdash; it’s kind of like a Kickstarter campaign (which is in the works).
 </p><p class="answer">
@@ -26,7 +26,7 @@ those who share our values; believe in our vision; and want to join us and build
 			</a>
 		</div>
 		<div id="faq-darkroom-2" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 We’ve still got a ways to go before we will be ready for a preview - maybe later this year. 
 </p><p class="answer">
@@ -46,7 +46,7 @@ And, of course, the faster we build a great team, the faster we can deliver a gr
 			</a>
 		</div>
 		<div id="faq-darkroom-3" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 We don't want the dollar (really). What we really want is confirmation that we are offering a valuable service at an attractive price &mdash; one that solves a real problem of yours. 
 </p><p class="answer">

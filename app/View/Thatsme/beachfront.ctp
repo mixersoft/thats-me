@@ -17,9 +17,10 @@
 	if ($isLocal) {
 $this->Less->css('bootstrap', array('no_output'=>true));		
 $this->Less->css('responsive', array('no_output'=>true));
+$this->Less->css('beachfront-2', array('no_output'=>true));
 // $min = "/min/b=css&f=bootstrap.css,responsive.css";
 // $this->Html->css($min, null, array('inline' => false));		
-		$min = "/min/b=css&f=bootstrap.css,responsive.css,fonts.css,beachfront.css,responsive-tablet.css,responsive-mobile.css,font-awesome.css";
+		$min = "/min/b=css&f=bootstrap.css,responsive.css,fonts.css,beachfront-2.css,beachfront.css,responsive-tablet.css,responsive-mobile.css,font-awesome.css";
 		$this->Html->css($min, null, array('inline' => false));
 		$this->start('css');
 			$this->Less->css('beachfront-less');

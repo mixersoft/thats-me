@@ -6,7 +6,7 @@
 			</a>
 		</div>
 		<div id="faq-photo-edit-1" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 We are trying to build a business that can thrive while charging just a penny a photo to screen your photos. That’s just $10.00 for 1000 photos if you want us to do the math. 
 </p><p class="answer">
@@ -26,7 +26,7 @@ Once your photos are rated, our Curated Timelines and Curated Stories are be bui
 			</a>
 		</div>
 		<div id="faq-photo-edit-2" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 Our photo editors are trained to rate family- and vacation-photos based on their technical merits, i.e. the focus, exposure, and composition of the photo. For portraits and group photos, they also look for the biggest smiles on the most faces, marking down for blinks and other odd expressions. Generally speaking, top-rated photos will look beautiful to almost everybody. 
 </p><p class="answer">
@@ -44,7 +44,7 @@ Our editors are also trained to focus on photos with people, faces, or scenery. 
 			</a>
 		</div>
 		<div id="faq-photo-edit-3" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 Our Curated Timelines are built automatically from your rated photostream. We read the EXIF timestamps recorded in the JPG files of most modern digital cameras to know exactly when the original photo was taken. Plus, we have special algorithms to detect events from within your photostream, allowing us to group your photos together in a meaningful way. 
 </p><p class="answer">
@@ -62,7 +62,7 @@ But most of all, we have developed a &ldquo;secret sauce&rdquo; that automatical
 			</a>
 		</div>
 		<div id="faq-photo-edit-4" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 Curated Stories are a quick and easy way to see the highlights of any event on your timeline &mdash; they’ll bring you back in time and help you re-live your precious moments.
 </p><p class="answer">
@@ -83,7 +83,7 @@ Our Curated Stories are easily updated to reflect your personal preferences, and
 			</a>
 		</div>
 		<div id="faq-photo-edit-5" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 We use a special algorithm that looks at the time when each individual photo was originally taken and clusters them together into meaningful groups based on the time scale of your Timeline view.         		
 	        	</p>
@@ -97,7 +97,7 @@ We use a special algorithm that looks at the time when each individual photo was
 			</a>
 		</div>
 		<div id="faq-photo-edit-6" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 We all tend to take a few extra shots of a precious moment, just to be sure we have a good one. But often we don’t have time to pick out the best shot on the spot, and then the duplicates somehow make it into our photostream, adding to the clutter and noise.
 </p><p class="answer">
@@ -115,7 +115,7 @@ Other photo services may use algorithms to identify the same exact photo importe
 			</a>
 		</div>
 		<div id="faq-photo-edit-7" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 Automatic face detection is a wonderful feature for many purposes. But when you consider that your family is in almost all of your family photos, it really isn’t a useful tool for finding photos of a family member. 
 </p><p class="answer">
@@ -131,7 +131,7 @@ Still, face detection has it’s uses, and we plan to offer face detection down 
 			</a>
 		</div>
 		<div id="faq-photo-edit-8" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 We’d like to say “a few days”, but in all honesty, we don’t know. 
 </p><p class="answer">

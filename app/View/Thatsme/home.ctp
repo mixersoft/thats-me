@@ -7,9 +7,9 @@
       	<a name='home'></a>
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
-		<div class="fw-band alpha rgba70b vcenter-body"> 
+		<div class="fw-band vcenter-body alpha black a70 "> 
 			<div class="container center invisible"> 
-				<div class="featurette-heading">
+				<div class="featurette-heading center">
 					<h1 class="">Curated Family Photos</h1>	    	
 		        	<div class="subhead">What do you do with your 10,000 photos? How do you find those precious moments?</div>
 		        </div>
@@ -36,21 +36,21 @@
 		        		<i class='icon-arrow-up hide'></i><div class='body'>scroll down<br />to see each section</div><i class='icon-arrow-down'></i>
 		        	</div>
 		        </div>
-		        <div class="featurette-heading">
+		        <div class="featurette-heading center">
 		        	<div class="subhead">
 		        		Put your photos on <strong>our</strong> To-do list &mdash; and <strong>Play</strong> with your photos once again.
 		        </div></div>
 		   </div>     
         </div></div></div>        
-        <div class='fw-band footer alpha rgba80b'>
+        <div class='fw-band footer alpha black a85'>
         	<div class="container center">
-        		<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+        		<div class="pull-left"><a href='#call-to-action'><button class="btn btn-awesome" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-<a title='see our Facebook page' target='_social' href='http://www.facebook.com/pages/Snaphappi/16486082015'><i class="icon-facebook-sign"></i></a>
+<a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>
 &nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 &nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
-        		<div class="pull-right"><a href='#features' data-next='.featurette'><button class="btn btn-warning" >
+        		<div class="pull-right"><a href='#features' data-next='.featurette'><button class="btn btn-awesome" >
 			    	Learn More
 			    </button></a></div>
         	</div>

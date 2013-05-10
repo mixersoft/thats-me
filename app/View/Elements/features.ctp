@@ -1,10 +1,10 @@
     <!-- Carousel: Features
     ================================================== -->
     <a class='anchor' name='features'></a>
-    <div id="features" class="featurette carousel body-opaque alpha rgba50b track-page-view  track-carousel-end">
-	    <div class="vcenter-wrap opaque">
+    <div id="features" class="featurette carousel track-page-view  track-carousel-end">
+	    <div class="vcenter-wrap ">
 		<div class="vcenter-padding">
-			<div class="fw-band vcenter-body ">
+			<div class="fw-band vcenter-body alpha ">
 		<div class="featurette-heading center">
 			<h1 class="">What Makes Us Different</h1>	    	
        		<div class="subhead">
@@ -98,10 +98,10 @@ by rating the ones you love. Your hidden duplicates are just a click away &mdash
 </div>	<!-- / .vcenter-wrap --> 
       <div class='fw-band footer  alpha rgba80b'>
         	<div class="container ">
-				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-awesome" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-        		<div class="pull-right"><a href='#see-the-movie'  data-next='.featurette'><button class="btn btn-warning" >
+        		<div class="pull-right"><a href='#see-the-movie'  data-next='.featurette'><button class="btn btn-awesome" >
 			    	Learn More
 			    </button></a></div>
         	</div>

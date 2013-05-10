@@ -6,7 +6,7 @@
 			</a>
 		</div>
 		<div id="faq-privacy-1" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 We believe that you are the owner your photos and we are just caretakers. Thus, we take great care in protecting your privacy with clear and reasonable privacy settings. 
 At this time, we are not accepting photo uploads from the general public. 
@@ -26,7 +26,7 @@ In the future, our hope is to offer you the choice of multiple processing center
 			</a>
 		</div>
 		<div id="faq-privacy-2" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 The hardest part about sharing photos is taking the time to find/make something worth sharing — something your friends and family will appreciate. Our Curated Stories make this easy, and they are made for sharing. We provide custom links that allow you to you share your Curated Stories and individual photos by email or online.
 	        	</p>
@@ -40,7 +40,7 @@ The hardest part about sharing photos is taking the time to find/make something 
 			</a>
 		</div>
 		<div id="faq-privacy-3" class="accordion-body collapse">
-			<div class="accordion-inner">
+			<div class="accordion-inner answer">
 				<p class="answer">
 We plan to build a service that survives by screening photos at a penny a photo and thrives by selling value-added services to our members &mdash; thats you. One example is by offering handcrafted photobooks assembled from your favorite photos which you can preview, edit, and purchase online. (But not yet.)
 </p><p class="answer">

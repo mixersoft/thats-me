@@ -6,7 +6,7 @@
     	
 <div class="vcenter-wrap">
 	<div class="vcenter-padding">
-		<div class="fw-band alpha rgba70card vcenter-body ">
+		<div class="fw-band alpha darkred a70  vcenter-body ">
 			<div class="featurette-heading center">
 				<h1 class="featurette-heading center">How It Works
 					<div class='subhead'>In <span class='badge badge-orange'>5</span> easy steps</div>
@@ -108,12 +108,12 @@ We think it's a small price to pay for all the time you'll save.</p>
 		</div> <!-- / .vcenter-body .fw-band alpha rgba70b --> 
 	</div>	<!-- / .vcenter-padding --> 
 </div>	<!-- / .vcenter-wrap --> 
-      <div class='fw-band footer alpha rgba80b'>
+      <div class='fw-band footer alpha black a85'>
     	<div class="container invisible">
-				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+				<div class="pull-left"><a href='#call-to-action'><button class="btn btn-awesome" title='Go to the next section to learn more about Snaphappi'>
 			    	I Want It
 			    </button></a></div>	
-        		<div class="pull-right"><a href='#call-to-action' data-next='.featurette'><button class="btn btn-warning" >
+        		<div class="pull-right"><a href='#call-to-action' data-next='.featurette'><button class="btn btn-awesome" >
 			    	Learn More
 			    </button></a></div>
     	</div>

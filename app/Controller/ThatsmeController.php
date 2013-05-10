@@ -151,7 +151,10 @@ class ThatsmeController extends AppController {
 		$this->_ga_conversion_iframe();
 	}
 	public function seeTheMovie(){
+		$description = "Watch the movie to find out how our Trained Editors will save you time and make it fun &amp; easy to re-live the precious moments buried in your Family Photos (50 sec).";
+		$this->set('og_description',$description);
 		$this->_beachfront(); 
+		$this->_ga_conversion_iframe();
 	}
 	public function iWantIt(){
 		$this->_beachfront(); 

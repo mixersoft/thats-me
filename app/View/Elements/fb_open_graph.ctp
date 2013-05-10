@@ -18,3 +18,5 @@
 <meta property="og:description" content="<?php echo $description; ?>" />
 <meta property="og:site_name" content="Snaphappi" />
 <meta property="fb:admins" content="214157" />	
+<link rel="image_src" href="/img/beachfront/bg-img-01.sm.jpg" />
+<link rel="image_src" href="/img/beachfront/bg-img-03.sm.jpg" />

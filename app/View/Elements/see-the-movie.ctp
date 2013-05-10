@@ -8,14 +8,17 @@
 	        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/YM7U1qfi2qQ?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
 				<div class='content'>
 					<p class="center">
-			        		Find out how we'll save you time and make it fun &amp; easy 
-			        		<span class='nowrap'>to re-live your precious moments (50 sec)</span>
+			        		Find out how we save you time 
+			        		and make it fun &amp; easy 
+			        		<span class='nowrap'>to re-live the precious moments buried in your Family Photos (50 sec)</span>
 			        </p>
 			        <br />
+<?php	if (in_array($this->action, array("home_deferred", 'home', 'iWantIt'))) { ?>			        
 		        	<div class="center">
 						<a class="btn btn-large btn-primary" href="/timeline/venice" onclick='return CFG["util"].load_demo();' target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
 					</div>
 					<br />
+<?php } ?>					
 					<div class="center"> <?php echo $this->element('social-button-row'); ?>	
 					</div> 
 	  			</div>

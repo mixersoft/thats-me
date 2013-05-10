@@ -668,12 +668,13 @@ Util.documentReady = function() {
 		} else {
 			Util.deferredMarkupReady();
 			// set footer height if necessary to fill window
-			var check;
 			var contentBottom = $('#content').height(),
-				windowH = $(window).attr('innerHeight');
-			var paddingH = windowH - contentBottom;
-			var footer = $('#footer');
-			footer.css('height',footer.height() + paddingH + 'px');
+				windowH = $(window).attr('innerHeight'),
+				paddingH = windowH - contentBottom;
+			if (paddingH > 0) { 
+				var footer = $('#footer');
+				footer.css('height',footer.height() + paddingH + 'px');
+			}
 		}
 		
 		

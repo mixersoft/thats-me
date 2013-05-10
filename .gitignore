@@ -38,3 +38,6 @@ app/webroot/js/vendor/carouFredSel-6.2.0/
 app/webroot/css/*-less.css
 app/Plugin/Less/
 desktop.ini
+app/webroot/css/bootstrap.css
+app/webroot/css/beachfront*.css
+app/webroot/css/responsive.css

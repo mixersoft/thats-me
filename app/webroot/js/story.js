@@ -43,6 +43,18 @@ Util.parseSrcString = function(src){
         }
         return name;
 };
+Util.checkCache = function (src, success, fail) {
+	$.ajax({
+		url: src+'/.json',
+		data: {'debug':0},
+		dataType: 'json',
+		success: function(json, status, o){
+			success(json, status, o);
+		},
+	}).fail(function(json, status, o){
+		fail(json, status, o);
+	});
+}
 Util.getCC = function(src, success){
 	$.ajax({
 		url: src,
@@ -110,6 +122,7 @@ Util.loadYuiPagemaker = function(external_Y, cfg){
 						// })						return;
 					} 
 					var cfg = Story.getConfig(PAGE.jsonData.montage[i]);
+					cfg.page = +1;		// this is reset to page=1, where?
 					SNAPPI.UIHelper.create.get_Montage(cfg);
 				});
 				var cfg = Story.getConfig(PAGE.jsonData.montage[0]);
@@ -186,7 +199,41 @@ Story.documentReady = function () {
 	
 	$('#curtain .wrapV').html( $('.markup .loading').html() ).addClass('fadeIn'); 
 	
-	CFG['util'].getCC(PAGE.src, function(json){		Util.loadYuiPagemaker();	});
+	
+	/*
+	 * check for cached Story
+	 */
+	/*
+	 * NOTE: 
+	 * 	use cfg.cache.dest for server filename prefix
+	 * 	use cfg.cache.key if you want to save the SAME story for given prefix
+	 * see: /gallery/save_page
+	 */		
+	var cache = {
+		server: PAGE.snappi_comboHost,		// server for /gallery/page_gallery cache
+		dest: window.location.pathname.split('/')[2],
+		key: btoa(window.location.pathname),
+		clear: 0,		// force overwrite, reset cached page
+	}
+	var cache_src = "http://" + cache.server + "/gallery/story/" + cache.dest + '_' + cache.key;
+	var cache_miss = function(){	// fail
+		/*
+		 * get CC and create/render Story on cache miss
+		 */
+		CFG['util'].getCC(PAGE.src, function(json){
+			CFG['util'].loadYuiPagemaker();
+		});		
+	}
+	CFG['util'].checkCache(cache_src, 
+		function(json, status, o){	// success
+			var check_json;
+			if (json.success) window.location.href = json.response.href;
+			else cache_miss();
+		},
+		cache_miss	// fail
+	);
+	
+	
 	
 		// click handler for nav to Story
 	$('.ipad').delegate('.nav .nav-timeline', 'click',function(){
@@ -266,9 +313,21 @@ Story.getConfig = function(montage) {
 // 1) first montage render, uses Roles.photo_id, do NOT slice auditionSH
 	SNAPPI.namespace("SNAPPI.STATE.displayPage.page");
 	SNAPPI.STATE.displayPage.page = 1;
-	cfg.page = SNAPPI.STATE.displayPage.page;	// current page
+	// current page, ie. CC page 1, ignore if using cc.batch??
+	cfg.page = SNAPPI.STATE.displayPage.page;	
 	cfg.batch = CFG['util'].parseCC();			// do not slice	
-	
+	cfg.cache = {
+		server: PAGE.snappi_comboHost,		// server for /gallery/page_gallery cache
+/*
+ * NOTE: 
+ * 	use cfg.cache.dest for server filename prefix
+ * 	use cfg.cache.key if you want to save the SAME story for given prefix
+ * see: /gallery/save_page
+ */		
+		dest: window.location.pathname.split('/')[2],
+		key: btoa(window.location.pathname),
+		clear: 0,		// force overwrite, reset cached page
+	}
 	// LISTENERS
 	var stage = cfg.getStage();
 	stage.removeClass('container').removeClass('grid_16');

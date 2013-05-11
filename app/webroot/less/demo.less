@@ -197,6 +197,7 @@ html #story .ipad .montage-container {
       }
     }
   }
+  
   .ipad.landscape {
     width: 1024px;
     height: 768px;
@@ -341,6 +342,72 @@ ul.timeline {
   text-align: left;
 }
 
+.container .ipad.landscape.fullw {
+    width: 1500px;
+    height: 1080px;
+    min-height: 1080px  ;
+    margin-left: -750px;
+    .timeline {
+      li:not(.active) {
+        width: 148px;
+      }
+      .feature {
+        height: 976px;    /* 1080-102-2 = 664px */
+      }
+    }
+  }
+  
+
+@media (max-width: 1600px) {
+.container {  
+  .ipad.landscape.fullw {
+    width: 1368px;
+    margin-left: -684px;
+    .timeline {
+      li:not(.active) {
+        width: 148px;
+      }
+      .feature {
+        height: 796px;    /* 900-102-2 = 664px */
+      }
+    }
+  }
+} 
+}
+
+@media (max-width: 1400px) {
+.container {  
+  .ipad.landscape.fullw {
+    width: 1170px;
+    margin-left: -585px;
+    .timeline {
+      li:not(.active) {
+        width: 148px;
+      }
+      .feature {
+        height: 664px;    /* 768-102-2 = 664px */
+      }
+    }
+  }
+} 
+}
+
+@media (max-width: 1200px) {
+.container {  
+  .ipad.landscape.fullw {
+    width: 1024px;
+    margin-left: -512px;
+    .timeline {
+      li:not(.active) {
+        width: 148px;
+      }
+      .feature {
+        height: 664px;    /* 768-102-2 = 664px */
+      }
+    }
+  }
+} 
+}
 @media (max-width: 1023px) {
 .container {  
   .ipad.landscape {

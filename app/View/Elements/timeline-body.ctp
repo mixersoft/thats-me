@@ -5,7 +5,7 @@
     	</div>
     </h1>
 </div>
-<div class='ipad landscape alpha rgba50b'>
+<div class='ipad landscape fullw alpha black a50'>
 	<div class='nav'>
 		<div class='timescale'>
 			<span data-value='big' class=' label focus'>Big</span>

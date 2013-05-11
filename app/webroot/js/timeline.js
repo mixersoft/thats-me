@@ -238,11 +238,10 @@ Timeline.togglePopovers = function(state, hideDelay){
  */
 Timeline.render = function(cc, focus, events) {
 	if (cc) CFG['util'].parseCC(cc, true);
-	
+	event_focus = 0;
 if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	auditions = PAGE.jsonData.castingCall.CastingCall.Auditions.Audition;
 	eventstream = []
-	event_focus = 0;
 	events = events || PAGE.jsonData.eventGroups.Events;
 	for (var h=0;h<events.length;h++) {
 		eventstream.push({

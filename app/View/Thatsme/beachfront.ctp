@@ -1,5 +1,5 @@
 <?php 
-	$title = "Snaphappi &middot; Curated Family Photos";
+	$title = (isset($og_title)) ? $og_title : "Snaphappi &middot; Curated Family Photos";
 	$description = (isset($og_description)) ? $og_description : "What do you do with your 10,000 photos &middot; how do you find those precious moments? Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines. Put your photos on our To-do list and Play with your photos once again.";
 	$viewport = "width=device-width, initial-scale=1.0";
 	
@@ -38,7 +38,7 @@ $this->Less->css('beachfront-2', array('no_output'=>true));
 	 * other HEAD
 	 */
 	$this->startIfEmpty('HEAD_bottom');
-		echo $this->element('fb_open_graph', compact('description'));
+		echo $this->element('fb_open_graph', compact('description', 'title'));
 	$this->end();
 	/**
 	 * javascript HEAD

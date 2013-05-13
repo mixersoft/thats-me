@@ -11,7 +11,7 @@
 	$url = "http://thats-me.snaphappi.com/{$page}"; 
 ?> 
 <!-- element/fb-open-graph  -->
-<meta property="og:title" content="Snaphappi &middot; Curated Family Photos" />
+<meta property="og:title" content="<?php echo $title; ?>" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="<?php echo $url; ?>" />
 <meta property="og:image" content="http://thats-me.snaphappi.com/img/logo/on%20black/logo-ios-sq.144.png" />

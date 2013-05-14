@@ -30,7 +30,7 @@
 	$cc_src = "http://{$host}/person/odesk_photos/".join('/',$options);
 	
 	/*
-	 * use event_group source
+	 * use event_group source when given UUID
 	 */
 	if (strlen($userid) == 36) {
 		$allowed = array('grlim', 'xxxtimescale', 'coarse_spacing', 'fine_spacing', 'day', 'iterations');

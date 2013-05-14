@@ -56,6 +56,9 @@ Util.checkCache = function (src, success, fail) {
 	});
 }
 Util.getCC = function(src, success){
+	/*
+	 * POST should include begin/end timestamps to filter photostream
+	 */
 	$.ajax({
 		url: src,
 		data: {'debug':0},

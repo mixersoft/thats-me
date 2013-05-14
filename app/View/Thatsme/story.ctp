@@ -21,7 +21,11 @@
 	 * javascript HEAD for Timeline
 	 */
 	$userid = $userid ? $userid : 'paris';  // id or username ok for demo
-	$perpage = 15;
+	/*
+	 * perpage sets the number of photos in the story, 
+	 * ???: where do we set the number of photos per story page????
+	 */
+	$perpage = 32;		
 	$story = true;		
 	$host = Configure::read('isLocal') ? 'snappi-dev' : 'preview.snaphappi.com';
 	$options[] = $userid;

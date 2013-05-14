@@ -1,10 +1,5 @@
 <?php 
-	$title = "Snaphappi &middot; Curated Timeline Demo";
 	$this->set("title_for_layout", $title);
-	$description = "See a quick demo of our Curated Timeline as shown in the Movie. Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines.";
-	$this->start('HEAD_bottom');
-		echo $this->element('fb_open_graph', compact('description'));
-	$this->end();
 	$this->append('css');
 		$this->Less->css('demo');
 	$this->end();

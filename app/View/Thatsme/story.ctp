@@ -1,10 +1,5 @@
 <?php 
-	$title = "Snaphappi &middot; Curated Story Demo";
 	$this->set("title_for_layout", $title);
-	$description = "See a quick demo of our Curated Stories as shown in the Movie. Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines.";
-	$this->start('HEAD_bottom');
-		echo $this->element('fb_open_graph', compact('description'));
-	$this->end();
 	$this->append('css');
 		$this->Less->css('demo');
 		
@@ -29,6 +24,7 @@
 	$MAX_STORY_SNAP_COUNT = 32;
 	$TOP_RATED_PERCENT = 0.25;
 	$MAX_ROLE_COUNT = 9;
+	$perpage = $DEFAULT_STORY_SNAP_COUNT;
 	if (!empty($this->passedArgs['size'])) {
 		$snap_count = $this->passedArgs['size'];
 		$top_rated_count = round($snap_count * $TOP_RATED_PERCENT);	// top 25%

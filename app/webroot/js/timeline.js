@@ -380,6 +380,9 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	CFG['carousel'].init.init();
 	if (event_focus) $('.carousel-inner .scroller').trigger('slideTo',[event_focus])
 	$('#curtain').remove(); 
+	setTimeout(function(){
+		$.scrollTo($('#timeline .ipad').offset().top-40, 1000);
+	}, 50);
 	/*
 	 * initialize popovers
 	 * TODO: move to documentReady?

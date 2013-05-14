@@ -239,7 +239,7 @@ Story.documentReady = function () {
 						$('#curtain').remove(); 
 						$('body').removeClass('wait');
 						setTimeout(function(){
-			        		$.scrollTo($('iframe#story-iframe').offset().top-50, 1000);
+			        		$.scrollTo($('#story .ipad').offset().top-40, 1000);
 			        	}, 50);
 					}
 				}, false);

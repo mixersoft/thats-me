@@ -165,6 +165,8 @@ Story.onFirstRender = function(Pr, node) {
 	$('#curtain').remove(); 
 	$('body').removeClass('wait');
 }
+
+
 Story.documentReady = function () {
 	var iframe = window != window.parent; ;
 	if (iframe) {
@@ -227,8 +229,21 @@ Story.documentReady = function () {
 	CFG['util'].checkCache(cache_src, 
 		function(json, status, o){	// success
 			var check_json;
-			if (json.success) window.location.href = json.response.href;
-			else cache_miss();
+			if (json.success) {
+				// window.location.href = json.response.href;				// show cached story in iframe
+				json.response.href += '?min=1&iframe=1';
+				var iframe_markup = '<iframe id="story-iframe" src=":src" frameborder="0" width="100%" height="700px"></iframe>'.replace(/\:src/, json.response.href);
+				$('.stage-body').append(iframe_markup);
+				window.addEventListener("message", function(e){
+					if (e.data ==='iframe#story-iframe loaded') {
+						$('#curtain').remove(); 
+						$('body').removeClass('wait');
+						setTimeout(function(){
+			        		$.scrollTo($('iframe#story-iframe').offset().top-50, 1000);
+			        	}, 50);
+					}
+				}, false);
+			} else cache_miss();
 		},
 		cache_miss	// fail
 	);

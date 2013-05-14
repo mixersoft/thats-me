@@ -1,3 +1,4 @@
+<?php  $yt_movie_id = '8iL3eoxqUOE'; ?>
 	  <a name='see-the-movie'></a>	
       <div id="see-the-movie" class="featurette see-the-movie track-page-view ">
       	<div class='fw-band vcenter-body alpha'>
@@ -5,7 +6,7 @@
 		        <h1>See the Movie</h1>
 	       	</div>
 	        <div class='vcenter-body center'>
-	        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/YM7U1qfi2qQ?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+	        	<iframe id="yt-player" type="text/html"  src="http://www.youtube.com/embed/<?php echo $yt_movie_id ?>?rel=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
 				<div class='content'>
 					<p class="center">
 			        		Find out how we save you time 

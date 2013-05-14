@@ -43,10 +43,19 @@ Util.parseSrcString = function(src){
         }
         return name;
 };
+Util.getStoryCacheKey = function(){
+	// strip querystring from pathname before hashing
+	// allows use of ?reset=1 without hashing reset
+	return btoa(window.location.pathname);
+}
 Util.checkCache = function (src, success, fail) {
+	var qs = {'debug':0};
+	if (window.location.search.match('reset=1')) {
+		qs['reset']=1;				//  THIS SETTING SHOULD DELETE THE CACHED FILE
+	}
 	$.ajax({
 		url: src+'/.json',
-		data: {'debug':0},
+		data: qs,
 		dataType: 'json',
 		success: function(json, status, o){
 			success(json, status, o);
@@ -59,9 +68,10 @@ Util.getCC = function(src, success){
 	/*
 	 * POST should include begin/end timestamps to filter photostream
 	 */
+	var qs = {'debug':0};
 	$.ajax({
 		url: src,
-		data: {'debug':0},
+		data: qs,
 		dataType: 'json',
 		success: function(json, status, o){
 			try {
@@ -229,14 +239,7 @@ Story.documentReady = function () {
 	 * 	use cfg.cache.key if you want to save the SAME story for given prefix
 	 * see: /gallery/save_page
 	 */		
-	var cache = {
-		server: PAGE.snappi_comboHost,		// server for /gallery/page_gallery cache
-		dest: window.location.pathname.split('/')[2],
-		key: btoa(window.location.pathname),
-		clear: 0,		// force overwrite, reset cached page
-	}
-	var cache_src = "http://" + cache.server + "/gallery/story/" + cache.dest + '_' + cache.key;
-	var cache_miss = function(){	// fail
+	 var cache_miss = function(){	// fail
 		/*
 		 * get CC and create/render Story on cache miss
 		 */
@@ -244,10 +247,18 @@ Story.documentReady = function () {
 			CFG['util'].loadYuiPagemaker();
 		});		
 	}
+	var cache = {
+		server: PAGE.snappi_comboHost,		// server for /gallery/page_gallery cache
+		dest: window.location.pathname.split('/')[2],
+		key: Util.getStoryCacheKey(),
+		clear: window.location.search.match('reset=1'),		// force overwrite, reset cached page
+	}
+	var cache_src = "http://" + cache.server + "/gallery/story/" + cache.dest + '_' + cache.key;
+	if (cache.clear) cache_src += '?reset=1';
 	CFG['util'].checkCache(cache_src, 
 		function(json, status, o){	// success
 			var check_json;
-			if (json.success) {
+			if (json.success && !cache.clear) {
 				// window.location.href = json.response.href;				// show cached story in iframe
 				json.response.href += '?min=1&iframe=1';
 				var iframe_markup = '<iframe id="story-iframe" src=":src" frameborder="0" width="100%" height="700px"></iframe>'.replace(/\:src/, json.response.href);
@@ -265,8 +276,6 @@ Story.documentReady = function () {
 		},
 		cache_miss	// fail
 	);
-	
-	
 	
 		// click handler for nav to Story
 	$('.ipad').delegate('.nav .nav-timeline', 'click',function(){
@@ -346,7 +355,7 @@ Story.getConfig = function(montage) {
 	SNAPPI.STATE.displayPage.page = 1;
 	// current page, ie. CC page 1, ignore if using cc.batch??
 	cfg.page = SNAPPI.STATE.displayPage.page;	
-	cfg.batch = CFG['util'].parseCC();			// do not slice	
+	cfg.batch = CFG['util'].parseCC();			// do not slice
 	cfg.cache = {
 		server: PAGE.snappi_comboHost,		// server for /gallery/page_gallery cache
 /*
@@ -356,8 +365,8 @@ Story.getConfig = function(montage) {
  * see: /gallery/save_page
  */		
 		dest: window.location.pathname.split('/')[2],
-		key: btoa(window.location.pathname),
-		clear: 0,		// force overwrite, reset cached page
+		key: Util.getStoryCacheKey(),
+		clear: window.location.pathname.match('reset=1'),		// force overwrite, reset cached page
 	}
 	// LISTENERS
 	var stage = cfg.getStage();

@@ -75,7 +75,7 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	// TODO: parse using SNAPPI.Auditions???
 		
 }	
-		
+
 	for (i in auditions) {
 		id = auditions[i].Photo.id;
 		parsedAuditions[id] = $.extend({
@@ -85,6 +85,76 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 	}
 	CFG['util'].Auditions = parsedAuditions;	// make global
 }
+/*
+ * construct href for story, return to a.click handler
+ * add begin/end timestamps as named params for filter 
+ */
+
+/*
+ * recurse through PAGE.jsonData.eventGroups.Events to find focus event 
+ */
+Util.getFocusEvent = function(eventId, events) {
+	events = events || PAGE.jsonData.eventGroups.Events;
+	var found = false;
+	if (events){  	
+		for (var i in events){
+			// iterate through Events to find clicked event data
+			if (events[i].FirstPhotoID == eventId) {
+				found = events[i];
+			} else if (events[i].Children) {
+				found = Util.getFocusEvent(eventId, events[i].Children);	// check recursively
+			}
+			if (found) break;
+		}
+	}
+	return found;	
+}
+
+Util.getStoryHref = function(cfg){
+	cfg = cfg || {};
+	var uuid = cfg.uuid || window.location.href.split('/')[4],
+		href = cfg.href || '/story/'+ uuid,
+		eventId = cfg.eventId,
+		focus_event = Util.getFocusEvent(eventId);
+		
+	if (!focus_event) 
+			throw new Exception("Error: focus event not found. what event was clicked?, event id="+eventId);
+
+	if (focus_event.FirstPhotoID) href += '/evt:'+focus_event.FirstPhotoID;	
+	if (focus_event.BeginDate) href += '/from:'+focus_event.BeginDate;
+	if (focus_event.EndDate) href += '/to:'+focus_event.EndDate;
+	if (focus_event.PhotoCount) href += '/size:'+focus_event.PhotoCount;
+	
+	if ((/\/iframe\:1/i).test(href) == false) {
+		// need to add named param to all internal links
+		href += '/iframe:1';
+		
+	}
+	
+	return href;
+}
+
+/**
+ * @param focus_event object, from eventGroups.Events[i] 
+ */
+Util.renderChildEvent = function(focus_event) {
+	// render child event
+	var focus = focus_event.BeginDate, 		// TODO: should focus on first visible photo
+		child_event = focus_event.Children || null;
+	Timeline.setTimescale(focus, child_event);
+	
+	// update Timeline
+	$('.nav .timescale .label').removeClass('focus');
+	$('.nav .timescale .label[data-value=small]').addClass('focus');
+	$('.nav .timescale .label[data-value=big]').one('click', function(e){
+		$('.nav .timescale .label').removeClass('focus');
+		$('.nav .timescale .label[data-value=big]').addClass('focus');
+		Timeline.setTimescale(focus, null);
+	});
+}
+/*
+ * make global
+ */
 CFG['util'] = $.extend(CFG['util'] || {}, Util);
 
 	
@@ -103,14 +173,15 @@ Timeline.documentReady = function () {
 		$('a').on('click', function(e){
 			var $this = $(e.currentTarget),
 				href = $this.attr('href');
-			if (/^\/(timeline|story)/.test(href)) {
+			if (/^\/timeline/.test(href)) {
+console.info("navigate to new timeline?? href="+href);	
+			} else if (/^\/story/.test(href)) {
+console.info("navigate to story?? where did this click event come from? href="+href);	
+				var eventId = $('.timeline li.item.active').attr('data-id');			
+				href = Util.getStoryHref({ eventId : eventId });
+				$this.attr('href', href);
+				return true;
 				// nav within demo letterbox	
-				if ((/\/iframe\:1/i).test(href) == false) {
-					// need to add named param to all internal links
-					href += '/iframe:1';
-					$this.attr('href', href);
-					return true; 
-				}
 			} else {
 				// $('iframe#demo', top.document).addClass('hide');
 				window.parent.CFG['util'].show_demo(false);
@@ -156,33 +227,44 @@ Timeline.documentReady = function () {
 	
 	// click handler for changing timeline timescale. add .has-child class if clickable
 	// once per render
-	$('#timeline').delegate('.eventbar .circle.evt-count.has-child', 'click',function(e){
-		var eventId = $(this).closest('li').attr('data-id'),
-			focus;
-		// TODO: detect COARSE/FINE events
-		for (var i in PAGE.jsonData.eventGroups.Events){
-			if (PAGE.jsonData.eventGroups.Events[i].FirstPhotoID == eventId) {
-				// TODO: should focus on first visible photo
-				// COARSE event found
-				focus = PAGE.jsonData.eventGroups.Events[i].BeginDate; 
-				var fine_events = PAGE.jsonData.eventGroups.Events[i].Children || null;
-				Timeline.setTimescale(focus, fine_events);
-				break;
+	$('#timeline').delegate('.eventbar .circle.evt-count', 'click',function(e){
+		// render child event
+		var $this = $(this),
+			eventId = $this.closest('li').attr('data-id'),
+			focus_event;
+		if ($this.hasClass('has-child')) {
+			for (var i in PAGE.jsonData.eventGroups.Events){
+				// iterate through Events to find clicked event data
+				if (PAGE.jsonData.eventGroups.Events[i].FirstPhotoID == eventId) {
+					focus_event = PAGE.jsonData.eventGroups.Events[i];
+					break;
+				}
 			}
-		}
-			// update Timeline
-		$('.nav .timescale .label').removeClass('focus');
-		$('.nav .timescale .label[data-value=small]').addClass('focus');
-		$('.nav .timescale .label[data-value=big]').one('click', function(e){
-			$('.nav .timescale .label').removeClass('focus');
-			$('.nav .timescale .label[data-value=big]').addClass('focus');
-			Timeline.setTimescale(focus, null);
-		});
+			if (!focus_event) 
+				throw new Exception("Error: focus event not found. what event was clicked?, event id="+eventId);	
 
+			Util.renderChildEvent(focus_event);		// render childEvent by js
+		} else {
+			var cfg = {eventId : eventId};	
+			if (eventId.length!=36) {		// legacy, eventIdd is acutually uuid
+				cfg.uuid = eventId;
+				delete cfg.eventId;
+			}
+			story_href = Util.getStoryHref(cfg);	// goto the correct story page
+			window.location.href = story_href;
+		}	
 	});
 	$('#timeline').delegate('html#no-touch .item .feature img, .nav .nav-btn.story', 'click',function(){
-		var next = window.location.href.replace('timeline','story');
-		window.location.href = next;
+		var eventId = $('.timeline li.item.active').attr('data-id'),
+			story_href;
+		
+		var cfg = {eventId : eventId};	
+		if (eventId.length!=36) {		// legacy, eventIdd is acutually uuid
+			cfg.uuid = eventId;
+			delete cfg.eventId;
+		}
+		story_href = Util.getStoryHref(cfg);	// goto the correct story page
+		window.location.href = story_href;
 	});
 }
 Timeline.movePopovers = function(){
@@ -194,7 +276,7 @@ Timeline.movePopovers = function(){
 	if (window.location.host == 'thats-me') {
 		$('i.help').popover('destroy');
 		return;	// turn off popoffs for localhost
-	} else if (PAGE.src.indexOf('coarse_spacing:')>0) {
+	} else if (PAGE.src.indexOf('/event_group')>0) {
 		$('i.help').popover('destroy');
 		return;	// turn off popoffs for coarse event_group testing
 	}
@@ -426,7 +508,7 @@ Timeline.setTimescale = function(focus, child_events) {
 			Timeline.render(null, focus);
 			$('body').removeClass('wait');
 		});
-	} else if (PAGE.src.indexOf('coarse_spacing:')>0) {
+	} else if (PAGE.src.indexOf('/event_group')>0) {
 		Timeline.render(null, focus, child_events);
 	}
 }

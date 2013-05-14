@@ -25,15 +25,29 @@
 	 * perpage sets the number of photos in the story, 
 	 * ???: where do we set the number of photos per story page????
 	 */
-	$perpage = 32;		
+	$DEFAULT_STORY_SNAP_COUNT = 16;
+	$MAX_STORY_SNAP_COUNT = 32;
+	$TOP_RATED_PERCENT = 0.25;
+	$MAX_ROLE_COUNT = 9;
+	if (!empty($this->passedArgs['size'])) {
+		$snap_count = $this->passedArgs['size'];
+		$top_rated_count = round($snap_count * $TOP_RATED_PERCENT);	// top 25%
+		$perpage = max($DEFAULT_STORY_SNAP_COUNT, $top_rated_count );
+		$perpage = min($perpage, $snap_count, $MAX_STORY_SNAP_COUNT );
+	}
+	
+	 		
 	$story = true;		
 	$host = Configure::read('isLocal') ? 'snappi-dev' : 'preview.snaphappi.com';
 	$options[] = $userid;
 	$options[] = "page:1";
 	$options[] = "perpage:{$perpage}";
 	$options[] = "sort:0.score/direction:desc";
+	if (!empty($this->passedArgs['from'])) $options[] = "from:{$this->passedArgs['from']}"; 
+	if (!empty($this->passedArgs['to'])) $options[] = "to:{$this->passedArgs['to']}";
 	$options[] = "montage:".($story ? 1 : 0);
-	$options[] = ($story ? "role_count:".min($perpage,9) : '');	// montage count
+	// montage role_count
+	$options[] = ($story ? "role_count:".min($perpage, $MAX_ROLE_COUNT) : '');	
 	$options[] = "w:984/h:728";		// ipad landscape, margin: 20px
 	$options[] = ".json";
 	$cc_src = "http://{$host}/person/odesk_photos/".join('/',$options);

@@ -144,6 +144,21 @@ Util.loadYuiPagemaker = function(external_Y, cfg){
 	}
 }
 
+Util.getTimelineHref = function(cfg){
+	cfg = cfg || {};
+	var uuid = cfg.uuid || window.location.href.split('/')[4],
+		eventStr = cfg.evt ? '/evt:'+cfg.evt : window.location.href.match(/\/evt\:(.{36})/g),
+		href = cfg.href || '/timeline/'+ uuid + eventStr;
+		
+	if ((/\/iframe\:1/i).test(href) == false) {
+		// need to add named param to all internal links
+		href += '/iframe:1';
+		
+	}
+	
+	return href;
+}
+
 CFG['util'] = $.extend(CFG['util'] || {}, Util);
 
 /*
@@ -255,13 +270,11 @@ Story.documentReady = function () {
 	
 		// click handler for nav to Story
 	$('.ipad').delegate('.nav .nav-timeline', 'click',function(){
-		var next = window.location.href.replace('story', 'timeline');
-		window.location.href = next;
+		window.location.href = Util.getTimelineHref();
 	});
 	$('.nav .nav-btn.timeline').click(function(e){
 		e.preventDefault();
-		var next = window.location.href.replace('/story','/timeline');
-		window.location.href = next;
+		window.location.href = Util.getTimelineHref();
 		return false;
 	});
 	

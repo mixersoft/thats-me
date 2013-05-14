@@ -31,6 +31,7 @@
 	
 	/*
 	 * use event_group source when given UUID
+	 * $DEFAULT_EVENT_GROUP_LIMIT = 999, set in /person/event_group
 	 */
 	if (strlen($userid) == 36) {
 		$allowed = array('grlim', 'xxxtimescale', 'coarse_spacing', 'fine_spacing', 'day', 'iterations');
@@ -38,7 +39,7 @@
 		if (isset($options['grlim'])) {
 			$options['perpage'] = $options['grlim'];
 			unset($options['grlim']);
-		} else $options['perpage'] = 199;
+		}
 		$options['sort'] = 'dateTaken';
 		$event_group_request = array('controller'=>'person', 'action'=>'event_group', 0=>$userid) + $options;
 		$cc_src = "http://{$host}".Router::url($event_group_request)."/.json?forcexhr=1";

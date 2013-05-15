@@ -50,7 +50,7 @@ Our Curated Timelines are built automatically from your rated photostream. We re
 </p><p class="answer">
 But most of all, we have developed a &ldquo;secret sauce&rdquo; that automatically picks out the beautiful photos we feature for each and every event. This allows our Curated Timelines to connect you instantly to your precious moments without having to dig through pages of thumbnails.
 </p><p class="answer">
-	To see a demo of our Curated Timeline, <a href='/timeline/venice' onclick='return CFG["util"].load_demo();'><strong>[click here]</strong></a>.         		
+	To see a demo of our Curated Timeline, <a href='/timeline/venice' onclick='return CFG["util"].load_demo.apply(this,arguments);'><strong>[click here]</strong></a>.         		
 	        	</p>
 			</div>
 		</div>
@@ -71,7 +71,7 @@ Our Curated Stories are smart enough to automatically build layouts which featur
 Our Curated Stories are easily updated to reflect your personal preferences, and they are made to be shared. 
 	        	</p>
 </p><p class="answer">
-	To see a demo of our Curated Stories, <a href='/timeline/venice' onclick='return CFG["util"].load_demo();'><strong>[click here]</strong></a> (then click on a Timeline event).         		
+	To see a demo of our Curated Stories, <a href='/timeline/venice' onclick='return CFG["util"].load_demo.apply(this,arguments);'><strong>[click here]</strong></a> (then click on a Timeline event).         		
 </p>
 			</div>
 		</div>

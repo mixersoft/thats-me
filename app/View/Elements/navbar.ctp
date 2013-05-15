@@ -46,7 +46,7 @@ $hashClass = $hash ? 'use-hash' : '';
                     <li class='promote'><a href="<?php echo $referer; ?>#FAQ">FAQ</a></li>
                     <li class='promote'><a href="<?php echo $referer; ?>#social">Social</a></li>
                     <li><a href="<?php echo $referer; ?>#see-the-movie">See the Movie Again</a></li>
-                    <li><a href="/timeline/venice" onclick='return CFG["util"].load_demo();'  target="snappi-demo">See the Demo</a></li>
+                    <li><a href="/timeline/venice" onclick='return CFG["util"].load_demo.apply(this,arguments);'  target="snappi-demo">See the Demo</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
                   </ul>
                 </li>
@@ -66,7 +66,7 @@ $hashClass = $hash ? 'use-hash' : '';
                     <li class='promote'><a href="#FAQ">FAQ</a></li>
                     <li class='promote'><a href="#social">Social</a></li>
                     <li><a href="#see-the-movie">See the Movie Again</a></li>
-                    <li><a href="/timeline/venice" onclick='return CFG["util"].load_demo();'  target="snappi-demo">See the Demo</a></li>
+                    <li><a href="/timeline/venice" onclick='return CFG["util"].load_demo.apply(this,arguments);'  target="snappi-demo">See the Demo</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
                   </ul>
                 </li>
@@ -85,7 +85,7 @@ $hashClass = $hash ? 'use-hash' : '';
                     <li class='promote'><a href="/faq">FAQ</a></li>
                     <li class='promote'><a href="/sharing">Social</a></li>
                     <li><a href="/see-the-movie">See the Movie Again</a></li>
-                    <li><a href="/timeline/venice"  onclick='return CFG["util"].load_demo();'  target="snappi-demo">See the Demo</a></li>
+                    <li><a href="/timeline/venice"  onclick='return CFG["util"].load_demo.apply(this,arguments);'  target="snappi-demo">See the Demo</a></li>
                     <li class='hide'><a href="#">Playground</a></li>
                   </ul>
                 </li>

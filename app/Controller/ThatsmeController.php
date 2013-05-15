@@ -184,11 +184,17 @@ class ThatsmeController extends AppController {
 	 * use this for content: http://snappi-dev/person/odesk_photos/venice/page:1/perpage:12/sort:0.rating/direction:desc/.json
 	 */ 
 	public function timeline($idOrUsername='venice'){
+		$title = "Snaphappi &middot; Curated Timeline Demo";
+		$description = "See a quick demo of our Curated Timeline as shown in the Movie. Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines.";
+		$this->set(compact('title','description'));
 		if (!empty($this->request->named['iframe'])) $this->layout = 'bootstrap-iframe';
 		$this->set('userid', $idOrUsername);
 		$this->_beachfront(); 
 	}
 	public function story($idOrUsername='venice'){
+		$title = "Snaphappi &middot; Curated Story Demo";
+		$description = "See a quick demo of our Curated Stories as shown in the Movie. Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines.";
+		$this->set(compact('title','description'));
 		if (!empty($this->request->named['iframe'])) $this->layout = 'bootstrap-iframe';
 		$this->set('userid', $idOrUsername);
 		$this->_beachfront(); 

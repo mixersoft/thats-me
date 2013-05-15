@@ -156,16 +156,18 @@ Util.loadYuiPagemaker = function(external_Y, cfg){
 
 Util.getTimelineHref = function(cfg){
 	cfg = cfg || {};
-	var uuid = cfg.uuid || window.location.href.split('/')[4],
-		eventStr = cfg.evt ? '/evt:'+cfg.evt : window.location.href.match(/\/evt\:(.{36})/g),
-		href = cfg.href || '/timeline/'+ uuid + eventStr;
+	var href, 
+		eventStr = window.location.href.match(/\/evt\:(.{36})/g), 
+		uuid = cfg.uuid || window.location.href.split('/')[4];
 		
-	if ((/\/iframe\:1/i).test(href) == false) {
-		// need to add named param to all internal links
+		eventStr = cfg.evt ? '/evt:'+cfg.evt : (eventStr || '');
+		href = cfg.href || '/timeline/'+ uuid + eventStr;
+	
+	if ((/\/iframe\:1/i).test(window.location.href)) {
+		// preserve /frame:1
 		href += '/iframe:1';
 		
 	}
-	
 	return href;
 }
 

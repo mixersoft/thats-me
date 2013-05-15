@@ -114,23 +114,25 @@ Util.getStoryHref = function(cfg){
 	cfg = cfg || {};
 	var uuid = cfg.uuid || window.location.href.split('/')[4],
 		href = cfg.href || '/story/'+ uuid,
-		eventId = cfg.eventId,
-		focus_event = Util.getFocusEvent(eventId);
-		
-	if (!focus_event) 
-			throw new Exception("Error: focus event not found. what event was clicked?, event id="+eventId);
+		eventId = cfg.eventId;
 
-	if (focus_event.FirstPhotoID) href += '/evt:'+focus_event.FirstPhotoID;	
-	if (focus_event.BeginDate) href += '/from:'+focus_event.BeginDate;
-	if (focus_event.EndDate) href += '/to:'+focus_event.EndDate;
-	if (focus_event.PhotoCount) href += '/size:'+focus_event.PhotoCount;
 	
-	if ((/\/iframe\:1/i).test(href) == false) {
-		// need to add named param to all internal links
+	if (uuid.length==36) {
+		var focus_event = Util.getFocusEvent(eventId);
+		if (!focus_event) 
+				throw new Exception("Error: focus event not found. what event was clicked?, event id="+eventId);
+	
+		if (focus_event.FirstPhotoID) href += '/evt:'+focus_event.FirstPhotoID;	
+		if (focus_event.BeginDate) href += '/from:'+focus_event.BeginDate;
+		if (focus_event.EndDate) href += '/to:'+focus_event.EndDate;
+		if (focus_event.PhotoCount) href += '/size:'+focus_event.PhotoCount;
+	
+	}
+	if ((/\/iframe\:1/i).test(window.location.href)) {
+		// preserve /frame:1
 		href += '/iframe:1';
 		
 	}
-	
 	return href;
 }
 
@@ -152,6 +154,47 @@ Util.renderChildEvent = function(focus_event) {
 		Timeline.setTimescale(focus, null);
 	});
 }
+/**
+ * static stream of events for main Timeline demo 
+ */
+Util.getStaticEventstream = function(){
+	return [
+		{
+			id:'newyork',
+			label:'New York',
+			count: 367,
+			'circle-size':'med',
+			from: '2009-08-27 08:01:52',
+			to: '2009-08-30 14:38:14',
+		},
+		{
+			id:'paris',
+			label:'Paris',
+			count: 228,
+			'circle-size':'sm',
+			from: '2009-08-31 13:09:39',
+			to: '2009-09-03 17:27:27',
+		},
+		{
+			id:'venice',
+			label:'Venice',
+			count: 249,
+			'circle-size':'sm',
+			from: '2009-09-09 15:23:59',
+			to: '2009-09-11 20:02:27',
+		},
+		{
+			id:'bali',
+			label:'Bali',
+			count: 492,
+			'circle-size':'lg',
+			from: '2011-10-01 18:12:17',
+			to: '2011-10-09 13:06:27',
+		},
+	];
+}
+
+
 /*
  * make global
  */
@@ -233,18 +276,14 @@ console.info("navigate to story?? where did this click event come from? href="+h
 			eventId = $this.closest('li').attr('data-id'),
 			focus_event;
 		if ($this.hasClass('has-child')) {
-			for (var i in PAGE.jsonData.eventGroups.Events){
-				// iterate through Events to find clicked event data
-				if (PAGE.jsonData.eventGroups.Events[i].FirstPhotoID == eventId) {
-					focus_event = PAGE.jsonData.eventGroups.Events[i];
-					break;
-				}
-			}
+			// if the clicked event .has-child, open the child event
+			focus_event = Util.getFocusEvent(eventId);
 			if (!focus_event) 
 				throw new Exception("Error: focus event not found. what event was clicked?, event id="+eventId);	
 
 			Util.renderChildEvent(focus_event);		// render childEvent by js
 		} else {
+			// if the clicked event does NOT .has-child, open the story
 			var cfg = {eventId : eventId};	
 			if (eventId.length!=36) {		// legacy, eventIdd is acutually uuid
 				cfg.uuid = eventId;
@@ -314,20 +353,28 @@ Timeline.togglePopovers = function(state, hideDelay){
 /**
  * render timeline with event_groups from castingCall
  * @param cc raw, unparsed castingCall, default = PAGE.jsonData.castingCall
- * @param focus unixtime (UTC), will set focus to event which includes this timestamp
+ * @param focus mixed, unixtimestamp (int) or UUID (char36)
+ * 	if unixtime (UTC), will set focus to event which includes this timestamp
+ *  if UUID (char36), set focus by matching eventId
  * @param events object, default PAGE.jsonData.eventGroups.Events for COARSE events, or 
  * 		Events[i].Children for FINE events   
  */
 Timeline.render = function(cc, focus, events) {
 	if (cc) CFG['util'].parseCC(cc, true);
 	event_focus = 0;
-if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
+	try {
+		var USE_LIVE_EVENTSTREAM = false;
+		USE_LIVE_EVENTSTREAM = PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group';
+	} catch (ex) {}
+if (USE_LIVE_EVENTSTREAM){
 	auditions = PAGE.jsonData.castingCall.CastingCall.Auditions.Audition;
 	eventstream = []
 	events = events || PAGE.jsonData.eventGroups.Events;
+	var h, eventId;
 	for (var h=0;h<events.length;h++) {
+		eventId = events[h].FirstPhotoID;
 		eventstream.push({
-			id: events[h].FirstPhotoID,
+			id: eventId,
 			label: events[h].BeginDate,
 			count: events[h].PhotoCount, 
 			// TODO: need algo for circle-size, normalize all event PhotoCounts
@@ -337,45 +384,26 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 			to: events[h].EndDate,
 			children: events[h].Children ? events[h].Children.length : 0
 		});
+		
+		// init carousel to this index=event_focus
 		if (events[h].BeginDate <= focus && focus <= events[h].EndDate) {
-			event_focus = h;	// init carousel to this index
+			event_focus = h;	
 		}
+		if (typeof focus === 'string' && focus == eventId) event_focus = h;
 	}		
 } else {
-	var eventstream = [
-		{
-			id:'newyork',
-			label:'New York',
-			count: 367,
-			'circle-size':'med',
-			from: '2009-08-27 08:01:52',
-			to: '2009-08-30 14:38:14',
-		},
-		{
-			id:'paris',
-			label:'Paris',
-			count: 228,
-			'circle-size':'sm',
-			from: '2009-08-31 13:09:39',
-			to: '2009-09-03 17:27:27',
-		},
-		{
-			id:'venice',
-			label:'Venice',
-			count: 249,
-			'circle-size':'sm',
-			from: '2009-09-09 15:23:59',
-			to: '2009-09-11 20:02:27',
-		},
-		{
-			id:'bali',
-			label:'Bali',
-			count: 492,
-			'circle-size':'lg',
-			from: '2011-10-01 18:12:17',
-			to: '2011-10-09 13:06:27',
-		},
-	];	
+	// USE_LIVE_EVENTSTREAM == false	
+	var eventstream = Util.getStaticEventstream();
+	try {
+		var story = window.location.href.split('/')[4] || 'venice';
+		if (story.indexOf(':')>0) story = 'venice';
+		for (var h=0;h<eventstream.length;h++) {
+			if (eventstream[h].id == story) {
+				event_focus = h;
+				break;
+			};
+		}
+	} catch (ex){}	
 }
 
 	
@@ -414,7 +442,7 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 		audition, src, j=0;
 	var placeholders = $('.timeline .item .feature img.img-polaroid');
 		
-if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
+if (USE_LIVE_EVENTSTREAM){
 	var m=0, j=0,
 		auditions=PAGE.jsonData.shot_CastingCall.CastingCall.Auditions.Audition,
 		shots=PAGE.jsonData.castingCall.CastingCall.Auditions.Audition; 
@@ -452,6 +480,7 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 		}
 	}	
 } else {	
+	// USE_LIVE_EVENTSTREAM == false
 	for (var i in CFG['util'].Auditions) {
 		audition = CFG['util'].Auditions[i];
 		src = CFG['util'].getImgSrcBySize(baseurl + audition.rootSrc , 'bs');
@@ -492,7 +521,7 @@ if (PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group'){
 // change Timescale based on user action
 /**
  * 
- * @param {Object} focus, unix timestamp, set focus to event which contains timestamp
+ * @param {Object} focus, unix timestamp or eventId UUID, set focus to event which contains timestamp
  * @param {Object} child_events, same default null, from PAGE.jsonData.eventGroups.Events[i].Children
  */
 Timeline.setTimescale = function(focus, child_events) {

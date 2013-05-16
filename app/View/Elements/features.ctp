@@ -6,10 +6,11 @@
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body alpha ">
 		<div class="featurette-heading center">
-			<h1 class="">What Makes Us Different</h1>	    	
+			<h1 class="">What Makes Us Different	    	
        		<div class="subhead">
 Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; 
 <strong class="nowrap">for only a Penny a Photo!</strong></div>
+			</h1>
        </div>			
       <div class="carousel-inner">
       	<ul class="scroller">

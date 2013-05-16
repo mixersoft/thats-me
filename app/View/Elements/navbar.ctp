@@ -16,7 +16,7 @@ if ($hash === 'append') {
 } 
 $hashClass = $hash ? 'use-hash' : '';  
 ?>  
-	    <div class="navbar navbar-inverse navbar-fixed-top <?php echo $hashClass; ?> invisible alpha rgba80b">
+	    <div class="navbar navbar-inverse navbar-fixed-top <?php echo $hashClass; ?> invisible alpha black a80">
           <div class="navbar-inner container">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -29,7 +29,7 @@ $hashClass = $hash ? 'use-hash' : '';
 <!--             	<img src='/img/beachfront/snaphappi-logo-v2.png'> -->
             </a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse pull-right collapsed-alpha rgba80b" >
+            <div class="nav-collapse collapse pull-right" >
 <?php if ($hash==='append' && $referer ) { // nav to referer and use hash to scroll to target ?>        
 	 
 	     	

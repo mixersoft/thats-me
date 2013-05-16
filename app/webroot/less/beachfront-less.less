@@ -77,7 +77,7 @@ html.fontface {
 
 html:not(.lt-ie8), html.ie8:not(.doc-mode-ie8){
   .alpha.rgba80b,
-  .nav-collapse.in.collapsed-alpha.rgba80b {    /* for darker navbar, footer */
+  .nav-collapse.collapsed-alpha {    /* for darker navbar, footer */
     .rgba(#000000, 0.8);  
   }
   .alpha.rgba70b {
@@ -291,10 +291,11 @@ i {
     background: transparent;              
     box-shadow: none;
     .nav > li > a {
-      padding: 8.5px 15px;
+      padding: 0 15px;
+      line-height: 40px;
     }
-    .nav-collapse.collapse.in .nav > li > a, .dropdown-menu > li > a {
-      padding: 15px 15px;  
+    .dropdown-menu > li > a {
+      padding: 15px 15px;
     }
   }
     
@@ -327,7 +328,6 @@ i {
   
   .nav-collapse.collapse.in { 
     /* open collapsed menu, @navbarCollapseWidth=580px set in variables.less */
-    margin-top: -3px;
     .nav .dropdown-menu {
       /* more dropdown inside collapsed menu */
       box-shadow: none;
@@ -337,8 +337,8 @@ i {
   
   .nav-collapse.collapse:not(.in) {
     /* full width menu, not collapsed */
-    background-color: transparent !important;
-    background:transparent !important;
+    xbackground-color: transparent !important;
+    xbackground:transparent !important;
     .dropdown.open .dropdown-menu {
       // extra .alpha.rgba80 not a problem for no-ie
     }

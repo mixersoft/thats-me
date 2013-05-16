@@ -265,17 +265,19 @@ Story.documentReady = function () {
 			if (json.success && !cache.clear) {
 				// window.location.href = json.response.href;				// show cached story in iframe
 				json.response.href += '?min=1&iframe=1';
-				// json.response.href += '&touch=0';
+				json.response.href += '&touch=0';
 				var iframe_markup = '<iframe id="story-iframe" src=":src" frameborder="0" width="100%" height="700px"></iframe>'.replace(/\:src/, json.response.href);
 				$('.stage-body').append(iframe_markup);
 				window.addEventListener("message", function(e){
 					if (e.data ==='iframe#story-iframe loaded') {
 						$('#curtain').remove(); 
 						$('body').removeClass('wait');
+					}
+					if ($('html.no-touch').length==1) {
 						setTimeout(function(){
 			        		$.scrollTo($('#story .ipad').offset().top-40, 1000);
-			        	}, 50);
-					}
+			        	}, 500);
+			        }
 				}, false);
 			} else {
 				cache_miss();

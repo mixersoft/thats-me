@@ -13,23 +13,17 @@
 	 * javascript HEAD for Timeline
 	 */
 	$userid = $userid ? $userid : 'paris';  // id or username ok for demo
-	$perpage = 15;
 	$story = false;		
 	$host = Configure::read('isLocal') ? 'snappi-dev' : 'preview.snaphappi.com';
-	$options[] = $userid;
-	$options[] = "page:1";
-	$options[] = "perpage:{$perpage}";
-	$options[] = "sort:0.score/direction:desc";
-	$options[] = "montage:".($story ? 1 : 0);
-	$options[] = ".json";
-	$cc_src = "http://{$host}/person/odesk_photos/".join('/',$options);
+
 	
 	/*
 	 * use event_group source when given UUID
 	 * $DEFAULT_EVENT_GROUP_LIMIT = 999, set in /person/event_group
+	 * ex: /person/event_group/5170506a-5300-4ab9-80ac-38f70afc6d44/coarse_spacing:1/fine_spacing:0.2/perpage:2000/sort:dateTaken/.json?forcexhr=1&debug=0
 	 */
 	if (strlen($userid) == 36) {
-		$allowed = array('grlim', 'xxxtimescale', 'coarse_spacing', 'fine_spacing', 'day', 'iterations');
+		$allowed = array('grlim', 'xxxtimescale', 'coarse_spacing', 'fine_spacing', 'day_quota', 'iterations');
 		$options = array_intersect_key($this->request->named, array_flip($allowed));
 		if (isset($options['grlim'])) {
 			$options['perpage'] = $options['grlim'];
@@ -38,6 +32,16 @@
 		$options['sort'] = 'dateTaken';
 		$event_group_request = array('controller'=>'person', 'action'=>'event_group', 0=>$userid) + $options;
 		$cc_src = "http://{$host}".Router::url($event_group_request)."/.json?forcexhr=1";
+	} else {
+		// just grab photos from /odesk_photos to put in static timeline
+		$options['page'] = 1;
+		$options['perpage'] = $perpage = 15;		// just need 5 events x3 photos for timeline
+		$options['sort'] = 'score';
+		$options['direction'] = 'desc';
+		$options['montage'] = ($story ? 1 : 0);
+		$static_timeline_request = array('controller'=>'person', 'action'=>'odesk_photos', 0=>$userid) + $options;
+		$cc_src = "http://{$host}".Router::url($static_timeline_request)."/.json";
+		// $cc_src = "http://{$host}/person/odesk_photos/".join('/',$options);
 	}
 	
 	$scriptBlock = array('PAGE = {};');

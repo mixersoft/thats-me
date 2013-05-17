@@ -9,8 +9,9 @@
 		      			<div class="featurette-heading">
 		      				<div class='wrapZ'>
 		      					<img class='darkroom' src='/img/spacer.gif'>
-						        <h1>Still in the Darkroom</h1>
+						        <h1>Still in the Darkroom
 						        <div class="subhead">We're working hard to build Snaphappi into a service you never knew you needed but <strong>can't live without.</strong></div>
+						        </h1>
 					        </div>
 				       	</div>
 					</div>

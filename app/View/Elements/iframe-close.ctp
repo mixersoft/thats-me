@@ -1,5 +1,5 @@
 <?php $useHash = !empty($useHash) ? 'use-hash' : '';  ?>  
-	    <div class="navbar navbar-inverse navbar-fixed-top <?php echo $useHash; ?> invisible alpha rgba80b">
+	    <div class="navbar navbar-inverse navbar-fixed-top <?php echo $useHash; ?> invisible alpha black a80">
           <div class="navbar-inner container">
             <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -12,7 +12,7 @@
 <!--             	<img src='/img/beachfront/snaphappi-logo-v2.png'> -->
             </a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse pull-right collapsed-alpha rgba80b" >
+            <div class="nav-collapse collapse pull-right " >
               <ul class="nav">
                 <li class='iframe-close' data-toggle="collapse" data-target=".nav-collapse"><a href="#" >Close Demo <icon class='icon-remove-sign'></a></li>
               </ul>

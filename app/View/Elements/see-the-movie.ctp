@@ -16,7 +16,7 @@
 			        <br />
 <?php	if (in_array($this->action, array("home_deferred", 'home', 'iWantIt'))) { ?>			        
 		        	<div class="center">
-						<a class="btn btn-large btn-primary" href="/timeline/venice" onclick='return CFG["util"].load_demo();' target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
+						<a class="btn btn-large btn-primary" href="/timeline/venice" onclick='return CFG["util"].load_demo.apply(this,arguments);' target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
 					</div>
 					<br />
 <?php } ?>					

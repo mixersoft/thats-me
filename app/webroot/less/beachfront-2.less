@@ -6,6 +6,9 @@
   background-color: @color;
   #translucent > .background(@color, @alpha);
 }
+.alpha.black.a80 {    // for navbar
+  .rgba-background(@black, 0.8);
+}
 
 .alpha.black.a70 {
   .rgba-background(@black, 0.7);
@@ -47,27 +50,38 @@
 
 // featurette markup
 .featurette {
-  .container {
-    .featurette-heading {
-      border-color: inherit;
-      color: inherit;
-      margin: 80px 0 @baseLineHeight;
-      padding: @baseLineHeight;
+  .featurette-heading {
+    border-color: inherit;
+    color: inherit;
+    font-weight: 400;
+    margin: @baseFontSize*3 0 @baseFontSize;
+    padding: @baseFontSize;
+    line-height: 1.15;
+    h1 {
+      font-size: @baseFontSize * 4;
+      font-weight: normal;
       line-height: 1.15;
-      h1 {
-        font-size: @baseFontSize * 3.75;
-        margin: 0;
-      }
-      .wrapH {    // TODO: move to #i-want-this
-        margin: @baseLineHeight 0;
+      margin: 0;
+      .subhead {
+        font-size: @fontSizeLarge; // 21px;
+        line-height: 1.15;
+        // letter-spacing: -0.5px;
       }
     }
-    .featurette-heading:not(.center) {
-      border-style: solid;
-      border-width: 2px;
-      border-color: inherit;
+    .wrapH {    // TODO: move to #i-want-this
+      margin: @baseLineHeight 0;
     }
-    
+  }
+  .featurette-heading:not(.center) {
+    border-style: solid;
+    border-width: 2px;
+    border-color: inherit;
+  }
+  .container {
+    h2 {
+      font-size: @baseFontSize * 1.4;
+      line-height: 2;
+    }
     p {
       font-size: @baseFontSize;
     }
@@ -196,3 +210,88 @@
     
   }
 }
+
+
+/*
+ * collapse boundary
+ */
+@media (max-width: 580px) {
+  @baseFontSize: 14px;
+  body {
+    font-size: @baseFontSize;
+    .navbar .nav-collapse.collapse.in {   // main menu collapsed
+      .rgba-background(@black, 0.8); 
+      margin-top: -3px;   
+    }
+    .featurette  {
+      .featurette-heading {
+        padding: @baseFontSize;
+        margin: @baseFontSize*3 0 @baseFontSize;
+        h1 {
+          font-size: @baseFontSize * 3;
+        }
+      }
+      .container{
+        h2 {
+          font-size: @baseFontSize * 1.4;
+        }
+      }
+    }
+    .btn-small {
+      font-size: 0.85em; // @fontSizeSmall
+    }
+    #FAQ.featurette .container {
+      .featurette-heading h1 {
+        font-size: @baseFontSize * 2.5;
+      }
+      .faq-section  {
+        .question, .answer {
+          font-size: @baseFontSize;  
+        }
+      }
+    }
+  }
+} 
+/*
+ * end collapse boundary, width<580
+ */
+
+
+
+
+/*
+ * mobile portrait
+ */
+@media (max-width: 467px) {
+  @baseFontSize: 12px;
+  body {
+    font-size: @baseFontSize;
+    .featurette  {
+      .featurette-heading {
+        padding: @baseFontSize;
+        margin: @baseFontSize*3 0 @baseFontSize;
+        h1 {
+          font-size: @baseFontSize * 3;
+        }
+      }
+      .container{
+        h2 {
+          font-size: @baseFontSize * 1.4;
+        }
+      }
+    }
+    #FAQ.featurette .container {
+      .featurette-heading h1 {
+        font-size: @baseFontSize * 2.5;
+      }
+      .faq-section {
+        .question, .answer {
+          font-size: @baseFontSize;  
+        }
+      }
+    }
+  }
+} 
+/*
+ * end mobile portrait, width<468
+ */

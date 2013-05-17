@@ -16,7 +16,7 @@ html.fontface {
   }
   figcaption .body, .container p  {
       font-weight: 300;
-      line-height: 1.40;
+      line-height: 1.4;
   }
   .logo {   // use with $('.checkfont').fontChecker()
     color: white;
@@ -76,8 +76,7 @@ html.fontface {
 }
 
 html:not(.lt-ie8), html.ie8:not(.doc-mode-ie8){
-  .alpha.rgba80b,
-  .nav-collapse.in.collapsed-alpha.rgba80b {    /* for darker navbar, footer */
+  .alpha.rgba80b {    /* for darker navbar, footer */
     .rgba(#000000, 0.8);  
   }
   .alpha.rgba70b {
@@ -290,6 +289,13 @@ i {
     height: 40px;
     background: transparent;              
     box-shadow: none;
+    .nav > li > a {
+      padding: 0 15px;
+      line-height: 40px;
+    }
+    .dropdown-menu > li > a {
+      padding: 15px 15px;
+    }
   }
     
   /* Downsize the brand/project name a bit */
@@ -330,8 +336,8 @@ i {
   
   .nav-collapse.collapse:not(.in) {
     /* full width menu, not collapsed */
-    background-color: transparent !important;
-    background:transparent !important;
+    xbackground-color: transparent !important;
+    xbackground:transparent !important;
     .dropdown.open .dropdown-menu {
       // extra .alpha.rgba80 not a problem for no-ie
     }
@@ -461,23 +467,6 @@ html.ie9 .navbar {
    	strong {
       font-family: "Roboto", Helvetica,Arial,sans-serif !important;       font-weight: bold;
     }
-		.featurette-heading {
-			// .rgb-text-shadow();
-			font-weight: 400;
-			margin: 0 5%;
-			padding: 20px 0;
-			h1 {
-				font-size: 72px;
-				font-weight: normal;
-				line-height: 1.15;
-				margin: 0;
-			}
-			.subhead {
-			  font-size: @fontSizeLarge; // 21px;
-			  line-height: 1.15;
-			  // letter-spacing: -0.5px;
-			}
-		}
 		figure.graphic {
 			display: inline-block;
 	    margin: 0;
@@ -1032,7 +1021,7 @@ html.touch  {
 #about {
   .container {
     color: @cream;
-    .rgb-text-shadow(#000);
+    // .rgb-text-shadow(#000);
     .tabbable > {
       .nav-tabs a, .nav-tabs a:hover {
         color: @cream !important;
@@ -1145,7 +1134,7 @@ iframe#demo {
 @media (max-width: 767px) {
   .featurette {
     .featurette-heading {
-      width: 90%;
+      xxxwidth: 90%;
     }
     .footer {
       width: 100%;
@@ -1208,7 +1197,7 @@ iframe#demo {
     .heading {
       margin: 80px  0 40px;
       h1 {
-        font-size: 60px;
+        xxxfont-size: 60px;
       }
       .subhead {
         font-size: 18px;
@@ -1216,7 +1205,7 @@ iframe#demo {
     }
     .container {
       p {
-        font-size: 18px;
+        xxxfont-size: 18px;
       }
       .wrapH img {
       }
@@ -1229,12 +1218,6 @@ iframe#demo {
   }
   
   #sharing, #thank-you, #about, #FAQ {
-    .heading {
-      margin: 60px 0 20px;
-      h1 {
-        font-size:48px;
-      } 
-    }
     .container {
       padding: 0 20px;
       p {
@@ -1276,21 +1259,8 @@ iframe#demo {
 	  min-height: 600px;
     .fw-band.vcenter-body {
       padding: 10px 0; 
-      padding-top: inherit;   /* slideIn .navbar doesn't need this padding */
       min-height: 600px;       /* full-height band */
     } 
-    .container  p.footnote {
-        font-size: 14px !important;
-      }
-  	.featurette-heading {
-  	  padding: 10px 0;
-  		h1 {
-  			font-size: 42px !important;
-  		}
-  		.subhead {
-  			font-size: 14px;
-  		}
-  	}
     .fw-band.footer {
       font-size: 26px;
       button.btn {
@@ -1302,7 +1272,6 @@ iframe#demo {
     }
   }
   .featurette.body-opaque {
-    padding-top: inherit;
     .opaque {
       .fw-band {
         padding-top: inherit; 
@@ -1313,9 +1282,6 @@ iframe#demo {
     .fw-band.vcenter-body {
       min-height: 608px;
     }  
-  	.featurette-heading {
-  		margin: 20px auto;
-  	}
   	.vscroll-hint {
   	  margin-top: 24px;
   	}
@@ -1345,19 +1311,7 @@ iframe#demo {
       right: -27px;
       top: -46px;
     }    
-    .heading {
-      margin: 60px  0 40px;
-      h1 {
-        font-size: 48px;
-      }
-      .subhead {
-        font-size: 18px;
-      }
-    }
     .container {
-      p {
-        font-size: 18px;
-      }
       .wrapH img {
         height: 160px;
       }
@@ -1369,18 +1323,8 @@ iframe#demo {
     }
   }
   #sharing, #thank-you, #about, #FAQ {
-    .heading {
-      margin: 60px 0 20px;
-      padding: 10px;
-      h1 {
-        font-size:36px;
-      } 
-    }
     .container {
       padding: 0 10px;
-      p {
-        font-size: 16px;
-      }
       .wrapH img {
         height: 120px;
       }
@@ -1396,17 +1340,6 @@ iframe#demo {
 	  .fw-band.vcenter-body {
       min-height: 460px;       /* full-height band */
     }
-		.container p {
-			font-size: 12px;
-		}
-		.featurette-heading {
-			h1 {
-				font-size: 32px  !important;
-			}
-			.subhead {
-				font-size: 14px !important;
-			}
-		}
 		figure.graphic {
 		}
 		.btn-large {
@@ -1473,9 +1406,6 @@ iframe#demo {
 	  .fw-band.vcenter-body {
       min-height: 520px;
     }
-    .featurette-heading {
-      margin: 20px auto 0px;
-    } 
     .featurette-heading.footer {
       margin: 0 auto;
     }
@@ -1516,33 +1446,14 @@ iframe#demo {
   #call-to-action, #sharing, #thank-you, #about {
     .container {
       padding: 0 10px;
-      p {
-        font-size: 14px;
-      }
       .wrapH img {
         height: 80px;
       }
     }
-    .heading {
-      margin: 60px  0 20px;
-      h1 {
-        font-size: 36px;
-      }
-      .subhead {
-        font-size: 14px;
-      }
-    }
-    
   } 
   
   
   #call-to-action {
-    .heading {
-      margin: 40px  0 20px;
-      h1 {
-        font-size: 32px;
-      }
-    }
     form.sign-upxxx {
       input.email {
         line-height: 14px;

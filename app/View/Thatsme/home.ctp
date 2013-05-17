@@ -10,8 +10,9 @@
 		<div class="fw-band vcenter-body alpha black a70 "> 
 			<div class="container center invisible"> 
 				<div class="featurette-heading center">
-					<h1 class="">Curated Family Photos</h1>	    	
+					<h1 class="">Curated Family Photos	    	
 		        	<div class="subhead">We'll find the precious moments buried under 1000s of family photos.</div>
+		        	</h1>
 		        </div>
 		        <div class="wrapW">
 		        	<figure class="graphic track-click" track='home-editors'>
@@ -37,9 +38,9 @@
 		        	</div>
 		        </div>
 		        <div class="featurette-heading center">
-		        	<div class="subhead">
+		        	<h1><div class="subhead">
 		        		Put your photos on <strong>our</strong> To-do list &mdash; and <strong>Play</strong> with your photos once again.
-		        </div></div>
+		        </div></h1></div>
 		   </div>     
         </div></div></div>        
         <div class='fw-band footer alpha black a85'>

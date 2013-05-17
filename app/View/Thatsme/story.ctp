@@ -2,7 +2,6 @@
 	$this->set("title_for_layout", $title);
 	$this->append('css');
 		$this->Less->css('demo');
-		
 	$this->end();
 	
 	$this->extend('/Thatsme/beachfront'); 
@@ -20,7 +19,7 @@
 	 * perpage sets the number of photos in the story, 
 	 * ???: where do we set the number of photos per story page????
 	 */
-	$DEFAULT_STORY_SNAP_COUNT = 16;
+	$DEFAULT_STORY_SNAP_COUNT = 17;
 	$MAX_STORY_SNAP_COUNT = 32;
 	$TOP_RATED_PERCENT = 0.25;
 	$MAX_ROLE_COUNT = 9;

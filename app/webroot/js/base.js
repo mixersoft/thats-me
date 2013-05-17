@@ -410,21 +410,27 @@ Util.show_demo = function(show){
 	}
 }
 Util.load_demo = function(e, popup){
-	if (CFG['cracker']['Video'].indexOf('end') === -1) {
-		var target = $( (e && e.currentTarget) || '#see-the-movie a.btn[target*=snappi-demo]');
-		if (target.next('.popover').length == 0) {
-			target.popover({
-				trigger: 'manual',
-				content: 'The Demo works better after you see the movie. But click again to continue',
-				placement: 'top'
-			}).popover('show');
-			setTimeout(function(){ target.popover('hide');}, 8000);
-			return false;
-		} else {
-			target.popover('hide');
+	// if clicked from navbar, just show demo
+	if ($(e.target).closest('.navbar').length) {
+		popup = false;
+	} else {
+		// otherwise, prompt user to see movie first
+		if (CFG['cracker']['Video'].indexOf('end') === -1) {
+			var target = $( (e && e.currentTarget) || '#see-the-movie a.btn[target*=snappi-demo]');
+			if (target.next('.popover').length == 0) {
+				target.popover({
+					trigger: 'manual',
+					content: 'The Demo works better after you see the movie. But click again to continue',
+					placement: 'top'
+				}).popover('show');
+				setTimeout(function(){ target.popover('hide');}, 8000);
+				return false;
+			} else {
+				target.popover('hide');
+			}
 		}
+		popup = popup || ($('html.touch').length); // ipad uses popup, not iframe, to allow Vscroll
 	}
-	popup = popup || ($('html.touch').length); // ipad uses popup, not iframe, to allow Vscroll
 	if (popup) return true;
 	else if ($('iframe#demo').length) {
 		Util.show_demo(true);

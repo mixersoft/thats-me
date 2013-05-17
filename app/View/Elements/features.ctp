@@ -6,10 +6,11 @@
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body alpha ">
 		<div class="featurette-heading center">
-			<h1 class="">What Makes Us Different</h1>	    	
+			<h1 class="">What Makes Us Different	    	
        		<div class="subhead">
 Trained Photo Editors finding Beautiful Photos featured on Curated Timelines &mdash; 
 <strong class="nowrap">for only a Penny a Photo!</strong></div>
+			</h1>
        </div>			
       <div class="carousel-inner">
       	<ul class="scroller">
@@ -78,7 +79,7 @@ by rating the ones you love. Your hidden duplicates are just a click away &mdash
 <div class="carousel-pager center"></div>  
 <div class="center">
 	<a class="btn btn-large btn-primary" href="#see-the-movie">See the Movie</a>
-	<a class="btn btn-large btn-primary hide" href="/timeline/venice" onclick='return CFG["util"].load_demo();' target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
+	<a class="btn btn-large btn-primary hide" href="/timeline/venice" onclick='return CFG["util"].load_demo.apply(this,arguments);' target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
 </div>     
 <div class="carousel-control-wrap">
 	<div class="left carousel-control-btn invisible" href="#features" direction="prev">&lsaquo;</div>        

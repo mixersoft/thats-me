@@ -186,19 +186,17 @@ class ThatsmeController extends AppController {
 	public function timeline($idOrUsername='venice'){
 		$title = "Snaphappi &middot; Curated Timeline Demo";
 		$description = "See a quick demo of our Curated Timeline as shown in the Movie. Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines.";
-			
-		
+		$this->set(compact('title','description'));
 		if (!empty($this->request->named['iframe'])) $this->layout = 'bootstrap-iframe';
 		$this->set('userid', $idOrUsername);
-		$this->set(compact('description', 'title'));
 		$this->_beachfront(); 
 	}
 	public function story($idOrUsername='venice'){
 		$title = "Snaphappi &middot; Curated Story Demo";
 		$description = "See a quick demo of our Curated Stories as shown in the Movie. Only Snaphappi provides Trained Editors who find your Beautiful Photos and feature them on Curated Timelines.";
+		$this->set(compact('title','description'));
 		if (!empty($this->request->named['iframe'])) $this->layout = 'bootstrap-iframe';
 		$this->set('userid', $idOrUsername);
-		$this->set(compact('description', 'title'));
 		$this->_beachfront(); 
 	}
 

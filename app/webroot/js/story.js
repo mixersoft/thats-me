@@ -58,10 +58,12 @@ Util.checkCache = function (src, success, fail) {
 		data: qs,
 		dataType: 'json',
 		success: function(json, status, o){
-			success(json, status, o);
+			success(json, status, o, {cache_src:src+'/.json'});
 		},
 	}).fail(function(json, status, o){
-		fail(json, status, o);
+		console.error("ERROR: checkCache failed. check cross-domain permissions");		
+		// typically failure is a cross-domain permission issue
+		fail(json, status, o, {cache_src:src+'/.json'});
 	});
 }
 Util.getCC = function(src, success){
@@ -156,16 +158,18 @@ Util.loadYuiPagemaker = function(external_Y, cfg){
 
 Util.getTimelineHref = function(cfg){
 	cfg = cfg || {};
-	var uuid = cfg.uuid || window.location.href.split('/')[4],
-		eventStr = cfg.evt ? '/evt:'+cfg.evt : window.location.href.match(/\/evt\:(.{36})/g),
-		href = cfg.href || '/timeline/'+ uuid + eventStr;
+	var href, 
+		eventStr = window.location.href.match(/\/evt\:(.{36})/g), 
+		uuid = cfg.uuid || window.location.href.split('/')[4];
 		
-	if ((/\/iframe\:1/i).test(href) == false) {
-		// need to add named param to all internal links
+		eventStr = cfg.evt ? '/evt:'+cfg.evt : (eventStr || '');
+		href = cfg.href || '/timeline/'+ uuid + eventStr;
+	
+	if ((/\/iframe\:1/i).test(window.location.href)) {
+		// preserve /frame:1
 		href += '/iframe:1';
 		
 	}
-	
 	return href;
 }
 
@@ -261,18 +265,23 @@ Story.documentReady = function () {
 			if (json.success && !cache.clear) {
 				// window.location.href = json.response.href;				// show cached story in iframe
 				json.response.href += '?min=1&iframe=1';
+				json.response.href += '&touch=0';
 				var iframe_markup = '<iframe id="story-iframe" src=":src" frameborder="0" width="100%" height="700px"></iframe>'.replace(/\:src/, json.response.href);
 				$('.stage-body').append(iframe_markup);
 				window.addEventListener("message", function(e){
 					if (e.data ==='iframe#story-iframe loaded') {
 						$('#curtain').remove(); 
 						$('body').removeClass('wait');
+					}
+					if ($('html.no-touch').length==1) {
 						setTimeout(function(){
 			        		$.scrollTo($('#story .ipad').offset().top-40, 1000);
-			        	}, 50);
-					}
+			        	}, 500);
+			        }
 				}, false);
-			} else cache_miss();
+			} else {
+				cache_miss();
+			}
 		},
 		cache_miss	// fail
 	);

@@ -156,6 +156,7 @@ Util.renderChildEvent = function(focus_event) {
 }
 /**
  * static stream of events for main Timeline demo 
+ * 	DOES NOT use events from CastingCall, Util.getCC(), src=PAGE.src, /photos/event_group
  */
 Util.getStaticEventstream = function(){
 	return [
@@ -186,6 +187,30 @@ Util.getStaticEventstream = function(){
 		{
 			id:'bali',
 			label:'Bali',
+			count: 492,
+			'circle-size':'lg',
+			from: '2011-10-01 18:12:17',
+			to: '2011-10-09 13:06:27',
+		},
+				{
+			id:'five',
+			label:'five',
+			count: 228,
+			'circle-size':'sm',
+			from: '2009-08-31 13:09:39',
+			to: '2009-09-03 17:27:27',
+		},
+		{
+			id:'six',
+			label:'six',
+			count: 249,
+			'circle-size':'sm',
+			from: '2009-09-09 15:23:59',
+			to: '2009-09-11 20:02:27',
+		},
+		{
+			id:'seven',
+			label:'seven',
 			count: 492,
 			'circle-size':'lg',
 			from: '2011-10-01 18:12:17',
@@ -350,6 +375,34 @@ Timeline.togglePopovers = function(state, hideDelay){
 		Timeline.togglePopovers('hide');
 	}, hideDelay);
 }
+/*
+ * render ul.timeline > li.item .eventbar
+ */
+Timeline.render_EventBar = function(parent, eventstream) {
+	var formatDate = function(string, dropyear) {
+		var d;
+		if (isNaN(string)) d = new Date(string.replace(' ', 'T'));
+		else d = new Date (string*1000);		
+
+		var curr_date = d.getDate();
+		var curr_month = d.getMonth();
+		var curr_year = d.getFullYear();
+		if (dropyear) return curr_month+'/'+curr_date;
+		else return curr_month+'/'+curr_date+'/'+curr_year;
+	}	
+	var k, ev, markup, 
+		item_markup = $('.markup li.item')[0].outerHTML;
+	for (k=0; k<eventstream.length; k++) {
+		ev = eventstream[k];
+		markup = item_markup;
+		markup = markup.replace(':label', ev.label).replace(':id', ev.id)
+			.replace(':count', ev.count).replace(':circle-size', ev['circle-size'])
+			.replace(':from', formatDate(ev.from, true)).replace(':to', formatDate(ev.to))
+			.replace(':has-child', ev.children ? 'has-child' : '' )
+			.replace(':tooltip', ev.children ? 'title=\"contains '+ev.children+' events\"' : '' );
+		parent.append(markup);
+	}
+}
 /**
  * render timeline with event_groups from castingCall
  * @param cc raw, unparsed castingCall, default = PAGE.jsonData.castingCall
@@ -406,37 +459,9 @@ if (USE_LIVE_EVENTSTREAM){
 	} catch (ex){}	
 }
 
-	
-	var k, ev, markup, 
-		item_markup = $('.markup li.item')[0].outerHTML,
-		parent = $('ul.timeline').html('');
-	var formatDate = function(string, dropyear) {
-		var d;
-		if (isNaN(string)) d = new Date(string.replace(' ', 'T'));
-		else d = new Date (string*1000);		
-
-		var curr_date = d.getDate();
-		var curr_month = d.getMonth();
-		var curr_year = d.getFullYear();
-		if (dropyear) return curr_month+'/'+curr_date;
-		else return curr_month+'/'+curr_date+'/'+curr_year;
-	}
-	parent.append("<li class='padding'></li><li class='padding'></li>");
-		
-	
-	for (k=0; k<eventstream.length; k++) {
-		ev = eventstream[k];
-		markup = item_markup;
-		markup = markup.replace(':label', ev.label).replace(':id', ev.id)
-			.replace(':count', ev.count).replace(':circle-size', ev['circle-size'])
-			.replace(':from', formatDate(ev.from, true)).replace(':to', formatDate(ev.to))
-			.replace(':has-child', ev.children ? 'has-child' : '' )
-			.replace(':tooltip', ev.children ? 'title=\"contains '+ev.children+' events\"' : '' );
-		parent.append(markup);
-	}
-
+	var parent = $('ul.timeline').html('');	Timeline.render_EventBar(parent, eventstream);
+	parent.append("<li class='padding'></li><li class='padding'></li>");	// extra padding on the end
 	parent.find('li.item:first').addClass('active');
-	parent.append("<li class='padding'></li><li class='padding'></li>");
 	
 	var baseurl = PAGE.jsonData.castingCall.CastingCall.Auditions.Baseurl,
 		audition, src, j=0;
@@ -489,8 +514,7 @@ if (USE_LIVE_EVENTSTREAM){
 }
 
 	CFG['carousel'].init.init();
-	if (event_focus) $('.carousel-inner .scroller').trigger('slideTo',[event_focus])
-	$('#curtain').remove(); 
+	// if (event_focus) $('.carousel-inner .scroller').trigger('slideTo',[event_focus, -2])	$('#curtain').remove(); 
 	setTimeout(function(){
 		$.scrollTo($('#timeline .ipad').offset().top-40, 1000);
 	}, 50);
@@ -561,19 +585,51 @@ Timeline.carousel_cfg = {
 		scroll : {
 			items			: 1,
 			// easing			: "easeInOutCubic",
+			circular		: false,
 			duration		: 300,							
 			pauseOnHover	: 'immediate',
-			onAfter			: function(o) {
+			conditions		: function(o) {
+console.info("scroll conditions()")					
+				// not working
 				var i = $(this).triggerHandler("currentPosition"),
-					parent = $(this).closest('.carousel'),
-					activeDots =  parent.find('.carousel-pager div:not(.hide)');
-				if (i==0) parent.find('.left.carousel-control-btn').addClass('invisible');
+					end = $(this).find('li.item').length - 2
+					scroll;
+				if (i<2) { 	// just move active, show 'prev'
+					$(this).find('li.item').removeClass('active').eq(i).addClass('active');
+					scroll=false;
+				} else if (i<end) {	// move carousel, do NOT move .active
+					scroll=true;
+				} else { // just move active, show 'prev'
+					scroll=false;
+					$(this).find('li.item').removeClass('active').eq(i).addClass('active');
+				}
+				return scroll;
+			},
+			onBefore			: function(o,force_p) {
+console.log("scroll before() p="+$('#timeline .carousel-pager .selected').index());				
+				var check;
+			},
+			onAfter			: function(o,force_p) {
+console.log("scroll after() p="+$('#timeline .carousel-pager .selected').index());					
+				var parent = $(this).closest('.carousel'),
+					c = $(this).triggerHandler("currentPosition") || 0, 
+					activeDots =  parent.find('.carousel-pager div:not(.hide)'),
+				    p = force_p || (c>0 ? c+2 : activeDots.filter('.selected').index()); 
+				if (o.scroll && o.scroll.direction=='prev' && c===0) 
+					p = parent.find('li.item.active').index()-1;
+				if (p==0) parent.find('.left.carousel-control-btn').addClass('invisible');
 				else parent.find('.left.carousel-control-btn').removeClass('invisible');
 				if (activeDots.last().hasClass('selected')) parent.find('.right.carousel-control-btn').addClass('invisible');
 				else parent.find('.right.carousel-control-btn').removeClass('invisible');
-				var active_i = Math.min(i,2);  // carousel keeps only 2 li.item to the left of .active 
-				$(this).find('li.item').removeClass('active').eq(active_i).addClass('active');
-				Timeline.movePopovers();
+				// var p = Math.min(i,2);  // carousel keeps only 2 li.item to the left of .active 
+				if (p<2) {
+					parent.find('li.item').removeClass('active').eq(p).addClass('active');
+				} else if (p>=(activeDots.length-2)) {
+					parent.find('li.item').removeClass('active').eq(p-c).addClass('active');
+				} else {
+					parent.find('li.item').removeClass('active').eq(2).addClass('active');
+				}
+				activeDots.removeClass('selected').eq(p).addClass('selected');				Timeline.movePopovers();
 			},
 			onEnd			: function(direction) {
 				if (direction=='next') {
@@ -588,9 +644,22 @@ Timeline.carousel_cfg = {
 			easing		: "linear",
 			duration	: 300,
 			conditions	: function(){
+					
 				// $('#features .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');
-				return !$(this).closest('.carousel').find('.carousel-pager div:first-child').hasClass('selected');
-			},
+				var carousel = $(this).closest('.carousel'),
+					c = $(this).triggerHandler("currentPosition") || 0, 
+					activeDots =  carousel.find('.carousel-pager div:not(.hide)'),
+				    p = activeDots.filter('.selected').index() || 0; 
+console.info("prev conditions() p0="+$('#timeline .carousel-pager .selected').index());					    
+				if (p<=2 || (p>=activeDots.length-0-2)) { 	// just update li.active
+					p--;
+					// carousel.find('li.item').removeClass('active').eq(p-c).addClass('active');
+					activeDots.removeClass('selected').eq(p).addClass('selected');
+					// trigger scroll.onAfter
+					Timeline.carousel_cfg.scroll.onAfter.call(this,{},p);
+					return false;
+				} else return true;
+				// return !$(this).closest('.carousel').find('.carousel-pager div:first-child').hasClass('selected');			},
 		},
 		next : {
 			button		: "#timeline .carousel-control-btn.right",
@@ -599,9 +668,19 @@ Timeline.carousel_cfg = {
 			easing		: "linear",
 			duration	: 300,
 			conditions	: function(){
-				// $('#features .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');				var activeDots = $(this).closest('.carousel').find('.carousel-pager div:not(.hide)');
-				return !activeDots.last().hasClass('selected');
-			}
+console.info("next conditions()")	
+				// $('#features .carousel-hint').addClass('disabled').removeClass('fadeIn-slow');				var carousel = $(this).closest('.carousel'),
+					c = $(this).triggerHandler("currentPosition") || 0, 
+					activeDots =  carousel.find('.carousel-pager div:not(.hide)'),
+				    p = activeDots.filter('.selected').index() || 0; 
+				if (p<2 || (p>=activeDots.length-1-2)) { 	// just update li.active
+					p++;
+					// carousel.find('li.item').removeClass('active').eq(p-c).addClass('active');					activeDots.removeClass('selected').eq(p).addClass('selected');
+					// trigger scroll.onAfter
+					Timeline.carousel_cfg.scroll.onAfter.call(this,{},p);
+					return false;
+				} else return true;
+				// return !activeDots.last().hasClass('selected');			}
 
 		},		pagination : {
 			container	: "#timeline  .carousel-pager",
@@ -611,9 +690,25 @@ Timeline.carousel_cfg = {
 			anchorBuilder: function(nr) {
 				// this == li.item
 				if ($(this).hasClass('padding')) return;
-				var fred = $(this).closest('.carousel');
-			    return markup = '<div href="#'+fred.attr('id')+'">'+nr+'</div>';
+				var attr = '', 
+					fred = $(this).closest('.carousel');
+				// attr =  'href="#'+fred.attr('id')+'"';
+			    return markup = '<div '+attr+'>'+nr+'</div>';
 			},
+			conditions: function(o){
+				return false;
+			},
+			onBefore : function(o){
+				var carousel = $(this).closest('.carousel'),
+					activeDots =  carousel.find('.carousel-pager div:not(.hide)');				
+				if (o.scroll.items < (activeDots.length-2)) o.scroll.items -= 2;
+				if (o.scroll.items < 0) o.scroll.items = 0;
+				return o;
+			},			
+			// onAfter: function(o){
+// console.log("pagination onAfter()")				
+				// var check;
+			// }
 		},
 		swipe	: {
 			onTouch: CFG['isTouch'],

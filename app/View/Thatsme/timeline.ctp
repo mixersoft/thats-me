@@ -35,7 +35,7 @@
 	} else {
 		// just grab photos from /odesk_photos to put in static timeline
 		$options['page'] = 1;
-		$options['perpage'] = $perpage = 15;		// just need 5 events x3 photos for timeline
+		$options['perpage'] = $perpage = 24;		// just need 5 events x3 photos for timeline
 		$options['sort'] = 'score';
 		$options['direction'] = 'desc';
 		$options['montage'] = ($story ? 1 : 0);

@@ -384,20 +384,44 @@ Timeline.render_EventBar = function(parent, eventstream) {
 		if (isNaN(string)) d = new Date(string.replace(' ', 'T'));
 		else d = new Date (string*1000);		
 
-		var curr_date = d.getDate();
-		var curr_month = d.getMonth();
+		var curr_date = d.getDate()+1;
+		var curr_month = d.getMonth()+1;
 		var curr_year = d.getFullYear();
 		if (dropyear) return curr_month+'/'+curr_date;
 		else return curr_month+'/'+curr_date+'/'+curr_year;
+	}	
+	var formatDuration = function(from, to) {
+		var msMinute = 60*1000, 
+			msHour = 60*60*1000,
+    		msDay = 60*60*24*1000;
+    	var seconds, datestring = to;
+    	if (/\d{9}/.test(datestring)) seconds = datestring; 
+    	else seconds = new Date(datestring.replace(' ', 'T')).getTime() / 1000;
+    	datestring = from;
+    	if (/\d{9}/.test(datestring)) seconds -= datestring; 
+    	else seconds -= new Date(datestring.replace(' ', 'T')).getTime() / 1000;
+    	var ms = seconds * 1000,
+    		d = Math.floor( ms / msDay) ,
+			h = Math.floor((ms % msDay) / msHour),
+			m = Math.floor((ms % msHour) / msMinute),
+			formatted = [];
+    	if (d) formatted.push(d+'d'); 
+    	if (h) formatted.push(h+'h');
+    	if (m) formatted.push(m+'m')
+    	formatted = formatted.slice(0,2);	// just take 2 biggest time chunks
+    	if (formatted.length==0) formatted.push('1m');	// min value
+    	return formatted.join(' ');
 	}	
 	var k, ev, markup, 
 		item_markup = $('.markup li.item')[0].outerHTML;
 	for (k=0; k<eventstream.length; k++) {
 		ev = eventstream[k];
 		markup = item_markup;
+		if (/\d{9}/.test(ev.label)) ev.label = formatDate(ev.label, false);
 		markup = markup.replace(':label', ev.label).replace(':id', ev.id)
 			.replace(':count', ev.count).replace(':circle-size', ev['circle-size'])
-			.replace(':from', formatDate(ev.from, true)).replace(':to', formatDate(ev.to))
+			.replace(':from', ev.from).replace(':fromLabel', formatDate(ev.from, true))
+			.replace(':to', ev.to).replace(':toLabel', formatDuration(ev.from, ev.to))
 			.replace(':has-child', ev.children ? 'has-child' : '' )
 			.replace(':tooltip', ev.children ? 'title=\"contains '+ev.children+' events\"' : '' );
 		parent.append(markup);

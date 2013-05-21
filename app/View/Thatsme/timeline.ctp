@@ -23,7 +23,9 @@
 	 * ex: /person/event_group/5170506a-5300-4ab9-80ac-38f70afc6d44/coarse_spacing:1/fine_spacing:0.2/perpage:2000/sort:dateTaken/.json?forcexhr=1&debug=0
 	 */
 	if (strlen($userid) == 36) {
-		$allowed = array('grlim', 'xxxtimescale', 'coarse_spacing', 'fine_spacing', 'day_quota', 'iterations');
+		$allowed = array('grlim', 'xxxtimescale', 'coarse_spacing', 'fine_spacing', 'day_quota', 'iterations', 
+		'from','to'
+		);
 		$options = array_intersect_key($this->request->named, array_flip($allowed));
 		if (isset($options['grlim'])) {
 			$options['perpage'] = $options['grlim'];
@@ -92,7 +94,8 @@
 	<li class='item' data-id=":id">
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>:label</span>
-				<div class='date'><span class='event evt-from'>:from</span> &mdash; <span class='event evt-to'>:to</span>
+				<div class='date'>
+					<span class='event evt-from' data-time=':from'>:fromLabel</span> &mdash; <span class='event evt-to' data-time=':to'>:toLabel</span>
 				</div>
 			</div>
 			<div class='wrap circle :circle-size'><span class='circle evt-count :has-child' :tooltip >:count</span></div>

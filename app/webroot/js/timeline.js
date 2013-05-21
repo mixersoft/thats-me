@@ -192,33 +192,128 @@ Util.getStaticEventstream = function(){
 			from: '2011-10-01 18:12:17',
 			to: '2011-10-09 13:06:27',
 		},
-				{
-			id:'five',
-			label:'five',
-			count: 228,
-			'circle-size':'sm',
-			from: '2009-08-31 13:09:39',
-			to: '2009-09-03 17:27:27',
-		},
-		{
-			id:'six',
-			label:'six',
-			count: 249,
-			'circle-size':'sm',
-			from: '2009-09-09 15:23:59',
-			to: '2009-09-11 20:02:27',
-		},
-		{
-			id:'seven',
-			label:'seven',
-			count: 492,
-			'circle-size':'lg',
-			from: '2011-10-01 18:12:17',
-			to: '2011-10-09 13:06:27',
-		},
+		// {
+			// id:'five',
+			// label:'five',
+			// count: 228,
+			// 'circle-size':'sm',
+			// from: '2009-08-31 13:09:39',
+			// to: '2009-09-03 17:27:27',
+		// },
+		// {
+			// id:'six',
+			// label:'six',
+			// count: 249,
+			// 'circle-size':'sm',
+			// from: '2009-09-09 15:23:59',
+			// to: '2009-09-11 20:02:27',
+		// },
+		// {
+			// id:'seven',
+			// label:'seven',
+			// count: 492,
+			// 'circle-size':'lg',
+			// from: '2011-10-01 18:12:17',
+			// to: '2011-10-09 13:06:27',
+		// },
 	];
 }
+Util.tokenReplace = function(string, prefix, tokens) {
+	for (var i in tokens) {
+		string = string.replace(prefix+i,tokens[i]);
+	}
+	var empty=new RegExp('\\'+prefix+'\\w*\\s{0,1}','g');
+	string = string.replace(empty, '' );
+	return string;
+}
+Util.formatDate = function(string, dropyear) {
+		var d;
+		if (isNaN(string)) d = new Date(string.replace(' ', 'T'));
+		else d = new Date (string*1000);		
 
+		var curr_date = d.getDate()+1;
+		var curr_month = d.getMonth()+1;
+		var curr_year = d.getFullYear();
+		if (dropyear) return curr_month+'/'+curr_date;
+		else return curr_month+'/'+curr_date+'/'+curr_year;
+	}	
+Util.formatDuration = function(from, to) {
+		var msMinute = 60*1000, 
+			msHour = 60*60*1000,
+    		msDay = 60*60*24*1000;
+    	var seconds, datestring = to;
+    	if (/\d{9}/.test(datestring)) seconds = datestring; 
+    	else seconds = new Date(datestring.replace(' ', 'T')).getTime() / 1000;
+    	datestring = from;
+    	if (/\d{9}/.test(datestring)) seconds -= datestring; 
+    	else seconds -= new Date(datestring.replace(' ', 'T')).getTime() / 1000;
+    	var ms = seconds * 1000,
+    		d = Math.floor( ms / msDay) ,
+			h = Math.floor((ms % msDay) / msHour),
+			m = Math.floor((ms % msHour) / msMinute),
+			formatted = [];
+    	if (d) formatted.push(d+'d'); 
+    	if (h) formatted.push(h+'h');
+    	if (m) formatted.push(m+'m')
+    	formatted = formatted.slice(0,2);	// just take 2 biggest time chunks
+    	if (formatted.length==0) formatted.push('1m');	// min value
+    	return formatted.join(' ');
+	}	
+Util.sortByRating = function(auditions){
+	auditions.sort(function(a,b){
+			return b.Photo.Fix.Score - a.Photo.Fix.Score;
+	});
+	return auditions;
+}
+Util.sortByTime = function(auditions){
+	auditions.sort(function(a,b){
+		return a.Photo.TS - b.Photo.TS;
+	});
+	return auditions;
+}
+Util.randomize = function ( myArray ) {
+//	fisherYates algo, http://stackoverflow.com/questions/2450954/how-to-randomize-a-javascript-array
+  var i = myArray.length, j, temp;
+  if ( i === 0 ) return false;
+  while ( --i ) {
+     j = Math.floor( Math.random() * ( i + 1 ) );
+     temp = myArray[i];
+     myArray[i] = myArray[j]; 
+     myArray[j] = temp;
+   }
+   return myArray;
+}
+
+Util.randomizeByTopRated = function(auditions){
+	auditions = Util.sortByRating(auditions);
+	var equalRating, floor,
+	 	randomized = equalRating = [], 
+		rating = 5,
+		RATING_STEP_SIZE = 0.5;
+	for (var i=0;i<auditions.length;i++) {	
+			floor = parseFloat(auditions[i].Photo.Fix.Score); 
+			if ( floor >= rating) 
+				equalRating.push(auditions[i]);
+			else {	
+				// process results
+				if (equalRating.length>2) 
+					randomized = randomized.concat(Util.randomize(equalRating));
+				else randomized = randomized.concat(equalRating); 
+				// next rating
+				rating -= RATING_STEP_SIZE;		// use half-step rating bands
+				i--;	// test again against new rating
+				equalRating = [];
+				if (rating==0) break;
+			};
+	}
+	if (equalRating.length) randomized = randomized.concat(equalRating);
+	return randomized;
+}	
+Util.pickHighlights = function(auditions, count, fnMethod ) {
+	fnMethod = fnMethod || Util.sortByRating;
+	auditions = fnMethod(auditions);
+	return auditions.slice(0,count);
+}
 
 /*
  * make global
@@ -379,51 +474,21 @@ Timeline.togglePopovers = function(state, hideDelay){
  * render ul.timeline > li.item .eventbar
  */
 Timeline.render_EventBar = function(parent, eventstream) {
-	var formatDate = function(string, dropyear) {
-		var d;
-		if (isNaN(string)) d = new Date(string.replace(' ', 'T'));
-		else d = new Date (string*1000);		
-
-		var curr_date = d.getDate()+1;
-		var curr_month = d.getMonth()+1;
-		var curr_year = d.getFullYear();
-		if (dropyear) return curr_month+'/'+curr_date;
-		else return curr_month+'/'+curr_date+'/'+curr_year;
-	}	
-	var formatDuration = function(from, to) {
-		var msMinute = 60*1000, 
-			msHour = 60*60*1000,
-    		msDay = 60*60*24*1000;
-    	var seconds, datestring = to;
-    	if (/\d{9}/.test(datestring)) seconds = datestring; 
-    	else seconds = new Date(datestring.replace(' ', 'T')).getTime() / 1000;
-    	datestring = from;
-    	if (/\d{9}/.test(datestring)) seconds -= datestring; 
-    	else seconds -= new Date(datestring.replace(' ', 'T')).getTime() / 1000;
-    	var ms = seconds * 1000,
-    		d = Math.floor( ms / msDay) ,
-			h = Math.floor((ms % msDay) / msHour),
-			m = Math.floor((ms % msHour) / msMinute),
-			formatted = [];
-    	if (d) formatted.push(d+'d'); 
-    	if (h) formatted.push(h+'h');
-    	if (m) formatted.push(m+'m')
-    	formatted = formatted.slice(0,2);	// just take 2 biggest time chunks
-    	if (formatted.length==0) formatted.push('1m');	// min value
-    	return formatted.join(' ');
-	}	
-	var k, ev, markup, 
+	var k, ev, markup, tokens, 
 		item_markup = $('.markup li.item')[0].outerHTML;
 	for (k=0; k<eventstream.length; k++) {
 		ev = eventstream[k];
-		markup = item_markup;
-		if (/\d{9}/.test(ev.label)) ev.label = formatDate(ev.label, false);
-		markup = markup.replace(':label', ev.label).replace(':id', ev.id)
-			.replace(':count', ev.count).replace(':circle-size', ev['circle-size'])
-			.replace(':from', ev.from).replace(':fromLabel', formatDate(ev.from, true))
-			.replace(':to', ev.to).replace(':toLabel', formatDuration(ev.from, ev.to))
-			.replace(':has-child', ev.children ? 'has-child' : '' )
-			.replace(':tooltip', ev.children ? 'title=\"contains '+ev.children+' events\"' : '' );
+		tokens = $.extend({}, ev);	
+		if (/\d{9}/.test(ev.label)) {	// uuid
+			tokens['label'] = Util.formatDate(ev.label, false);
+		} else {
+			tokens['fromLabel'] = Util.formatDate(ev.from, false);
+			tokens['dash'] = '&mdash;';
+		}
+		tokens['toLabel'] = Util.formatDuration(ev.from, ev.to);
+		tokens['has-child'] = ev.children ? 'has-child' : '' ;
+		tokens['tooltip'] = ev.children ? 'title=\"contains '+ev.children+' events\"' : '' ;
+		markup = Util.tokenReplace(item_markup, ':', tokens);	
 		parent.append(markup);
 	}
 }
@@ -444,11 +509,10 @@ Timeline.render = function(cc, focus, events) {
 		USE_LIVE_EVENTSTREAM = PAGE.jsonData.castingCall.CastingCall.Auditions.ShotType=='event_group';
 	} catch (ex) {}
 if (USE_LIVE_EVENTSTREAM){
-	auditions = PAGE.jsonData.castingCall.CastingCall.Auditions.Audition;
-	eventstream = []
-	events = events || PAGE.jsonData.eventGroups.Events;
-	var h, eventId;
-	for (var h=0;h<events.length;h++) {
+	var h, eventId,
+		eventstream = []
+		events = events || PAGE.jsonData.eventGroups.Events;
+	for (h=0;h<events.length;h++) {
 		eventId = events[h].FirstPhotoID;
 		eventstream.push({
 			id: eventId,
@@ -488,55 +552,77 @@ if (USE_LIVE_EVENTSTREAM){
 	parent.find('li.item:first').addClass('active');
 	
 	var baseurl = PAGE.jsonData.castingCall.CastingCall.Auditions.Baseurl,
-		audition, src, j=0;
+		audition, auditions, shots, src, j=0;
 	var placeholders = $('.timeline .item .feature img.img-polaroid');
+	var m=0, j=0;
+	for (k=0; k<eventstream.length; k++) {	
+		
 		
 if (USE_LIVE_EVENTSTREAM){
-	var m=0, j=0,
-		auditions=PAGE.jsonData.shot_CastingCall.CastingCall.Auditions.Audition,
-		shots=PAGE.jsonData.castingCall.CastingCall.Auditions.Audition; 
-	for (k=0; k<eventstream.length; k++) {
-		var shot = shots[k],
-			audition = auditions[m],
-			starttime = eventstream[k].from,
-			endtime = eventstream[k].to,
-			featured;
+	
+	auditions = auditions || PAGE.jsonData.shot_CastingCall.CastingCall.Auditions.Audition;
+	shots = shots || PAGE.jsonData.castingCall.CastingCall.Auditions.Audition; 
+	
+	var shot = shots[k],
+		audition = auditions[m],
+		starttime = eventstream[k].from,
+		endtime = eventstream[k].to,
+		featured;
 		
-	if ('use-date-boundaries') {
-		// TODO: use BeginDate/EndDate instead of count to allow filtering
-		featured = [];
-		for (m=0;m<auditions.length;m++){
-			if (starttime <= auditions[m].Photo.TS && auditions[m].Photo.TS <= endtime) {
-				featured.push(auditions[m]);
+		if ('use-date-boundaries') {
+			// TODO: use BeginDate/EndDate instead of count to allow filtering
+			featured = [];
+			for (m=0;m<auditions.length;m++){
+				if (starttime <= auditions[m].Photo.TS && auditions[m].Photo.TS <= endtime) {
+					featured.push(auditions[m]);
+				}
+				if (auditions[m].Photo.TS > endtime) break;
 			}
-			if (auditions[m].Photo.TS > endtime) break;
+		} else {
+			// use Count to detect eventstream end
+			featured = auditions.slice(m, m+shot.Shot.count);
+			m += (shot.Shot.count);		
 		}
-	} else {
-		featured = auditions.slice(m, m+shot.Shot.count);
-		m += (shot.Shot.count);		
-	}
-		featured.sort(function(a,b){
-				return b.Photo.Fix.Score - a.Photo.Fix.Score;
-		});
-		audition = featured.shift(); 
 		var featured_count = 3; 
+		featured = Util.pickHighlights(featured, featured_count, Util.randomizeByTopRated);
+		featured = Util.sortByTime(featured.slice(0,featured_count));
+		audition = featured.shift();
 		while (featured_count--) {
 			if (audition) {
 				src = CFG['util'].getImgSrcBySize(baseurl + audition.Photo.Img.Src.rootSrc , 'bs');
+				// TODO: need to create placeholders from markup
 				placeholders.eq(j++).attr('src', src).attr('title', 'score: '+ audition.Photo.Fix.Score);
 			} else placeholders.eq(j++).remove();
 			audition = featured.shift(); 
 		}
-	}	
+	
 } else {	
 	// USE_LIVE_EVENTSTREAM == false
-	for (var i in CFG['util'].Auditions) {
-		audition = CFG['util'].Auditions[i];
+	var featured, 
+		featured_count = 3; 
+	if (featured == undefined) {	// object to array
+		featured = [];
+		for (m in CFG['util'].Auditions){
+			featured.push(CFG['util'].Auditions[m]);
+		}
+		featured = Util.pickHighlights(featured, 24, 
+			function(auditions){	// simple auditions
+				auditions.sort(function(a,b){
+					return b.score - a.score;
+				});
+				return auditions;
+			} 
+		);
+	}
+	audition = featured.shift();
+	while (featured_count--) {
 		src = CFG['util'].getImgSrcBySize(baseurl + audition.rootSrc , 'bs');
 		placeholders.eq(j++).attr('src', src).attr('title', 'score: '+audition.score);   // "fake" auditions. not parsed using YUI classes
+		audition = featured.shift(); 
 	}
+	
 }
-
+	} // end for eventstream
 	CFG['carousel'].init.init();
 	// if (event_focus) $('.carousel-inner .scroller').trigger('slideTo',[event_focus, -2])	$('#curtain').remove(); 
 	setTimeout(function(){

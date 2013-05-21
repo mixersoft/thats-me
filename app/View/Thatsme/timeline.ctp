@@ -95,7 +95,7 @@
 		<div class='eventbar'>
 			<div class='wrap evt-label'><span class='event evt-label'>:label</span>
 				<div class='date'>
-					<span class='event evt-from' data-time=':from'>:fromLabel</span> &mdash; <span class='event evt-to' data-time=':to'>:toLabel</span>
+					<span class='event evt-from' data-time=':from'>:fromLabel</span> :dash <span class='event evt-to' data-time=':to'>:toLabel</span>
 				</div>
 			</div>
 			<div class='wrap circle :circle-size'><span class='circle evt-count :has-child' :tooltip >:count</span></div>

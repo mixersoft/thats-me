@@ -199,6 +199,14 @@ class ThatsmeController extends AppController {
 		$this->set('userid', $idOrUsername);
 		$this->_beachfront(); 
 	}
+	public function isotope($idOrUsername='venice'){
+		$title = "Snaphappi &middot; Snaps";
+		$description = "Show all Snaps";
+		$this->set(compact('title','description'));
+		if (!empty($this->request->named['iframe'])) $this->layout = 'bootstrap-iframe';
+		$this->set('userid', $idOrUsername);
+		$this->_beachfront(); 
+	}
 
 /**
  * Displays a view

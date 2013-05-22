@@ -1,7 +1,7 @@
 <div class="featurette-heading ">
     <h1 >Curated Timeline
     	<div class='subhead'>This is a simple prototype to help illustrate the ideas mentioned in The Movie <i class='help icon-question-sign'></i> 
-    		<span class='pull-right'><a class="btn btn-primary hide" href="/see-the-movie">See the Movie</a></span>
+    		<span class='pull-right'><a class="btn btn-awesome hide" href="/see-the-movie">See the Movie</a></span>
     	</div>
     </h1>
 </div>

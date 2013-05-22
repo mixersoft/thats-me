@@ -303,7 +303,7 @@ Util.randomizeByTopRated = function(auditions){
 				rating -= RATING_STEP_SIZE;		// use half-step rating bands
 				i--;	// test again against new rating
 				equalRating = [];
-				if (rating==0) break;
+				if (randomized.length > 2 && rating==0) break;
 			};
 	}
 	if (equalRating.length) randomized = randomized.concat(equalRating);
@@ -368,10 +368,9 @@ Timeline.documentReady = function () {
 		$('a').on('click', function(e){
 			var $this = $(e.currentTarget),
 				href = $this.attr('href');
+			CFG['util'].touch_HoverEffect($this);	
 			if (/^\/timeline/.test(href)) {
-console.info("navigate to new timeline?? href="+href);	
 			} else if (/^\/story/.test(href)) {
-console.info("navigate to story?? where did this click event come from? href="+href);	
 				var eventId = $('.timeline li.item.active').attr('data-id');			
 				href = Util.getStoryHref({ eventId : eventId });
 				$this.attr('href', href);
@@ -422,33 +421,40 @@ console.info("navigate to story?? where did this click event come from? href="+h
 	
 	// click handler for changing timeline timescale. add .has-child class if clickable
 	// once per render
-	$('#timeline').delegate('.eventbar .circle.evt-count', 'click',function(e){
-		// render child event
-		var $this = $(this),
-			eventId = $this.closest('li').attr('data-id'),
-			focus_event;
-		if ($this.hasClass('has-child')) {
-			// if the clicked event .has-child, open the child event
-			focus_event = Util.getFocusEvent(eventId);
-			if (!focus_event) 
-				throw new Exception("Error: focus event not found. what event was clicked?, event id="+eventId);	
-
-			Util.renderChildEvent(focus_event);		// render childEvent by js
-		} else {
-			// if the clicked event does NOT .has-child, open the story
-			var cfg = {eventId : eventId};	
-			if (eventId.length!=36) {		// legacy, eventIdd is acutually uuid
-				cfg.uuid = eventId;
-				delete cfg.eventId;
-			}
-			story_href = Util.getStoryHref(cfg);	// goto the correct story page
-			window.location.href = story_href;
-		}	
-	});
-	$('#timeline').delegate('html#no-touch .item .feature img, .nav .nav-btn.story', 'click',function(){
+	var click_EventCircle = function(e){
+			// render child event
+			var $this = $(this),
+				eventId = $this.closest('li').attr('data-id'),
+				focus_event,
+				circle;
+			circle =  $this.hasClass('.evt-count') ? $this : $this.find('.evt-count');			
+			CFG['util'].touch_HoverEffect(circle);			
+			if ($this.hasClass('has-child')) {
+				// if the clicked event .has-child, open the child event
+				focus_event = Util.getFocusEvent(eventId);
+				if (!focus_event) 
+					throw new Exception("Error: focus event not found. what event was clicked?, event id="+eventId);	
+	
+				Util.renderChildEvent(focus_event);		// render childEvent by js
+			} else {
+				// if the clicked event does NOT .has-child, open the story
+				var cfg = {eventId : eventId};	
+				if (eventId.length!=36) {		// legacy, eventIdd is acutually uuid
+					cfg.uuid = eventId;
+					delete cfg.eventId;
+				}
+				story_href = Util.getStoryHref(cfg);	// goto the correct story page
+				window.location.href = story_href;
+			}	
+	};
+	$('html.no-touch #timeline').delegate('.eventbar .circle.evt-count', 'click', click_EventCircle);
+	// TODO: HACK!!! touch device is NOT getting the delegated click event 
+	$('html.touch #timeline').delegate('.eventbar', 'touchstart', click_EventCircle);
+	
+	$('#timeline').delegate('.nav .nav-btn.story, html.no-touch .item .feature img', 'click',function(){
 		var eventId = $('.timeline li.item.active').attr('data-id'),
 			story_href;
-		
+		CFG['util'].touch_HoverEffect($(this));
 		var cfg = {eventId : eventId};	
 		if (eventId.length!=36) {		// legacy, eventIdd is acutually uuid
 			cfg.uuid = eventId;
@@ -492,7 +498,7 @@ Timeline.movePopovers = function(){
 Timeline.togglePopovers = function(state, hideDelay){
 	state = state || 'show';
 	if (state == 'toggle') state = Timeline.popoverState=='show' ? 'hide' : 'show';
-	hideDelay = hideDelay || 5000;
+	hideDelay = hideDelay || 3000;
 	$('.timescale').popover({'trigger': 'manual'}).popover(state);	for (var i in Timeline.popovers) {
 		Timeline.popovers[i].popover({'trigger': 'manual'}).popover(state);
 	}
@@ -523,6 +529,7 @@ Timeline.render_EventBar = function(parent, eventstream) {
 		markup = Util.tokenReplace(item_markup, ':', tokens);	
 		parent.append(markup);
 	}
+	
 }
 
 
@@ -680,7 +687,10 @@ if (USE_LIVE_EVENTSTREAM){
 		html: true,
 		title: "Timeline Hints <i class='icon-remove-sign pull-right'></i>",
 		content:'<div>Click here to show/hide key<br />Timeline features</div>',
+		delay: {hide:3000},
 		placement:'bottom'}).popover('show');
+	setTimeout(function(){$('i.help').popover('hide');},3000);	
+		
 	$('.popover-title .icon-remove-sign').one('click', function(){
 		$(this).closest('.popover').addClass('hide');
 	})

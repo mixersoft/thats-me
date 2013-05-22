@@ -75,13 +75,13 @@
 	<?php if (!$isIFrame) { ?>
 	<div class='fw-band footer alpha black a85'>
     	<div class="container center">
-			<div class="pull-left"><a href='/home#i-want-it'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+			<div class="pull-left"><a href='/home#i-want-it'><button class="btn btn-awesome" title='Go to the next section to learn more about Snaphappi'>
 		    	I Want It
 		    </button></a></div>
 <a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>
 &nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 &nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
-    		<div class="pull-right"><a href='/home#about' target='_parent'><button class="btn btn-warning" >
+    		<div class="pull-right"><a href='/home#about' target='_parent'><button class="btn btn-awesome" >
 		    	Learn More
 		    </button></a></div>        		
     	</div>
@@ -98,7 +98,9 @@
 					<span class='event evt-from' data-time=':from'>:fromLabel</span> :dash <span class='event evt-to' data-time=':to'>:toLabel</span>
 				</div>
 			</div>
-			<div class='wrap circle :circle-size'><span class='circle evt-count :has-child' :tooltip >:count</span></div>
+			<div class='wrap circle :circle-size'>
+				<span class='circle evt-count :has-child' title=':tooltip' >:count</span>
+			</div>
 		</div>
 		<div class='feature vcenter-wrap'>
 			<div class="vcenter-padding">

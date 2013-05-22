@@ -23,6 +23,7 @@ CFG['timing'] = {
 // static class for IDE outline browser
 var Util = new function(){}
 CFG['util'] = Util;		// make global
+Util.listeners = {};
 Util.parseQueryString = function(a) {
 	a = a || (window.location.search.substr(1).split('&'));
     if (a == "") return {};
@@ -66,12 +67,11 @@ Util.isLingeringInView = function(o, lingering_timers, delay, success){
 		}
 	}, delay);
 };
-Util.notify = function notify(msg, type) {
+Util.notify = function notify(msg) {
 	try {
-		// $('.alert-wrapper').removeClass('hide');		if (/snaphappi.com/.test(window.location.host)) return;
+		if (/snaphappi.com/.test(window.location.host)) return;
 		$('.alert-wrapper .alert').html(msg);
-		// console.log(msg);
-		// $('.alert-wrapper .fade-wrap').fadeIn(500).delay(1000).fadeOut("slow");		$('.alert-wrapper').addClass('fadeIn');
+		$('.alert-wrapper').addClass('fadeIn');
 		setTimeout(function(){
 			$('.alert-wrapper').removeClass('fadeIn');
 		}, 2000)
@@ -460,6 +460,23 @@ Util.setVariant = function(qs){
 	return variant;
 }
 
+Util.touch_HoverEffect = function(o){
+	if (o && o.closest('html.touch').length) {
+        o.addClass('hover-effect');
+        setTimeout(function(){o.removeClass('hover-effect');},200);
+        setTimeout(function(){o.addClass('hover-effect');},400);
+        setTimeout(function(){o.removeClass('hover-effect');},1000);
+   } else if ($('html.touch').length) { // global listeners
+    	Util.listeners['touch-effect'] = Util.listeners['touch-effect'] 
+    		||  $('html.touch').delegate('.btn, a, i', 'touchstart', function(e) {
+		        $this = $(e.currentTarget);
+		        $this.addClass('hover-effect');
+		        setTimeout(function(){$this.removeClass('hover-effect');},200);
+		        setTimeout(function(){$this.addClass('hover-effect');},400);
+		        setTimeout(function(){$this.removeClass('hover-effect');},1000);
+		    });  
+    }
+}
 
 /*
  * init code for deferred markup
@@ -651,6 +668,8 @@ Util.documentReady = function() {
 		 */
 		if (CFG.isTouch) $('html').removeClass('no-touch').addClass('touch');
 		else $('html').removeClass('touch').addClass('no-touch');
+		
+		Util.touch_HoverEffect();
 		
 		/*
 		 * set #Home section height

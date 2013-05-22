@@ -99,6 +99,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', end
       @black-3d-reverse;
     }
   }
+  .carousel-inner {
+    margin-top: 1em;
+  }
   .carousel-control-btn {
     z-index:99;
   }
@@ -124,7 +127,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', end
     vertical-align: text-bottom;
     cursor: pointer;
   }
-  .nav-btn:hover, i:hover {
+  .nav-btn:hover, i:hover{
     text-shadow: 1px 1px 2px @orange;
   }
 }
@@ -146,7 +149,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', end
     font-size: 40px;
     cursor: default;
   }
+  .featurette-heading h1 {
+    position:relative;
+  }
   .more-stories {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    a:hover > span.label{
+      color: @orange;
+    }
     span.label2 {
       font-size: 18px; 
       color: @cream; 
@@ -180,7 +192,10 @@ html #story .ipad .montage-container {
   width: 1.6em;
   cursor: pointer;
 }
-
+.circle:not(.wrap):hover {
+  @black-3d-reverse;
+  color: @orange;
+}
 
 .container {
   .ipad {
@@ -224,6 +239,17 @@ html #story .ipad .montage-container {
 html.touch {
   .ipad {
     cursor: pointer !important;
+  }
+  span.more-stories a.hover-effect span.label {
+    color: @orange !important;
+  }
+  .nav-btn.hover-effect, i.hover-effect {
+    color: @orange !important;
+    text-shadow: 1px 1px 2px @orange;
+  }
+  .circle.hover-effect:not(.wrap) {
+    @black-3d-reverse !important;
+    color: @orange !important; 
   }
 }
 hr {

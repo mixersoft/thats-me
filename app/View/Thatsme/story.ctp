@@ -70,7 +70,7 @@
 		        <h1>Curated Stories
 		        	<div class='subhead'>This is a simple prototype to help illustrate the ideas mentioned in The Movie
 		        		<i class='help icon-question-sign'></i>
-		        	<span class='more-stories pull-right'>
+		        	<span class='more-stories'>
 		    				<span class='label2'>Some other stories:</span> 
 		    				<a href='/story/bali'><span class=' label alpha rgba80b'>Bali</span></a>
 		    				<a href='/story/newyork'><span class=' label alpha rgba80b'>New York</span></a>
@@ -92,13 +92,13 @@
 	<?php if (!$isIFrame) { ?>
 	<div class='fw-band footer alpha black a85'>
     	<div class="container center">
-			<div class="pull-left"><a href='/home#i-want-it'><button class="btn btn-primary" title='Go to the next section to learn more about Snaphappi'>
+			<div class="pull-left"><a href='/home#i-want-it'><button class="btn btn-awesome" title='Go to the next section to learn more about Snaphappi'>
 		    	I Want It
 		    </button></a></div>	
 <a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>
 &nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 &nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
-    		<div class="pull-right"><a href='/home#about' target='_parent'><button class="btn btn-warning">
+    		<div class="pull-right"><a href='/home#about' target='_parent'><button class="btn btn-awesome">
 		    	Learn More
 		    </button></a></div>        		
     	</div>

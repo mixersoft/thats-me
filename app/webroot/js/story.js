@@ -208,6 +208,7 @@ Story.documentReady = function () {
 		$('a').on('click', function(e){
 			var $this = $(e.currentTarget),
 				href = $this.attr('href');
+			CFG['util'].touch_HoverEffect($this);	
 			if (/^\/(timeline|story)/.test(href)) {	
 				if ((/\/iframe\:1/i).test(href) == false) {
 					// need to add named param to all internal links
@@ -288,9 +289,11 @@ Story.documentReady = function () {
 	
 		// click handler for nav to Story
 	$('.ipad').delegate('.nav .nav-timeline', 'click',function(){
+		CFG['util'].touch_HoverEffect($(this));
 		window.location.href = Util.getTimelineHref();
 	});
 	$('.nav .nav-btn.timeline').click(function(e){
+		CFG['util'].touch_HoverEffect($(this));
 		e.preventDefault();
 		window.location.href = Util.getTimelineHref();
 		return false;

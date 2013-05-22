@@ -314,7 +314,39 @@ Util.pickHighlights = function(auditions, count, fnMethod ) {
 	auditions = fnMethod(auditions);
 	return auditions.slice(0,count);
 }
+/**
+ * @param parent node
+ * @param featured, array of auditions
+ * @param cfg object, {count:, baseurl:} 
+ */
+Util.render_3StackedEvent = function(parent, featured, cfg){
+	var THUMB_SIZE = 'bs', 
+		src, feature, tokens,
+		feature_markup = "<div><img class=':slot img-polaroid' src=':src' title=':title'></div>",
+		audition = featured.shift();
+		parent.html('');
+	while (cfg.count--) {
+		if (audition && audition.Photo) {
+			tokens = {
+				src : Util.getImgSrcBySize(cfg.baseurl + audition.Photo.Img.Src.rootSrc , THUMB_SIZE),
+				title: audition.Photo.Fix.Score,
+				slot: (cfg.count%2)==1 ? 'mid' : 'top',
+			}
+		} else {
+			tokens = {
+				src: Util.getImgSrcBySize(cfg.baseurl + audition.rootSrc , THUMB_SIZE),
+				title: audition.score,
+				slot: (cfg.count%2)==1 ? 'mid' : 'top',
+			}
+		}
+		feature = Util.tokenReplace(feature_markup,':',tokens);
+		parent.append(feature);
+		audition = featured.shift(); 
+	}
+}
 
+Util.render_GridScrollH = function(parent, featured, cfg){
+}
 /*
  * make global
  */
@@ -492,6 +524,12 @@ Timeline.render_EventBar = function(parent, eventstream) {
 		parent.append(markup);
 	}
 }
+
+
+Timeline.render_Event = function(parent, featured, cfg){
+	Util.render_3StackedEvent(parent, featured, cfg);
+}
+
 /**
  * render timeline with event_groups from castingCall
  * @param cc raw, unparsed castingCall, default = PAGE.jsonData.castingCall
@@ -553,6 +591,7 @@ if (USE_LIVE_EVENTSTREAM){
 	
 	var baseurl = PAGE.jsonData.castingCall.CastingCall.Auditions.Baseurl,
 		audition, auditions, shots, src, j=0;
+		
 	var placeholders = $('.timeline .item .feature img.img-polaroid');
 	var m=0, j=0;
 	for (k=0; k<eventstream.length; k++) {	
@@ -583,22 +622,20 @@ if (USE_LIVE_EVENTSTREAM){
 			featured = auditions.slice(m, m+shot.Shot.count);
 			m += (shot.Shot.count);		
 		}
-		var featured_count = 3; 
+		var container = parent.find('li.item .feature .vcenter-body').eq(k), 
+			featured_count = 3; 
 		featured = Util.pickHighlights(featured, featured_count, Util.randomizeByTopRated);
 		featured = Util.sortByTime(featured.slice(0,featured_count));
-		audition = featured.shift();
-		while (featured_count--) {
-			if (audition) {
-				src = CFG['util'].getImgSrcBySize(baseurl + audition.Photo.Img.Src.rootSrc , 'bs');
-				// TODO: need to create placeholders from markup
-				placeholders.eq(j++).attr('src', src).attr('title', 'score: '+ audition.Photo.Fix.Score);
-			} else placeholders.eq(j++).remove();
-			audition = featured.shift(); 
-		}
+		
+		/*
+		 * render Timeline Event
+		 */
+		Timeline.render_Event(container, featured, {count:featured_count,baseurl:baseurl});
 	
 } else {	
 	// USE_LIVE_EVENTSTREAM == false
 	var featured, 
+		container = parent.find('li.item .feature .vcenter-body').eq(k), 
 		featured_count = 3; 
 	if (featured == undefined) {	// object to array
 		featured = [];
@@ -614,12 +651,13 @@ if (USE_LIVE_EVENTSTREAM){
 			} 
 		);
 	}
-	audition = featured.shift();
-	while (featured_count--) {
-		src = CFG['util'].getImgSrcBySize(baseurl + audition.rootSrc , 'bs');
-		placeholders.eq(j++).attr('src', src).attr('title', 'score: '+audition.score);   // "fake" auditions. not parsed using YUI classes
-		audition = featured.shift(); 
-	}
+	Util.render_3StackedEvent(container, featured, {count:featured_count, baseurl:baseurl});
+	// audition = featured.shift();
+	// while (featured_count--) {
+		// src = CFG['util'].getImgSrcBySize(baseurl + audition.rootSrc , 'bs');
+		// placeholders.eq(j++).attr('src', src).attr('title', 'score: '+audition.score);   // "fake" auditions. not parsed using YUI classes
+		// audition = featured.shift(); 
+	// }
 	
 }
 	} // end for eventstream

@@ -2,6 +2,39 @@
 $title = "Snaphappi &middot; Preview";
 $this -> set("title_for_layout", $title);
 $this -> extend('/User/beachfront');
+$this->start('css');
+?>
+<style type="text/css">
+	.iframe-wrap {
+		position:relative;
+	}
+	.iframe-wrap .curtain {
+		bottom: 0;
+	    font-size: 2.2em;
+	    left: 0;
+	    line-height: 600px;
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	    z-index: 100;
+	}
+</style>
+<?php
+$this->end();
+$this -> append('javascript_Bottom');
+?>
+<!-- production -->
+<!-- <script type="text/javascript" src="/min/b=js/plupload&amp;f=jquery.cookie.js,moxie.js,plupload.js,jquery.ui.plupload/jquery.ui.plupload.js,snappi.js"></script> -->
+<!--  debug -->
+<script type="text/javascript" src="/js/plupload/jquery.cookie.js"></script>
+<script type="text/javascript" src="/js/plupload/snappi.js"></script>
+<script type="text/javascript">
+	_iframe_onLoad = function(e){
+		$('.iframe-wrap .curtain').remove();
+	}
+</script>
+<?php
+$this -> end();
 ?>
 
 <div id="signin" class="featurette preview track-page-view ">
@@ -12,36 +45,11 @@ $this -> extend('/User/beachfront');
 					<div class="row">
 						<h1 class='center'>Welcome to the Snaphappi Preview</h1>
 					</div>
-					<div class="row">
-						<form class="form-horizontal offset3 span6" onsubmit="return CFG['aaa'].submit(this);">
-							<div class="control-group">
-								<label class="control-label" for="inputEmail">Email</label>
-								<div class="controls">
-									<input type="text" id="inputEmail" placeholder="Email">
-								</div>
-							</div>
-							<div class="control-group">
-								<label class="control-label" for="inputPassword">Password</label>
-								<div class="controls">
-									<input type="password" id="inputPassword" placeholder="Password">
-								</div>
-							</div>
-							<div class="control-group">
-								<div class="controls">
-									<label class="checkbox">
-										<input type="checkbox">
-										Remember me </label>
-									<div class='form-inline'>
-										<button type="submit" class="btn btn-awesome">
-											Sign in
-										</button>
-										<button type="submit" class="btn btn-awesome guest">
-											Sign in as Guest
-										</button>
-									</div>
-								</div>
-							</div>
-						</form>
+					<div class="row iframe-wrap center">
+						<iframe src='http://snappi-dev/users/signin/?min&optional' frameborder="0" width='940' height='600' onload='_iframe_onLoad(this)'></iframe>
+						<div class='curtain center'>
+							<i class="icon-spinner icon-spin icon-large"></i> loading...
+						</div>
 					</div>
 				</div>
 			</div>

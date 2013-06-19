@@ -65,6 +65,7 @@ class UsersController extends AppController {
 	}
 	
 	public function signin(){
+		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
 		// TODO: how/when do we verify if the cookie is stil valid?
 		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
 		// if (!empty($authUser['count'])){
@@ -72,14 +73,16 @@ class UsersController extends AppController {
 		// } else if (!empty($authUser['uuid'])){
 			// $this->redirect("/users/upload", null, true);
 		// } 
-		$this->set('authUser', $authUser);
+		$this->set(compact('authUser', 'uploadHost'));
 		$this->_beachfront(); 
 		
 	}
 	
 	public function upload(){
+		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
+		
 		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
-		$this->set('authUser', $authUser);
+		$this->set(compact('authUser', 'uploadHost'));
 		$this->_beachfront(); 
 		
 	}

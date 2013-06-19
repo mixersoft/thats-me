@@ -81,7 +81,7 @@ $this->end();
 						<h1 class='center'>Welcome to the Snaphappi Preview</h1>
 					</div>
 					<div class="row iframe-wrap center">
-						<iframe src='http://snappi-dev/users/signin/?min&optional' 
+						<iframe src='http://<?php echo $uploadHost; ?>/users/signin/?min&optional' 
 							frameborder="0" 
 							width='940' 
 							height='400' onload='_iframe_onLoad(this)'></iframe>

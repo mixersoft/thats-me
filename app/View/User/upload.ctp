@@ -74,7 +74,7 @@ $this->end();
 							<noscript>
 								Javascript is required to upload photos
 							</noscript>
-							<iframe src='http://snappi-dev/my/upload?min' frameborder="0" width='940' height='600' onload='_iframe_onLoad(this)'>
+							<iframe src='http://<?php echo $uploadHost; ?>/my/upload?min' frameborder="0" width='940' height='600' onload='_iframe_onLoad(this)'>
 							</iframe>
 							<div class='curtain center'>
 								<i class="icon-spinner icon-spin icon-large"></i> loading...

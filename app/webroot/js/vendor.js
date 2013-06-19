@@ -120,7 +120,7 @@ var onYouTubePlayerAPIReady; 	// MAKE GLOBAL FOR YOUTUBE
  */
 if (typeof ($.cookie) != 'undefined') {
 	$.cookie.json = true;
-	$.cookie.defaults = {expires : 30};
+	$.cookie.defaults = {expires : 30, path : '/'};
 	CFG['cracker']= $.cookie("cracker") || {'Page View':[], 'Click':[], 'Video':[], 'gaq':[]};
 }
 

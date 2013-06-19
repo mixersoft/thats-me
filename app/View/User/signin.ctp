@@ -7,13 +7,14 @@ $this->start('css');
 <style type="text/css">
 	.iframe-wrap {
 		position:relative;
+		min-height: 640px;
 		margin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {
 		bottom: 0;
 	    font-size: 2.2em;
 	    left: 0;
-	    line-height: 600px;
+	    line-height: 480px;
 	    position: absolute;
 	    right: 0;
 	    top: 0;
@@ -25,40 +26,14 @@ $this->end();
 
 $this -> append('javascript_Bottom');
 ?>
+<script type="text/javascript" src="/js/users.js"></script>
 <script type="text/javascript">
+$(function() {
+	CFG['users'].if_Message.bind('signin');
 	_iframe_onLoad = function(e){
-		$('.iframe-wrap .curtain').remove();
-		
-		$(window).bind('message', function(e){
-			var json = e.originalEvent.data,
-				origin = e.originalEvent.origin;
-			try {
-				if (json.success){
-					if (json.response.User.id) {
-						$.cookie.json = true;
-						var user = json.response.User;
-						$.cookie('user', 
-							{
-								uuid: user.id,
-								username: user.username==user.id ? 'Guest' : user.username,
-								role: user.primary_group_id,
-								count: user.asset_count || 0,
-							},
-							{
-								expires: 14,
-								path: '/',
-							});
-						window.location.href = '/users/upload';
-					}
-				} else {
-					// twBootstrap flash json.message
-					$('form #UserPassword').val('');
-				};  	
-			} catch (ex) {
-				alert('bad msg from json response');
-			}
-		});
+		CFG['users'].if_onload(e);
 	}
+});
 </script>
 <?php
 $this -> end();
@@ -81,10 +56,12 @@ $this->end();
 						<h1 class='center'>Welcome to the Snaphappi Preview</h1>
 					</div>
 					<div class="row iframe-wrap center">
-						<iframe src='http://<?php echo $uploadHost; ?>/users/signin/?min&optional' 
+						<iframe src='http://snappi-dev/users/signin/?min&optional' 
+							class="offset3 span6"
 							frameborder="0" 
 							width='940' 
-							height='400' onload='_iframe_onLoad(this)'></iframe>
+							height='400' 
+							onload='_iframe_onLoad(this)'></iframe>
 						<div class='curtain center'>
 							<i class="icon-spinner icon-spin icon-large"></i> loading...
 						</div>

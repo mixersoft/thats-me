@@ -53,6 +53,13 @@ $this -> append('javascript_Bottom');
 </script>
 <?php
 $this -> end();
+
+// <!-- NAVBAR -->
+$this->startIfEmpty('body_header'); 
+	echo $this->element('navbar-member', array('authUSer'=>$authUser));
+    echo $this->element('notify');
+$this->end(); 
+
 ?>
 <div id="uploader-wrap" class="featurette uploader track-page-view ">
 	<div class="vcenter-wrap">

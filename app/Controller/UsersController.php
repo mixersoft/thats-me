@@ -58,12 +58,28 @@ class UsersController extends AppController {
 		$this->set(compact('isTouch', 'isAndroid', 'isLocal'));
 	}
 	
+	public function signout(){
+		setcookie ('user', "", time() - 3600);
+		// TODO: XHR signout at snappi-dev
+		$this->redirect("/users/signin", null, true);
+	}
+	
 	public function signin(){
+		// TODO: how/when do we verify if the cookie is stil valid?
+		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
+		// if (!empty($authUser['count'])){
+			// $this->redirect("/isotope/{$authUser['uuid']}", null, true);
+		// } else if (!empty($authUser['uuid'])){
+			// $this->redirect("/users/upload", null, true);
+		// } 
+		$this->set('authUser', $authUser);
 		$this->_beachfront(); 
 		
 	}
 	
 	public function upload(){
+		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
+		$this->set('authUser', $authUser);
 		$this->_beachfront(); 
 		
 	}

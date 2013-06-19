@@ -22,6 +22,7 @@ $this->start('css');
 </style>
 <?php
 $this->end();
+
 $this -> append('javascript_Bottom');
 ?>
 <script type="text/javascript">
@@ -33,7 +34,22 @@ $this -> append('javascript_Bottom');
 				origin = e.originalEvent.origin;
 			try {
 				if (json.success){
-					if (json.response.User.id) window.location.href = '/users/upload';
+					if (json.response.User.id) {
+						$.cookie.json = true;
+						var user = json.response.User;
+						$.cookie('user', 
+							{
+								uuid: user.id,
+								username: user.username==user.id ? 'Guest' : user.username,
+								role: user.primary_group_id,
+								count: user.asset_count || 0,
+							},
+							{
+								expires: 14,
+								path: '/',
+							});
+						window.location.href = '/users/upload';
+					}
 				} else {
 					// twBootstrap flash json.message
 					$('form #UserPassword').val('');
@@ -46,6 +62,14 @@ $this -> append('javascript_Bottom');
 </script>
 <?php
 $this -> end();
+
+// <!-- NAVBAR -->
+$this->startIfEmpty('body_header'); 
+	echo $this->element('navbar-member', array('authUSer'=>$authUser));
+    echo $this->element('notify');
+$this->end(); 
+
+
 ?>
 
 <div id="signin" class="featurette preview track-page-view ">

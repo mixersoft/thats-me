@@ -7,6 +7,7 @@ $this->start('css');
 <style type="text/css">
 	.iframe-wrap {
 		position:relative;
+		margin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {
 		bottom: 0;
@@ -23,14 +24,24 @@ $this->start('css');
 $this->end();
 $this -> append('javascript_Bottom');
 ?>
-<!-- production -->
-<!-- <script type="text/javascript" src="/min/b=js/plupload&amp;f=jquery.cookie.js,moxie.js,plupload.js,jquery.ui.plupload/jquery.ui.plupload.js,snappi.js"></script> -->
-<!--  debug -->
-<script type="text/javascript" src="/js/plupload/jquery.cookie.js"></script>
-<script type="text/javascript" src="/js/plupload/snappi.js"></script>
 <script type="text/javascript">
 	_iframe_onLoad = function(e){
 		$('.iframe-wrap .curtain').remove();
+		
+		$(window).bind('message', function(e){
+			var json = e.originalEvent.data,
+				origin = e.originalEvent.origin;
+			try {
+				if (json.success){
+					if (json.response.User.id) window.location.href = '/users/upload';
+				} else {
+					// twBootstrap flash json.message
+					$('form #UserPassword').val('');
+				};  	
+			} catch (ex) {
+				alert('bad msg from json response');
+			}
+		});
 	}
 </script>
 <?php
@@ -46,7 +57,10 @@ $this -> end();
 						<h1 class='center'>Welcome to the Snaphappi Preview</h1>
 					</div>
 					<div class="row iframe-wrap center">
-						<iframe src='http://snappi-dev/users/signin/?min&optional' frameborder="0" width='940' height='600' onload='_iframe_onLoad(this)'></iframe>
+						<iframe src='http://snappi-dev/users/signin/?min&optional' 
+							frameborder="0" 
+							width='940' 
+							height='400' onload='_iframe_onLoad(this)'></iframe>
 						<div class='curtain center'>
 							<i class="icon-spinner icon-spin icon-large"></i> loading...
 						</div>

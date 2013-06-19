@@ -29,25 +29,13 @@ $this -> append('javascript_Bottom');
 <script type="text/javascript" src="/js/users.js"></script>
 <script type="text/javascript">
 $(function() {
-	CFG['users'].if_Message.bind('signin');
 	_iframe_onLoad = function(e){
-		CFG['users'].if_onload(e);
+		window.location.href = '/users/signin';
 	}
-	
-	_iframe_auth = function(e){
-		var auth = CFG['users'].if_auth(e);
-		if (!auth) {
-			$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') );
-		} else {
-			var user = $.cookie('user'),
-				next = user.count===0 ? '/users/upload'
-							: '/users/isotope/'+user.id; 	
-			window.location.href = next;
-		}
-	}
-	$('.featurette iframe').bind('load', _iframe_onLoad);
-	$('iframe#auth').bind('load', _iframe_auth);
+	CFG['users'].setUser(false);
+	$('iframe#auth').bind('load', _iframe_onLoad);
 	$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
+	
 });
 </script>
 <?php
@@ -71,9 +59,9 @@ $this->end();
 						<h1 class='center'>Welcome to the Snaphappi Preview</h1>
 					</div>
 					<div class="row iframe-wrap center">
-						<iframe 
-							qsrc='http://<?php echo $uploadHost; ?>/users/signin/?min&optional' 
-							class="offset3 span6"
+						<iframe id='auth'
+							qsrc='http://<?php echo $uploadHost; ?>/users/signout' 
+							class="offset3 span6 hidden"
 							frameborder="0" 
 							width='940' 
 							height='400' ></iframe>
@@ -93,7 +81,3 @@ $this->end();
 		</div>
 	</div>
 </div>
-<iframe id='auth' class='hide' 
-	qsrc='http://<?php echo $uploadHost; ?>/users/checkauth' 
-	frameborder="0" >
-</iframe>

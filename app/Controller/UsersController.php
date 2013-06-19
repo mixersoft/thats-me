@@ -60,19 +60,18 @@ class UsersController extends AppController {
 	
 	public function signout(){
 		setcookie ('user', "", time() - 3600);
-		// TODO: XHR signout at snappi-dev
-		$this->redirect("/users/signin", null, true);
+		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
+		// verify cookie by iframe+XHR
+		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
+		$this->set(compact('authUser', 'uploadHost'));
+		$this->_beachfront();
+		// $this->redirect("/users/signin", null, true);
 	}
 	
 	public function signin(){
 		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
-		// TODO: how/when do we verify if the cookie is stil valid?
+		// verify cookie by iframe+XHR
 		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
-		// if (!empty($authUser['count'])){
-			// $this->redirect("/isotope/{$authUser['uuid']}", null, true);
-		// } else if (!empty($authUser['uuid'])){
-			// $this->redirect("/users/upload", null, true);
-		// } 
 		$this->set(compact('authUser', 'uploadHost'));
 		$this->_beachfront(); 
 		
@@ -80,7 +79,7 @@ class UsersController extends AppController {
 	
 	public function upload(){
 		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
-		
+		// verify cookie by iframe+XHR
 		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
 		$this->set(compact('authUser', 'uploadHost'));
 		$this->_beachfront(); 

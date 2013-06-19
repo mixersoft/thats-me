@@ -18,25 +18,22 @@
             </a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse pull-right" >
-<?php if ($authUser) {  ?>
-              <ul class="nav">
+              <ul class="nav auth <?php if (!$authUser) echo ' hide '?>">
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="/home">Home</a></li>
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <span style='color:white;'><?php echo $authUser['username']; ?></span><b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <span class='display-name' style='color:white;'><?php echo $authUser ? $authUser['username'] : ''; ?></span><b class="caret"></b></a>
                   <ul class="dropdown-menu pull-right alpha rgba80b">
                     <li class='promote'><a href="/users/upload">Upload Photos</a></li>
                   </ul>
                 </li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="/users/signout" >Sign Out</a></li>
               </ul>
-<?php } else {  ?>            
-	          <ul class="nav">
+	          <ul class="nav no-auth <?php if ($authUser) echo ' hide '?>">
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="/home">Home</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="/users/signin" >Sign In</a></li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="/users/register" >Register</a></li>
               </ul>
-<?php } ?> 
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->       

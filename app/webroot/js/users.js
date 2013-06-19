@@ -33,6 +33,8 @@ $(function() {
 	 * helper functions
 	 */
 	var Util = new function(){}
+	Util.uploadHost = /snaphappi.com$/.test(window.location.hostname) ?
+			'dev.snaphappi.com' : 'snappi-dev';
 	Util.guid = function(){
 		function s4() {
 		  return Math.floor((1 + Math.random()) * 0x10000)
@@ -107,7 +109,56 @@ $(function() {
 				throw new Exception('warning: alert block missing');
 			}
 	};
-	
+	Util.if_auth = function(e) {
+		try {
+			// uses iframe to get current auth from /users/signin/.json
+			// see: same origin policy for accessing iframe contents
+			document.domain= 'snaphappi.com';
+			var inner = $(e.currentTarget).contents().find('body').html();
+			var user = JSON.parse(inner);
+			Util.isAuth = !!user;
+			Util.setUser(user);
+		} catch (ex) {
+			console.error('iframe checkauth does not work for snappi-dev');
+			// assume cookie[user] is valid 
+			var user = $.cookie('user');
+			Util.isAuth = user && user.uuid;
+		}
+		
+		$(e.currentTarget).remove();	// remove iframe#auth
+		return Util.isAuth;
+	}
+	Util.setUser = function(json) {
+		$.cookie.json = true;
+		var user = json && json.User || {},
+			cookieData;
+		// update navbar
+		if (user.id) {
+			$('.navbar .nav.auth').removeClass('hide');
+			$('.navbar .nav .display-name').html(user.displayname);
+			$('.navbar .nav.no-auth').addClass('hide');
+			cookieData = {
+				uuid: user.id,
+				username: user.displayname,
+				role: user.primary_group_id,
+				count: user.asset_count || 0,
+			};
+			// update Cookie exp
+			$.cookie('user', 
+				cookieData,
+				{
+					expires: 14,
+					path: '/',
+				}
+			);
+		} else {
+			$('.navbar .nav.no-auth').removeClass('hide');
+			$('.navbar .nav .display-name').html('');
+			$('.navbar .nav.auth').addClass('hide');
+			// update Cookie exp
+			$.removeCookie('user', {path: '/'}		);
+		}
+	}
 	
 	
 	/*
@@ -121,11 +172,11 @@ $(function() {
 		min = min || {w:640, h:480};
 		if (cfg.h) {
 			h = Math.max(cfg.h, min.h);
-			$('iframe').height(h);
+			$('.featurette iframe').height(h);
 		}
 		if (cfg.w) {
 			w = Math.max(cfg.w, min.w);
-			$('iframe').width(w);
+			$('.featurette iframe').width(w);
 		}
 	}
 	Util.if_Message = {
@@ -186,7 +237,8 @@ $(function() {
 	};
 	
 	// make global,
-	CFG['users'] = $.extend(CFG['users'] || {}, Util);		
+	CFG['users'] = $.extend(CFG['users'] || {}, Util);	
+	
 	
 });	
 

@@ -46,6 +46,17 @@ $(function() {
 			w = Math.max(rowW, windowW*0.9);
 		$('iframe').width(w);
 	}
+	_iframe_auth = function(e){
+		var auth = CFG['users'].if_auth(e);
+		if (!auth) {
+			window.location.href = '/users/signin';
+		} else {
+			$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') ); 
+		}
+	}
+	$('.featurette iframe').bind('load', _iframe_onLoad);
+	$('iframe#auth').bind('load', _iframe_auth);
+	$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
 });
 </script>
 <?php
@@ -71,22 +82,27 @@ $this->end();
 					<noscript>
 						Javascript is required to upload photos
 					</noscript>
-					<iframe src='http://snappi-dev/my/upload?min' 
+					<iframe id='upload' 
+						qsrc='http://<?php echo $uploadHost; ?>/my/upload?min' 
 						frameborder="0" 
-						width='940' height='600' 
-						onload='_iframe_onLoad(this)'>
+						width='940' height='600' >
 					</iframe>
 					<div class='curtain center'>
 						<i class="icon-spinner icon-spin icon-large"></i> loading...
 					</div>
 				</section>
-		</div>
-		<div class='fw-band footer alpha black a85'>
-			<div class="container center">
-				<a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>
-				&nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
-				&nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
+			</div>
+			<div class='fw-band footer alpha black a85'>
+				<div class="container center">
+					<a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>
+					&nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
+					&nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>
+				</div>
 			</div>
 		</div>
 	</div>
-
+</div>
+<iframe id='auth' class='hide' 
+	qsrc='http://<?php echo $uploadHost; ?>/users/checkauth' 
+	frameborder="0" >
+</iframe>

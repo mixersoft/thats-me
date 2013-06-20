@@ -11,10 +11,9 @@ $this->start('css');
 		margin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {
-		bottom: 0;
 	    font-size: 2.2em;
 	    left: 0;
-	    line-height: 600px;
+	    line-height: 1;
 	    position: absolute;
 	    right: 0;
 	    top: 0;
@@ -28,35 +27,7 @@ $this -> append('javascript_Bottom');
 <script type="text/javascript" src="/js/users.js"></script>
 <script type="text/javascript">
 $(function() {
-	CFG['users'].if_Message.bind('upload');
-	$(window).bind('resize', function(e){
-		try {
-			var iframeWin = $('iframe')[0].contentWindow;	
-			var rowW = $('.row').width(),
-			windowW = $(window).width(),
-			w = Math.max(rowW, windowW*0.9);
-			$('iframe').width(w);
-		} catch (ex) {
-		}
-	})
-	_iframe_onLoad = function(e){
-		CFG['users'].if_onload(e);
-		var rowW = $('.row').width(),
-			windowW = $(window).width(),
-			w = Math.max(rowW, windowW*0.9);
-		$('iframe').width(w);
-	}
-	_iframe_auth = function(e){
-		var auth = CFG['users'].if_auth(e);
-		if (!auth) {
-			window.location.href = '/users/signin';
-		} else {
-			$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') ); 
-		}
-	}
-	$('.featurette iframe').bind('load', _iframe_onLoad);
-	$('iframe#auth').bind('load', _iframe_auth);
-	$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
+	CFG['users'].documentReady.upload();
 });
 </script>
 <?php
@@ -64,12 +35,12 @@ $this -> end();
 
 // <!-- NAVBAR -->
 $this->startIfEmpty('body_header'); 
-	echo $this->element('navbar-member', array('authUSer'=>$authUser));
+	echo $this->element('navbar-member', array('action'=>'upload'));
     echo $this->element('notify');
 $this->end(); 
 
 ?>
-<div id="uploader-wrap" class="featurette uploader track-page-view ">
+<div id="uploader-wrap" class="featurette uploader-wrap track-page-view ">
 	<div class="vcenter-wrap">
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body alpha black a70 ">
@@ -83,6 +54,7 @@ $this->end();
 						Javascript is required to upload photos
 					</noscript>
 					<iframe id='upload' 
+						class='invisible'
 						qsrc='http://<?php echo $uploadHost; ?>/my/upload?min' 
 						frameborder="0" 
 						width='940' height='600' >

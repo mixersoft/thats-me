@@ -1,4 +1,4 @@
-        <div class="alert-wrapper invisible fadeOut" >
+        <div class="alert-wrapper hide invisible fadeOut" >
         	<div class='fade-wrap'>
         		<div class='alert alert-info'></div>
         	</div>

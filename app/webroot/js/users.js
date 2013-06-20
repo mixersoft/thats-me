@@ -235,6 +235,77 @@ $(function() {
 			}
 		}
 	};
+	// documentReady scripts for each action
+	Util.documentReady = {
+		signin: function(){
+			CFG['users'].if_Message.bind('signin');
+			_iframe_onLoad = function(e){
+				CFG['users'].if_onload(e);
+				$('.featurette iframe').removeClass('invisible');
+			}
+			
+			_iframe_auth = function(e){
+				var auth = CFG['users'].if_auth(e);
+				if (!auth) {
+					$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') );
+				} else {
+					var user = $.cookie('user'),
+						next = user.count===0 ? '/users/upload'
+									: '/users/isotope/'+user.id; 	
+					window.location.href = next;
+				}
+			}
+			$('.featurette iframe').bind('load', _iframe_onLoad);
+			if ($.cookie('user')) {
+				// auth Cookie[user]
+				$('iframe#auth').bind('load', _iframe_auth);
+				$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );	
+			} else {
+				$('iframe#auth').remove();
+				$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') );
+			}
+			
+		},
+		signout: function(){
+			_iframe_onLoad = function(e){
+				window.location.href = '/users/signin';
+			}
+			CFG['users'].setUser(false);
+			$('iframe#auth').bind('load', _iframe_onLoad);
+			$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
+		},
+		upload: function(){
+			CFG['users'].if_Message.bind('upload');
+			$(window).bind('resize', function(e){
+				try {
+					var iframeWin = $('iframe')[0].contentWindow;	
+					var rowW = $('.row').width(),
+					windowW = $(window).width(),
+					w = Math.max(rowW, windowW*0.9);
+					$('iframe').width(w);
+				} catch (ex) {
+				}
+			});
+			_iframe_onLoad = function(e){
+				CFG['users'].if_onload(e);
+				var rowW = $('.row').width(),
+					windowW = $(window).width(),
+					w = Math.max(rowW, windowW*0.9);
+				$('.featurette iframe').width(w).removeClass('invisible');
+			}
+			_iframe_auth = function(e){
+				var auth = CFG['users'].if_auth(e);
+				if (!auth) {
+					window.location.href = '/users/signin';
+				} else {
+					$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') ); 
+				}
+			}
+			$('.featurette iframe').bind('load', _iframe_onLoad);
+			$('iframe#auth').bind('load', _iframe_auth);
+			$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
+		}
+	}
 	
 	// make global,
 	CFG['users'] = $.extend(CFG['users'] || {}, Util);	

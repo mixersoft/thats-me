@@ -1,8 +1,5 @@
 <?php 
-// TODO: how do we get snappi-dev auth user here?
-// 		xxx - XHR GET /users/signin/.json
-// 		yes - read cookie set from /users/signin
-// $authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
+// 		XHR GET snappi-dev/users/checkauth to verify authUser
 ?>  
 	    <div class="navbar navbar-inverse navbar-fixed-top invisible alpha black a80">
           <div class="navbar-inner container">
@@ -24,15 +21,15 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome <span class='display-name' style='color:white;'><?php echo $authUser ? $authUser['username'] : ''; ?></span><b class="caret"></b></a>
                   <ul class="dropdown-menu pull-right alpha rgba80b">
-                    <li class='promote'><a href="/users/upload">Upload Photos</a></li>
+                    <li class='promote <?php if ($action=='upload') echo 'active';  ?>'><a href="/users/upload">Upload Photos</a></li>
                   </ul>
                 </li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="/users/signout" >Sign Out</a></li>
               </ul>
 	          <ul class="nav no-auth <?php if ($authUser) echo ' hide '?>">
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="/home">Home</a></li>
-                <li data-toggle="collapse" data-target=".nav-collapse"><a href="/users/signin" >Sign In</a></li>
-                <li data-toggle="collapse" data-target=".nav-collapse"><a href="/users/register" >Register</a></li>
+                <li class='<?php if ($action=='signin') echo 'active';  ?>' data-toggle="collapse" data-target=".nav-collapse"><a href="/users/signin" >Sign In</a></li>
+                <li class='<?php if ($action=='register') echo 'active';  ?>' data-toggle="collapse" data-target=".nav-collapse"><a href="/users/register" >Register</a></li>
               </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->

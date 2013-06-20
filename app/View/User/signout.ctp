@@ -11,10 +11,9 @@ $this->start('css');
 		margin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {
-		bottom: 0;
 	    font-size: 2.2em;
 	    left: 0;
-	    line-height: 480px;
+	    line-height: 1;
 	    position: absolute;
 	    right: 0;
 	    top: 0;
@@ -29,13 +28,7 @@ $this -> append('javascript_Bottom');
 <script type="text/javascript" src="/js/users.js"></script>
 <script type="text/javascript">
 $(function() {
-	_iframe_onLoad = function(e){
-		window.location.href = '/users/signin';
-	}
-	CFG['users'].setUser(false);
-	$('iframe#auth').bind('load', _iframe_onLoad);
-	$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
-	
+	CFG['users'].documentReady.signout();
 });
 </script>
 <?php
@@ -43,14 +36,14 @@ $this -> end();
 
 // <!-- NAVBAR -->
 $this->startIfEmpty('body_header'); 
-	echo $this->element('navbar-member', array('authUSer'=>$authUser));
+	echo $this->element('navbar-member', array('action'=>'signout'));
     echo $this->element('notify');
 $this->end(); 
 
 
 ?>
 
-<div id="signin" class="featurette signin track-page-view ">
+<div id="signout" class="featurette">
 	<div class="vcenter-wrap">
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body alpha black a70 ">
@@ -61,7 +54,7 @@ $this->end();
 					<div class="row iframe-wrap center">
 						<iframe id='auth'
 							qsrc='http://<?php echo $uploadHost; ?>/users/signout' 
-							class="offset3 span6 hidden"
+							class="invisible"
 							frameborder="0" 
 							width='940' 
 							height='400' ></iframe>

@@ -71,7 +71,7 @@ Util.notify = function notify(msg) {
 	try {
 		if (/snaphappi.com/.test(window.location.host)) return;
 		$('.alert-wrapper .alert').html(msg);
-		$('.alert-wrapper').addClass('fadeIn');
+		$('.alert-wrapper').removeClass('hide').addClass('fadeIn');
 		setTimeout(function(){
 			$('.alert-wrapper').removeClass('fadeIn');
 		}, 2000)

@@ -7,7 +7,7 @@ $this->start('css');
 <style type="text/css">
 	.iframe-wrap {
 		position:relative;
-		min-height: 640px;
+		min-height: 480px;
 		margin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {

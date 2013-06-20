@@ -134,15 +134,13 @@ $(function() {
 			cookieData;
 		// update navbar
 		if (user.id) {
-			$('.navbar .nav.auth').removeClass('hide');
-			$('.navbar .nav .display-name').html(user.displayname);
-			$('.navbar .nav.no-auth').addClass('hide');
 			cookieData = {
 				uuid: user.id,
 				username: user.displayname || user.username,
 				role: user.primary_group_id,
 				count: user.asset_count || 0,
 			};
+			if (cookieData.username == cookieData.uuid) cookieData.username = 'Guest';
 			// update Cookie exp
 			$.cookie('user', 
 				cookieData,
@@ -151,6 +149,9 @@ $(function() {
 					path: '/',
 				}
 			);
+			$('.navbar .nav.auth').removeClass('hide');
+			$('.navbar .nav .display-name').html(cookieData.username);
+			$('.navbar .nav.no-auth').addClass('hide');
 		} else {
 			$('.navbar .nav.no-auth').removeClass('hide');
 			$('.navbar .nav .display-name').html('');
@@ -193,35 +194,22 @@ $(function() {
 			});
 		},
 		signin : function (e, json) {
-			// TODO: check origin = e.originalEvent.origin;
-			try {
-				if (json.success){
-					if (json.response.User.id) {
-						$.cookie.json = true;
-						var user = json.response.User;
-						$.cookie('user', 
-							{
-								uuid: user.id,
-								username: user.username==user.id ? 'Guest' : user.username,
-								role: user.primary_group_id,
-								count: user.asset_count || 0,
-							},
-							{
-								expires: 14,
-								path: '/',
-							});
-						var next = !user.asset_count ? '/users/upload'
+			switch (json.key) {
+				case 'href':
+					window.location.href = json.value;
+					break;
+				case 'auth':	
+					Util.setUser(json.value);
+					var user = json.value && json.value.User || {}, 
+						next = !user.asset_count ? '/users/upload'
 							: '/users/isotope/'+user.id; 	
+					setTimeout(function(){
 						window.location.href = next;
-					}
-				} else {
-					// twBootstrap flash json.message
-					$('form #UserPassword').val('');
-					// TODO: if originalEvent was 'guest sign in'
-					// clear #UserUsername
-				};  	
-			} catch (ex) {
-				alert('bad msg from json response');
+					}, 3000);		
+					break;
+				case 'flash':	
+					Util.flash(json.value);
+					break;
 			}
 		},
 		upload : function (e, json) {

@@ -101,7 +101,7 @@ $(function() {
 			try {
 				$('.alert-wrapper .alert').html(msg);
 				$('.alert').prepend('<button type="button" class="close" data-dismiss="alert"><i class="icon-remove-sign"></i></button>');
-				$('.alert-wrapper').addClass('fadeIn');
+				$('.alert-wrapper').removeClass('hide').addClass('fadeIn');
 				setTimeout(function(){
 					$('.alert-wrapper').removeClass('fadeIn');
 				}, DURATION)
@@ -194,6 +194,8 @@ $(function() {
 			});
 		},
 		signin : function (e, json) {
+			var MARGIN_H = 24,
+				MIN_H = 480;
 			switch (json.key) {
 				case 'href':
 					window.location.href = json.value;
@@ -202,7 +204,8 @@ $(function() {
 					Util.setUser(json.value);
 					var user = json.value && json.value.User || {}, 
 						next = !user.asset_count ? '/users/upload'
-							: '/users/isotope/'+user.id; 	
+							// : '/users/isotope/'+user.id; 	
+							: '/users/upload/'+user.id;
 					setTimeout(function(){
 						window.location.href = next;
 					}, 3000);		
@@ -210,6 +213,10 @@ $(function() {
 				case 'flash':	
 					Util.flash(json.value);
 					break;
+				case 'resize':
+					var height = json.value.h+MARGIN_H;
+					Util.if_resize({h:height}, {h:MIN_H});
+					break;	
 			}
 		},
 		upload : function (e, json) {

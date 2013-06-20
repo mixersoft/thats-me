@@ -100,7 +100,7 @@ $(function() {
 		var DURATION = 5000;
 			try {
 				$('.alert-wrapper .alert').html(msg);
-				$('.alert').prepend('<button type="button" class="close" data-dismiss="alert">&times;</button>');
+				$('.alert').prepend('<button type="button" class="close" data-dismiss="alert"><i class="icon-remove-sign"></i></button>');
 				$('.alert-wrapper').addClass('fadeIn');
 				setTimeout(function(){
 					$('.alert-wrapper').removeClass('fadeIn');
@@ -139,7 +139,7 @@ $(function() {
 			$('.navbar .nav.no-auth').addClass('hide');
 			cookieData = {
 				uuid: user.id,
-				username: user.displayname,
+				username: user.displayname || user.username,
 				role: user.primary_group_id,
 				count: user.asset_count || 0,
 			};
@@ -233,7 +233,34 @@ $(function() {
 					Util.if_resize({h:height}, {h:PLUPLOAD_MIN_H});
 				break;
 			}
-		}
+		},
+		register : function (e, json) {
+			var MARGIN_H = 24,
+				MIN_H = 480;
+			switch (json.key) {
+				case 'href':
+					window.location.href = json.value;
+					break;
+				case 'popup':
+					// show modal
+					$('#markup '+value).removeClass('hide');
+					break;
+				case 'auth':	
+					Util.setUser(json.value);
+					setTimeout(function(){
+						window.location.href = '/users/signin';
+					}, 2000);
+					break;
+				case 'flash':	
+					Util.flash(json.value);
+					break;
+				case 'resize':
+					var height = json.value.h+MARGIN_H;
+					Util.if_resize({h:height}, {h:MIN_H});
+					break;	
+					
+			}
+		} 
 	};
 	// documentReady scripts for each action
 	Util.documentReady = {
@@ -304,7 +331,17 @@ $(function() {
 			$('.featurette iframe').bind('load', _iframe_onLoad);
 			$('iframe#auth').bind('load', _iframe_auth);
 			$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
-		}
+		},
+		register: function(){
+			CFG['users'].if_Message.bind('register');
+			_iframe_onLoad = function(e){
+				CFG['users'].if_onload(e);
+				$('.featurette iframe').removeClass('invisible');
+			}
+			
+			$('.featurette iframe').bind('load', _iframe_onLoad);
+			$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') );
+		},
 	}
 	
 	// make global,

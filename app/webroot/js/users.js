@@ -128,6 +128,21 @@ $(function() {
 		$(e.currentTarget).remove();	// remove iframe#auth
 		return Util.isAuth;
 	}
+	/*
+	 * get a simple json string from iframe, snappi-dev
+	 */
+	Util.if_json = function(e) {
+		try {
+			// uses iframe to get current auth from /users/signin/.json
+			// see: same origin policy for accessing iframe contents
+			document.domain= 'snaphappi.com';
+			var inner = $(e.currentTarget).contents().find('body').html();
+			var json = JSON.parse(inner);
+		} catch (ex) {
+			console.error('iframe json does not work for snappi-dev, same-origin problem');
+		}
+		return json;
+	}
 	Util.setUser = function(json) {
 		$.cookie.json = true;
 		var user = json && json.User || {},
@@ -189,8 +204,10 @@ $(function() {
 			$(window).bind('message', function(e){
 				var json = e.originalEvent.data,
 					origin = e.originalEvent.origin;
-				Util.if_Message[action](e, json); 
-				if ($.isFunction(callback)) callback();
+				if (Util.if_Message[action] && $.isFunction(Util.if_Message[action])) {
+					 Util.if_Message[action](e, json); 
+					 if ($.isFunction(callback)) callback();
+				}
 			});
 		},
 		signin : function (e, json) {
@@ -273,7 +290,7 @@ $(function() {
 				} else {
 					var user = $.cookie('user'),
 						next = user.count===0 ? '/users/upload'
-									: '/users/isotope/'+user.id; 	
+									: '/users/snaps'; 	
 					window.location.href = next;
 				}
 			}
@@ -336,6 +353,53 @@ $(function() {
 			
 			$('.featurette iframe').bind('load', _iframe_onLoad);
 			$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') );
+		},
+		snaps: function(){
+			CFG['users'].if_Message.bind('snaps');
+			_iframe_auth = function(e){
+				var auth = CFG['users'].if_auth(e);
+				if (!auth) {
+					window.location.href = '/users/signin';
+				} else {
+					$('iframe#json').attr('src', $('iframe#json').attr('qsrc') ); 
+				}
+			}
+			_iframe_json = function(e){
+				try {
+					var json = CFG['users'].if_json(e);
+					PAGE = typeof PAGE == 'undefined' ? {} : PAGE;
+					PAGE.jsonData = json;
+					CFG['util'].parseCC(PAGE.jsonData.castingCall);
+					CFG['isotope'].render(CFG['util'].Auditions);
+				} catch (ex) {
+					console.error("ERROR: json response not found. iframe same origin issue?");
+				}
+			}
+			/*
+			 * json for public photos, does not require auth 
+			 */
+			_xhr_json = function(owner){
+				owner = owner || 'venice';
+				PAGE = typeof PAGE == 'undefined' ? {} : PAGE;
+				PAGE.src = "http://snappi-dev/person/odesk_photos/"+owner+"/page:1/perpage:100/sort:score/direction:desc/.json?debug=0";
+				try {
+					CFG['util'].getCC(PAGE.src, function(json){
+					// json.success = true
+					CFG['util'].parseCC(json.response.castingCall);
+					CFG['isotope'].render(CFG['util'].Auditions);
+				});				} catch (ex) {
+					console.error("ERROR: json response not found. xhr json");
+				}
+			}
+			
+			if (isLocal=(window.location.hostname=='thats-me')) {
+				var owner = window.location.pathname.match(/[^/]*$/);
+				_xhr_json(owner);
+			} else {
+				$('iframe#json').bind('load', _iframe_json);
+				$('iframe#auth').bind('load', _iframe_auth);
+				$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
+			}
 		},
 	}
 	

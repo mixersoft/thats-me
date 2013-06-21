@@ -94,4 +94,13 @@ class UsersController extends AppController {
 		
 	}
 	
+	public function snaps(){
+		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
+		// verify cookie by iframe+XHR
+		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
+		$this->set(compact('authUser', 'uploadHost'));
+		$this->_beachfront(); 
+		
+	}
+	
 }

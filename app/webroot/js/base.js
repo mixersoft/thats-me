@@ -206,7 +206,7 @@ Util.showDonateButtons = function() {
  * @param el HTMLElement, o.hasAttr('hash'), $(<A>)
  */
 Util.animateScrollToHash = function(el) {
-	var top, next, target;
+	var top, next, target, NAVBAR_OFFSET_H = 40;
 	if ($(el).attr('data-next')=='.featurette') {
 		// just scan for the next valid .featurette in the page
 		top = $(el).closest('.featurette');
@@ -228,7 +228,7 @@ Util.animateScrollToHash = function(el) {
         var delta = target.offset().top - $(window).scrollTop();
         if (delta < 0 || delta > 50) {
         	setTimeout(function(){
-        		$.scrollTo(target, 1000);
+        		$.scrollTo(target.offset().top-NAVBAR_OFFSET_H, 1000);
         	}, 50);
         } 
     }

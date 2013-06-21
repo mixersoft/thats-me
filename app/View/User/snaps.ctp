@@ -11,12 +11,12 @@ $this->start('css');
 $this->end();
 $this -> append('javascript_Bottom');
 		echo '<script src="/js/vendor/jquery.isotope.js"></script>';
-		echo "<script src='http://snappi.snaphappi.com/svc/lib/alloy-1.5.0/build/aui/aui-min.js' type='text/javascript'></script>";
-		echo "<script src='http://snappi.snaphappi.com/js/snappi/base_aui.js' type='text/javascript'></script>";
-		echo '<script src="/js/snaps.js"></script>';		
-		echo "<meta id='css-start'>"; 
+		echo '<script type="text/javascript" src="/js/snaps.js"></script>';	
+		echo '<script type="text/javascript" src="/js/users.js"></script>';
+		// echo "<script src='http://snappi.snaphappi.com/svc/lib/alloy-1.5.0/build/aui/aui-min.js' type='text/javascript'></script>";
+		// echo "<script src='http://snappi.snaphappi.com/js/snappi/base_aui.js' type='text/javascript'></script>";
+		// echo "<meta id='css-start'>"; 
 ?>
-<script type="text/javascript" src="/js/users.js"></script>
 <script type="text/javascript">
 $(function() {
 	CFG['users'].documentReady.snaps();

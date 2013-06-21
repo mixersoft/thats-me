@@ -176,10 +176,12 @@ Isotope.initIsotopeObj = function(){
     
       var $optionSets = $('#iso-menu .option-set'),
           $optionLinks = $optionSets.find('a');
-
-      $optionLinks.click(function(){
+          
+      $('#iso-menu').delegate('.option-set a', 'click', function(e){
         var $this = $(this);
+// console.info("menu option click: "+$this.attr('data-option-value'));        
         // don't proceed if already selected
+        
         if ( $this.closest('li').hasClass('active') ) {
           return false;
         }
@@ -203,8 +205,10 @@ Isotope.initIsotopeObj = function(){
           $container.isotope( options );
         }
         CFG['util'].animateScrollToHash({hash: this});
+        
         return false;
-      });
+      });    
+
 
 
     
@@ -345,13 +349,10 @@ Isotope.documentReady = function () {
 	 */
 	// TODO: deprecate? check CFG['users'].documentReady.users
 	$('#curtain .wrapV').html( $('.markup .loading').html() ).addClass('fadeIn'); 
-	CFG['timing'].load_SocialSharing = 1000;
-	CFG['util'].load_SocialSharing();
+	// CFG['timing'].load_SocialSharing = 1000;
+	// CFG['util'].load_SocialSharing();
 	
 }
 
-
-$(document).ready( CFG['isotope'].documentReady );
-	
 })();  
 // end module closure

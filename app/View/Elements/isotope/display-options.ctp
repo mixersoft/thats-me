@@ -52,7 +52,7 @@
 				<a class="accordion-toggle collapsed " data-toggle="collapse" data-parent="" data-target="#iso-option-1"> 
 					Sort </a>
 			</div>
-			<div id="iso-option-1" class="accordion-body collapse">
+			<div id="iso-option-1" class="accordion-body collapse in">
 				<div class="accordion-inner ">
 					<ul data-option-key="sortBy" class="inline option-set clearfix" id="sort-by">
 						<li class="btn btn-awesome btn-small ">

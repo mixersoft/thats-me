@@ -392,6 +392,7 @@ $(function() {
 				}
 			}
 			
+			CFG['isotope'].documentReady();			
 			if (isLocal=(window.location.hostname=='thats-me')) {
 				var owner = window.location.pathname.match(/[^/]*$/);
 				_xhr_json(owner);

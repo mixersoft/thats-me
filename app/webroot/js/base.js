@@ -646,6 +646,7 @@ Util.deferredMarkupReady = function() {
  * 	initialized via Util.deferredMarkupReady() 
  */
 Util.documentReady = function() {
+	
 		// console.info("document ready");
 		if ($('html').hasClass('ie8') && document.documentMode==8) $('html').addClass('doc-mode-ie8');
 		/*
@@ -662,7 +663,7 @@ Util.documentReady = function() {
     	    	$('#curtain').remove();
     	    },
 		});
-
+		
 		/*
 		 * debug touch/no-touch
 		 */
@@ -704,7 +705,8 @@ Util.documentReady = function() {
 		
 		
 		/*
-		 * FAQ/accordion listener for show-all
+		 * TODO: move this 
+		 * isotope menu-options, FAQ/accordion listener for show-all
 		 */
 		$(document).on('click.accordion-show-all', '[data-action=show-all]', function (e) {
 			var parent = $(e.currentTarget).attr('data-parent');

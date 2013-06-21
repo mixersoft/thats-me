@@ -243,7 +243,10 @@ $(function() {
 				case 'resize':
 					var height = json.value.h+PLUPLOAD_MARGIN_H;
 					Util.if_resize({h:height}, {h:PLUPLOAD_MIN_H});
-				break;
+					break;
+				case 'href':
+					window.location.href = json.value;
+					break;
 			}
 		},
 		register : function (e, json) {

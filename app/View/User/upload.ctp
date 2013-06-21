@@ -5,9 +5,15 @@ $this -> extend('/User/beachfront');
 $this->start('css');
 ?>
 <style type="text/css">
+	#uploader-wrap.featurette .fw-band.vcenter-body {
+		min-height: 540px;
+	}
+	.container h1, .container h2, .container h3  {
+	    line-height: 1.4;
+	}
 	.iframe-wrap {
 		position:relative;
-		min-height: 640px;
+		min-height: 320px;
 		margin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {
@@ -57,7 +63,7 @@ $this->end();
 						class='invisible'
 						qsrc='http://<?php echo $uploadHost; ?>/my/upload?min' 
 						frameborder="0" 
-						width='940' height='600' >
+						width='940' height='380' >
 					</iframe>
 					<div class='curtain center'>
 						<i class="icon-spinner icon-spin icon-large"></i> loading...

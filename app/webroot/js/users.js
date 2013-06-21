@@ -185,7 +185,7 @@ $(function() {
 	}
 	Util.if_resize = function(cfg, min) {
 		cfg = cfg || {};
-		min = min || {w:640, h:480};
+		min = min || {w:640, h:320};
 		if (cfg.h) {
 			h = Math.max(cfg.h, min.h);
 			$('.featurette iframe').height(h);
@@ -238,7 +238,7 @@ $(function() {
 		},
 		upload : function (e, json) {
 			var PLUPLOAD_MARGIN_H = 7,
-				PLUPLOAD_MIN_H = 480;
+				PLUPLOAD_MIN_H = 320;
 			switch (json.key) {
 				case 'resize':
 					var height = json.value.h+PLUPLOAD_MARGIN_H;
@@ -320,11 +320,10 @@ $(function() {
 			CFG['users'].if_Message.bind('upload');
 			$(window).bind('resize', function(e){
 				try {
-					var iframeWin = $('iframe')[0].contentWindow;	
 					var rowW = $('.row').width(),
 					windowW = $(window).width(),
-					w = Math.max(rowW, windowW*0.9);
-					$('iframe').width(w);
+					w = Math.max(rowW, windowW*0.85);
+					Util.if_resize({w:w});
 				} catch (ex) {
 				}
 			});
@@ -332,8 +331,19 @@ $(function() {
 				CFG['users'].if_onload(e);
 				var rowW = $('.row').width(),
 					windowW = $(window).width(),
-					w = Math.max(rowW, windowW*0.9);
-				$('.featurette iframe').width(w).removeClass('invisible');
+					w = Math.max(rowW, windowW*0.85),
+					windowH = $(window).height(),
+					h = windowH*0.66;
+				Util.if_resize({w:w, h:h});	
+				try {
+					// post resize message to iframe plupload
+					var iFrame = $('.featurette iframe'),
+						json = {key:'resize', value:{h:h}};
+					iFrame[0].contentWindow.postMessage(json, '*');
+				} catch(ex){
+					console.error("error sending html5 msg to iframe");
+				}
+				$('.featurette iframe').removeClass('invisible');
 			}
 			_iframe_auth = function(e){
 				var auth = CFG['users'].if_auth(e);

@@ -1,7 +1,7 @@
 <section id="iso-menu" class="span12 clearfix" >
 	<div class='section-heading'>
 		<h2>Display Options</h2>
-		<button data-action='show-all' data-parent='' class='pull-right btn btn-awesome btn-small show-all'>
+		<button data-action='show-all' data-parent='#iso-menu' class='pull-right btn btn-awesome btn-small show-all'>
 			show all
 		</button>
 	</div>

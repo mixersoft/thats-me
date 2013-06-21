@@ -379,7 +379,7 @@ $(function() {
 			 * json for public photos, does not require auth 
 			 */
 			_xhr_json = function(owner){
-				owner = owner || 'venice';
+				owner = owner=='snaps' ? 'venice' : owner;
 				PAGE = typeof PAGE == 'undefined' ? {} : PAGE;
 				PAGE.src = "http://snappi-dev/person/odesk_photos/"+owner+"/page:1/perpage:100/sort:score/direction:desc/.json?debug=0";
 				try {

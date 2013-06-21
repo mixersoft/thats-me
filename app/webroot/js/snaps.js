@@ -348,16 +348,6 @@ Isotope.documentReady = function () {
 	CFG['timing'].load_SocialSharing = 1000;
 	CFG['util'].load_SocialSharing();
 	
-	$(document).on('click.accordion-show-all', '[data-action=show-all]', function (e) {
-		var parent = $(e.currentTarget).attr('data-parent');
-		if ($(e.currentTarget).html()==='show all') {
-			$(e.currentTarget).html('hide all');
-			$(parent).find('.accordion-body').collapse('show');
-		} else {
-			$(e.currentTarget).html('show all');
-			$(parent).find('.accordion-body').collapse('hide');
-		}
-	})
 }
 
 

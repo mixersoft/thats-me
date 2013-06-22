@@ -58,7 +58,7 @@ $this->end();
 							class="invisible"
 							frameborder="0" 
 							width='560' 
-							height='436' ></iframe>
+							height='439' ></iframe>
 						<div class='curtain center'>
 							<i class="icon-spinner icon-spin icon-large"></i> loading...
 						</div>

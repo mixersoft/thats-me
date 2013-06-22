@@ -186,11 +186,13 @@ $(function() {
 	Util.if_resize = function(cfg, min) {
 		cfg = cfg || {};
 		if (cfg.fitInWindow) {
+			// Util.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 			var rowW = $('.row').width(),
 				windowW = $(window).width(),
-				windowH = $(window).height();
+				windowH = $(window).height()
+				strangeOffsetH = 148;
 			cfg.w = Math.max(rowW, windowW*0.85);	
-			cfg.h = $('.featurette .fw-band.vcenter-body').height()-148;
+			cfg.h = $('.featurette .fw-band.vcenter-body').height()-strangeOffsetH;
 		}
 		min = min || {w:640, h:320};
 		if (cfg.h) {

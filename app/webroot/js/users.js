@@ -251,9 +251,15 @@ $(function() {
 					var height = json.value.h+PLUPLOAD_MARGIN_H;
 					Util.if_resize({h:height}, {h:PLUPLOAD_MIN_H});
 					break;
-				case 'href':
-					window.location.href = json.value;
+				case 'msg':
+					if (json.value == 'FileUploaded'){
+						var markup = "Yay, your photos are on their way! &nbsp;&nbsp;<a href='/users/snaps' target='_blank'><button class='btn btn-awesome'>See them here</button></a>" 
+						Util.flash(markup);
+					}
 					break;
+				case 'fileAdded':
+					window.location.href = json.value;
+					break;	
 			}
 		},
 		register : function (e, json) {

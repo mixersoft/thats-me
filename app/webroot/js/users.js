@@ -185,6 +185,13 @@ $(function() {
 	}
 	Util.if_resize = function(cfg, min) {
 		cfg = cfg || {};
+		if (cfg.fitInWindow) {
+			var rowW = $('.row').width(),
+				windowW = $(window).width(),
+				windowH = $(window).height();
+			cfg.w = Math.max(rowW, windowW*0.85);	
+			cfg.h = $('.featurette .fw-band.vcenter-body').height()-148;
+		}
 		min = min || {w:640, h:320};
 		if (cfg.h) {
 			h = Math.max(cfg.h, min.h);
@@ -212,7 +219,7 @@ $(function() {
 		},
 		signin : function (e, json) {
 			var MARGIN_H = 24,
-				MIN_H = 480;
+				MIN_H = 420;
 			switch (json.key) {
 				case 'href':
 					window.location.href = json.value;
@@ -251,7 +258,7 @@ $(function() {
 		},
 		register : function (e, json) {
 			var MARGIN_H = 24,
-				MIN_H = 480;
+				MIN_H = 436;
 			switch (json.key) {
 				case 'href':
 					window.location.href = json.value;
@@ -320,25 +327,21 @@ $(function() {
 			CFG['users'].if_Message.bind('upload');
 			$(window).bind('resize', function(e){
 				try {
-					var rowW = $('.row').width(),
-					windowW = $(window).width(),
-					w = Math.max(rowW, windowW*0.85);
-					Util.if_resize({w:w});
+					Util.if_resize({fitInWindow: 1});
+					// post resize message to iframe plupload
+					var iFrame = $('.featurette iframe'),
+						json = {key:'resize', value:{h:iFrame.height()}};
+					iFrame[0].contentWindow.postMessage(json, '*');
 				} catch (ex) {
 				}
 			});
 			_iframe_onLoad = function(e){
 				CFG['users'].if_onload(e);
-				var rowW = $('.row').width(),
-					windowW = $(window).width(),
-					w = Math.max(rowW, windowW*0.85),
-					windowH = $(window).height(),
-					h = windowH*0.66;
-				Util.if_resize({w:w, h:h});	
 				try {
+					Util.if_resize({fitInWindow: 1});
 					// post resize message to iframe plupload
 					var iFrame = $('.featurette iframe'),
-						json = {key:'resize', value:{h:h}};
+						json = {key:'resize', value:{h:iFrame.height()}};
 					iFrame[0].contentWindow.postMessage(json, '*');
 				} catch(ex){
 					console.error("error sending html5 msg to iframe");

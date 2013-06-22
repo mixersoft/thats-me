@@ -478,6 +478,23 @@ Util.touch_HoverEffect = function(o){
     }
 }
 
+Util.footer_AnchorBottom = function(){
+	if ($('.featurette').length != 1) return;
+	// for single featurette pages only, 
+	// move footer inside and resize vcenter-body to fill window
+	var footerH, 
+		$f = $('.featurette');
+	$f.append($('#footer'));
+	footerH = $f.find('.fw-band.footer').height() + $f.find('#footer').height();
+	footerH += 60;  	// don't know why
+	var _resizeFeaturetteToFit = function(){
+		var perfectH = $(window).height()- footerH;
+		$f.find('.vcenter-body').css({minHeight:perfectH+'px'});
+	};	
+	$(window).on('resize', _resizeFeaturetteToFit);
+	$(window).trigger('resize');
+}
+
 /*
  * init code for deferred markup
  */
@@ -694,13 +711,7 @@ Util.documentReady = function() {
 		} else {
 			Util.deferredMarkupReady();
 			// set footer height if necessary to fill window
-			var contentBottom = $('#content').height(),
-				windowH = $(window).attr('innerHeight'),
-				paddingH = windowH - contentBottom;
-			if (paddingH > 0) { 
-				var footer = $('#footer');
-				footer.css('height',footer.height() + paddingH + 'px');
-			}
+			Util.footer_AnchorBottom();
 		}
 		
 		

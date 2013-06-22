@@ -5,10 +5,11 @@ $this -> extend('/User/beachfront');
 $this->start('css');
 ?>
 <style type="text/css">
+	.container h1, .container h2, .container h3  {
+	    line-height: 1.4;
+	}
 	.iframe-wrap {
 		position:relative;
-		min-height: 480px;
-		margin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {
 	    font-size: 2.2em;
@@ -57,7 +58,7 @@ $this->end();
 							class="invisible"
 							frameborder="0" 
 							width='560' 
-							height='480' ></iframe>
+							height='420' ></iframe>
 						<div class='curtain center'>
 							<i class="icon-spinner icon-spin icon-large"></i> loading...
 						</div>

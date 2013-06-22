@@ -5,10 +5,13 @@ $this -> extend('/User/beachfront');
 $this->start('css');
 ?>
 <style type="text/css">
+	.container h1, .container h2, .container h3  {
+	    line-height: 1.4;
+	}
 	.iframe-wrap {
 		position:relative;
-		min-height: 480px;
-		margin-bottom: 60px;
+		xmin-height: 480px;
+		xmargin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {
 	    font-size: 2.2em;
@@ -56,8 +59,8 @@ $this->end();
 							qsrc='http://<?php echo $uploadHost; ?>/users/signout' 
 							class="invisible"
 							frameborder="0" 
-							width='940' 
-							height='400' ></iframe>
+							width='560' 
+							height='420' ></iframe>
 						<div class='curtain center'>
 							<i class="icon-spinner icon-spin icon-large"></i> loading...
 						</div>

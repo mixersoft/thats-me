@@ -51,6 +51,8 @@ $this->end();
 				<div class="container">
 					<div class="row">
 						<h1 class='center'>Welcome to the Snaphappi Preview</h1>
+						<div class="center">Test-drive some new features under development and give us your feedback</div>
+						<br />
 					</div>
 					<div class="iframe-wrap center">
 						<iframe 

@@ -23,6 +23,7 @@
                   <ul class="dropdown-menu pull-right alpha rgba80b">
                   	<li class='promote <?php if ($action=='upload') echo 'active';  ?>'><a href="/users/upload">Upload</a></li>
                     <li class='promote <?php if ($action=='snaps') echo 'active';  ?>'><a href="/users/snaps">Photos</a></li>
+                    <li class='promote <?php if ($action=='snaps') echo 'active';  ?>'><a href="/users/reset">Reset Account</a></li>
                   </ul>
                 </li>
                 <li data-toggle="collapse" data-target=".nav-collapse"><a href="/users/signout" >Sign Out</a></li>
@@ -34,4 +35,4 @@
               </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
-        </div><!-- /.navbar -->       
+        </div><!-- /.navbar -->  

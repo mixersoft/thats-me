@@ -68,6 +68,15 @@ class UsersController extends AppController {
 		// $this->redirect("/users/signin", null, true);
 	}
 	
+	
+	public function reset(){
+		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
+		// verify cookie by iframe+XHR
+		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
+		$this->set(compact('authUser', 'uploadHost'));
+		$this->_beachfront();
+	}
+	
 	public function signin(){
 		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
 		// verify cookie by iframe+XHR

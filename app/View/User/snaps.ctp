@@ -52,6 +52,9 @@ $this->end();
 			</div>
 			<div class='fw-band footer alpha black a85'>
 				<div class="container center">
+					<a  class='pull-left' href='/users/reset'><button class="btn btn-awesome" title='REMOVE all photos from Snaphappi'>
+						Reset Account
+					</button></a>
 					<a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>
 					&nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 					&nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>

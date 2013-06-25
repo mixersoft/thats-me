@@ -182,6 +182,7 @@ $(function() {
 	 */
 	Util.if_onload = function(e){
 		$('.iframe-wrap .curtain').remove();
+		$('.featurette iframe').removeClass('invisible');
 	}
 	Util.if_resize = function(cfg, min) {
 		cfg = cfg || {};
@@ -290,6 +291,23 @@ $(function() {
 					break;	
 					
 			}
+		},
+		reset : function(e, json) {
+			switch (json.key) {
+				case 'success':
+					Util.flash('Your photos have been successfully removed from our servers.');
+					var next = '/users/snaps';
+					setTimeout(function(){
+						window.location.href = next;
+					}, 3000);
+					break;
+				case 'flash':	
+					Util.flash(json.value);
+					break;	
+				case 'href':
+					window.location.href = json.value;
+					break;
+			}
 		} 
 	};
 	// documentReady scripts for each action
@@ -329,6 +347,29 @@ $(function() {
 			}
 			CFG['users'].setUser(false);
 			$('iframe#auth').bind('load', _iframe_onLoad);
+			$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
+		},
+		// calls /my/truncate/[uuid] to remove all photos
+		reset: function(){
+			_iframe_auth = function(e){
+				var auth = CFG['users'].if_auth(e);
+				if (!auth) {
+					// error message
+					console.error('WARNING: user tried to reset without valid session')
+				} else {
+					$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') ); 
+				}
+			}
+			_iframe_onLoad = function(e){
+				// iframe:
+				// - show message: confirm reset - delete all photos				
+				// - user clicks on button in iframe
+				// - send message to parent for next action
+				CFG['users'].if_onload(e);
+				CFG['users'].if_Message.bind('reset');
+			}
+			$('.featurette iframe').bind('load', _iframe_onLoad);
+			$('iframe#auth').bind('load', _iframe_auth);
 			$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
 		},
 		upload: function(){

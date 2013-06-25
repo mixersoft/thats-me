@@ -208,6 +208,10 @@ class ThatsmeController extends AppController {
 		$this->_beachfront(); 
 	}
 
+	public function testdrive() {
+		$this->redirect('/users/upload');
+	}
+
 /**
  * Displays a view
  *

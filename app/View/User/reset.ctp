@@ -1,5 +1,5 @@
 <?php
-$title = "Snaphappi &middot; Preview";
+$title = "Snaphappi &middot; Reset Account";
 $this -> set("title_for_layout", $title);
 $this -> extend('/User/beachfront');
 $this->start('css');
@@ -10,6 +10,8 @@ $this->start('css');
 	}
 	.iframe-wrap {
 		position:relative;
+		xmin-height: 480px;
+		xmargin-bottom: 60px;
 	}
 	.iframe-wrap .curtain {
 	    font-size: 2.2em;
@@ -29,7 +31,7 @@ $this -> append('javascript_Bottom');
 <script type="text/javascript" src="/js/users.js"></script>
 <script type="text/javascript">
 $(function() {
-	CFG['users'].documentReady.signout();
+	CFG['users'].documentReady.reset();
 });
 </script>
 <?php
@@ -44,17 +46,17 @@ $this->end();
 
 ?>
 
-<div id="signout" class="featurette">
+<div id="reset" class="featurette">
 	<div class="vcenter-wrap">
 		<div class="vcenter-padding">
 			<div class="fw-band vcenter-body alpha black a70 ">
 				<div class="container">
 					<div class="row">
-						<h1 class='center'>Welcome to the Snaphappi Preview</h1>
+						<h1 class='center'>Reset My Account</h1>
 					</div>
 					<div class="row iframe-wrap center">
-						<iframe id='auth'
-							qsrc='http://<?php echo $uploadHost; ?>/users/signout' 
+						<iframe id='reset'
+							qsrc='http://<?php echo $uploadHost; ?>/my/truncate?min' 
 							class="invisible"
 							frameborder="0" 
 							width='560' 
@@ -75,3 +77,7 @@ $this->end();
 		</div>
 	</div>
 </div>
+<iframe id='auth' class='hide' 
+	qsrc='http://<?php echo $uploadHost; ?>/users/checkauth' 
+	frameborder="0" >
+</iframe>

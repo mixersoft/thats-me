@@ -6,8 +6,8 @@
 		</button>
 	</div>
 	<div class="accordion" id="">
-		<div class="accordion-group">
-			<div class="accordion-heading hide">
+		<div class="accordion-group hide">
+			<div class="accordion-heading">
 				<a class="accordion-toggle collapsed " data-toggle="collapse" data-parent="" data-target="#iso-option-0"> 
 					Filters </a>
 			</div>
@@ -59,6 +59,12 @@
 							<a data class="" data-option-value="original-order" href="#sortBy=original-order">original-order</a>
 						</li>
 						<li class="btn btn-awesome btn-small active">
+							<a data-option-value="batchId" href="#sortBy=symbol">most recent</a>
+						</li>
+						<li class="btn btn-awesome btn-small">
+							<a data-option-value="dateTaken" href="#sortBy=symbol">date taken</a>
+						</li>
+						<li class="btn btn-awesome btn-small">
 							<a class="selected" data-option-value="score" href="#sortBy=name">score</a>
 						</li>
 						<li class="btn btn-awesome btn-small">
@@ -68,24 +74,13 @@
 							<a data-option-value="random" href="#sortBy=random">random</a>
 						</li>
 					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="accordion" id="">
-		<div class="accordion-group">
-			<div class="accordion-heading">
-				<a class="accordion-toggle collapsed " data-toggle="collapse" data-parent="" data-target="#iso-option-2"> 
-					Sort Direction </a>
-			</div>
-			<div id="iso-option-2" class="accordion-body collapse">
-				<div class="accordion-inner ">
 					<ul data-option-key="sortAscending" class="inline option-set clearfix" id="sort-direction">
-						<li class="btn btn-awesome btn-small active">
-							<a class="selected" data-option-value="true" href="#sortAscending=true">sort ascending</a>
-						</li>
+						<span style='color: #F16122;'>Sort Order&nbsp;&nbsp;</span>
 						<li class="btn btn-awesome btn-small">
-							<a data-option-value="false" href="#sortAscending=false">sort descending</a>
+							<a data-option-value="true" href="#sortAscending=true">sort ascending</a>
+						</li>
+						<li class="btn btn-awesome btn-small active">
+							<a class="selected" data-option-value="false" href="#sortAscending=false">sort descending</a>
 						</li>
 					</ul>
 				</div>

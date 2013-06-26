@@ -64,7 +64,8 @@ Util.parseCC = function(cc, force){
 			id: id,
 			score: parseInt(auditions[i].Photo.Fix.Score),
 			caption: auditions[i].Photo.Caption,
-			dateTaken: auditions[i].Photo.DateTaken, 
+			batchId: parseInt(auditions[i].Photo.batchId),
+			dateTaken: new Date(auditions[i].Photo.DateTaken.replace(' ', 'T')), 
 			ts: auditions[i].Photo.TS,
 		}, auditions[i].Photo.Img.Src);
 	}
@@ -150,6 +151,12 @@ Isotope.initIsotopeObj = function(){
         rowHeight : 180
       },
       getSortData : {
+      	batchId: function($elem) {
+	  		return $elem.attr('data-caption');
+	  	},
+	  	dateTaken: function($elem) {
+	  		return $elem.attr('data-caption');
+	  	},
         score: function($elem) {
 	  		return parseFloat($elem.attr('data-score'));
 	  	},
@@ -157,7 +164,7 @@ Isotope.initIsotopeObj = function(){
 	  		return $elem.attr('data-caption');
 	  	},
       },
-      sortBy: 'score',
+      sortBy: 'batchId',
 	  sortAscending: false,
 	  animationEngine : 'best-available',
 	  layoutMode: 'fitRows',
@@ -279,7 +286,7 @@ Isotope.initIsotopeObj = function(){
     $('#shuffle a').click(function(){
       $container.isotope('shuffle');
       $sortBy.find('.selected').removeClass('selected');
-      $sortBy.find('[data-option-value="random"]').addClass('selected');
+      $sortBy.find('[data-option-value="random"]').addClass('selected').closest('li').addClass('active');
       return false;
     });
 
@@ -289,7 +296,7 @@ Isotope.initIsotopeObj = function(){
 Isotope.render = function(auditions, container){
 	container = container || $('.gallery .stage-body');
 	var THUMB_SIZE = 'bs', scale=640, max = 0, baseurl, tokens,
-		media_markup = "<img class='img-polaroid isotope-item :orientation' src=':src' title=':title' width=':width' height=':height' data-score=':score' data-caption=':caption'>";
+		media_markup = "<img class='img-polaroid isotope-item :orientation' src=':src' title=':title' width=':width' height=':height' data-dateTaken=':dateTaken' data-batchId=':batchId' data-score=':score' data-caption=':caption'>";
 	switch (THUMB_SIZE) {
 		case 'bs': scale=240; 
 			break;

@@ -1,6 +1,16 @@
 <?php
-$title = "Snaphappi &middot; My Photos";
-$this -> set("title_for_layout", $title);
+
+// init paging for iframe.src castingCall JSON request
+$default_paging = array('perpage'=>50, 'page'=>1, 'sort'=>'created', 'direction'=>'desc');
+$paging = array_intersect_key($this->passedArgs, $default_paging);
+$paging = array_merge($default_paging, $paging );
+$iframe_request = array_merge(array('controller'=>'my','action'=>'photos','?'=>array('min'=>1)), $paging);
+$iframe_src = "http://{$uploadHost}".Router::url($iframe_request);
+
+$title_for_layout = "Snaphappi Preview &middot; My Photos";
+$fb_images[] = "/img/beachfront/icon-sm-04.png";
+$fb_images[] = "/img/beachfront/icon-sm-06.png";
+$this -> set(compact("title_for_layout",'fb_images'));
 $this -> extend('/User/beachfront');
 $this->append('css');
 	$this->Less->css('snaps');
@@ -38,7 +48,7 @@ $this->end();
 			<div class="fw-band vcenter-body alpha black a70 ">
 				<div class="container">
 					<div class="row">
-						<h1 class='center'>Your Photos</h1>
+						<h1 class='center'>My Photos</h1>
 						<?php echo $this->element('isotope/display-options'); ?>
 					</div>
 				</div>
@@ -68,6 +78,6 @@ $this->end();
 	frameborder="0" >
 </iframe>
 <iframe id='json' class='hide' 
-	qsrc='http://<?php echo $uploadHost; ?>/my/photos/perpage:50?min' 
+	qsrc='<?php echo $iframe_src ?>' 
 	frameborder="0" >
 </iframe>

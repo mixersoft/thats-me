@@ -38,7 +38,7 @@ $this->Less->css('beachfront-2', array('no_output'=>true));
 	 * other HEAD
 	 */
 	$this->startIfEmpty('HEAD_bottom');
-		echo $this->element('fb_open_graph', compact('description', 'title'));
+		echo $this->element('fb_open_graph', compact('description', 'title', 'fb_images' ));
 	$this->end();
 	/**
 	 * javascript HEAD

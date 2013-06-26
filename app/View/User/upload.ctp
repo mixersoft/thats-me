@@ -1,6 +1,7 @@
 <?php
-$title = "Snaphappi &middot; Upload Photos";
-$this -> set("title_for_layout", $title);
+$title_for_layout = "Snaphappi Preview &middot; Upload Photos";
+$fb_images[] = "/img/beachfront/icon-sm-05.png";
+$this -> set(compact("title_for_layout",'fb_images'));
 $this -> extend('/User/beachfront');
 $this->start('css');
 ?>

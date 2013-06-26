@@ -444,7 +444,9 @@ $(function() {
 			 * json for public photos, does not require auth 
 			 */
 			_xhr_json = function(owner){
-				owner = owner=='snaps' ? 'venice' : owner;
+				if ($.isArray(owner)) owner = owner.shift();
+				if (owner=='snaps') owner = 'venice';
+				if (owner.indexOf(':')>0) owner = 'venice';
 				PAGE = typeof PAGE == 'undefined' ? {} : PAGE;
 				PAGE.src = "http://snappi-dev/person/odesk_photos/"+owner+"/page:1/perpage:100/sort:score/direction:desc/.json?debug=0";
 				try {

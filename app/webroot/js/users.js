@@ -255,8 +255,20 @@ $(function() {
 					Util.if_resize({h:height}, {h:PLUPLOAD_MIN_H});
 					break;
 				case 'msg':
-					if (json.value == 'FileUploaded'){
-						var markup = "Yay, your photos are on their way! &nbsp;&nbsp;<a href='/users/snaps' target='_blank'><button class='btn btn-awesome'>See them here</button></a>" 
+					if (json.value.type == 'FileUploaded'){
+						var queue = json.value.o,
+							markup = null;
+						if (queue.uploaded==0) {
+							markup = "Yay, your photos are on their way! &nbsp;&nbsp;<a href='/users/snaps' target='_blank'><button class='btn btn-awesome'>See them here</button></a>" 
+						} else if (queue.uploaded <= 100 && (queue.uploaded % 20)==0) {
+							markup = "All right! we're getting photos by the bagful! &nbsp;&nbsp;<a href='/users/snaps' target='_blank'><button class='btn btn-awesome'>See them here</button></a>"
+						} else if (queue.uploaded > 100 && (queue.uploaded % 500)==0) {	
+							markup = "They're still coming, only "+(queue.queued-queue.uploaded)+" more to go... &nbsp;&nbsp;<a href='/users/snaps' target='_blank'><button class='btn btn-awesome'>See them here</button></a>"
+						}
+						if (markup) Util.flash(markup);
+					} else if (json.value.type == 'FilesAdded') {
+						var settings = json.value.o;
+						markup = "Hang tight, we're scanning for JPG files in batches of "+settings.files_added_chunksize+".<br/>But you can click the button to start uploading now.";
 						Util.flash(markup);
 					}
 					break;

@@ -45,7 +45,8 @@ $this->startIfEmpty('body_header');
 	echo $this->element('navbar-member', array('action'=>'upload'));
     echo $this->element('notify');
 $this->end(); 
-
+$querystring = array('min'=>1) + $this->params->query;
+$uploader_src = "http://{$uploadHost}".Router::url(array('controller'=>'my','action'=>'upload','?'=>$querystring)); 
 ?>
 <div id="uploader-wrap" class="featurette uploader-wrap track-page-view ">
 	<div class="vcenter-wrap">
@@ -62,7 +63,7 @@ $this->end();
 					</noscript>
 					<iframe id='upload' 
 						class='invisible'
-						qsrc='http://<?php echo $uploadHost; ?>/my/upload?min' 
+						qsrc='<?php echo $uploader_src; ?>' 
 						frameborder="0" 
 						width='940' height='380' >
 					</iframe>

@@ -1,0 +1,286 @@
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 11.4em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.alpha.black.a80 {
+  background-color: #000;
+  background-color: rgba(0,0,0,0.8);
+}
+.alpha.black.a70 {
+  background-color: #000;
+  background-color: rgba(0,0,0,0.7);
+}
+.alpha.black.a50 {
+  background-color: #000;
+  background-color: rgba(0,0,0,0.5);
+}
+.alpha.darkred.a70 {
+  background-color: #711124;
+  background-color: rgba(111,17,35,0.7);
+}
+body,
+.navbar {
+  font-size: 100% important !;
+}
+ul.inline > li {
+  display: inline-block;
+}
+#snaps.featurette .container #iso-menu {
+  color: inherit;
+  padding: 1.4em 1.4em;
+}
+#snaps.featurette .container #iso-menu .section-heading {
+  color: #FDF9D0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #000;
+  background-color: rgba(0,0,0,0.7);
+  margin: 0 -1.4em;
+  padding: 0 1.4em;
+}
+#snaps.featurette .container #iso-menu .section-heading>* {
+  display: inline-block;
+  margin: 0;
+}
+#snaps.featurette .container #iso-menu .section-heading button {
+  margin: 8px 0;
+}
+#snaps.featurette .container #iso-menu .accordion {
+  margin-bottom: 0;
+}
+#snaps.featurette .container #iso-menu .accordion .accordion-group {
+  border: none;
+  margin-bottom: 10px;
+}
+#snaps.featurette .container #iso-menu .accordion .accordion-group .accordion-heading .accordion-toggle {
+  padding: 0 16px;
+  color: #F16122;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 4px 0 4px;
+  text-decoration: none;
+}
+#snaps.featurette .container #iso-menu .accordion .accordion-group .accordion-body {
+  padding-left: 16px;
+}
+#snaps.featurette .container #iso-menu .accordion .accordion-group .accordion-body .accordion-inner {
+  border-top: 2px solid #F16122;
+  color: #FDF9D0;
+  font-size: 13.6px;
+  font-weight: 300;
+  padding: 4px 0;
+}
+.popover {
+  box-shadow: 1px 1px 2px ;
+  background-clip: inherit;
+  font-family: roboto;
+}
+.popover .popover-title {
+  background-color: #D01F40 !important;
+}
+.popover .popover-inner .popover-content p {
+  color: #D01F40 !important;
+  text-shadow: 1px 1px 2px #000000 !important;
+}
+.navbar-inner .nav-collapse {
+  font-size: 14px !important;
+}
+.navbar-inner ul.nav > li.iframe-close > a {
+  color: ;
+}
+#snaps .nav {
+  position: absolute;
+  top: 4px;
+  z-index: 99;
+  left: 20px;
+  display: inline;
+  color: ;
+  cursor: pointer;
+}
+#snaps .nav .nav-btn {
+  display: inline;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: normal;
+  text-shadow: 1px 1px 2px #000;
+}
+#snaps .nav i {
+  font-size: 18px !important;
+  vertical-align: text-bottom;
+  cursor: pointer;
+}
+#snaps .nav .nav-btn:hover,
+#snaps .nav i:hover {
+  text-shadow: 1px 1px 2px #F16122;
+}
+#snaps .gallery {
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
+  min-height: 320px;
+  padding: 0 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
+}
+#snaps .gallery .stage-body {
+  margin: 3em auto;
+}
+#snaps .gallery .curtain {
+  font-size: 2.2em;
+  left: 0;
+  line-height: 1;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  z-index: 100;
+}
+#snaps .gallery.horizontal {
+  overflow-x: scroll;
+}
+#snaps .featurette-heading h1 {
+  position: relative;
+}
+.container h1,
+.container h2,
+.container h3 {
+  line-height: 1.4;
+}
+.container .ipad.landscape {
+  width: 1024px;
+  height: 768px;
+  min-height: 768px;
+  margin-left: -512px;
+}
+.container .ipad.landscape .timeline .feature {
+  height: 664px;
+}
+html.touch .fw-band {
+  cursor: pointer !important;
+}
+html.touch .nav-btn.hover-effect,
+html.touch i.hover-effect {
+  color: #F16122 !important;
+  text-shadow: 1px 1px 2px #F16122;
+}
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -ms-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+.isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -ms-transition-property: -ms-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
+}
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+@media (max-width: 1600px) {
+  .container .ipad.landscape.fullw {
+    width: 1368px;
+    margin-left: -684px;
+  }
+  .container .ipad.landscape.fullw .timeline li:not(.active) {
+    width: 148px;
+  }
+  .container .ipad.landscape.fullw .timeline .feature {
+    height: 796px;
+  }
+}
+@media (max-width: 1400px) {
+  .container .ipad.landscape.fullw {
+    width: 1170px;
+    margin-left: -585px;
+  }
+  .container .ipad.landscape.fullw .timeline li:not(.active) {
+    width: 148px;
+  }
+  .container .ipad.landscape.fullw .timeline .feature {
+    height: 664px;
+  }
+}
+@media (max-width: 1200px) {
+  .container .ipad.landscape.fullw {
+    width: 1024px;
+    margin-left: -512px;
+  }
+  .container .ipad.landscape.fullw .timeline li:not(.active) {
+    width: 148px;
+  }
+  .container .ipad.landscape.fullw .timeline .feature {
+    height: 664px;
+  }
+}
+@media (max-width: 1023px) {
+  .container .ipad.landscape {
+    width: 900px;
+    margin-left: -450px;
+  }
+  .container .ipad.landscape .timeline li:not(.active) {
+    width: 148px;
+  }
+  .container .ipad.landscape .timeline .feature {
+    height: 664px;
+  }
+}
+@media (max-width: 899px) {
+  .container .ipad.landscape {
+    width: 768px;
+    margin-left: -384px;
+  }
+  .container .ipad.landscape .timeline li:not(.active) {
+    width: 120px;
+  }
+  .container .ipad.landscape .timeline li.active {
+    width: 300px;
+  }
+  .container .ipad.landscape .timeline .feature {
+    height: 664px;
+  }
+}

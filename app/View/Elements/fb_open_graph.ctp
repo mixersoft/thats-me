@@ -20,7 +20,10 @@
 <meta property="fb:admins" content="214157" />	
 <link rel="image_src" href="/img/beachfront/bg-img-01.sm.jpg" />
 <link rel="image_src" href="/img/beachfront/bg-img-03.sm.jpg" />
-<?php foreach ((array)$fb_images as $src) {
-	echo "<link rel='image_src' href='{$src}' />";
+<?php
+if (isset($fb_images)) { 
+	foreach ((array)$fb_images as $src) {
+		echo "<link rel='image_src' href='{$src}' />";
+	}
 }
 ?>

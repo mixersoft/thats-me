@@ -1,0 +1,60 @@
+/* 
+ * In galleries using the Thumbnail style, and with a search keyword of "montage" added, replaces the thumbnails with an image montage.
+ *
+ * This section is to be placed in your CSS.
+ *
+ * This is version 1.2
+ *
+ * By Nicholas Sherlock / Sherlock Photography 2013, http://dgrin.com/showthread.php?t=235991
+ */
+body.ss-montage #allthumbs_stretch .photo_container_th, body.ss-montage #allthumbs_stretch .photo {
+	width:auto;
+	height:auto;
+}
+body.ss-montage #allthumbs_container {
+    position:relative;
+}
+body.ss-montage #allthumbs_stretch .photo {
+	position:absolute;
+	float:none;
+	margin:0;
+}
+body.ss-montage #allthumbs_stretch .photo .caption {
+	position:absolute;
+	bottom:1px;
+	left:1px;
+	right:1px;
+	background-color:rgba(0,0,0,0.3);
+	padding:5px;
+	
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+body.ss-montage #allthumbs_stretch .photo a.photoLink {
+	display:block;
+	position:relative;
+	overflow:hidden;
+}
+body.ss-montage #allthumbs_stretch .photo img {
+	display:block;
+	position:relative;
+	margin: 0 !important;	
+}
+body.ss-montage #allthumbs_container {
+	overflow:hidden; /* Stretch to fit floated content */
+}
+body.ss-montage #allthumbs_message {
+	clear:left;
+}
+/* We wrap another imgBorder tag around images, so we don't want imgBorder styles applying to the img tag itself */
+body.ss-montage img.imgBorder {
+	background-color:transparent !important;
+	box-shadow:none !important;
+	border:none !important;
+	padding:0 !important;
+	filter:none !important;
+	_filter:none !important;
+	-webkit-box-shadow:none !important;
+	-moz-box-shadow:none !important;
+}

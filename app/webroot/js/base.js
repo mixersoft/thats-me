@@ -36,7 +36,59 @@ Util.parseQueryString = function(a) {
     }
     return b;
 };
-
+/**
+ * adds cakephp named params to uri
+ * @param uri	string base uri
+ * @param namedData {} key-value pairs
+ * 		value === null removes namedParam from string
+ * @return string uri
+ */
+Util.setNamedParams = function(uri, namedData) {
+	if (!namedData) return uri;
+    var name = [];
+    // stringify nameData params
+    for (var i in namedData) {
+        // update or append?
+		var regexS = '(\/'+i+'[^:\/]*:)([^\/]*)';
+		var regex = new RegExp(regexS);
+		var match = regex.exec(uri);
+		if (match) {
+			if (namedData[i] === null) {
+				// remove named param
+				uri = uri.replace(match[0], '');
+			} else {
+				// update nameData param
+				uri = uri.replace(match[0], match[1]+namedData[i]);
+			}
+		} else if (namedData[i] !== null) {
+			// append nameData param
+        	name.push(i + ':' + namedData[i]);
+		}
+    }            
+    
+    if (name.length) {
+    	// append named params AFTER RequestHandler TYPE, if any
+    	var requestHandler = uri.match(/^(.*)\/(\.\w*)$/);
+        if (requestHandler) {
+        	uri = requestHandler[1] + '/' + name.join('/') + '/' + requestHandler[2];
+        } else {
+        	uri = uri + '/' + name.join('/');
+        }
+    }
+	return uri;
+};
+Util.getNamedParams = function(){
+	var param, 
+		named = {},
+		parts = window.location.pathname.split('/');
+	for (var i in parts) {
+		if (parts[i].indexOf(':')>0) {
+			param = parts[i].split(':');
+			named[param[0]] = decodeURIComponent(param[1].replace(/\+/g, " ")) ;
+		} 
+	}	
+    return named;
+};
 /*
  * http://stackoverflow.com/questions/9097501/show-div-when-scroll-position
  * see also: http://imakewebthings.com/jquery-waypoints/

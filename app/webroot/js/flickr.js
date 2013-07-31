@@ -204,25 +204,46 @@ Util = CFG['util'];
 var ImageMontage = function(cfg){
 	this.cfg = {};
 	this.init(cfg);
+	ImageMontage.instance = this;
 	return this;
 }
 
 // static method
+ImageMontage.instance = null;
 ImageMontage.render = function(auditions, container){
 	/*
 	 * this is the entrypoint into the imagemontage render
+	 * called by Util.documentReady.snaps
 	 */
-	var cfg = {
-		url: PAGE.src,
+	var PERPAGE = 32; // set in Util.documentReady.snaps(?)
+	if ($('iframe#json').length) {
+		// called repeatedly, use iframe_fetch
+		var url = $('iframe#json').attr('src');
+		var named = Util.getNamedParams(url),
+			cfg = {url:url, perpage:named.perpage || PERPAGE};
+		if (!ImageMontage.instance) ImageMontage.instance = new ImageMontage(cfg);
+		// call renderAll instead of show()
+		ImageMontage.instance.setRequestComplete();
+		ImageMontage.instance.renderAll(named.page || 1, true, ImageMontage.instance);
+	} else {
+		// called once, use xhr_fetch
+		var cfg = {url:PAGE.src, perpage:PERPAGE};
+		var named = Util.getNamedParams(cfg.url);
+		if (named.page) cfg.page = named.page;
+		if (named.perpage) cfg.perpage = named.perpage;
+		if (named.size) cfg.targetHeight = named.size;
+		ImageMontage.instance = new ImageMontage(cfg);
+		ImageMontage.instance.show();
 	}
-	var named = Util.getNamedParams();
-	if (named.page) cfg.page = named.page;
-	if (named.perpage) cfg.perpage = named.perpage;
-	if (named.size) cfg.targetHeight = named.size;
-	var layout = new ImageMontage(cfg);
-	layout.show();
 }
-
+ImageMontage.iframe_fetch = function(options){
+	var src = $('iframe#json').attr('src');
+	var named = {};
+	if (options.page) named.page = options.page;
+	if (options.perpage) named.perpage = options.perpage;
+	src = Util.setNamedParams(src, named);
+	$('iframe#json').attr('src', src);
+}
 ImageMontage.prototype = {
 	init: function(cfg){
 		/*
@@ -620,6 +641,7 @@ ImageMontage.prototype = {
                 	// }
                 // }
                 if (PAGE.jsonData && PAGE.jsonData.castingCall && _currentPage == parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Page)) {
+                	// first load, and iframe.onload()
                 	var images = that.auditions2objects(CFG['util'].Auditions, that.cfg.targetHeight );
 					callback.success.call(callback.scope, images);
                 }
@@ -796,7 +818,12 @@ ImageMontage.prototype = {
         this.getCurrentPage = function() {
             return _currentPage;
         };
-        
+        /**
+         * set the request complete (from iframe_load)
+         */
+        this.setRequestComplete = function() {
+             _requestInProgress = false;
+        };
         /**
          * Change gallery page based on finding an image id rather than
          *  a specific page.
@@ -814,7 +841,11 @@ ImageMontage.prototype = {
         this.changePage = function(page) {
         	if (_paginated && _getScrollTop() > _getContainerHeight())
         		_setScrollTop(0);
-            _renderAll(page, false, this);
+        	if ($('iframe#json').length) {
+        		// fetch BEFORE renderAll()
+        		ImageMontage.iframe_fetch({page:page});
+        	}  
+            else _renderAll(page, false, this);
         };    
         
         

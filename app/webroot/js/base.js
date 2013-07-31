@@ -77,10 +77,11 @@ Util.setNamedParams = function(uri, namedData) {
     }
 	return uri;
 };
-Util.getNamedParams = function(){
+Util.getNamedParams = function(url){
+	url = url || window.location.pathname;
 	var param, 
 		named = {},
-		parts = window.location.pathname.split('/');
+		parts = url.split('/');
 	for (var i in parts) {
 		if (parts[i].indexOf(':')>0) {
 			param = parts[i].split(':');

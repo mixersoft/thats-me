@@ -431,6 +431,9 @@ $(function() {
 			$('.featurette iframe').bind('load', _iframe_onLoad);
 			$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') );
 		},
+		/**
+		 * @param string layout, [flickr | isotope]
+		 */
 		snaps: function(layout){
 			layout = !!layout ? layout : 'isotope';
 			CFG['users'].if_Message.bind('snaps');

@@ -113,9 +113,7 @@ class UsersController extends AppController {
 		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
 		$this->set(compact('authUser', 'uploadHost'));
 		$this->_beachfront(); 
-		if (isset($this->request->query['flickr'])) {
-			$this->view = 'flickr';
-		}
+		$this->view = empty($this->request->query['layout']) ? 'flickr' : $this->request->query['layout'];
 	}
 
 }

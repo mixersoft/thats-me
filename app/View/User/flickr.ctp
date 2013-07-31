@@ -63,16 +63,12 @@ $this->start('css');
 <?php
 $this->end();
 $this -> append('javascript_Bottom');
-		// echo '<script src="/js/vendor/nicholassherlock/imagemontage.js"></script>';
 		echo '<script type="text/javascript" src="/js/flickr.js"></script>';	
 		echo '<script type="text/javascript" src="/js/users.js"></script>';
-		// echo "<script src='http://snappi.snaphappi.com/svc/lib/alloy-1.5.0/build/aui/aui-min.js' type='text/javascript'></script>";
-		// echo "<script src='http://snappi.snaphappi.com/js/snappi/base_aui.js' type='text/javascript'></script>";
-		// echo "<meta id='css-start'>"; 
 ?>
 <script type="text/javascript">
 $(function() {
-	CFG['users'].documentReady.snaps('imagemontage');
+	CFG['users'].documentReady.snaps('flickr');
 });
 </script>
 <?php

@@ -218,27 +218,26 @@ ImageMontage.render = function(auditions, container){
 	var named = Util.getNamedParams();
 	if (named.page) cfg.page = named.page;
 	if (named.perpage) cfg.perpage = named.perpage;
-	var layout = new CFG['imagemontage'](cfg);
+	if (named.size) cfg.targetHeight = named.size;
+	var layout = new ImageMontage(cfg);
 	layout.show();
-	ImageMontage.onFirstRender();
 }
 
 ImageMontage.prototype = {
 	init: function(cfg){
 		/*
 		 * p-code
+		 * - call ImageMontage.render() 
 		 * - call show()
-		 * - call render/renderAll()
-		 * - XHR get 
-		 * - parse JSON reponse
-		 * - (add VScrollbar)
-		 * - append thumbnails to container (rough)
-		 * - (remove VScrollbar, if necessary)
+		 * - call renderAll()
+		 * - call xhr_fetch on new page
+		 * - getCC/parseCC JSON reponse
+		 * - auditions2objects()
 		 * - _layoutThumbs()
 		 * 
 		 * onContainerScroll
 		 * - changePage()
-		 * - render()
+		 * - renderAll()
 		 */
 		var viewOptions = {
 	        paginated: false,
@@ -484,7 +483,16 @@ ImageMontage.prototype = {
     					} else {
 	    					image.tag.style.width = Math.round(image.width) + 'px';
 	    					image.tag.style.height = Math.round(image.height) + 'px';
-
+	    					
+	    					// adjust img src prefix to actual dim
+	    					var THUMB_SIZE, 
+	    						maxDim = Math.max(image.width, image.height);
+							if (maxDim <= 120) THUMB_SIZE='tn';
+							else if (maxDim <= 240) THUMB_SIZE='bs';
+							else if (maxDim <= 320) THUMB_SIZE='bm';
+							else THUMB_SIZE='bp';
+							image.tag.src = Util.getImgSrcBySize(image.tag.src,THUMB_SIZE);
+		
     						border.style.height = Math.round(image.height - totalVertCrop) + "px";
     						border.style.width = Math.round(image.width - imageHorzCrop) + "px";
     						
@@ -612,7 +620,7 @@ ImageMontage.prototype = {
                 	// }
                 // }
                 if (PAGE.jsonData && PAGE.jsonData.castingCall && _currentPage == parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Page)) {
-                	var images = that.auditions2objects(CFG['util'].Auditions );
+                	var images = that.auditions2objects(CFG['util'].Auditions, that.cfg.targetHeight );
 					callback.success.call(callback.scope, images);
                 }
                 else {
@@ -737,6 +745,8 @@ ImageMontage.prototype = {
 	            
 	            _scrollHandlerInitialized = true;
 	        }
+	        
+	        _thumbsContainer.one('render', ImageMontage.onFirstRender);
 	        _thumbsContainer.bind('render', ImageMontage.onRender);
 		};
         
@@ -820,6 +830,8 @@ ImageMontage.prototype = {
         // Set up event listeners   
         this.setupEventListeners();
 	},  // end init()
+	
+	
 	show: function() {
         this.renderAll(1, true, this);
     },
@@ -849,12 +861,12 @@ ImageMontage.prototype = {
 	 * create DOM from auditions
 	 * @return jquery array of IMG objects  
 	 */
-	auditions2objects: function(auditions){
+	auditions2objects: function(auditions, targetHeight){
 		/*
 		 * p-code
-		 * 1. add div > div > a > img markup to container
+		 * 1. add div.photo > div.photo_container_th > div.photoLink > img markup to container
 		 * 
-		 * <img class="imgBorder" alt="" 
+		 * <img  alt="" 
 		 * src="http://www.sherlockphotography.org/photos/i-LRT2xP6/3/3640x510/i-LRT2xP6-3640x510.jpg" 
 		 * title="" 
 		 * style="margin-top: 0px;" 
@@ -862,24 +874,33 @@ ImageMontage.prototype = {
 		 * data-orig-height="3840" 
 		 * data-orig-width="5760">
 		 */
-
 		
 		auditions = auditions || CFG['util'].Auditions;
 		var audition, img, thumbnail, container,
+			THUMB_SIZE = 'bs',
 			addedImageTags = [];
-		var thumbnail_markup = '<div id=":id" class="photo"><div class="photo_container_th"><div class="photoLink">:img_markup</div></div></div>';
-		var img_markup = "<img class=':orientationLabel' src=':src' title=':title' width=':width' height=':height' data-dateTaken=':dateTaken' data-batchId=':batchId' data-score=':score' data-caption=':caption' data-orig-width=':origW'  data-orig-height=':origH'>";
-		var markup = '';
-		var THUMB_SIZE = 'bs', 
+		var markup = '',
+			thumbnail_markup = '<div id=":id" class="photo"><div class="photo_container_th"><div class="photoLink">:img_markup</div></div></div>',
+			img_markup = "<img class=':orientationLabel' src=':src' title=':title' width=':width' height=':height' data-dateTaken=':dateTaken' data-batchId=':batchId' data-score=':score' data-caption=':caption' data-orig-width=':origW'  data-orig-height=':origH'>";
+			
+		if (targetHeight){
+			var targetWidth = 1.4*targetHeight;
+			if (targetWidth <= 120) THUMB_SIZE='tn';
+			else if (targetWidth <= 240) THUMB_SIZE='bs';
+			else if (targetWidth <= 320) THUMB_SIZE='bm';
+			else if (targetWidth <= 640) THUMB_SIZE='bp';
+		}  
+		
+		var	max, 
 			lookup_scale = {
+				'tn':120,
 				'bs':240,
 				'bm':320,
-				'tn':120,
 				'bp':640,
 			},
-			scale=lookup_scale[THUMB_SIZE] || 640, 
-			max, 
+			scale=lookup_scale[THUMB_SIZE], 
 			baseurl = PAGE.jsonData.castingCall.CastingCall.Auditions.Baseurl;
+		
 		for (var i in auditions) {
 			audition = auditions[i];
 			max = Math.max(audition.W, audition.H);
@@ -897,11 +918,15 @@ ImageMontage.prototype = {
 }
 
 
-ImageMontage.onRender = function() {
+ImageMontage.documentReady = function () {
 }
 
+ImageMontage.onRender = function() {
+	// console.info("render");
+}
 
-ImageMontage.onFirstRender = function(cfg) {
+ImageMontage.onFirstRender = function() {
+	// console.info("first render");
 	var MARGIN_PADDING = 80;
 	$('.gallery').css('width','100%').css('max-width', $(window).width()-MARGIN_PADDING+'px');
 			
@@ -910,11 +935,9 @@ ImageMontage.onFirstRender = function(cfg) {
 }
 
 
-ImageMontage.documentReady = function () {
-	/*
-	 * get CC and create/render Story on cache miss
-	 */
-}
-CFG['imagemontage'] = ImageMontage;		// make global
+
+CFG['flickr'] = ImageMontage;		// make global
+
+
 })();  
 // end module closure

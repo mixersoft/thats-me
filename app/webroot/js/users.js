@@ -461,7 +461,7 @@ $(function() {
 				if (owner=='snaps') owner = 'venice';
 				if (owner.indexOf(':')>0) owner = 'venice';
 				PAGE = typeof PAGE == 'undefined' ? {} : PAGE;
-				PAGE.src = "http://snappi-dev/person/odesk_photos/"+owner+"/page:1/perpage:10/sort:score/direction:desc/.json?debug=0";
+				PAGE.src = "http://snappi-dev/person/odesk_photos/"+owner+"/page:1/perpage:32/sort:score/direction:desc/.json?debug=0";
 				var named = CFG['util'].getNamedParams();
 				PAGE.src = CFG['util'].setNamedParams(PAGE.src, named);
 				try {
@@ -484,6 +484,7 @@ $(function() {
 				$('iframe#auth').bind('load', _iframe_auth);
 				$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
 			}
+			$('#curtain .wrapV').html( $('.markup .loading').html() ).addClass('fadeIn');
 		},
 		
 	}

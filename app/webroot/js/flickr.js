@@ -143,19 +143,21 @@ Util.parseCC = function(cc, force){
 			id: id,
 			score: parseInt(auditions[i].Photo.Fix.Score),
 			caption: auditions[i].Photo.Caption,
-			batchId: parseInt(auditions[i].Photo.batchId),
+			batchId: parseInt(auditions[i].Photo.BatchId),
 			dateTaken: new Date(auditions[i].Photo.DateTaken.replace(' ', 'T')), 
 			ts: auditions[i].Photo.TS,
-			orientation: (auditions[i].Photo.H>auditions[i].Photo.W ? 'portrait' : ''),
+			// orientationLabel: (auditions[i].Photo.H>auditions[i].Photo.W ? 'portrait' : ''),
 			origW: auditions[i].Photo.W,
 			origH: auditions[i].Photo.H,
 		}, auditions[i].Photo.Img.Src);
 		// fix bad data
 		if (parsedAuditions[id].H > parsedAuditions[id].W
-				&& parsedAuditions[id].origH < parsedAuditions[id].origW )
+				&& parsedAuditions[id].origH < parsedAuditions[id].origW
+				&& parsedAuditions[id].Orientation < 4 )
 		{
 			parsedAuditions[id].origW = auditions[i].Photo.H; 
 			parsedAuditions[id].origH = auditions[i].Photo.W;
+			console.warn("origW/H flipped for id="+id);
 		}
 	}
 	CFG['util'].Auditions = parsedAuditions;	// make global
@@ -167,12 +169,14 @@ Util.getCC = function(src, success){
 	/*
 	 * POST should include begin/end timestamps to filter photostream
 	 */
+	$('body').addClass('wait');
 	var qs = {'debug':0};
 	$.ajax({
 		url: src,
 		data: qs,
 		dataType: 'json',
 		success: function(json, status, o){
+			$('body').removeClass('wait');
 			try {
 				PAGE.jsonData = json.response;
 				delete(PAGE.jsonData.lookups);
@@ -242,7 +246,7 @@ ImageMontage.prototype = {
 	        outerContainerSelector: '.gallery',
 	        thumbsContainerSelector: '.stage-body',
 	        thumbsMessageContainerSelector: '.gallery .paging_message',
-	        // constrainedWithinWindow: true,
+	        constrainedWithinWindow: true,
 	        // allowArrange: true,
 	        // photoClickFunction: null,
 	    };
@@ -261,6 +265,7 @@ ImageMontage.prototype = {
 			maxVertScale: 1.4 //What is the largest factor we should scale lines by vertically to fill gaps?
 	    }
 	    this.cfg = $.extend(viewOptions, layoutOptions, cfg);
+	    if (PAGE.src) this.cfg.url = PAGE.src;
 	    
        	var _paginated = false;
  	    // var _allowPaginatedToggle = this.cfg.allowPaginatedToggle;
@@ -296,17 +301,17 @@ ImageMontage.prototype = {
         // var _newPageRequested = false;
         // var _imageRequest;
         var _requestInProgress = false;
-        // var _constrainedWithinWindow = this.cfg.constrainedWithinWindow;
+        var _constrainedWithinWindow = this.cfg.constrainedWithinWindow;
         // var _allowArrange = this.cfg.allowArrange;
         // var _photoClickFunction = this.cfg.photoClickFunction;
-        // var _resizeHandlerInitialized = false;
-        // var _scrollHandlerInitialized = false;
-        // var _scrolledToEnd = false;
+        var _resizeHandlerInitialized = false;
+        var _scrollHandlerInitialized = false;
+        var _scrolledToEnd = false;
         // var _source = this.cfg.source;
         var _newAlbum = false;
         // var _forceViewer = this.cfg.forceViewer;
         // var _forceFileName = this.cfg.forceFileName;
-        // var _initialRequest = true;
+        var _initialRequest = true;
         var _firstShow = true;
 	        
         // //IE < 9 does not support stretching backgrounds
@@ -496,61 +501,18 @@ ImageMontage.prototype = {
     				
     		container.css('height',_layout_y + "px");
     	};		
-		/**
-		 * @param object container, new HTML Elemnts wrapped in a jquery container
-		 * use container.children()
-		 */		
-		var prepareLayout = function(addedImages){
-	        var photosRemaining = 0;
-	        
-	        _totalNumberOfThumbs = parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Total);
-	        _currentPage = parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Page);
-	        // _imageIDs = pageDetails.imageIDs;
-	        _totalNumberOfPages = parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Pages);
-	        _thumbsOnCurrentPage += parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Audition.length);
-	        photosRemaining = _totalNumberOfThumbs-_thumbsOnCurrentPage;
-	        _requestInProgress = false;
-	        
-	        if(photosRemaining > 0) {
-	            _thumbsMessageContainer.html( photosRemaining + ' photos remaining.  Loading more thumbnails...');
-	        }
-	        else {
-	            _thumbsMessageContainer.html('');
-	        }
-	        
-	        if(addedImages.length) {
-	            if(_newAlbum) {
-	                _thumbsContainer.html('');
-	            }
-	            addedImages.appendTo(_thumbsContainer);
-	            
-	            /* Ensure there is a vertical scrollbar on the body, so that laying out images doesn't cause the image 
-	             * container to shrink horizontally, which would invalidate the layout immediately.
-	             */
-	            var originalOverflowY = document.body.style["overflow-y"];
-	            
-	            if (originalOverflowY != "scroll") {
-	            	document.body.style["overflow-y"] = "scroll";
-	            }
-	            
-	            _layoutThumbs(_thumbsContainer, addedImages.find('img'));
-	
-	            if (originalOverflowY != "scroll") {
-	            	document.body.style["overflow-y"] = originalOverflowY;
-	            }
-	        }
-	        else if(_totalNumberOfThumbs == 0) {
-	            _thumbsContainer.css('width', '100%');
-	            _thumbsContainer.html('This is an empty gallery.');
-	            _totalNumberOfPages = 1;
-	        }
-	        
-	        _newAlbum = false;
-	        _initialRequest = false;
-		}
-	    var handleFailure = function(o){
-	        _requestInProgress = false;
-	    }		
+    	
+    	
+    	var _relayoutThumbs = function() {
+        	if (_thumbsContainer.outerWidth() !=_last_layout_container_width) {
+        		_last_layout_container_width = _thumbsContainer.outerWidth();
+	        	_layout_y = 0;
+	    		_layoutThumbs(_thumbsContainer, _thumbsContainer.find('img'));
+        	}
+        };
+        
+    	_relayoutThumbs = Cowboy.throttle(250, _relayoutThumbs);
+		
 	    /**
          * The main render method for this view.
          * @param int pageNumber - the page number to render
@@ -564,11 +526,69 @@ ImageMontage.prototype = {
             	_firstShow = false;
                 _currentPage = pageNumber ? parseInt(pageNumber) : 1;
                 _requestInProgress = true;
-            
+            	
+            	
+	            /**
+				 * @param jquery addedImages, jquery object array of addedImages from auditions2objects()
+				 */		
+				var prepareLayout = function(addedImages){
+			        var photosRemaining = 0;
+			        
+			        _totalNumberOfThumbs = parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Total);
+			        _currentPage = parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Page);
+			        // _imageIDs = pageDetails.imageIDs;
+			        _totalNumberOfPages = parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Pages);
+			        _thumbsOnCurrentPage += parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Audition.length);
+			        photosRemaining = _totalNumberOfThumbs-_thumbsOnCurrentPage;
+			        _requestInProgress = false;
+			        
+			        if(photosRemaining > 0) {
+			            _thumbsMessageContainer.html( photosRemaining + ' photos remaining.');
+			        }
+			        else {
+			            _thumbsMessageContainer.html('');
+			        }
+			        
+			        if(addedImages.length) {
+			            if(_newAlbum) {
+			                _thumbsContainer.html('');
+			            }
+			            addedImages.appendTo(_thumbsContainer);
+			            
+			            /* Ensure there is a vertical scrollbar on the body, so that laying out images doesn't cause the image 
+			             * container to shrink horizontally, which would invalidate the layout immediately.
+			             */
+			            var originalOverflowY = document.body.style["overflow-y"];
+			            
+			            if (originalOverflowY != "scroll") {
+			            	document.body.style["overflow-y"] = "scroll";
+			            }
+			            
+			            _layoutThumbs(_thumbsContainer, addedImages.find('img'));
+			
+			            if (originalOverflowY != "scroll") {
+			            	document.body.style["overflow-y"] = originalOverflowY;
+			            }
+			        }
+			        else if(_totalNumberOfThumbs == 0) {
+			            _thumbsContainer.css('width', '100%');
+			            _thumbsContainer.html('This is an empty gallery.');
+			            _totalNumberOfPages = 1;
+			        }
+			        _thumbsContainer.triggerHandler('render');
+			        _newAlbum = false;
+			        _initialRequest = false;
+				}
+				
+			    var handleFailure = function(o){
+			        _requestInProgress = false;
+			    }			
+            	
+            	
                 var callback = {
                     'success': prepareLayout,
                     'failure': handleFailure,
-                    'scope': this
+                    'scope': that
                 };
                 
                 /* 
@@ -592,17 +612,218 @@ ImageMontage.prototype = {
                 	// }
                 // }
                 if (PAGE.jsonData && PAGE.jsonData.castingCall && _currentPage == parseInt(PAGE.jsonData.castingCall.CastingCall.Auditions.Page)) {
-                	var images = this.auditions2objects(CFG['util'].Auditions );
+                	var images = that.auditions2objects(CFG['util'].Auditions );
 					callback.success.call(callback.scope, images);
                 }
-                else this.xhr_fetch({page:_currentPage, perpage:this.cfg.thumbsPerFetch}, callback, that);
+                else {
+                	_thumbsMessageContainer.html( _thumbsMessageContainer.html() + ' Loading more thumbnails...');
+                	that.xhr_fetch({page:_currentPage, perpage:that.cfg.thumbsPerFetch}, callback, that);
+                }
             }
         }
-        this._renderAll = _renderAll;
-	},
+        this.renderAll = _renderAll;	// expose this method so this.show() has access
+        
+        
+        /**
+         * Returns the container height
+         */
+        var _getContainerHeight = function() {
+            var height;
+            var containerHeight;
+            
+            if(_constrainedWithinWindow) {
+                height = _getWindowHeight();
+                containerHeight = height-(_outerContainer.outerHeight());
+            }
+            else {
+                containerHeight = _outerContainer.outerHeight();
+            }
+            
+            return containerHeight;
+        };	
+        /**
+         * Returns the browser window height
+         */
+        var _getWindowHeight = function() {
+            if (window.innerHeight) {
+                return window.innerHeight;
+            }
+            else if (document.documentElement && document.documentElement.clientHeight) {
+                return document.documentElement.clientHeight;
+            }
+            else if (document.body) {
+                return document.body.clientHeight;
+            }
+            
+            return 0;
+        };
+        /**
+         * Returns the scrollTop of the container.
+         */
+        var _getScrollTop = function() {
+            
+            if(_constrainedWithinWindow) {
+                if(window.pageYOffset) {
+                    return window.pageYOffset;
+                }
+                
+                if(document.documentElement) {
+                    return document.documentElement.scrollTop;
+                }
+                
+                if(document.body) {
+                    return document.body.scrollTop;
+                }
+            }
+            else {
+                return _outerContainer.scrollTop();
+            }           
+        };
+        var _setScrollTop = function(value) {
+	        	
+            if(_constrainedWithinWindow) {
+                if(window.pageYOffset) {
+                    window.pageYOffset = value;
+                }
+                
+                if(document.documentElement) {
+                    document.documentElement.scrollTop = value;
+                }
+                
+                if(document.body) {
+                    document.body.scrollTop = value;
+                }
+            }
+            else {
+                _outerContainer.scrollTop(value);
+            }           
+        };
+        
+        /*****************************************
+	     * "Public" Methods
+	     * 	declare here for access to private vars
+	     *****************************************/
+        this.removeEventListeners = function() {
+	        if(!_paginated) {
+	            if(_constrainedWithinWindow) {
+	                // YE.removeListener(window, 'scroll', this.onContainerScroll);
+	                $(window).off('scroll',this.onContainerScroll);
+	            }
+	            else {
+	                // YE.removeListener(_outerContainer, 'scroll', this.onContainerScroll);
+	                _outerContainer.off('scroll',this.onContainerScroll);
+	            }
+	            
+	            _scrollHandlerInitialized = false;
+	        }
+	   };
+	    
+	   this.setupEventListeners = function() {
+	        if(_constrainedWithinWindow && !_resizeHandlerInitialized) {
+	            // YAHOO.util.Event.addListener(window, 'resize', this.onWindowResize, this);
+	            $(window).on('resize',$.proxy(this.onWindowResize, this));
+	            _resizeHandlerInitialized = true;
+	        }
+	        
+	        if(!_paginated && !_scrolledToEnd && !_scrollHandlerInitialized) {
+	            if(_constrainedWithinWindow) {
+	                // YAHOO.util.Event.addListener(window, 'scroll', this.onContainerScroll, this);
+	                $(window).on('scroll',$.proxy(this.onContainerScroll, this));
+	            }
+	            else {
+	                // YAHOO.util.Event.addListener(_outerContainer, 'scroll', this.onContainerScroll, this);
+	                _outerContainer.on('scroll',$.proxy(this.onContainerScroll, this));
+	            }
+	            
+	            _scrollHandlerInitialized = true;
+	        }
+	        _thumbsContainer.bind('render', ImageMontage.onRender);
+		};
+        
+        
+        /**
+         * Called on the scroll event of the container element.  Used only in the non-paginated mode.
+         * When the scroll threshold is reached a new page of thumbs is requested.
+         * @param event e - the scroll event object
+         * @param object that - an object reference to the allthumbs view instance.
+         */
+        this.onContainerScroll = function(e, that) {
+        	that = that || this;		// using $.proxy()
+            var containerHeight = _thumbsContainer.outerHeight();//_outerContainer.outerHeight;
+            var outerContainerHeight = _constrainedWithinWindow? _getWindowHeight() : _outerContainer.outerHeight();//_getWindowHeight()
+            var scrollTop = _getScrollTop();
+            
+            if((containerHeight-scrollTop) <= outerContainerHeight && (_currentPage+1) <= _totalNumberOfPages) {
+                that.changePage(_currentPage+1);
+            }
+            
+            if((_currentPage+1) > _totalNumberOfPages && !_initialRequest) {
+                if(_constrainedWithinWindow) {
+                    // YE.removeListener(window, 'scroll', that.onContainerScroll);
+                    $(window).off('scroll',that.onContainerScroll);
+                }
+                else {
+                    // YE.removeListener(_outerContainer, 'scroll', that.onContainerScroll);
+                    _outerContainer.off('scroll',that.onContainerScroll);
+                }
+                
+                _scrollHandlerInitialized = false;
+                _scrolledToEnd = true;
+            }
+        };
+        
+        /**
+         * Called on resize of the container.
+         */
+        this.onWindowResize = function(e, that) {
+        	that = that || this;		// using $.proxy()
+            that.resize.call(that);
+        };
+        
+        /**
+         * Returns the current page
+         */
+        this.getCurrentPage = function() {
+            return _currentPage;
+        };
+        
+        /**
+         * Change gallery page based on finding an image id rather than
+         *  a specific page.
+         */
+        this.changePageWithImage = function(imageID) {
+            if(_paginated) {
+                _customStartingImageID = imageID;
+                _renderAll(_currentPage, false, this);
+            }
+        };
+	    
+        /**
+         * Change the gallery page.
+         */
+        this.changePage = function(page) {
+        	if (_paginated && _getScrollTop() > _getContainerHeight())
+        		_setScrollTop(0);
+            _renderAll(page, false, this);
+        };    
+        
+        
+        /**
+         * Resize the container.
+         */
+        this.resize = function() {
+        	_relayoutThumbs();
+        	
+            _renderAll(_currentPage, true, this);
+        };
+        
+        // Set up event listeners   
+        this.setupEventListeners();
+	},  // end init()
 	show: function() {
-        this._renderAll(1, true, this);
+        this.renderAll(1, true, this);
     },
+    
 	/******************************
 	 * snappi specific methods 
 	 ******************************/
@@ -612,11 +833,11 @@ ImageMontage.prototype = {
 	 * @param callback {success:, failure:, scope:} 
 	 * @param object that, self-reference
 	 */
-	xhr_fetch: function(url, options, callback, that){
+	xhr_fetch: function(options, callback, that){
 		var named = {}
 		if (options.page) named.page = options.page;
 		if (options.perpage) named.perpage = options.perpage;
-		url = Util.setNamedParams(url, named);
+		url = Util.setNamedParams(that.cfg.url, named);
 		CFG['util'].getCC(url, function(json){
 			// json.success = true
 			CFG['util'].parseCC(json.response.castingCall);
@@ -647,7 +868,7 @@ ImageMontage.prototype = {
 		var audition, img, thumbnail, container,
 			addedImageTags = [];
 		var thumbnail_markup = '<div id=":id" class="photo"><div class="photo_container_th"><div class="photoLink">:img_markup</div></div></div>';
-		var img_markup = "<img class='imgBorder :orientation' src=':src' title=':title' width=':width' height=':height' data-dateTaken=':dateTaken' data-batchId=':batchId' data-score=':score' data-caption=':caption' data-orig-width=':origW'  data-orig-height=':origH'>";
+		var img_markup = "<img class=':orientationLabel' src=':src' title=':title' width=':width' height=':height' data-dateTaken=':dateTaken' data-batchId=':batchId' data-score=':score' data-caption=':caption' data-orig-width=':origW'  data-orig-height=':origH'>";
 		var markup = '';
 		var THUMB_SIZE = 'bs', 
 			lookup_scale = {
@@ -665,6 +886,7 @@ ImageMontage.prototype = {
 			audition.width = audition.W * (scale/max);
 			audition.height = audition.H * (scale/max);
 			audition.src = Util.getImgSrcBySize(baseurl + audition.rootSrc, THUMB_SIZE);
+			audition.orientationLabel =  (audition.H > audition.W) ? 'portrait' : '';
 			img = Util.tokenReplace(img_markup,':',audition);
 			thumbnail = Util.tokenReplace(thumbnail_markup,':',{id:audition.id, img_markup: img} );
 			markup += thumbnail;
@@ -692,8 +914,6 @@ ImageMontage.documentReady = function () {
 	/*
 	 * get CC and create/render Story on cache miss
 	 */
-	// TODO: deprecate? check CFG['users'].documentReady.users
-	$('#curtain .wrapV').html( $('.markup .loading').html() ).addClass('fadeIn'); 
 }
 CFG['imagemontage'] = ImageMontage;		// make global
 })();  

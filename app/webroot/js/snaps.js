@@ -296,7 +296,7 @@ Isotope.initIsotopeObj = function(){
 Isotope.render = function(auditions, container){
 	container = container || $('.gallery .stage-body');
 	var THUMB_SIZE = 'bs', scale=640, max = 0, baseurl, tokens,
-		media_markup = "<img class='img-polaroid isotope-item :orientation' src=':src' title=':title' width=':width' height=':height' data-dateTaken=':dateTaken' data-batchId=':batchId' data-score=':score' data-caption=':caption'>";
+		media_markup = "<img class='img-polaroid isotope-item :orientationLabel' src=':src' title=':title' width=':width' height=':height' data-dateTaken=':dateTaken' data-batchId=':batchId' data-score=':score' data-caption=':caption'>";
 	switch (THUMB_SIZE) {
 		case 'bs': scale=240; 
 			break;
@@ -318,6 +318,7 @@ Isotope.render = function(auditions, container){
 			caption: audition.caption,
 			orientation: (audition.H>audition.W ? 'portrait' : ''),
 		}
+		tokens.orientationLabel = audition.H > audition.W ? 'portrait' : '';
 		container.append(Util.tokenReplace(media_markup,':',tokens))
 	}
 	Isotope.onFirstRender();
@@ -354,8 +355,6 @@ Isotope.documentReady = function () {
 	/*
 	 * get CC and create/render Story on cache miss
 	 */
-	// TODO: deprecate? check CFG['users'].documentReady.users
-	$('#curtain .wrapV').html( $('.markup .loading').html() ).addClass('fadeIn'); 
 	// CFG['timing'].load_SocialSharing = 1000;
 	// CFG['util'].load_SocialSharing();
 	

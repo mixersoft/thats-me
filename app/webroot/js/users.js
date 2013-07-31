@@ -431,7 +431,8 @@ $(function() {
 			$('.featurette iframe').bind('load', _iframe_onLoad);
 			$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') );
 		},
-		snaps: function(){
+		snaps: function(layout){
+			layout = !!layout ? layout : 'isotope';
 			CFG['users'].if_Message.bind('snaps');
 			_iframe_auth = function(e){
 				var auth = CFG['users'].if_auth(e);
@@ -447,7 +448,7 @@ $(function() {
 					PAGE = typeof PAGE == 'undefined' ? {} : PAGE;
 					PAGE.jsonData = json;
 					CFG['util'].parseCC(PAGE.jsonData.castingCall);
-					CFG['isotope'].render(CFG['util'].Auditions);
+					CFG[layout].render(CFG['util'].Auditions);
 				} catch (ex) {
 					console.error("ERROR: json response not found. iframe same origin issue?");
 				}
@@ -460,18 +461,21 @@ $(function() {
 				if (owner=='snaps') owner = 'venice';
 				if (owner.indexOf(':')>0) owner = 'venice';
 				PAGE = typeof PAGE == 'undefined' ? {} : PAGE;
-				PAGE.src = "http://snappi-dev/person/odesk_photos/"+owner+"/page:1/perpage:100/sort:score/direction:desc/.json?debug=0";
+				PAGE.src = "http://snappi-dev/person/odesk_photos/"+owner+"/page:1/perpage:10/sort:score/direction:desc/.json?debug=0";
+				var named = CFG['util'].getNamedParams();
+				PAGE.src = CFG['util'].setNamedParams(PAGE.src, named);
 				try {
 					CFG['util'].getCC(PAGE.src, function(json){
-					// json.success = true
-					CFG['util'].parseCC(json.response.castingCall);
-					CFG['isotope'].render(CFG['util'].Auditions);
-				});				} catch (ex) {
+						// json.success = true
+						CFG['util'].parseCC(json.response.castingCall);
+						CFG[layout].render(CFG['util'].Auditions);
+					});
+				} catch (ex) {
 					console.error("ERROR: json response not found. xhr json");
 				}
 			}
 			
-			CFG['isotope'].documentReady();			
+			CFG[layout].documentReady();			
 			if (isLocal=(window.location.hostname=='thats-me')) {
 				var owner = window.location.pathname.match(/[^/]*$/);
 				_xhr_json(owner);
@@ -481,6 +485,7 @@ $(function() {
 				$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
 			}
 		},
+		
 	}
 	
 	// make global,

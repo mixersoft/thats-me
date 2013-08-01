@@ -1,11 +1,21 @@
 <?php
 
 // init paging for iframe.src castingCall JSON request
-$default_paging = array('perpage'=>50, 'page'=>1, 'sort'=>'created', 'direction'=>'desc');
+$default_paging = array('perpage'=>32, 'page'=>1, 'sort'=>'created', 'direction'=>'desc');
 $paging = array_intersect_key($this->passedArgs, $default_paging);
 $paging = array_merge($default_paging, $paging );
-$iframe_request = array_merge(array('controller'=>'my','action'=>'photos','?'=>array('min'=>1)), $paging);
-$iframe_src = "http://{$uploadHost}".Router::url($iframe_request);
+if (!empty($this->passedArgs[0])) {
+	$paging['sort'] = 'score';
+	$iframe_request = array_merge(array('controller'=>'person','action'=>'photos', 0=>$this->passedArgs[0],'?'=>array('min'=>1)), $paging);
+	if (in_array($this->passedArgs[0], array('venice', 'sardinia', 'paris', 'newyork', 'bali'))) {
+		$iframe_request['action'] = 'odesk_photos';
+	}
+	$iframe_src = "http://{$uploadHost}".Router::url($iframe_request);
+} else {
+	$iframe_request = array_merge(array('controller'=>'my','action'=>'photos','?'=>array('min'=>1)), $paging);
+	$iframe_src = "http://{$uploadHost}".Router::url($iframe_request);
+};
+
 
 $title_for_layout = "Snaphappi Preview &middot; My Photos";
 $fb_images[] = "/img/beachfront/icon-sm-04.png";
@@ -51,7 +61,9 @@ $this->start('css');
 .stage-body .photo img {
 	display:block;
 	position:relative;
-	margin: 0 !important;	
+	margin: 0 !important;
+	/* reset */
+	max-width: none;
 }
 .stage-body {
 	overflow:hidden; /* Stretch to fit floated content */
@@ -103,6 +115,7 @@ $this->end();
 				<div class="container center">
 					<a  class='pull-left' href='/users/reset'><button class="btn btn-awesome" title='REMOVE all photos from Snaphappi'>
 						Reset Account
+						</button></a>
 					<a title='see our Facebook page' target='_social' href='http://www.facebook.com/Snaphappi'><i class="icon-facebook-sign"></i></a>
 					&nbsp;<a title='see our Twitter feed' target='_social' href='https://twitter.com/snaphappi'><i class="icon-twitter-sign"></i></a>
 					&nbsp;<a title='see our Pinterest board' target='_social' href='http://pinterest.com/snaphappi/curated-family-photos/'><i class="icon-pinterest-sign"></i></a>

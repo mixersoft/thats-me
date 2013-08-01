@@ -129,7 +129,7 @@ Util.parseSrcString = function(src){
 Util.parseCC = function(cc, force){
 	cc = cc || PAGE.jsonData.CastingCall;
 	if (CFG['util'].Auditions !== 'empty' && !force) return Util.Auditions;
-	var i, oSrc, score, id, 
+	var i, oSrc, score, id, audition, 
 		parsedAuditions = {},
 		auditions = cc.CastingCall.Auditions.Audition;
 		
@@ -139,7 +139,7 @@ Util.parseCC = function(cc, force){
 
 	for (i in auditions) {
 		id = auditions[i].Photo.id;
-		parsedAuditions[id] = $.extend({
+		audition = $.extend({
 			id: id,
 			score: parseInt(auditions[i].Photo.Fix.Score),
 			caption: auditions[i].Photo.Caption,
@@ -147,18 +147,25 @@ Util.parseCC = function(cc, force){
 			dateTaken: new Date(auditions[i].Photo.DateTaken.replace(' ', 'T')), 
 			ts: auditions[i].Photo.TS,
 			// orientationLabel: (auditions[i].Photo.H>auditions[i].Photo.W ? 'portrait' : ''),
-			origW: auditions[i].Photo.W,
-			origH: auditions[i].Photo.H,
 		}, auditions[i].Photo.Img.Src);
-		// fix bad data
-		if (parsedAuditions[id].H > parsedAuditions[id].W
-				&& parsedAuditions[id].origH < parsedAuditions[id].origW
-				&& parsedAuditions[id].Orientation < 4 )
-		{
-			parsedAuditions[id].origW = auditions[i].Photo.H; 
-			parsedAuditions[id].origH = auditions[i].Photo.W;
-			console.warn("origW/H flipped for id="+id);
+		// adjust for ExifOrientation
+		if (audition.Orientation < 4) {
+			audition.origW = auditions[i].Photo.W;
+			audition.origH = auditions[i].Photo.H;
+			// fix bad origW/H data
+			if (audition.H > audition.W && audition.origH < audition.origW)
+			{
+				audition.origW = auditions[i].Photo.H; 
+				audition.origH = auditions[i].Photo.W;
+				console.warn("origW/H flipped for id="+id);
+			}
+		} else { // ExifOrientation = 6|8 means the bp~ image is rotated
+			audition.origH = auditions[i].Photo.W;
+			audition.origW = auditions[i].Photo.H;
+			audition.H = audition.W;
+			audition.W = auditions[i].Photo.Img.Src.H
 		}
+		parsedAuditions[id] = audition;
 	}
 	CFG['util'].Auditions = parsedAuditions;	// make global
 }
@@ -215,12 +222,14 @@ ImageMontage.render = function(auditions, container){
 	 * this is the entrypoint into the imagemontage render
 	 * called by Util.documentReady.snaps
 	 */
-	var PERPAGE = 32; // set in Util.documentReady.snaps(?)
-	if ($('iframe#json').length) {
+	var PERPAGE = 32; // set in flickr.ctp
+	if (PAGE.fetch == 'iframe') {
 		// called repeatedly, use iframe_fetch
 		var url = $('iframe#json').attr('src');
 		var named = Util.getNamedParams(url),
+			named2 = Util.getNamedParams(),
 			cfg = {url:url, perpage:named.perpage || PERPAGE};
+		if (named2.size) cfg.targetHeight = named2.size;
 		if (!ImageMontage.instance) ImageMontage.instance = new ImageMontage(cfg);
 		// call renderAll instead of show()
 		ImageMontage.instance.setRequestComplete();
@@ -242,6 +251,7 @@ ImageMontage.iframe_fetch = function(options){
 	if (options.page) named.page = options.page;
 	if (options.perpage) named.perpage = options.perpage;
 	src = Util.setNamedParams(src, named);
+	$('body').addClass('wait');
 	$('iframe#json').attr('src', src);
 }
 ImageMontage.prototype = {
@@ -272,7 +282,7 @@ ImageMontage.prototype = {
 	    };
 	    var layoutOptions = {
 			// Image montage settings:
-            targetHeight: 100, // Each row of images will be at least this high
+            targetHeight: 160, // Each row of images will be at least this high
             targetWidth: 940, // Set large enough to accomodate the odd image that spans the entire screen width
             thumbsPerFetch: cfg.perpage || 15, // How many images to fetch in a batch for endless scrolling pages
             // thumbsPerPage: 30, // How many images per page when pagination is turned on
@@ -841,8 +851,8 @@ ImageMontage.prototype = {
         this.changePage = function(page) {
         	if (_paginated && _getScrollTop() > _getContainerHeight())
         		_setScrollTop(0);
-        	if ($('iframe#json').length) {
-        		// fetch BEFORE renderAll()
+        	if (PAGE.fetch == 'iframe') {
+        		// fetch BEFORE renderAll(), before _currentPage updated
         		ImageMontage.iframe_fetch({page:page});
         	}  
             else _renderAll(page, false, this);
@@ -883,7 +893,7 @@ ImageMontage.prototype = {
 		url = Util.setNamedParams(that.cfg.url, named);
 		CFG['util'].getCC(url, function(json){
 			// json.success = true
-			CFG['util'].parseCC(json.response.castingCall);
+			CFG['util'].parseCC(json.response.castingCall, true);
 			var images = that.auditions2objects(CFG['util'].Auditions );
 			callback.success.call(callback.scope, images);
 		});				
@@ -953,7 +963,7 @@ ImageMontage.documentReady = function () {
 }
 
 ImageMontage.onRender = function() {
-	// console.info("render");
+	$('body').removeClass('wait');
 }
 
 ImageMontage.onFirstRender = function() {
@@ -962,7 +972,6 @@ ImageMontage.onFirstRender = function() {
 	$('.gallery').css('width','100%').css('max-width', $(window).width()-MARGIN_PADDING+'px');
 			
 	$('.gallery .curtain').remove(); 
-	$('body').removeClass('wait');
 }
 
 

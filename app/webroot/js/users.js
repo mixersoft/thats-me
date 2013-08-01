@@ -153,7 +153,7 @@ $(function() {
 				uuid: user.id,
 				username: user.displayname || user.username,
 				role: user.primary_group_id,
-				count: user.asset_count || 0,
+				count: parseInt(user.asset_count || 0),
 			};
 			if (cookieData.username == cookieData.uuid) cookieData.username = 'Guest';
 			// update Cookie exp
@@ -232,7 +232,7 @@ $(function() {
 					var user = json.value && json.value.User || {}, 
 						next = !user.asset_count ? '/users/upload'
 							// : '/users/isotope/'+user.id; 	
-							: '/users/upload/'+user.id;
+							: '/users/snaps';
 					setTimeout(function(){
 						window.location.href = next;
 					}, 3000);		
@@ -337,7 +337,7 @@ $(function() {
 					$('.featurette iframe').attr('src', $('.featurette iframe').attr('qsrc') );
 				} else {
 					var user = $.cookie('user'),
-						next = user.count===0 ? '/users/upload'
+						next = user.count=='0' ? '/users/upload'
 									: '/users/snaps'; 	
 					window.location.href = next;
 				}

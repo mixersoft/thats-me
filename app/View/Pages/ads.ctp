@@ -121,9 +121,9 @@
 	
 	
 	<div class='display-ad medium privacy-icon' title='300x250'>
-		<div class='center wrap'>
-			<img src='/img/beachfront/icon-sm-privacy.png'>
-			<i class='icon-lock'></i>
+		<div class='center wrap alpha rgba70b'>
+			<img src='/img/ads/google+.jpg'>
+			<img src='/img/beachfront/icon-sm-02.png'>
 		</div>
 	</div>
         </div>

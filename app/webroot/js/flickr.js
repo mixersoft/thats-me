@@ -232,7 +232,7 @@ ImageMontage.render = function(auditions, container){
 		if (named2.size) cfg.targetHeight = named2.size;
 		if (!ImageMontage.instance) ImageMontage.instance = new ImageMontage(cfg);
 		// call renderAll instead of show()
-		ImageMontage.instance.setRequestComplete();
+		ImageMontage.instance.setRequestInProgress(false);
 		ImageMontage.instance.renderAll(named.page || 1, true, ImageMontage.instance);
 	} else {
 		// called once, use xhr_fetch
@@ -252,6 +252,8 @@ ImageMontage.iframe_fetch = function(options){
 	if (options.perpage) named.perpage = options.perpage;
 	src = Util.setNamedParams(src, named);
 	$('body').addClass('wait');
+	ImageMontage.instance.setRequestInProgress(true);
+	$('.gallery .paging_message').append(' Loading more thumbnails...');
 	$('iframe#json').attr('src', src);
 }
 ImageMontage.prototype = {
@@ -298,49 +300,20 @@ ImageMontage.prototype = {
 	    if (PAGE.src) this.cfg.url = PAGE.src;
 	    
        	var _paginated = false;
- 	    // var _allowPaginatedToggle = this.cfg.allowPaginatedToggle;
         var _outerContainer = $(this.cfg.outerContainerSelector);
         var _thumbsContainer = $(this.cfg.thumbsContainerSelector);
         var _thumbsMessageContainer = $(this.cfg.thumbsMessageContainerSelector);
-// 	        
-        // var _thumbsContainerID = this.cfg.thumbsContainerSelector;
-        // var _napTopContainerID = this.cfg.navTopContainerID;
-	    // var _navTopContainer = _napTopContainerID.length > 0? $('#'+_napTopContainerID) : null;
-        // var _thumbsMessageContainerID = this.cfg.thumbsMessageContainerID;
-// 	        
-        // var _navs;
-	    // var _paginatedToggle;
+        
         var _thumbsOnCurrentPage = 0;
-        // var _pageType = this.cfg.pageType;
-        // var _albumID = this.cfg.albumID;
-        // var _albumKey = this.cfg.albumKey;
-        // var _imageID = this.cfg.imageID;
-        // var _customStartingImageID = this.cfg.customStartingImageID;
-        // var _siteUser = this.cfg.siteUser;
-        // var _guestPage = this.cfg.guestPage;
-        // var _pageScope = this.cfg.pageScope;
-        // var _community = this.cfg.community;
-        // var _pageDrawBy = this.cfg.pageDrawBy;
-        // var _pageTypeDetails = this.cfg.pageTypeDetails;
-        // var _galleryStyle = this.cfg.galleryStyle;
-        // var _lightboxSize = this.cfg.lightboxSize;
         var _totalNumberOfThumbs = parseInt(this.cfg.totalNumberOfThumbs);
         var _totalNumberOfPages = 1;
         var _currentPage = _paginated ? parseInt(this.cfg.currentPage) : 1;
-        // var _imageIDs;
-        // var _newPageRequested = false;
-        // var _imageRequest;
         var _requestInProgress = false;
         var _constrainedWithinWindow = this.cfg.constrainedWithinWindow;
-        // var _allowArrange = this.cfg.allowArrange;
-        // var _photoClickFunction = this.cfg.photoClickFunction;
         var _resizeHandlerInitialized = false;
         var _scrollHandlerInitialized = false;
         var _scrolledToEnd = false;
-        // var _source = this.cfg.source;
         var _newAlbum = false;
-        // var _forceViewer = this.cfg.forceViewer;
-        // var _forceFileName = this.cfg.forceFileName;
         var _initialRequest = true;
         var _firstShow = true;
 	        
@@ -656,7 +629,7 @@ ImageMontage.prototype = {
 					callback.success.call(callback.scope, images);
                 }
                 else {
-                	_thumbsMessageContainer.html( _thumbsMessageContainer.html() + ' Loading more thumbnails...');
+                	_thumbsMessageContainer.append( ' Loading more thumbnails...');
                 	that.xhr_fetch({page:_currentPage, perpage:that.cfg.thumbsPerFetch}, callback, that);
                 }
             }
@@ -829,10 +802,10 @@ ImageMontage.prototype = {
             return _currentPage;
         };
         /**
-         * set the request complete (from iframe_load)
+         * set the request in Progress (from iframe_load)
          */
-        this.setRequestComplete = function() {
-             _requestInProgress = false;
+        this.setRequestInProgress = function(b) {
+             _requestInProgress = !!b;
         };
         /**
          * Change gallery page based on finding an image id rather than
@@ -853,7 +826,7 @@ ImageMontage.prototype = {
         		_setScrollTop(0);
         	if (PAGE.fetch == 'iframe') {
         		// fetch BEFORE renderAll(), before _currentPage updated
-        		ImageMontage.iframe_fetch({page:page});
+        		if (!_requestInProgress) ImageMontage.iframe_fetch({page:page});
         	}  
             else _renderAll(page, false, this);
         };    

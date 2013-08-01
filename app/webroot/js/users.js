@@ -479,7 +479,7 @@ $(function() {
 			CFG[layout].documentReady();			
 			var isLocal=(window.location.hostname=='thats-me');
 			var owner = window.location.pathname.split('/');
-			if (owner.length >= 3 && owner[3].indexOf(':')==-1) owner = owner[3];
+			if (owner.length > 3 && owner[3].indexOf(':')==-1) owner = owner[3];
 			else owner = null;
 			if (isLocal) {
 				PAGE.fetch = 'xhr';

@@ -29,3 +29,30 @@ CREATE TABLE IF NOT EXISTS `followers` (
 --  KEY `credential_idx` (`username`,`password`),
   KEY `cohort_idx` (`cohort`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Table structure for table `share_links`
+--
+
+CREATE TABLE `share_links` (
+  `id` char(36) COLLATE utf8_unicode_ci NOT NULL,
+  `secret_key` char(36) CHARACTER SET latin1 NOT NULL,
+  `hashed_password` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `security_level` tinyint(2) NOT NULL,
+  `expiration_date` datetime DEFAULT NULL,
+  `expiration_count` int(11) DEFAULT NULL,
+  `target_id` char(36) COLLATE utf8_unicode_ci NOT NULL,
+  `target_url` varchar(300) COLLATE utf8_unicode_ci NOT NULL,
+  `target_owner` char(255) COLLATE utf8_unicode_ci NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `owner_id` char(255) COLLATE utf8_unicode_ci NOT NULL,
+  `renewal_request` tinyint(1) NOT NULL DEFAULT '0',
+  `renewal_comment` text,
+  `count` int(11) NOT NULL DEFAULT '0',
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `algo_id` int(11) NOT NULL,
+  `algo_float_id` float(9,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+

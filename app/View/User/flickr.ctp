@@ -5,11 +5,25 @@ $default_paging = array('perpage'=>32, 'page'=>1, 'sort'=>'created', 'direction'
 $paging = array_intersect_key($this->passedArgs, $default_paging);
 $paging = array_merge($default_paging, $paging );
 if (!empty($this->passedArgs[0])) {
-	$paging['sort'] = 'score';
-	$iframe_request = array_merge(array('controller'=>'person','action'=>'photos', 0=>$this->passedArgs[0],'?'=>array('min'=>1)), $paging);
+	$iframe_request = array();
+	// user id or username provided, try to get JSON using permissions
+	$iframe_request['controller'] = 'person';
+	$iframe_request['action'] = 'photos';
+	if (isset($this->passedArgs['type'])) {
+		switch($this->passedArgs['type']) {
+			case 'TasksWorkorder':
+			case 'tw': $iframe_request['controller'] = 'tasks_workorders'; break;
+			case 'Workorder':	
+			case 'wo': $iframe_request['controller'] = 'workorders'; break;
+		}
+		$iframe_request[0] = $this->passedArgs[0];
+	}
 	if (in_array($this->passedArgs[0], array('venice', 'sardinia', 'paris', 'newyork', 'bali'))) {
 		$iframe_request['action'] = 'odesk_photos';
 	}
+	$paging['sort'] = 'score';
+	$iframe_request['?'] = array('min'=>1);
+	$iframe_request = array_merge($iframe_request, $paging);
 	$iframe_src = "http://{$uploadHost}".Router::url($iframe_request);
 } else {
 	$iframe_request = array_merge(array('controller'=>'my','action'=>'photos','?'=>array('min'=>1)), $paging);

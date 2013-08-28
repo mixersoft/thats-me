@@ -281,7 +281,7 @@ Util.animateScrollToHash = function(el) {
         var delta = target.offset().top - $(window).scrollTop();
         if (delta < 0 || delta > 50) {
         	setTimeout(function(){
-        		$.scrollTo(target.offset().top-NAVBAR_OFFSET_H, 1000);
+        		$('html, body').animate({scrollTop: target.offset().top}, 1000);
         	}, 50);
         } 
     }

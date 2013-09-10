@@ -33,7 +33,8 @@
  Router::connect('/i-want-it', array('controller' => 'thatsme', 'action'=>'iWantIt'));
  Router::connect('/timeline/*', array('controller' => 'thatsme', 'action'=>'timeline'));
  Router::connect('/story/*', array('controller' => 'thatsme', 'action'=>'story'));
- Router::connect('/isotope/*', array('controller' => 'thatsme', 'action'=>'isotope'));Router::connect('/:action', array('controller' => 'thatsme'));
+ Router::connect('/isotope/*', array('controller' => 'thatsme', 'action'=>'isotope'));
+ Router::connect('/10K-Timeline-Sprint', array('controller' => 'pages', 'action'=>'display', '0'=>'10K-Timeline-Sprint')); Router::connect('/:action', array('controller' => 'thatsme'));
  
  Router::connect('/social/:action/*', array('controller' => 'followers'));
  Router::connect('/donate/:action/*', array('controller' => 'followers'));

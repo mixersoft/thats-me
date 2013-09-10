@@ -715,13 +715,14 @@ Util.deferredMarkupReady = function() {
  * 	remaining sections, if any, will be loaded by XHR, and 
  * 	initialized via Util.deferredMarkupReady() 
  */
-Util.documentReady = function() {
+Util.documentReady = function($) {
 	
 		// console.info("document ready");
 		if ($('html').hasClass('ie8') && document.documentMode==8) $('html').addClass('doc-mode-ie8');
 		/*
 		 * check @font-family load
 		 */		
+try {		 
 		$('.checkfont').fontChecker({
 			onLoadClass: 'fontLoading',
     	    onFailClass: 'fontFail',
@@ -733,6 +734,7 @@ Util.documentReady = function() {
     	    	$('#curtain').remove();
     	    },
 		});
+} catch (ex) {}
 		
 		/*
 		 * debug touch/no-touch
@@ -1108,7 +1110,7 @@ var load_carouFredSel = function($) {
 }
 
 
-$(document).ready( CFG['util'].documentReady );
+$( CFG['util'].documentReady );
 
 })();  
 // end module closure

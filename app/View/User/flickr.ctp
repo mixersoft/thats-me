@@ -4,9 +4,9 @@
 $default_paging = array('perpage'=>32, 'page'=>1, 'sort'=>'created', 'direction'=>'desc');
 $paging = array_intersect_key($this->passedArgs, $default_paging);
 $paging = array_merge($default_paging, $paging );
-if (!empty($this->passedArgs[0])) {
+if ($ownerid) {
 	$paging['sort'] = 'score';
-	$iframe_request = array_merge(array('controller'=>'person','action'=>'photos', 0=>$this->passedArgs[0],'?'=>array('min'=>1)), $paging);
+	$iframe_request = array_merge(array('controller'=>'person','action'=>'photos', 0=>$ownerid,'?'=>array('min'=>1)), $paging);
 	if (in_array($this->passedArgs[0], array('venice', 'sardinia', 'paris', 'newyork', 'bali'))) {
 		$iframe_request['action'] = 'odesk_photos';
 	}

@@ -462,7 +462,8 @@ $(function() {
 			_xhr_json = function(owner){
 				if ($.isArray(owner)) owner = owner.shift();
 				if (!owner) owner = 'venice';
-				PAGE.src = "http://snappi-dev/person/odesk_photos/"+owner+"/page:1/perpage:32/sort:score/direction:desc/.json";
+				var action = (owner.length == 36) ? 'odesk_photos' : 'odesk_photos';
+				PAGE.src = "http://"+Util.uploadHost+"/person/"+action+"/"+owner+"/page:1/perpage:32/sort:score/direction:desc/.json";
 				var named = CFG['util'].getNamedParams();
 				PAGE.src = CFG['util'].setNamedParams(PAGE.src, named);
 				try {
@@ -484,6 +485,12 @@ $(function() {
 			if (isLocal) {
 				PAGE.fetch = 'xhr';
 				_xhr_json(owner);
+			} else if (owner.length == 36) {
+				PAGE.fetch = 'iframe';
+				$('iframe#json').bind('load', _iframe_json);
+				$('iframe#auth').bind('load', _iframe_auth);
+				// $('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );  // skip auth
+				$('iframe#json').attr('src', $('iframe#json').attr('qsrc') );
 			} else {
 				PAGE.fetch = 'iframe';
 				$('iframe#json').bind('load', _iframe_json);

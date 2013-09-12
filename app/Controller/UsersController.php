@@ -107,11 +107,11 @@ class UsersController extends AppController {
 	 * show MyPhotos
 	 * ?flickr for flickr style montage using Nicholas Sherlock imagemontage.js
 	 */
-	public function snaps(){
+	public function snaps($ownerid=null){
 		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
 		// verify cookie by iframe+XHR
 		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
-		$this->set(compact('authUser', 'uploadHost'));
+		$this->set(compact('ownerid','authUser', 'uploadHost'));
 		$this->_beachfront(); 
 		$this->view = empty($this->request->query['layout']) ? 'flickr' : $this->request->query['layout'];
 	}

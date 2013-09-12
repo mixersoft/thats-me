@@ -194,6 +194,7 @@ Util.getCC = function(src, success){
 		},
 	}).fail(function(json, status, o){
 		console.error("getCC failed");
+		throw new Error("getCC failed");
 	});
 }
 Util.tokenReplace = function(string, prefix, tokens) {

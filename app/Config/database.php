@@ -69,6 +69,16 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
+	public $aaa = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'snaphappi',
+		'password' => 'snapsh0t',
+		'database' => 'snappi',
+		'prefix' => '',
+		//'encoding' => 'utf8',
+	);
 
 	public $test = array(
 		'datasource' => 'Database/Mysql',

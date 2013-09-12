@@ -49,6 +49,8 @@ class PagesController extends AppController {
 	public function _setLayout($page) {
 		switch ($page) {
 			case 'fb-channel-file': 
+			case '10_k-timeline-sprint':
+			case '10K-Timeline-Sprint': 
 				$this->layout = false;	break; 
 			case 'ads':  	
 				$this->layout = 'bootstrap-iframe'; break;

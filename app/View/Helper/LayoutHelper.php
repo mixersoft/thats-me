@@ -51,7 +51,7 @@ class LayoutHelper extends AppHelper {
      * @param mixed $variable Data to ourput 
      * @param mixed $defaul Value to output if first paramter does not exist 
      */ 
-    function output(&$var, $default=null) { 
+    function output($var, $default=null) { 
         if(!isset($var) or $var==null) { 
             if(!is_null($default))  
                 echo $default; 

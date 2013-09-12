@@ -457,15 +457,11 @@ $(function() {
 				}
 			}
 			/*
-			 * json for public photos, does not require auth 
+			 * use XHR to fetch json, iframe_json does not work for isLocal=true 
 			 */
-			_xhr_json = function(owner){
-				if ($.isArray(owner)) owner = owner.shift();
-				if (!owner) owner = 'venice';
-				var action = (owner.length == 36) ? 'odesk_photos' : 'odesk_photos';
-				PAGE.src = "http://"+Util.uploadHost+"/person/"+action+"/"+owner+"/page:1/perpage:32/sort:score/direction:desc/.json";
-				var named = CFG['util'].getNamedParams();
-				PAGE.src = CFG['util'].setNamedParams(PAGE.src, named);
+			_xhr_json = function(src){
+				src = src.replace('?min=1', '/.json');
+				PAGE.src = src;
 				try {
 					CFG['util'].getCC(PAGE.src, function(json){
 						// json.success = true
@@ -477,25 +473,25 @@ $(function() {
 				}
 			}
 			
-			CFG[layout].documentReady();			
+			CFG[layout].documentReady();	
+			var jsonSrc = $('iframe#json').attr('qsrc');		
 			var isLocal=(window.location.hostname=='thats-me');
-			var owner = window.location.pathname.split('/');
-			if (owner.length > 3 && owner[3].indexOf(':')==-1) owner = owner[3];
-			else owner = null;
 			if (isLocal) {
-				PAGE.fetch = 'xhr';
-				_xhr_json(owner);
-			} else if (owner.length == 36) {
-				PAGE.fetch = 'iframe';
-				$('iframe#json').bind('load', _iframe_json);
-				$('iframe#auth').bind('load', _iframe_auth);
-				// $('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );  // skip auth
-				$('iframe#json').attr('src', $('iframe#json').attr('qsrc') );
-			} else {
+				// skip auth, use XHR not iframe
+				_xhr_json(jsonSrc);
+			} else if (/\/my\/photos/.test(jsonSrc)) {
+				// check auth, then show /my/photos 
 				PAGE.fetch = 'iframe';
 				$('iframe#json').bind('load', _iframe_json);
 				$('iframe#auth').bind('load', _iframe_auth);
 				$('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );
+			} else {
+				// skip auth, show permissionable photos for owner, either public or authUser
+				PAGE.fetch = 'iframe';
+				$('iframe#json').bind('load', _iframe_json);
+				$('iframe#auth').bind('load', _iframe_auth);
+				// $('iframe#auth').attr('src', $('iframe#auth').attr('qsrc') );  // skip auth
+				$('iframe#json').attr('src', jsonSrc);
 			}
 			$('#curtain .wrapV').html( $('.markup .loading').html() ).addClass('fadeIn');
 		},

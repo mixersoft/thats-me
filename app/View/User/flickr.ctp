@@ -1,29 +1,25 @@
 <?php
 
 // init paging for iframe.src castingCall JSON request
-$default_paging = array('perpage'=>32, 'page'=>1, 'sort'=>'created', 'direction'=>'desc');
+$default_paging = array('perpage'=>32, 'page'=>1, 'sort'=>'dateTaken', 'direction'=>'desc');
 $paging = array_intersect_key($this->passedArgs, $default_paging);
 $paging = array_merge($default_paging, $paging );
 if ($ownerid) {
 	$iframe_request = array();
 	// user id or username provided, try to get JSON using permissions
 	$iframe_request = array_merge(array('controller'=>'person','action'=>'photos', 0=>$ownerid,'?'=>array('min'=>1)), $paging);
-	$iframe_request['controller'] = 'person';
-	$iframe_request['action'] = 'photos';
-	if (isset($this->passedArgs['type'])) {
-		switch($this->passedArgs['type']) {
+	if (isset($this->request->query['type'])) {
+		switch($this->request->query['type']) {
 			case 'TasksWorkorder':
 			case 'tw': $iframe_request['controller'] = 'tasks_workorders'; break;
 			case 'Workorder':	
 			case 'wo': $iframe_request['controller'] = 'workorders'; break;
 		}
-		$iframe_request[0] = $this->passedArgs[0];
 	}
-	if (in_array($this->passedArgs[0], array('venice', 'sardinia', 'paris', 'newyork', 'bali'))) {
+	if (in_array($ownerid, array('venice', 'sardinia', 'paris', 'newyork', 'bali'))) {
 		$iframe_request['action'] = 'odesk_photos';
 	}
 	$paging['sort'] = 'score';
-	$iframe_request['?'] = array('min'=>1);
 	$iframe_request = array_merge($iframe_request, $paging);
 	$iframe_src = "http://{$uploadHost}".Router::url($iframe_request);
 } else {
@@ -106,7 +102,6 @@ $this->startIfEmpty('body_header');
 	echo $this->element('navbar-member', array('action'=>'snaps'));
     echo $this->element('notify');
 $this->end(); 
-
 ?>
 <div id="snaps" class="featurette snaps track-page-view ">
 	<div class="vcenter-wrap">

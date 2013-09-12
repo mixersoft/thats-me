@@ -109,6 +109,7 @@ class UsersController extends AppController {
 	 */
 	public function snaps($ownerid=null){
 		$uploadHost = Configure::read('isLocal') ? 'snappi-dev' : 'dev.snaphappi.com';
+		if (!$ownerid && Configure::read('isLocal')) $ownerid='venice';
 		// verify cookie by iframe+XHR
 		$authUser = isset($_COOKIE['user']) ? json_decode($_COOKIE['user'],true) : array();
 		$this->set(compact('ownerid','authUser', 'uploadHost'));

@@ -30,12 +30,12 @@ Let us roll up our sleeves so you can just play.
 <!--    *********** mission ********   -->
     <div class="tab-pane" id="about-mission">
 <p class='lead'>
-<strong>Our mission is to take the <em>&ldquo;work&rdquo;</em> out of family photos and make it <em>&ldquo;play&rdquo;</em>.</strong> 
+<strong>Our mission is to help our users connect more deeply with their family photos by making the experience fun &amp; easy.</strong>
 </p><p>
 With today’s rapid-fire digital cameras and smartphones, it’s so easy to snap photos, and we’ll be the last to stop the fun. 
 But unless you have the time and discipline to tend to your family photo archives, the fun does stop &mdash; right on the steps of the family photo archive. 
 Faced with an overwhelming pile of unsorted photos (10,000+ is no longer uncommon) the current system and tools for managing family photos are broken. 
-It's a lot of work and it's why your family photos are being ignored.
+It's a lot of work and it's why family photos are often safe but ignored.
 </p><p>
 Nobody wants to look at pages and pages of thumbnails, or row after row of duplicates. But everybody is happy to make the final cut. Our mission is to bridge this gap. 
 </p><p>

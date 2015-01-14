@@ -4,7 +4,7 @@
 	        		<p class="lead">If you would like to offer your vocal support and cheer us on, please do the following:</p>
 <div class="media">
 	<div class="on-the-go media-object pull-left  text-center">
-		<a class="app-icon" href="http://app.snaphappi.com/on-the-go/?utm-source=thats-me"><img src="img/Icon-76@2x.png" target="_blank"></a>
+		<a class="app-icon" href="http://app.snaphappi.com/on-the-go/?utm-source=thats-me" target="_blank"><img src="img/Icon-76@2x.png"></a>
 		<div class="app-icon-label">On-the-Go</div>
 	</div>
 	<div class="media-body">

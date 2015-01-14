@@ -14,7 +14,7 @@
 			        		<span class='nowrap'>to re-live the precious moments buried in your Family Photos (50 sec)</span>
 			        </p>
 			        <br />
-<?php	if (in_array($this->action, array("home_deferred", 'home', 'iWantIt'))) { ?>			        
+<?php	if (false && in_array($this->action, array("home_deferred", 'home', 'iWantIt'))) { ?>			        
 		        	<div class="center">
 						<a class="btn btn-large btn-primary" href="/timeline/venice" onclick='return CFG["util"].load_demo.apply(this,arguments);' target='snappi-demo'>See the Demo <i class='icon-external-link' title='opens in a new tab or window'></i></a>
 					</div>

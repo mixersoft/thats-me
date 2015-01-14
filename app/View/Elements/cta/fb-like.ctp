@@ -2,6 +2,22 @@
 	        <div class="row">
 	        	<div class='offset1 span10'>
 	        		<p class="lead">If you would like to offer your vocal support and cheer us on, please do the following:</p>
+<div class="media">
+	<div class="on-the-go media-object pull-left  text-center">
+		<a class="app-icon" href="http://app.snaphappi.com/on-the-go/?utm-source=thats-me"><img src="img/Icon-76@2x.png" target="_blank"></a>
+		<div class="app-icon-label">On-the-Go</div>
+	</div>
+	<div class="media-body">
+		<h4 class="media-heading">Snaphappi On-the-Go</h4>          	
+		<p class="lead">
+While we hope to handle all your family photos, we're starting with a baby-step. 
+On-the-Go is a mobile app that targets a small but important slice of your family photo pie - travel &amp; vacation photos on your smartphone. 
+We've put a lot of effort into making On-the-Go as simple as possible. It's a quick &amp; easy way to experience Curated Family Photos. 
+<a class="nowrap" href="http://app.snaphappi.com/on-the-go/?utm-source=thats-me" target="_blank">[Learn more]</a>
+		</p>
+	  </div>
+</div>
+
 <a id='social' name='social'></a>	        		
 <div class="media">
 	<img class="media-object pull-left" alt="Spread the word" style="width: 120px; height: 120px;" src="/img/beachfront/icon-sm-03.png">

@@ -49,7 +49,8 @@ Our editors are also trained to focus on photos with people, faces, or scenery. 
 Our Curated Timelines are built automatically from your rated photostream. We read the EXIF timestamps recorded in the JPG files of most modern digital cameras to know exactly when the original photo was taken. Plus, we have special algorithms to detect events from within your photostream, allowing us to group your photos together in a meaningful way. 
 </p><p class="answer">
 But most of all, we have developed a &ldquo;secret sauce&rdquo; that automatically picks out the beautiful photos we feature for each and every event. This allows our Curated Timelines to connect you instantly to your precious moments without having to dig through pages of thumbnails.
-</p><p class="answer">
+</p>
+<p class="answer hide">
 	To see a demo of our Curated Timeline, <a href='/timeline/venice' onclick='return CFG["util"].load_demo.apply(this,arguments);'><strong>[click here]</strong></a>.         		
 	        	</p>
 			</div>

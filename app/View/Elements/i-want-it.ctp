@@ -10,18 +10,21 @@
 		      				<div class='wrapZ'>
 		      					<img class='darkroom' src='/img/spacer.gif'>
 						        <h1>Still in the Darkroom
-						        <div class="subhead">We're working hard to build Snaphappi into a service you never knew you needed but <strong>can't live without.</strong></div>
+						        <div class="subhead">
+						        We're working hard to build Snaphappi into a service you never knew you needed but 
+						        <strong>can't live without.</strong></div>
 						        </h1>
 					        </div>
 				       	</div>
 					</div>
       			</div>
-      		<div class="row"><div class='offset1 span10'>
+      		<div class="row"><div class='offset1 span10'>      		
 <p class="lead">      			
-The honest truth is... <strong>we're not ready</strong> to deliver this service yet. 
-The point of this site is to declare our vision and build a base of support &amp; commitment from our fans.
+<!-- The honest truth is... <strong>we're not ready</strong> to deliver this service yet.  -->
+The point of this page is to declare our vision and build a base of support &amp; commitment from our fans.
 We need this support to reach investors and grow our team.
-</p>      			
+</p>   
+
       		</div></div>
 <?php 
 	/*
